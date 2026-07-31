@@ -1,0 +1,85 @@
+<app-section id="about" spacing="lg" ariaLabel="Sobre mim">
+  <app-container size="xl">
+    <div class="about">
+      <!-- 1. Introduction Header -->
+      <header class="about__header animate-fade-in-up">
+        <app-text variant="caption" element="span" class="about__eyebrow">
+          Sobre mim
+        </app-text>
+        <app-heading level="h2" size="h1" class="about__title">
+          Engenharia de Produção & Software
+        </app-heading>
+        <app-text variant="lead" class="about__intro">
+          Sou Engenheiro de Software Júnior com formação em Engenharia de Produção.
+          Minha trajetória combina a busca por entender como a tecnologia funciona por dentro
+          com a visão sistêmica da engenharia — projetando aplicações com foco em arquitetura limpa,
+          qualidade, manutenção e evolução contínua.
+        </app-text>
+      </header>
+
+      <!-- 2. My Journey -->
+      <section class="about__journey animate-fade-in-up" aria-labelledby="journey-heading">
+        <app-heading id="journey-heading" level="h3" size="h2" class="about__section-title">
+          Minha Trajetória
+        </app-heading>
+        <div class="about__journey-content">
+          <app-text variant="body" class="about__paragraph">
+            Meu interesse por tecnologia começou muito antes da programação. Desde jovem, era
+            fascinado por computadores, videogames e smartphones. Não queria apenas utilizar a
+            tecnologia — queria compreender como o hardware e o software trabalhavam juntos.
+          </app-text>
+          <app-text variant="body" class="about__paragraph">
+            Essa curiosidade me levou à graduação em Engenharia de Produção, onde desenvolvi
+            uma visão sistêmica para análise de processos, identificação de gargalos e
+            otimização do início ao fim (conceitos como PDCA, Lean Thinking e Análise de Causa Raiz).
+          </app-text>
+          <app-text variant="body" class="about__paragraph">
+            Com o tempo, percebi que o desenvolvimento de software era onde esse pensamento
+            encontrava seu propósito ideal. Hoje vejo o software como outro tipo de sistema de
+            produção — onde a matéria-prima é a informação e o produto final é uma experiência
+            sustentável e confiável.
+          </app-text>
+        </div>
+      </section>
+
+      <!-- 3. How I Work -->
+      <section class="about__philosophy animate-fade-in-up" aria-labelledby="work-heading">
+        <header class="about__philosophy-header">
+          <app-heading id="work-heading" level="h3" size="h2" class="about__section-title">
+            Como Trabalho
+          </app-heading>
+          <app-text variant="body" class="about__section-description">
+            Princípios de engenharia que guiam minhas decisões técnicas, arquitetura e atuação em equipe.
+          </app-text>
+        </header>
+
+        <ul class="about__principles-grid" aria-label="Princípios de trabalho">
+          @for (principle of principles; track principle.id) {
+            <li class="about__principle-card">
+              <app-heading level="h4" size="h4" class="about__principle-title">
+                {{ principle.title }}
+              </app-heading>
+              <app-text variant="body" class="about__principle-description">
+                {{ principle.description }}
+              </app-text>
+            </li>
+          }
+        </ul>
+      </section>
+
+      <!-- 4. Currently -->
+      <section class="about__currently animate-fade-in-up" aria-labelledby="currently-heading">
+        <div class="about__currently-card">
+          <app-heading id="currently-heading" level="h3" size="h3" class="about__currently-title">
+            Atualmente
+          </app-heading>
+          <app-text variant="body" class="about__currently-text">
+            A tecnologia evolui constantemente e os melhores engenheiros são aprendizes contínuos.
+            Sigo aprimorando minhas habilidades em desenvolvimento Full Stack, estudando arquitetura de software
+            e buscando oportunidades para construir produtos de alto valor e colaborar com equipes focadas em qualidade.
+          </app-text>
+        </div>
+      </section>
+    </div>
+  </app-container>
+</app-section>

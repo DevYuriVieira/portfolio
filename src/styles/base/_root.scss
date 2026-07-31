@@ -1,0 +1,78 @@
+@use 'abstracts' as *;
+
+:root {
+  // Colors
+  --bg-primary: #{$color-bg-primary};
+  --bg-surface: #{$color-bg-surface};
+  --bg-surface-elevated: #{$color-bg-surface-elevated};
+  --text-primary: #{$color-text-primary};
+  --text-secondary: #{$color-text-secondary};
+  --text-muted: #{$color-text-muted};
+  --accent-primary: #{$color-accent-primary};
+  --accent-hover: #{$color-accent-hover};
+  --accent-subtle: #{$color-accent-subtle};
+  --border-color: #{$color-border};
+  --border-subtle: #{$color-border-subtle};
+
+  // Typography
+  --font-sans: #{$font-sans};
+  --font-mono: #{$font-mono};
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-md: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-display: clamp(2.5rem, 8vw, 4.5rem);
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  // Spacing
+  --space-1: #{$space-1};
+  --space-2: #{$space-2};
+  --space-3: #{$space-3};
+  --space-4: #{$space-4};
+  --space-6: #{$space-6};
+  --space-8: #{$space-8};
+  --space-12: #{$space-12};
+  --space-16: #{$space-16};
+  --space-24: #{$space-24};
+  --space-32: #{$space-32};
+
+  // Border Radius
+  --radius-sm: #{$radius-sm};
+  --radius-md: #{$radius-md};
+  --radius-lg: #{$radius-lg};
+  --radius-xl: #{$radius-xl};
+  --radius-full: #{$radius-full};
+
+  // Transitions
+  --transition-fast: #{$transition-fast};
+  --transition-base: #{$transition-base};
+  --transition-slow: #{$transition-slow};
+
+  // Container Widths
+  --container-sm: #{$container-sm};
+  --container-md: #{$container-md};
+  --container-lg: #{$container-lg};
+  --container-xl: #{$container-xl};
+  --container-max: #{$container-max};
+
+  // Motion
+  --duration-fast: #{$duration-fast};
+  --duration-normal: #{$duration-normal};
+  --duration-slow: #{$duration-slow};
+  --duration-entrance: #{$duration-entrance};
+
+  --ease-default: #{$ease-default};
+  --ease-in: #{$ease-in};
+  --ease-out: #{$ease-out};
+  --ease-in-out: #{$ease-in-out};
+  --ease-entrance: #{$ease-entrance};
+}
