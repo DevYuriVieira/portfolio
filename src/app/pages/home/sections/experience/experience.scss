@@ -1,0 +1,146 @@
+@use 'abstracts' as *;
+
+:host {
+  display: block;
+}
+
+.experience {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+
+  @include respond-to('md') {
+    gap: var(--space-16);
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    max-width: 640px;
+  }
+
+  &__eyebrow {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+
+    @include respond-to('md') {
+      font-size: var(--text-sm);
+    }
+  }
+
+  &__title {
+    display: block;
+  }
+
+  &__subtitle {
+    display: block;
+    color: var(--text-secondary);
+  }
+
+  // Vertical Timeline Layout
+  &__timeline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 var(--space-6);
+
+    @include respond-to('md') {
+      padding-left: var(--space-8);
+      gap: var(--space-12);
+    }
+
+    // Thin vertical timeline line
+    &::before {
+      content: '';
+      position: absolute;
+      top: var(--space-2);
+      bottom: var(--space-2);
+      left: 7px;
+      width: 1px;
+      background-color: var(--border-subtle);
+
+      @include respond-to('md') {
+        left: 9px;
+      }
+    }
+  }
+
+  &__item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  // Accent Dot Marker
+  &__marker {
+    position: absolute;
+    top: var(--space-1);
+    left: calc(var(--space-6) * -1 + 3px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include respond-to('md') {
+      left: calc(var(--space-8) * -1 + 5px);
+    }
+  }
+
+  &__dot {
+    width: 9px;
+    height: 9px;
+    border-radius: var(--radius-full);
+    background-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px var(--bg-primary);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    max-width: 680px;
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  &__year {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: var(--font-weight-semibold);
+    color: var(--accent-primary);
+    letter-spacing: 0.05em;
+
+    @include respond-to('md') {
+      font-size: var(--text-sm);
+    }
+  }
+
+  &__category {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+  }
+
+  &__item-title {
+    display: block;
+    color: var(--text-primary);
+  }
+
+  &__description {
+    display: block;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+}
