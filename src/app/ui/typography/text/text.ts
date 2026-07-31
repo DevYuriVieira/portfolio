@@ -1,3 +1,4 @@
+import { NgTemplateOutlet } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 export type TextVariant = 'body' | 'caption' | 'code' | 'lead';
@@ -5,7 +6,7 @@ export type TextElement = 'p' | 'span' | 'div' | 'code';
 
 @Component({
   selector: 'app-text',
-  imports: [],
+  imports: [NgTemplateOutlet],
   templateUrl: './text.html',
   styleUrl: './text.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

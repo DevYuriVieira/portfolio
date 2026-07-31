@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Container, Heading, Section, Text } from '@ui';
-import { EngineeringPrinciple, ENGINEERING_PRINCIPLES } from './about.model';
+import { ENGINEERING_PRINCIPLES } from './about.data';
+import { EngineeringPrinciple } from './about.model';
 
 @Component({
   selector: 'app-about',

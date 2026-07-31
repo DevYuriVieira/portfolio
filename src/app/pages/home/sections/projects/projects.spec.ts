@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { beforeEach, describe, expect, it } from 'vitest';
-import { PROJECTS_DATA } from './project.model';
+import { PROJECTS_DATA } from './projects.data';
 import { ProjectsSection } from './projects';
 
 describe('ProjectsSection', () => {
@@ -23,9 +23,9 @@ describe('ProjectsSection', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render all 4 project cards from mock data', () => {
+  it('should render all 7 project cards from mock data', () => {
     const cards = fixture.nativeElement.querySelectorAll('.projects__card');
-    expect(cards.length).toBe(4);
+    expect(cards.length).toBe(7);
     expect(component.projects.length).toBe(PROJECTS_DATA.length);
   });
 

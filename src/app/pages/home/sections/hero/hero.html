@@ -6,46 +6,45 @@
         <app-text
           variant="caption"
           element="span"
-          class="hero__eyebrow hero__animate hero__animate--1"
+          class="hero__eyebrow"
         >
-          Engenheiro de Software Júnior | Full Stack Developer
+          {{ data.eyebrow }}
         </app-text>
 
         <!-- Name -->
         <app-heading
           level="h1"
           size="display"
-          class="hero__name hero__animate hero__animate--2"
+          class="hero__name"
         >
-          Yuri Vieira
+          {{ data.name }}
         </app-heading>
 
         <!-- Description -->
         <app-text
           variant="lead"
-          class="hero__description hero__animate hero__animate--3"
+          class="hero__description"
         >
-          Desenvolvo aplicações web modernas com foco em arquitetura limpa,
-          performance, boas práticas de engenharia e experiências digitais de qualidade.
+          {{ data.description }}
         </app-text>
 
         <!-- Actions -->
-        <div class="hero__actions hero__animate hero__animate--4">
+        <div class="hero__actions">
           <app-button variant="primary" ariaLabel="Ver projetos">
-            Ver projetos
+            {{ data.projectsCtaText }}
           </app-button>
           <app-link
-            href="https://github.com/DevYuriVieira"
+            [href]="data.githubUrl"
             [external]="true"
             ariaLabel="Perfil do GitHub"
           >
-            GitHub
+            {{ data.githubCtaText }}
           </app-link>
         </div>
       </div>
 
       <!-- Scroll Indicator -->
-      <app-scroll-indicator class="hero__scroll hero__animate hero__animate--5" />
+      <app-scroll-indicator class="hero__scroll" />
     </div>
   </app-container>
 </app-section>

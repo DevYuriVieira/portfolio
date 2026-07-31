@@ -1,3 +1,7 @@
+<ng-template #linkContent>
+  <ng-content></ng-content>
+</ng-template>
+
 @if (external) {
   <a
     [href]="href"
@@ -6,7 +10,7 @@
     class="link"
     [attr.aria-label]="ariaLabel || null"
   >
-    <ng-content />
+    <ng-container *ngTemplateOutlet="linkContent"></ng-container>
   </a>
 } @else {
   <a
@@ -14,6 +18,6 @@
     class="link"
     [attr.aria-label]="ariaLabel || null"
   >
-    <ng-content />
+    <ng-container *ngTemplateOutlet="linkContent"></ng-container>
   </a>
 }

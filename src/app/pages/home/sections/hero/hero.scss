@@ -65,26 +65,4 @@
     left: 50%;
     transform: translateX(-50%);
   }
-
-  // Entrance animation modifiers
-  &__animate {
-    opacity: 0;
-    animation: fadeInUp var(--duration-entrance) var(--ease-entrance) forwards;
-
-    &--1 {
-      animation-delay: 100ms;
-    }
-    &--2 {
-      animation-delay: 250ms;
-    }
-    &--3 {
-      animation-delay: 450ms;
-    }
-    &--4 {
-      animation-delay: 650ms;
-    }
-    &--5 {
-      animation-delay: 900ms;
-    }
-  }
 }

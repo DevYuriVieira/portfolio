@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { AboutSection } from './about';
-import { ENGINEERING_PRINCIPLES } from './about.model';
+import { ENGINEERING_PRINCIPLES } from './about.data';
 
 describe('AboutSection', () => {
   let component: AboutSection;

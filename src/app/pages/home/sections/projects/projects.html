@@ -3,69 +3,75 @@
     <div class="projects">
       <!-- Section Header -->
       <header class="projects__header">
-        <app-text variant="caption" element="span" class="projects__eyebrow">
-          Projetos
-        </app-text>
+        <div class="projects__eyebrow-wrapper">
+          <span class="projects__eyebrow-dot" aria-hidden="true"></span>
+          <app-text variant="caption" element="span" class="projects__eyebrow">
+            Projetos Selecionados
+          </app-text>
+        </div>
         <app-heading level="h2" size="h1" class="projects__title">
           Trabalhos em destaque
         </app-heading>
         <app-text variant="lead" class="projects__subtitle">
-          Seleção de aplicações web e APIs desenvolvidas com foco em arquitetura limpa,
-          performance e engenharia de qualidade.
+          Aplicações web, APIs resilientes e soluções full-stack projetadas com foco em arquitetura limpa, performance e engenharia de software de alta qualidade.
         </app-text>
       </header>
 
-      <!-- Projects Grid -->
+      <!-- Projects Editorial Grid -->
       <div class="projects__grid">
         @for (project of projects; track project.id) {
-          <article class="projects__card">
-            <!-- Card Content -->
-            <div class="projects__card-body">
+        <article class="projects__card">
+          <!-- Card Body -->
+          <div class="projects__card-body">
+            <div class="projects__card-header">
               <app-heading level="h3" size="h3" class="projects__card-title">
                 {{ project.title }}
               </app-heading>
-
-              <app-text variant="body" class="projects__card-description">
-                {{ project.description }}
-              </app-text>
-
-              <!-- Technologies List -->
-              <ul class="projects__tech-list" aria-label="Tecnologias utilizadas">
-                @for (tech of project.technologies; track tech) {
-                  <li class="projects__tech-item">
-                    <app-text variant="caption" element="span">
-                      {{ tech }}
-                    </app-text>
-                  </li>
-                }
-              </ul>
             </div>
 
-            <!-- Card Actions -->
-            <footer class="projects__card-footer">
-              @if (project.links.github) {
-                <app-link
-                  [href]="project.links.github"
-                  [external]="true"
-                  [ariaLabel]="'Repositório no GitHub: ' + project.title"
-                  class="projects__link"
-                >
-                  GitHub
-                </app-link>
-              }
+            <app-text variant="body" class="projects__card-description">
+              {{ project.description }}
+            </app-text>
 
-              @if (project.links.demo) {
-                <app-link
-                  [href]="project.links.demo"
-                  [external]="true"
-                  [ariaLabel]="'Demonstração ao vivo: ' + project.title"
-                  class="projects__link"
-                >
-                  Live Demo
-                </app-link>
+            <!-- Tech Stack Tags -->
+            <ul class="projects__tech-list" aria-label="Tecnologias utilizadas no projeto">
+              @for (tech of project.technologies; track tech) {
+              <li class="projects__tech-item">
+                <app-text variant="caption" element="span" class="projects__tech-text">
+                  {{ tech }}
+                </app-text>
+              </li>
               }
-            </footer>
-          </article>
+            </ul>
+          </div>
+
+          <!-- Card Actions / Links -->
+          <footer class="projects__card-footer">
+            @if (project.links.github) {
+            <app-link
+              [href]="project.links.github"
+              [external]="true"
+              [ariaLabel]="'Repositório no GitHub do projeto ' + project.title"
+              class="projects__link"
+            >
+              <span class="projects__link-text">GitHub</span>
+              <span class="projects__link-icon" aria-hidden="true">↗</span>
+            </app-link>
+            }
+
+            @if (project.links.demo) {
+            <app-link
+              [href]="project.links.demo"
+              [external]="true"
+              [ariaLabel]="'Demonstração ao vivo do projeto ' + project.title"
+              class="projects__link projects__link--demo"
+            >
+              <span class="projects__link-text">Live Demo</span>
+              <span class="projects__link-icon" aria-hidden="true">↗</span>
+            </app-link>
+            }
+          </footer>
+        </article>
         }
       </div>
     </div>

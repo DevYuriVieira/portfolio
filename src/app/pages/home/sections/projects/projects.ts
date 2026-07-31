@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Container, Heading, Link, Section, Text } from '@ui';
-import { Project, PROJECTS_DATA } from './project.model';
+import { PROJECTS_DATA } from './projects.data';
+import { Project } from './project.model';
 
 @Component({
   selector: 'app-projects',

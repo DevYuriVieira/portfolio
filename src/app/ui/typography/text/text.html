@@ -1,14 +1,18 @@
+<ng-template #textContent>
+  <ng-content></ng-content>
+</ng-template>
+
 @switch (element) {
   @case ('p') {
-    <p [class]="textClass"><ng-content /></p>
+    <p [class]="textClass"><ng-container *ngTemplateOutlet="textContent"></ng-container></p>
   }
   @case ('span') {
-    <span [class]="textClass"><ng-content /></span>
+    <span [class]="textClass"><ng-container *ngTemplateOutlet="textContent"></ng-container></span>
   }
   @case ('div') {
-    <div [class]="textClass"><ng-content /></div>
+    <div [class]="textClass"><ng-container *ngTemplateOutlet="textContent"></ng-container></div>
   }
   @case ('code') {
-    <code [class]="textClass"><ng-content /></code>
+    <code [class]="textClass"><ng-container *ngTemplateOutlet="textContent"></ng-container></code>
   }
 }

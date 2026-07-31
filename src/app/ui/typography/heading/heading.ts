@@ -1,3 +1,4 @@
+import { NgTemplateOutlet } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 export type HeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
@@ -5,7 +6,7 @@ export type HeadingSize = 'display' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
 @Component({
   selector: 'app-heading',
-  imports: [],
+  imports: [NgTemplateOutlet],
   templateUrl: './heading.html',
   styleUrl: './heading.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

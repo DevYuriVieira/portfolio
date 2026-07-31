@@ -1,17 +1,6 @@
 // =============================================================================
-// Animations — Global Keyframes & Entrance Utilities
+// Animations — Global Keyframes & Bounce Utilities
 // =============================================================================
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
 @keyframes scrollBounce {
   0%, 100% {
@@ -22,10 +11,4 @@
     transform: translateY(6px);
     opacity: 0.8;
   }
-}
-
-.animate-fade-in-up {
-  opacity: 0;
-  animation: fadeInUp var(--duration-entrance) var(--ease-entrance) forwards;
-  animation-delay: var(--animation-delay, 0ms);
 }
