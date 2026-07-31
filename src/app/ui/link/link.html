@@ -1,0 +1,19 @@
+@if (external) {
+  <a
+    [href]="href"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="link"
+    [attr.aria-label]="ariaLabel || null"
+  >
+    <ng-content />
+  </a>
+} @else {
+  <a
+    [routerLink]="href"
+    class="link"
+    [attr.aria-label]="ariaLabel || null"
+  >
+    <ng-content />
+  </a>
+}

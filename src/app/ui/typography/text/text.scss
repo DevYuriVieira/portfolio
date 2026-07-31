@@ -1,0 +1,38 @@
+.text {
+  margin: 0;
+
+  &--body {
+    font-family: var(--font-sans);
+    font-size: var(--text-md);
+    font-weight: var(--font-weight-regular);
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+
+  &--lead {
+    font-family: var(--font-sans);
+    font-size: var(--text-lg);
+    font-weight: var(--font-weight-regular);
+    color: var(--text-primary);
+    line-height: 1.6;
+  }
+
+  &--caption {
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-regular);
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  &--code {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-regular);
+    color: var(--text-primary);
+    background-color: var(--bg-surface);
+    padding: 0.15em 0.4em;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-subtle);
+  }
+}
