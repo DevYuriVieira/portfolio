@@ -1,0 +1,73 @@
+<app-section id="projects" spacing="lg" ariaLabel="Projetos em destaque">
+  <app-container size="xl">
+    <div class="projects">
+      <!-- Section Header -->
+      <header class="projects__header">
+        <app-text variant="caption" element="span" class="projects__eyebrow">
+          Projetos
+        </app-text>
+        <app-heading level="h2" size="h1" class="projects__title">
+          Trabalhos em destaque
+        </app-heading>
+        <app-text variant="lead" class="projects__subtitle">
+          Seleção de aplicações web e APIs desenvolvidas com foco em arquitetura limpa,
+          performance e engenharia de qualidade.
+        </app-text>
+      </header>
+
+      <!-- Projects Grid -->
+      <div class="projects__grid">
+        @for (project of projects; track project.id) {
+          <article class="projects__card">
+            <!-- Card Content -->
+            <div class="projects__card-body">
+              <app-heading level="h3" size="h3" class="projects__card-title">
+                {{ project.title }}
+              </app-heading>
+
+              <app-text variant="body" class="projects__card-description">
+                {{ project.description }}
+              </app-text>
+
+              <!-- Technologies List -->
+              <ul class="projects__tech-list" aria-label="Tecnologias utilizadas">
+                @for (tech of project.technologies; track tech) {
+                  <li class="projects__tech-item">
+                    <app-text variant="caption" element="span">
+                      {{ tech }}
+                    </app-text>
+                  </li>
+                }
+              </ul>
+            </div>
+
+            <!-- Card Actions -->
+            <footer class="projects__card-footer">
+              @if (project.links.github) {
+                <app-link
+                  [href]="project.links.github"
+                  [external]="true"
+                  [ariaLabel]="'Repositório no GitHub: ' + project.title"
+                  class="projects__link"
+                >
+                  GitHub
+                </app-link>
+              }
+
+              @if (project.links.demo) {
+                <app-link
+                  [href]="project.links.demo"
+                  [external]="true"
+                  [ariaLabel]="'Demonstração ao vivo: ' + project.title"
+                  class="projects__link"
+                >
+                  Live Demo
+                </app-link>
+              }
+            </footer>
+          </article>
+        }
+      </div>
+    </div>
+  </app-container>
+</app-section>
