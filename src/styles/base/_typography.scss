@@ -1,0 +1,18 @@
+// =============================================================================
+// Typography — Global Type Defaults
+// =============================================================================
+// Establishes font inheritance and a predictable typographic baseline.
+// Font-face declarations and scale will be added during UI implementation.
+// =============================================================================
+
+// Inherit font-size from the browser default (typically 16px).
+// This ensures `rem` units are relative to the user's browser preference.
+html {
+  font-size: 100%;
+}
+
+body {
+  // Font family will be defined via CSS custom property in _variables.scss
+  // and applied here once the design system tokens are populated.
+  // font-family: var(--font-sans);
+}
