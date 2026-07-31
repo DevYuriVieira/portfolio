@@ -77,7 +77,7 @@ $container-max: 1400px;
   --text-3xl: 1.875rem;
   --text-4xl: 2.25rem;
   --text-5xl: 3rem;
-  --text-display: 4rem;
+  --text-display: clamp(2.5rem, 8vw, 4.5rem);
 
   --font-weight-regular: 400;
   --font-weight-medium: 500;

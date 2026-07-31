@@ -1,1 +1,11 @@
-{}
+{
+  "hero": {
+    "eyebrow": "Junior Software Engineer | Full Stack Developer",
+    "name": "Yuri Vieira",
+    "description": "I build modern web applications focused on clean architecture, performance, engineering best practices, and quality digital experiences.",
+    "cta": {
+      "primary": "View projects",
+      "secondary": "GitHub"
+    }
+  }
+}

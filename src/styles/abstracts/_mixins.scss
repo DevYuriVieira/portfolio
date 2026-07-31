@@ -4,8 +4,37 @@
 // Pure mixins only. This file produces no CSS output on its own.
 // =============================================================================
 
-// Breakpoint helper — extend as needed
-// @mixin respond-to($breakpoint) { ... }
+// Breakpoints map
+$breakpoints: (
+  'sm': 640px,
+  'md': 768px,
+  'lg': 1024px,
+  'xl': 1280px,
+  '2xl': 1400px,
+);
+
+// Breakpoint helper
+@mixin respond-to($breakpoint) {
+  $raw-breakpoint: map-get($breakpoints, $breakpoint);
+
+  @if $raw-breakpoint {
+    @media (min-width: $raw-breakpoint) {
+      @content;
+    }
+  } @else {
+    @error 'Invalid breakpoint: #{$breakpoint}.';
+  }
+}
 
 // Visually hidden — accessible element hiding
-// @mixin visually-hidden { ... }
+@mixin visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
