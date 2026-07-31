@@ -1,18 +1,95 @@
 // =============================================================================
-// Typography — Global Type Defaults
-// =============================================================================
-// Establishes font inheritance and a predictable typographic baseline.
-// Font-face declarations and scale will be added during UI implementation.
+// Typography — Geist Font Setup & Global Type Hierarchy
 // =============================================================================
 
-// Inherit font-size from the browser default (typically 16px).
-// This ensures `rem` units are relative to the user's browser preference.
+// Geist Font-Face Declarations (Local assets/fonts support)
+@font-face {
+  font-family: 'Geist';
+  src: url('/assets/fonts/Geist-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('/assets/fonts/Geist-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('/assets/fonts/Geist-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('/assets/fonts/Geist-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 html {
   font-size: 100%;
 }
 
 body {
-  // Font family will be defined via CSS custom property in _variables.scss
-  // and applied here once the design system tokens are populated.
-  // font-family: var(--font-sans);
+  font-family: var(--font-sans);
+  font-size: var(--text-md);
+  font-weight: var(--font-weight-regular);
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: var(--text-4xl);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: -0.02em;
+}
+
+h3 {
+  font-size: var(--text-2xl);
+  letter-spacing: -0.01em;
+}
+
+h4 {
+  font-size: var(--text-xl);
+}
+
+h5 {
+  font-size: var(--text-lg);
+}
+
+h6 {
+  font-size: var(--text-md);
+}
+
+code,
+pre,
+kbd {
+  font-family: var(--font-mono);
 }

@@ -1,2 +1,1 @@
-// Layout exports will be registered here as header, footer, nav, and shell components are implemented.
-export {};
+export * from './main-layout/main-layout';
