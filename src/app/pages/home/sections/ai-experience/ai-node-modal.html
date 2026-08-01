@@ -1,0 +1,66 @@
+<div
+  class="node-modal-backdrop"
+  (click)="onBackdropClick($event)"
+  role="dialog"
+  aria-modal="true"
+  [attr.aria-label]="nodeDetail.name"
+>
+  <div class="node-modal">
+    <!-- Header -->
+    <header class="node-modal__header">
+      <div class="node-modal__meta">
+        <span class="node-modal__index">{{ nodeDetail.index }}</span>
+        <span class="node-modal__category">{{ nodeDetail.category }}</span>
+      </div>
+
+      <button
+        type="button"
+        class="node-modal__close-btn"
+        (click)="closeModal()"
+        aria-label="Fechar modal"
+      >
+        ✕
+      </button>
+    </header>
+
+    <!-- Title -->
+    <app-heading level="h3" size="h2" class="node-modal__title">
+      {{ nodeDetail.name }}
+    </app-heading>
+
+    <!-- Summary -->
+    <app-text variant="body" class="node-modal__summary">
+      {{ nodeDetail.summary }}
+    </app-text>
+
+    <!-- Practical Applications -->
+    <div class="node-modal__section">
+      <span class="node-modal__section-title">Aplicações Práticas & Impacto</span>
+      <ul class="node-modal__list">
+        @for (app of nodeDetail.practicalApplications; track app) {
+          <li class="node-modal__item">
+            <span class="node-modal__bullet">◆</span>
+            <span>{{ app }}</span>
+          </li>
+        }
+      </ul>
+    </div>
+
+    <!-- Tools & Stack -->
+    <div class="node-modal__section">
+      <span class="node-modal__section-title">Tecnologias & Ferramentas</span>
+      <div class="node-modal__tags">
+        @for (tool of nodeDetail.tools; track tool) {
+          <span class="node-modal__tag">{{ tool }}</span>
+        }
+      </div>
+    </div>
+
+    <!-- Footer Action -->
+    <footer class="node-modal__footer">
+      <app-button variant="secondary" (click)="closeModal()" ariaLabel="Fechar modal de detalhes">
+        Fechar
+      </app-button>
+    </footer>
+  </div>
+</div>

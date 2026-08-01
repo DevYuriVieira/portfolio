@@ -1,25 +1,25 @@
 <app-section id="contact" spacing="lg" ariaLabel="Contato e oportunidades">
   <app-container size="xl">
     <div class="contact">
-      <!-- Section Header -->
-      <header class="contact__header">
-        <app-text variant="caption" element="span" class="contact__eyebrow">
-          {{ data.eyebrow }}
-        </app-text>
+      <!-- Active Theory Header -->
+      <header class="contact__header" appReveal>
+        <span class="contact__eyebrow">{{ data.eyebrow }}</span>
+
         <app-heading level="h2" size="h1" class="contact__title">
           {{ data.title }}
         </app-heading>
+
         <app-text variant="lead" class="contact__subtitle">
           {{ data.subtitle }}
         </app-text>
       </header>
 
-      <!-- Contact Content Grid -->
+      <!-- Active Theory Editorial Grid -->
       <div class="contact__grid">
-        <!-- Direct Email Card -->
-        <div class="contact__card contact__card--primary">
+        <!-- Direct Email Block -->
+        <div class="contact__card contact__card--primary" appReveal>
           <div class="contact__card-header">
-            <span class="contact__card-label">E-mail de Contato Direto</span>
+            <span class="contact__card-label">01 // E-MAIL DE CONTATO DIRETO</span>
             <app-heading level="h3" size="h3" class="contact__email">
               {{ data.info.email }}
             </app-heading>
@@ -34,35 +34,34 @@
               {{ copied() ? '✓ Copiado' : 'Copiar E-mail' }}
             </app-button>
 
-            <app-link
-              [href]="'mailto:' + data.info.email"
-              [external]="true"
-              ariaLabel="Enviar e-mail diretamente"
+            <app-button
+              variant="secondary"
+              ariaLabel="Enviar e-mail diretamente para Yuri Vieira"
+              (click)="sendEmail()"
             >
               Enviar mensagem ↗
-            </app-link>
+            </app-button>
           </div>
         </div>
 
-        <!-- Metadata & Availability Card -->
-        <div class="contact__card">
+        <!-- Availability & Metadata Block -->
+        <div class="contact__card" appReveal [revealDelay]="100">
           <div class="contact__info-group">
-            <span class="contact__info-label">Localização</span>
+            <span class="contact__info-label">02 // LOCALIZAÇÃO</span>
             <app-text variant="body" class="contact__info-value">
               📍 {{ data.info.location }}
             </app-text>
           </div>
 
           <div class="contact__info-group">
-            <span class="contact__info-label">Disponibilidade Profissional</span>
+            <span class="contact__info-label">03 // DISPONIBILIDADE PROFISSIONAL</span>
             <app-text variant="body" class="contact__info-value">
               🟢 {{ data.info.availability }}
             </app-text>
           </div>
 
-          <!-- Social Links List -->
           <div class="contact__info-group">
-            <span class="contact__info-label">Redes & Links Profissionais</span>
+            <span class="contact__info-label">04 // REDES & LINKS</span>
             <div class="contact__social-links">
               <app-link
                 [href]="data.info.linkedinUrl"

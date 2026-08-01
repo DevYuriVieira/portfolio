@@ -13,4 +13,8 @@ export class Link {
   @Input() href: string = '';
   @Input() external: boolean = false;
   @Input() ariaLabel?: string;
+
+  get isMailto(): boolean {
+    return !!this.href && this.href.toLowerCase().startsWith('mailto:');
+  }
 }

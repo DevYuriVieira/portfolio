@@ -1,0 +1,63 @@
+<app-section id="ai-experience" spacing="lg" ariaLabel="Inteligência Artificial & Automação">
+  <app-container size="xl">
+    <div class="ai">
+      <!-- Active Theory Editorial Header -->
+      <header class="ai__header" appReveal>
+        <span class="ai__badge">{{ data.badge }}</span>
+
+        <app-heading level="h2" size="h1" class="ai__title">
+          {{ data.title }}
+        </app-heading>
+
+        <app-text variant="lead" class="ai__manifesto">
+          {{ data.manifesto }}
+        </app-text>
+      </header>
+
+      <!-- Active Theory Interactive Canvas -->
+      <div class="ai__canvas-wrapper" appReveal>
+        <app-neural-canvas (nodeSelect)="onNodeSelect($event)" />
+      </div>
+
+      <!-- Active Theory Feature Grid (Real Tools & Experience) -->
+      <div class="ai__features">
+        @for (feature of data.features; track feature.index; let i = $index) {
+          <article
+            class="ai__feature-card"
+            appReveal
+            [revealDelay]="i * 80"
+          >
+            <div class="ai__feature-header">
+              <span class="ai__feature-index">{{ feature.index }}</span>
+              <app-heading level="h3" size="h3" class="ai__feature-title">
+                {{ feature.title }}
+              </app-heading>
+            </div>
+
+            <app-text variant="body" class="ai__feature-description">
+              {{ feature.description }}
+            </app-text>
+
+            <div class="ai__feature-tags">
+              @for (tag of feature.tags; track tag) {
+                <span class="ai__feature-tag">{{ tag }}</span>
+              }
+            </div>
+          </article>
+        }
+      </div>
+
+      <!-- Closing Statement -->
+      <footer class="ai__closing" appReveal>
+        <app-text variant="body" class="ai__closing-text">
+          {{ data.closingStatement }}
+        </app-text>
+      </footer>
+    </div>
+  </app-container>
+
+  <!-- Interactive 3D Node Detail Modal -->
+  @if (selectedNodeDetail(); as detail) {
+    <app-ai-node-modal [nodeDetail]="detail" (close)="closeModal()" />
+  }
+</app-section>

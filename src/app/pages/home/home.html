@@ -1,3 +1,5 @@
+<app-interactive-particles />
+
 <app-hero />
 
 @defer (on viewport; prefetch on idle) {
@@ -20,6 +22,12 @@
 
 @defer (on viewport; prefetch on idle) {
   <app-projects />
+} @placeholder {
+  <div class="home__section-placeholder" aria-hidden="true"></div>
+}
+
+@defer (on viewport; prefetch on idle) {
+  <app-ai-experience />
 } @placeholder {
   <div class="home__section-placeholder" aria-hidden="true"></div>
 }

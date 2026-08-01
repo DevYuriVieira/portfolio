@@ -1,11 +1,12 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Button, Container, Heading, Link, ScrollIndicator, Section, Text } from '@ui';
+import { HeroParticlesVisual } from './hero-particles-visual';
 import { HERO_SECTION_DATA } from './hero.data';
 import { HeroSectionData } from './hero.model';
 
 @Component({
   selector: 'app-hero',
-  imports: [Section, Container, Heading, Text, Button, Link, ScrollIndicator],
+  imports: [Section, Container, Heading, Text, Button, Link, ScrollIndicator, HeroParticlesVisual],
   templateUrl: './hero.html',
   styleUrl: './hero.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
