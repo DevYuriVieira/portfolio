@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#09090B"/>
+  
+  <!-- Subtle Grid Accent -->
+  <path d="M0 100H1200M0 200H1200M0 300H1200M0 400H1200M0 500H1200" stroke="#18181B" stroke-width="1" stroke-dasharray="4 4"/>
+  <path d="M200 0V630M400 0V630M600 0V630M800 0V630M1000 0V630" stroke="#18181B" stroke-width="1" stroke-dasharray="4 4"/>
+  
+  <!-- Radial Glow -->
+  <circle cx="600" cy="315" r="400" fill="#3B82F6" fill-opacity="0.05"/>
+  
+  <!-- Card Container -->
+  <rect x="80" y="80" width="1040" height="470" rx="16" fill="#18181B" fill-opacity="0.6" stroke="#27272A" stroke-width="1.5"/>
+  
+  <!-- Content -->
+  <text x="140" y="200" fill="#3B82F6" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="600" letter-spacing="2">PORTFOLIO &amp; CASOS DE ESTUDO</text>
+  
+  <text x="140" y="280" fill="#FAFAFA" font-family="system-ui, -apple-system, sans-serif" font-size="56" font-weight="700">Yuri Vieira</text>
+  
+  <text x="140" y="340" fill="#A1A1AA" font-family="system-ui, -apple-system, sans-serif" font-size="32" font-weight="500">Engenheiro de Software &amp; Full Stack Developer</text>
+  
+  <text x="140" y="420" fill="#71717A" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="400">Java • Spring Boot • TypeScript • React • Angular • PostgreSQL</text>
+  
+  <!-- Badge/URL Footer -->
+  <rect x="140" y="465" width="280" height="40" rx="20" fill="#27272A"/>
+  <text x="160" y="491" fill="#FAFAFA" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="500">devyurivieira.github.io</text>
+</svg>

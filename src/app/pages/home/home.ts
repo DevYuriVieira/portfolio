@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
+import { SeoService } from '@core';
 import { AboutSection } from './sections/about';
 import { ContactSection } from './sections/contact';
 import { ExperienceSection } from './sections/experience';
@@ -20,5 +21,10 @@ import { SkillsSection } from './sections/skills';
   styleUrl: './home.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomePage {}
+export class HomePage implements OnInit {
+  private readonly seoService = inject(SeoService);
 
+  ngOnInit(): void {
+    this.seoService.updateSeo();
+  }
+}
