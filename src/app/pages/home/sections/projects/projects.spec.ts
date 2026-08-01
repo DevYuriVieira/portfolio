@@ -23,15 +23,15 @@ describe('ProjectsSection', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render all 7 project cards from mock data', () => {
+  it('should render all 11 project cards from mock data', () => {
     const cards = fixture.nativeElement.querySelectorAll('.projects__card');
-    expect(cards.length).toBe(7);
+    expect(cards.length).toBe(11);
     expect(component.projects.length).toBe(PROJECTS_DATA.length);
   });
 
   it('should render project titles correctly', () => {
     expect(component.projects[0].title).toBe('ZEISS Recommendation Assistant');
-    expect(component.projects[2].title).toBe('Spring Boot E-Commerce API');
+    expect(component.projects[1].title).toBe('Spring Boot E-Commerce API');
   });
 
   it('should render external project links securely with target _blank', () => {

@@ -4,13 +4,13 @@
       <!-- Section Header -->
       <header class="projects__header">
         <app-text variant="caption" element="span" class="projects__eyebrow">
-          Casos de Estudo & Projetos
+          Casos de Estudo & Engenharia
         </app-text>
         <app-heading level="h2" size="h1" class="projects__title">
-          Trabalhos em destaque
+          Projetos & Casos de Estudo
         </app-heading>
         <app-text variant="lead" class="projects__subtitle">
-          Seleção de aplicações corporativas, sistemas full-stack e APIs construídas com foco em arquitetura limpa, resiliência e engenharia de software.
+          Seleção de aplicações corporativas, sistemas full-stack, APIs backend e experiências frontend construídas com foco em arquitetura limpa, resiliência e valor real.
         </app-text>
       </header>
 
@@ -20,12 +20,12 @@
         <article class="projects__card" [class.projects__card--confidential]="project.confidential">
           <!-- Card Body -->
           <div class="projects__card-body">
-            <!-- Availability / Category Metadata -->
+            <!-- Category & Metadata Header -->
             <div class="projects__card-header">
               @if (project.confidential) {
               <span class="projects__badge projects__badge--confidential">
                 <span class="projects__badge-icon" aria-hidden="true">🔒</span>
-                Projeto Profissional Confidencial
+                {{ project.category }}
               </span>
               } @else if (project.category) {
               <span class="projects__badge projects__badge--category">
@@ -34,26 +34,56 @@
               }
             </div>
 
-            <!-- Project Title Anchor -->
+            <!-- Project Title -->
             <app-heading level="h3" size="h3" class="projects__card-title">
               {{ project.title }}
             </app-heading>
 
-            <!-- Engineering Summary Description -->
+            <!-- Context Paragraph -->
             <app-text variant="body" class="projects__card-description">
-              {{ project.description }}
+              {{ project.context || project.description }}
             </app-text>
 
-            <!-- Technology Stack Metadata -->
-            <ul class="projects__tech-list" aria-label="Tecnologias utilizadas no projeto">
-              @for (tech of project.technologies; track tech) {
-              <li class="projects__tech-item">
-                <app-text variant="caption" element="span" class="projects__tech-text">
-                  {{ tech }}
-                </app-text>
-              </li>
-              }
-            </ul>
+            <!-- Development Approach Paragraph -->
+            @if (project.development) {
+            <div class="projects__section-block">
+              <span class="projects__section-label">Abordagem & Engenharia</span>
+              <app-text variant="body" class="projects__card-subtext">
+                {{ project.development }}
+              </app-text>
+            </div>
+            }
+
+            <!-- Technical Highlights -->
+            @if (project.highlights && project.highlights.length > 0) {
+            <div class="projects__section-block">
+              <span class="projects__section-label">Destaques Técnicos</span>
+              <ul class="projects__highlights-list">
+                @for (highlight of project.highlights; track highlight) {
+                <li class="projects__highlight-item">
+                  <span class="projects__highlight-bullet" aria-hidden="true">•</span>
+                  <app-text variant="caption" element="span" class="projects__highlight-text">
+                    {{ highlight }}
+                  </app-text>
+                </li>
+                }
+              </ul>
+            </div>
+            }
+
+            <!-- Technology Stack -->
+            <div class="projects__section-block">
+              <span class="projects__section-label">Stack Tecnológica</span>
+              <ul class="projects__tech-list" aria-label="Tecnologias utilizadas no projeto">
+                @for (tech of project.technologies; track tech) {
+                <li class="projects__tech-item">
+                  <app-text variant="caption" element="span" class="projects__tech-text">
+                    {{ tech }}
+                  </app-text>
+                </li>
+                }
+              </ul>
+            </div>
           </div>
 
           <!-- Actions / Availability Footer -->

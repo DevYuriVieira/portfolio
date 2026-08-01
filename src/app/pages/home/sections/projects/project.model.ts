@@ -6,13 +6,17 @@ export interface ProjectLinks {
 export interface Project {
   readonly id: string;
   readonly title: string;
+  readonly category: string;
+  readonly year?: string;
+  readonly collaboration?: string;
+  readonly client?: string;
+  readonly confidential?: boolean;
   readonly description: string;
+  readonly context?: string;
+  readonly development?: string;
+  readonly highlights?: readonly string[];
   readonly technologies: readonly string[];
   readonly links: ProjectLinks;
-  readonly confidential?: boolean;
-  readonly category?: string;
-  readonly client?: string;
-  readonly highlights?: readonly string[];
-  readonly image?: string;
 }
+
 
