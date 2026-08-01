@@ -9,5 +9,7 @@ export interface Project {
   readonly description: string;
   readonly technologies: readonly string[];
   readonly links: ProjectLinks;
+  readonly confidential?: boolean;
+  readonly category?: string;
   readonly image?: string;
 }

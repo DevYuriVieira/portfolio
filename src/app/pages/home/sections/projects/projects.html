@@ -6,29 +6,43 @@
         <div class="projects__eyebrow-wrapper">
           <span class="projects__eyebrow-dot" aria-hidden="true"></span>
           <app-text variant="caption" element="span" class="projects__eyebrow">
-            Projetos Selecionados
+            Portfólio de Engenharia
           </app-text>
         </div>
         <app-heading level="h2" size="h1" class="projects__title">
           Trabalhos em destaque
         </app-heading>
         <app-text variant="lead" class="projects__subtitle">
-          Aplicações web, APIs resilientes e soluções full-stack projetadas com foco em arquitetura limpa, performance e engenharia de software de alta qualidade.
+          Projetos corporativos, aplicações full-stack e sistemas desenvolvidos com foco em arquitetura limpa, resiliência e engenharia de software de qualidade.
         </app-text>
       </header>
 
       <!-- Projects Editorial Grid -->
       <div class="projects__grid">
         @for (project of projects; track project.id) {
-        <article class="projects__card">
+        <article class="projects__card" [class.projects__card--confidential]="project.confidential">
           <!-- Card Body -->
           <div class="projects__card-body">
+            <!-- Header & Badge -->
             <div class="projects__card-header">
-              <app-heading level="h3" size="h3" class="projects__card-title">
-                {{ project.title }}
-              </app-heading>
+              @if (project.confidential) {
+              <span class="projects__badge projects__badge--confidential">
+                <span class="projects__badge-icon" aria-hidden="true">🔒</span>
+                Projeto Profissional Confidencial
+              </span>
+              } @else if (project.category) {
+              <span class="projects__badge projects__badge--category">
+                {{ project.category }}
+              </span>
+              }
             </div>
 
+            <!-- Title -->
+            <app-heading level="h3" size="h3" class="projects__card-title">
+              {{ project.title }}
+            </app-heading>
+
+            <!-- Description -->
             <app-text variant="body" class="projects__card-description">
               {{ project.description }}
             </app-text>
@@ -45,30 +59,38 @@
             </ul>
           </div>
 
-          <!-- Card Actions / Links -->
+          <!-- Card Actions / Links / Availability Footer -->
           <footer class="projects__card-footer">
-            @if (project.links.github) {
-            <app-link
-              [href]="project.links.github"
-              [external]="true"
-              [ariaLabel]="'Repositório no GitHub do projeto ' + project.title"
-              class="projects__link"
-            >
-              <span class="projects__link-text">GitHub</span>
-              <span class="projects__link-icon" aria-hidden="true">↗</span>
-            </app-link>
-            }
+            @if (project.confidential) {
+            <div class="projects__confidential-footer">
+              <span class="projects__confidential-text">
+                Desenvolvido na Residência Serratec TIC/Software • Código restrito por NDA
+              </span>
+            </div>
+            } @else {
+              @if (project.links.github) {
+              <app-link
+                [href]="project.links.github"
+                [external]="true"
+                [ariaLabel]="'Repositório no GitHub do projeto ' + project.title"
+                class="projects__link"
+              >
+                <span class="projects__link-text">GitHub</span>
+                <span class="projects__link-icon" aria-hidden="true">↗</span>
+              </app-link>
+              }
 
-            @if (project.links.demo) {
-            <app-link
-              [href]="project.links.demo"
-              [external]="true"
-              [ariaLabel]="'Demonstração ao vivo do projeto ' + project.title"
-              class="projects__link projects__link--demo"
-            >
-              <span class="projects__link-text">Live Demo</span>
-              <span class="projects__link-icon" aria-hidden="true">↗</span>
-            </app-link>
+              @if (project.links.demo) {
+              <app-link
+                [href]="project.links.demo"
+                [external]="true"
+                [ariaLabel]="'Demonstração ao vivo do projeto ' + project.title"
+                class="projects__link projects__link--demo"
+              >
+                <span class="projects__link-text">Live Demo</span>
+                <span class="projects__link-icon" aria-hidden="true">↗</span>
+              </app-link>
+              }
             }
           </footer>
         </article>

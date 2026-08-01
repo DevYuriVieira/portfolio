@@ -2,9 +2,9 @@ import { HeroSectionData } from './hero.model';
 
 export const HERO_SECTION_DATA: HeroSectionData = {
   eyebrow: 'Engenheiro de Software Júnior | Full Stack Developer',
-  name: 'Yuri Vieira',
+  name: 'Yuri Vieira Teixeira',
   description:
-    'Desenvolvo aplicações web modernas com foco em arquitetura limpa, performance, boas práticas de engenharia e experiências digitais de qualidade.',
+    'Engenheiro de Software Júnior com formação em Engenharia de Produção. Aplico visão sistêmica, Clean Architecture e princípios Lean no desenvolvimento de aplicações full-stack resilientes, escaláveis e focadas em resolver problemas reais de negócio.',
   projectsCtaText: 'Ver projetos',
   githubCtaText: 'GitHub',
   githubUrl: 'https://github.com/DevYuriVieira',

@@ -10,54 +10,79 @@
   left: 0;
   width: 100%;
   z-index: 100;
-  background-color: rgba(9, 9, 11, 0.8);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background-color: rgba(9, 9, 11, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border-subtle);
 
   &__inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 64px;
+    height: 68px;
 
     @include respond-to('md') {
-      height: 72px;
+      height: 76px;
     }
   }
 
+  &__brand {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  // Stronger Brand Logo Identity (Geist Bold, Prominent Visual Anchor)
   &__brand-name {
-    font-size: var(--text-md);
+    font-family: var(--font-sans);
+    font-size: var(--text-xl);
     font-weight: var(--font-weight-bold);
     color: var(--text-primary);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.035em;
+    line-height: 1;
     transition: opacity var(--duration-fast) var(--ease-default);
 
     &:hover {
-      opacity: 0.8;
+      opacity: 0.85;
     }
   }
 
+  // Desktop Navigation
   &__nav {
     display: none;
 
     @include respond-to('md') {
-      display: block;
+      display: flex;
+      align-items: center;
     }
 
     &-list {
       display: flex;
-      gap: var(--space-8);
+      align-items: center;
+      gap: var(--space-2);
+      list-style: none;
+      margin: 0;
+      padding: 0;
     }
 
+    // Refined Hover & Active States (No generic underline, subtle pill glow)
     &-link {
+      display: inline-flex;
+      align-items: center;
       font-size: var(--text-sm);
       font-weight: var(--font-weight-medium);
       color: var(--text-secondary);
-      transition: color var(--duration-fast) var(--ease-default);
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-full);
+      text-decoration: none;
+      transition:
+        color var(--duration-fast) var(--ease-default),
+        background-color var(--duration-fast) var(--ease-default);
 
-      &:hover {
+      &:hover,
+      &:focus-visible {
         color: var(--text-primary);
+        background-color: rgba(255, 255, 255, 0.06);
       }
     }
   }
@@ -76,6 +101,7 @@
     padding: var(--space-1) var(--space-2);
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-sm);
+    letter-spacing: 0.05em;
   }
 
   &__menu-btn {
@@ -89,7 +115,9 @@
     border-radius: var(--radius-md);
     color: var(--text-primary);
     cursor: pointer;
-    transition: border-color var(--duration-fast) var(--ease-default);
+    transition:
+      border-color var(--duration-fast) var(--ease-default),
+      background-color var(--duration-fast) var(--ease-default);
 
     &:hover {
       border-color: var(--border-color);
@@ -108,11 +136,11 @@
 
   &__mobile-overlay {
     position: fixed;
-    top: 64px;
+    top: 68px;
     left: 0;
     width: 100%;
-    height: calc(100dvh - 64px);
-    background-color: rgba(9, 9, 11, 0.95);
+    height: calc(100dvh - 68px);
+    background-color: rgba(9, 9, 11, 0.96);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     padding: var(--space-8) var(--space-6);
@@ -126,12 +154,16 @@
     display: flex;
     flex-direction: column;
     gap: var(--space-6);
+    list-style: none;
+    margin: 0;
+    padding: 0;
   }
 
   &__mobile-link {
     font-size: var(--text-2xl);
     font-weight: var(--font-weight-semibold);
     color: var(--text-primary);
+    text-decoration: none;
     transition: color var(--duration-fast) var(--ease-default);
 
     &:hover {

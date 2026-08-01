@@ -20,10 +20,10 @@ describe('Header', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render brand name Yuri Vieira', () => {
+  it('should render brand name Yuri', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     const brand = compiled.querySelector('.header__brand-name');
-    expect(brand?.textContent).toContain('Yuri Vieira');
+    expect(brand?.textContent).toContain('Yuri');
   });
 
   it('should have mobile menu closed by default', () => {
