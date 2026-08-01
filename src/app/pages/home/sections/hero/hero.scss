@@ -10,61 +10,53 @@
   flex-direction: column;
   justify-content: center;
   position: relative;
-  padding-top: calc(var(--space-16) + 40px);
+  padding-top: calc(var(--space-20) + 40px);
   padding-bottom: var(--space-16);
 
   @include respond-to('md') {
     min-height: 92dvh;
-    padding-top: calc(var(--space-24) + 40px);
+    padding-top: calc(var(--space-32) + 40px);
     padding-bottom: var(--space-24);
   }
 
-  // Hero Content Layout & Typography Rhythm
+  // Editorial Asymmetric Magazine Layout
   &__content {
     display: flex;
     flex-direction: column;
     gap: var(--space-6);
-    max-width: 780px;
+    max-width: 960px;
 
     @include respond-to('md') {
       gap: var(--space-8);
     }
   }
 
-  // Eyebrow (Monospaced Engineering Badge)
+  // Pure Monospaced Editorial Eyebrow Accent
   &__eyebrow {
-    display: inline-self-start;
+    display: inline-block;
     font-family: var(--font-mono);
     font-size: var(--text-xs);
-    letter-spacing: 0.1em;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--text-muted);
-    padding: var(--space-1) var(--space-3);
-    background-color: rgba(255, 255, 255, 0.03);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-full);
-
-    @include respond-to('md') {
-      font-size: var(--text-xs);
-    }
   }
 
-  // Main Display Heading (Huge, Commanding Vercel / Linear Aesthetic)
+  // Oversized Cinematic Display Title
   &__name {
     display: block;
-    font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+    font-size: clamp(3.25rem, 8.5vw, 6.25rem);
     font-weight: var(--font-weight-bold);
-    letter-spacing: -0.04em;
-    line-height: 1.05;
+    letter-spacing: -0.05em;
+    line-height: 0.98;
     color: var(--text-primary);
   }
 
-  // Description Copy
+  // Storytelling Narrative Copy
   &__description {
     display: block;
-    max-width: 640px;
+    max-width: 680px;
     font-size: var(--text-md);
-    line-height: 1.7;
+    line-height: 1.8;
     color: var(--text-secondary);
 
     @include respond-to('md') {
@@ -72,25 +64,19 @@
     }
   }
 
-  // Call to Action Buttons Container
+  // Call to Action Alignment
   &__actions {
     display: flex;
-    flex-direction: column;
-    gap: var(--space-3);
-    padding-top: var(--space-4);
-
-    @include respond-to('sm') {
-      flex-direction: row;
-      align-items: center;
-      gap: var(--space-5);
-      padding-top: var(--space-6);
-    }
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-6);
+    padding-top: var(--space-6);
   }
 
   // Scroll Indicator Positioning
   &__scroll {
     position: absolute;
-    bottom: var(--space-8);
+    bottom: var(--space-6);
     left: 50%;
     transform: translateX(-50%);
   }
