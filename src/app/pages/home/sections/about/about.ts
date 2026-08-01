@@ -9,8 +9,8 @@ import {
   inject,
 } from '@angular/core';
 import { Container, Heading, Section, Text } from '@ui';
-import { ENGINEERING_PRINCIPLES } from './about.data';
-import { EngineeringPrinciple } from './about.model';
+import { ABOUT_BLOCKS, ENGINEERING_PRINCIPLES } from './about.data';
+import { AboutBlock, EngineeringPrinciple } from './about.model';
 
 @Component({
   selector: 'app-about',
@@ -20,6 +20,7 @@ import { EngineeringPrinciple } from './about.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AboutSection implements AfterViewInit, OnDestroy {
+  readonly blocks: readonly AboutBlock[] = ABOUT_BLOCKS;
   readonly principles: readonly EngineeringPrinciple[] = ENGINEERING_PRINCIPLES;
 
   private readonly elementRef = inject(ElementRef);

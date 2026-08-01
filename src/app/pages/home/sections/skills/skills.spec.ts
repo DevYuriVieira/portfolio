@@ -39,11 +39,10 @@ describe('SkillsSection', () => {
   it('should expose categories with correct titles', () => {
     const titles = component.categories.map((cat) => cat.title);
 
-    expect(titles).toContain('Frontend');
-    expect(titles).toContain('Backend');
-    expect(titles).toContain('Data');
-    expect(titles).toContain('Engineering Practices');
-    expect(titles).toContain('Tools & Delivery');
+    expect(titles).toContain('Frontend Engineering');
+    expect(titles).toContain('Backend & APIs');
+    expect(titles).toContain('Data & Architecture');
+    expect(titles).toContain('Quality & Engineering Practices');
   });
 
   it('should render skills inside category cards without metrics', () => {

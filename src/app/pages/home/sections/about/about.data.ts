@@ -1,4 +1,28 @@
-import { EngineeringPrinciple } from './about.model';
+import { AboutBlock, EngineeringPrinciple } from './about.model';
+
+export const ABOUT_PARAGRAPHS: readonly string[] = [
+  'Sou Software Engineer focado no desenvolvimento de aplicações web completas. Minha atuação abrange desde a construção de interfaces responsivas e funcionais no frontend até a modelagem de APIs REST, bancos de dados e regras de negócio no backend.',
+  'Priorizo clareza, manutenibilidade e boas práticas de engenharia em cada projeto. Trabalho com tipagem estática, testes automatizados e arquitetura modular, garantindo que o código seja previsível, organizado e fácil de manter no longo prazo.',
+  'Minha formação em Engenharia de Produção agrega uma perspectiva analítica ao ciclo de desenvolvimento. Essa bagagem me auxilia na compreensão clara de requisitos, no mapeamento de fluxos e na otimização de processos antes da implementação.',
+] as const;
+
+export const ABOUT_BLOCKS: readonly AboutBlock[] = [
+  {
+    id: 'who-i-am',
+    label: 'Atuação Profissional',
+    text: ABOUT_PARAGRAPHS[0],
+  },
+  {
+    id: 'how-i-build',
+    label: 'Filosofia de Engenharia',
+    text: ABOUT_PARAGRAPHS[1],
+  },
+  {
+    id: 'systemic-differentiator',
+    label: 'Visão Sistêmica',
+    text: ABOUT_PARAGRAPHS[2],
+  },
+];
 
 export const ENGINEERING_PRINCIPLES: readonly EngineeringPrinciple[] = [
   {
@@ -38,3 +62,4 @@ export const ENGINEERING_PRINCIPLES: readonly EngineeringPrinciple[] = [
       'Valorizar soluções simples, performáticas e escaláveis, evitando complexidade desnecessária ou abstrações prematuras.',
   },
 ];
+

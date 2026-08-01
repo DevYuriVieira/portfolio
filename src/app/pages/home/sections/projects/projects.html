@@ -16,18 +16,23 @@
 
       <!-- Projects Editorial Grid -->
       <div class="projects__grid">
-        @for (project of projects; track project.id) {
-        <article class="projects__card" [class.projects__card--confidential]="project.confidential">
+        @for (project of displayedProjects(); track project.id) {
+        <article class="projects__card" [class.projects__card--confidential]="project.confidential" [class.projects__card--featured]="project.featured">
           <!-- Card Body -->
           <div class="projects__card-body">
-            <!-- Category & Metadata Header -->
+            <!-- Category & Context Metadata Header -->
             <div class="projects__card-header">
+              @if (project.contextTag) {
+              <span class="projects__badge projects__badge--context">
+                {{ project.contextTag }}
+              </span>
+              }
               @if (project.confidential) {
               <span class="projects__badge projects__badge--confidential">
                 <span class="projects__badge-icon" aria-hidden="true">🔒</span>
-                {{ project.category }}
+                Confidencial
               </span>
-              } @else if (project.category) {
+              } @else if (project.category && !project.contextTag) {
               <span class="projects__badge projects__badge--category">
                 {{ project.category }}
               </span>
@@ -39,23 +44,47 @@
               {{ project.title }}
             </app-heading>
 
-            <!-- Context Paragraph -->
+            <!-- Context Paragraph / Description -->
             <app-text variant="body" class="projects__card-description">
-              {{ project.context || project.description }}
+              {{ project.description || project.context }}
             </app-text>
 
-            <!-- Development Approach Paragraph -->
-            @if (project.development) {
+            <!-- Problem / Challenge Block -->
+            @if (project.problem) {
             <div class="projects__section-block">
-              <span class="projects__section-label">Como foi desenvolvido</span>
+              <span class="projects__section-label">Desafio</span>
               <app-text variant="body" class="projects__card-subtext">
-                {{ project.development }}
+                {{ project.problem }}
               </app-text>
             </div>
             }
 
-            <!-- Technical Highlights -->
-            @if (project.highlights && project.highlights.length > 0) {
+            <!-- Solution Block -->
+            @if (project.solution) {
+            <div class="projects__section-block">
+              <span class="projects__section-label">Solução</span>
+              <app-text variant="body" class="projects__card-subtext">
+                {{ project.solution }}
+              </app-text>
+            </div>
+            }
+
+            <!-- Architecture Decisions -->
+            @if (project.architectureDecisions && project.architectureDecisions.length > 0) {
+            <div class="projects__section-block">
+              <span class="projects__section-label">Decisões de Arquitetura</span>
+              <ul class="projects__highlights-list">
+                @for (decision of project.architectureDecisions; track decision) {
+                <li class="projects__highlight-item">
+                  <span class="projects__highlight-bullet" aria-hidden="true">•</span>
+                  <app-text variant="caption" element="span" class="projects__highlight-text">
+                    {{ decision }}
+                  </app-text>
+                </li>
+                }
+              </ul>
+            </div>
+            } @else if (project.highlights && project.highlights.length > 0) {
             <div class="projects__section-block">
               <span class="projects__section-label">Destaques Técnicos</span>
               <ul class="projects__highlights-list">
@@ -68,6 +97,16 @@
                 </li>
                 }
               </ul>
+            </div>
+            }
+
+            <!-- Results / Impact -->
+            @if (project.results) {
+            <div class="projects__section-block">
+              <span class="projects__section-label">Resultados</span>
+              <app-text variant="body" class="projects__card-subtext">
+                {{ project.results }}
+              </app-text>
             </div>
             }
 
@@ -122,6 +161,17 @@
           </footer>
         </article>
         }
+      </div>
+
+      <!-- Expansion / Toggle Actions -->
+      <div class="projects__actions">
+        <app-button
+          variant="secondary"
+          [ariaLabel]="showAll() ? 'Recolher lista de projetos' : 'Ver todos os ' + projects.length + ' projetos do portfólio'"
+          (click)="toggleShowAll()"
+        >
+          {{ showAll() ? 'Recolher projetos' : 'Ver todos os projetos (' + projects.length + ')' }}
+        </app-button>
       </div>
     </div>
   </app-container>

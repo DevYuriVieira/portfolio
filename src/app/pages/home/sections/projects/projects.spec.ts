@@ -23,10 +23,19 @@ describe('ProjectsSection', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render all 11 project cards from mock data', () => {
-    const cards = fixture.nativeElement.querySelectorAll('.projects__card');
+  it('should render 5 featured project cards initially and 11 when expanded', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+    let cards = compiled.querySelectorAll('.projects__card');
+    expect(cards.length).toBe(5);
+    expect(component.displayedProjects().length).toBe(5);
+
+    // Toggle expansion
+    component.toggleShowAll();
+    fixture.detectChanges();
+
+    cards = compiled.querySelectorAll('.projects__card');
     expect(cards.length).toBe(11);
-    expect(component.projects.length).toBe(PROJECTS_DATA.length);
+    expect(component.displayedProjects().length).toBe(11);
   });
 
   it('should render project titles correctly', () => {
@@ -35,11 +44,24 @@ describe('ProjectsSection', () => {
   });
 
   it('should render external project links securely with target _blank', () => {
+    // Expand projects first to render links
+    component.toggleShowAll();
+    fixture.detectChanges();
+
     const compiled = fixture.nativeElement as HTMLElement;
     const links = compiled.querySelectorAll('.projects__card-footer a');
     links.forEach((link) => {
       expect(link.getAttribute('target')).toBe('_blank');
       expect(link.getAttribute('rel')).toBe('noopener noreferrer');
     });
+  });
+
+  it('should render case study blocks (problem, solution, architectureDecisions, results) when present', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+    const firstCard = compiled.querySelector('.projects__card');
+    expect(firstCard?.textContent).toContain('Desafio');
+    expect(firstCard?.textContent).toContain('Solução');
+    expect(firstCard?.textContent).toContain('Decisões de Arquitetura');
+    expect(firstCard?.textContent).toContain('Resultados');
   });
 });

@@ -7,38 +7,24 @@
           Sobre mim
         </app-text>
         <app-heading level="h2" size="h1" class="about__title">
-          Engenharia de Produção & Software
+          Engenharia de Software & Visão Sistêmica
         </app-heading>
         <app-text variant="lead" class="about__intro">
-          Sou Engenheiro de Software Júnior com formação em Engenharia de Produção.
-          Minha trajetória combina a busca por entender como a tecnologia funciona por dentro
-          com a visão sistêmica da engenharia — projetando aplicações com foco em arquitetura limpa,
-          qualidade, manutenção e evolução contínua.
+          Desenvolvimento full-stack orientado a código limpo, arquitetura modular e qualidade.
         </app-text>
       </header>
 
-      <!-- 2. My Journey -->
+      <!-- 2. My Journey / Trajetória -->
       <section class="about__journey" aria-labelledby="journey-heading">
         <app-heading id="journey-heading" level="h3" size="h2" class="about__section-title">
-          Minha Trajetória
+          Trajetória & Foco
         </app-heading>
         <div class="about__journey-content">
-          <app-text variant="body" class="about__paragraph">
-            Meu interesse por tecnologia começou muito antes da programação. Desde jovem, era
-            fascinado por computadores, videogames e smartphones. Não queria apenas utilizar a
-            tecnologia — queria compreender como o hardware e o software trabalhavam juntos.
-          </app-text>
-          <app-text variant="body" class="about__paragraph">
-            Essa curiosidade me levou à graduação em Engenharia de Produção, onde desenvolvi
-            uma visão sistêmica para análise de processos, identificação de gargalos e
-            otimização do início ao fim (conceitos como PDCA, Lean Thinking e Análise de Causa Raiz).
-          </app-text>
-          <app-text variant="body" class="about__paragraph">
-            Com o tempo, percebi que o desenvolvimento de software era onde esse pensamento
-            encontrava seu propósito ideal. Hoje vejo o software como outro tipo de sistema de
-            produção — onde a matéria-prima é a informação e o produto final é uma experiência
-            sustentável e confiável.
-          </app-text>
+          @for (block of blocks; track block.id) {
+            <app-text variant="body" class="about__paragraph">
+              {{ block.text }}
+            </app-text>
+          }
         </div>
       </section>
 
@@ -74,9 +60,7 @@
             Atualmente
           </app-heading>
           <app-text variant="body" class="about__currently-text">
-            A tecnologia evolui constantemente e os melhores engenheiros são aprendizes contínuos.
-            Sigo aprimorando minhas habilidades em desenvolvimento Full Stack, estudando arquitetura de software
-            e buscando oportunidades para construir produtos de alto valor e colaborar com equipes focadas em qualidade.
+            Sigo aprimorando minhas habilidades em desenvolvimento Full-Stack, aprofundando conceitos de arquitetura de software e construindo sistemas focados em qualidade, testes e manutenibilidade.
           </app-text>
         </div>
       </section>
