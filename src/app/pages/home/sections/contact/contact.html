@@ -1,0 +1,89 @@
+<app-section id="contact" spacing="lg" ariaLabel="Contato e oportunidades">
+  <app-container size="xl">
+    <div class="contact">
+      <!-- Section Header -->
+      <header class="contact__header">
+        <app-text variant="caption" element="span" class="contact__eyebrow">
+          {{ data.eyebrow }}
+        </app-text>
+        <app-heading level="h2" size="h1" class="contact__title">
+          {{ data.title }}
+        </app-heading>
+        <app-text variant="lead" class="contact__subtitle">
+          {{ data.subtitle }}
+        </app-text>
+      </header>
+
+      <!-- Contact Content Grid -->
+      <div class="contact__grid">
+        <!-- Direct Email Card -->
+        <div class="contact__card contact__card--primary">
+          <div class="contact__card-header">
+            <span class="contact__card-label">E-mail de Contato Direto</span>
+            <app-heading level="h3" size="h3" class="contact__email">
+              {{ data.info.email }}
+            </app-heading>
+          </div>
+
+          <div class="contact__card-actions">
+            <app-button
+              variant="primary"
+              [ariaLabel]="copied() ? 'E-mail copiado' : 'Copiar e-mail para a área de transferência'"
+              (click)="copyEmail()"
+            >
+              {{ copied() ? '✓ Copiado' : 'Copiar E-mail' }}
+            </app-button>
+
+            <app-link
+              [href]="'mailto:' + data.info.email"
+              [external]="true"
+              ariaLabel="Enviar e-mail diretamente"
+            >
+              Enviar mensagem ↗
+            </app-link>
+          </div>
+        </div>
+
+        <!-- Metadata & Availability Card -->
+        <div class="contact__card">
+          <div class="contact__info-group">
+            <span class="contact__info-label">Localização</span>
+            <app-text variant="body" class="contact__info-value">
+              📍 {{ data.info.location }}
+            </app-text>
+          </div>
+
+          <div class="contact__info-group">
+            <span class="contact__info-label">Disponibilidade Profissional</span>
+            <app-text variant="body" class="contact__info-value">
+              🟢 {{ data.info.availability }}
+            </app-text>
+          </div>
+
+          <!-- Social Links List -->
+          <div class="contact__info-group">
+            <span class="contact__info-label">Redes & Links Profissionais</span>
+            <div class="contact__social-links">
+              <app-link
+                [href]="data.info.linkedinUrl"
+                [external]="true"
+                ariaLabel="Perfil do LinkedIn"
+                class="contact__social-link"
+              >
+                LinkedIn ↗
+              </app-link>
+              <app-link
+                [href]="data.info.githubUrl"
+                [external]="true"
+                ariaLabel="Perfil do GitHub"
+                class="contact__social-link"
+              >
+                GitHub ↗
+              </app-link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </app-container>
+</app-section>

@@ -3,6 +3,8 @@ export interface HeroSectionData {
   readonly name: string;
   readonly description: string;
   readonly projectsCtaText: string;
-  readonly githubCtaText: string;
-  readonly githubUrl: string;
+  readonly cvCtaText: string;
+  readonly cvUrl: string;
 }
+
+

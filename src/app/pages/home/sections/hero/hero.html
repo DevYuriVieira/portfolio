@@ -28,17 +28,23 @@
           {{ data.description }}
         </app-text>
 
-        <!-- Actions -->
+        <!-- Main Actions -->
         <div class="hero__actions">
-          <app-button variant="primary" ariaLabel="Ver projetos">
+          <app-button
+            variant="primary"
+            ariaLabel="Ver projetos"
+            (click)="scrollToProjects()"
+          >
             {{ data.projectsCtaText }}
           </app-button>
+
           <app-link
-            [href]="data.githubUrl"
+            [href]="data.cvUrl"
             [external]="true"
-            ariaLabel="Perfil do GitHub"
+            ariaLabel="Download do Currículo de Yuri Vieira Teixeira"
+            class="hero__cta-secondary"
           >
-            {{ data.githubCtaText }}
+            {{ data.cvCtaText }}
           </app-link>
         </div>
       </div>
@@ -48,3 +54,5 @@
     </div>
   </app-container>
 </app-section>
+
+

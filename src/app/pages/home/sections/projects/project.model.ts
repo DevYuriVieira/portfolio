@@ -11,5 +11,8 @@ export interface Project {
   readonly links: ProjectLinks;
   readonly confidential?: boolean;
   readonly category?: string;
+  readonly client?: string;
+  readonly highlights?: readonly string[];
   readonly image?: string;
 }
+

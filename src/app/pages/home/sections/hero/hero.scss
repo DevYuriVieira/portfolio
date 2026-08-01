@@ -73,6 +73,12 @@
     padding-top: var(--space-6);
   }
 
+  // Secondary CTA Link Accent
+  &__cta-secondary {
+    font-family: var(--font-sans);
+    font-weight: var(--font-weight-medium);
+  }
+
   // Scroll Indicator Positioning
   &__scroll {
     position: absolute;
@@ -81,3 +87,4 @@
     transform: translateX(-50%);
   }
 }
+

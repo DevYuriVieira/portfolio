@@ -12,4 +12,12 @@ import { HeroSectionData } from './hero.model';
 })
 export class HeroSection {
   readonly data: HeroSectionData = HERO_SECTION_DATA;
+
+  scrollToProjects(): void {
+    const el = document.getElementById('projects');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
 }
+

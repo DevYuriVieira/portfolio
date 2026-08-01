@@ -60,9 +60,9 @@ export const EXPERIENCE_MILESTONES: readonly TimelineMilestone[] = [
   {
     id: 'today-opportunities',
     year: 'Hoje',
-    title: 'Em busca de novas oportunidades',
-    subtitle: 'Engenheiro de Software Júnior',
+    title: 'Desenvolvimento de Software & Engenharia de Sistemas',
+    subtitle: 'Engenharia de Software',
     description:
-      'Aprendizado contínuo, evolução em arquitetura e desenvolvimento Full Stack, pronto para colaborar em projetos desafiadores e de alto impacto.',
+      'Construção de soluções de software, expansão do domínio full-stack, aprofundamento em arquitetura e aplicação dos princípios de engenharia no desenvolvimento de sistemas.',
   },
 ];

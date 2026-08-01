@@ -40,6 +40,6 @@ describe('ExperienceSection', () => {
     expect(component.milestones[0].year).toBe('2017');
     expect(component.milestones[0].title).toBe('Início da Graduação em Engenharia de Produção');
     expect(component.milestones[6].year).toBe('Hoje');
-    expect(component.milestones[6].title).toBe('Em busca de novas oportunidades');
+    expect(component.milestones[6].title).toBe(EXPERIENCE_MILESTONES[6].title);
   });
 });

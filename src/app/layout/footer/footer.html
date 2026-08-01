@@ -1,0 +1,24 @@
+<footer class="footer">
+  <app-container size="xl">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <app-text variant="body" class="footer__name">
+          {{ name }}
+        </app-text>
+        <app-text variant="caption" element="span" class="footer__positioning">
+          {{ positioning }}
+        </app-text>
+      </div>
+
+      <div class="footer__meta">
+        <app-text variant="caption" element="span" class="footer__stack">
+          {{ stackInfo }}
+        </app-text>
+        <app-text variant="caption" element="span" class="footer__copyright">
+          © {{ currentYear }} {{ name }}
+        </app-text>
+      </div>
+    </div>
+  </app-container>
+</footer>
+
