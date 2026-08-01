@@ -131,13 +131,17 @@
     background-color: var(--bg-surface);
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-lg);
-    padding: var(--space-6);
+    padding: var(--space-5) var(--space-4);
     opacity: 0;
     transform: translateY(24px);
     transition:
       opacity 400ms cubic-bezier(0.16, 1, 0.3, 1) calc(var(--delay-index, 0) * 80ms),
       transform 400ms cubic-bezier(0.16, 1, 0.3, 1) calc(var(--delay-index, 0) * 80ms),
       border-color var(--duration-fast) var(--ease-default);
+
+    @media (min-width: 480px) {
+      padding: var(--space-6);
+    }
 
     &.is-visible {
       opacity: 1;
@@ -180,9 +184,13 @@
     border: 1px solid var(--border-subtle);
     border-left: 3px solid var(--accent-primary);
     border-radius: var(--radius-lg);
-    padding: var(--space-6);
+    padding: var(--space-5) var(--space-4);
     max-width: 680px;
     transition: border-color var(--duration-fast) var(--ease-default);
+
+    @media (min-width: 480px) {
+      padding: var(--space-6);
+    }
 
     &:hover {
       border-color: var(--border-color);

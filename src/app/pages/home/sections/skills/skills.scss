@@ -66,10 +66,14 @@
 
     @include respond-to('md') {
       display: grid;
-      grid-template-columns: 240px 1fr;
+      grid-template-columns: 200px 1fr;
       gap: var(--space-8);
       align-items: start;
       padding-bottom: var(--space-10);
+    }
+
+    @include respond-to('lg') {
+      grid-template-columns: 240px 1fr;
     }
   }
 

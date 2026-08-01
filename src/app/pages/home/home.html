@@ -1,7 +1,33 @@
 <app-hero />
-<app-about />
-<app-experience />
-<app-skills />
-<app-projects />
-<app-contact />
+
+@defer (on viewport; prefetch on idle) {
+  <app-about />
+} @placeholder {
+  <div class="home__section-placeholder" aria-hidden="true"></div>
+}
+
+@defer (on viewport; prefetch on idle) {
+  <app-experience />
+} @placeholder {
+  <div class="home__section-placeholder" aria-hidden="true"></div>
+}
+
+@defer (on viewport; prefetch on idle) {
+  <app-skills />
+} @placeholder {
+  <div class="home__section-placeholder" aria-hidden="true"></div>
+}
+
+@defer (on viewport; prefetch on idle) {
+  <app-projects />
+} @placeholder {
+  <div class="home__section-placeholder" aria-hidden="true"></div>
+}
+
+@defer (on viewport; prefetch on idle) {
+  <app-contact />
+} @placeholder {
+  <div class="home__section-placeholder" aria-hidden="true"></div>
+}
+
 
