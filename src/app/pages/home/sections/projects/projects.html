@@ -6,14 +6,14 @@
         <div class="projects__eyebrow-wrapper">
           <span class="projects__eyebrow-dot" aria-hidden="true"></span>
           <app-text variant="caption" element="span" class="projects__eyebrow">
-            Portfólio de Engenharia
+            Casos de Estudo & Projetos
           </app-text>
         </div>
         <app-heading level="h2" size="h1" class="projects__title">
           Trabalhos em destaque
         </app-heading>
         <app-text variant="lead" class="projects__subtitle">
-          Projetos corporativos, aplicações full-stack e sistemas desenvolvidos com foco em arquitetura limpa, resiliência e engenharia de software de qualidade.
+          Seleção de aplicações corporativas, sistemas full-stack e APIs construídas com foco em arquitetura limpa, resiliência e engenharia de software.
         </app-text>
       </header>
 
@@ -23,7 +23,7 @@
         <article class="projects__card" [class.projects__card--confidential]="project.confidential">
           <!-- Card Body -->
           <div class="projects__card-body">
-            <!-- Header & Badge -->
+            <!-- Availability / Category Metadata -->
             <div class="projects__card-header">
               @if (project.confidential) {
               <span class="projects__badge projects__badge--confidential">
@@ -37,17 +37,17 @@
               }
             </div>
 
-            <!-- Title -->
+            <!-- Project Title Anchor -->
             <app-heading level="h3" size="h3" class="projects__card-title">
               {{ project.title }}
             </app-heading>
 
-            <!-- Description -->
+            <!-- Engineering Summary Description -->
             <app-text variant="body" class="projects__card-description">
               {{ project.description }}
             </app-text>
 
-            <!-- Tech Stack Tags -->
+            <!-- Technology Stack Metadata -->
             <ul class="projects__tech-list" aria-label="Tecnologias utilizadas no projeto">
               @for (tech of project.technologies; track tech) {
               <li class="projects__tech-item">
@@ -59,12 +59,12 @@
             </ul>
           </div>
 
-          <!-- Card Actions / Links / Availability Footer -->
+          <!-- Actions / Availability Footer -->
           <footer class="projects__card-footer">
             @if (project.confidential) {
             <div class="projects__confidential-footer">
               <span class="projects__confidential-text">
-                Desenvolvido na Residência Serratec TIC/Software • Código restrito por NDA
+                Residência Serratec TIC/Software • Código fonte restrito por NDA
               </span>
             </div>
             } @else {
