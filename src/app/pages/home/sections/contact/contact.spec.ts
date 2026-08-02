@@ -32,4 +32,10 @@ describe('ContactSection', () => {
   it('should start with copied signal set to false', () => {
     expect(component.copied()).toBe(false);
   });
+
+  it('should construct valid emailUrl and mailtoUrl', () => {
+    expect(component.emailUrl).toContain('https://mail.google.com/mail/');
+    expect(component.emailUrl).toContain(component.data.info.email);
+    expect(component.mailtoUrl).toBe('mailto:' + component.data.info.email);
+  });
 });

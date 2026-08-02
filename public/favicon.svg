@@ -1,13 +1,30 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
-  <rect width="64" height="64" rx="16" fill="#09090d"/>
-  <rect x="1" y="1" width="62" height="62" rx="15" fill="none" stroke="#0066ff" stroke-width="1.5" stroke-opacity="0.3"/>
-  <!-- Quantum Node Connections (Stylized Y) -->
-  <line x1="18" y1="20" x2="32" y2="34" stroke="#0066ff" stroke-width="3" stroke-linecap="round"/>
-  <line x1="46" y1="20" x2="32" y2="34" stroke="#0066ff" stroke-width="3" stroke-linecap="round"/>
-  <line x1="32" y1="34" x2="32" y2="48" stroke="#00d8ff" stroke-width="3.5" stroke-linecap="round"/>
-  <!-- Glowing Orbital Nodes -->
-  <circle cx="18" cy="20" r="4.5" fill="#0066ff"/>
-  <circle cx="46" cy="20" r="4.5" fill="#0066ff"/>
-  <circle cx="32" cy="34" r="5.5" fill="#00d8ff"/>
-  <circle cx="32" cy="48" r="4.5" fill="#0066ff"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none">
+  <defs>
+    <linearGradient id="yvGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#60A5FA"/>
+    </linearGradient>
+    <linearGradient id="borderGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#27272A"/>
+      <stop offset="100%" stop-color="#60A5FA" stop-opacity="0.5"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Dark Background Plate -->
+  <rect width="64" height="64" rx="16" fill="#09090B"/>
+  <rect x="1.5" y="1.5" width="61" height="61" rx="14.5" fill="none" stroke="url(#borderGlow)" stroke-width="1.5"/>
+
+  <!-- Left Code Bracket < -->
+  <path d="M 17 25 L 10 32 L 17 39" stroke="#3B82F6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Monogram Y -->
+  <path d="M 23 23 L 29 32 V 42" stroke="#FAFAFA" stroke-width="3" stroke-linecap="round"/>
+  <path d="M 35 23 L 29 32" stroke="#FAFAFA" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Monogram V -->
+  <path d="M 36 23 L 42 42 L 48 23" stroke="url(#yvGlow)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Right Code Bracket > -->
+  <path d="M 47 25 L 54 32 L 47 39" stroke="#3B82F6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>

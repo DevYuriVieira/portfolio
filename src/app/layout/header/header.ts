@@ -24,6 +24,21 @@ export class Header {
     this.mobileMenuOpen.set(false);
   }
 
+  navigateToSection(event: Event, targetId: string): void {
+    event.preventDefault();
+    this.closeMobileMenu();
+
+    if (typeof document !== 'undefined') {
+      const element = document.getElementById(targetId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (typeof history !== 'undefined' && history.pushState) {
+          history.pushState(null, '', `#${targetId}`);
+        }
+      }
+    }
+  }
+
   @HostListener('window:keydown.escape')
   onEscape(): void {
     if (this.mobileMenuOpen()) {

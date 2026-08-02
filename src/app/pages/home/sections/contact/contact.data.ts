@@ -2,7 +2,7 @@ import { ContactSectionData } from './contact.model';
 
 export const CONTACT_SECTION_DATA: ContactSectionData = {
   eyebrow: '06 // GET IN TOUCH',
-  title: 'Vamos construir algo extraordinário juntas(os).',
+  title: 'Vamos construir algo extraordinário juntos.',
   subtitle:
     'Estou disponível para novas oportunidades profissionais, projetos desafiadores e conexões na área de engenharia de software.',
   info: {

@@ -58,4 +58,21 @@ describe('Header', () => {
 
     expect(component.mobileMenuOpen()).toBe(false);
   });
+
+  it('should scroll into view when navigateToSection is called', () => {
+    const targetElement = document.createElement('div');
+    targetElement.id = 'about';
+    targetElement.scrollIntoView = vitest.fn();
+    document.body.appendChild(targetElement);
+
+    const event = new Event('click');
+    const spy = vitest.spyOn(event, 'preventDefault');
+
+    component.navigateToSection(event, 'about');
+
+    expect(spy).toHaveBeenCalled();
+    expect(targetElement.scrollIntoView).toHaveBeenCalledWith({ behavior: 'smooth', block: 'start' });
+
+    document.body.removeChild(targetElement);
+  });
 });

@@ -2,19 +2,24 @@
   <app-container size="xl">
     <div class="header__inner">
       <!-- Brand Logo -->
-      <a href="#top" class="header__brand" aria-label="Yuri Vieira - Ir para o início da página" (click)="closeMobileMenu()">
+      <a
+        href="#top"
+        class="header__brand"
+        aria-label="Yuri Vieira - Ir para o início da página"
+        (click)="navigateToSection($event, 'top')"
+      >
         <span class="header__brand-name">Yuri</span>
       </a>
 
       <!-- Desktop Navigation -->
       <nav class="header__nav" aria-label="Navegação principal">
         <ul class="header__nav-list">
-          <li><a href="#about" class="header__nav-link">Sobre</a></li>
-          <li><a href="#experience" class="header__nav-link">Experiência</a></li>
-          <li><a href="#skills" class="header__nav-link">Habilidades</a></li>
-          <li><a href="#projects" class="header__nav-link">Projetos</a></li>
-          <li><a href="#ai-experience" class="header__nav-link">IA & Automação</a></li>
-          <li><a href="#contact" class="header__nav-link">Contato</a></li>
+          <li><a href="#about" class="header__nav-link" (click)="navigateToSection($event, 'about')">Sobre</a></li>
+          <li><a href="#experience" class="header__nav-link" (click)="navigateToSection($event, 'experience')">Experiência</a></li>
+          <li><a href="#skills" class="header__nav-link" (click)="navigateToSection($event, 'skills')">Habilidades</a></li>
+          <li><a href="#projects" class="header__nav-link" (click)="navigateToSection($event, 'projects')">Projetos</a></li>
+          <li><a href="#ai-experience" class="header__nav-link" (click)="navigateToSection($event, 'ai-experience')">IA & Automação</a></li>
+          <li><a href="#contact" class="header__nav-link" (click)="navigateToSection($event, 'contact')">Contato</a></li>
         </ul>
       </nav>
 
@@ -65,32 +70,32 @@
       <nav class="header__mobile-nav">
         <ul class="header__mobile-list">
           <li>
-            <a href="#about" class="header__mobile-link" (click)="closeMobileMenu()">
+            <a href="#about" class="header__mobile-link" (click)="navigateToSection($event, 'about')">
               Sobre
             </a>
           </li>
           <li>
-            <a href="#experience" class="header__mobile-link" (click)="closeMobileMenu()">
+            <a href="#experience" class="header__mobile-link" (click)="navigateToSection($event, 'experience')">
               Experiência
             </a>
           </li>
           <li>
-            <a href="#skills" class="header__mobile-link" (click)="closeMobileMenu()">
+            <a href="#skills" class="header__mobile-link" (click)="navigateToSection($event, 'skills')">
               Habilidades
             </a>
           </li>
           <li>
-            <a href="#projects" class="header__mobile-link" (click)="closeMobileMenu()">
+            <a href="#projects" class="header__mobile-link" (click)="navigateToSection($event, 'projects')">
               Projetos
             </a>
           </li>
           <li>
-            <a href="#ai-experience" class="header__mobile-link" (click)="closeMobileMenu()">
+            <a href="#ai-experience" class="header__mobile-link" (click)="navigateToSection($event, 'ai-experience')">
               IA & Automação
             </a>
           </li>
           <li>
-            <a href="#contact" class="header__mobile-link" (click)="closeMobileMenu()">
+            <a href="#contact" class="header__mobile-link" (click)="navigateToSection($event, 'contact')">
               Contato
             </a>
           </li>
