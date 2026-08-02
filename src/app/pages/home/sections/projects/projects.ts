@@ -67,6 +67,12 @@ export class ProjectsSection {
   );
 
   toggleShowAll(): void {
+    if (this.showAll()) {
+      const projectsElement = document.getElementById('projects');
+      if (projectsElement && typeof projectsElement.scrollIntoView === 'function') {
+        projectsElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
     this.showAll.update((val) => !val);
   }
 }

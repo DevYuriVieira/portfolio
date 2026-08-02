@@ -157,7 +157,7 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       results:
         'Aplicação publicada no Vercel com 100% de estabilidade desde o lançamento, demonstrando capacidade técnica em motion design e esteira automatizada de publicação.',
       links: {
-        github: 'https://github.com/DevYuriVieira',
+        github: 'https://github.com/DevYuriVieira/playstation-evolution-timeline',
         demo: 'https://playstation-evolution-timeline.vercel.app',
       },
     },
@@ -239,7 +239,7 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       id: 'payroll-system-java',
       title: 'Sistema de Folha de Pagamento',
       category: 'Backend Java',
-      featured: false,
+      featured: true,
       contextTag: 'Backend Java / Arquitetura MVC+DAO',
       collaboration: 'Projeto colaborativo (4 desenvolvedores - Projeto Final POO Serratec)',
       description:
@@ -496,7 +496,8 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       results:
         'Protótipo de UX publicado no Vercel demonstrando técnicas avançadas de interação com a interface e engenharia de experiência do usuário.',
       links: {
-        github: 'https://github.com/DevYuriVieira/UXwebsite',
+        github: 'https://github.com/DevYuriVieira/kinetic-auth-ux-showcase',
+        demo: 'https://kinetic-auth-ux-showcase.vercel.app/',
       },
     },
   ],
@@ -655,7 +656,7 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       results:
         'Published and stable Vercel application with zero downtime, demonstrating technical proficiency in motion design and automated release pipelines.',
       links: {
-        github: 'https://github.com/DevYuriVieira',
+        github: 'https://github.com/DevYuriVieira/playstation-evolution-timeline',
         demo: 'https://playstation-evolution-timeline.vercel.app',
       },
     },
@@ -737,7 +738,7 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       id: 'payroll-system-java',
       title: 'Payroll System',
       category: 'Backend Java',
-      featured: false,
+      featured: true,
       contextTag: 'Backend Java / MVC+DAO',
       collaboration: 'Collaborative project (4 developers - Serratec OOP Final Project)',
       description:
@@ -994,7 +995,8 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       results:
         'UX prototype published on Vercel demonstrating advanced interface interaction techniques and user experience engineering.',
       links: {
-        github: 'https://github.com/DevYuriVieira/UXwebsite',
+        github: 'https://github.com/DevYuriVieira/kinetic-auth-ux-showcase',
+        demo: 'https://kinetic-auth-ux-showcase.vercel.app/',
       },
     },
   ],

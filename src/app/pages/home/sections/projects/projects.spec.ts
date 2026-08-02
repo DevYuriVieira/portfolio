@@ -76,4 +76,27 @@ describe('ProjectsSection', () => {
       expect(project.results).toBeTruthy();
     });
   });
+
+  it('should smooth scroll to top of projects section when collapsing', () => {
+    // First expand
+    component.toggleShowAll();
+    expect(component.showAll()).toBe(true);
+
+    // Give element id projects and mock scrollIntoView
+    const compiled = fixture.nativeElement as HTMLElement;
+    const section = compiled.querySelector('app-section') || compiled;
+    section.id = 'projects';
+
+    let scrolled = false;
+    section.scrollIntoView = ({ behavior, block }: ScrollIntoViewOptions = {}) => {
+      if (behavior === 'smooth' && block === 'start') {
+        scrolled = true;
+      }
+    };
+
+    // Collapse
+    component.toggleShowAll();
+    expect(component.showAll()).toBe(false);
+    expect(scrolled).toBe(true);
+  });
 });
