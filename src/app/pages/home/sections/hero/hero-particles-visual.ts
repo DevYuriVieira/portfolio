@@ -211,6 +211,7 @@ export class HeroParticlesVisual implements OnInit, OnDestroy {
     this.disposables.push(this.particleGeo, this.particleMat);
 
     this.particles = new THREE.Points(this.particleGeo, this.particleMat);
+    this.particles.position.set(0, 0.85, 0);
     this.scene.add(this.particles);
   }
 
@@ -253,14 +254,16 @@ export class HeroParticlesVisual implements OnInit, OnDestroy {
     for (let i = 0; i < this.count; i++) {
       const idx = i * 3;
 
-      // Base parametric wave pulse
       const bx = this.basePositions[idx];
       const by = this.basePositions[idx + 1];
       const bz = this.basePositions[idx + 2];
 
-      const wave = Math.sin(elapsed * 2 + bx * 1.5 + by * 1.5) * 0.08;
-      const targetX = bx + wave * (bx / 3);
-      const targetY = by + wave * (by / 3);
+      const isDynamicParticle = i % 2 === 0;
+      const waveMult = isDynamicParticle ? 0.16 : 0.08;
+      const freq = isDynamicParticle ? 2.6 : 1.8;
+      const wave = Math.sin(elapsed * freq + bx * 1.8 + by * 1.8) * waveMult;
+      const targetX = bx + wave * (bx / 2.8);
+      const targetY = by + wave * (by / 2.8);
       const targetZ = bz + wave;
 
       // Current position

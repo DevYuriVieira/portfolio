@@ -99,6 +99,11 @@ export class NeuralCanvas implements OnInit, OnDestroy {
   private rotationTarget = { x: 0, y: 0 };
   private rotationCurrent = { x: 0, y: 0 };
 
+  // Camera Zoom State
+  private targetZoomZ = 16;
+  private readonly minZoomZ = 4.5;
+  private readonly maxZoomZ = 28.0;
+
   // Scene Components
   private mainGroup: THREE.Group | null = null;
   private coreGroup: THREE.Group | null = null;
@@ -201,6 +206,7 @@ export class NeuralCanvas implements OnInit, OnDestroy {
     this.renderer.setClearColor(0x000000, 0);
 
     this.mainGroup = new THREE.Group();
+    this.mainGroup.position.set(0, 1.65, 0);
     this.scene.add(this.mainGroup);
   }
 
@@ -507,6 +513,9 @@ export class NeuralCanvas implements OnInit, OnDestroy {
     if (!this.isVisible) return;
     if (!this.scene || !this.camera || !this.renderer || !this.mainGroup) return;
 
+    // Smooth camera Z zoom transition
+    this.camera.position.z += (this.targetZoomZ - this.camera.position.z) * 0.08;
+
     const elapsed = (performance.now() - this.startTime) / 1000;
 
     this.updateCore(elapsed);
@@ -752,6 +761,64 @@ export class NeuralCanvas implements OnInit, OnDestroy {
     }
   }
 
+  // Zoom Control API
+  public zoomIn(): void {
+    this.targetZoomZ = Math.max(this.minZoomZ, this.targetZoomZ - 3.8);
+  }
+
+  public zoomOut(): void {
+    this.targetZoomZ = Math.min(this.maxZoomZ, this.targetZoomZ + 3.8);
+  }
+
+  public resetZoom(): void {
+    this.targetZoomZ = 16;
+  }
+
+  public toggleZoomFocus(): void {
+    if (this.targetZoomZ > 10) {
+      this.targetZoomZ = 7.0; // Close-up macro focus
+    } else {
+      this.targetZoomZ = 16; // Standard view
+    }
+  }
+
+  public get isZoomedIn(): boolean {
+    return this.targetZoomZ <= 10;
+  }
+
+  public get currentZoomPercent(): number {
+    return Math.round((16 / this.targetZoomZ) * 100);
+  }
+
+  // Wheel & Touch Pinch Zoom Handlers
+  private touchStartDist = 0;
+  private initialTouchZoomZ = 16;
+
+  private readonly onWheel = (e: WheelEvent): void => {
+    e.preventDefault();
+    const delta = e.deltaY * 0.035;
+    this.targetZoomZ = Math.max(this.minZoomZ, Math.min(this.maxZoomZ, this.targetZoomZ + delta));
+  };
+
+  private readonly onTouchStart = (e: TouchEvent): void => {
+    if (e.touches.length === 2) {
+      const dx = e.touches[0].clientX - e.touches[1].clientX;
+      const dy = e.touches[0].clientY - e.touches[1].clientY;
+      this.touchStartDist = Math.sqrt(dx * dx + dy * dy);
+      this.initialTouchZoomZ = this.targetZoomZ;
+    }
+  };
+
+  private readonly onTouchMove = (e: TouchEvent): void => {
+    if (e.touches.length === 2 && this.touchStartDist > 0) {
+      const dx = e.touches[0].clientX - e.touches[1].clientX;
+      const dy = e.touches[0].clientY - e.touches[1].clientY;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      const factor = this.touchStartDist / Math.max(1, dist);
+      this.targetZoomZ = Math.max(this.minZoomZ, Math.min(this.maxZoomZ, this.initialTouchZoomZ * factor));
+    }
+  };
+
   private updateMouseCoords(e: PointerEvent): void {
     const canvas = this.canvasRef.nativeElement;
     const rect = canvas.getBoundingClientRect();
@@ -762,6 +829,9 @@ export class NeuralCanvas implements OnInit, OnDestroy {
   private setupPointerEvents(): void {
     const canvas = this.canvasRef.nativeElement;
     canvas.addEventListener('pointerdown', this.onPointerDown);
+    canvas.addEventListener('wheel', this.onWheel, { passive: false });
+    canvas.addEventListener('touchstart', this.onTouchStart, { passive: true });
+    canvas.addEventListener('touchmove', this.onTouchMove, { passive: true });
     window.addEventListener('pointermove', this.onPointerMove, { passive: true });
     window.addEventListener('pointerup', this.onPointerUp);
   }
@@ -770,6 +840,9 @@ export class NeuralCanvas implements OnInit, OnDestroy {
     const canvas = this.canvasRef?.nativeElement;
     if (canvas) {
       canvas.removeEventListener('pointerdown', this.onPointerDown);
+      canvas.removeEventListener('wheel', this.onWheel);
+      canvas.removeEventListener('touchstart', this.onTouchStart);
+      canvas.removeEventListener('touchmove', this.onTouchMove);
     }
     window.removeEventListener('pointermove', this.onPointerMove);
     window.removeEventListener('pointerup', this.onPointerUp);

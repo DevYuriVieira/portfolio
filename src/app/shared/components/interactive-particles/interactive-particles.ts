@@ -16,10 +16,13 @@ interface Particle {
   y: number;
   vx: number;
   vy: number;
-  baseX: number;
-  baseY: number;
+  speed: number;
+  angle: number;
   radius: number;
   alpha: number;
+  baseAlpha: number;
+  phase: number;
+  hue: number; // 190 to 220 (Cyan to Bright Blue)
 }
 
 @Component({
@@ -30,14 +33,14 @@ interface Particle {
       position: fixed;
       inset: 0;
       pointer-events: none;
-      z-index: 0;
+      z-index: 1;
       overflow: hidden;
     }
     .particles-bg {
       width: 100%;
       height: 100%;
       display: block;
-      opacity: 0.65;
+      opacity: 0.95;
     }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -53,7 +56,7 @@ export class InteractiveParticles implements OnInit, OnDestroy {
   private resizeObserver: ResizeObserver | null = null;
 
   private particles: Particle[] = [];
-  private count = 65;
+  private count = 75;
 
   private mouse = {
     x: -9999,
@@ -107,22 +110,28 @@ export class InteractiveParticles implements OnInit, OnDestroy {
     const height = window.innerHeight;
     this.particles = [];
 
-    // Responsive count
-    this.count = width < 768 ? 35 : 70;
+    // Responsive count for vivid density
+    this.count = width < 768 ? 45 : 85;
 
     for (let i = 0; i < this.count; i++) {
       const x = Math.random() * width;
       const y = Math.random() * height;
+      const speed = 0.4 + Math.random() * 0.7; // Active continuous speed
+      const angle = Math.random() * Math.PI * 2;
+      const baseAlpha = 0.35 + Math.random() * 0.45; // High brightness
 
       this.particles.push({
         x,
         y,
-        vx: (Math.random() - 0.5) * 0.4,
-        vy: (Math.random() - 0.5) * 0.4,
-        baseX: x,
-        baseY: y,
-        radius: 1.2 + Math.random() * 1.6,
-        alpha: 0.15 + Math.random() * 0.35,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed,
+        speed,
+        angle,
+        radius: 1.8 + Math.random() * 2.2, // Larger glowing particle radius
+        alpha: baseAlpha,
+        baseAlpha,
+        phase: Math.random() * Math.PI * 2,
+        hue: 190 + Math.random() * 30, // Cyan to electric blue range
       });
     }
   }
@@ -134,59 +143,91 @@ export class InteractiveParticles implements OnInit, OnDestroy {
 
     const width = window.innerWidth;
     const height = window.innerHeight;
+    const now = performance.now();
 
     this.ctx.clearRect(0, 0, width, height);
 
-    // Update and draw particles
+    // Update and draw all particles with continuous random wander
     for (let i = 0; i < this.particles.length; i++) {
       const p = this.particles[i];
 
-      // Ambient drift
+      // Random wander trajectory angle perturbation
+      p.angle += (Math.random() - 0.5) * 0.06;
+      const targetVx = Math.cos(p.angle) * p.speed;
+      const targetVy = Math.sin(p.angle) * p.speed;
+
+      // Smooth velocity interpolation towards wander direction
+      p.vx += (targetVx - p.vx) * 0.05;
+      p.vy += (targetVy - p.vy) * 0.05;
+
       p.x += p.vx;
       p.y += p.vy;
 
-      // Wrap boundaries
-      if (p.x < 0) p.x = width;
-      if (p.x > width) p.x = 0;
-      if (p.y < 0) p.y = height;
-      if (p.y > height) p.y = 0;
+      // Smooth breathing glow pulse
+      p.alpha = Math.min(0.9, Math.max(0.25, p.baseAlpha + Math.sin(now * 0.0025 + p.phase) * 0.2));
+
+      // Screen boundary bounce / wrap with random angle shift
+      if (p.x < -20) {
+        p.x = width + 20;
+        p.angle = Math.PI - p.angle;
+      }
+      if (p.x > width + 20) {
+        p.x = -20;
+        p.angle = Math.PI - p.angle;
+      }
+      if (p.y < -20) {
+        p.y = height + 20;
+        p.angle = -p.angle;
+      }
+      if (p.y > height + 20) {
+        p.y = -20;
+        p.angle = -p.angle;
+      }
 
       // Mouse drag / hover physics interaction
       const dx = p.x - this.mouse.x;
       const dy = p.y - this.mouse.y;
       const dist = Math.sqrt(dx * dx + dy * dy);
-      const maxDist = this.mouse.isDown ? 180 : 120;
+      const maxDist = this.mouse.isDown ? 200 : 130;
 
       if (dist < maxDist) {
-        const force = (1 - dist / maxDist) * (this.mouse.isDown ? 6.0 : 3.0);
+        const force = (1 - dist / maxDist) * (this.mouse.isDown ? 7.0 : 3.5);
         const angle = Math.atan2(dy, dx);
 
-        // Push away + mouse velocity momentum transfer
-        p.vx += Math.cos(angle) * force * 0.12 + this.mouse.vx * 0.05;
-        p.vy += Math.sin(angle) * force * 0.12 + this.mouse.vy * 0.05;
+        p.vx += Math.cos(angle) * force * 0.18 + this.mouse.vx * 0.08;
+        p.vy += Math.sin(angle) * force * 0.18 + this.mouse.vy * 0.08;
+        p.angle = Math.atan2(p.vy, p.vx); // Redirect motion vector away
       }
 
-      // Speed damping
-      p.vx *= 0.96;
-      p.vy *= 0.96;
+      // Glowing radial gradient fill
+      const gradRadius = p.radius * 2.8;
+      const grad = this.ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, gradRadius);
+      grad.addColorStop(0, `hsla(${p.hue}, 100%, 85%, ${p.alpha})`);
+      grad.addColorStop(0.4, `hsla(${p.hue}, 100%, 55%, ${p.alpha * 0.75})`);
+      grad.addColorStop(1, `hsla(${p.hue}, 100%, 50%, 0)`);
 
-      // Draw particle
-      this.ctx.fillStyle = `rgba(0, 102, 255, ${p.alpha})`;
+      this.ctx.fillStyle = grad;
       this.ctx.beginPath();
-      this.ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+      this.ctx.arc(p.x, p.y, gradRadius, 0, Math.PI * 2);
       this.ctx.fill();
 
-      // Proximity connection lines
+      // Bright inner core dot
+      this.ctx.fillStyle = `rgba(255, 255, 255, ${Math.min(1, p.alpha * 1.2)})`;
+      this.ctx.beginPath();
+      this.ctx.arc(p.x, p.y, p.radius * 0.5, 0, Math.PI * 2);
+      this.ctx.fill();
+
+      // Proximity connection lines with glowing cyan stroke
       for (let j = i + 1; j < this.particles.length; j++) {
         const p2 = this.particles[j];
         const pdx = p.x - p2.x;
         const pdy = p.y - p2.y;
         const pdist = Math.sqrt(pdx * pdx + pdy * pdy);
 
-        if (pdist < 110) {
-          const lineAlpha = (1 - pdist / 110) * 0.12;
-          this.ctx.strokeStyle = `rgba(0, 102, 255, ${lineAlpha})`;
-          this.ctx.lineWidth = 0.75;
+        if (pdist < 125) {
+          const lineAlpha = (1 - pdist / 125) * 0.22;
+          this.ctx.strokeStyle = `hsla(${(p.hue + p2.hue) / 2}, 100%, 60%, ${lineAlpha})`;
+          this.ctx.lineWidth = 0.9;
           this.ctx.beginPath();
           this.ctx.moveTo(p.x, p.y);
           this.ctx.lineTo(p2.x, p2.y);
@@ -248,3 +289,4 @@ export class InteractiveParticles implements OnInit, OnDestroy {
     );
   }
 }
+
