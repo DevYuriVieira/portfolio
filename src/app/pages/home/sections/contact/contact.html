@@ -21,32 +21,21 @@
           <div class="contact__card-header">
             <span class="contact__card-label">01 // E-MAIL DE CONTATO DIRETO</span>
             <app-heading level="h3" size="h3" class="contact__email">
-              <a
-                [href]="mailtoUrl"
-                class="contact__email-link"
-                title="Enviar e-mail para Yuri Vieira"
-              >
+              <a [href]="mailtoUrl" class="contact__email-link" title="Enviar e-mail para Yuri Vieira">
                 {{ data.info.email }}
               </a>
             </app-heading>
           </div>
 
           <div class="contact__card-actions">
-            <app-button
-              variant="primary"
-              [href]="emailUrl"
-              target="_blank"
-              rel="noopener noreferrer"
-              ariaLabel="Enviar e-mail para Yuri Vieira no Gmail"
-            >
+            <app-button variant="primary" [href]="emailUrl" target="_blank" rel="noopener noreferrer"
+              ariaLabel="Enviar e-mail para Yuri Vieira no Gmail">
               Enviar E-mail ↗
             </app-button>
 
-            <app-button
-              variant="secondary"
+            <app-button variant="secondary"
               [ariaLabel]="copied() ? 'E-mail copiado' : 'Copiar e-mail para a área de transferência'"
-              (click)="copyEmail()"
-            >
+              (click)="copyEmail()">
               {{ copied() ? '✓ Copiado!' : 'Copiar E-mail' }}
             </app-button>
           </div>
@@ -71,20 +60,12 @@
           <div class="contact__info-group">
             <span class="contact__info-label">04 // REDES & LINKS</span>
             <div class="contact__social-links">
-              <app-link
-                [href]="data.info.linkedinUrl"
-                [external]="true"
-                ariaLabel="Perfil do LinkedIn"
-                class="contact__social-link"
-              >
+              <app-link [href]="data.info.linkedinUrl" [external]="true" ariaLabel="Perfil do LinkedIn"
+                class="contact__social-link">
                 LinkedIn ↗
               </app-link>
-              <app-link
-                [href]="data.info.githubUrl"
-                [external]="true"
-                ariaLabel="Perfil do GitHub"
-                class="contact__social-link"
-              >
+              <app-link [href]="data.info.githubUrl" [external]="true" ariaLabel="Perfil do GitHub"
+                class="contact__social-link">
                 GitHub ↗
               </app-link>
             </div>

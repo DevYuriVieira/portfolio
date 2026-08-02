@@ -21,9 +21,9 @@
         </app-heading>
         <div class="about__journey-content">
           @for (block of blocks; track block.id) {
-            <app-text variant="body" class="about__paragraph">
-              {{ block.text }}
-            </app-text>
+          <app-text variant="body" class="about__paragraph">
+            {{ block.text }}
+          </app-text>
           }
         </div>
       </section>
@@ -41,14 +41,14 @@
 
         <ul class="about__principles-grid" aria-label="Princípios de trabalho">
           @for (principle of principles; track principle.id) {
-            <li class="about__principle-card">
-              <app-heading level="h4" size="h4" class="about__principle-title">
-                {{ principle.title }}
-              </app-heading>
-              <app-text variant="body" class="about__principle-description">
-                {{ principle.description }}
-              </app-text>
-            </li>
+          <li class="about__principle-card">
+            <app-heading level="h4" size="h4" class="about__principle-title">
+              {{ principle.title }}
+            </app-heading>
+            <app-text variant="body" class="about__principle-description">
+              {{ principle.description }}
+            </app-text>
+          </li>
           }
         </ul>
       </section>
@@ -60,7 +60,8 @@
             Atualmente
           </app-heading>
           <app-text variant="body" class="about__currently-text">
-            Sigo aprimorando minhas habilidades em desenvolvimento Full-Stack, aprofundando conceitos de arquitetura de software e construindo sistemas focados em qualidade, testes e manutenibilidade.
+            Sigo aprimorando minhas habilidades em desenvolvimento Full-Stack, aprofundando conceitos de arquitetura de
+            software e construindo sistemas focados em qualidade, testes e manutenibilidade.
           </app-text>
         </div>
       </section>

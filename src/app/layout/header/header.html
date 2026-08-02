@@ -2,12 +2,8 @@
   <app-container size="xl">
     <div class="header__inner">
       <!-- Brand Logo -->
-      <a
-        href="#top"
-        class="header__brand"
-        aria-label="Yuri Vieira - Ir para o início da página"
-        (click)="navigateToSection($event, 'top')"
-      >
+      <a href="#top" class="header__brand" aria-label="Yuri Vieira - Ir para o início da página"
+        (click)="navigateToSection($event, 'top')">
         <span class="header__brand-name">Yuri</span>
       </a>
 
@@ -15,11 +11,16 @@
       <nav class="header__nav" aria-label="Navegação principal">
         <ul class="header__nav-list">
           <li><a href="#about" class="header__nav-link" (click)="navigateToSection($event, 'about')">Sobre</a></li>
-          <li><a href="#experience" class="header__nav-link" (click)="navigateToSection($event, 'experience')">Experiência</a></li>
-          <li><a href="#skills" class="header__nav-link" (click)="navigateToSection($event, 'skills')">Habilidades</a></li>
-          <li><a href="#projects" class="header__nav-link" (click)="navigateToSection($event, 'projects')">Projetos</a></li>
-          <li><a href="#ai-experience" class="header__nav-link" (click)="navigateToSection($event, 'ai-experience')">IA & Automação</a></li>
-          <li><a href="#contact" class="header__nav-link" (click)="navigateToSection($event, 'contact')">Contato</a></li>
+          <li><a href="#experience" class="header__nav-link"
+              (click)="navigateToSection($event, 'experience')">Experiência</a></li>
+          <li><a href="#skills" class="header__nav-link" (click)="navigateToSection($event, 'skills')">Habilidades</a>
+          </li>
+          <li><a href="#projects" class="header__nav-link" (click)="navigateToSection($event, 'projects')">Projetos</a>
+          </li>
+          <li><a href="#ai-experience" class="header__nav-link" (click)="navigateToSection($event, 'ai-experience')">IA
+              & Automação</a></li>
+          <li><a href="#contact" class="header__nav-link" (click)="navigateToSection($event, 'contact')">Contato</a>
+          </li>
         </ul>
       </nav>
 
@@ -29,28 +30,14 @@
         <span class="header__lang-indicator" title="Idioma: Português (Brasil)">PT</span>
 
         <!-- Mobile Menu Toggle Button -->
-        <button
-          type="button"
-          class="header__menu-btn"
-          [attr.aria-expanded]="mobileMenuOpen()"
-          aria-haspopup="dialog"
-          aria-controls="mobile-menu"
-          aria-label="Alternar menu de navegação"
-          (click)="toggleMobileMenu()"
-        >
-          <svg
-            class="header__menu-icon"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
+        <button type="button" class="header__menu-btn" [attr.aria-expanded]="mobileMenuOpen()" aria-haspopup="dialog"
+          aria-controls="mobile-menu" aria-label="Alternar menu de navegação" (click)="toggleMobileMenu()">
+          <svg class="header__menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round">
             @if (mobileMenuOpen()) {
-              <path d="M18 6L6 18M6 6l12 12" />
+            <path d="M18 6L6 18M6 6l12 12" />
             } @else {
-              <path d="M4 8h16M4 16h16" />
+            <path d="M4 8h16M4 16h16" />
             }
           </svg>
         </button>
@@ -60,47 +47,42 @@
 
   <!-- Mobile Navigation Drawer Overlay -->
   @if (mobileMenuOpen()) {
-    <div
-      id="mobile-menu"
-      class="header__mobile-overlay"
-      role="dialog"
-      aria-modal="true"
-      aria-label="Menu de navegação mobile"
-    >
-      <nav class="header__mobile-nav">
-        <ul class="header__mobile-list">
-          <li>
-            <a href="#about" class="header__mobile-link" (click)="navigateToSection($event, 'about')">
-              Sobre
-            </a>
-          </li>
-          <li>
-            <a href="#experience" class="header__mobile-link" (click)="navigateToSection($event, 'experience')">
-              Experiência
-            </a>
-          </li>
-          <li>
-            <a href="#skills" class="header__mobile-link" (click)="navigateToSection($event, 'skills')">
-              Habilidades
-            </a>
-          </li>
-          <li>
-            <a href="#projects" class="header__mobile-link" (click)="navigateToSection($event, 'projects')">
-              Projetos
-            </a>
-          </li>
-          <li>
-            <a href="#ai-experience" class="header__mobile-link" (click)="navigateToSection($event, 'ai-experience')">
-              IA & Automação
-            </a>
-          </li>
-          <li>
-            <a href="#contact" class="header__mobile-link" (click)="navigateToSection($event, 'contact')">
-              Contato
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </div>
+  <div id="mobile-menu" class="header__mobile-overlay" role="dialog" aria-modal="true"
+    aria-label="Menu de navegação mobile">
+    <nav class="header__mobile-nav">
+      <ul class="header__mobile-list">
+        <li>
+          <a href="#about" class="header__mobile-link" (click)="navigateToSection($event, 'about')">
+            Sobre
+          </a>
+        </li>
+        <li>
+          <a href="#experience" class="header__mobile-link" (click)="navigateToSection($event, 'experience')">
+            Experiência
+          </a>
+        </li>
+        <li>
+          <a href="#skills" class="header__mobile-link" (click)="navigateToSection($event, 'skills')">
+            Habilidades
+          </a>
+        </li>
+        <li>
+          <a href="#projects" class="header__mobile-link" (click)="navigateToSection($event, 'projects')">
+            Projetos
+          </a>
+        </li>
+        <li>
+          <a href="#ai-experience" class="header__mobile-link" (click)="navigateToSection($event, 'ai-experience')">
+            IA & Automação
+          </a>
+        </li>
+        <li>
+          <a href="#contact" class="header__mobile-link" (click)="navigateToSection($event, 'contact')">
+            Contato
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
   }
 </header>

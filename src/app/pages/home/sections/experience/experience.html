@@ -17,29 +17,29 @@
       <!-- Timeline List -->
       <ol class="experience__timeline" [attr.aria-label]="data.ariaLabel">
         @for (milestone of milestones; track milestone.id) {
-          <li class="experience__item">
-            <div class="experience__marker" aria-hidden="true">
-              <span class="experience__dot"></span>
-            </div>
-            <div class="experience__content">
-              <div class="experience__meta">
-                <app-text variant="caption" element="span" class="experience__year">
-                  {{ milestone.year }}
-                </app-text>
-                @if (milestone.subtitle) {
-                  <app-text variant="caption" element="span" class="experience__category">
-                    {{ milestone.subtitle }}
-                  </app-text>
-                }
-              </div>
-              <app-heading level="h3" size="h3" class="experience__item-title">
-                {{ milestone.title }}
-              </app-heading>
-              <app-text variant="body" class="experience__description">
-                {{ milestone.description }}
+        <li class="experience__item">
+          <div class="experience__marker" aria-hidden="true">
+            <span class="experience__dot"></span>
+          </div>
+          <div class="experience__content">
+            <div class="experience__meta">
+              <app-text variant="caption" element="span" class="experience__year">
+                {{ milestone.year }}
               </app-text>
+              @if (milestone.subtitle) {
+              <app-text variant="caption" element="span" class="experience__category">
+                {{ milestone.subtitle }}
+              </app-text>
+              }
             </div>
-          </li>
+            <app-heading level="h3" size="h3" class="experience__item-title">
+              {{ milestone.title }}
+            </app-heading>
+            <app-text variant="body" class="experience__description">
+              {{ milestone.description }}
+            </app-text>
+          </div>
+        </li>
         }
       </ol>
     </div>

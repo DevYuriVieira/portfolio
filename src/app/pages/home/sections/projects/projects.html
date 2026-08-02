@@ -10,14 +10,16 @@
           Projetos & Casos de Estudo
         </app-heading>
         <app-text variant="lead" class="projects__subtitle">
-          Seleção de aplicações corporativas, sistemas full-stack, APIs backend e experiências frontend construídas com foco em arquitetura limpa, resiliência e valor real.
+          Seleção de aplicações corporativas, sistemas full-stack, APIs backend e experiências frontend construídas com
+          foco em arquitetura limpa, resiliência e valor real.
         </app-text>
       </header>
 
       <!-- Projects Editorial Grid -->
       <div class="projects__grid">
         @for (project of displayedProjects(); track project.id) {
-        <article class="projects__card" [class.projects__card--confidential]="project.confidential" [class.projects__card--featured]="project.featured">
+        <article class="projects__card" [class.projects__card--confidential]="project.confidential"
+          [class.projects__card--featured]="project.featured">
           <!-- Card Body -->
           <div class="projects__card-body">
             <!-- Category & Context Metadata Header -->
@@ -134,29 +136,22 @@
               </span>
             </div>
             } @else {
-              @if (project.links.github) {
-              <app-link
-                [href]="project.links.github"
-                [external]="true"
-                [ariaLabel]="'Repositório no GitHub do projeto ' + project.title"
-                class="projects__link"
-              >
-                <span class="projects__link-text">GitHub</span>
-                <span class="projects__link-icon" aria-hidden="true">↗</span>
-              </app-link>
-              }
+            @if (project.links.github) {
+            <app-link [href]="project.links.github" [external]="true"
+              [ariaLabel]="'Repositório no GitHub do projeto ' + project.title" class="projects__link">
+              <span class="projects__link-text">GitHub</span>
+              <span class="projects__link-icon" aria-hidden="true">↗</span>
+            </app-link>
+            }
 
-              @if (project.links.demo) {
-              <app-link
-                [href]="project.links.demo"
-                [external]="true"
-                [ariaLabel]="'Demonstração ao vivo do projeto ' + project.title"
-                class="projects__link projects__link--demo"
-              >
-                <span class="projects__link-text">Live Demo</span>
-                <span class="projects__link-icon" aria-hidden="true">↗</span>
-              </app-link>
-              }
+            @if (project.links.demo) {
+            <app-link [href]="project.links.demo" [external]="true"
+              [ariaLabel]="'Demonstração ao vivo do projeto ' + project.title"
+              class="projects__link projects__link--demo">
+              <span class="projects__link-text">Live Demo</span>
+              <span class="projects__link-icon" aria-hidden="true">↗</span>
+            </app-link>
+            }
             }
           </footer>
         </article>
@@ -165,11 +160,9 @@
 
       <!-- Expansion / Toggle Actions -->
       <div class="projects__actions">
-        <app-button
-          variant="secondary"
+        <app-button variant="secondary"
           [ariaLabel]="showAll() ? 'Recolher lista de projetos' : 'Ver todos os ' + projects.length + ' projetos do portfólio'"
-          (click)="toggleShowAll()"
-        >
+          (click)="toggleShowAll()">
           {{ showAll() ? 'Recolher projetos' : 'Ver todos os projetos (' + projects.length + ')' }}
         </app-button>
       </div>

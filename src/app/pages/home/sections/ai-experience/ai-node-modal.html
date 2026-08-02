@@ -1,10 +1,5 @@
-<div
-  class="node-modal-backdrop"
-  (click)="onBackdropClick($event)"
-  role="dialog"
-  aria-modal="true"
-  [attr.aria-label]="nodeDetail.name"
->
+<div class="node-modal-backdrop" (click)="onBackdropClick($event)" role="dialog" aria-modal="true"
+  [attr.aria-label]="nodeDetail.name">
   <div class="node-modal">
     <!-- Header -->
     <header class="node-modal__header">
@@ -13,12 +8,7 @@
         <span class="node-modal__category">{{ nodeDetail.category }}</span>
       </div>
 
-      <button
-        type="button"
-        class="node-modal__close-btn"
-        (click)="closeModal()"
-        aria-label="Fechar modal"
-      >
+      <button type="button" class="node-modal__close-btn" (click)="closeModal()" aria-label="Fechar modal">
         ✕
       </button>
     </header>
@@ -38,10 +28,10 @@
       <span class="node-modal__section-title">Aplicações Práticas & Impacto</span>
       <ul class="node-modal__list">
         @for (app of nodeDetail.practicalApplications; track app) {
-          <li class="node-modal__item">
-            <span class="node-modal__bullet">◆</span>
-            <span>{{ app }}</span>
-          </li>
+        <li class="node-modal__item">
+          <span class="node-modal__bullet">◆</span>
+          <span>{{ app }}</span>
+        </li>
         }
       </ul>
     </div>
@@ -51,7 +41,7 @@
       <span class="node-modal__section-title">Tecnologias & Ferramentas</span>
       <div class="node-modal__tags">
         @for (tool of nodeDetail.tools; track tool) {
-          <span class="node-modal__tag">{{ tool }}</span>
+        <span class="node-modal__tag">{{ tool }}</span>
         }
       </div>
     </div>
