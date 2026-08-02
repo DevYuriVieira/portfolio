@@ -6,7 +6,7 @@ const AI_I18N: Record<SupportedLang, AiManifestoData> = {
     badge: '05 // Artificial Intelligence & Automation',
     title: 'Construindo com IA, pensando além do código',
     manifesto:
-      'Com minha formação em Engenharia de Produção e atuação em Engenharia de Software, vejo a inteligência artificial e a automação como camadas vivas de amplificação do raciocínio — agregando capacidade analítica, eficiência e automação inteligente diretamente ao ciclo de desenvolvimento de software.',
+      'Com minha formação em Engenharia de Produção e atuação em Engenharia de Software, vejo a inteligência artificial e a automação como camadas vivas de amplificação do raciocínio, agregando capacidade analítica, eficiência e automação inteligente diretamente ao ciclo de desenvolvimento de software.',
     features: [
       {
         index: '01',
@@ -19,7 +19,7 @@ const AI_I18N: Record<SupportedLang, AiManifestoData> = {
         index: '02',
         title: 'LLMs no Dia a Dia de Desenvolvimento',
         description:
-          'Uso cotidiano de modelos de linguagem como ferramentas de apoio — acelerando o diagnóstico de logs e exceções, prototipando componentes e documentando especificações.',
+          'Uso cotidiano de modelos de linguagem como ferramentas de apoio no diagnóstico acelerado de logs e exceções, prototipagem de componentes e documentação de especificações.',
         tags: ['LLMs', 'Prompt Engineering', 'Code Diagnostics', 'Documentation'],
       },
       {
@@ -144,7 +144,7 @@ const AI_I18N: Record<SupportedLang, AiManifestoData> = {
     badge: '05 // Artificial Intelligence & Automation',
     title: 'Building with AI, thinking beyond the code',
     manifesto:
-      'With my background in Production Engineering and practice in Software Engineering, I see artificial intelligence and automation as living amplification layers of reasoning — adding analytical capacity, efficiency, and intelligent automation directly to the software development lifecycle.',
+      'With my background in Production Engineering and practice in Software Engineering, I see artificial intelligence and automation as living amplification layers of reasoning, adding analytical capacity, efficiency, and intelligent automation directly to the software development lifecycle.',
     features: [
       {
         index: '01',
@@ -157,7 +157,7 @@ const AI_I18N: Record<SupportedLang, AiManifestoData> = {
         index: '02',
         title: 'LLMs in Day-to-Day Development',
         description:
-          'Daily use of language models as support tools — accelerating log and exception diagnostics, prototyping components, and documenting specifications.',
+          'Daily use of language models as support tools, accelerating log and exception diagnostics, prototyping components, and documenting specifications.',
         tags: ['LLMs', 'Prompt Engineering', 'Code Diagnostics', 'Documentation'],
       },
       {

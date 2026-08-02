@@ -18,16 +18,16 @@ interface SeoDefaults {
 
 const SEO_I18N: Record<string, SeoDefaults> = {
   'pt-BR': {
-    title: 'Yuri Vieira — Engenheiro de Software | Full Stack Developer',
+    title: 'Yuri Vieira | Engenheiro de Software | Full Stack Developer',
     description:
-      'Portfolio de Yuri Vieira — Engenheiro de Software & Desenvolvedor Full Stack especializado em Java, Spring Boot, TypeScript, React e Angular. Casos de estudo em arquitetura limpa, sistemas distribuídos e alta performance.',
+      'Portfolio de Yuri Vieira | Engenheiro de Software & Desenvolvedor Full Stack especializado em Java, Spring Boot, TypeScript, React e Angular. Casos de estudo em arquitetura limpa, sistemas distribuídos e alta performance.',
     keywords:
       'Yuri Vieira, Yuri Vieira Engenheiro de Software, Software Engineer, Desenvolvedor Full Stack, Java Developer, React Developer, Angular, Spring Boot, PostgreSQL, TypeScript, Portfolio',
   },
   en: {
-    title: 'Yuri Vieira — Software Engineer | Full Stack Developer',
+    title: 'Yuri Vieira | Software Engineer | Full Stack Developer',
     description:
-      "Yuri Vieira's Portfolio — Software Engineer & Full Stack Developer specialized in Java, Spring Boot, TypeScript, React, and Angular. Case studies in clean architecture, distributed systems, and high performance.",
+      "Yuri Vieira's Portfolio | Software Engineer & Full Stack Developer specialized in Java, Spring Boot, TypeScript, React, and Angular. Case studies in clean architecture, distributed systems, and high performance.",
     keywords:
       'Yuri Vieira, Software Engineer, Full Stack Developer, Java Developer, React Developer, Angular, Spring Boot, PostgreSQL, TypeScript, Portfolio',
   },

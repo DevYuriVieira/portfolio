@@ -26,6 +26,7 @@ export class ExperienceSection implements AfterViewInit, OnDestroy {
   readonly i18nData = computed(() => getExperienceData(this.i18n.currentLang()));
   readonly data = computed(() => this.i18nData().sectionData);
   readonly milestones = computed(() => this.i18nData().milestones);
+  readonly certifications = computed(() => this.i18nData().certifications);
 
   private readonly elementRef = inject(ElementRef);
   private readonly platformId = inject(PLATFORM_ID);
@@ -52,7 +53,9 @@ export class ExperienceSection implements AfterViewInit, OnDestroy {
         }
       );
 
-      const items = this.elementRef.nativeElement.querySelectorAll('.experience__item');
+      const items = this.elementRef.nativeElement.querySelectorAll(
+        '.experience__item, .experience__cert-card'
+      );
       items.forEach((item: Element) => this.observer?.observe(item));
     }
   }

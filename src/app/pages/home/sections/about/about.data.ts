@@ -28,12 +28,12 @@ const ABOUT_I18N: Record<SupportedLang, AboutI18n> = {
       'Princípios de engenharia que guiam minhas decisões técnicas, arquitetura e atuação em equipe.',
     currentlyTitle: 'Atualmente',
     currentlyText:
-      'Sigo aprimorando minhas habilidades em desenvolvimento Full-Stack, aprofundando conceitos de arquitetura de software e construindo sistemas focados em qualidade, testes e manutenibilidade.',
+      'Com mais de 910 horas de formação prática em desenvolvimento de software (Serratec e UECE), pós-graduação em Engenharia de Software e inglês avançado (C1/C2 Wizard, proficiência ativa B2+), sigo construindo sistemas full-stack de alta performance focados em qualidade e manutenibilidade.',
     blocks: [
       {
         id: 'who-i-am',
         label: 'Atuação Profissional',
-        text: 'Sou Engenheiro de Software focado no desenvolvimento de aplicações web completas. Minha atuação abrange desde a construção de interfaces responsivas e funcionais no frontend até a modelagem de APIs REST, bancos de dados e regras de negócio no backend.',
+        text: 'Sou Engenheiro de Software Full-Stack especializado em Java (Spring Boot) e React, com forte atuação em Python (Django), TypeScript e PostgreSQL. Minha experiência abrange desde a criação de interfaces responsivas e com design system até a modelagem de APIs REST, autenticação com Spring Security e automações com IA.',
       },
       {
         id: 'how-i-build',
@@ -96,12 +96,12 @@ const ABOUT_I18N: Record<SupportedLang, AboutI18n> = {
       'Engineering principles that guide my technical decisions, architecture, and teamwork.',
     currentlyTitle: 'Currently',
     currentlyText:
-      'I continue to sharpen my Full-Stack development skills, deepening software architecture concepts and building systems focused on quality, testing, and maintainability.',
+      'With over 910 hours of practical software engineering training (Serratec & UECE), postgraduate studies in Software Engineering, and advanced English (Wizard C1/C2, B2+ active proficiency), I continue to build high-performance full-stack applications focused on quality and maintainability.',
     blocks: [
       {
         id: 'who-i-am',
         label: 'Professional Practice',
-        text: 'I am a Software Engineer focused on building complete web applications. My work spans from crafting responsive and functional frontend interfaces to modeling REST APIs, databases, and business logic on the backend.',
+        text: 'I am a Full-Stack Software Engineer specialized in Java (Spring Boot) and React, with solid expertise in Python (Django), TypeScript, and PostgreSQL. My work spans from building responsive design system interfaces to modeling REST APIs, Spring Security authentication, and AI automation.',
       },
       {
         id: 'how-i-build',

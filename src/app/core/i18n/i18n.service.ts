@@ -10,7 +10,7 @@ const STORAGE_KEY = 'portfolio-lang';
 export class I18nService {
   private readonly platformId = inject(PLATFORM_ID);
 
-  /** Current active language signal — reactive across the entire app */
+  /** Current active language signal: reactive across the entire app */
   readonly currentLang = signal<SupportedLang>(this.resolveInitialLang());
 
   /** Switch the active language */

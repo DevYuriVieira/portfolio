@@ -21,7 +21,7 @@ const CONTACT_I18N: Record<SupportedLang, ContactI18n> = {
       'Estou disponível para novas oportunidades profissionais, projetos desafiadores e conexões na área de engenharia de software.',
     info: {
       email: 'yurivieirateixeira98@gmail.com',
-      location: 'Nova Friburgo, RJ — Brasil',
+      location: 'Nova Friburgo, RJ, Brasil',
       availability:
         'Disponível para oportunidades remotas, híbridas ou presenciais com possibilidade de mudança.',
       linkedinUrl: 'https://linkedin.com/in/yuri-vieira-teixeira/',
@@ -44,7 +44,7 @@ const CONTACT_I18N: Record<SupportedLang, ContactI18n> = {
       'I am available for new professional opportunities, challenging projects, and connections in the software engineering field.',
     info: {
       email: 'yurivieirateixeira98@gmail.com',
-      location: 'Nova Friburgo, RJ — Brazil',
+      location: 'Nova Friburgo, RJ, Brazil',
       availability:
         'Available for remote, hybrid, or on-site opportunities with willingness to relocate.',
       linkedinUrl: 'https://linkedin.com/in/yuri-vieira-teixeira/',

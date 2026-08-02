@@ -23,19 +23,22 @@ describe('ProjectsSection', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render 5 featured project cards initially and 11 when expanded', () => {
+  it('should render featured project cards initially and all when expanded', () => {
+    const featuredCount = component.projects().filter((p) => p.featured).length;
+    const totalCount = component.projects().length;
+
     const compiled = fixture.nativeElement as HTMLElement;
     let cards = compiled.querySelectorAll('.projects__card');
-    expect(cards.length).toBe(5);
-    expect(component.displayedProjects().length).toBe(5);
+    expect(cards.length).toBe(featuredCount);
+    expect(component.displayedProjects().length).toBe(featuredCount);
 
     // Toggle expansion
     component.toggleShowAll();
     fixture.detectChanges();
 
     cards = compiled.querySelectorAll('.projects__card');
-    expect(cards.length).toBe(11);
-    expect(component.displayedProjects().length).toBe(11);
+    expect(cards.length).toBe(totalCount);
+    expect(component.displayedProjects().length).toBe(totalCount);
   });
 
   it('should render project titles correctly', () => {
@@ -63,5 +66,14 @@ describe('ProjectsSection', () => {
     expect(firstCard?.textContent).toContain('Solução');
     expect(firstCard?.textContent).toContain('Decisões de Arquitetura');
     expect(firstCard?.textContent).toContain('Resultados');
+  });
+
+  it('should ensure all projects have complete case study fields populated', () => {
+    component.projects().forEach((project) => {
+      expect(project.problem).toBeTruthy();
+      expect(project.solution).toBeTruthy();
+      expect(project.architectureDecisions?.length).toBeGreaterThan(0);
+      expect(project.results).toBeTruthy();
+    });
   });
 });

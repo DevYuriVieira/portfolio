@@ -1,9 +1,9 @@
 // =============================================================================
-// Styles Barrel — Global Entry Point
+// Styles Barrel: Global Entry Point
 // =============================================================================
 // Load order matters:
-//   1. Abstracts — variables/tokens & mixins (no direct CSS output)
-//   2. Base      — reset normalization & typography defaults
+//   1. Abstracts: variables/tokens & mixins (no direct CSS output)
+//   2. Base: reset normalization & typography defaults
 // =============================================================================
 
 @use 'abstracts' as *;

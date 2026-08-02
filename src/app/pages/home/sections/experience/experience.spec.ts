@@ -43,4 +43,11 @@ describe('ExperienceSection', () => {
     expect(component.milestones()[lastIndex].year).toBe(EXPERIENCE_MILESTONES[lastIndex].year);
     expect(component.milestones()[lastIndex].title).toBe(EXPERIENCE_MILESTONES[lastIndex].title);
   });
+
+  it('should expose and render certifications cards correctly', () => {
+    expect(component.certifications().length).toBeGreaterThan(0);
+    const compiled = fixture.nativeElement as HTMLElement;
+    const certCards = compiled.querySelectorAll('.experience__cert-card');
+    expect(certCards.length).toBe(component.certifications().length);
+  });
 });

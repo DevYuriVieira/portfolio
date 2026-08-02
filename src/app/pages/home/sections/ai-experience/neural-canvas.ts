@@ -156,7 +156,7 @@ export class NeuralCanvas implements OnInit, OnDestroy {
           this.animate();
         }
       } catch {
-        // WebGL unavailable — silent fallback for tests
+        // WebGL unavailable: silent fallback for tests
       }
     });
   }

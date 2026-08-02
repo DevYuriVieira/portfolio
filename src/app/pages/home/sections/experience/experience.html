@@ -42,6 +42,38 @@
         </li>
         }
       </ol>
+
+      <!-- Certifications Block -->
+      @if (certifications() && certifications().length > 0) {
+      <div class="experience__certifications">
+        <header class="experience__cert-header">
+          <app-heading level="h3" size="h2" class="experience__cert-title">
+            {{ data().certificationsTitle }}
+          </app-heading>
+          <app-text variant="body" class="experience__cert-subtitle">
+            {{ data().certificationsSubtitle }}
+          </app-text>
+        </header>
+
+        <div class="experience__cert-grid">
+          @for (cert of certifications(); track cert.id) {
+          <article class="experience__cert-card">
+            <div class="experience__cert-card-header">
+              <span class="experience__cert-badge">{{ cert.badge || cert.category }}</span>
+              <span class="experience__cert-year">{{ cert.year }}</span>
+            </div>
+            <app-heading level="h4" size="h4" class="experience__cert-name">
+              {{ cert.title }}
+            </app-heading>
+            <div class="experience__cert-footer">
+              <span class="experience__cert-issuer">🏛️ {{ cert.issuer }}</span>
+              <span class="experience__cert-category">{{ cert.category }}</span>
+            </div>
+          </article>
+          }
+        </div>
+      </div>
+      }
     </div>
   </app-container>
 </app-section>

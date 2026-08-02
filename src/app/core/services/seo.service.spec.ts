@@ -25,7 +25,7 @@ describe('SeoService', () => {
     service.updateSeo();
 
     expect(titleService.getTitle()).toBe(
-      'Yuri Vieira — Engenheiro de Software | Full Stack Developer'
+      'Yuri Vieira | Engenheiro de Software | Full Stack Developer'
     );
 
     const descTag = metaService.getTag('name="description"');
@@ -33,7 +33,7 @@ describe('SeoService', () => {
 
     const ogTitleTag = metaService.getTag('property="og:title"');
     expect(ogTitleTag?.content).toBe(
-      'Yuri Vieira — Engenheiro de Software | Full Stack Developer'
+      'Yuri Vieira | Engenheiro de Software | Full Stack Developer'
     );
   });
 
