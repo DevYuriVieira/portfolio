@@ -56,9 +56,9 @@ export const AI_MANIFESTO_DATA: AiManifestoData = {
       id: 'software-engineering',
       index: 'DOMAIN // 01',
       name: 'Software Engineering',
-      category: 'Desenvolvimento Full-Stack',
+      category: 'Desenvolvimento Full-Stack & POO',
       summary:
-        'Experiência em desenvolvimento Full-Stack adquirida através das Residências TIC Serratec (790h) e UECE TIC 12 (120h), criando aplicações web reativas e APIs RESTful.',
+        'Fundamentação sólida em POO com Java 11, MySQL e Estruturas de Dados (UECE TIC 12), consolidada na Residência TIC Serratec (790h) e no desenvolvimento web com Angular, React e APIs RESTful em Java (Spring Boot) e Python (Django).',
       practicalApplications: [
         'Interfaces web reativas em Angular, React e TypeScript',
         'APIs RESTful em Java (Spring Boot, Spring Security) e Python (Django)',

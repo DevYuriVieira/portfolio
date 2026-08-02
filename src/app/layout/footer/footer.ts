@@ -11,8 +11,8 @@ import { Container, Text } from '@ui';
 })
 export class FooterComponent {
   readonly name = 'Yuri Vieira Teixeira';
-  readonly positioning = 'Software Engineer | Full-Stack Development & Systems Thinking';
-  readonly stackInfo = 'Desenvolvido com Angular • TypeScript • SCSS';
+  readonly positioning = 'Software Engineer | Formação em Engenharia de Produção';
+  readonly stackInfo = 'Desenvolvido por Yuri Vieira Teixeira com Angular 22 • Three.js • TypeScript • SCSS';
+  readonly engineeringPrinciples = 'Clean Architecture • Systems Thinking • Automação com n8n & IA';
   readonly currentYear = new Date().getFullYear();
 }
-

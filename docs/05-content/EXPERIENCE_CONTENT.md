@@ -38,7 +38,12 @@ Focused on modern software engineering practices and software architecture.
 
 UECE TIC 12
 
-120-hour Full Stack training program.
+120-hour Full Stack training program at Universidade Estadual do Ceará.
+
+Main topics:
+- Object-Oriented Programming (POO) in Java 11;
+- Relational Databases (MySQL);
+- Data Structures.
 
 ---
 

@@ -1,53 +1,45 @@
 import { ExperienceSectionData, TimelineMilestone } from './experience.model';
 
 export const EXPERIENCE_SECTION_DATA: ExperienceSectionData = {
-  eyebrow: 'Trajetória',
-  title: 'Experiência & Formação',
+  eyebrow: '02 // TRAJETÓRIA PROFISSIONAL',
+  title: 'Evolução Contínua em Engenharia',
   description:
-    'Marcos da minha evolução acadêmica e profissional, unindo a visão sistêmica da engenharia de produção ao desenvolvimento de software.',
-  ariaLabel: 'Linha do tempo de experiência e formação',
+    'Uma jornada construída a partir do raciocínio sistêmico da Engenharia de Produção até o desenvolvimento de software de alta performance.',
+  ariaLabel: 'Trajetória profissional e acadêmica',
 };
 
 export const EXPERIENCE_MILESTONES: readonly TimelineMilestone[] = [
   {
-    id: 'prod-eng-start',
-    year: '2017',
-    title: 'Início da Graduação em Engenharia de Produção',
-    subtitle: 'Formação Acadêmica',
+    id: 'production-engineering-degree',
+    year: '2017 – 2022',
+    title: 'Bacharelado em Engenharia de Produção',
+    subtitle: 'Formação Acadêmica de Base',
     description:
-      'Início da jornada na engenharia. Aprendizado em visão sistêmica, otimização de processos, Lean Thinking, PDCA e resolução estruturada de problemas.',
+      'Desenvolvimento de visão sistêmica, otimização de processos, análise de causa raiz, pensamento enxuto (Lean) e metodologia PDCA para resolução de problemas complexos.',
   },
   {
-    id: 'prod-eng-degree',
-    year: '2022',
-    title: 'Conclusão do Bacharelado em Engenharia de Produção',
-    subtitle: 'Graduação Concluída',
-    description:
-      'Conclusão da graduação, consolidando a capacidade de analisar sistemas complexos, identificar gargalos, estruturar fluxos e aplicar melhoria contínua.',
-  },
-  {
-    id: 'software-eng-postgrad',
-    year: '2024',
+    id: 'software-engineering-postgrad',
+    year: '2024 – Presente',
     title: 'Pós-Graduação em Engenharia de Software',
-    subtitle: 'Especialização',
+    subtitle: 'Especialização Técnica',
     description:
-      'Início da especialização focada em arquitetura de software, padrões de projeto, desenvolvimento moderno e práticas sustentáveis de código.',
-  },
-  {
-    id: 'personal-projects',
-    year: '2025',
-    title: 'Projetos Pessoais & Prática Full Stack',
-    subtitle: 'Desenvolvimento Prático',
-    description:
-      'Desenvolvimento de aplicações web completas focando em React, Django, TypeScript, Java, Spring Boot e construção de APIs REST.',
+      'Aprofundamento em arquitetura de software, padrões de projeto, desenvolvimento web moderno, qualidade de código e ciclo de vida de aplicações.',
   },
   {
     id: 'uece-tic-residency',
     year: '2025',
     title: 'Residência TIC 12 — UECE',
-    subtitle: 'Formação em Software',
+    subtitle: 'Formação em Engenharia de Software',
     description:
-      'Programa intensivo de 120 horas em desenvolvimento de software e tecnologias web na Universidade Estadual do Ceará.',
+      'Programa de 120 horas na Universidade Estadual do Ceará focado em Programação Orientada a Objetos (POO) em Java 11, Banco de Dados MySQL e Estrutura de Dados.',
+  },
+  {
+    id: 'personal-projects',
+    year: '2025 – 2026',
+    title: 'Projetos Pessoais & Casos de Estudo',
+    subtitle: 'Desenvolvimento Prático',
+    description:
+      'Desenvolvimento de aplicações web completas focando em React, Django, TypeScript, Java, Spring Boot e construção de APIs REST.',
   },
   {
     id: 'serratec-residency',
@@ -56,13 +48,5 @@ export const EXPERIENCE_MILESTONES: readonly TimelineMilestone[] = [
     subtitle: 'Imersão em Engenharia de Software',
     description:
       'Residência imersiva em desenvolvimento de software com 790 horas abrangendo Java, Spring Boot, React, React Native, metodologias ágeis e projetos em equipe.',
-  },
-  {
-    id: 'today-opportunities',
-    year: 'Hoje',
-    title: 'Desenvolvimento de Software & Engenharia de Sistemas',
-    subtitle: 'Engenharia de Software',
-    description:
-      'Construção de soluções de software, expansão do domínio full-stack, aprofundamento em arquitetura e aplicação dos princípios de engenharia no desenvolvimento de sistemas.',
   },
 ];

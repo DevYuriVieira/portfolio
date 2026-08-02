@@ -37,9 +37,10 @@ describe('ExperienceSection', () => {
   });
 
   it('should render milestone details correctly in component instance', () => {
-    expect(component.milestones[0].year).toBe('2017');
-    expect(component.milestones[0].title).toBe('Início da Graduação em Engenharia de Produção');
-    expect(component.milestones[6].year).toBe('Hoje');
-    expect(component.milestones[6].title).toBe(EXPERIENCE_MILESTONES[6].title);
+    expect(component.milestones[0].year).toBe(EXPERIENCE_MILESTONES[0].year);
+    expect(component.milestones[0].title).toBe(EXPERIENCE_MILESTONES[0].title);
+    const lastIndex = EXPERIENCE_MILESTONES.length - 1;
+    expect(component.milestones[lastIndex].year).toBe(EXPERIENCE_MILESTONES[lastIndex].year);
+    expect(component.milestones[lastIndex].title).toBe(EXPERIENCE_MILESTONES[lastIndex].title);
   });
 });
