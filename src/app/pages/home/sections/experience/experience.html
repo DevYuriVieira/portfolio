@@ -47,6 +47,10 @@
       @if (certifications() && certifications().length > 0) {
       <div class="experience__certifications">
         <header class="experience__cert-header">
+          <div class="experience__cert-badge-count">
+            <span class="experience__cert-pulse-dot" aria-hidden="true"></span>
+            <span>CREDENTIALS DATABASE // {{ certifications().length }} VERIFIED</span>
+          </div>
           <app-heading level="h3" size="h2" class="experience__cert-title">
             {{ data().certificationsTitle }}
           </app-heading>
@@ -56,18 +60,29 @@
         </header>
 
         <div class="experience__cert-grid">
-          @for (cert of certifications(); track cert.id) {
-          <article class="experience__cert-card">
+          @for (cert of certifications(); track cert.id; let i = $index) {
+          <article class="experience__cert-card" [style.--cert-index]="i">
+            <!-- Light Trail Top Edge -->
+            <div class="experience__cert-trail" aria-hidden="true"></div>
+
             <div class="experience__cert-card-header">
               <span class="experience__cert-badge">{{ cert.badge || cert.category }}</span>
-              <span class="experience__cert-year">{{ cert.year }}</span>
+              <span class="experience__cert-num">0{{ i + 1 }}</span>
             </div>
+
             <app-heading level="h4" size="h4" class="experience__cert-name">
               {{ cert.title }}
             </app-heading>
+
             <div class="experience__cert-footer">
-              <span class="experience__cert-issuer">🏛️ {{ cert.issuer }}</span>
-              <span class="experience__cert-category">{{ cert.category }}</span>
+              <div class="experience__cert-issuer-group">
+                <span class="experience__cert-issuer">🏛️ {{ cert.issuer }}</span>
+                <span class="experience__cert-year">{{ cert.year }}</span>
+              </div>
+              <div class="experience__cert-status" title="Credencial Validada">
+                <span class="experience__cert-status-dot"></span>
+                <span class="experience__cert-status-text">VERIFIED</span>
+              </div>
             </div>
           </article>
           }
