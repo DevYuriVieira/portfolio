@@ -8,7 +8,7 @@
         <span class="node-modal__category">{{ nodeDetail.category }}</span>
       </div>
 
-      <button type="button" class="node-modal__close-btn" (click)="closeModal()" aria-label="Fechar modal">
+      <button type="button" class="node-modal__close-btn" (click)="closeModal()" [attr.aria-label]="labels().modalCloseAriaLabel">
         ✕
       </button>
     </header>
@@ -25,7 +25,7 @@
 
     <!-- Practical Applications -->
     <div class="node-modal__section">
-      <span class="node-modal__section-title">Aplicações Práticas & Impacto</span>
+      <span class="node-modal__section-title">{{ labels().practicalApps }}</span>
       <ul class="node-modal__list">
         @for (app of nodeDetail.practicalApplications; track app) {
         <li class="node-modal__item">
@@ -38,7 +38,7 @@
 
     <!-- Tools & Stack -->
     <div class="node-modal__section">
-      <span class="node-modal__section-title">Tecnologias & Ferramentas</span>
+      <span class="node-modal__section-title">{{ labels().techTools }}</span>
       <div class="node-modal__tags">
         @for (tool of nodeDetail.tools; track tool) {
         <span class="node-modal__tag">{{ tool }}</span>
@@ -48,8 +48,8 @@
 
     <!-- Footer Action -->
     <footer class="node-modal__footer">
-      <app-button variant="secondary" (click)="closeModal()" ariaLabel="Fechar modal de detalhes">
-        Fechar
+      <app-button variant="secondary" (click)="closeModal()" [ariaLabel]="labels().closeAriaLabel">
+        {{ labels().closeBtn }}
       </app-button>
     </footer>
   </div>

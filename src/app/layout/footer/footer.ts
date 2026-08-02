@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
+import { I18nService } from '@core';
 import { Container, Text } from '@ui';
 
 @Component({
@@ -10,9 +11,28 @@ import { Container, Text } from '@ui';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FooterComponent {
+  private readonly i18n = inject(I18nService);
+
   readonly name = 'Yuri Vieira Teixeira';
-  readonly positioning = 'Software Engineer | Formação em Engenharia de Produção';
-  readonly stackInfo = 'Desenvolvido por Yuri Vieira Teixeira com Angular 22 • Three.js • TypeScript • SCSS';
-  readonly engineeringPrinciples = 'Clean Architecture • Systems Thinking • Automação com n8n & IA';
   readonly currentYear = new Date().getFullYear();
+
+  readonly labels = computed(() =>
+    this.i18n.currentLang() === 'en'
+      ? {
+          positioning: 'Software Engineer | Production Engineering Background',
+          stackInfo:
+            'Built by Yuri Vieira Teixeira with Angular 22 • Three.js • TypeScript • SCSS',
+          engineeringPrinciples:
+            'Clean Architecture • Systems Thinking • Automation with n8n & AI',
+          copyright: `© ${this.currentYear} ${this.name}. All rights reserved.`,
+        }
+      : {
+          positioning: 'Software Engineer | Formação em Engenharia de Produção',
+          stackInfo:
+            'Desenvolvido por Yuri Vieira Teixeira com Angular 22 • Three.js • TypeScript • SCSS',
+          engineeringPrinciples:
+            'Clean Architecture • Systems Thinking • Automação com n8n & IA',
+          copyright: `© ${this.currentYear} ${this.name}. Todos os direitos reservados.`,
+        }
+  );
 }

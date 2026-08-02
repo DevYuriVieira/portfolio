@@ -1,22 +1,22 @@
-<app-section id="experience" spacing="lg" [ariaLabel]="data.ariaLabel">
+<app-section id="experience" spacing="lg" [ariaLabel]="data().ariaLabel">
   <app-container size="xl">
     <div class="experience">
       <!-- Section Header -->
       <header class="experience__header">
         <app-text variant="caption" element="span" class="experience__eyebrow">
-          {{ data.eyebrow }}
+          {{ data().eyebrow }}
         </app-text>
         <app-heading level="h2" size="h1" class="experience__title">
-          {{ data.title }}
+          {{ data().title }}
         </app-heading>
         <app-text variant="lead" class="experience__subtitle">
-          {{ data.description }}
+          {{ data().description }}
         </app-text>
       </header>
 
       <!-- Timeline List -->
-      <ol class="experience__timeline" [attr.aria-label]="data.ariaLabel">
-        @for (milestone of milestones; track milestone.id) {
+      <ol class="experience__timeline" [attr.aria-label]="data().ariaLabel">
+        @for (milestone of milestones(); track milestone.id) {
         <li class="experience__item">
           <div class="experience__marker" aria-hidden="true">
             <span class="experience__dot"></span>

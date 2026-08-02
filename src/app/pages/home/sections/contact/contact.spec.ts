@@ -24,9 +24,9 @@ describe('ContactSection', () => {
   });
 
   it('should expose contact data correctly', () => {
-    expect(component.data.title).toBe(CONTACT_SECTION_DATA.title);
-    expect(component.data.info.email).toBe(CONTACT_SECTION_DATA.info.email);
-    expect(component.data.info.location).toBe(CONTACT_SECTION_DATA.info.location);
+    expect(component.data().title).toBe(CONTACT_SECTION_DATA.title);
+    expect(component.data().info.email).toBe(CONTACT_SECTION_DATA.info.email);
+    expect(component.data().info.location).toBe(CONTACT_SECTION_DATA.info.location);
   });
 
   it('should start with copied signal set to false', () => {
@@ -35,7 +35,7 @@ describe('ContactSection', () => {
 
   it('should construct valid emailUrl and mailtoUrl', () => {
     expect(component.emailUrl).toContain('https://mail.google.com/mail/');
-    expect(component.emailUrl).toContain(component.data.info.email);
-    expect(component.mailtoUrl).toBe('mailto:' + component.data.info.email);
+    expect(component.emailUrl).toContain(component.data().info.email);
+    expect(component.mailtoUrl).toBe('mailto:' + component.data().info.email);
   });
 });

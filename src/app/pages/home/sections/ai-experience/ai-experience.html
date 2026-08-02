@@ -1,16 +1,16 @@
-<app-section id="ai-experience" spacing="lg" ariaLabel="Inteligência Artificial & Automação">
+<app-section id="ai-experience" spacing="lg" [ariaLabel]="labels().ariaLabel">
   <app-container size="xl">
     <div class="ai">
       <!-- Active Theory Editorial Header -->
       <header class="ai__header" appReveal>
-        <span class="ai__badge">{{ data.badge }}</span>
+        <span class="ai__badge">{{ data().badge }}</span>
 
         <app-heading level="h2" size="h1" class="ai__title">
-          {{ data.title }}
+          {{ data().title }}
         </app-heading>
 
         <app-text variant="lead" class="ai__manifesto">
-          {{ data.manifesto }}
+          {{ data().manifesto }}
         </app-text>
       </header>
 
@@ -19,9 +19,9 @@
         <app-neural-canvas #neuralCanvas (nodeSelect)="onNodeSelect($event)" />
 
         <!-- Floating Glassmorphic Zoom Controls -->
-        <div class="ai__zoom-toolbar" role="toolbar" aria-label="Controles de Zoom 3D">
-          <button type="button" class="ai__zoom-btn" (click)="neuralCanvas.zoomIn()" title="Aumentar zoom"
-            aria-label="Aumentar zoom do visualizador 3D">
+        <div class="ai__zoom-toolbar" role="toolbar" [attr.aria-label]="labels().zoomToolbarAriaLabel">
+          <button type="button" class="ai__zoom-btn" (click)="neuralCanvas.zoomIn()" [title]="labels().zoomInTitle"
+            [attr.aria-label]="labels().zoomInAriaLabel">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
               stroke-linecap="round" stroke-linejoin="round">
               <circle cx="11" cy="11" r="8"></circle>
@@ -31,12 +31,12 @@
             </svg>
           </button>
 
-          <span class="ai__zoom-indicator" title="Nível de Zoom">
+          <span class="ai__zoom-indicator" [title]="labels().zoomLevelTitle">
             {{ neuralCanvas.currentZoomPercent }}%
           </span>
 
-          <button type="button" class="ai__zoom-btn" (click)="neuralCanvas.zoomOut()" title="Reduzir zoom"
-            aria-label="Reduzir zoom do visualizador 3D">
+          <button type="button" class="ai__zoom-btn" (click)="neuralCanvas.zoomOut()" [title]="labels().zoomOutTitle"
+            [attr.aria-label]="labels().zoomOutAriaLabel">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
               stroke-linecap="round" stroke-linejoin="round">
               <circle cx="11" cy="11" r="8"></circle>
@@ -46,7 +46,7 @@
           </button>
 
           <button type="button" class="ai__zoom-btn ai__zoom-btn--reset" (click)="neuralCanvas.resetZoom()"
-            title="Redefinir vista inicial" aria-label="Redefinir vista inicial do 3D">
+            [title]="labels().resetTitle" [attr.aria-label]="labels().resetAriaLabel">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
               stroke-linecap="round" stroke-linejoin="round">
               <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
@@ -55,20 +55,20 @@
           </button>
 
           <button type="button" class="ai__zoom-focus-pill" (click)="neuralCanvas.toggleZoomFocus()"
-            [class.is-zoomed]="neuralCanvas.isZoomedIn" title="Alternar modo Zoom Foco">
-            🔍 {{ neuralCanvas.isZoomedIn ? 'Visão Geral' : 'Zoom Foco' }}
+            [class.is-zoomed]="neuralCanvas.isZoomedIn" [title]="labels().zoomFocusTitle">
+            🔍 {{ neuralCanvas.isZoomedIn ? labels().zoomFocusLabel : labels().zoomFocusInLabel }}
           </button>
         </div>
 
         <!-- Canvas Zoom Hint -->
         <div class="ai__canvas-hint" aria-hidden="true">
-          <span>🔍 Role o scroll do mouse ou use os botões para dar Zoom</span>
+          <span>{{ labels().canvasHint }}</span>
         </div>
       </div>
 
       <!-- Active Theory Feature Grid (Real Tools & Experience) -->
       <div class="ai__features">
-        @for (feature of data.features; track feature.index; let i = $index) {
+        @for (feature of data().features; track feature.index; let i = $index) {
         <article class="ai__feature-card" appReveal [revealDelay]="i * 80">
           <div class="ai__feature-header">
             <span class="ai__feature-index">{{ feature.index }}</span>
@@ -93,7 +93,7 @@
       <!-- Closing Statement -->
       <footer class="ai__closing" appReveal>
         <app-text variant="body" class="ai__closing-text">
-          {{ data.closingStatement }}
+          {{ data().closingStatement }}
         </app-text>
       </footer>
     </div>

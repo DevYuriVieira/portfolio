@@ -39,8 +39,8 @@ describe('ProjectsSection', () => {
   });
 
   it('should render project titles correctly', () => {
-    expect(component.projects[0].title).toBe('ZEISS Recommendation Assistant');
-    expect(component.projects[1].title).toBe('Spring Boot E-Commerce API');
+    expect(component.projects()[0].title).toBe('ZEISS Recommendation Assistant');
+    expect(component.projects()[1].title).toBe('Spring Boot E-Commerce API');
   });
 
   it('should render external project links securely with target _blank', () => {

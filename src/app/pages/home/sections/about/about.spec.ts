@@ -38,7 +38,7 @@ describe('AboutSection', () => {
   });
 
   it('should display correct principle titles', () => {
-    expect(component.principles[0].title).toBe('Arquitetura Limpa & Intenção');
-    expect(component.principles[1].title).toBe('Comunicação em Primeiro Lugar');
+    expect(component.principles()[0].title).toBe('Arquitetura Limpa & Intenção');
+    expect(component.principles()[1].title).toBe('Comunicação em Primeiro Lugar');
   });
 });

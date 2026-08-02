@@ -1,17 +1,16 @@
-<app-section id="projects" spacing="lg" ariaLabel="Projetos em destaque">
+<app-section id="projects" spacing="lg" [ariaLabel]="labels().ariaLabel">
   <app-container size="xl">
     <div class="projects">
       <!-- Section Header -->
       <header class="projects__header">
         <app-text variant="caption" element="span" class="projects__eyebrow">
-          Casos de Estudo & Engenharia
+          {{ labels().eyebrow }}
         </app-text>
         <app-heading level="h2" size="h1" class="projects__title">
-          Projetos & Casos de Estudo
+          {{ labels().title }}
         </app-heading>
         <app-text variant="lead" class="projects__subtitle">
-          Seleção de aplicações corporativas, sistemas full-stack, APIs backend e experiências frontend construídas com
-          foco em arquitetura limpa, resiliência e valor real.
+          {{ labels().subtitle }}
         </app-text>
       </header>
 
@@ -32,7 +31,7 @@
               @if (project.confidential) {
               <span class="projects__badge projects__badge--confidential">
                 <span class="projects__badge-icon" aria-hidden="true">🔒</span>
-                Confidencial
+                {{ labels().confidential }}
               </span>
               } @else if (project.category && !project.contextTag) {
               <span class="projects__badge projects__badge--category">
@@ -54,7 +53,7 @@
             <!-- Problem / Challenge Block -->
             @if (project.problem) {
             <div class="projects__section-block">
-              <span class="projects__section-label">Desafio</span>
+              <span class="projects__section-label">{{ labels().challenge }}</span>
               <app-text variant="body" class="projects__card-subtext">
                 {{ project.problem }}
               </app-text>
@@ -64,7 +63,7 @@
             <!-- Solution Block -->
             @if (project.solution) {
             <div class="projects__section-block">
-              <span class="projects__section-label">Solução</span>
+              <span class="projects__section-label">{{ labels().solution }}</span>
               <app-text variant="body" class="projects__card-subtext">
                 {{ project.solution }}
               </app-text>
@@ -74,7 +73,7 @@
             <!-- Architecture Decisions -->
             @if (project.architectureDecisions && project.architectureDecisions.length > 0) {
             <div class="projects__section-block">
-              <span class="projects__section-label">Decisões de Arquitetura</span>
+              <span class="projects__section-label">{{ labels().archDecisions }}</span>
               <ul class="projects__highlights-list">
                 @for (decision of project.architectureDecisions; track decision) {
                 <li class="projects__highlight-item">
@@ -88,7 +87,7 @@
             </div>
             } @else if (project.highlights && project.highlights.length > 0) {
             <div class="projects__section-block">
-              <span class="projects__section-label">Destaques Técnicos</span>
+              <span class="projects__section-label">{{ labels().techHighlights }}</span>
               <ul class="projects__highlights-list">
                 @for (highlight of project.highlights; track highlight) {
                 <li class="projects__highlight-item">
@@ -105,7 +104,7 @@
             <!-- Results / Impact -->
             @if (project.results) {
             <div class="projects__section-block">
-              <span class="projects__section-label">Resultados</span>
+              <span class="projects__section-label">{{ labels().results }}</span>
               <app-text variant="body" class="projects__card-subtext">
                 {{ project.results }}
               </app-text>
@@ -114,8 +113,8 @@
 
             <!-- Technology Stack -->
             <div class="projects__section-block">
-              <span class="projects__section-label">Stack Tecnológica</span>
-              <ul class="projects__tech-list" aria-label="Tecnologias utilizadas no projeto">
+              <span class="projects__section-label">{{ labels().techStack }}</span>
+              <ul class="projects__tech-list" [attr.aria-label]="labels().techAriaLabel">
                 @for (tech of project.technologies; track tech) {
                 <li class="projects__tech-item">
                   <app-text variant="caption" element="span" class="projects__tech-text">
@@ -132,13 +131,13 @@
             @if (project.confidential) {
             <div class="projects__confidential-footer">
               <span class="projects__confidential-text">
-                Residência Serratec TIC/Software • Código fonte restrito por NDA
+                {{ labels().ndaFooter }}
               </span>
             </div>
             } @else {
             @if (project.links.github) {
             <app-link [href]="project.links.github" [external]="true"
-              [ariaLabel]="'Repositório no GitHub do projeto ' + project.title" class="projects__link">
+              [ariaLabel]="'GitHub repository: ' + project.title" class="projects__link">
               <span class="projects__link-text">GitHub</span>
               <span class="projects__link-icon" aria-hidden="true">↗</span>
             </app-link>
@@ -146,7 +145,7 @@
 
             @if (project.links.demo) {
             <app-link [href]="project.links.demo" [external]="true"
-              [ariaLabel]="'Demonstração ao vivo do projeto ' + project.title"
+              [ariaLabel]="'Live demo: ' + project.title"
               class="projects__link projects__link--demo">
               <span class="projects__link-text">Live Demo</span>
               <span class="projects__link-icon" aria-hidden="true">↗</span>
@@ -161,9 +160,9 @@
       <!-- Expansion / Toggle Actions -->
       <div class="projects__actions">
         <app-button variant="secondary"
-          [ariaLabel]="showAll() ? 'Recolher lista de projetos' : 'Ver todos os ' + projects.length + ' projetos do portfólio'"
+          [ariaLabel]="showAll() ? labels().collapseLabel : labels().expandLabel(projects().length)"
           (click)="toggleShowAll()">
-          {{ showAll() ? 'Recolher projetos' : 'Ver todos os projetos (' + projects.length + ')' }}
+          {{ showAll() ? labels().collapseText : labels().expandText(projects().length) }}
         </app-button>
       </div>
     </div>

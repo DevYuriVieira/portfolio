@@ -1,8 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
+import { I18nService } from '@core';
 import { Button, Container, Heading, Link, ScrollIndicator, Section, Text } from '@ui';
 import { HeroParticlesVisual } from './hero-particles-visual';
-import { HERO_SECTION_DATA } from './hero.data';
-import { HeroSectionData } from './hero.model';
+import { getHeroData } from './hero.data';
 
 @Component({
   selector: 'app-hero',
@@ -12,7 +12,9 @@ import { HeroSectionData } from './hero.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeroSection {
-  readonly data: HeroSectionData = HERO_SECTION_DATA;
+  private readonly i18n = inject(I18nService);
+
+  readonly data = computed(() => getHeroData(this.i18n.currentLang()));
 
   scrollToProjects(): void {
     const el = document.getElementById('projects');
@@ -21,4 +23,3 @@ export class HeroSection {
     }
   }
 }
-

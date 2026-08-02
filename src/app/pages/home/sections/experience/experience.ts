@@ -6,11 +6,12 @@ import {
   ElementRef,
   OnDestroy,
   PLATFORM_ID,
+  computed,
   inject,
 } from '@angular/core';
+import { I18nService } from '@core';
 import { Container, Heading, Section, Text } from '@ui';
-import { EXPERIENCE_MILESTONES, EXPERIENCE_SECTION_DATA } from './experience.data';
-import { ExperienceSectionData, TimelineMilestone } from './experience.model';
+import { getExperienceData } from './experience.data';
 
 @Component({
   selector: 'app-experience',
@@ -20,8 +21,11 @@ import { ExperienceSectionData, TimelineMilestone } from './experience.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExperienceSection implements AfterViewInit, OnDestroy {
-  readonly data: ExperienceSectionData = EXPERIENCE_SECTION_DATA;
-  readonly milestones: readonly TimelineMilestone[] = EXPERIENCE_MILESTONES;
+  private readonly i18n = inject(I18nService);
+
+  readonly i18nData = computed(() => getExperienceData(this.i18n.currentLang()));
+  readonly data = computed(() => this.i18nData().sectionData);
+  readonly milestones = computed(() => this.i18nData().milestones);
 
   private readonly elementRef = inject(ElementRef);
   private readonly platformId = inject(PLATFORM_ID);

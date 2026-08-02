@@ -24,9 +24,9 @@ describe('SkillsSection', () => {
   });
 
   it('should expose section data and categories correctly', () => {
-    expect(component.data.title).toBe(SKILLS_SECTION_DATA.title);
-    expect(component.data.eyebrow).toBe(SKILLS_SECTION_DATA.eyebrow);
-    expect(component.categories.length).toBe(SKILLS_CATEGORIES.length);
+    expect(component.data().title).toBe(SKILLS_SECTION_DATA.title);
+    expect(component.data().eyebrow).toBe(SKILLS_SECTION_DATA.eyebrow);
+    expect(component.categories().length).toBe(SKILLS_CATEGORIES.length);
   });
 
   it('should render all skill category cards in the DOM', () => {
@@ -37,7 +37,7 @@ describe('SkillsSection', () => {
   });
 
   it('should expose categories with correct titles', () => {
-    const titles = component.categories.map((cat) => cat.title);
+    const titles = component.categories().map((cat) => cat.title);
 
     expect(titles).toContain('Frontend Engineering');
     expect(titles).toContain('Backend & APIs');

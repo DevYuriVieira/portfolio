@@ -1,16 +1,16 @@
-<app-section id="contact" spacing="lg" ariaLabel="Contato e oportunidades">
+<app-section id="contact" spacing="lg" [ariaLabel]="data().title">
   <app-container size="xl">
     <div class="contact">
       <!-- Active Theory Header -->
       <header class="contact__header" appReveal>
-        <span class="contact__eyebrow">{{ data.eyebrow }}</span>
+        <span class="contact__eyebrow">{{ data().eyebrow }}</span>
 
         <app-heading level="h2" size="h1" class="contact__title">
-          {{ data.title }}
+          {{ data().title }}
         </app-heading>
 
         <app-text variant="lead" class="contact__subtitle">
-          {{ data.subtitle }}
+          {{ data().subtitle }}
         </app-text>
       </header>
 
@@ -19,24 +19,24 @@
         <!-- Direct Email Block -->
         <div class="contact__card contact__card--primary" appReveal>
           <div class="contact__card-header">
-            <span class="contact__card-label">01 // E-MAIL DE CONTATO DIRETO</span>
+            <span class="contact__card-label">{{ data().labels.emailLabel }}</span>
             <app-heading level="h3" size="h3" class="contact__email">
-              <a [href]="mailtoUrl" class="contact__email-link" title="Enviar e-mail para Yuri Vieira">
-                {{ data.info.email }}
+              <a [href]="mailtoUrl" class="contact__email-link" title="Email Yuri Vieira">
+                {{ data().info.email }}
               </a>
             </app-heading>
           </div>
 
           <div class="contact__card-actions">
             <app-button variant="primary" [href]="emailUrl" target="_blank" rel="noopener noreferrer"
-              ariaLabel="Enviar e-mail para Yuri Vieira no Gmail">
-              Enviar E-mail ↗
+              ariaLabel="Send email to Yuri Vieira">
+              {{ data().labels.sendEmail }}
             </app-button>
 
             <app-button variant="secondary"
-              [ariaLabel]="copied() ? 'E-mail copiado' : 'Copiar e-mail para a área de transferência'"
+              [ariaLabel]="copied() ? data().labels.copied : data().labels.copyEmail"
               (click)="copyEmail()">
-              {{ copied() ? '✓ Copiado!' : 'Copiar E-mail' }}
+              {{ copied() ? data().labels.copied : data().labels.copyEmail }}
             </app-button>
           </div>
         </div>
@@ -44,27 +44,27 @@
         <!-- Availability & Metadata Block -->
         <div class="contact__card" appReveal [revealDelay]="100">
           <div class="contact__info-group">
-            <span class="contact__info-label">02 // LOCALIZAÇÃO</span>
+            <span class="contact__info-label">{{ data().labels.locationLabel }}</span>
             <app-text variant="body" class="contact__info-value">
-              📍 {{ data.info.location }}
+              📍 {{ data().info.location }}
             </app-text>
           </div>
 
           <div class="contact__info-group">
-            <span class="contact__info-label">03 // DISPONIBILIDADE PROFISSIONAL</span>
+            <span class="contact__info-label">{{ data().labels.availabilityLabel }}</span>
             <app-text variant="body" class="contact__info-value">
-              🟢 {{ data.info.availability }}
+              🟢 {{ data().info.availability }}
             </app-text>
           </div>
 
           <div class="contact__info-group">
-            <span class="contact__info-label">04 // REDES & LINKS</span>
+            <span class="contact__info-label">{{ data().labels.socialLabel }}</span>
             <div class="contact__social-links">
-              <app-link [href]="data.info.linkedinUrl" [external]="true" ariaLabel="Perfil do LinkedIn"
+              <app-link [href]="data().info.linkedinUrl" [external]="true" ariaLabel="LinkedIn Profile"
                 class="contact__social-link">
                 LinkedIn ↗
               </app-link>
-              <app-link [href]="data.info.githubUrl" [external]="true" ariaLabel="Perfil do GitHub"
+              <app-link [href]="data().info.githubUrl" [external]="true" ariaLabel="GitHub Profile"
                 class="contact__social-link">
                 GitHub ↗
               </app-link>
