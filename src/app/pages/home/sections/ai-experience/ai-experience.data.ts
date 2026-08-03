@@ -7,7 +7,7 @@ const AI_I18N: Record<SupportedLang, AiManifestoData> = {
     title: 'Engenharia de Software Amplificada por IA',
     subtitle: 'Automação, modelos de linguagem e pensamento sistêmico aplicados ao desenvolvimento de software.',
     manifesto:
-      'Desenvolver software é lidar diariamente com complexidade: entender problemas, organizar contexto, tomar decisões técnicas e transformar ideias em sistemas funcionais.\n\nA inteligência artificial passou a fazer parte desse processo como uma ferramenta de engenharia. Utilizo modelos de linguagem e automações para acelerar etapas do desenvolvimento, desde investigação de problemas e análise de código até refatorações, exploração de soluções e validações técnicas.\n\nA IA aumenta a velocidade de execução, mas a qualidade do software continua dependendo de arquitetura, pensamento crítico e decisões bem fundamentadas.\n\nNo fim, a tecnologia é apenas parte do processo. O objetivo continua sendo o mesmo: construir sistemas melhores, mais confiáveis e capazes de evoluir.',
+      'Desenvolver software é organizar contexto, tomar decisões técnicas e transformar problemas em sistemas funcionais.\n\nUtilizo automação e modelos de linguagem como ferramentas diárias de engenharia: para acelerar investigações, explorar soluções, refatorar código com segurança e validar contratos de APIs. A IA amplia minha capacidade de desenvolvimento, mas a qualidade final continua dependendo de arquitetura, pensamento crítico e controle humano.',
     features: [
       {
         index: '01',
@@ -160,7 +160,7 @@ const AI_I18N: Record<SupportedLang, AiManifestoData> = {
     title: 'AI-Augmented Software Engineering',
     subtitle: 'Automation, language models and systems thinking applied to software engineering.',
     manifesto:
-      'Software development is about dealing with complexity: understanding problems, organizing context, making technical decisions and transforming ideas into functional systems.\n\nArtificial intelligence has become part of this process as an engineering tool. I use language models and automation to accelerate development tasks, from problem investigation and code analysis to refactoring, solution exploration and technical validation.\n\nAI increases execution speed, but software quality still depends on architecture, critical thinking and well-founded decisions.\n\nTechnology is only part of the process. The goal remains the same: building better, more reliable systems that can evolve.',
+      'Software engineering is about organizing context, making technical decisions, and turning complex problems into functional systems.\n\nI use automation and language models as daily engineering tools: to accelerate debugging, explore solutions, safely refactor code, and validate API contracts. AI expands my development capacity, but software quality still depends on architecture, critical thinking, and human control.',
     features: [
       {
         index: '01',
@@ -225,7 +225,7 @@ const AI_I18N: Record<SupportedLang, AiManifestoData> = {
       REASONING: {
         id: 'reasoning',
         index: 'CORE LOOP // 03',
-        name: 'Reasoning & Synthesis',
+        name: 'Reasoning & Logic',
         category: 'Processing & Business Logic',
         summary:
           'Data analysis and scenario evaluation. Applies conditional rules and algorithms to synthesize the best solution path for each task.',
