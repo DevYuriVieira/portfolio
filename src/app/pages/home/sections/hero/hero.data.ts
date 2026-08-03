@@ -8,8 +8,8 @@ const HERO_I18N: Record<SupportedLang, HeroSectionData> = {
     description:
       'Desenvolvo aplicações web de ponta a ponta, alinhando interfaces precisas no frontend a serviços backend bem estruturados. Priorizo código limpo, arquitetura modular e soluções focadas na resolução real de problemas.',
     projectsCtaText: 'Ver projetos',
-    cvCtaText: 'Download CV',
-    cvUrl: 'assets/cv-yuri-vieira-teixeira.pdf',
+    cvCtaText: 'Download CV (PT)',
+    cvUrl: 'assets/cv-yuri-vieira-teixeira-pt.pdf',
   },
   en: {
     eyebrow: 'Software Engineer · Full-Stack Development',
@@ -17,8 +17,8 @@ const HERO_I18N: Record<SupportedLang, HeroSectionData> = {
     description:
       'I build end-to-end web applications, aligning precise frontend interfaces with well-structured backend services. I prioritize clean code, modular architecture, and solutions focused on solving real problems.',
     projectsCtaText: 'View projects',
-    cvCtaText: 'Download CV',
-    cvUrl: 'assets/cv-yuri-vieira-teixeira.pdf',
+    cvCtaText: 'Download CV (EN)',
+    cvUrl: 'assets/cv-yuri-vieira-teixeira-en.pdf',
   },
 };
 
