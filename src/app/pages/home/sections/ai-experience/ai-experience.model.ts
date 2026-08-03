@@ -18,6 +18,7 @@ export interface AiNodeDetail {
 export interface AiManifestoData {
   readonly badge: string;
   readonly title: string;
+  readonly subtitle: string;
   readonly manifesto: string;
   readonly features: readonly AiFeature[];
   readonly closingStatement: string;

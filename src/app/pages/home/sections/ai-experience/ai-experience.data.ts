@@ -3,284 +3,313 @@ import { AiManifestoData } from './ai-experience.model';
 
 const AI_I18N: Record<SupportedLang, AiManifestoData> = {
   'pt-BR': {
-    badge: '05 // Artificial Intelligence & Automation',
-    title: 'Construindo com IA, pensando além do código',
+    badge: '05 // ENGINEERING INTELLIGENCE LOOP',
+    title: 'Engenharia de Software Amplificada por IA',
+    subtitle: 'Automação, modelos de linguagem e pensamento sistêmico aplicados ao desenvolvimento de software.',
     manifesto:
-      'Com minha formação em Engenharia de Produção e atuação em Engenharia de Software, vejo a inteligência artificial e a automação como camadas vivas de amplificação do raciocínio, agregando capacidade analítica, eficiência e automação inteligente diretamente ao ciclo de desenvolvimento de software.',
+      'Desenvolver software é lidar diariamente com complexidade: entender problemas, organizar contexto, tomar decisões técnicas e transformar ideias em sistemas funcionais.\n\nA inteligência artificial passou a fazer parte desse processo como uma ferramenta de engenharia. Utilizo modelos de linguagem e automações para acelerar etapas do desenvolvimento, desde investigação de problemas e análise de código até refatorações, exploração de soluções e validações técnicas.\n\nA IA aumenta a velocidade de execução, mas a qualidade do software continua dependendo de arquitetura, pensamento crítico e decisões bem fundamentadas.\n\nNo fim, a tecnologia é apenas parte do processo. O objetivo continua sendo o mesmo: construir sistemas melhores, mais confiáveis e capazes de evoluir.',
     features: [
       {
         index: '01',
         title: 'Automação de Workflows no n8n',
         description:
-          'Construção de fluxos automatizados no n8n para integração de APIs, disparo e tratamento de Webhooks, eliminação de tarefas manuais e otimização de processos de engenharia.',
-        tags: ['n8n', 'Webhooks', 'Workflows', 'API Integration'],
+          'Construção de fluxos assíncronos no n8n e consumo de Webhooks para integração de APIs, notificações operacionais e eliminação de tarefas manuais de rotina.',
+        tags: ['n8n', 'Webhooks', 'API Integration', 'Async Workflows'],
       },
       {
         index: '02',
-        title: 'LLMs no Dia a Dia de Desenvolvimento',
+        title: 'Diagnóstico Acelerado de Erros & Logs',
         description:
-          'Uso cotidiano de modelos de linguagem como ferramentas de apoio no diagnóstico acelerado de logs e exceções, prototipagem de componentes e documentação de especificações.',
-        tags: ['LLMs', 'Prompt Engineering', 'Code Diagnostics', 'Documentation'],
+          'Uso prático de IA para análise rápida de stack traces, diagnóstico de exceções em tempo de execução e otimização de consultas SQL complexas.',
+        tags: ['Code Diagnostics', 'Log Analysis', 'SQL Optimization', 'Debugging'],
       },
       {
         index: '03',
-        title: 'Agentes Autônomos de IA (Pair Programming)',
+        title: 'Par-Programação & Refatoração Assistida',
         description:
-          'Orquestração de agentes inteligentes para atuar em par-programação, auxiliando na execução de refatorações complexas, auditorias de código e automação de testes.',
-        tags: ['AI Agents', 'Pair Programming', 'Code Review', 'Automation'],
+          'Atuação com agentes de IA como parceiros de pair programming na auditoria de qualidade de código, refatoração orientada a Clean Architecture e escrita de testes unitários.',
+        tags: ['Pair Programming', 'Code Review', 'Clean Architecture', 'Unit Testing'],
       },
       {
         index: '04',
-        title: 'Engenharia de Software + Visão Sistêmica',
+        title: 'Pensamento Sistêmico (Lean & PDCA)',
         description:
-          'Aplicação do pensamento de processos (Lean, PDCA, 5W2H) somado às residências tecnológicas (Serratec e UECE) para estruturar sistemas sustentáveis e orientados a valor.',
-        tags: ['Clean Architecture', 'Systems Thinking', 'Full-Stack'],
+          'Aplicação de métodos de Engenharia de Produção (análise de causa raiz 5W2H e ciclo PDCA) para estruturar sistemas sustentáveis e fáceis de manter.',
+        tags: ['Systems Thinking', 'PDCA', 'Lean Software', 'Full-Stack'],
       },
     ],
     closingStatement:
-      'O diferencial não está nas ferramentas isoladas, mas na combinação entre engenharia de software sólida, raciocínio sistêmico e inteligência artificial aplicada com propósito.',
+      'O foco não está nas ferramentas de IA isoladas, mas na aplicação pragmática de automação para construir software robusto, legível e de alto valor.',
     nodeDetails: {
-      'HUMAN DECISION MAKING': {
-        id: 'human-decision-making',
-        index: 'CORE // 00',
-        name: 'Human Decision Making',
-        category: 'Raciocínio & Tomada de Decisão',
+      OBSERVE: {
+        id: 'observe',
+        index: 'CORE LOOP // 01',
+        name: 'Observe & Telemetry',
+        category: 'Ingresso de Dados & Sensores',
         summary:
-          'Minha formação em Engenharia de Produção me ensinou a compreender a causa raiz dos problemas, otimizar processos e planejar a arquitetura antes de escrever a primeira linha de código.',
+          'Coleta de métricas e eventos em tempo real. Permite monitorar a saúde do sistema e capturar sinais de entrada sem interferir no fluxo de execução.',
         practicalApplications: [
-          'Análise de causa raiz (5W2H) e priorização de regras de negócio',
-          'Planejamento de arquitetura sustentável antes da implementação',
-          'Ciclo de melhoria contínua (PDCA) e escrita de código limpo',
+          'Captura de logs e métricas de desempenho em tempo real',
+          'Tratamento de webhooks e requisições HTTP de entrada',
+          'Filtro e estruturação inicial de cargas de dados',
         ],
-        tools: ['Engenharia de Produção', 'Lean Thinking', 'PDCA', 'Systems Thinking'],
+        tools: ['Observability', 'Telemetry', 'Webhooks', 'Metrics'],
       },
-      'Software Engineering': {
-        id: 'software-engineering',
-        index: 'DOMAIN // 01',
-        name: 'Software Engineering',
-        category: 'Desenvolvimento Full-Stack & POO',
+      CONTEXT: {
+        id: 'context',
+        index: 'CORE LOOP // 02',
+        name: 'Context & State Buffer',
+        category: 'Gerenciamento de Estado & Memória',
         summary:
-          'Fundamentação sólida em POO com Java 11, MySQL e Estruturas de Dados (UECE TIC 12), consolidada na Residência TIC Serratec (790h) e no desenvolvimento web com Angular, React e APIs RESTful em Java (Spring Boot) e Python (Django).',
+          'Organização e retenção de estado da aplicação, garantindo que as regras de negócio e consultas tenham acesso ao contexto correto antes de decidir.',
         practicalApplications: [
-          'Interfaces web reativas em Angular, React e TypeScript',
-          'APIs RESTful em Java (Spring Boot, Spring Security) e Python (Django)',
-          'Clean Architecture, padrões de projeto e Conventional Commits',
+          'Gerenciamento de estado volátil e camadas de cache',
+          'Alinhamento de contextos em arquiteturas modulares',
+          'Garantia de consistência de dados em operações concorrentes',
         ],
-        tools: ['Angular', 'React', 'Spring Boot', 'TypeScript', 'Java', 'Python', 'Django'],
+        tools: ['State Management', 'Cache Layer', 'Context Isolators', 'Memory Buffer'],
       },
-      Data: {
-        id: 'data',
-        index: 'DOMAIN // 02',
-        name: 'Data & Modeling',
-        category: 'Modelagem & Bancos de Dados',
+      REASONING: {
+        id: 'reasoning',
+        index: 'CORE LOOP // 03',
+        name: 'Reasoning & Synthesis',
+        category: 'Processamento & Lógica de Negócio',
         summary:
-          'Modelagem relacional e manipulação de bancos de dados PostgreSQL e SQLite em projetos web, garantindo integridade, segurança e eficiência nas consultas.',
+          'Análise de dados e avaliação de cenários. Aplica regras condicionais e algoritmos para sintetizar a melhor rota de solução para cada problema.',
         practicalApplications: [
-          'Modelagem de esquemas relacionais em PostgreSQL e SQLite',
-          'Mapeamento objeto-relacional com JPA / Hibernate e Django ORM',
-          'Otimização de consultas SQL e validação de payloads JSON',
+          'Decomposição analítica de regras de negócio complexas',
+          'Avaliação de alternativas de execução em tempo real',
+          'Síntese assistida por IA para acelerar soluções de código',
         ],
-        tools: ['PostgreSQL', 'SQLite', 'SQL', 'JPA/Hibernate', 'Django ORM'],
+        tools: ['Business Logic', 'Algorithmic Reasoning', 'Code Synthesis', 'LLMs'],
       },
-      Automation: {
-        id: 'automation',
-        index: 'DOMAIN // 03',
-        name: 'Automation (n8n)',
-        category: 'Orquestração de Workflows & Webhooks',
+      DECISION: {
+        id: 'decision',
+        index: 'CORE LOOP // 04',
+        name: 'Decision & Routing',
+        category: 'Roteamento & Decisão Determinística',
         summary:
-          'Construção prática de fluxos automatizados no n8n para integração de sistemas, tratamento de webhooks e otimização de rotinas de desenvolvimento e operações.',
+          'Definição clara do caminho de execução a seguir, transformando análises em ações concretas e validadas.',
         practicalApplications: [
-          'Pipelines de integração assíncrona usando n8n',
-          'Tratamento e disparo de Webhooks para serviços externos',
-          'Otimização de tarefas operacionais e notificações automatizadas',
+          'Roteamento prioritário de mensagens e chamadas de API',
+          'Validação estrita de esquemas de dados antes do despacho',
+          'Chaveamento seguro entre estratégias de fallback',
         ],
-        tools: ['n8n', 'Webhooks', 'REST APIs', 'Postman'],
+        tools: ['Decision Trees', 'Schema Validation', 'Event Routing', 'Dispatchers'],
       },
-      Agents: {
-        id: 'agents',
-        index: 'DOMAIN // 04',
-        name: 'AI Agents',
-        category: 'Agentes de IA & Par-Programação',
+      EXECUTION: {
+        id: 'execution',
+        index: 'CORE LOOP // 05',
+        name: 'Execution & Mutating Actions',
+        category: 'Mutação & Execução de Tarefas',
         summary:
-          'Orquestração e uso de agentes autônomos de IA para atuar como parceiros de pair programming, auxiliando na execução de refatorações, auditorias de código e testes.',
+          'Aplicação física de alterações e mutações de dados no banco, chamadas de APIs externas ou envio de notificações assíncronas.',
         practicalApplications: [
-          'Par-programação assistida por agentes em tempo real',
-          'Revisão automatizada de código e detecção de débitos técnicos',
-          'Refatoração guiada mantendo arquitetura limpa e testes unitários',
+          'Execução de mutações de banco de dados com controle de transação',
+          'Integrações via APIs RESTful e Webhooks',
+          'Despacho de rotinas operacionais automatizadas',
         ],
-        tools: ['AI Agents', 'Pair Programming', 'Code Review', 'Agentic Workflows'],
+        tools: ['Worker Pools', 'REST APIs', 'Database Mutations', 'Async Jobs'],
       },
-      LLMs: {
-        id: 'llms',
-        index: 'DOMAIN // 05',
-        name: 'LLM Engineering',
-        category: 'Modelos de Linguagem na Prática',
+      VERIFICATION: {
+        id: 'verification',
+        index: 'CORE LOOP // 06',
+        name: 'Verification & Assertions',
+        category: 'Auditoria de Qualidade & Invariantes',
         summary:
-          'Uso cotidiano de LLMs para acelerar a resolução de problemas complexos, diagnosticar erros de execução em stack traces, estruturar especificações e acelerar entregas.',
+          'Auditoria contínua de contratos e pós-condições, garantindo que cada alteração respeite os testes e os requisitos do sistema.',
         practicalApplications: [
-          'Diagnóstico rápido de erros em logs e exceções de runtime',
-          'Engenharia de prompt para prototipação técnica e algoritmos',
-          'Geração de documentação legível para APIs e especificações',
+          'Execução de testes unitários e de integração automatizados',
+          'Verificação de contratos de APIs e sanidade de dados',
+          'Disparo de retentativas (retries) em caso de falha temporária',
         ],
-        tools: ['LLMs', 'Prompt Engineering', 'Code Diagnostics', 'Documentation'],
+        tools: ['Unit Testing', 'Contract Testing', 'Runtime Assertions', 'Automated QA'],
       },
-      'Systems Thinking': {
-        id: 'systems-thinking',
-        index: 'DOMAIN // 06',
-        name: 'Systems Thinking',
-        category: 'Visão Sistêmica de Engenharia',
+      KNOWLEDGE: {
+        id: 'knowledge',
+        index: 'SUPPORTING LAYER // 01',
+        name: 'Knowledge & Ground Truth',
+        category: 'Base de Conhecimento & Persistência',
         summary:
-          'Abordagem holística da Engenharia de Produção aplicada ao software: enxergar o código como parte de um sistema vivo onde informação é a matéria-prima e valor entregue ao usuário é o objetivo final.',
+          'Armazenamento relacional e regras de negócio persistidas. Garante que os dados estruturados sirvam como fonte confiável de verdade.',
         practicalApplications: [
-          'Visão holística do ciclo de vida completo do software',
-          'Aplicação de PDCA e análise de causa raiz na resolução de bugs',
-          'Soluções simples, sustentáveis e fáceis de manter por outros devs',
+          'Modelagem relacional e esquemas estritos em PostgreSQL',
+          'Consultas otimizadas com índices e integridade referencial',
+          'Mapeamento objeto-relacional sustentável',
         ],
-        tools: ['Lean Software', 'PDCA', 'Systems Thinking', 'Agile'],
+        tools: ['PostgreSQL', 'SQLite', 'SQL', 'ORM', 'Relational Modeling'],
+      },
+      'HUMAN JUDGMENT': {
+        id: 'human-judgment',
+        index: 'SUPPORTING LAYER // 02',
+        name: 'Human Judgment & Governance',
+        category: 'Supervisão Humana & Governança',
+        summary:
+          'Supervisão direta e tomada de decisão humana em etapas críticas do desenvolvimento, garantindo conformidade, segurança e boa arquitetura.',
+        practicalApplications: [
+          'Revisão de código (Code Review) e aprovação de deploys',
+          'Análise de causa raiz (5W2H) para resolução de débitos técnicos',
+          'Decisões de arquitetura sustentável para evolução do software',
+        ],
+        tools: ['Human Code Review', 'Policy Oversight', 'PDCA', 'Lean Engineering'],
       },
     },
   },
   en: {
-    badge: '05 // Artificial Intelligence & Automation',
-    title: 'Building with AI, thinking beyond the code',
+    badge: '05 // ENGINEERING INTELLIGENCE LOOP',
+    title: 'AI-Augmented Software Engineering',
+    subtitle: 'Automation, language models and systems thinking applied to software engineering.',
     manifesto:
-      'With my background in Production Engineering and practice in Software Engineering, I see artificial intelligence and automation as living amplification layers of reasoning, adding analytical capacity, efficiency, and intelligent automation directly to the software development lifecycle.',
+      'Software development is about dealing with complexity: understanding problems, organizing context, making technical decisions and transforming ideas into functional systems.\n\nArtificial intelligence has become part of this process as an engineering tool. I use language models and automation to accelerate development tasks, from problem investigation and code analysis to refactoring, solution exploration and technical validation.\n\nAI increases execution speed, but software quality still depends on architecture, critical thinking and well-founded decisions.\n\nTechnology is only part of the process. The goal remains the same: building better, more reliable systems that can evolve.',
     features: [
       {
         index: '01',
         title: 'n8n Workflow Automation',
         description:
-          'Building automated workflows in n8n for API integration, Webhook triggering and handling, eliminating manual tasks, and optimizing engineering processes.',
-        tags: ['n8n', 'Webhooks', 'Workflows', 'API Integration'],
+          'Building asynchronous flows in n8n and handling webhooks to integrate APIs, send operational alerts, and automate routine manual tasks.',
+        tags: ['n8n', 'Webhooks', 'API Integration', 'Async Workflows'],
       },
       {
         index: '02',
-        title: 'LLMs in Day-to-Day Development',
+        title: 'Accelerated Error Diagnostics',
         description:
-          'Daily use of language models as support tools, accelerating log and exception diagnostics, prototyping components, and documenting specifications.',
-        tags: ['LLMs', 'Prompt Engineering', 'Code Diagnostics', 'Documentation'],
+          'Practical use of AI for rapid stack trace analysis, runtime exception diagnosis, and optimizing complex SQL queries.',
+        tags: ['Code Diagnostics', 'Log Analysis', 'SQL Optimization', 'Debugging'],
       },
       {
         index: '03',
-        title: 'Autonomous AI Agents (Pair Programming)',
+        title: 'Pair Programming & Assisted Refactoring',
         description:
-          'Orchestrating intelligent agents for pair programming, assisting in complex refactoring, code audits, and test automation.',
-        tags: ['AI Agents', 'Pair Programming', 'Code Review', 'Automation'],
+          'Working with AI agents as pair programming partners for code quality audits, Clean Architecture refactoring, and unit test writing.',
+        tags: ['Pair Programming', 'Code Review', 'Clean Architecture', 'Unit Testing'],
       },
       {
         index: '04',
-        title: 'Software Engineering + Systems Thinking',
+        title: 'Systems Thinking (Lean & PDCA)',
         description:
-          'Applying process thinking (Lean, PDCA, 5W2H) combined with technology residencies (Serratec and UECE) to structure sustainable, value-driven systems.',
-        tags: ['Clean Architecture', 'Systems Thinking', 'Full-Stack'],
+          'Applying Production Engineering methods (5W2H root cause analysis and PDCA cycle) to build sustainable, easy-to-maintain software.',
+        tags: ['Systems Thinking', 'PDCA', 'Lean Software', 'Full-Stack'],
       },
     ],
     closingStatement:
-      'The differentiator is not in isolated tools, but in the combination of solid software engineering, systems thinking, and purpose-driven applied artificial intelligence.',
+      'The focus is not on isolated AI tools, but on the pragmatic application of automation to build robust, readable, high-value software.',
     nodeDetails: {
-      'HUMAN DECISION MAKING': {
-        id: 'human-decision-making',
-        index: 'CORE // 00',
-        name: 'Human Decision Making',
-        category: 'Reasoning & Decision Making',
+      OBSERVE: {
+        id: 'observe',
+        index: 'CORE LOOP // 01',
+        name: 'Observe & Telemetry',
+        category: 'Data Ingress & Sensors',
         summary:
-          'My Production Engineering background taught me to understand the root cause of problems, optimize processes, and plan architecture before writing the first line of code.',
+          'Collecting real-time metrics and system events. Allows monitoring system health and capturing input signals without interfering with execution.',
         practicalApplications: [
-          'Root cause analysis (5W2H) and business rule prioritization',
-          'Sustainable architecture planning before implementation',
-          'Continuous improvement cycle (PDCA) and clean code writing',
+          'Real-time log capture and performance metrics monitoring',
+          'Webhook handling and incoming HTTP request processing',
+          'Initial data payload filtering and structuring',
         ],
-        tools: ['Production Engineering', 'Lean Thinking', 'PDCA', 'Systems Thinking'],
+        tools: ['Observability', 'Telemetry', 'Webhooks', 'Metrics'],
       },
-      'Software Engineering': {
-        id: 'software-engineering',
-        index: 'DOMAIN // 01',
-        name: 'Software Engineering',
-        category: 'Full-Stack Development & OOP',
+      CONTEXT: {
+        id: 'context',
+        index: 'CORE LOOP // 02',
+        name: 'Context & State Buffer',
+        category: 'State Management & Memory',
         summary:
-          'Solid OOP foundation with Java 11, MySQL, and Data Structures (UECE TIC 12), consolidated at the Serratec TIC Residency (790h) and in web development with Angular, React, and RESTful APIs in Java (Spring Boot) and Python (Django).',
+          'Organizing application state to ensure business logic and queries access the correct context before decision-making.',
         practicalApplications: [
-          'Reactive web interfaces in Angular, React, and TypeScript',
-          'RESTful APIs in Java (Spring Boot, Spring Security) and Python (Django)',
-          'Clean Architecture, design patterns, and Conventional Commits',
+          'Volatile state management and caching layers',
+          'Context alignment in modular software architectures',
+          'Data consistency guarantees across concurrent operations',
         ],
-        tools: ['Angular', 'React', 'Spring Boot', 'TypeScript', 'Java', 'Python', 'Django'],
+        tools: ['State Management', 'Cache Layer', 'Context Isolators', 'Memory Buffer'],
       },
-      Data: {
-        id: 'data',
-        index: 'DOMAIN // 02',
-        name: 'Data & Modeling',
-        category: 'Modeling & Databases',
+      REASONING: {
+        id: 'reasoning',
+        index: 'CORE LOOP // 03',
+        name: 'Reasoning & Synthesis',
+        category: 'Processing & Business Logic',
         summary:
-          'Relational modeling and PostgreSQL and SQLite database management in web projects, ensuring integrity, security, and query efficiency.',
+          'Data analysis and scenario evaluation. Applies conditional rules and algorithms to synthesize the best solution path for each task.',
         practicalApplications: [
-          'Relational schema modeling in PostgreSQL and SQLite',
-          'Object-relational mapping with JPA / Hibernate and Django ORM',
-          'SQL query optimization and JSON payload validation',
+          'Analytical decomposition of complex business rules',
+          'Real-time execution alternative evaluation',
+          'AI-assisted synthesis to accelerate code solutions',
         ],
-        tools: ['PostgreSQL', 'SQLite', 'SQL', 'JPA/Hibernate', 'Django ORM'],
+        tools: ['Business Logic', 'Algorithmic Reasoning', 'Code Synthesis', 'LLMs'],
       },
-      Automation: {
-        id: 'automation',
-        index: 'DOMAIN // 03',
-        name: 'Automation (n8n)',
-        category: 'Workflow & Webhook Orchestration',
+      DECISION: {
+        id: 'decision',
+        index: 'CORE LOOP // 04',
+        name: 'Decision & Routing',
+        category: 'Routing & Deterministic Choice',
         summary:
-          'Practical automated workflow building in n8n for system integration, webhook handling, and optimization of development and operations routines.',
+          'Defining clear execution pathways, turning analysis into concrete, validated software actions.',
         practicalApplications: [
-          'Asynchronous integration pipelines using n8n',
-          'Webhook handling and triggering for external services',
-          'Operational task optimization and automated notifications',
+          'Priority message routing and API call dispatching',
+          'Strict data schema validation prior to payload execution',
+          'Safe switching between fallback strategies',
         ],
-        tools: ['n8n', 'Webhooks', 'REST APIs', 'Postman'],
+        tools: ['Decision Trees', 'Schema Validation', 'Event Routing', 'Dispatchers'],
       },
-      Agents: {
-        id: 'agents',
-        index: 'DOMAIN // 04',
-        name: 'AI Agents',
-        category: 'AI Agents & Pair Programming',
+      EXECUTION: {
+        id: 'execution',
+        index: 'CORE LOOP // 05',
+        name: 'Execution & Mutating Actions',
+        category: 'Mutation & Task Execution',
         summary:
-          'Orchestration and use of autonomous AI agents as pair programming partners, assisting in refactoring, code audits, and testing.',
+          'Applying database mutations, external API calls, or dispatching asynchronous background notifications.',
         practicalApplications: [
-          'Real-time agent-assisted pair programming',
-          'Automated code review and technical debt detection',
-          'Guided refactoring maintaining clean architecture and unit tests',
+          'Database mutation execution with transaction scope control',
+          'RESTful API and Webhook integrations',
+          'Automated operational task dispatching',
         ],
-        tools: ['AI Agents', 'Pair Programming', 'Code Review', 'Agentic Workflows'],
+        tools: ['Worker Pools', 'REST APIs', 'Database Mutations', 'Async Jobs'],
       },
-      LLMs: {
-        id: 'llms',
-        index: 'DOMAIN // 05',
-        name: 'LLM Engineering',
-        category: 'Language Models in Practice',
+      VERIFICATION: {
+        id: 'verification',
+        index: 'CORE LOOP // 06',
+        name: 'Verification & Assertions',
+        category: 'Quality Audit & Invariants',
         summary:
-          'Daily use of LLMs to accelerate complex problem-solving, diagnose runtime errors in stack traces, structure specifications, and speed up deliveries.',
+          'Continuous auditing of contracts and post-conditions, ensuring every change complies with system tests and requirements.',
         practicalApplications: [
-          'Rapid error diagnosis in runtime logs and exceptions',
-          'Prompt engineering for technical prototyping and algorithms',
-          'Readable documentation generation for APIs and specifications',
+          'Automated unit and integration test execution',
+          'API contract verification and data sanity checks',
+          'Triggering retries on transient operational failures',
         ],
-        tools: ['LLMs', 'Prompt Engineering', 'Code Diagnostics', 'Documentation'],
+        tools: ['Unit Testing', 'Contract Testing', 'Runtime Assertions', 'Automated QA'],
       },
-      'Systems Thinking': {
-        id: 'systems-thinking',
-        index: 'DOMAIN // 06',
-        name: 'Systems Thinking',
-        category: 'Engineering Systems Thinking',
+      KNOWLEDGE: {
+        id: 'knowledge',
+        index: 'SUPPORTING LAYER // 01',
+        name: 'Knowledge & Ground Truth',
+        category: 'Knowledge Base & Persistence',
         summary:
-          'Holistic Production Engineering approach applied to software: seeing code as part of a living system where information is the raw material and user-delivered value is the ultimate goal.',
+          'Relational storage and persistent business rules. Guarantees that structured data serves as a reliable ground truth.',
         practicalApplications: [
-          'Holistic view of the complete software lifecycle',
-          'PDCA application and root cause analysis in bug resolution',
-          'Simple, sustainable solutions easy for other devs to maintain',
+          'Relational modeling and strict schemas in PostgreSQL',
+          'Optimized queries with indexation and referential integrity',
+          'Sustainable object-relational mapping',
         ],
-        tools: ['Lean Software', 'PDCA', 'Systems Thinking', 'Agile'],
+        tools: ['PostgreSQL', 'SQLite', 'SQL', 'ORM', 'Relational Modeling'],
+      },
+      'HUMAN JUDGMENT': {
+        id: 'human-judgment',
+        index: 'SUPPORTING LAYER // 02',
+        name: 'Human Judgment & Governance',
+        category: 'Human Supervision & Governance',
+        summary:
+          'Direct human supervision and decision-making at critical development stages, ensuring security, compliance, and good architecture.',
+        practicalApplications: [
+          'Code review and deployment authorization',
+          '5W2H root cause analysis for technical debt resolution',
+          'Sustainable architectural decisions for software evolution',
+        ],
+        tools: ['Human Code Review', 'Policy Oversight', 'PDCA', 'Lean Engineering'],
       },
     },
   },
 };
 
-// Backward-compatible export
 export const AI_MANIFESTO_DATA: AiManifestoData = AI_I18N['pt-BR'];
 
 export function getAiData(lang: SupportedLang): AiManifestoData {

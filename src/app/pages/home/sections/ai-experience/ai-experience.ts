@@ -18,6 +18,7 @@ import { NeuralCanvas } from './neural-canvas';
 export class AiExperienceSection {
   private readonly i18n = inject(I18nService);
 
+  readonly currentLang = computed(() => this.i18n.currentLang());
   readonly data = computed(() => getAiData(this.i18n.currentLang()));
   readonly selectedNodeDetail = signal<AiNodeDetail | null>(null);
 
@@ -25,23 +26,23 @@ export class AiExperienceSection {
   readonly labels = computed(() =>
     this.i18n.currentLang() === 'en'
       ? {
-          ariaLabel: 'Artificial Intelligence & Automation',
-          zoomToolbarAriaLabel: '3D Zoom Controls',
+          ariaLabel: 'AI-Augmented Software Engineering',
+          zoomToolbarAriaLabel: '3D Controls',
           zoomInTitle: 'Zoom in',
           zoomInAriaLabel: 'Zoom in on the 3D viewer',
           zoomOutTitle: 'Zoom out',
           zoomOutAriaLabel: 'Zoom out of the 3D viewer',
           zoomLevelTitle: 'Zoom Level',
-          resetTitle: 'Reset initial view',
-          resetAriaLabel: 'Reset 3D initial view',
+          resetTitle: 'Reset view',
+          resetAriaLabel: 'Reset 3D view',
           zoomFocusLabel: 'Overview',
-          zoomFocusInLabel: 'Focus Zoom',
-          zoomFocusTitle: 'Toggle Focus Zoom mode',
-          canvasHint: '🔍 Scroll the mouse wheel or use the buttons to Zoom',
+          zoomFocusInLabel: 'Macro Focus',
+          zoomFocusTitle: 'Toggle Macro Focus mode',
+          canvasHint: '🖱️ Click & drag to orbit (180°) | 🔍 Scroll or buttons to Zoom',
         }
       : {
-          ariaLabel: 'Inteligência Artificial & Automação',
-          zoomToolbarAriaLabel: 'Controles de Zoom 3D',
+          ariaLabel: 'Engenharia de Software Amplificada por IA',
+          zoomToolbarAriaLabel: 'Controles 3D',
           zoomInTitle: 'Aumentar zoom',
           zoomInAriaLabel: 'Aumentar zoom do visualizador 3D',
           zoomOutTitle: 'Reduzir zoom',
@@ -50,9 +51,9 @@ export class AiExperienceSection {
           resetTitle: 'Redefinir vista inicial',
           resetAriaLabel: 'Redefinir vista inicial do 3D',
           zoomFocusLabel: 'Visão Geral',
-          zoomFocusInLabel: 'Zoom Foco',
-          zoomFocusTitle: 'Alternar modo Zoom Foco',
-          canvasHint: '🔍 Role o scroll do mouse ou use os botões para dar Zoom',
+          zoomFocusInLabel: 'Foco Macro',
+          zoomFocusTitle: 'Alternar modo Foco Macro',
+          canvasHint: '🖱️ Clique e arraste para girar (180°) | 🔍 Scroll ou botões para dar Zoom',
         }
   );
 

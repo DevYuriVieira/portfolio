@@ -9,6 +9,10 @@
           {{ data().title }}
         </app-heading>
 
+        <p class="ai__subtitle">
+          {{ data().subtitle }}
+        </p>
+
         <app-text variant="lead" class="ai__manifesto">
           {{ data().manifesto }}
         </app-text>
@@ -16,7 +20,7 @@
 
       <!-- Active Theory Interactive Canvas -->
       <div class="ai__canvas-wrapper" appReveal>
-        <app-neural-canvas #neuralCanvas (nodeSelect)="onNodeSelect($event)" />
+        <app-neural-canvas #neuralCanvas [lang]="currentLang()" (nodeSelect)="onNodeSelect($event)" />
 
         <!-- Floating Glassmorphic Zoom Controls -->
         <div class="ai__zoom-toolbar" role="toolbar" [attr.aria-label]="labels().zoomToolbarAriaLabel">

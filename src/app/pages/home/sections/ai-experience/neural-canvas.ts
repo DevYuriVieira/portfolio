@@ -1,8 +1,10 @@
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   ElementRef,
   EventEmitter,
+  Input,
   NgZone,
   OnDestroy,
   OnInit,
@@ -12,54 +14,93 @@ import {
   PLATFORM_ID,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { SupportedLang } from '@core';
 import * as THREE from 'three';
 
-const NODE_LABELS = [
-  'Software Engineering',
-  'Data',
-  'Automation',
-  'Agents',
-  'LLMs',
-  'Systems Thinking',
+export const CORE_LOOP_NODES = [
+  'OBSERVE',
+  'CONTEXT',
+  'REASONING',
+  'DECISION',
+  'EXECUTION',
+  'VERIFICATION',
 ] as const;
 
-interface OrbitalNode {
-  meshGroup: THREE.Group;
-  nodeMesh: THREE.Mesh;
-  shellMesh: THREE.Mesh;
-  sprite: THREE.Sprite;
-  baseAngle: number;
-  orbitSpeed: number;
-  orbitRadius: number;
-  orbitTilt: number;
-  yPhase: number;
-  yAmplitude: number;
-  ySpeed: number;
+export const SUPPORTING_LAYER_NODES = [
+  'KNOWLEDGE',
+  'HUMAN JUDGMENT',
+] as const;
+
+export const CAPABILITY_NODES = [
+  ...CORE_LOOP_NODES,
+  ...SUPPORTING_LAYER_NODES,
+] as const;
+
+export type CapabilityName = (typeof CAPABILITY_NODES)[number];
+
+interface CausalNode {
+  name: CapabilityName;
+  index: number;
+  isSupporting: boolean;
+  group: THREE.Group;
+  baseChassis: THREE.Mesh;
+  labelSprite: THREE.Sprite;
+  metaSprite: THREE.Sprite;
+  borderLines: THREE.LineSegments;
+  pulseGlowLines: THREE.LineSegments;
+  basePosition: THREE.Vector3;
+  targetY: number;
+  currentY: number;
+  velocityY: number;
+  edgePulseEnergy: number;
 }
 
-interface EnergyStreamParticle {
+interface ConnectionLine {
+  curve: THREE.QuadraticBezierCurve3;
+  lineMesh: THREE.Line;
+  fromIndex: number;
+  toIndex: number;
+}
+
+interface DataPacket {
   mesh: THREE.Mesh;
-  nodeIndex: number;
+  light: THREE.PointLight;
+  curve: THREE.QuadraticBezierCurve3;
   progress: number;
   speed: number;
-  direction: number; // 1 outward, -1 inward
-}
-
-interface ShockwaveRing {
-  mesh: THREE.Mesh;
-  scale: number;
-  alpha: number;
+  color: THREE.Color;
 }
 
 @Component({
   selector: 'app-neural-canvas',
-  template: `<canvas #canvas class="neural-canvas" aria-hidden="true"></canvas>`,
+  template: `
+    <div class="canvas-container">
+      <canvas #canvas class="neural-canvas" aria-hidden="true"></canvas>
+      <div class="readout-overlay">
+        <div class="readout-group">
+          <span class="readout-pulse"></span>
+          <span class="readout-tag readout-tag--bold">ENGINEERING INTELLIGENCE LOOP</span>
+        </div>
+        <span class="readout-tag readout-tag--state">{{ currentStateText }}</span>
+        <span class="readout-tag readout-tag--active">{{ currentInvariantText }}</span>
+      </div>
+    </div>
+  `,
   styles: `
     :host {
       display: block;
       width: 100%;
       height: 100%;
+      position: relative;
       touch-action: none;
+    }
+    .canvas-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: #0d0f17;
+      border-radius: inherit;
+      overflow: hidden;
     }
     .neural-canvas {
       width: 100%;
@@ -71,15 +112,72 @@ interface ShockwaveRing {
         cursor: grabbing;
       }
     }
+    .readout-overlay {
+      position: absolute;
+      bottom: 18px;
+      right: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      pointer-events: none;
+      user-select: none;
+      z-index: 10;
+    }
+    .readout-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .readout-pulse {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #3b82f6;
+      box-shadow: 0 0 12px #3b82f6;
+      animation: pulseGlow 1.8s infinite ease-in-out;
+    }
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.5; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.35); }
+    }
+    .readout-tag {
+      font-family: var(--font-mono, monospace);
+      font-size: 10.5px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: rgba(255, 255, 255, 0.7);
+      background: rgba(15, 18, 28, 0.88);
+      padding: 6px 13px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
+    }
+    .readout-tag--bold {
+      font-weight: 600;
+      color: #ffffff;
+    }
+    .readout-tag--state {
+      color: #f1f5f9;
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+    .readout-tag--active {
+      color: #60a5fa;
+      border-color: rgba(96, 165, 250, 0.45);
+      background: rgba(20, 30, 50, 0.9);
+    }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NeuralCanvas implements OnInit, OnDestroy {
+  @Input() lang: SupportedLang = 'pt-BR';
   @ViewChild('canvas', { static: true }) canvasRef!: ElementRef<HTMLCanvasElement>;
   @Output() nodeSelect = new EventEmitter<string>();
 
   private readonly zone = inject(NgZone);
   private readonly platformId = inject(PLATFORM_ID);
+  private readonly cdr = inject(ChangeDetectorRef);
 
   private renderer: THREE.WebGLRenderer | null = null;
   private scene: THREE.Scene | null = null;
@@ -90,47 +188,54 @@ export class NeuralCanvas implements OnInit, OnDestroy {
   private startTime = 0;
   private isVisible = true;
 
-  // Interaction State
+  // Mouse & Raycasting
   private mouse = { x: 0, y: 0 };
+  private mouseVec2 = new THREE.Vector2();
+  private raycaster = new THREE.Raycaster();
+  private hoveredNodeIndex = -1;
+
+  // Conceptual System State Text
+  public currentStateText = 'ESTADO: ESTÁVEL';
+  public currentInvariantText = 'INVARIANTE: PRESERVADA';
+
+  // Controlled 180° Orbit Drag State
   private isDragging = false;
+  private activePointerId: number | null = null;
   private dragDistance = 0;
   private previousPointer = { x: 0, y: 0 };
   private userRotation = { x: 0, y: 0 };
-  private rotationTarget = { x: 0, y: 0 };
-  private rotationCurrent = { x: 0, y: 0 };
+  private targetRotation = { x: 0, y: 0 };
+  private currentRotation = { x: 0, y: 0 };
+
+  // 180° Angle Boundaries
+  private readonly MAX_ORBIT_Y = 1.15;
+  private readonly MAX_ORBIT_X = 0.45;
 
   // Camera Zoom State
-  private targetZoomZ = 16;
-  private readonly minZoomZ = 4.5;
-  private readonly maxZoomZ = 28.0;
+  private targetZoomZ = 8.5;
+  private readonly minZoomZ = 3.8;
+  private readonly maxZoomZ = 14.0;
 
   // Scene Components
   private mainGroup: THREE.Group | null = null;
-  private coreGroup: THREE.Group | null = null;
-  private coreMesh: THREE.Mesh | null = null;
-  private coreOuterShell: THREE.Mesh | null = null;
-  private coreHalo: THREE.Mesh | null = null;
-  private coreRings: THREE.Mesh[] = [];
-  private coreSprite: THREE.Sprite | null = null;
+  private causalNodes: CausalNode[] = [];
+  private connections: ConnectionLine[] = [];
+  private dataPackets: DataPacket[] = [];
+  private gridMesh: THREE.LineSegments | null = null;
 
-  private orbitalNodes: OrbitalNode[] = [];
-  private coreConnections: THREE.Line[] = [];
-  private interConnections: THREE.Line[] = [];
-  private energyStreams: EnergyStreamParticle[] = [];
-  private shockwaves: ShockwaveRing[] = [];
-
-  private ambientParticles: THREE.Points | null = null;
-  private particleVelocities: Float32Array | null = null;
+  // High Contrast Colors & Glow Colors
+  private readonly COLOR_CHASSIS_CORE = new THREE.Color(0x282c3d);
+  private readonly COLOR_CHASSIS_SUPPORT = new THREE.Color(0x1e2230);
+  private readonly COLOR_BLUE_ACCENT = new THREE.Color(0x3b82f6);
+  private readonly COLOR_BRIGHT_GLOW = new THREE.Color(0x60a5fa);
+  private readonly COLOR_WHITE = new THREE.Color(0xffffff);
 
   private disposables: (THREE.BufferGeometry | THREE.Material | THREE.Texture)[] = [];
 
-  // Colors
-  private readonly ACCENT_PRIMARY = new THREE.Color(0x0066ff);
-  private readonly ACCENT_CYAN = new THREE.Color(0x00d8ff);
-  private readonly NODE_IDLE = new THREE.Color(0x3a3a45);
-
   ngOnInit(): void {
     if (!isPlatformBrowser(this.platformId)) return;
+
+    this.updateStateLabels();
 
     const reducedMotion = this.prefersReducedMotion();
 
@@ -139,16 +244,11 @@ export class NeuralCanvas implements OnInit, OnDestroy {
         this.initScene();
         if (!this.renderer) return;
 
-        this.createQuantumCore();
-        this.createHolographicNodes();
-        this.createNeuralConnections();
-        this.createStreamParticles();
-        this.createAmbientParticleVolume();
+        this.createTechnicalGrid();
+        this.createArchitectureTopology();
         this.setupResizeObserver();
 
         if (reducedMotion) {
-          this.updateNodes(0);
-          this.updateConnections();
           this.renderFrame();
         } else {
           this.setupPointerEvents();
@@ -156,7 +256,7 @@ export class NeuralCanvas implements OnInit, OnDestroy {
           this.animate();
         }
       } catch {
-        // WebGL unavailable: silent fallback for tests
+        // WebGL Fallback
       }
     });
   }
@@ -178,11 +278,26 @@ export class NeuralCanvas implements OnInit, OnDestroy {
     this.scene = null;
     this.camera = null;
     this.mainGroup = null;
-    this.orbitalNodes = [];
-    this.coreConnections = [];
-    this.interConnections = [];
-    this.energyStreams = [];
-    this.shockwaves = [];
+    this.causalNodes = [];
+    this.connections = [];
+    this.dataPackets = [];
+  }
+
+  private updateStateLabels(overrideState?: string, overrideInvariant?: string): void {
+    const isEn = this.lang === 'en';
+
+    if (overrideState) {
+      this.currentStateText = overrideState;
+    } else {
+      this.currentStateText = isEn ? 'STATE: STABLE' : 'ESTADO: ESTÁVEL';
+    }
+
+    if (overrideInvariant) {
+      this.currentInvariantText = overrideInvariant;
+    } else {
+      this.currentInvariantText = isEn ? 'INVARIANT: PRESERVED' : 'INVARIANTE: PRESERVADA';
+    }
+    this.cdr.markForCheck();
   }
 
   private initScene(): void {
@@ -193,171 +308,296 @@ export class NeuralCanvas implements OnInit, OnDestroy {
     this.startTime = performance.now();
 
     this.scene = new THREE.Scene();
-    this.camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
-    this.camera.position.set(0, 0, 16);
+    this.scene.background = new THREE.Color(0x0d0f17);
+
+    // Camera Setup
+    this.camera = new THREE.PerspectiveCamera(25, width / height, 0.1, 100);
+    this.camera.position.set(0, 6.2, 8.5);
+    this.camera.lookAt(0, 0, 0);
 
     this.renderer = new THREE.WebGLRenderer({
       canvas,
       antialias: true,
-      alpha: true,
+      alpha: false,
+      powerPreference: 'high-performance',
     });
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     this.renderer.setSize(width, height);
-    this.renderer.setClearColor(0x000000, 0);
+    this.renderer.shadowMap.enabled = true;
+    this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
     this.mainGroup = new THREE.Group();
-    this.mainGroup.position.set(0, 1.65, 0);
     this.scene.add(this.mainGroup);
+
+    // Studio Lighting
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.55);
+    this.scene.add(ambientLight);
+
+    const keyLight = new THREE.DirectionalLight(0xf8fafc, 2.2);
+    keyLight.position.set(6, 14, 6);
+    keyLight.castShadow = true;
+    keyLight.shadow.mapSize.width = 2048;
+    keyLight.shadow.mapSize.height = 2048;
+    keyLight.shadow.bias = -0.0001;
+    this.scene.add(keyLight);
+
+    const fillLight = new THREE.DirectionalLight(0xc7d2fe, 1.2);
+    fillLight.position.set(-6, 8, -4);
+    this.scene.add(fillLight);
+
+    const rimLight = new THREE.DirectionalLight(0x60a5fa, 1.4);
+    rimLight.position.set(-8, 4, -6);
+    this.scene.add(rimLight);
+
+    const topLight = new THREE.DirectionalLight(0xffffff, 1.0);
+    topLight.position.set(0, 10, 0);
+    this.scene.add(topLight);
   }
 
   // ---------------------------------------------------------------------------
-  // Central Quantum Core ("HUMAN DECISION MAKING")
+  // Technical Grid Base
   // ---------------------------------------------------------------------------
 
-  private createQuantumCore(): void {
+  private createTechnicalGrid(): void {
     if (!this.mainGroup) return;
 
-    this.coreGroup = new THREE.Group();
-    this.mainGroup.add(this.coreGroup);
+    const size = 18;
+    const divisions = 36;
+    const gridGeo = new THREE.BufferGeometry();
+    const positions: number[] = [];
 
-    // Inner glowing sphere
-    const innerGeo = new THREE.SphereGeometry(0.7, 32, 32);
-    const innerMat = new THREE.MeshBasicMaterial({
-      color: this.ACCENT_PRIMARY,
+    const step = size / divisions;
+    const half = size / 2;
+
+    for (let i = -half; i <= half; i += step) {
+      positions.push(-half, -0.45, i, half, -0.45, i);
+      positions.push(i, -0.45, -half, i, -0.45, half);
+    }
+
+    gridGeo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+    const gridMat = new THREE.LineBasicMaterial({
+      color: 0x2e354f,
       transparent: true,
-      opacity: 0.45,
+      opacity: 0.5,
     });
-    this.coreMesh = new THREE.Mesh(innerGeo, innerMat);
-    this.coreGroup.add(this.coreMesh);
-    this.disposables.push(innerGeo, innerMat);
 
-    // Crystalline wireframe outer shell
-    const shellGeo = new THREE.IcosahedronGeometry(0.92, 2);
-    const shellMat = new THREE.MeshBasicMaterial({
-      color: this.ACCENT_CYAN,
-      wireframe: true,
-      transparent: true,
-      opacity: 0.35,
+    this.gridMesh = new THREE.LineSegments(gridGeo, gridMat);
+    this.mainGroup.add(this.gridMesh);
+    this.disposables.push(gridGeo, gridMat);
+  }
+
+  // ---------------------------------------------------------------------------
+  // Topology with Animated Edge Pulses
+  // ---------------------------------------------------------------------------
+
+  private createArchitectureTopology(): void {
+    if (!this.mainGroup) return;
+
+    const coreBoxGeo = new THREE.BoxGeometry(0.92, 0.22, 0.48);
+    const supportBoxGeo = new THREE.BoxGeometry(1.42, 0.18, 0.56);
+    const coreEdges = new THREE.EdgesGeometry(coreBoxGeo);
+    const supportEdges = new THREE.EdgesGeometry(supportBoxGeo);
+
+    this.disposables.push(coreBoxGeo, supportBoxGeo, coreEdges, supportEdges);
+
+    const rx = 4.6;
+    const rz = 2.3;
+
+    CORE_LOOP_NODES.forEach((name, i) => {
+      const nodeGroup = new THREE.Group();
+      const theta = (i / CORE_LOOP_NODES.length) * Math.PI * 2;
+      const posX = Math.cos(theta) * rx;
+      const posZ = Math.sin(theta) * rz;
+
+      const chassisMat = new THREE.MeshPhysicalMaterial({
+        color: this.COLOR_CHASSIS_CORE,
+        metalness: 0.75,
+        roughness: 0.2,
+        clearcoat: 0.3,
+      });
+
+      // Primary Edge Outline
+      const edgeMat = new THREE.LineBasicMaterial({ color: 0x64748b, transparent: true, opacity: 0.8 });
+      // Secondary Pulse Glow Outline (Slightly larger frame that bursts into bright white/blue)
+      const glowMat = new THREE.LineBasicMaterial({ color: 0x60a5fa, transparent: true, opacity: 0.0 });
+
+      this.disposables.push(chassisMat, edgeMat, glowMat);
+
+      const baseChassis = new THREE.Mesh(coreBoxGeo, chassisMat);
+      baseChassis.castShadow = true;
+      baseChassis.receiveShadow = true;
+      nodeGroup.add(baseChassis);
+
+      const borderLines = new THREE.LineSegments(coreEdges, edgeMat);
+      nodeGroup.add(borderLines);
+
+      const pulseGlowLines = new THREE.LineSegments(coreEdges, glowMat);
+      pulseGlowLines.scale.set(1.04, 1.04, 1.04);
+      nodeGroup.add(pulseGlowLines);
+
+      const labelSprite = this.createLabelSprite(name, `CORE LOOP // 0${i + 1}`, false);
+      labelSprite.position.set(0, 0.34, 0);
+      nodeGroup.add(labelSprite);
+
+      const metaSprite = this.createMetaSprite('STATUS: NOMINAL');
+      metaSprite.position.set(0, -0.28, 0);
+      nodeGroup.add(metaSprite);
+
+      nodeGroup.position.set(posX, 0, posZ);
+      this.mainGroup!.add(nodeGroup);
+
+      this.causalNodes.push({
+        name,
+        index: i,
+        isSupporting: false,
+        group: nodeGroup,
+        baseChassis,
+        labelSprite,
+        metaSprite,
+        borderLines,
+        pulseGlowLines,
+        basePosition: new THREE.Vector3(posX, 0, posZ),
+        targetY: 0,
+        currentY: 0,
+        velocityY: 0,
+        edgePulseEnergy: 0,
+      });
     });
-    this.coreOuterShell = new THREE.Mesh(shellGeo, shellMat);
-    this.coreGroup.add(this.coreOuterShell);
-    this.disposables.push(shellGeo, shellMat);
 
-    // Volumetric glow atmosphere
-    const haloGeo = new THREE.SphereGeometry(1.3, 32, 32);
-    const haloMat = new THREE.MeshBasicMaterial({
-      color: this.ACCENT_PRIMARY,
-      transparent: true,
-      opacity: 0.08,
-    });
-    this.coreHalo = new THREE.Mesh(haloGeo, haloMat);
-    this.coreGroup.add(this.coreHalo);
-    this.disposables.push(haloGeo, haloMat);
-
-    // 3 Orthogonal Quantum Energy Rings
-    const ringConfigs = [
-      { radius: 1.55, thickness: 0.015, color: this.ACCENT_PRIMARY, rot: [Math.PI * 0.4, 0, 0] },
-      { radius: 1.85, thickness: 0.012, color: this.ACCENT_CYAN, rot: [0, Math.PI * 0.45, 0.2] },
-      { radius: 2.15, thickness: 0.01, color: 0xffffff, rot: [-Math.PI * 0.3, 0.3, Math.PI * 0.5] },
+    const supportingCoords = [
+      { name: 'KNOWLEDGE' as const, pos: new THREE.Vector3(-1.8, -0.22, 0) },
+      { name: 'HUMAN JUDGMENT' as const, pos: new THREE.Vector3(1.8, -0.22, 0) },
     ];
 
-    ringConfigs.forEach((cfg) => {
-      const rGeo = new THREE.TorusGeometry(cfg.radius, cfg.thickness, 16, 100);
-      const rMat = new THREE.MeshBasicMaterial({
-        color: cfg.color,
-        transparent: true,
-        opacity: 0.22,
+    supportingCoords.forEach((sup, idx) => {
+      const nodeGroup = new THREE.Group();
+
+      const chassisMat = new THREE.MeshPhysicalMaterial({
+        color: this.COLOR_CHASSIS_SUPPORT,
+        metalness: 0.7,
+        roughness: 0.25,
+        clearcoat: 0.2,
       });
-      const ring = new THREE.Mesh(rGeo, rMat);
-      ring.rotation.set(cfg.rot[0], cfg.rot[1], cfg.rot[2]);
-      this.coreGroup!.add(ring);
-      this.coreRings.push(ring);
-      this.disposables.push(rGeo, rMat);
+
+      const edgeMat = new THREE.LineBasicMaterial({ color: 0x475569, transparent: true, opacity: 0.8 });
+      const glowMat = new THREE.LineBasicMaterial({ color: 0x60a5fa, transparent: true, opacity: 0.0 });
+      this.disposables.push(chassisMat, edgeMat, glowMat);
+
+      const baseChassis = new THREE.Mesh(supportBoxGeo, chassisMat);
+      baseChassis.castShadow = true;
+      baseChassis.receiveShadow = true;
+      nodeGroup.add(baseChassis);
+
+      const borderLines = new THREE.LineSegments(supportEdges, edgeMat);
+      nodeGroup.add(borderLines);
+
+      const pulseGlowLines = new THREE.LineSegments(supportEdges, glowMat);
+      pulseGlowLines.scale.set(1.04, 1.04, 1.04);
+      nodeGroup.add(pulseGlowLines);
+
+      const labelSprite = this.createLabelSprite(sup.name, `SUPPORTING LAYER // 0${idx + 1}`, true);
+      labelSprite.position.set(0, 0.3, 0);
+      nodeGroup.add(labelSprite);
+
+      const metaSprite = this.createMetaSprite('FOUNDATIONAL GOVERNANCE');
+      metaSprite.position.set(0, -0.26, 0);
+      nodeGroup.add(metaSprite);
+
+      nodeGroup.position.copy(sup.pos);
+      this.mainGroup!.add(nodeGroup);
+
+      this.causalNodes.push({
+        name: sup.name,
+        index: CORE_LOOP_NODES.length + idx,
+        isSupporting: true,
+        group: nodeGroup,
+        baseChassis,
+        labelSprite,
+        metaSprite,
+        borderLines,
+        pulseGlowLines,
+        basePosition: sup.pos.clone(),
+        targetY: -0.22,
+        currentY: -0.22,
+        velocityY: 0,
+        edgePulseEnergy: 0,
+      });
     });
 
-    // Core Label Sprite
-    this.coreSprite = this.createLabelSprite('HUMAN DECISION MAKING', true);
-    this.coreSprite.position.set(0, -1.45, 0);
-    this.coreGroup.add(this.coreSprite);
+    this.createCausalConnections();
   }
 
-  // ---------------------------------------------------------------------------
-  // Holographic 3D Orbiting Nodes
-  // ---------------------------------------------------------------------------
-
-  private createHolographicNodes(): void {
+  private createCausalConnections(): void {
     if (!this.mainGroup) return;
 
-    const nodeGeo = new THREE.SphereGeometry(0.14, 16, 16);
-    const shellGeo = new THREE.IcosahedronGeometry(0.24, 1);
-    this.disposables.push(nodeGeo, shellGeo);
+    for (let i = 0; i < CORE_LOOP_NODES.length; i++) {
+      const nextIdx = (i + 1) % CORE_LOOP_NODES.length;
+      this.addBezierConnection(i, nextIdx);
+    }
 
-    NODE_LABELS.forEach((label, i) => {
-      const nodeGroup = new THREE.Group();
-      const angle = (i / NODE_LABELS.length) * Math.PI * 2;
-      const orbitRadius = 4.4 + (i % 2) * 0.8;
-      const orbitTilt = ((i % 3) - 1) * 0.28;
+    const knowledgeIdx = 6;
+    const humanIdx = 7;
+    const contextIdx = 1;
+    const decisionIdx = 3;
 
-      const isAccent = i % 2 === 0;
-      const nodeMat = new THREE.MeshBasicMaterial({
-        color: isAccent ? this.ACCENT_PRIMARY : this.NODE_IDLE,
-        transparent: true,
-        opacity: 0.9,
-      });
+    this.addBezierConnection(knowledgeIdx, contextIdx);
+    this.addBezierConnection(humanIdx, decisionIdx);
+  }
 
-      const shellMat = new THREE.MeshBasicMaterial({
-        color: isAccent ? this.ACCENT_CYAN : this.NODE_IDLE,
-        wireframe: true,
-        transparent: true,
-        opacity: 0.35,
-      });
-      this.disposables.push(nodeMat, shellMat);
+  private addBezierConnection(fromIdx: number, toIdx: number): void {
+    const start = this.causalNodes[fromIdx].basePosition;
+    const end = this.causalNodes[toIdx].basePosition;
 
-      const nodeMesh = new THREE.Mesh(nodeGeo, nodeMat);
-      const shellMesh = new THREE.Mesh(shellGeo, shellMat);
-      nodeGroup.add(nodeMesh);
-      nodeGroup.add(shellMesh);
+    const mid = new THREE.Vector3().addVectors(start, end).multiplyScalar(0.5);
+    mid.y += 0.35;
 
-      const sprite = this.createLabelSprite(label, false);
+    const curve = new THREE.QuadraticBezierCurve3(start, mid, end);
+    const points = curve.getPoints(28);
 
-      this.mainGroup!.add(nodeGroup);
-      this.mainGroup!.add(sprite);
+    const lineGeo = new THREE.BufferGeometry().setFromPoints(points);
+    const lineMat = new THREE.LineBasicMaterial({
+      color: 0x64748b,
+      transparent: true,
+      opacity: 0.6,
+    });
 
-      this.orbitalNodes.push({
-        meshGroup: nodeGroup,
-        nodeMesh,
-        shellMesh,
-        sprite,
-        baseAngle: angle,
-        orbitSpeed: 0.045 + i * 0.008,
-        orbitRadius,
-        orbitTilt,
-        yPhase: Math.random() * Math.PI * 2,
-        yAmplitude: 0.15 + Math.random() * 0.15,
-        ySpeed: 0.25 + Math.random() * 0.25,
-      });
+    const lineMesh = new THREE.Line(lineGeo, lineMat);
+    this.mainGroup!.add(lineMesh);
+    this.disposables.push(lineGeo, lineMat);
+
+    this.connections.push({
+      curve,
+      lineMesh,
+      fromIndex: fromIdx,
+      toIndex: toIdx,
     });
   }
 
-  private createLabelSprite(text: string, isCore = false): THREE.Sprite {
+  // ---------------------------------------------------------------------------
+  // Label Sprites
+  // ---------------------------------------------------------------------------
+
+  private createLabelSprite(title: string, indexTag: string, isSupporting: boolean): THREE.Sprite {
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d')!;
     const dpr = Math.min(window.devicePixelRatio, 2);
 
-    canvas.width = (isCore ? 512 : 384) * dpr;
-    canvas.height = 48 * dpr;
+    canvas.width = 420 * dpr;
+    canvas.height = 68 * dpr;
     ctx.scale(dpr, dpr);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    ctx.font = isCore
-      ? '600 13px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
-      : '500 12px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
-
-    ctx.fillStyle = isCore ? 'rgba(0, 216, 255, 0.95)' : 'rgba(180, 180, 190, 0.88)';
+    ctx.font = '600 10.5px "Geist Mono", "SF Mono", monospace';
+    ctx.fillStyle = isSupporting ? '#cbd5e1' : '#60a5fa';
     ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.letterSpacing = '0.08em';
-    ctx.fillText(text.toUpperCase(), (isCore ? 512 : 384) / 2, 24);
+    ctx.textBaseline = 'top';
+    ctx.letterSpacing = '0.14em';
+    ctx.fillText(indexTag, 210, 6);
+
+    ctx.font = '700 14px "Geist Mono", "SF Mono", monospace';
+    ctx.fillStyle = '#ffffff';
+    ctx.letterSpacing = '0.1em';
+    ctx.fillText(title, 210, 25);
 
     const texture = new THREE.CanvasTexture(canvas);
     texture.minFilter = THREE.LinearFilter;
@@ -367,139 +607,128 @@ export class NeuralCanvas implements OnInit, OnDestroy {
     const mat = new THREE.SpriteMaterial({
       map: texture,
       transparent: true,
-      opacity: 0.92,
+      opacity: 0.98,
       depthWrite: false,
     });
     this.disposables.push(mat);
 
     const sprite = new THREE.Sprite(mat);
-    sprite.scale.set(isCore ? 4.0 : 3.2, 0.48, 1);
+    sprite.scale.set(isSupporting ? 2.5 : 2.1, 0.35, 1);
+    return sprite;
+  }
+
+  private createMetaSprite(text: string): THREE.Sprite {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d')!;
+    const dpr = Math.min(window.devicePixelRatio, 2);
+
+    canvas.width = 256 * dpr;
+    canvas.height = 36 * dpr;
+    ctx.scale(dpr, dpr);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    ctx.font = '500 9.5px "Geist Mono", "SF Mono", monospace';
+    ctx.fillStyle = 'rgba(203, 213, 225, 0.85)';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.letterSpacing = '0.12em';
+    ctx.fillText(text, 128, 18);
+
+    const texture = new THREE.CanvasTexture(canvas);
+    texture.minFilter = THREE.LinearFilter;
+    texture.magFilter = THREE.LinearFilter;
+    this.disposables.push(texture);
+
+    const mat = new THREE.SpriteMaterial({
+      map: texture,
+      transparent: true,
+      opacity: 0.85,
+      depthWrite: false,
+    });
+    this.disposables.push(mat);
+
+    const sprite = new THREE.Sprite(mat);
+    sprite.scale.set(1.4, 0.2, 1);
     return sprite;
   }
 
   // ---------------------------------------------------------------------------
-  // Bezier Connections & Energy Streams
+  // Causal Cascade Events with Edge Pulse Energy Burst
   // ---------------------------------------------------------------------------
 
-  private createNeuralConnections(): void {
-    if (!this.mainGroup) return;
+  private triggerCausalCascade(sourceIndex: number): void {
+    const node = this.causalNodes[sourceIndex];
+    if (!node) return;
 
-    this.orbitalNodes.forEach((node) => {
-      const curvePoints = this.getCurvePoints(
-        new THREE.Vector3(0, 0, 0),
-        node.meshGroup.position,
+    node.velocityY = 0.14;
+    node.edgePulseEnergy = 1.0; // Burst edge pulse energy to 100%!
+
+    const isEn = this.lang === 'en';
+
+    this.updateStateLabels(
+      isEn ? 'EVENT: RECEIVED' : 'EVENTO: RECEBIDO',
+      isEn ? 'CONTEXT: UPDATING' : 'CONTEXTO: ATUALIZANDO',
+    );
+
+    setTimeout(() => {
+      this.updateStateLabels(
+        isEn ? 'PROCESS: EXECUTING' : 'PROCESSO: EXECUTANDO',
+        isEn ? 'VALIDATION: CHECK' : 'VALIDAÇÃO: CHECAGEM',
       );
-      const geo = new THREE.BufferGeometry().setFromPoints(curvePoints);
-      const mat = new THREE.LineBasicMaterial({
-        color: this.ACCENT_PRIMARY,
-        transparent: true,
-        opacity: 0.12,
-      });
+    }, 400);
 
-      const line = new THREE.Line(geo, mat);
-      this.mainGroup!.add(line);
-      this.coreConnections.push(line);
-      this.disposables.push(geo, mat);
-    });
-  }
+    setTimeout(() => {
+      this.updateStateLabels(
+        isEn ? 'STATE: TRANSITION' : 'ESTADO: TRANSIÇÃO',
+        isEn ? 'INVARIANT: PRESERVED' : 'INVARIANTE: PRESERVADA',
+      );
+    }, 900);
 
-  private getCurvePoints(start: THREE.Vector3, end: THREE.Vector3): THREE.Vector3[] {
-    const mid = new THREE.Vector3().addVectors(start, end).multiplyScalar(0.5);
-    const dir = new THREE.Vector3().subVectors(end, start);
-    const perp = new THREE.Vector3(-dir.y, dir.x, dir.z * 0.5).normalize();
-    mid.add(perp.multiplyScalar(0.7 + Math.random() * 0.3));
+    setTimeout(() => {
+      this.updateStateLabels();
+    }, 1600);
 
-    const curve = new THREE.QuadraticBezierCurve3(start.clone(), mid, end.clone());
-    return curve.getPoints(24);
-  }
+    this.connections.forEach((conn) => {
+      if (conn.fromIndex === sourceIndex) {
+        // Spawn glowing data sphere streams
+        this.spawnDataPacket(conn.curve, this.COLOR_WHITE, 0.032);
+        this.spawnDataPacket(conn.curve, this.COLOR_BRIGHT_GLOW, 0.024);
 
-  private createStreamParticles(): void {
-    if (!this.mainGroup) return;
-
-    const pGeo = new THREE.SphereGeometry(0.045, 8, 8);
-    const pMat = new THREE.MeshBasicMaterial({
-      color: this.ACCENT_CYAN,
-      transparent: true,
-      opacity: 0.9,
-    });
-    this.disposables.push(pGeo, pMat);
-
-    this.orbitalNodes.forEach((_, i) => {
-      for (let s = 0; s < 3; s++) {
-        const mesh = new THREE.Mesh(pGeo, pMat);
-        this.mainGroup!.add(mesh);
-
-        this.energyStreams.push({
-          mesh,
-          nodeIndex: i,
-          progress: Math.random(),
-          speed: 0.12 + Math.random() * 0.18,
-          direction: s % 2 === 0 ? 1 : -1,
-        });
+        const destNode = this.causalNodes[conn.toIndex];
+        setTimeout(() => {
+          destNode.velocityY = -0.06;
+          destNode.edgePulseEnergy = 0.85; // Destination edge pulse burst!
+        }, 180);
       }
     });
   }
 
-  private createAmbientParticleVolume(): void {
+  private spawnDataPacket(curve: THREE.QuadraticBezierCurve3, color: THREE.Color, speed: number): void {
     if (!this.mainGroup) return;
 
-    const count = 90;
-    const positions = new Float32Array(count * 3);
-    this.particleVelocities = new Float32Array(count * 3);
-    const radius = 8;
-
-    for (let i = 0; i < count; i++) {
-      const theta = Math.random() * Math.PI * 2;
-      const phi = Math.acos(2 * Math.random() - 1);
-      const r = Math.random() * radius;
-
-      positions[i * 3] = r * Math.sin(phi) * Math.cos(theta);
-      positions[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
-      positions[i * 3 + 2] = r * Math.cos(phi);
-
-      this.particleVelocities[i * 3] = (Math.random() - 0.5) * 0.003;
-      this.particleVelocities[i * 3 + 1] = (Math.random() - 0.5) * 0.003;
-      this.particleVelocities[i * 3 + 2] = (Math.random() - 0.5) * 0.003;
-    }
-
-    const geo = new THREE.BufferGeometry();
-    geo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
-
-    const mat = new THREE.PointsMaterial({
-      color: 0xffffff,
-      size: 1.9,
+    const pGeo = new THREE.SphereGeometry(0.065, 16, 16);
+    const pMat = new THREE.MeshBasicMaterial({
+      color,
       transparent: true,
-      opacity: 0.14,
-      sizeAttenuation: true,
-      depthWrite: false,
+      opacity: 1.0,
     });
+    this.disposables.push(pGeo, pMat);
 
-    this.ambientParticles = new THREE.Points(geo, mat);
-    this.mainGroup.add(this.ambientParticles);
-    this.disposables.push(geo, mat);
-  }
+    const mesh = new THREE.Mesh(pGeo, pMat);
 
-  // Shockwave Burst on Click
-  private triggerShockwave(): void {
-    if (!this.coreGroup) return;
+    // Glowing point light attached to traveling packet
+    const light = new THREE.PointLight(color.getHex(), 1.2, 2.5);
+    mesh.add(light);
 
-    const ringGeo = new THREE.RingGeometry(0.8, 0.88, 64);
-    const ringMat = new THREE.MeshBasicMaterial({
-      color: this.ACCENT_CYAN,
-      transparent: true,
-      opacity: 0.8,
-      side: THREE.DoubleSide,
-    });
-    this.disposables.push(ringGeo, ringMat);
+    this.mainGroup.add(mesh);
 
-    const mesh = new THREE.Mesh(ringGeo, ringMat);
-    mesh.rotation.x = Math.PI * 0.5;
-    this.coreGroup.add(mesh);
-
-    this.shockwaves.push({
+    this.dataPackets.push({
       mesh,
-      scale: 1,
-      alpha: 0.8,
+      light,
+      curve,
+      progress: 0,
+      speed,
+      color,
     });
   }
 
@@ -513,18 +742,13 @@ export class NeuralCanvas implements OnInit, OnDestroy {
     if (!this.isVisible) return;
     if (!this.scene || !this.camera || !this.renderer || !this.mainGroup) return;
 
-    // Smooth camera Z zoom transition
-    this.camera.position.z += (this.targetZoomZ - this.camera.position.z) * 0.08;
+    this.camera.position.z += (this.targetZoomZ - this.camera.position.z) * 0.14;
 
     const elapsed = (performance.now() - this.startTime) / 1000;
 
-    this.updateCore(elapsed);
-    this.updateNodes(elapsed);
-    this.updateConnections();
-    this.updateEnergyStreams();
-    this.updateShockwaves();
-    this.updateAmbientParticles();
-    this.updateParallax();
+    this.updateNodesPhysics(elapsed);
+    this.updateDataPackets();
+    this.updateControlledOrbitPhysics();
 
     this.renderFrame();
   }
@@ -535,227 +759,179 @@ export class NeuralCanvas implements OnInit, OnDestroy {
     }
   }
 
-  private updateCore(elapsed: number): void {
-    if (!this.coreMesh || !this.coreOuterShell || !this.coreHalo) return;
+  private updateNodesPhysics(elapsed: number): void {
+    this.causalNodes.forEach((node, i) => {
+      const stiffness = 240;
+      const damping = 20;
 
-    const pulse = 1 + Math.sin(elapsed * 1.1) * 0.04;
-    this.coreMesh.scale.setScalar(pulse);
+      const targetY = node.isSupporting ? -0.22 : 0;
+      const forceY = -stiffness * (node.currentY - targetY) - damping * node.velocityY;
+      node.velocityY += forceY * 0.016;
+      node.currentY += node.velocityY * 0.016;
 
-    this.coreOuterShell.rotation.y = elapsed * 0.12;
-    this.coreOuterShell.rotation.x = Math.sin(elapsed * 0.08) * 0.15;
+      node.group.position.y = node.currentY;
 
-    const haloPulse = 1 + Math.sin(elapsed * 0.75) * 0.06;
-    this.coreHalo.scale.setScalar(haloPulse);
-    (this.coreHalo.material as THREE.MeshBasicMaterial).opacity =
-      0.06 + Math.sin(elapsed * 0.9) * 0.03;
+      // Animate Edge Glow Energy Decay
+      if (node.edgePulseEnergy > 0.01) {
+        node.edgePulseEnergy *= 0.92;
+      } else {
+        node.edgePulseEnergy = 0;
+      }
 
-    if (this.coreRings.length >= 3) {
-      this.coreRings[0].rotation.z = elapsed * 0.16;
-      this.coreRings[1].rotation.z = -elapsed * 0.2;
-      this.coreRings[2].rotation.y = elapsed * 0.14;
-    }
-  }
+      const isHovered = i === this.hoveredNodeIndex;
+      const effectivePulse = Math.max(isHovered ? 1.0 : 0.0, node.edgePulseEnergy);
 
-  private updateNodes(elapsed: number): void {
-    this.orbitalNodes.forEach((node) => {
-      const angle = node.baseAngle + elapsed * node.orbitSpeed;
-      const x = Math.cos(angle) * node.orbitRadius;
-      const z = Math.sin(angle) * node.orbitRadius * 0.45;
-      const yOrbit = Math.sin(angle) * node.orbitTilt;
-      const yFloat = Math.sin(elapsed * node.ySpeed + node.yPhase) * node.yAmplitude;
+      // Primary Edge Outline Color
+      const borderMat = node.borderLines.material as THREE.LineBasicMaterial;
+      borderMat.color.lerpColors(new THREE.Color(0x64748b), this.COLOR_BRIGHT_GLOW, effectivePulse);
 
-      node.meshGroup.position.set(x, yOrbit + yFloat, z);
-      node.shellMesh.rotation.y = elapsed * 0.3;
-      node.shellMesh.rotation.x = elapsed * 0.2;
+      // Pulse Glow Frame Scaling & Opacity
+      const glowMat = node.pulseGlowLines.material as THREE.LineBasicMaterial;
+      glowMat.opacity = effectivePulse * 0.95;
+      node.pulseGlowLines.scale.setScalar(1.02 + effectivePulse * 0.06);
 
-      node.sprite.position.set(x, yOrbit + yFloat + 0.52, z);
+      // Autonomous Pulse
+      if (Math.floor(elapsed * 0.3) % CAPABILITY_NODES.length === i && Math.random() < 0.006) {
+        this.triggerCausalCascade(i);
+      }
     });
   }
 
-  private updateConnections(): void {
-    this.coreConnections.forEach((line, i) => {
-      if (i >= this.orbitalNodes.length) return;
-      const node = this.orbitalNodes[i];
-      const curvePoints = this.getCurvePoints(
-        new THREE.Vector3(0, 0, 0),
-        node.meshGroup.position,
-      );
-      const positions = new Float32Array(curvePoints.length * 3);
-      curvePoints.forEach((p, j) => {
-        positions[j * 3] = p.x;
-        positions[j * 3 + 1] = p.y;
-        positions[j * 3 + 2] = p.z;
-      });
-      line.geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
-      line.geometry.attributes['position'].needsUpdate = true;
-    });
+  private updateDataPackets(): void {
+    for (let i = this.dataPackets.length - 1; i >= 0; i--) {
+      const p = this.dataPackets[i];
+      p.progress += p.speed;
 
-    if (this.mainGroup) {
-      this.interConnections.forEach((line) => {
-        this.mainGroup!.remove(line);
-        line.geometry.dispose();
-        (line.material as THREE.Material).dispose();
-      });
-      this.interConnections = [];
-
-      for (let i = 0; i < this.orbitalNodes.length; i++) {
-        for (let j = i + 1; j < this.orbitalNodes.length; j++) {
-          const dist = this.orbitalNodes[i].meshGroup.position.distanceTo(
-            this.orbitalNodes[j].meshGroup.position,
-          );
-          if (dist < 5.8) {
-            const geo = new THREE.BufferGeometry().setFromPoints([
-              this.orbitalNodes[i].meshGroup.position.clone(),
-              this.orbitalNodes[j].meshGroup.position.clone(),
-            ]);
-            const mat = new THREE.LineBasicMaterial({
-              color: this.ACCENT_CYAN,
-              transparent: true,
-              opacity: Math.max(0.01, 0.05 * (1 - dist / 5.8)),
-            });
-            const line = new THREE.Line(geo, mat);
-            this.mainGroup.add(line);
-            this.interConnections.push(line);
-          }
-        }
+      if (p.progress >= 1.0) {
+        if (this.mainGroup) this.mainGroup.remove(p.mesh);
+        p.mesh.geometry.dispose();
+        (p.mesh.material as THREE.Material).dispose();
+        p.light.dispose();
+        this.dataPackets.splice(i, 1);
+        continue;
       }
+
+      const point = p.curve.getPoint(p.progress);
+      p.mesh.position.copy(point);
+
+      const fade = Math.sin(p.progress * Math.PI);
+      (p.mesh.material as THREE.MeshBasicMaterial).opacity = 0.3 + fade * 0.7;
+      p.light.intensity = fade * 1.5;
     }
   }
 
-  private updateEnergyStreams(): void {
-    this.energyStreams.forEach((stream) => {
-      stream.progress += stream.speed * 0.016;
-      if (stream.progress > 1) stream.progress -= 1;
-
-      const nodePos = this.orbitalNodes[stream.nodeIndex].meshGroup.position;
-      const t = stream.direction === 1 ? stream.progress : 1 - stream.progress;
-
-      const curvePoints = this.getCurvePoints(new THREE.Vector3(0, 0, 0), nodePos);
-      const idx = Math.min(
-        curvePoints.length - 1,
-        Math.floor(t * (curvePoints.length - 1)),
-      );
-      stream.mesh.position.copy(curvePoints[idx]);
-
-      const fade = Math.sin(t * Math.PI);
-      (stream.mesh.material as THREE.MeshBasicMaterial).opacity = 0.2 + fade * 0.75;
-    });
-  }
-
-  private updateShockwaves(): void {
-    for (let i = this.shockwaves.length - 1; i >= 0; i--) {
-      const sw = this.shockwaves[i];
-      sw.scale += 0.15;
-      sw.alpha -= 0.025;
-
-      sw.mesh.scale.setScalar(sw.scale);
-      (sw.mesh.material as THREE.MeshBasicMaterial).opacity = Math.max(0, sw.alpha);
-
-      if (sw.alpha <= 0) {
-        if (this.coreGroup) this.coreGroup.remove(sw.mesh);
-        sw.mesh.geometry.dispose();
-        (sw.mesh.material as THREE.Material).dispose();
-        this.shockwaves.splice(i, 1);
-      }
-    }
-  }
-
-  private updateAmbientParticles(): void {
-    if (!this.ambientParticles || !this.particleVelocities) return;
-
-    const positions = this.ambientParticles.geometry.attributes['position'] as THREE.BufferAttribute;
-    const arr = positions.array as Float32Array;
-    const maxR = 8;
-
-    for (let i = 0; i < arr.length / 3; i++) {
-      arr[i * 3] += this.particleVelocities[i * 3];
-      arr[i * 3 + 1] += this.particleVelocities[i * 3 + 1];
-      arr[i * 3 + 2] += this.particleVelocities[i * 3 + 2];
-
-      const x = arr[i * 3];
-      const y = arr[i * 3 + 1];
-      const z = arr[i * 3 + 2];
-      const dist = Math.sqrt(x * x + y * y + z * z);
-      if (dist > maxR) {
-        this.particleVelocities[i * 3] *= -1;
-        this.particleVelocities[i * 3 + 1] *= -1;
-        this.particleVelocities[i * 3 + 2] *= -1;
-      }
-    }
-
-    positions.needsUpdate = true;
-  }
-
-  private updateParallax(): void {
+  private updateControlledOrbitPhysics(): void {
     if (!this.mainGroup) return;
 
-    // Slow continuous ambient spin starting from current user rotation
-    if (!this.isDragging) {
-      this.userRotation.y += 0.001;
-    }
+    this.targetRotation.x = this.userRotation.x - this.mouse.y * 0.035;
+    this.targetRotation.y = this.userRotation.y + this.mouse.x * 0.035;
 
-    // Parallax adds a subtle tilt onto the user-controlled rotation
-    this.rotationTarget.x = this.userRotation.x - this.mouse.y * 0.08;
-    this.rotationTarget.y = this.userRotation.y + this.mouse.x * 0.08;
+    this.currentRotation.x += (this.targetRotation.x - this.currentRotation.x) * 0.12;
+    this.currentRotation.y += (this.targetRotation.y - this.currentRotation.y) * 0.12;
 
-    this.rotationCurrent.x += (this.rotationTarget.x - this.rotationCurrent.x) * 0.04;
-    this.rotationCurrent.y += (this.rotationTarget.y - this.rotationCurrent.y) * 0.04;
-
-    this.mainGroup.rotation.x = this.rotationCurrent.x;
-    this.mainGroup.rotation.y = this.rotationCurrent.y;
+    this.mainGroup.rotation.x = this.currentRotation.x;
+    this.mainGroup.rotation.y = this.currentRotation.y;
   }
 
   // Pointer Handlers
   private readonly onPointerDown = (e: PointerEvent): void => {
     this.isDragging = true;
+    this.activePointerId = e.pointerId;
     this.dragDistance = 0;
     this.previousPointer = { x: e.clientX, y: e.clientY };
+
+    const canvas = this.canvasRef.nativeElement;
+    try {
+      canvas.setPointerCapture(e.pointerId);
+    } catch {
+      // Fallback
+    }
+
     this.updateMouseCoords(e);
-    this.triggerShockwave();
   };
 
   private readonly onPointerMove = (e: PointerEvent): void => {
-    if (this.isDragging) {
+    if (this.isDragging && (this.activePointerId === null || e.pointerId === this.activePointerId)) {
       const dx = e.clientX - this.previousPointer.x;
       const dy = e.clientY - this.previousPointer.y;
-      this.userRotation.y += dx * 0.005;
-      this.userRotation.x += dy * 0.005;
       this.dragDistance += Math.abs(dx) + Math.abs(dy);
+
+      this.userRotation.y = Math.max(-this.MAX_ORBIT_Y, Math.min(this.MAX_ORBIT_Y, this.userRotation.y + dx * 0.0055));
+      this.userRotation.x = Math.max(-this.MAX_ORBIT_X, Math.min(this.MAX_ORBIT_X, this.userRotation.x + dy * 0.0055));
+
       this.previousPointer = { x: e.clientX, y: e.clientY };
     }
+
     this.updateMouseCoords(e);
+    this.checkRaycastHover();
   };
 
   private readonly onPointerUp = (e: PointerEvent): void => {
-    if (this.isDragging && this.dragDistance < 10) {
-      this.checkRaycastClick();
+    if (this.isDragging) {
+      if (this.dragDistance < 8) {
+        this.checkRaycastClick();
+      }
+      const canvas = this.canvasRef.nativeElement;
+      try {
+        if (this.activePointerId !== null) {
+          canvas.releasePointerCapture(this.activePointerId);
+        }
+      } catch {
+        // Fallback
+      }
     }
     this.isDragging = false;
+    this.activePointerId = null;
   };
+
+  private readonly onWheel = (e: WheelEvent): void => {
+    e.preventDefault();
+    const delta = Math.sign(e.deltaY) * 0.7;
+    this.targetZoomZ = Math.max(this.minZoomZ, Math.min(this.maxZoomZ, this.targetZoomZ + delta));
+    this.cdr.markForCheck();
+  };
+
+  private updateMouseCoords(e: PointerEvent): void {
+    const canvas = this.canvasRef.nativeElement;
+    const rect = canvas.getBoundingClientRect();
+    this.mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+    this.mouse.y = -(((e.clientY - rect.top) / rect.height) * 2 - 1);
+    this.mouseVec2.set(this.mouse.x, this.mouse.y);
+  }
+
+  private checkRaycastHover(): void {
+    if (!this.camera || !this.scene) return;
+
+    this.raycaster.setFromCamera(this.mouseVec2, this.camera);
+    let foundIndex = -1;
+
+    for (let i = 0; i < this.causalNodes.length; i++) {
+      const intersects = this.raycaster.intersectObject(this.causalNodes[i].baseChassis);
+      if (intersects.length > 0) {
+        foundIndex = i;
+        break;
+      }
+    }
+
+    if (foundIndex !== this.hoveredNodeIndex) {
+      this.hoveredNodeIndex = foundIndex;
+      if (foundIndex !== -1) {
+        this.triggerCausalCascade(foundIndex);
+      }
+    }
+  }
 
   private checkRaycastClick(): void {
     if (!this.camera || !this.scene) return;
 
-    const raycaster = new THREE.Raycaster();
-    const mouseVec = new THREE.Vector2(this.mouse.x, this.mouse.y);
-    raycaster.setFromCamera(mouseVec, this.camera);
+    this.raycaster.setFromCamera(this.mouseVec2, this.camera);
 
-    // Check core
-    if (this.coreMesh) {
-      const intersectsCore = raycaster.intersectObject(this.coreMesh);
-      if (intersectsCore.length > 0) {
-        this.zone.run(() => this.nodeSelect.emit('HUMAN DECISION MAKING'));
-        return;
-      }
-    }
-
-    // Check orbital nodes
-    for (let i = 0; i < this.orbitalNodes.length; i++) {
-      const node = this.orbitalNodes[i];
-      const intersects = raycaster.intersectObjects([node.nodeMesh, node.shellMesh]);
+    for (let i = 0; i < this.causalNodes.length; i++) {
+      const intersects = this.raycaster.intersectObject(this.causalNodes[i].baseChassis);
       if (intersects.length > 0) {
-        const labelName = NODE_LABELS[i];
-        this.zone.run(() => this.nodeSelect.emit(labelName));
+        const nodeName = this.causalNodes[i].name;
+        this.triggerCausalCascade(i);
+        this.zone.run(() => this.nodeSelect.emit(nodeName));
         return;
       }
     }
@@ -763,126 +939,80 @@ export class NeuralCanvas implements OnInit, OnDestroy {
 
   // Zoom Control API
   public zoomIn(): void {
-    this.targetZoomZ = Math.max(this.minZoomZ, this.targetZoomZ - 3.8);
+    this.targetZoomZ = Math.max(this.minZoomZ, this.targetZoomZ - 1.5);
+    this.cdr.markForCheck();
   }
 
   public zoomOut(): void {
-    this.targetZoomZ = Math.min(this.maxZoomZ, this.targetZoomZ + 3.8);
+    this.targetZoomZ = Math.min(this.maxZoomZ, this.targetZoomZ + 1.5);
+    this.cdr.markForCheck();
   }
 
   public resetZoom(): void {
-    this.targetZoomZ = 16;
+    this.targetZoomZ = 8.5;
+    this.userRotation.x = 0;
+    this.userRotation.y = 0;
+    this.cdr.markForCheck();
   }
 
   public toggleZoomFocus(): void {
-    if (this.targetZoomZ > 10) {
-      this.targetZoomZ = 7.0; // Close-up macro focus
+    if (this.targetZoomZ > 6.0) {
+      this.targetZoomZ = 4.8;
     } else {
-      this.targetZoomZ = 16; // Standard view
+      this.targetZoomZ = 8.5;
     }
+    this.cdr.markForCheck();
   }
 
   public get isZoomedIn(): boolean {
-    return this.targetZoomZ <= 10;
+    return this.targetZoomZ <= 6.0;
   }
 
   public get currentZoomPercent(): number {
-    return Math.round((16 / this.targetZoomZ) * 100);
+    return Math.round((8.8 / this.targetZoomZ) * 100);
   }
 
-  // Wheel & Touch Pinch Zoom Handlers
-  private touchStartDist = 0;
-  private initialTouchZoomZ = 16;
-
-  private readonly onWheel = (e: WheelEvent): void => {
-    e.preventDefault();
-    const delta = e.deltaY * 0.035;
-    this.targetZoomZ = Math.max(this.minZoomZ, Math.min(this.maxZoomZ, this.targetZoomZ + delta));
-  };
-
-  private readonly onTouchStart = (e: TouchEvent): void => {
-    if (e.touches.length === 2) {
-      const dx = e.touches[0].clientX - e.touches[1].clientX;
-      const dy = e.touches[0].clientY - e.touches[1].clientY;
-      this.touchStartDist = Math.sqrt(dx * dx + dy * dy);
-      this.initialTouchZoomZ = this.targetZoomZ;
-    }
-  };
-
-  private readonly onTouchMove = (e: TouchEvent): void => {
-    if (e.touches.length === 2 && this.touchStartDist > 0) {
-      const dx = e.touches[0].clientX - e.touches[1].clientX;
-      const dy = e.touches[0].clientY - e.touches[1].clientY;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      const factor = this.touchStartDist / Math.max(1, dist);
-      this.targetZoomZ = Math.max(this.minZoomZ, Math.min(this.maxZoomZ, this.initialTouchZoomZ * factor));
-    }
-  };
-
-  private updateMouseCoords(e: PointerEvent): void {
-    const canvas = this.canvasRef.nativeElement;
-    const rect = canvas.getBoundingClientRect();
-    this.mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-    this.mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
-  }
-
-  private setupPointerEvents(): void {
-    const canvas = this.canvasRef.nativeElement;
-    canvas.addEventListener('pointerdown', this.onPointerDown);
-    canvas.addEventListener('wheel', this.onWheel, { passive: false });
-    canvas.addEventListener('touchstart', this.onTouchStart, { passive: true });
-    canvas.addEventListener('touchmove', this.onTouchMove, { passive: true });
-    window.addEventListener('pointermove', this.onPointerMove, { passive: true });
-    window.addEventListener('pointerup', this.onPointerUp);
-  }
-
-  private removePointerEvents(): void {
-    const canvas = this.canvasRef?.nativeElement;
-    if (canvas) {
-      canvas.removeEventListener('pointerdown', this.onPointerDown);
-      canvas.removeEventListener('wheel', this.onWheel);
-      canvas.removeEventListener('touchstart', this.onTouchStart);
-      canvas.removeEventListener('touchmove', this.onTouchMove);
-    }
-    window.removeEventListener('pointermove', this.onPointerMove);
-    window.removeEventListener('pointerup', this.onPointerUp);
+  // Setup / Teardown
+  private prefersReducedMotion(): boolean {
+    return window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
   }
 
   private setupResizeObserver(): void {
     const canvas = this.canvasRef.nativeElement;
-    this.resizeObserver = new ResizeObserver((entries) => {
-      for (const entry of entries) {
-        const { width, height } = entry.contentRect;
-        if (width > 0 && height > 0 && this.camera && this.renderer) {
-          this.camera.aspect = width / height;
-          this.camera.updateProjectionMatrix();
-          this.renderer.setSize(width, height);
-        }
-      }
+    this.resizeObserver = new ResizeObserver(() => {
+      if (!this.renderer || !this.camera) return;
+      const width = canvas.clientWidth || 800;
+      const height = canvas.clientHeight || 500;
+      this.camera.aspect = width / height;
+      this.camera.updateProjectionMatrix();
+      this.renderer.setSize(width, height);
     });
-    this.resizeObserver.observe(canvas);
+    this.resizeObserver.observe(canvas.parentElement || canvas);
   }
 
   private setupVisibilityObserver(): void {
-    const host = this.canvasRef.nativeElement.parentElement;
-    if (!host) return;
-
-    this.intersectionObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          this.isVisible = entry.isIntersecting;
-        });
-      },
-      { threshold: 0.05 },
-    );
-    this.intersectionObserver.observe(host);
+    const canvas = this.canvasRef.nativeElement;
+    this.intersectionObserver = new IntersectionObserver(([entry]) => {
+      this.isVisible = entry.isIntersecting;
+    });
+    this.intersectionObserver.observe(canvas);
   }
 
-  private prefersReducedMotion(): boolean {
-    return (
-      typeof window !== 'undefined' &&
-      typeof window.matchMedia === 'function' &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    );
+  private setupPointerEvents(): void {
+    const canvas = this.canvasRef.nativeElement;
+    canvas.addEventListener('pointerdown', this.onPointerDown, { passive: true });
+    canvas.addEventListener('pointermove', this.onPointerMove, { passive: true });
+    canvas.addEventListener('pointerup', this.onPointerUp, { passive: true });
+    canvas.addEventListener('pointercancel', this.onPointerUp, { passive: true });
+    canvas.addEventListener('wheel', this.onWheel, { passive: false });
+  }
+
+  private removePointerEvents(): void {
+    const canvas = this.canvasRef.nativeElement;
+    canvas?.removeEventListener('pointerdown', this.onPointerDown);
+    canvas?.removeEventListener('pointermove', this.onPointerMove);
+    canvas?.removeEventListener('pointerup', this.onPointerUp);
+    canvas?.removeEventListener('pointercancel', this.onPointerUp);
+    canvas?.removeEventListener('wheel', this.onWheel);
   }
 }

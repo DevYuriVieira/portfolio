@@ -21,17 +21,17 @@ export class FooterComponent {
       ? {
           positioning: 'Software Engineer | Production Engineering Background',
           stackInfo:
-            'Built by Yuri Vieira Teixeira with Angular 22 • Three.js • TypeScript • SCSS',
+            'Built by Yuri Vieira Teixeira with Angular 22 • Three.js • TypeScript • SCSS • WebGL',
           engineeringPrinciples:
-            'Clean Architecture • Systems Thinking • Automation with n8n & AI',
+            'Clean Architecture • Systems Thinking',
           copyright: `© ${this.currentYear} ${this.name}. All rights reserved.`,
         }
       : {
           positioning: 'Software Engineer | Formação em Engenharia de Produção',
           stackInfo:
-            'Desenvolvido por Yuri Vieira Teixeira com Angular 22 • Three.js • TypeScript • SCSS',
+            'Desenvolvido por Yuri Vieira Teixeira com Angular 22 • Three.js • TypeScript • SCSS • WebGL',
           engineeringPrinciples:
-            'Clean Architecture • Systems Thinking • Automação com n8n & IA',
+            'Clean Architecture • Pensamento Sistêmico',
           copyright: `© ${this.currentYear} ${this.name}. Todos os direitos reservados.`,
         }
   );
