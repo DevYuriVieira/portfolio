@@ -744,7 +744,7 @@ export class NeuralCanvas implements OnInit, OnDestroy {
 
     // Proportional Camera Zoom Interpolation & Re-centering
     this.camera.position.z += (this.targetZoomZ - this.camera.position.z) * 0.14;
-    this.camera.position.y += (this.targetZoomZ * 0.729 - this.camera.position.y) * 0.14;
+    this.camera.position.y += (this.targetZoomZ * 0.48 - this.camera.position.y) * 0.14;
     this.camera.lookAt(0, 0, 0);
 
     const elapsed = (performance.now() - this.startTime) / 1000;
@@ -959,8 +959,8 @@ export class NeuralCanvas implements OnInit, OnDestroy {
   }
 
   public toggleZoomFocus(): void {
-    if (this.targetZoomZ > 6.0) {
-      this.targetZoomZ = 4.8;
+    if (this.targetZoomZ > 6.2) {
+      this.targetZoomZ = 5.8;
     } else {
       this.targetZoomZ = 8.5;
     }
@@ -968,7 +968,7 @@ export class NeuralCanvas implements OnInit, OnDestroy {
   }
 
   public get isZoomedIn(): boolean {
-    return this.targetZoomZ <= 6.0;
+    return this.targetZoomZ <= 6.2;
   }
 
   public get currentZoomPercent(): number {

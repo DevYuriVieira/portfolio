@@ -32,12 +32,12 @@ describe('AiExperienceSection', () => {
 
   it('should render the manifesto text', () => {
     const manifesto = fixture.nativeElement.querySelector('.ai__manifesto');
-    expect(manifesto?.textContent).toContain('inteligência artificial');
+    expect(manifesto?.textContent).toContain('automação');
   });
 
   it('should render the closing statement', () => {
     const closing = fixture.nativeElement.querySelector('.ai__closing-text');
-    expect(closing?.textContent).toContain('diferencial');
+    expect(closing?.textContent).toContain('pragmática');
   });
 
   it('should have the neural canvas component', () => {
