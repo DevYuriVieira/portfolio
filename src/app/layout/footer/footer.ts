@@ -19,19 +19,19 @@ export class FooterComponent {
   readonly labels = computed(() =>
     this.i18n.currentLang() === 'en'
       ? {
-          positioning: 'Software Engineer | Production Engineering Background',
+          positioning: 'Software Engineer • Building Modern & Scalable Web Systems',
           stackInfo:
-            'Built by Yuri Vieira Teixeira with Angular 22 • Three.js • TypeScript • SCSS • WebGL',
+            'Engineered by Yuri Vieira Teixeira • Angular 22 • Three.js WebGL • SCSS',
           engineeringPrinciples:
-            'Clean Architecture • Systems Thinking',
+            'Clean Architecture • Systems Thinking • AI Workflows',
           copyright: `© ${this.currentYear} ${this.name}. All rights reserved.`,
         }
       : {
-          positioning: 'Software Engineer | Formação em Engenharia de Produção',
+          positioning: 'Software Engineer • Sistemas Web Modernos & Código Limpo',
           stackInfo:
-            'Desenvolvido por Yuri Vieira Teixeira com Angular 22 • Three.js • TypeScript • SCSS • WebGL',
+            'Desenvolvido por Yuri Vieira Teixeira • Angular 22 • Three.js WebGL • SCSS',
           engineeringPrinciples:
-            'Clean Architecture • Pensamento Sistêmico',
+            'Arquitetura Limpa • Pensamento Sistêmico • Automação com IA',
           copyright: `© ${this.currentYear} ${this.name}. Todos os direitos reservados.`,
         }
   );
