@@ -1,7 +1,7 @@
 import { SupportedLang } from '@core';
 import { AboutBlock, EngineeringPrinciple } from './about.model';
 
-/** Structured i18n content for the About section */
+/** Structured i18n content for the About section - Balanced, Non-repetitive Copy */
 
 interface AboutI18n {
   eyebrow: string;
@@ -21,67 +21,67 @@ const ABOUT_I18N: Record<SupportedLang, AboutI18n> = {
     eyebrow: 'Sobre mim',
     title: 'Engenharia de Software & Visão Sistêmica',
     intro:
-      'Desenvolvimento full-stack orientado a código limpo, arquitetura modular e qualidade.',
+      'A trajetória na tecnologia une a visão analítica da Engenharia de Produção ao rigor prático do desenvolvimento de software full-stack.',
     journeyTitle: 'Trajetória & Foco',
     howIWorkTitle: 'Como Trabalho',
     howIWorkDescription:
-      'Princípios de engenharia que guiam minhas decisões técnicas, arquitetura e atuação em equipe.',
+      'Decisões e práticas de engenharia que guiam o desenvolvimento no dia a dia.',
     currentlyTitle: 'Atualmente',
     currentlyText:
-      'Com mais de 910 horas de formação prática em desenvolvimento de software (Serratec e UECE), pós-graduação em Engenharia de Software e inglês avançado (C1/C2 Wizard, proficiência ativa B2+), sigo construindo sistemas full-stack de alta performance focados em qualidade e manutenibilidade.',
+      'Atualmente aprofundando conhecimentos em Docker, bancos de dados não relacionais (NoSQL), C# / .NET, AWS e testes automatizados, com foco em arquiteturas escaláveis e resilientes.',
     blocks: [
       {
         id: 'who-i-am',
         label: 'Atuação Profissional',
-        text: 'Sou Engenheiro de Software Full-Stack especializado em Java (Spring Boot) e React, com forte atuação em Python (Django), TypeScript e PostgreSQL. Minha experiência abrange desde a criação de interfaces responsivas e com design system até a modelagem de APIs REST, autenticação com Spring Security e automações com IA.',
+        text: 'Atuação focada no ecossistema Java (Spring Boot) e React, complementada por projetos em Python (Django), TypeScript e PostgreSQL. A experiência abrange desde a construção de interfaces responsivas e acessíveis até a modelagem de APIs REST seguras e automações com inteligência artificial.',
       },
       {
         id: 'how-i-build',
-        label: 'Filosofia de Engenharia',
-        text: 'Priorizo clareza, manutenibilidade e boas práticas de engenharia em cada projeto. Trabalho com tipagem estática, testes automatizados e arquitetura modular, garantindo que o código seja previsível, organizado e fácil de manter no longo prazo.',
+        label: 'Engenharia & Processos',
+        text: 'A bagagem em Engenharia de Produção traz um diferencial estratégico: enxergar o software como um sistema produtivo. Antes de definir código ou arquitetura, o foco é mapear os fluxos de trabalho e identificar a real necessidade do negócio.',
       },
       {
         id: 'systemic-differentiator',
-        label: 'Visão Sistêmica',
-        text: 'Minha formação em Engenharia de Produção agrega uma perspectiva analítica ao ciclo de desenvolvimento. Essa bagagem me auxilia na compreensão clara de requisitos, no mapeamento de fluxos e na otimização de processos antes da implementação.',
+        label: 'Formação & Prática',
+        text: 'Base sólida consolidada em mais de 900 horas de imersão técnica (Residência Serratec e UECE) e pós-graduação em Engenharia de Software, priorizando código limpo, testes e tipagem estrita.',
       },
     ],
     principles: [
       {
         id: 'clean-architecture',
-        title: 'Arquitetura Limpa & Intenção',
+        title: 'Contrato de API e DTOs',
         description:
-          'Pensar na arquitetura antes da implementação e compreender a fundo o problema antes de decidir como construí-lo.',
+          'Definição clara de contratos, esquemas e DTOs antes de implementar controladores.',
       },
       {
         id: 'communication-first',
-        title: 'Comunicação em Primeiro Lugar',
+        title: 'Integridade Transacional',
         description:
-          'Comunicação clara e transparente como habilidade técnica fundamental. Problemas complexos são resolvidos mais rápido através do alinhamento.',
+          'Tratamento de concorrência, idempotência em webhooks e proteção contra dados duplicados.',
       },
       {
         id: 'systems-thinking',
-        title: 'Visão Sistêmica & Processos',
+        title: 'Arquitetura Modular',
         description:
-          'Mapeamento de fluxos, análise de causa raiz e otimização do início ao fim, enxergando o software como um sistema de produção completo.',
+          'Separação clara de responsabilidades em camadas (MVT, MVC+DAO) para facilitar a manutenção.',
       },
       {
         id: 'maintainability',
-        title: 'Código Legível & Manutenível',
+        title: 'Automação Pragmática',
         description:
-          'Priorizar código limpo, sustentável e fácil de entender por outros desenvolvedores. Código inteligível sempre vence no longo prazo.',
+          'Uso diário de IA e rotinas automatizadas para acelerar análises de logs e refatorações sob validação técnica.',
       },
       {
         id: 'value-delivery',
-        title: 'Entregas de Valor & Compromisso',
+        title: 'Alinhamento de Equipe',
         description:
-          'Compreender os objetivos do negócio antes de propor soluções, respeitar prazos e entregar mais valor do que o originalmente solicitado.',
+          'Comunicação clara de requisitos e alinhamento contínuo para evitar abstrações desnecessárias.',
       },
       {
         id: 'simplicity-scalability',
-        title: 'Simplicidade & Escalabilidade',
+        title: 'Análise de Causa Raiz',
         description:
-          'Valorizar soluções simples, performáticas e escaláveis, evitando complexidade desnecessária ou abstrações prematuras.',
+          'Aplicação de metodologias como PDCA e 5W2H para resolver a origem técnica dos problemas.',
       },
     ],
   },
@@ -89,67 +89,67 @@ const ABOUT_I18N: Record<SupportedLang, AboutI18n> = {
     eyebrow: 'About me',
     title: 'Software Engineering & Systems Thinking',
     intro:
-      'Full-stack development driven by clean code, modular architecture, and quality.',
+      'Combining the analytical mindset of Production Engineering with the practical rigor of full-stack software development.',
     journeyTitle: 'Journey & Focus',
     howIWorkTitle: 'How I Work',
     howIWorkDescription:
-      'Engineering principles that guide my technical decisions, architecture, and teamwork.',
+      'Engineering practices and principles that guide daily software development.',
     currentlyTitle: 'Currently',
     currentlyText:
-      'With over 910 hours of practical software engineering training (Serratec & UECE), postgraduate studies in Software Engineering, and advanced English (Wizard C1/C2, B2+ active proficiency), I continue to build high-performance full-stack applications focused on quality and maintainability.',
+      'Currently expanding expertise in Docker, NoSQL databases, C# / .NET, AWS, and automated testing, focusing on building scalable and resilient architectures.',
     blocks: [
       {
         id: 'who-i-am',
         label: 'Professional Practice',
-        text: 'I am a Full-Stack Software Engineer specialized in Java (Spring Boot) and React, with solid expertise in Python (Django), TypeScript, and PostgreSQL. My work spans from building responsive design system interfaces to modeling REST APIs, Spring Security authentication, and AI automation.',
+        text: 'Development practice focused on the Java (Spring Boot) and React ecosystem, complemented by projects in Python (Django), TypeScript, and PostgreSQL. Experience spans building responsive web interfaces, secure REST APIs, and AI-driven workflow automations.',
       },
       {
         id: 'how-i-build',
-        label: 'Engineering Philosophy',
-        text: 'I prioritize clarity, maintainability, and engineering best practices in every project. I work with static typing, automated testing, and modular architecture, ensuring code that is predictable, organized, and easy to maintain long-term.',
+        label: 'Engineering & Processes',
+        text: 'A background in Production Engineering adds a strategic advantage: viewing software as an operational production system. Before committing to code or architecture, the focus remains on mapping business workflows and identifying genuine root problems.',
       },
       {
         id: 'systemic-differentiator',
-        label: 'Systems Thinking',
-        text: 'My background in Production Engineering brings an analytical perspective to the development lifecycle. This expertise helps me clearly understand requirements, map workflows, and optimize processes before implementation.',
+        label: 'Education & Practice',
+        text: 'Technical foundation built through 900+ hours of intensive residency programs (Serratec & UECE) alongside postgraduate software engineering studies, emphasizing clean code, automated testing, and strict typing.',
       },
     ],
     principles: [
       {
         id: 'clean-architecture',
-        title: 'Clean Architecture & Intent',
+        title: 'API Contracts & DTOs',
         description:
-          'Think about architecture before implementation and deeply understand the problem before deciding how to build it.',
+          'Clear specification of contracts, schemas, and DTOs prior to controller implementation.',
       },
       {
         id: 'communication-first',
-        title: 'Communication First',
+        title: 'Transactional Integrity',
         description:
-          'Clear and transparent communication as a core technical skill. Complex problems are solved faster through alignment.',
+          'Handling concurrency, webhook idempotency, and safeguarding against data duplication.',
       },
       {
         id: 'systems-thinking',
-        title: 'Systems Thinking & Processes',
+        title: 'Modular Architecture',
         description:
-          'Workflow mapping, root cause analysis, and end-to-end optimization, seeing software as a complete production system.',
+          'Clean separation of concerns into distinct layers (MVT, MVC+DAO) for long-term maintainability.',
       },
       {
         id: 'maintainability',
-        title: 'Readable & Maintainable Code',
+        title: 'Pragmatic Automation',
         description:
-          'Prioritize clean, sustainable code that is easy for other developers to understand. Intelligible code always wins in the long run.',
+          'Daily application of AI and automated scripts to speed up log analysis under engineering oversight.',
       },
       {
         id: 'value-delivery',
-        title: 'Value Delivery & Commitment',
+        title: 'Team Alignment',
         description:
-          'Understand business objectives before proposing solutions, respect deadlines, and deliver more value than originally requested.',
+          'Clear communication of technical requirements to eliminate premature complexity.',
       },
       {
         id: 'simplicity-scalability',
-        title: 'Simplicity & Scalability',
+        title: 'Root Cause Analysis',
         description:
-          'Value simple, performant, and scalable solutions, avoiding unnecessary complexity or premature abstractions.',
+          'Applying Lean/PDCA methodologies to address technical issues at their core origin.',
       },
     ],
   },
