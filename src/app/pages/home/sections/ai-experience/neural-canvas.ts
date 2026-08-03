@@ -742,7 +742,10 @@ export class NeuralCanvas implements OnInit, OnDestroy {
     if (!this.isVisible) return;
     if (!this.scene || !this.camera || !this.renderer || !this.mainGroup) return;
 
+    // Proportional Camera Zoom Interpolation & Re-centering
     this.camera.position.z += (this.targetZoomZ - this.camera.position.z) * 0.14;
+    this.camera.position.y += (this.targetZoomZ * 0.729 - this.camera.position.y) * 0.14;
+    this.camera.lookAt(0, 0, 0);
 
     const elapsed = (performance.now() - this.startTime) / 1000;
 
