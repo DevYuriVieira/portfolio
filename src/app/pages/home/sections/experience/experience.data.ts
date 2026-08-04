@@ -1,6 +1,5 @@
 import { SupportedLang } from '@core';
 import {
-  CertificationItem,
   CurrentFocusData,
   ExperienceSectionData,
   TimelineMilestone,
@@ -10,20 +9,16 @@ interface ExperienceI18n {
   sectionData: ExperienceSectionData;
   milestones: readonly TimelineMilestone[];
   currentFocus: CurrentFocusData;
-  certifications: readonly CertificationItem[];
 }
 
 const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
   'pt-BR': {
     sectionData: {
-      eyebrow: '02 // TRAJETÓRIA & CERTIFICAÇÕES',
+      eyebrow: '02 // TRAJETÓRIA & EVOLUÇÃO',
       title: 'Evolução Contínua em Engenharia',
       description:
-        'Uma jornada de aprendizado constante, combinando o raciocínio sistêmico da Engenharia de Produção, formações intensivas práticas (+910h de residências) e certificações técnicas.',
-      ariaLabel: 'Trajetória profissional, acadêmica e certificações',
-      certificationsTitle: 'Certificações & Credenciais',
-      certificationsSubtitle:
-        'Qualificações técnicas, programas intensivos de desenvolvimento e certificações em ferramentas de engenharia.',
+        'Uma jornada de aprendizado constante, combinando o raciocínio sistêmico da Engenharia de Produção, pós-graduação e formações práticas de alto impacto em desenvolvimento de software.',
+      ariaLabel: 'Trajetória profissional, acadêmica e evolução técnica',
     },
     milestones: [
       {
@@ -41,6 +36,30 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
         subtitle: 'Universidade Estácio · Especialização Técnica',
         description:
           'Aprofundamento em arquitetura de software, padrões de projeto, desenvolvimento web moderno, qualidade de código e ciclo de vida completo de aplicações.',
+      },
+      {
+        id: 'senac-frontend-dev',
+        year: '2025',
+        title: 'Programador Front-end com IA (80h)',
+        subtitle: 'Senac · Interfaces Web & React',
+        description:
+          'Capacitação prática em HTML, CSS, JavaScript e React para criação de interfaces modernas, responsivas e acessíveis, utilizando ferramentas de IA como suporte para desenvolvimento acelerado.',
+      },
+      {
+        id: 'dio-tech-bootcamp',
+        year: '2025',
+        title: 'Bootcamp Philips Fullstack Developer | You Are You (132h)',
+        subtitle: 'Digital Innovation One (DIO) & Philips · Formação Prática',
+        description:
+          'Trilhas intensivas de aceleração prática cobrindo HTML, CSS, JavaScript, TypeScript, Angular, Java, Spring Boot e Banco de Dados (modelagem relacional e SQL).',
+      },
+      {
+        id: 'senac-python-fullstack',
+        year: '2025 – 2026',
+        title: 'Programação em Python (168h)',
+        subtitle: 'Senac · Imersão em Programação',
+        description:
+          'Capacitação abrangendo Lógica de Programação, Python (Django) e Frontend Essencial (HTML5, CSS3, JavaScript) com foco na construção de aplicações web funcionais.',
       },
       {
         id: 'uece-tic-residency',
@@ -110,91 +129,14 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
         },
       ],
     },
-    certifications: [
-      {
-        id: 'white-belt-lean',
-        title: 'White Belt - Lean Six Sigma',
-        issuer: 'Frons',
-        year: '2024',
-        category: 'Processos & Otimização',
-        badge: 'Lean Thinking',
-      },
-      {
-        id: 'power-bi-senac',
-        title: 'Análise de Dados com Power BI',
-        issuer: 'Senac',
-        year: '2025',
-        category: 'Business Intelligence',
-        badge: 'Data & Analytics',
-      },
-      {
-        id: 'english-wizard',
-        title: 'Programa de Inglês C1/C2 Concluído (Nível Ativo B2+)',
-        issuer: 'Wizard Language School',
-        year: '2017 – 2023',
-        category: 'Idiomas & Comunicação',
-        badge: 'Inglês Avançado',
-      },
-      {
-        id: 'frontend-ai-senac',
-        title: 'Desenvolvimento Front-End com Inteligência Artificial',
-        issuer: 'Senac',
-        year: '2025',
-        category: 'Frontend & IA',
-        badge: 'Frontend + AI',
-      },
-      {
-        id: 'python-senac',
-        title: 'Programação em Python',
-        issuer: 'Senac',
-        year: '2025 – 2026',
-        category: 'Backend & Lógica',
-        badge: 'Python',
-      },
-      {
-        id: 'philips-bootcamp-dio',
-        title: 'Bootcamp Philips Full-Stack Developer',
-        issuer: 'Digital Innovation One (DIO)',
-        year: '2025',
-        category: 'Full Stack',
-        badge: 'Full Stack Web',
-      },
-      {
-        id: 'git-github-dio',
-        title: 'Introdução ao Git e GitHub',
-        issuer: 'Digital Innovation One (DIO)',
-        year: '2025',
-        category: 'DevOps & Versionamento',
-        badge: 'Git & Workflows',
-      },
-      {
-        id: 'sql-matera',
-        title: 'Banco de Dados SQL (Intermediário e Avançado)',
-        issuer: 'Instituto Matera',
-        year: '2025',
-        category: 'Banco de Dados',
-        badge: 'SQL & Queries',
-      },
-      {
-        id: 'ai-agents-hashtag',
-        title: 'Imersão Agentes de IA',
-        issuer: 'Hashtag Treinamentos',
-        year: '2026',
-        category: 'Inteligência Artificial',
-        badge: 'AI Agents',
-      },
-    ],
   },
   en: {
     sectionData: {
-      eyebrow: '02 // JOURNEY & CERTIFICATIONS',
+      eyebrow: '02 // JOURNEY & EVOLUTION',
       title: 'Continuous Growth in Engineering',
       description:
-        'A continuous learning path combining Production Engineering systems thinking, practical immersion (+910h residencies), and technical certifications.',
-      ariaLabel: 'Professional journey, academic background, and certifications',
-      certificationsTitle: 'Certifications & Credentials',
-      certificationsSubtitle:
-        'Technical qualifications, intensive software engineering programs, and tool certifications.',
+        'A continuous learning path combining Production Engineering systems thinking, postgraduate specialization, and high-impact practical software engineering programs.',
+      ariaLabel: 'Professional journey, academic background, and technical evolution',
     },
     milestones: [
       {
@@ -212,6 +154,30 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
         subtitle: 'Estácio University · Technical Specialization',
         description:
           'Deepened expertise in software architecture, design patterns, modern web development, code quality, and end-to-end application lifecycle.',
+      },
+      {
+        id: 'senac-frontend-dev',
+        year: '2025',
+        title: 'Frontend Developer with AI (80h)',
+        subtitle: 'Senac · Web Interfaces & React',
+        description:
+          'Practical training in HTML, CSS, JavaScript, and React for building modern, responsive, accessible interfaces, leveraging AI tools to accelerate development workflows.',
+      },
+      {
+        id: 'dio-tech-bootcamp',
+        year: '2025',
+        title: 'Bootcamp Philips Fullstack Developer | You Are You (132h)',
+        subtitle: 'Digital Innovation One (DIO) & Philips · Practical Acceleration',
+        description:
+          'Intensive acceleration tracks covering HTML, CSS, JavaScript, TypeScript, Angular, Java, Spring Boot, and Databases (relational modeling & SQL).',
+      },
+      {
+        id: 'senac-python-fullstack',
+        year: '2025 – 2026',
+        title: 'Python Programming (168h)',
+        subtitle: 'Senac · Programming Immersion',
+        description:
+          'Practical training covering Programming Logic, Python (Django), and Essential Frontend (HTML5, CSS3, JavaScript) focused on building functional web applications.',
       },
       {
         id: 'uece-tic-residency',
@@ -281,80 +247,6 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
         },
       ],
     },
-    certifications: [
-      {
-        id: 'white-belt-lean',
-        title: 'White Belt - Lean Six Sigma',
-        issuer: 'Frons',
-        year: '2024',
-        category: 'Processes & Optimization',
-        badge: 'Lean Thinking',
-      },
-      {
-        id: 'power-bi-senac',
-        title: 'Data Analytics with Power BI',
-        issuer: 'Senac',
-        year: '2025',
-        category: 'Business Intelligence',
-        badge: 'Data & Analytics',
-      },
-      {
-        id: 'english-wizard',
-        title: 'Completed C1/C2 English Program (Active B2+ Advanced)',
-        issuer: 'Wizard Language School',
-        year: '2017 – 2023',
-        category: 'Languages & Communication',
-        badge: 'Advanced English',
-      },
-      {
-        id: 'frontend-ai-senac',
-        title: 'Front-End Development with Artificial Intelligence',
-        issuer: 'Senac',
-        year: '2025',
-        category: 'Frontend & AI',
-        badge: 'Frontend + AI',
-      },
-      {
-        id: 'python-senac',
-        title: 'Python Programming',
-        issuer: 'Senac',
-        year: '2025 – 2026',
-        category: 'Backend & Logic',
-        badge: 'Python',
-      },
-      {
-        id: 'philips-bootcamp-dio',
-        title: 'Philips Full-Stack Developer Bootcamp',
-        issuer: 'Digital Innovation One (DIO)',
-        year: '2025',
-        category: 'Full Stack',
-        badge: 'Full Stack Web',
-      },
-      {
-        id: 'git-github-dio',
-        title: 'Introduction to Git & GitHub',
-        issuer: 'Digital Innovation One (DIO)',
-        year: '2025',
-        category: 'DevOps & Version Control',
-        badge: 'Git & Workflows',
-      },
-      {
-        id: 'sql-matera',
-        title: 'SQL Database (Intermediate & Advanced)',
-        issuer: 'Instituto Matera',
-        year: '2025',
-        category: 'Databases',
-        badge: 'SQL & Queries',
-      },
-      {
-        id: 'ai-agents-hashtag',
-        title: 'AI Agents Immersion',
-        issuer: 'Hashtag Treinamentos',
-        year: '2026',
-        category: 'Artificial Intelligence',
-        badge: 'AI Agents',
-      },
-    ],
   },
 };
 
