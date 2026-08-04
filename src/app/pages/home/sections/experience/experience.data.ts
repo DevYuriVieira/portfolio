@@ -48,7 +48,7 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
         title: 'Residência TIC 12 | UECE (120h)',
         subtitle: 'Universidade Estadual do Ceará · Formação em Trilhas',
         description:
-          'Capacitação prática em trilhas de conhecimento focadas em Programação Orientada a Objetos (POO) em Java 11, Banco de Dados MySQL e Estruturas de Dados.',
+          'Capacitação prática em trilhas de conhecimento focadas em Programação Orientada a Objetos (POO) em Java, Banco de Dados MySQL e Estruturas de Dados.',
       },
       {
         id: 'serratec-residency',
@@ -56,7 +56,7 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
         title: 'Residência TIC/Software Serratec Full-Stack (790h)',
         subtitle: 'Serratec · Imersão em Disciplinas Progressivas',
         description:
-          'Residência imersiva em desenvolvimento de software com 790 horas em disciplinas de Lógica, Banco de Dados, POO em Java, APIs RESTful com Spring Boot 3, React, React Native, metodologias ágeis e entrega de projeto final corporativo.',
+          'Residência imersiva em desenvolvimento de software com 790 horas em disciplinas de Lógica, Banco de Dados, POO em Java, APIs RESTful com Spring Boot, React, React Native, metodologias ágeis e entrega de projeto final corporativo.',
       },
       {
         id: 'personal-projects',
@@ -219,7 +219,7 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
         title: 'ICT Residency 12 | UECE (120h)',
         subtitle: 'State University of Ceará · Track-Based Program',
         description:
-          'Practical training in knowledge tracks focused on Object-Oriented Programming (OOP) in Java 11, MySQL Databases, and Data Structures.',
+          'Practical training in knowledge tracks focused on Object-Oriented Programming (OOP) in Java, MySQL Databases, and Data Structures.',
       },
       {
         id: 'serratec-residency',
@@ -227,7 +227,7 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
         title: 'Serratec ICT/Software Full-Stack Residency (790h)',
         subtitle: 'Serratec · Progressive Disciplines Immersion',
         description:
-          'Immersive 790-hour software development residency spanning progressive coursework in Logic, Databases, OOP Java, RESTful APIs with Spring Boot 3, React, React Native, agile practices, and corporate final project delivery.',
+          'Immersive 790-hour software development residency spanning progressive coursework in Logic, Databases, OOP Java, RESTful APIs with Spring Boot, React, React Native, agile practices, and corporate final project delivery.',
       },
       {
         id: 'personal-projects',

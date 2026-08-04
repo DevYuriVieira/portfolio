@@ -6,7 +6,7 @@ const HERO_I18N: Record<SupportedLang, HeroSectionData> = {
     eyebrow: 'Software Engineer · Full-Stack Development',
     name: 'Yuri Vieira Teixeira',
     description:
-      'Desenvolvo aplicações web de ponta a ponta, alinhando interfaces precisas no frontend a serviços backend bem estruturados. Priorizo código limpo, arquitetura modular e soluções focadas na resolução real de problemas.',
+      'Full-Stack Software Engineer especializado no ecossistema Java (Spring Boot), Python (Django) e TypeScript (React / Angular). Formação em Engenharia de Produção focada em otimização de processos, integridade de dados e qualidade de código.',
     projectsCtaText: 'Ver projetos',
     cvCtaText: 'Download CV (PT)',
     cvUrl: 'assets/cv-yuri-vieira-teixeira-pt.pdf',
@@ -15,7 +15,7 @@ const HERO_I18N: Record<SupportedLang, HeroSectionData> = {
     eyebrow: 'Software Engineer · Full-Stack Development',
     name: 'Yuri Vieira Teixeira',
     description:
-      'I build end-to-end web applications, aligning precise frontend interfaces with well-structured backend services. I prioritize clean code, modular architecture, and solutions focused on solving real problems.',
+      'Full-Stack Software Engineer specializing in Java (Spring Boot), Python (Django), and TypeScript (React / Angular). Background in Production Engineering focused on process optimization, data integrity, and code quality.',
     projectsCtaText: 'View projects',
     cvCtaText: 'Download CV (EN)',
     cvUrl: 'assets/cv-yuri-vieira-teixeira-en.pdf',

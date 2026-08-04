@@ -39,7 +39,7 @@ const SKILLS_I18N: Record<SupportedLang, SkillsI18n> = {
         description:
           'Desenvolvimento de serviços backend seguros, escaláveis e orientados a regras de negócio.',
         skills: [
-          'Java (Spring Boot 3)',
+          'Java (Spring Boot)',
           'C# / .NET 10',
           'Spring Security & JWT',
           'Python (Django)',
@@ -116,7 +116,7 @@ const SKILLS_I18N: Record<SupportedLang, SkillsI18n> = {
         description:
           'Building secure, scalable backend services driven by business rules.',
         skills: [
-          'Java (Spring Boot 3)',
+          'Java (Spring Boot)',
           'C# / .NET 10',
           'Spring Security & JWT',
           'Python (Django)',
