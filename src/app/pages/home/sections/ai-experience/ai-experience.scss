@@ -73,6 +73,7 @@
   }
 
   &__canvas-wrapper {
+    display: none;
     position: relative;
     width: 100%;
     aspect-ratio: 16 / 9;
@@ -83,6 +84,7 @@
     background: #0d0f17;
 
     @include respond-to('md') {
+      display: block;
       min-height: 440px;
     }
 

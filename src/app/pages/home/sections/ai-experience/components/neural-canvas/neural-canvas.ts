@@ -191,6 +191,10 @@ export class NeuralCanvas implements OnInit, OnDestroy {
 
     this.updateStateLabels();
 
+    if (typeof window !== 'undefined' && window.innerWidth < 768) {
+      return; // Skip WebGL 3D neural canvas completely on mobile
+    }
+
     const reducedMotion = this.prefersReducedMotion();
 
     this.zone.runOutsideAngular(() => {
