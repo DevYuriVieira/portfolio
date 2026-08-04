@@ -7,39 +7,39 @@ const AI_I18N: Record<SupportedLang, AiManifestoData> = {
     title: 'Engenharia de Software Amplificada por IA',
     subtitle: 'Automação, modelos de linguagem e pensamento sistêmico aplicados ao desenvolvimento de software.',
     manifesto:
-      'Desenvolver software é organizar contexto, tomar decisões técnicas e transformar problemas em sistemas funcionais.\n\nUtilizo automação e modelos de linguagem como ferramentas diárias de engenharia: para acelerar investigações, explorar soluções, refatorar código com segurança e validar contratos de APIs. A IA amplia minha capacidade de desenvolvimento, mas a qualidade final continua dependendo de arquitetura, pensamento crítico e controle humano.',
+      'Para mim, a Inteligência Artificial não substitui a engenharia: ela atua como um parceiro de trabalho (co-worker) de altíssima velocidade. Escrevo código, projeto arquiteturas, estruturo o problema e orquestro a IA com automação para eliminar tarefas repetitivas, analisar logs em segundos e explorar soluções. O desenvolvimento ganha velocidade, mas a inteligência, a escrita do código e a responsabilidade final continuam sendo humanas.',
     features: [
       {
         index: '01',
-        title: 'Automação de Workflows no n8n',
+        title: 'Automação de Tarefas Repetitivas (n8n)',
         description:
-          'Construção de fluxos assíncronos no n8n e consumo de Webhooks para integração de APIs, notificações operacionais e eliminação de tarefas manuais de rotina.',
+          'Delego o trabalho mecânico e operacional para o n8n e Webhooks (como integração de APIs e disparos de rotina), liberando minha energia mental para focar na regra de negócio e na arquitetura do sistema.',
         tags: ['n8n', 'Webhooks', 'API Integration', 'Async Workflows'],
       },
       {
         index: '02',
-        title: 'Diagnóstico Acelerado de Erros & Logs',
+        title: 'Investigação Acelerada de Erros',
         description:
-          'Uso prático de IA para análise rápida de stack traces, diagnóstico de exceções em tempo de execução e otimização de consultas SQL complexas.',
+          'Uso a IA como um segundo par de olhos para triar stack traces extensos e sugerir otimizações de SQL em segundos. A investigação ganha agilidade, mas a causa raiz e a correção definitiva são validadas e implementadas por mim.',
         tags: ['Code Diagnostics', 'Log Analysis', 'SQL Optimization', 'Debugging'],
       },
       {
         index: '03',
-        title: 'Par-Programação & Refatoração Assistida',
+        title: 'Pair Programming com Co-Worker I.A.',
         description:
-          'Atuação com agentes de IA como parceiros de pair programming na auditoria de qualidade de código, refatoração orientada a Clean Architecture e escrita de testes unitários.',
-        tags: ['Pair Programming', 'Code Review', 'Clean Architecture', 'Unit Testing'],
+          'Trabalho lado a lado com assistentes de IA como parceiros de código (pair programming), aplicando Clean Code, discutindo refatoração, cobrindo cenários de teste e revisando código com rigor de Clean Architecture.',
+        tags: ['Pair Programming', 'Clean Code', 'Clean Architecture', 'Unit Testing'],
       },
       {
         index: '04',
-        title: 'Pensamento Sistêmico (Lean & PDCA)',
+        title: 'Direção Humana & Métodos de Engenharia',
         description:
-          'Aplicação de métodos de Engenharia de Produção (análise de causa raiz 5W2H e ciclo PDCA) para estruturar sistemas sustentáveis e fáceis de manter.',
+          'Ferramentas de IA só entregam bons resultados quando bem direcionadas. Aplico métodos da Engenharia de Produção (PDCA e 5W2H) para estruturar o problema, definir o contexto correto e garantir sistemas sustentáveis.',
         tags: ['Systems Thinking', 'PDCA', 'Lean Software', 'Full-Stack'],
       },
     ],
     closingStatement:
-      'O foco não está nas ferramentas de IA isoladas, mas na aplicação pragmática de automação para construir software robusto, legível e de alto valor.',
+      'O foco não está em ferramentas isoladas de IA, mas na aplicação pragmática de automação combinada com engenharia humana para construir software robusto, legível e de alto valor.',
     nodeDetails: {
       OBSERVE: {
         id: 'observe',
@@ -160,39 +160,39 @@ const AI_I18N: Record<SupportedLang, AiManifestoData> = {
     title: 'AI-Augmented Software Engineering',
     subtitle: 'Automation, language models and systems thinking applied to software engineering.',
     manifesto:
-      'Software engineering is about organizing context, making technical decisions, and turning complex problems into functional systems.\n\nI use automation and language models as daily engineering tools: to accelerate debugging, explore solutions, safely refactor code, and validate API contracts. AI expands my development capacity, but software quality still depends on architecture, critical thinking, and human control.',
+      'For me, Artificial Intelligence does not replace engineering: it acts as a high-speed co-worker. I write code, design architectures, structure problems, and orchestrate AI with automation daily to eliminate repetitive tasks, analyze logs in seconds, and explore solutions. Development gains speed, but the intelligence, code writing, and final responsibility remain human.',
     features: [
       {
         index: '01',
-        title: 'n8n Workflow Automation',
+        title: 'Repetitive Task Automation (n8n)',
         description:
-          'Building asynchronous flows in n8n and handling webhooks to integrate APIs, send operational alerts, and automate routine manual tasks.',
+          'Offloading routine mechanical work to n8n and Webhooks (such as API integrations and automated alerts), freeing my mental energy to focus on core business logic and software architecture.',
         tags: ['n8n', 'Webhooks', 'API Integration', 'Async Workflows'],
       },
       {
         index: '02',
         title: 'Accelerated Error Diagnostics',
         description:
-          'Practical use of AI for rapid stack trace analysis, runtime exception diagnosis, and optimizing complex SQL queries.',
+          'Using AI as a second pair of eyes to triage large stack traces and suggest SQL optimizations in seconds. Investigation speeds up, but root-cause diagnosis and fixes are validated and implemented by me.',
         tags: ['Code Diagnostics', 'Log Analysis', 'SQL Optimization', 'Debugging'],
       },
       {
         index: '03',
-        title: 'Pair Programming & Assisted Refactoring',
+        title: 'Pair Programming with AI Co-Worker',
         description:
-          'Working with AI agents as pair programming partners for code quality audits, Clean Architecture refactoring, and unit test writing.',
-        tags: ['Pair Programming', 'Code Review', 'Clean Architecture', 'Unit Testing'],
+          'Working alongside AI assistants as pair programming partners, applying Clean Code, discussing refactoring strategies, covering edge-case test scenarios, and reviewing code under strict Clean Architecture standards.',
+        tags: ['Pair Programming', 'Clean Code', 'Clean Architecture', 'Unit Testing'],
       },
       {
         index: '04',
-        title: 'Systems Thinking (Lean & PDCA)',
+        title: 'Human Direction & Engineering Methods',
         description:
-          'Applying Production Engineering methods (5W2H root cause analysis and PDCA cycle) to build sustainable, easy-to-maintain software.',
+          'AI tools only deliver strong results when properly guided. I apply Production Engineering methods (PDCA and 5W2H) to structure problems, define accurate context, and ensure sustainable software systems.',
         tags: ['Systems Thinking', 'PDCA', 'Lean Software', 'Full-Stack'],
       },
     ],
     closingStatement:
-      'The focus is not on isolated AI tools, but on the pragmatic application of automation to build robust, readable, high-value software.',
+      'The focus is not on isolated AI tools, but on the pragmatic application of automation combined with human engineering to build robust, readable, high-value software.',
     nodeDetails: {
       OBSERVE: {
         id: 'observe',
@@ -296,13 +296,13 @@ const AI_I18N: Record<SupportedLang, AiManifestoData> = {
         id: 'human-judgment',
         index: 'SUPPORTING LAYER // 02',
         name: 'Human Judgment & Governance',
-        category: 'Human Supervision & Governance',
+        category: 'Supervisão Humana & Governança',
         summary:
-          'Direct human supervision and decision-making at critical development stages, ensuring security, compliance, and good architecture.',
+          'Supervisão direta e tomada de decisão humana em etapas críticas do desenvolvimento, garantindo conformidade, segurança e boa arquitetura.',
         practicalApplications: [
-          'Code review and deployment authorization',
-          '5W2H root cause analysis for technical debt resolution',
-          'Sustainable architectural decisions for software evolution',
+          'Revisão de código (Code Review) e aprovação de deploys',
+          'Análise de causa raiz (5W2H) para resolução de débitos técnicos',
+          'Decisões de arquitetura sustentável para evolução do software',
         ],
         tools: ['Human Code Review', 'Policy Oversight', 'PDCA', 'Lean Engineering'],
       },
