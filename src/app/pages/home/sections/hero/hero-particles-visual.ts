@@ -70,9 +70,8 @@ export class HeroParticlesVisual implements OnInit, OnDestroy {
   ngOnInit(): void {
     if (!isPlatformBrowser(this.platformId)) return;
 
-    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-    if (isMobile) {
-      this.count = 800; // Lightweight particle count for mobile
+    if (typeof window !== 'undefined' && window.innerWidth < 768) {
+      return; // Skip WebGL 3D particle mesh completely on mobile (<768px)
     }
 
     const reducedMotion = this.prefersReducedMotion();
@@ -88,9 +87,7 @@ export class HeroParticlesVisual implements OnInit, OnDestroy {
         if (reducedMotion) {
           this.renderFrame();
         } else {
-          if (!isMobile) {
-            this.setupPointerEvents();
-          }
+          this.setupPointerEvents();
           this.animate();
         }
       } catch {
