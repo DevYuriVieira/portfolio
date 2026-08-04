@@ -24,8 +24,8 @@ describe('HeroSection', () => {
   });
 
   it('should expose hero section data correctly', () => {
-    expect(component.data.name).toBe(HERO_SECTION_DATA.name);
-    expect(component.data.eyebrow).toBe(HERO_SECTION_DATA.eyebrow);
-    expect(component.data.description).toBe(HERO_SECTION_DATA.description);
+    expect(component.data().name).toBe(HERO_SECTION_DATA.name);
+    expect(component.data().eyebrow).toBe(HERO_SECTION_DATA.eyebrow);
+    expect(component.data().description).toBe(HERO_SECTION_DATA.description);
   });
 });

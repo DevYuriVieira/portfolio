@@ -2,47 +2,84 @@
   <app-container size="xl">
     <div class="header__inner">
       <!-- Brand Logo -->
-      <a href="#top" class="header__brand" aria-label="Yuri Vieira - Ir para o início da página" (click)="closeMobileMenu()">
+      <a href="#top" class="header__brand" [attr.aria-label]="nav.brandAriaLabel"
+        (click)="navigateToSection($event, 'top')">
         <span class="header__brand-name">Yuri</span>
       </a>
 
       <!-- Desktop Navigation -->
-      <nav class="header__nav" aria-label="Navegação principal">
+      <nav class="header__nav" [attr.aria-label]="nav.navAriaLabel">
         <ul class="header__nav-list">
-          <li><a href="#projects" class="header__nav-link">Projetos</a></li>
-          <li><a href="#about" class="header__nav-link">Sobre</a></li>
-          <li><a href="#contact" class="header__nav-link">Contato</a></li>
+          <li><a href="#about" class="header__nav-link" (click)="navigateToSection($event, 'about')">{{ nav.about }}</a></li>
+          <li><a href="#experience" class="header__nav-link"
+              (click)="navigateToSection($event, 'experience')">{{ nav.experience }}</a></li>
+          <li><a href="#skills" class="header__nav-link" (click)="navigateToSection($event, 'skills')">{{ nav.skills }}</a>
+          </li>
+          <li><a href="#projects" class="header__nav-link" (click)="navigateToSection($event, 'projects')">{{ nav.projects }}</a>
+          </li>
+          <li><a href="#ai-experience" class="header__nav-link" (click)="navigateToSection($event, 'ai-experience')">{{ nav.ai }}</a></li>
+          <li><a href="#contact" class="header__nav-link" (click)="navigateToSection($event, 'contact')">{{ nav.contact }}</a>
+          </li>
         </ul>
       </nav>
 
       <!-- Header Actions -->
       <div class="header__actions">
-        <!-- Structural language indicator placeholder for future i18n -->
-        <span class="header__lang-indicator" title="Idioma: Português (Brasil)">PT</span>
+        <!-- Language Switcher with Flags -->
+        <div class="header__lang-switcher" role="radiogroup" aria-label="Language">
+          <button type="button"
+            class="header__lang-btn"
+            [class.header__lang-btn--active]="currentLang() === 'pt-BR'"
+            (click)="switchLang('pt-BR')"
+            [attr.aria-pressed]="currentLang() === 'pt-BR'"
+            aria-label="Português (Brasil)"
+            title="Português (Brasil)">
+            <svg class="header__flag-icon" viewBox="0 0 640 480" aria-hidden="true">
+              <path fill="#229e45" d="M0 0h640v480H0z"/>
+              <path fill="#f8e509" d="M321.4 36.2 609.4 240 321.4 443.8 33.4 240z"/>
+              <circle fill="#2b49a3" cx="321.4" cy="240" r="113.6"/>
+              <path fill="#fff" d="M195.6 248.1c0-41.2 22-79.4 57.8-100.1a114 114 0 0 0-45 30.2c-23.4 27.4-31 64-20 97.3 11 33.3 37 58.5 68 67.6a113.6 113.6 0 0 1-60.8-95z"/>
+            </svg>
+          </button>
+
+          <button type="button"
+            class="header__lang-btn"
+            [class.header__lang-btn--active]="currentLang() === 'en'"
+            (click)="switchLang('en')"
+            [attr.aria-pressed]="currentLang() === 'en'"
+            aria-label="English (US)"
+            title="English (US)">
+            <svg class="header__flag-icon" viewBox="0 0 640 480" aria-hidden="true">
+              <path fill="#bd3d44" d="M0 0h640v37h-640zm0 73.9h640v37h-640zm0 73.8h640v37h-640zm0 73.8h640v37h-640zm0 74h640v36.8h-640zm0 73.7h640v37h-640zm0 73.9h640v37h-640z"/>
+              <path fill="#fff" d="M0 37h640v36.9h-640zm0 73.8h640v36.9h-640zm0 73.8h640v37h-640zm0 73.9h640v37h-640zm0 73.8h640v37h-640zm0 73.8h640v37h-640z"/>
+              <path fill="#192f5d" d="M0 0h364.8v258.5H0z"/>
+              <g fill="#fff">
+                <g id="us-d"><g id="us-c"><g id="us-b"><g id="us-a">
+                  <path d="M30 11l3.5 10.7h11.3l-9.1 6.6 3.5 10.7-9.2-6.7-9.1 6.7 3.5-10.7-9.2-6.6h11.3z"/>
+                  <path d="M30 47.7l3.5 10.7h11.3l-9.1 6.7 3.5 10.6-9.2-6.6-9.1 6.6 3.5-10.6-9.2-6.7h11.3z"/>
+                </g>
+                <path d="M30 84.5l3.5 10.7h11.3l-9.1 6.6 3.5 10.7-9.2-6.7-9.1 6.7 3.5-10.7-9.2-6.6h11.3z"/>
+                </g>
+                <use href="#us-a" x="60.8"/>
+                </g>
+                <use href="#us-b" x="121.6"/>
+                </g>
+                <use href="#us-c" x="182.4"/>
+                <use href="#us-d" x="243.2"/>
+              </g>
+            </svg>
+          </button>
+        </div>
 
         <!-- Mobile Menu Toggle Button -->
-        <button
-          type="button"
-          class="header__menu-btn"
-          [attr.aria-expanded]="mobileMenuOpen()"
-          aria-haspopup="dialog"
-          aria-controls="mobile-menu"
-          aria-label="Alternar menu de navegação"
-          (click)="toggleMobileMenu()"
-        >
-          <svg
-            class="header__menu-icon"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
+        <button type="button" class="header__menu-btn" [attr.aria-expanded]="mobileMenuOpen()" aria-haspopup="dialog"
+          aria-controls="mobile-menu" [attr.aria-label]="nav.menuBtnAriaLabel" (click)="toggleMobileMenu()">
+          <svg class="header__menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round">
             @if (mobileMenuOpen()) {
-              <path d="M18 6L6 18M6 6l12 12" />
+            <path d="M18 6L6 18M6 6l12 12" />
             } @else {
-              <path d="M4 8h16M4 16h16" />
+            <path d="M4 8h16M4 16h16" />
             }
           </svg>
         </button>
@@ -52,32 +89,42 @@
 
   <!-- Mobile Navigation Drawer Overlay -->
   @if (mobileMenuOpen()) {
-    <div
-      id="mobile-menu"
-      class="header__mobile-overlay"
-      role="dialog"
-      aria-modal="true"
-      aria-label="Menu de navegação mobile"
-    >
-      <nav class="header__mobile-nav">
-        <ul class="header__mobile-list">
-          <li>
-            <a href="#projects" class="header__mobile-link" (click)="closeMobileMenu()">
-              Projetos
-            </a>
-          </li>
-          <li>
-            <a href="#about" class="header__mobile-link" (click)="closeMobileMenu()">
-              Sobre
-            </a>
-          </li>
-          <li>
-            <a href="#contact" class="header__mobile-link" (click)="closeMobileMenu()">
-              Contato
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </div>
+  <div id="mobile-menu" class="header__mobile-overlay" role="dialog" aria-modal="true"
+    [attr.aria-label]="nav.mobileMenuAriaLabel">
+    <nav class="header__mobile-nav">
+      <ul class="header__mobile-list">
+        <li>
+          <a href="#about" class="header__mobile-link" (click)="navigateToSection($event, 'about')">
+            {{ nav.about }}
+          </a>
+        </li>
+        <li>
+          <a href="#experience" class="header__mobile-link" (click)="navigateToSection($event, 'experience')">
+            {{ nav.experience }}
+          </a>
+        </li>
+        <li>
+          <a href="#skills" class="header__mobile-link" (click)="navigateToSection($event, 'skills')">
+            {{ nav.skills }}
+          </a>
+        </li>
+        <li>
+          <a href="#projects" class="header__mobile-link" (click)="navigateToSection($event, 'projects')">
+            {{ nav.projects }}
+          </a>
+        </li>
+        <li>
+          <a href="#ai-experience" class="header__mobile-link" (click)="navigateToSection($event, 'ai-experience')">
+            {{ nav.ai }}
+          </a>
+        </li>
+        <li>
+          <a href="#contact" class="header__mobile-link" (click)="navigateToSection($event, 'contact')">
+            {{ nav.contact }}
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
   }
 </header>

@@ -1,47 +1,82 @@
-<app-section id="experience" spacing="lg" [ariaLabel]="data.ariaLabel">
+<app-section id="experience" spacing="lg" [ariaLabel]="data().ariaLabel">
   <app-container size="xl">
     <div class="experience">
-      <!-- Section Header -->
       <header class="experience__header">
         <app-text variant="caption" element="span" class="experience__eyebrow">
-          {{ data.eyebrow }}
+          {{ data().eyebrow }}
         </app-text>
         <app-heading level="h2" size="h1" class="experience__title">
-          {{ data.title }}
+          {{ data().title }}
         </app-heading>
         <app-text variant="lead" class="experience__subtitle">
-          {{ data.description }}
+          {{ data().description }}
         </app-text>
       </header>
 
-      <!-- Timeline List -->
-      <ol class="experience__timeline" [attr.aria-label]="data.ariaLabel">
-        @for (milestone of milestones; track milestone.id) {
-          <li class="experience__item">
-            <div class="experience__marker" aria-hidden="true">
-              <span class="experience__dot"></span>
-            </div>
-            <div class="experience__content">
-              <div class="experience__meta">
-                <app-text variant="caption" element="span" class="experience__year">
-                  {{ milestone.year }}
-                </app-text>
-                @if (milestone.subtitle) {
-                  <app-text variant="caption" element="span" class="experience__category">
-                    {{ milestone.subtitle }}
-                  </app-text>
-                }
-              </div>
-              <app-heading level="h3" size="h3" class="experience__item-title">
-                {{ milestone.title }}
-              </app-heading>
-              <app-text variant="body" class="experience__description">
-                {{ milestone.description }}
+      <ol class="experience__timeline" [attr.aria-label]="data().ariaLabel">
+        @for (milestone of milestones(); track milestone.id) {
+        <li class="experience__item">
+          <div class="experience__marker" aria-hidden="true">
+            <span class="experience__dot"></span>
+          </div>
+          <div class="experience__content">
+            <div class="experience__meta">
+              <app-text variant="caption" element="span" class="experience__year">
+                {{ milestone.year }}
               </app-text>
+              @if (milestone.subtitle) {
+              <app-text variant="caption" element="span" class="experience__category">
+                {{ milestone.subtitle }}
+              </app-text>
+              }
             </div>
-          </li>
+            <app-heading level="h3" size="h3" class="experience__item-title">
+              {{ milestone.title }}
+            </app-heading>
+            <app-text variant="body" class="experience__description">
+              {{ milestone.description }}
+            </app-text>
+          </div>
+        </li>
         }
       </ol>
+
+      @if (currentFocus()) {
+      <div class="experience__focus">
+        <header class="experience__focus-header">
+          <div class="experience__focus-status">
+            <span class="experience__focus-pulse" aria-hidden="true"></span>
+            <span class="experience__focus-status-text">{{ currentFocus().statusBadge }}</span>
+          </div>
+          <app-heading level="h3" size="h2" class="experience__focus-title">
+            {{ currentFocus().title }}
+          </app-heading>
+          <app-text variant="body" class="experience__focus-subtitle">
+            {{ currentFocus().subtitle }}
+          </app-text>
+        </header>
+
+        <div class="experience__focus-grid">
+          @for (item of currentFocus().items; track item.id; let i = $index) {
+          <article class="experience__focus-card" [style.--focus-index]="i">
+            <div class="experience__focus-trail" aria-hidden="true"></div>
+
+            <div class="experience__focus-card-header">
+              <span class="experience__focus-tech">{{ item.tech }}</span>
+              <span class="experience__focus-num">0{{ i + 1 }}</span>
+            </div>
+
+            <div class="experience__focus-card-body">
+              <span class="experience__focus-category">{{ item.category }}</span>
+              <app-text variant="body" class="experience__focus-description">
+                {{ item.description }}
+              </app-text>
+            </div>
+          </article>
+          }
+        </div>
+      </div>
+      }
     </div>
   </app-container>
 </app-section>

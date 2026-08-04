@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
+import { I18nService } from '@core';
 import { Container, Heading, Section, Text } from '@ui';
-import { SKILLS_CATEGORIES, SKILLS_SECTION_DATA } from './skills.data';
-import { SkillCategory, SkillsSectionData } from './skills.model';
+import { getSkillsData } from './skills.data';
 
 @Component({
   selector: 'app-skills',
@@ -11,6 +11,9 @@ import { SkillCategory, SkillsSectionData } from './skills.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SkillsSection {
-  readonly data: SkillsSectionData = SKILLS_SECTION_DATA;
-  readonly categories: readonly SkillCategory[] = SKILLS_CATEGORIES;
+  private readonly i18n = inject(I18nService);
+
+  readonly i18nData = computed(() => getSkillsData(this.i18n.currentLang()));
+  readonly data = computed(() => this.i18nData().sectionData);
+  readonly categories = computed(() => this.i18nData().categories);
 }

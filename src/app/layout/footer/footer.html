@@ -6,19 +6,21 @@
           {{ name }}
         </app-text>
         <app-text variant="caption" element="span" class="footer__positioning">
-          {{ positioning }}
+          {{ labels().positioning }}
         </app-text>
       </div>
 
       <div class="footer__meta">
         <app-text variant="caption" element="span" class="footer__stack">
-          {{ stackInfo }}
+          {{ labels().stackInfo }}
+        </app-text>
+        <app-text variant="caption" element="span" class="footer__principles">
+          {{ labels().engineeringPrinciples }}
         </app-text>
         <app-text variant="caption" element="span" class="footer__copyright">
-          © {{ currentYear }} {{ name }}
+          {{ labels().copyright }}
         </app-text>
       </div>
     </div>
   </app-container>
 </footer>
-

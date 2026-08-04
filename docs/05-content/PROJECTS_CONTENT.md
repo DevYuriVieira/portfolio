@@ -47,16 +47,17 @@ All descriptions follow recruiter-oriented PT-BR storytelling with technical cla
 
 - **Título**: Django Full-Stack E-Commerce
 - **Categoria**: Full Stack Python/Django
-- **Contexto**: Sistema completo de e-commerce desenvolvido para explorar o ecossistema Django com autenticação, administração e integração entre frontend e backend.
-- **Como foi desenvolvido**: Projeto pessoal desenvolvido utilizando Django, PostgreSQL e APIs REST, priorizando organização do código, reutilização e arquitetura escalável.
+- **Contexto**: Plataforma e-commerce full-stack projetada para simular uma arquitetura real de produção, com desacoplamento de serviços no backend, fluxos assíncronos e estrutura de frontend leve sem frameworks.
+- **Como foi desenvolvido**: Projeto autoral desenvolvido em Python/Django e Vanilla JavaScript (ES6+). Implementa o padrão Service Layer para isolamento de domínio, transações atômicas no MySQL, otimização de consultas ORM via `prefetch_related` (Zero N+1), API versionada sem DRF e renderização modular no frontend com `<template>` nativo do HTML5.
 - **Destaques técnicos**:
-  - Mapeamento objeto-relacional com Django ORM
-  - Painel administrativo nativo com Django Admin
-  - Persistência de dados com PostgreSQL
-  - Criação e consumo de REST APIs
-  - Processamento seguro e idempotente de Webhooks
-  - Organização em apps reutilizáveis
-- **Stack**: Python, Django, PostgreSQL, REST API, Webhooks
+  - Arquitetura MVT desacoplada com padrão Service Layer no Django
+  - Processamento assíncrono idempotente de Webhooks de pagamento (`pending -> paid`)
+  - Controle de transações atômicas (`transaction.atomic`) para consistência financeira
+  - Otimização de consultas ORM com `prefetch_related` eliminando N+1 queries
+  - Frontend modular em Vanilla JS (ES6+) com componentização `<template>` do HTML5
+  - Segurança contra vulnerabilidades XSS (manipulação via `textContent`) e tokens CSRF
+  - Sistema de cupons de desconto, favoritos persistentes por usuário e carrinho dinâmico
+- **Stack**: Python, Django, MySQL, Vanilla JS (ES6+), HTML5 `<template>`, REST API, Webhooks Idempotentes, Service Layer
 - **Links**: GitHub (https://github.com/DevYuriVieira/django-ecommerce)
 
 ---
@@ -95,20 +96,21 @@ All descriptions follow recruiter-oriented PT-BR storytelling with technical cla
 
 ---
 
-# 6. Payroll System
+# 6. Payroll System (Sistema de Folha de Pagamento)
 
-- **Título**: Payroll System
-- **Categoria**: Backend Java
-- **Contexto**: Sistema backend para processamento automatizado de folha de pagamento desenvolvido como projeto final de Programação Orientada a Objetos.
-- **Como foi desenvolvido**: Projeto colaborativo com quatro desenvolvedores utilizando arquitetura MVC + DAO, persistência JDBC e processamento de arquivos CSV.
+- **Título**: Sistema de Folha de Pagamento (Payroll System)
+- **Categoria**: Backend Java / Arquitetura MVC+DAO
+- **Contexto**: Sistema backend para processamento automatizado em lote de folha de pagamento, cálculo de alíquotas progressivas de INSS e Imposto de Renda (IRRF) conforme a legislação vigente, desenvolvido durante a Residência em TIC Serratec 2026.1 (Turma 36 Nova Friburgo).
+- **Como foi desenvolvido**: Projeto colaborativo desenvolvido em equipe de 4 desenvolvedores (Yuri Vieira, Yasmim Veríssimo, Gabriel Maia e Ícaro Pinheiro) em Java 17 puro (sem frameworks ORM) aplicando arquitetura MVC + DAO, persistência via JDBC no PostgreSQL, exceções customizadas de domínio e manipulação I/O defensiva de arquivos CSV.
 - **Destaques técnicos**:
-  - Cálculo automático de INSS
-  - Cálculo automático de IRRF
-  - BigDecimal para precisão financeira
-  - Arquitetura em camadas com MVC + DAO
-  - Persistência de dados relacional via JDBC
-  - Leitura e processamento automatizado de arquivos CSV
-- **Stack**: Java 17, PostgreSQL, JDBC, MVC, DAO
+  - Arquitetura em camadas MVC + DAO em Java 17 sem dependência de ORM
+  - Cálculo progressivo automatizado de INSS e IRRF com deduções por dependente
+  - Precisão financeira exata com `BigDecimal` e `RoundingMode.HALF_UP`
+  - Padrão Singleton no gerenciador de conexões JDBC (`ConexaoBancoDados`)
+  - Tratamento de exceções customizadas de domínio (`CpfInvalidoException`, `DependenteSemTitularException`, `SalarioInvalidoException`)
+  - Leitura e exportação automatizada de relatórios em arquivos CSV (`CsvReader`, `CsvWriter`)
+  - Modelo relacional normalizado no PostgreSQL (`departamento`, `funcionario`, `dependente`, `folha_pagamento`)
+- **Stack**: Java 17, PostgreSQL, JDBC, MVC, DAO, BigDecimal, Singleton Pattern
 - **Links**: GitHub (https://github.com/DevYuriVieira/payroll-system-java)
 
 ---
@@ -130,19 +132,21 @@ All descriptions follow recruiter-oriented PT-BR storytelling with technical cla
 
 ---
 
-# 8. Kuro Seafood
+# 8. Kuro Seafood E-Commerce
 
-- **Título**: Kuro Seafood
-- **Categoria**: Frontend E-commerce
-- **Contexto**: E-commerce frontend para venda de pescados premium simulando uma experiência completa de compra sem backend tradicional.
-- **Como foi desenvolvido**: Projeto colaborativo com quatro desenvolvedores utilizando Vanilla JavaScript, arquitetura modular e persistência client-side.
+- **Título**: Kuro Seafood E-Commerce
+- **Categoria**: Frontend E-commerce (MPA)
+- **Contexto**: Plataforma e-commerce B2C/B2B de pescados premium construída durante a Residência em TIC Serratec 2026.1 (Turma 36 Nova Friburgo) em arquitetura Multi-Page (MPA) sem frameworks, simulando uma experiência completa de compras de nível de produção.
+- **Como foi desenvolvido**: Projeto colaborativo desenvolvido em equipe de 4 desenvolvedores (Yuri Vieira, Yasmim Veríssimo, Gabriel Maia e Ícaro Pinheiro) com módulos JS isolados por funcionalidade (`cart.js`, `auth.js`, `catalogo.js`, `admin.js`, `checkout.js`, `dashboard-crud.js`), consumo de APIs assíncronas (`async/await`) e renderização via template literals.
 - **Destaques técnicos**:
-  - Painel administrativo para gerenciamento de produtos (CRUD)
-  - Carrinho de compras persistente via LocalStorage
-  - Simulação de backend assíncrono com MockAPI
-  - Busca automática de endereço via ViaCEP API
-  - Design responsivo estruturado em Mobile First
-- **Stack**: HTML5, CSS3, JavaScript ES6+, Bootstrap, LocalStorage, REST APIs
+  - Arquitetura Multi-Page (MPA) em Vanilla JS (ES6+) eliminando overhead de frameworks
+  - Painel administrativo privado com CRUD completo de produtos (Create, Read, Update, Delete) via MockAPI
+  - Carrinho offcanvas persistente com controle de estado cliente-side via LocalStorage
+  - Cálculo de frete e preenchimento de endereço em tempo real via ViaCEP REST API
+  - Regras automáticas de desconto para vendas no atacado (> R$ 500 ou > 5kg)
+  - Sistema de busca e filtragem dinâmica de catálogo via URL Query Strings
+  - Design responsivo Mobile-First construído do zero com Bootstrap 5.3 e CSS3
+- **Stack**: Vanilla JS (ES6+), HTML5, CSS3, Bootstrap 5.3, ViaCEP API, MockAPI, LocalStorage
 - **Links**: GitHub (https://github.com/DevYuriVieira/kuro-seafood-ecommerce), Live Demo (https://kuro-seafood-ecommerce.vercel.app/)
 
 ---

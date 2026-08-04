@@ -17,7 +17,7 @@
     @include respond-to('md') {
       flex-direction: row;
       justify-content: space-between;
-      align-items: center;
+      align-items: flex-start;
     }
   }
 
@@ -33,29 +33,40 @@
   }
 
   &__positioning {
-    color: var(--text-muted);
-    font-size: var(--text-xs);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: var(--font-weight-medium);
+    color: #60a5fa;
+    letter-spacing: 0.05em;
+    padding-top: 2px;
   }
 
   &__meta {
     display: flex;
     flex-direction: column;
-    gap: var(--space-1);
+    gap: var(--space-2);
 
     @include respond-to('md') {
       align-items: flex-end;
+      text-align: right;
     }
   }
 
   &__stack {
     font-family: var(--font-mono);
     font-size: var(--text-xs);
+    color: var(--accent-primary);
+  }
+
+  &__principles {
+    font-family: var(--font-mono);
+    font-size: 11px;
     color: var(--text-muted);
   }
 
   &__copyright {
     color: var(--text-muted);
     font-size: var(--text-xs);
+    padding-top: var(--space-1);
   }
 }
-

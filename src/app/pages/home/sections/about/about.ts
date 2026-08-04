@@ -6,11 +6,12 @@ import {
   ElementRef,
   OnDestroy,
   PLATFORM_ID,
+  computed,
   inject,
 } from '@angular/core';
+import { I18nService } from '@core';
 import { Container, Heading, Section, Text } from '@ui';
-import { ABOUT_BLOCKS, ENGINEERING_PRINCIPLES } from './about.data';
-import { AboutBlock, EngineeringPrinciple } from './about.model';
+import { getAboutData } from './about.data';
 
 @Component({
   selector: 'app-about',
@@ -20,8 +21,11 @@ import { AboutBlock, EngineeringPrinciple } from './about.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AboutSection implements AfterViewInit, OnDestroy {
-  readonly blocks: readonly AboutBlock[] = ABOUT_BLOCKS;
-  readonly principles: readonly EngineeringPrinciple[] = ENGINEERING_PRINCIPLES;
+  private readonly i18n = inject(I18nService);
+
+  readonly data = computed(() => getAboutData(this.i18n.currentLang()));
+  readonly blocks = computed(() => this.data().blocks);
+  readonly principles = computed(() => this.data().principles);
 
   private readonly elementRef = inject(ElementRef);
   private readonly platformId = inject(PLATFORM_ID);

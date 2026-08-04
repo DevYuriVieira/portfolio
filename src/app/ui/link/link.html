@@ -5,8 +5,8 @@
 @if (external) {
   <a
     [href]="href"
-    target="_blank"
-    rel="noopener noreferrer"
+    [target]="isMailto ? '_self' : '_blank'"
+    [attr.rel]="isMailto ? null : 'noopener noreferrer'"
     class="link"
     [attr.aria-label]="ariaLabel || null"
   >

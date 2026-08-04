@@ -25,6 +25,6 @@ describe('FooterComponent', () => {
   it('should expose current year and identity details', () => {
     expect(component.currentYear).toBe(new Date().getFullYear());
     expect(component.name).toBe('Yuri Vieira Teixeira');
-    expect(component.positioning).toContain('Software Engineer');
+    expect(component.labels().positioning).toContain('Software Engineer');
   });
 });

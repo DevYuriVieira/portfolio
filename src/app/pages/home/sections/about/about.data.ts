@@ -1,65 +1,162 @@
+import { SupportedLang } from '@core';
 import { AboutBlock, EngineeringPrinciple } from './about.model';
 
-export const ABOUT_PARAGRAPHS: readonly string[] = [
-  'Sou Software Engineer focado no desenvolvimento de aplicações web completas. Minha atuação abrange desde a construção de interfaces responsivas e funcionais no frontend até a modelagem de APIs REST, bancos de dados e regras de negócio no backend.',
-  'Priorizo clareza, manutenibilidade e boas práticas de engenharia em cada projeto. Trabalho com tipagem estática, testes automatizados e arquitetura modular, garantindo que o código seja previsível, organizado e fácil de manter no longo prazo.',
-  'Minha formação em Engenharia de Produção agrega uma perspectiva analítica ao ciclo de desenvolvimento. Essa bagagem me auxilia na compreensão clara de requisitos, no mapeamento de fluxos e na otimização de processos antes da implementação.',
-] as const;
+/** Structured i18n content for the About section - Balanced, Non-repetitive Copy */
 
-export const ABOUT_BLOCKS: readonly AboutBlock[] = [
-  {
-    id: 'who-i-am',
-    label: 'Atuação Profissional',
-    text: ABOUT_PARAGRAPHS[0],
-  },
-  {
-    id: 'how-i-build',
-    label: 'Filosofia de Engenharia',
-    text: ABOUT_PARAGRAPHS[1],
-  },
-  {
-    id: 'systemic-differentiator',
-    label: 'Visão Sistêmica',
-    text: ABOUT_PARAGRAPHS[2],
-  },
-];
+interface AboutI18n {
+  eyebrow: string;
+  title: string;
+  intro: string;
+  journeyTitle: string;
+  howIWorkTitle: string;
+  howIWorkDescription: string;
+  blocks: readonly AboutBlock[];
+  principles: readonly EngineeringPrinciple[];
+}
 
-export const ENGINEERING_PRINCIPLES: readonly EngineeringPrinciple[] = [
-  {
-    id: 'clean-architecture',
-    title: 'Arquitetura Limpa & Intenção',
-    description:
-      'Pensar na arquitetura antes da implementação e compreender a fundo o problema antes de decidir como construí-lo.',
+const ABOUT_I18N: Record<SupportedLang, AboutI18n> = {
+  'pt-BR': {
+    eyebrow: 'Sobre mim',
+    title: 'Engenharia de Software & Visão Sistêmica',
+    intro:
+      'A trajetória na tecnologia une a visão analítica da Engenharia de Produção ao rigor prático do desenvolvimento de software full-stack.',
+    journeyTitle: 'Trajetória & Foco',
+    howIWorkTitle: 'Como Trabalho',
+    howIWorkDescription:
+      'Decisões e práticas de engenharia que guiam o desenvolvimento no dia a dia.',
+    blocks: [
+      {
+        id: 'who-i-am',
+        label: 'Atuação Profissional',
+        text: 'Atuação focada no ecossistema Java (Spring Boot) e React, complementada por projetos em Python (Django), TypeScript e PostgreSQL. A experiência abrange desde a construção de interfaces responsivas e acessíveis até a modelagem de APIs REST seguras e automações com inteligência artificial.',
+      },
+      {
+        id: 'how-i-build',
+        label: 'Engenharia & Processos',
+        text: 'A bagagem em Engenharia de Produção traz um diferencial estratégico: enxergar o software como um sistema produtivo. Antes de definir código ou arquitetura, o foco é mapear os fluxos de trabalho e identificar a real necessidade do negócio.',
+      },
+      {
+        id: 'systemic-differentiator',
+        label: 'Formação & Prática',
+        text: 'Base sólida consolidada em mais de 900 horas de imersão técnica (Residência Serratec e UECE) e pós-graduação em Engenharia de Software, priorizando código limpo, testes e tipagem estrita.',
+      },
+    ],
+    principles: [
+      {
+        id: 'clean-architecture',
+        title: 'Contrato de API e DTOs',
+        description:
+          'Definição clara de contratos, esquemas e DTOs antes de implementar controladores.',
+      },
+      {
+        id: 'communication-first',
+        title: 'Integridade Transacional',
+        description:
+          'Tratamento de concorrência, idempotência em webhooks e proteção contra dados duplicados.',
+      },
+      {
+        id: 'systems-thinking',
+        title: 'Arquitetura Modular',
+        description:
+          'Separação clara de responsabilidades em camadas (MVT, MVC+DAO) para facilitar a manutenção.',
+      },
+      {
+        id: 'maintainability',
+        title: 'Automação Pragmática',
+        description:
+          'Uso diário de IA e rotinas automatizadas para acelerar análises de logs e refatorações sob validação técnica.',
+      },
+      {
+        id: 'value-delivery',
+        title: 'Alinhamento de Equipe',
+        description:
+          'Comunicação clara de requisitos e alinhamento contínuo para evitar abstrações desnecessárias.',
+      },
+      {
+        id: 'simplicity-scalability',
+        title: 'Análise de Causa Raiz',
+        description:
+          'Aplicação de metodologias como PDCA e 5W2H para resolver a origem técnica dos problemas.',
+      },
+    ],
   },
-  {
-    id: 'communication-first',
-    title: 'Comunicação em Primeiro Lugar',
-    description:
-      'Comunicação clara e transparente como habilidade técnica fundamental. Problemas complexos são resolvidos mais rápido através do alinhamento.',
+  en: {
+    eyebrow: 'About me',
+    title: 'Software Engineering & Systems Thinking',
+    intro:
+      'Combining the analytical mindset of Production Engineering with the practical rigor of full-stack software development.',
+    journeyTitle: 'Journey & Focus',
+    howIWorkTitle: 'How I Work',
+    howIWorkDescription:
+      'Engineering practices and principles that guide daily software development.',
+    blocks: [
+      {
+        id: 'who-i-am',
+        label: 'Professional Practice',
+        text: 'Development practice focused on the Java (Spring Boot) and React ecosystem, complemented by projects in Python (Django), TypeScript, and PostgreSQL. Experience spans building responsive web interfaces, secure REST APIs, and AI-driven workflow automations.',
+      },
+      {
+        id: 'how-i-build',
+        label: 'Engineering & Processes',
+        text: 'A background in Production Engineering adds a strategic advantage: viewing software as an operational production system. Before committing to code or architecture, the focus remains on mapping business workflows and identifying genuine root problems.',
+      },
+      {
+        id: 'systemic-differentiator',
+        label: 'Education & Practice',
+        text: 'Technical foundation built through 900+ hours of intensive residency programs (Serratec & UECE) alongside postgraduate software engineering studies, emphasizing clean code, automated testing, and strict typing.',
+      },
+    ],
+    principles: [
+      {
+        id: 'clean-architecture',
+        title: 'API Contracts & DTOs',
+        description:
+          'Clear specification of contracts, schemas, and DTOs prior to controller implementation.',
+      },
+      {
+        id: 'communication-first',
+        title: 'Transactional Integrity',
+        description:
+          'Handling concurrency, webhook idempotency, and safeguarding against data duplication.',
+      },
+      {
+        id: 'systems-thinking',
+        title: 'Modular Architecture',
+        description:
+          'Clean separation of concerns into distinct layers (MVT, MVC+DAO) for long-term maintainability.',
+      },
+      {
+        id: 'maintainability',
+        title: 'Pragmatic Automation',
+        description:
+          'Daily application of AI and automated scripts to speed up log analysis under engineering oversight.',
+      },
+      {
+        id: 'value-delivery',
+        title: 'Team Alignment',
+        description:
+          'Clear communication of technical requirements to eliminate premature complexity.',
+      },
+      {
+        id: 'simplicity-scalability',
+        title: 'Root Cause Analysis',
+        description:
+          'Applying Lean/PDCA methodologies to address technical issues at their core origin.',
+      },
+    ],
   },
-  {
-    id: 'systems-thinking',
-    title: 'Visão Sistêmica & Processos',
-    description:
-      'Mapeamento de fluxos, análise de causa raiz e otimização do início ao fim, enxergando o software como um sistema de produção completo.',
-  },
-  {
-    id: 'maintainability',
-    title: 'Código Legível & Manutenível',
-    description:
-      'Priorizar código limpo, sustentável e fácil de entender por outros desenvolvedores. Código inteligível sempre vence no longo prazo.',
-  },
-  {
-    id: 'value-delivery',
-    title: 'Entregas de Valor & Compromisso',
-    description:
-      'Compreender os objetivos do negócio antes de propor soluções, respeitar prazos e entregar mais valor do que o originalmente solicitado.',
-  },
-  {
-    id: 'simplicity-scalability',
-    title: 'Simplicidade & Escalabilidade',
-    description:
-      'Valorizar soluções simples, performáticas e escaláveis, evitando complexidade desnecessária ou abstrações prematuras.',
-  },
-];
+};
 
+// Backward-compatible exports
+export const ABOUT_PARAGRAPHS: readonly string[] = ABOUT_I18N['pt-BR'].blocks.map(
+  (b) => b.text
+) as readonly string[];
+
+export const ABOUT_BLOCKS: readonly AboutBlock[] = ABOUT_I18N['pt-BR'].blocks;
+
+export const ENGINEERING_PRINCIPLES: readonly EngineeringPrinciple[] =
+  ABOUT_I18N['pt-BR'].principles;
+
+export function getAboutData(lang: SupportedLang): AboutI18n {
+  return ABOUT_I18N[lang];
+}

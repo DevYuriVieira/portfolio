@@ -24,9 +24,9 @@ describe('ExperienceSection', () => {
   });
 
   it('should expose section data and milestones correctly', () => {
-    expect(component.data.title).toBe(EXPERIENCE_SECTION_DATA.title);
-    expect(component.data.eyebrow).toBe(EXPERIENCE_SECTION_DATA.eyebrow);
-    expect(component.milestones.length).toBe(EXPERIENCE_MILESTONES.length);
+    expect(component.data().title).toBe(EXPERIENCE_SECTION_DATA.title);
+    expect(component.data().eyebrow).toBe(EXPERIENCE_SECTION_DATA.eyebrow);
+    expect(component.milestones().length).toBe(EXPERIENCE_MILESTONES.length);
   });
 
   it('should render all timeline items in the DOM', () => {
@@ -37,9 +37,20 @@ describe('ExperienceSection', () => {
   });
 
   it('should render milestone details correctly in component instance', () => {
-    expect(component.milestones[0].year).toBe('2017');
-    expect(component.milestones[0].title).toBe('Início da Graduação em Engenharia de Produção');
-    expect(component.milestones[6].year).toBe('Hoje');
-    expect(component.milestones[6].title).toBe(EXPERIENCE_MILESTONES[6].title);
+    expect(component.milestones()[0].year).toBe(EXPERIENCE_MILESTONES[0].year);
+    expect(component.milestones()[0].title).toBe(EXPERIENCE_MILESTONES[0].title);
+    const lastIndex = EXPERIENCE_MILESTONES.length - 1;
+    expect(component.milestones()[lastIndex].year).toBe(EXPERIENCE_MILESTONES[lastIndex].year);
+    expect(component.milestones()[lastIndex].title).toBe(EXPERIENCE_MILESTONES[lastIndex].title);
+  });
+
+  it('should expose and render current focus active learning cards with top light trail', () => {
+    expect(component.currentFocus()).toBeTruthy();
+    expect(component.currentFocus().items.length).toBe(5);
+    const compiled = fixture.nativeElement as HTMLElement;
+    const focusCards = compiled.querySelectorAll('.experience__focus-card');
+    expect(focusCards.length).toBe(5);
+    const lightTrails = compiled.querySelectorAll('.experience__focus-trail');
+    expect(lightTrails.length).toBe(5);
   });
 });

@@ -1,45 +1,45 @@
-<app-section id="skills" spacing="lg" [ariaLabel]="data.ariaLabel">
+<app-section id="skills" spacing="lg" [ariaLabel]="data().ariaLabel">
   <app-container size="xl">
     <div class="skills">
       <!-- Section Header -->
       <header class="skills__header">
         <app-text variant="caption" element="span" class="skills__eyebrow">
-          {{ data.eyebrow }}
+          {{ data().eyebrow }}
         </app-text>
         <app-heading level="h2" size="h1" class="skills__title">
-          {{ data.title }}
+          {{ data().title }}
         </app-heading>
         <app-text variant="lead" class="skills__subtitle">
-          {{ data.description }}
+          {{ data().description }}
         </app-text>
       </header>
 
       <!-- Category Grid -->
-      <div class="skills__grid" [attr.aria-label]="data.ariaLabel">
-        @for (category of categories; track category.id) {
-          <article class="skills__card">
-            <header class="skills__card-header">
-              <app-heading level="h3" size="h3" class="skills__category-title">
-                {{ category.title }}
-              </app-heading>
-              @if (category.description) {
-                <app-text variant="caption" class="skills__category-description">
-                  {{ category.description }}
-                </app-text>
-              }
-            </header>
+      <div class="skills__grid" [attr.aria-label]="data().ariaLabel">
+        @for (category of categories(); track category.id) {
+        <article class="skills__card">
+          <header class="skills__card-header">
+            <app-heading level="h3" size="h3" class="skills__category-title">
+              {{ category.title }}
+            </app-heading>
+            @if (category.description) {
+            <app-text variant="caption" class="skills__category-description">
+              {{ category.description }}
+            </app-text>
+            }
+          </header>
 
-            <ul class="skills__list" [attr.aria-label]="category.title">
-              @for (skill of category.skills; track skill) {
-                <li class="skills__item">
-                  <span class="skills__bullet" aria-hidden="true"></span>
-                  <app-text variant="body" class="skills__name">
-                    {{ skill }}
-                  </app-text>
-                </li>
-              }
-            </ul>
-          </article>
+          <ul class="skills__list" [attr.aria-label]="category.title">
+            @for (skill of category.skills; track skill) {
+            <li class="skills__item">
+              <span class="skills__bullet" aria-hidden="true"></span>
+              <app-text variant="body" class="skills__name">
+                {{ skill }}
+              </app-text>
+            </li>
+            }
+          </ul>
+        </article>
         }
       </div>
     </div>

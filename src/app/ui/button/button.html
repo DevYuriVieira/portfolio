@@ -1,9 +1,24 @@
-<button
-  [type]="type"
-  [disabled]="disabled"
-  [attr.aria-label]="ariaLabel || null"
-  class="button"
-  [class]="'button--' + variant"
->
+<ng-template #buttonContent>
   <ng-content></ng-content>
-</button>
+</ng-template>
+
+@if (href) {
+  <a
+    [href]="href"
+    [attr.target]="target || null"
+    [attr.rel]="rel || null"
+    [attr.aria-label]="ariaLabel || null"
+    [class]="'button button--' + variant"
+  >
+    <ng-container *ngTemplateOutlet="buttonContent"></ng-container>
+  </a>
+} @else {
+  <button
+    [type]="type"
+    [disabled]="disabled"
+    [attr.aria-label]="ariaLabel || null"
+    [class]="'button button--' + variant"
+  >
+    <ng-container *ngTemplateOutlet="buttonContent"></ng-container>
+  </button>
+}

@@ -1,52 +1,38 @@
-<app-section spacing="none" ariaLabel="Hero">
+<app-section id="top" spacing="none" ariaLabel="Hero">
   <app-container size="xl">
     <div class="hero">
       <div class="hero__content">
         <!-- Eyebrow -->
-        <app-text
-          variant="caption"
-          element="span"
-          class="hero__eyebrow"
-        >
-          {{ data.eyebrow }}
+        <app-text variant="caption" element="span" class="hero__eyebrow">
+          {{ data().eyebrow }}
         </app-text>
 
         <!-- Name -->
-        <app-heading
-          level="h1"
-          size="display"
-          class="hero__name"
-        >
-          {{ data.name }}
+        <app-heading level="h1" size="display" class="hero__name">
+          {{ data().name }}
         </app-heading>
 
         <!-- Description -->
-        <app-text
-          variant="lead"
-          class="hero__description"
-        >
-          {{ data.description }}
+        <app-text variant="lead" class="hero__description">
+          {{ data().description }}
         </app-text>
 
         <!-- Main Actions -->
         <div class="hero__actions">
-          <app-button
-            variant="primary"
-            ariaLabel="Ver projetos"
-            (click)="scrollToProjects()"
-          >
-            {{ data.projectsCtaText }}
+          <app-button variant="primary" [ariaLabel]="data().projectsCtaText" (click)="scrollToProjects()">
+            {{ data().projectsCtaText }}
           </app-button>
 
-          <app-link
-            [href]="data.cvUrl"
-            [external]="true"
-            ariaLabel="Download do Currículo de Yuri Vieira Teixeira"
-            class="hero__cta-secondary"
-          >
-            {{ data.cvCtaText }}
+          <app-link [href]="data().cvUrl" [external]="true" ariaLabel="Download CV Yuri Vieira Teixeira"
+            class="hero__cta-secondary">
+            {{ data().cvCtaText }}
           </app-link>
         </div>
+      </div>
+
+      <!-- Interactive 3D Particle Wave Mesh -->
+      <div class="hero__visual" aria-hidden="true">
+        <app-hero-particles-visual />
       </div>
 
       <!-- Scroll Indicator -->
@@ -54,5 +40,3 @@
     </div>
   </app-container>
 </app-section>
-
-

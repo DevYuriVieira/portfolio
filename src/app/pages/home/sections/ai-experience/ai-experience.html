@@ -1,0 +1,110 @@
+<app-section id="ai-experience" spacing="lg" [ariaLabel]="labels().ariaLabel">
+  <app-container size="xl">
+    <div class="ai">
+      <!-- Active Theory Editorial Header -->
+      <header class="ai__header" appReveal>
+        <span class="ai__badge">{{ data().badge }}</span>
+
+        <app-heading level="h2" size="h1" class="ai__title">
+          {{ data().title }}
+        </app-heading>
+
+        <p class="ai__subtitle">
+          {{ data().subtitle }}
+        </p>
+
+        <app-text variant="lead" class="ai__manifesto">
+          {{ data().manifesto }}
+        </app-text>
+      </header>
+
+      <!-- Active Theory Interactive Canvas -->
+      <div class="ai__canvas-wrapper" appReveal>
+        <app-neural-canvas #neuralCanvas [lang]="currentLang()" (nodeSelect)="onNodeSelect($event)" />
+
+        <!-- Floating Glassmorphic Zoom Controls -->
+        <div class="ai__zoom-toolbar" role="toolbar" [attr.aria-label]="labels().zoomToolbarAriaLabel">
+          <button type="button" class="ai__zoom-btn" (click)="neuralCanvas.zoomIn()" [title]="labels().zoomInTitle"
+            [attr.aria-label]="labels().zoomInAriaLabel">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              <line x1="11" y1="8" x2="11" y2="14"></line>
+              <line x1="8" y1="11" x2="14" y2="11"></line>
+            </svg>
+          </button>
+
+          <span class="ai__zoom-indicator" [title]="labels().zoomLevelTitle">
+            {{ neuralCanvas.currentZoomPercent }}%
+          </span>
+
+          <button type="button" class="ai__zoom-btn" (click)="neuralCanvas.zoomOut()" [title]="labels().zoomOutTitle"
+            [attr.aria-label]="labels().zoomOutAriaLabel">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              <line x1="8" y1="11" x2="14" y2="11"></line>
+            </svg>
+          </button>
+
+          <button type="button" class="ai__zoom-btn ai__zoom-btn--reset" (click)="neuralCanvas.resetZoom()"
+            [title]="labels().resetTitle" [attr.aria-label]="labels().resetAriaLabel">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+              <path d="M3 3v5h5"></path>
+            </svg>
+          </button>
+
+          <button type="button" class="ai__zoom-focus-pill" (click)="neuralCanvas.toggleZoomFocus()"
+            [class.is-zoomed]="neuralCanvas.isZoomedIn" [title]="labels().zoomFocusTitle">
+            🔍 {{ neuralCanvas.isZoomedIn ? labels().zoomFocusLabel : labels().zoomFocusInLabel }}
+          </button>
+        </div>
+
+        <!-- Canvas Zoom Hint -->
+        <div class="ai__canvas-hint" aria-hidden="true">
+          <span>{{ labels().canvasHint }}</span>
+        </div>
+      </div>
+
+      <!-- Active Theory Feature Grid (Real Tools & Experience) -->
+      <div class="ai__features">
+        @for (feature of data().features; track feature.index; let i = $index) {
+        <article class="ai__feature-card" appReveal [revealDelay]="i * 80">
+          <div class="ai__feature-header">
+            <span class="ai__feature-index">{{ feature.index }}</span>
+            <app-heading level="h3" size="h3" class="ai__feature-title">
+              {{ feature.title }}
+            </app-heading>
+          </div>
+
+          <app-text variant="body" class="ai__feature-description">
+            {{ feature.description }}
+          </app-text>
+
+          <div class="ai__feature-tags">
+            @for (tag of feature.tags; track tag) {
+            <span class="ai__feature-tag">{{ tag }}</span>
+            }
+          </div>
+        </article>
+        }
+      </div>
+
+      <!-- Closing Statement -->
+      <footer class="ai__closing" appReveal>
+        <app-text variant="body" class="ai__closing-text">
+          {{ data().closingStatement }}
+        </app-text>
+      </footer>
+    </div>
+  </app-container>
+
+  <!-- Interactive 3D Node Detail Modal -->
+  @if (selectedNodeDetail(); as detail) {
+  <app-ai-node-modal [nodeDetail]="detail" (close)="closeModal()" />
+  }
+</app-section>

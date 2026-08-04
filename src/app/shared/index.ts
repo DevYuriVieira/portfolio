@@ -1,3 +1,3 @@
-// Shared exports will be registered here as reusable components, directives,
-// and pipes are implemented.
-export {};
+export { RevealDirective } from './directives/reveal.directive';
+export { SpotlightDirective } from './directives/spotlight.directive';
+export { InteractiveParticles } from './components/interactive-particles/interactive-particles';

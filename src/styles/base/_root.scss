@@ -77,4 +77,10 @@
   --ease-out: #{$ease-out};
   --ease-in-out: #{$ease-in-out};
   --ease-entrance: #{$ease-entrance};
+
+  // Visual FX
+  --glow-primary: #{$color-glow-primary};
+  --glow-subtle: #{$color-glow-subtle};
+  --grid-line: #{$color-grid-line};
+  --spotlight-beam: #{$color-spotlight-beam};
 }

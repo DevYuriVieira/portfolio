@@ -1,3 +1,17 @@
+export interface ActiveFocusItem {
+  readonly id: string;
+  readonly tech: string;
+  readonly category: string;
+  readonly description: string;
+}
+
+export interface CurrentFocusData {
+  readonly statusBadge: string;
+  readonly title: string;
+  readonly subtitle: string;
+  readonly items: readonly ActiveFocusItem[];
+}
+
 export interface TimelineMilestone {
   readonly id: string;
   readonly year: string;
