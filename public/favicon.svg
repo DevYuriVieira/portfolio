@@ -1,39 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none">
-  <defs>
-    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#090E1A"/>
-      <stop offset="50%" stop-color="#04060C"/>
-      <stop offset="100%" stop-color="#020306"/>
-    </linearGradient>
-    <linearGradient id="borderGlow" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#00F2FE" stop-opacity="0.95"/>
-      <stop offset="45%" stop-color="#3B82F6" stop-opacity="0.5"/>
-      <stop offset="100%" stop-color="#6366F1" stop-opacity="0.9"/>
-    </linearGradient>
-    <linearGradient id="cyanBlue" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#38BDF8"/>
-      <stop offset="100%" stop-color="#1D4ED8"/>
-    </linearGradient>
-    <linearGradient id="blueIndigo" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#3B82F6"/>
-      <stop offset="100%" stop-color="#6366F1"/>
-    </linearGradient>
-    <linearGradient id="hyperCyan" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#00F2FE"/>
-      <stop offset="100%" stop-color="#38BDF8"/>
-    </linearGradient>
-    <radialGradient id="ambientGlow" cx="50%" cy="40%" r="55%">
-      <stop offset="0%" stop-color="#00F2FE" stop-opacity="0.4"/>
-      <stop offset="60%" stop-color="#3B82F6" stop-opacity="0.15"/>
-      <stop offset="100%" stop-color="#3B82F6" stop-opacity="0"/>
-    </radialGradient>
-  </defs>
-
-  <rect width="64" height="64" rx="15" fill="url(#bgGrad)"/>
-  <circle cx="32" cy="28" r="26" fill="url(#ambientGlow)"/>
-  <rect x="1.25" y="1.25" width="61.5" height="61.5" rx="13.75" fill="none" stroke="url(#borderGlow)" stroke-width="2.5"/>
-  <path d="M 8 9 H 25 L 32 24 L 32 55 H 22 V 32 L 8 17 Z" fill="url(#cyanBlue)"/>
-  <path d="M 56 9 H 39 L 32 24 L 32 55 H 42 V 32 L 56 17 Z" fill="url(#blueIndigo)"/>
-  <path d="M 17 12 L 32 27 L 47 12" stroke="url(#hyperCyan)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M 32 27 V 55" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" opacity="0.95"/>
+  <!-- Solid Pure Black Canvas -->
+  <rect width="64" height="64" rx="16" fill="#000000"/>
+  
+  <!-- Apple-Style Golden Ratio Silhouette Monogram 'Y' -->
+  <path d="M 15 14 H 23.5 L 32 31.5 L 40.5 14 H 49 L 36.5 34 V 50 H 27.5 V 34 Z" fill="#FFFFFF"/>
 </svg>
