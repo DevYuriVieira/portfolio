@@ -70,6 +70,10 @@ export class HeroParticlesVisual implements OnInit, OnDestroy {
   ngOnInit(): void {
     if (!isPlatformBrowser(this.platformId)) return;
 
+    if (typeof window !== 'undefined' && window.innerWidth < 768) {
+      this.count = 1200;
+    }
+
     const reducedMotion = this.prefersReducedMotion();
 
     this.zone.runOutsideAngular(() => {

@@ -110,8 +110,8 @@ export class InteractiveParticles implements OnInit, OnDestroy {
     const height = window.innerHeight;
     this.particles = [];
 
-    // Responsive count for vivid density
-    this.count = width < 768 ? 45 : 85;
+    // Responsive count for vivid density & mobile optimization
+    this.count = width < 768 ? 30 : 75;
 
     for (let i = 0; i < this.count; i++) {
       const x = Math.random() * width;
