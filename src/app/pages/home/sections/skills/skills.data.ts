@@ -40,6 +40,7 @@ const SKILLS_I18N: Record<SupportedLang, SkillsI18n> = {
           'Desenvolvimento de serviços backend seguros, escaláveis e orientados a regras de negócio.',
         skills: [
           'Java (Spring Boot 3)',
+          'C# / .NET 10',
           'Spring Security & JWT',
           'Python (Django)',
           'APIs RESTful',
@@ -71,10 +72,12 @@ const SKILLS_I18N: Record<SupportedLang, SkillsI18n> = {
         description:
           'Práticas de engenharia focadas em qualidade, controle de versão, agilidade e entrega contínua.',
         skills: [
+          'Testes E2E & Automatizados',
+          'Cypress & Playwright',
+          'Selenium & Vitest',
           'Git / GitHub & Actions',
           'Conventional Commits',
           'Vercel CI/CD & Deploy',
-          'Testes Automatizados (Vitest)',
           'Agile / Scrum (Sprints)',
           'Code Review & Pair Programming',
         ],
@@ -114,6 +117,7 @@ const SKILLS_I18N: Record<SupportedLang, SkillsI18n> = {
           'Building secure, scalable backend services driven by business rules.',
         skills: [
           'Java (Spring Boot 3)',
+          'C# / .NET 10',
           'Spring Security & JWT',
           'Python (Django)',
           'RESTful APIs',
@@ -145,10 +149,12 @@ const SKILLS_I18N: Record<SupportedLang, SkillsI18n> = {
         description:
           'Engineering practices focused on quality, version control, agility, and continuous delivery.',
         skills: [
+          'E2E & Automated Testing',
+          'Cypress & Playwright',
+          'Selenium & Vitest',
           'Git / GitHub & Actions',
           'Conventional Commits',
           'Vercel CI/CD & Deploy',
-          'Automated Testing (Vitest)',
           'Agile / Scrum (Sprints)',
           'Code Review & Pair Programming',
         ],
