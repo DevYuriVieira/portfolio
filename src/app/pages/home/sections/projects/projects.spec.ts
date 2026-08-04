@@ -23,16 +23,23 @@ describe('ProjectsSection', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render featured project cards initially and all when expanded', () => {
-    const featuredCount = component.projects().filter((p) => p.featured).length;
+  it('should render 5 featured project cards initially, 7 on first expansion, and all on full expansion', () => {
     const totalCount = component.projects().length;
 
     const compiled = fixture.nativeElement as HTMLElement;
     let cards = compiled.querySelectorAll('.projects__card');
-    expect(cards.length).toBe(featuredCount);
-    expect(component.displayedProjects().length).toBe(featuredCount);
+    expect(cards.length).toBe(5);
+    expect(component.displayedProjects().length).toBe(5);
 
-    // Toggle expansion
+    // First toggle expansion (5 -> 7)
+    component.toggleShowAll();
+    fixture.detectChanges();
+
+    cards = compiled.querySelectorAll('.projects__card');
+    expect(cards.length).toBe(7);
+    expect(component.displayedProjects().length).toBe(7);
+
+    // Second toggle expansion (7 -> totalCount)
     component.toggleShowAll();
     fixture.detectChanges();
 
@@ -78,7 +85,11 @@ describe('ProjectsSection', () => {
   });
 
   it('should smooth scroll to top of projects section when collapsing', () => {
-    // First expand
+    // Expand to 7
+    component.toggleShowAll();
+    expect(component.displayLimit()).toBe(7);
+
+    // Expand to all
     component.toggleShowAll();
     expect(component.showAll()).toBe(true);
 
@@ -97,6 +108,7 @@ describe('ProjectsSection', () => {
     // Collapse
     component.toggleShowAll();
     expect(component.showAll()).toBe(false);
+    expect(component.displayLimit()).toBe(5);
     expect(scrolled).toBe(true);
   });
 });

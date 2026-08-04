@@ -174,43 +174,6 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       },
     },
     {
-      id: 'anime-weather-platform',
-      title: 'Anime Weather Platform',
-      category: 'Frontend + APIs + IA',
-      featured: true,
-      contextTag: 'Frontend & Integração com IA',
-      collaboration: 'Projeto colaborativo (Pair Programming)',
-      description:
-        'Aplicação web reativa que cruza dados climáticos (OpenWeather API) e catálogo de animes (Jikan API) com o Google Gemini AI, exibindo recomendações em JSON e chatbot de trocadilhos.',
-      context:
-        'Plataforma criada em Pair Programming para explorar a integração entre múltiplas APIs externas REST e SDKs de inteligência artificial generativa.',
-      problem:
-        'Combinar em tempo real dados de localização geográfica, clima e acervo cultural, alimentando um modelo de linguagem para produzir tanto cards em JSON estruturado quanto diálogos interativos.',
-      solution:
-        'Aplicação React e TypeScript que detecta o clima local via OpenWeather API, busca animes compatíveis na Jikan API e envia contexto ao Google Gemini AI via Prompt Engineering para montagem da UI e suporte ao chatbot.',
-      development:
-        'Desenvolvimento em dupla cobrindo gerenciamento de estado assíncrono, renderização dinâmica de dados, tratamento de erros de API e estilo visual glassmorphic.',
-      architectureDecisions: [
-        'Consumo assíncrono e cruzamento de dados em tempo real da OpenWeather API (clima) e Jikan API (animes)',
-        'Integração com SDK do Google Gemini AI unindo Engenharia de Prompts para respostas estruturadas em JSON nos cards e chatbot interativo',
-        'Interface responsiva desenvolvida em React, TypeScript e Vite com componentes em estilo glassmorphism',
-        'Tratamento defensivo de requisições com indicadores de carregamento e fallbacks de erro',
-      ],
-      highlights: [
-        'Engenharia de Prompts para respostas estruturadas em JSON',
-        'Chatbot interativo com Google Gemini AI',
-        'Trocadilhos climáticos contextualizados via text content',
-        'Dados de clima em tempo real via OpenWeather API',
-        'Consumo do catálogo cultural via Jikan API',
-      ],
-      technologies: ['React', 'TypeScript', 'Vite', 'OpenWeather API', 'Jikan API', 'Google Gemini AI'],
-      results:
-        'Recomendações culturais personalizadas geradas pelo cruzamento de clima e animes via IA; interface reativa com suporte a chatbot e cards montados dinamicamente via JSON.',
-      links: {
-        github: 'https://github.com/DevYuriVieira/anime-weather-platform',
-      },
-    },
-    {
       id: 'django-ecommerce',
       title: 'Django Full-Stack E-Commerce',
       category: 'Full Stack Python/Django',
@@ -260,10 +223,47 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       },
     },
     {
+      id: 'anime-weather-platform',
+      title: 'Anime Weather Platform',
+      category: 'Frontend + APIs + IA',
+      featured: false,
+      contextTag: 'Frontend & Integração com IA',
+      collaboration: 'Projeto colaborativo (Pair Programming)',
+      description:
+        'Aplicação web reativa que cruza dados climáticos (OpenWeather API) e catálogo de animes (Jikan API) com o Google Gemini AI, exibindo recomendações em JSON e chatbot de trocadilhos.',
+      context:
+        'Plataforma criada em Pair Programming para explorar a integração entre múltiplas APIs externas REST e SDKs de inteligência artificial generativa.',
+      problem:
+        'Combinar em tempo real dados de localização geográfica, clima e acervo cultural, alimentando um modelo de linguagem para produzir tanto cards em JSON estruturado quanto diálogos interativos.',
+      solution:
+        'Aplicação React e TypeScript que detecta o clima local via OpenWeather API, busca animes compatíveis na Jikan API e envia contexto ao Google Gemini AI via Prompt Engineering para montagem da UI e suporte ao chatbot.',
+      development:
+        'Desenvolvimento em dupla cobrindo gerenciamento de estado assíncrono, renderização dinâmica de dados, tratamento de erros de API e estilo visual glassmorphic.',
+      architectureDecisions: [
+        'Consumo assíncrono e cruzamento de dados em tempo real da OpenWeather API (clima) e Jikan API (animes)',
+        'Integração com SDK do Google Gemini AI unindo Engenharia de Prompts para respostas estruturadas em JSON nos cards e chatbot interativo',
+        'Interface responsiva desenvolvida em React, TypeScript e Vite com componentes em estilo glassmorphism',
+        'Tratamento defensivo de requisições com indicadores de carregamento e fallbacks de erro',
+      ],
+      highlights: [
+        'Engenharia de Prompts para respostas estruturadas em JSON',
+        'Chatbot interativo com Google Gemini AI',
+        'Trocadilhos climáticos contextualizados via text content',
+        'Dados de clima em tempo real via OpenWeather API',
+        'Consumo do catálogo cultural via Jikan API',
+      ],
+      technologies: ['React', 'TypeScript', 'Vite', 'OpenWeather API', 'Jikan API', 'Google Gemini AI'],
+      results:
+        'Recomendações culturais personalizadas geradas pelo cruzamento de clima e animes via IA; interface reativa com suporte a chatbot e cards montados dinamicamente via JSON.',
+      links: {
+        github: 'https://github.com/DevYuriVieira/anime-weather-platform',
+      },
+    },
+    {
       id: 'payroll-system-java',
       title: 'Sistema de Folha de Pagamento',
       category: 'Backend Java',
-      featured: true,
+      featured: false,
       contextTag: 'Backend Java / Arquitetura MVC+DAO',
       collaboration: 'Projeto colaborativo (4 desenvolvedores - Residência Serratec)',
       description:
@@ -731,43 +731,6 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       },
     },
     {
-      id: 'anime-weather-platform',
-      title: 'Anime Weather Platform',
-      category: 'Frontend + APIs + IA',
-      featured: true,
-      contextTag: 'Frontend & AI Integration',
-      collaboration: 'Collaborative project (Pair Programming)',
-      description:
-        'Reactive web application combining weather data (OpenWeather API) and anime catalog (Jikan API) with Google Gemini AI, integrating structured JSON recommendations and an interactive chatbot generating weather puns.',
-      context:
-        'Platform built in Pair Programming format to practice asynchronous consumption of composite external APIs and generative AI SDKs.',
-      problem:
-        'Orchestrate real-time data from multiple external APIs and feed a language model to produce both structured JSON UI responses and interactive chatbot conversations without connection failures.',
-      solution:
-        'Development of a React and TypeScript interface consuming OpenWeather API for local weather, Jikan API for anime catalog, and Google Gemini AI SDK via Prompt Engineering (returning strict JSON for recommendation cards and interactive textContent for the weather pun chatbot).',
-      development:
-        'Pair programming development covering async state management, dynamic JSON and text rendering (`textContent`), API reconnection fallbacks, and glassmorphism UI components.',
-      architectureDecisions: [
-        'Async consumption and real-time cross-referencing of OpenWeather API (weather) and Jikan API (anime catalog)',
-        'Integration with Google Gemini AI SDK combining Prompt Engineering for strict JSON cards and an interactive weather pun chatbot',
-        'Responsive frontend built with React, TypeScript, and Vite featuring glassmorphism UI',
-        'Defensive async request handling with loading states and error fallbacks',
-      ],
-      highlights: [
-        'Prompt Engineering for structured JSON responses',
-        'Interactive chatbot powered by Google Gemini AI',
-        'Contextual weather puns via text content manipulation',
-        'Real-time weather data via OpenWeather API',
-        'Anime catalog consumption via Jikan API',
-      ],
-      technologies: ['React', 'TypeScript', 'Vite', 'OpenWeather API', 'Jikan API', 'Google Gemini AI'],
-      results:
-        'Contextual recommendations generated by cross-referencing OpenWeather and Jikan API data via Google Gemini AI; integration of structured JSON responses for dynamic UI assembly alongside an interactive weather pun chatbot using text content manipulation (`textContent`); responsive glassmorphism UI.',
-      links: {
-        github: 'https://github.com/DevYuriVieira/anime-weather-platform',
-      },
-    },
-    {
       id: 'django-ecommerce',
       title: 'Django Full-Stack E-Commerce',
       category: 'Full Stack Python/Django',
@@ -817,10 +780,47 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       },
     },
     {
+      id: 'anime-weather-platform',
+      title: 'Anime Weather Platform',
+      category: 'Frontend + APIs + IA',
+      featured: false,
+      contextTag: 'Frontend & AI Integration',
+      collaboration: 'Collaborative project (Pair Programming)',
+      description:
+        'Reactive web application combining weather data (OpenWeather API) and anime catalog (Jikan API) with Google Gemini AI, integrating structured JSON recommendations and an interactive chatbot generating weather puns.',
+      context:
+        'Platform built in Pair Programming format to practice asynchronous consumption of composite external APIs and generative AI SDKs.',
+      problem:
+        'Orchestrate real-time data from multiple external APIs and feed a language model to produce both structured JSON UI responses and interactive chatbot conversations without connection failures.',
+      solution:
+        'Development of a React and TypeScript interface consuming OpenWeather API for local weather, Jikan API for anime catalog, and Google Gemini AI SDK via Prompt Engineering (returning strict JSON for recommendation cards and interactive textContent for the weather pun chatbot).',
+      development:
+        'Pair programming development covering async state management, dynamic JSON and text rendering (`textContent`), API reconnection fallbacks, and glassmorphism UI components.',
+      architectureDecisions: [
+        'Async consumption and real-time cross-referencing of OpenWeather API (weather) and Jikan API (anime catalog)',
+        'Integration with Google Gemini AI SDK combining Prompt Engineering for strict JSON cards and an interactive weather pun chatbot',
+        'Responsive frontend built with React, TypeScript, and Vite featuring glassmorphism UI',
+        'Defensive async request handling with loading states and error fallbacks',
+      ],
+      highlights: [
+        'Prompt Engineering for structured JSON responses',
+        'Interactive chatbot powered by Google Gemini AI',
+        'Contextual weather puns via text content manipulation',
+        'Real-time weather data via OpenWeather API',
+        'Anime catalog consumption via Jikan API',
+      ],
+      technologies: ['React', 'TypeScript', 'Vite', 'OpenWeather API', 'Jikan API', 'Google Gemini AI'],
+      results:
+        'Contextual recommendations generated by cross-referencing OpenWeather and Jikan API data via Google Gemini AI; integration of structured JSON responses for dynamic UI assembly alongside an interactive weather pun chatbot using text content manipulation (`textContent`); responsive glassmorphism UI.',
+      links: {
+        github: 'https://github.com/DevYuriVieira/anime-weather-platform',
+      },
+    },
+    {
       id: 'payroll-system-java',
       title: 'Sistema de Folha de Pagamento',
       category: 'Backend Java',
-      featured: true,
+      featured: false,
       contextTag: 'Backend Java / MVC+DAO Architecture',
       collaboration: 'Collaborative project (4 developers - Serratec Residency)',
       description:
