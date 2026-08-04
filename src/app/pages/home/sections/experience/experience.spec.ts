@@ -44,18 +44,13 @@ describe('ExperienceSection', () => {
     expect(component.milestones()[lastIndex].title).toBe(EXPERIENCE_MILESTONES[lastIndex].title);
   });
 
-  it('should expose and render certifications cards correctly', () => {
-    expect(component.certifications().length).toBeGreaterThan(0);
-    const compiled = fixture.nativeElement as HTMLElement;
-    const certCards = compiled.querySelectorAll('.experience__cert-card');
-    expect(certCards.length).toBe(component.certifications().length);
-  });
-
-  it('should expose and render current focus active learning cards correctly', () => {
+  it('should expose and render current focus active learning cards with top light trail', () => {
     expect(component.currentFocus()).toBeTruthy();
     expect(component.currentFocus().items.length).toBe(5);
     const compiled = fixture.nativeElement as HTMLElement;
     const focusCards = compiled.querySelectorAll('.experience__focus-card');
     expect(focusCards.length).toBe(5);
+    const lightTrails = compiled.querySelectorAll('.experience__focus-trail');
+    expect(lightTrails.length).toBe(5);
   });
 });

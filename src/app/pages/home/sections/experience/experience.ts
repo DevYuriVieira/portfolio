@@ -27,7 +27,6 @@ export class ExperienceSection implements AfterViewInit, OnDestroy {
   readonly data = computed(() => this.i18nData().sectionData);
   readonly milestones = computed(() => this.i18nData().milestones);
   readonly currentFocus = computed(() => this.i18nData().currentFocus);
-  readonly certifications = computed(() => this.i18nData().certifications);
 
   private readonly elementRef = inject(ElementRef);
   private readonly platformId = inject(PLATFORM_ID);
@@ -55,7 +54,7 @@ export class ExperienceSection implements AfterViewInit, OnDestroy {
       );
 
       const items = this.elementRef.nativeElement.querySelectorAll(
-        '.experience__item, .experience__focus-card, .experience__cert-card'
+        '.experience__item, .experience__focus-card'
       );
       items.forEach((item: Element) => this.observer?.observe(item));
     }

@@ -250,7 +250,6 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
   },
 };
 
-// Backward-compatible exports
 export const EXPERIENCE_SECTION_DATA: ExperienceSectionData =
   EXPERIENCE_I18N['pt-BR'].sectionData;
 
