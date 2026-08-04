@@ -48,7 +48,6 @@ export class HeroParticlesVisual implements OnInit, OnDestroy {
   private resizeObserver: ResizeObserver | null = null;
   private startTime = 0;
 
-  // Particle Mesh System
   private particleGeo: THREE.BufferGeometry | null = null;
   private particleMat: THREE.PointsMaterial | null = null;
   private particles: THREE.Points | null = null;
@@ -57,7 +56,9 @@ export class HeroParticlesVisual implements OnInit, OnDestroy {
   private velocities: Float32Array | null = null;
   private count = 2400;
 
-  // Drag & Physics State
+  private readonly morphWords = ['JAVA', 'SPRING', 'REACT', 'ANGULAR', 'PYTHON', 'BUILD', 'YURI'];
+  private wordTargets: Float32Array[] = [];
+
   private isDragging = false;
   private previousPointer = { x: 0, y: 0 };
   private pointerPos = new THREE.Vector2(9999, 9999);
@@ -71,7 +72,7 @@ export class HeroParticlesVisual implements OnInit, OnDestroy {
     if (!isPlatformBrowser(this.platformId)) return;
 
     if (typeof window !== 'undefined' && window.innerWidth < 768) {
-      return; // Skip WebGL 3D particle mesh completely on mobile (<768px)
+      return;
     }
 
     const reducedMotion = this.prefersReducedMotion();
@@ -81,6 +82,7 @@ export class HeroParticlesVisual implements OnInit, OnDestroy {
         this.initScene();
         if (!this.renderer) return;
 
+        this.generateWordTargets();
         this.createParticleLattice();
         this.setupResizeObserver();
 
@@ -91,7 +93,6 @@ export class HeroParticlesVisual implements OnInit, OnDestroy {
           this.animate();
         }
       } catch {
-        // WebGL unavailable: silent fallback for tests
       }
     });
   }
@@ -134,6 +135,55 @@ export class HeroParticlesVisual implements OnInit, OnDestroy {
     this.renderer.setClearColor(0x000000, 0);
   }
 
+  private generateWordTargets(): void {
+    if (typeof document === 'undefined') return;
+
+    const canvas = document.createElement('canvas');
+    canvas.width = 256;
+    canvas.height = 128;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    this.wordTargets = this.morphWords.map((word) => {
+      ctx.clearRect(0, 0, 256, 128);
+      ctx.fillStyle = '#ffffff';
+      ctx.font = '900 44px monospace, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(word, 128, 64);
+
+      const imgData = ctx.getImageData(0, 0, 256, 128);
+      const data = imgData.data;
+      const validPoints: { x: number; y: number }[] = [];
+
+      for (let y = 0; y < 128; y += 2) {
+        for (let x = 0; x < 256; x += 2) {
+          const alpha = data[(y * 256 + x) * 4 + 3];
+          if (alpha > 128) {
+            validPoints.push({
+              x: ((x - 128) / 128) * 3.8,
+              y: -((y - 64) / 64) * 1.4,
+            });
+          }
+        }
+      }
+
+      const targetPositions = new Float32Array(this.count * 3);
+      const pointsCount = validPoints.length;
+
+      for (let i = 0; i < this.count; i++) {
+        const point = pointsCount > 0 ? validPoints[i % pointsCount] : { x: 0, y: 0 };
+        const zDepth = (Math.random() - 0.5) * 0.2;
+
+        targetPositions[i * 3] = point.x + (Math.random() - 0.5) * 0.03;
+        targetPositions[i * 3 + 1] = point.y + (Math.random() - 0.5) * 0.03;
+        targetPositions[i * 3 + 2] = zDepth;
+      }
+
+      return targetPositions;
+    });
+  }
+
   private createParticleLattice(): void {
     if (!this.scene) return;
 
@@ -145,7 +195,6 @@ export class HeroParticlesVisual implements OnInit, OnDestroy {
     const accentColor = new THREE.Color(0x0066ff);
     const secondaryColor = new THREE.Color(0xa1a1aa);
 
-    // Generate a Mobius-like parametric wave sphere/torus lattice
     const side = Math.floor(Math.sqrt(this.count));
     let idx = 0;
 
@@ -169,7 +218,6 @@ export class HeroParticlesVisual implements OnInit, OnDestroy {
         this.currentPositions[idx * 3 + 1] = y;
         this.currentPositions[idx * 3 + 2] = z;
 
-        // Color interpolation based on height
         const mixRatio = (y + 2.5) / 5.0;
         const c = secondaryColor.clone().lerp(accentColor, Math.max(0, Math.min(1, mixRatio)));
 
@@ -185,7 +233,6 @@ export class HeroParticlesVisual implements OnInit, OnDestroy {
     this.particleGeo.setAttribute('position', new THREE.BufferAttribute(this.currentPositions, 3));
     this.particleGeo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
-    // Custom circle particle texture
     const canvas = document.createElement('canvas');
     canvas.width = 64;
     canvas.height = 64;
@@ -225,26 +272,32 @@ export class HeroParticlesVisual implements OnInit, OnDestroy {
     if (!this.scene || !this.camera || !this.renderer || !this.particles) return;
 
     const elapsed = (performance.now() - this.startTime) / 1000;
+    const CYCLE_DURATION = 7.5;
+    const MORPH_HOLD_DURATION = 3.0;
+    const cycleTime = elapsed % CYCLE_DURATION;
+    const isWordActive = cycleTime < MORPH_HOLD_DURATION;
 
-    // Smooth rotation lerp based on drag & auto-drift
     if (!this.isDragging) {
-      this.rotationTarget.y += 0.003;
-      this.rotationTarget.x = Math.sin(elapsed * 0.5) * 0.15;
+      if (isWordActive) {
+        this.rotationTarget.x = 0;
+        this.rotationTarget.y = 0;
+      } else {
+        this.rotationTarget.y += 0.003;
+        this.rotationTarget.x = Math.sin(elapsed * 0.5) * 0.15;
+      }
     }
 
-    this.rotationCurrent.x += (this.rotationTarget.x - this.rotationCurrent.x) * 0.05;
-    this.rotationCurrent.y += (this.rotationTarget.y - this.rotationCurrent.y) * 0.05;
+    this.rotationCurrent.x += (this.rotationTarget.x - this.rotationCurrent.x) * 0.08;
+    this.rotationCurrent.y += (this.rotationTarget.y - this.rotationCurrent.y) * 0.08;
 
     this.particles.rotation.x = this.rotationCurrent.x;
     this.particles.rotation.y = this.rotationCurrent.y;
 
-    // Update particle spring physics
-    this.updateParticlePhysics(elapsed);
-
+    this.updateParticlePhysics(elapsed, isWordActive);
     this.renderFrame();
   }
 
-  private updateParticlePhysics(elapsed: number): void {
+  private updateParticlePhysics(elapsed: number, isWordActive: boolean): void {
     if (!this.basePositions || !this.currentPositions || !this.velocities || !this.particleGeo) return;
 
     const posAttr = this.particleGeo.attributes['position'] as THREE.BufferAttribute;
@@ -254,6 +307,10 @@ export class HeroParticlesVisual implements OnInit, OnDestroy {
     const ray = raycaster.ray;
     const damp = 0.92;
     const spring = 0.04;
+
+    const CYCLE_DURATION = 7.5;
+    const wordIdx = Math.floor((elapsed / CYCLE_DURATION) % this.morphWords.length);
+    const currentWordTarget = this.wordTargets[wordIdx];
 
     for (let i = 0; i < this.count; i++) {
       const idx = i * 3;
@@ -266,16 +323,25 @@ export class HeroParticlesVisual implements OnInit, OnDestroy {
       const waveMult = isDynamicParticle ? 0.16 : 0.08;
       const freq = isDynamicParticle ? 2.6 : 1.8;
       const wave = Math.sin(elapsed * freq + bx * 1.8 + by * 1.8) * waveMult;
-      const targetX = bx + wave * (bx / 2.8);
-      const targetY = by + wave * (by / 2.8);
-      const targetZ = bz + wave;
 
-      // Current position
+      let targetX = bx + wave * (bx / 2.8);
+      let targetY = by + wave * (by / 2.8);
+      let targetZ = bz + wave;
+
+      if (isWordActive && currentWordTarget && currentWordTarget.length > idx) {
+        const wx = currentWordTarget[idx];
+        const wy = currentWordTarget[idx + 1];
+        const wz = currentWordTarget[idx + 2];
+
+        targetX = wx;
+        targetY = wy;
+        targetZ = wz + Math.sin(elapsed * 2 + i) * 0.02;
+      }
+
       let cx = this.currentPositions[idx];
       let cy = this.currentPositions[idx + 1];
       let cz = this.currentPositions[idx + 2];
 
-      // Mouse repulsion / drag displacement in 3D world space
       const particleVec = new THREE.Vector3(cx, cy, cz).applyMatrix4(this.particles!.matrixWorld);
       const distToRay = ray.distanceToPoint(particleVec);
 
@@ -288,7 +354,6 @@ export class HeroParticlesVisual implements OnInit, OnDestroy {
         this.velocities[idx + 2] += dir.z * force;
       }
 
-      // Spring force towards target base position
       const fx = (targetX - cx) * spring;
       const fy = (targetY - cy) * spring;
       const fz = (targetZ - cz) * spring;
@@ -312,7 +377,6 @@ export class HeroParticlesVisual implements OnInit, OnDestroy {
     }
   }
 
-  // Pointer & Drag Handling
   private readonly onPointerDown = (e: PointerEvent): void => {
     this.isDragging = true;
     this.previousPointer = { x: e.clientX, y: e.clientY };
