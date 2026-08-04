@@ -23,12 +23,11 @@ describe('AboutSection', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render all 4 visual blocks (Header, Journey, Philosophy, Currently)', () => {
+  it('should render all 3 visual blocks (Header, Journey, Philosophy)', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('.about__header')).toBeTruthy();
     expect(compiled.querySelector('.about__journey')).toBeTruthy();
     expect(compiled.querySelector('.about__philosophy')).toBeTruthy();
-    expect(compiled.querySelector('.about__currently')).toBeTruthy();
   });
 
   it('should render all engineering principles cards', () => {

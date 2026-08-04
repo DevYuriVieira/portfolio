@@ -1,9 +1,15 @@
 import { SupportedLang } from '@core';
-import { CertificationItem, ExperienceSectionData, TimelineMilestone } from './experience.model';
+import {
+  CertificationItem,
+  CurrentFocusData,
+  ExperienceSectionData,
+  TimelineMilestone,
+} from './experience.model';
 
 interface ExperienceI18n {
   sectionData: ExperienceSectionData;
   milestones: readonly TimelineMilestone[];
+  currentFocus: CurrentFocusData;
   certifications: readonly CertificationItem[];
 }
 
@@ -47,7 +53,7 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
       {
         id: 'serratec-residency',
         year: '2026',
-        title: 'Residência TIC Serratec Full-Stack (790h)',
+        title: 'Residência TIC/Software Serratec Full-Stack (790h)',
         subtitle: 'Serratec · Imersão em Disciplinas Progressivas',
         description:
           'Residência imersiva em desenvolvimento de software com 790 horas em disciplinas de Lógica, Banco de Dados, POO em Java, APIs RESTful com Spring Boot 3, React, React Native, metodologias ágeis e entrega de projeto final corporativo.',
@@ -61,6 +67,49 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
           'Desenvolvimento prático autoral de aplicações web e mobile completas cobrindo React, React Native (Expo), TypeScript, Java (Spring Boot) e Python (Django), utilizando ferramentas de IA como suporte para aceleração de código, testes e documentação.',
       },
     ],
+    currentFocus: {
+      statusBadge: 'EM APRENDIZADO ATIVO & EXPANSÃO',
+      title: 'Foco Atual & Aprendizado Ativo',
+      subtitle:
+        'Aprofundamento prático em tecnologias estratégicas para construção de arquiteturas escaláveis, resilientes e orientadas a microsserviços.',
+      items: [
+        {
+          id: 'docker-containerization',
+          tech: 'Docker & Containerização',
+          category: 'DevOps & Infraestrutura',
+          description:
+            'Padronização de ambientes isolados, empacotamento de aplicações multi-container via Docker Compose e preparação para implantação em nuvem.',
+        },
+        {
+          id: 'aws-cloud',
+          tech: 'AWS & Cloud Services',
+          category: 'Arquitetura Cloud',
+          description:
+            'Estudo prático dos principais serviços AWS (EC2, S3, IAM, CloudFront e RDS) com foco em implantação serverless e infraestrutura segura.',
+        },
+        {
+          id: 'csharp-dotnet',
+          tech: 'C# / .NET 10',
+          category: 'Backend Enterprise',
+          description:
+            'Expansão da versatilidade backend em ecossistema Microsoft, desenvolvendo APIs RESTful de alta performance com C# 13, ASP.NET Core e Entity Framework Core.',
+        },
+        {
+          id: 'nosql-databases',
+          tech: 'NoSQL & Cache (MongoDB / Redis)',
+          category: 'Persistência & Alta Vazão',
+          description:
+            'Modelagem de documentos com MongoDB e estratégias de cache em memória com Redis para otimização de consultas e redução de latência.',
+        },
+        {
+          id: 'automated-testing',
+          tech: 'Testes Automatizados & E2E (Cypress / Playwright / Selenium / Vitest / JUnit 5)',
+          category: 'Qualidade & CI/CD',
+          description:
+            'Construção de suítes completas de testes unitários, integração e E2E com Cypress, Playwright, Selenium, Vitest e JUnit 5 para garantir zero regressão em esteiras de integração contínua (CI/CD).',
+        },
+      ],
+    },
     certifications: [
       {
         id: 'white-belt-lean',
@@ -175,7 +224,7 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
       {
         id: 'serratec-residency',
         year: '2026',
-        title: 'Serratec ICT Full-Stack Residency (790h)',
+        title: 'Serratec ICT/Software Full-Stack Residency (790h)',
         subtitle: 'Serratec · Progressive Disciplines Immersion',
         description:
           'Immersive 790-hour software development residency spanning progressive coursework in Logic, Databases, OOP Java, RESTful APIs with Spring Boot 3, React, React Native, agile practices, and corporate final project delivery.',
@@ -189,6 +238,49 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
           'Hands-on authorial development of full-stack web and mobile applications covering React, React Native (Expo), TypeScript, Java (Spring Boot), and Python (Django), leveraging AI tools for developer assistance, testing, and documentation.',
       },
     ],
+    currentFocus: {
+      statusBadge: 'ACTIVE LEARNING & EVOLUTION',
+      title: 'Current Focus & Active Learning',
+      subtitle:
+        'Hands-on specialization in key engineering technologies to build scalable, resilient, and microservices-oriented architectures.',
+      items: [
+        {
+          id: 'docker-containerization',
+          tech: 'Docker & Containerization',
+          category: 'DevOps & Infrastructure',
+          description:
+            'Standardizing isolated environments, multi-container orchestration with Docker Compose, and cloud deployment readiness.',
+        },
+        {
+          id: 'aws-cloud',
+          tech: 'AWS & Cloud Services',
+          category: 'Cloud Architecture',
+          description:
+            'Hands-on exploration of core AWS services (EC2, S3, IAM, CloudFront, RDS) focused on serverless deployments and secure cloud infrastructure.',
+        },
+        {
+          id: 'csharp-dotnet',
+          tech: 'C# / .NET 10',
+          category: 'Enterprise Backend',
+          description:
+            'Expanding backend versatility into Microsoft ecosystems, building high-performance REST APIs with C# 13, ASP.NET Core, and Entity Framework Core.',
+        },
+        {
+          id: 'nosql-databases',
+          tech: 'NoSQL & Caching (MongoDB / Redis)',
+          category: 'Persistence & High Throughput',
+          description:
+            'Document modeling with MongoDB and in-memory caching strategies with Redis for query optimization and low-latency data access.',
+        },
+        {
+          id: 'automated-testing',
+          tech: 'Automated & E2E Testing (Cypress / Playwright / Selenium / Vitest / JUnit 5)',
+          category: 'Quality & CI/CD',
+          description:
+            'Building complete unit, integration, and E2E testing suites using Cypress, Playwright, Selenium, Vitest, and JUnit 5 to ensure zero-regression continuous delivery (CI/CD) pipelines.',
+        },
+      ],
+    },
     certifications: [
       {
         id: 'white-belt-lean',

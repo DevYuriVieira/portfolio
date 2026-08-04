@@ -10,8 +10,6 @@ interface AboutI18n {
   journeyTitle: string;
   howIWorkTitle: string;
   howIWorkDescription: string;
-  currentlyTitle: string;
-  currentlyText: string;
   blocks: readonly AboutBlock[];
   principles: readonly EngineeringPrinciple[];
 }
@@ -26,9 +24,6 @@ const ABOUT_I18N: Record<SupportedLang, AboutI18n> = {
     howIWorkTitle: 'Como Trabalho',
     howIWorkDescription:
       'Decisões e práticas de engenharia que guiam o desenvolvimento no dia a dia.',
-    currentlyTitle: 'Atualmente',
-    currentlyText:
-      'Atualmente aprofundando conhecimentos em Docker, bancos de dados não relacionais (NoSQL), C# / .NET, AWS e testes automatizados, com foco em arquiteturas escaláveis e resilientes.',
     blocks: [
       {
         id: 'who-i-am',
@@ -94,9 +89,6 @@ const ABOUT_I18N: Record<SupportedLang, AboutI18n> = {
     howIWorkTitle: 'How I Work',
     howIWorkDescription:
       'Engineering practices and principles that guide daily software development.',
-    currentlyTitle: 'Currently',
-    currentlyText:
-      'Currently expanding expertise in Docker, NoSQL databases, C# / .NET, AWS, and automated testing, focusing on building scalable and resilient architectures.',
     blocks: [
       {
         id: 'who-i-am',

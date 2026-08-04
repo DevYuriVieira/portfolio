@@ -50,4 +50,12 @@ describe('ExperienceSection', () => {
     const certCards = compiled.querySelectorAll('.experience__cert-card');
     expect(certCards.length).toBe(component.certifications().length);
   });
+
+  it('should expose and render current focus active learning cards correctly', () => {
+    expect(component.currentFocus()).toBeTruthy();
+    expect(component.currentFocus().items.length).toBe(5);
+    const compiled = fixture.nativeElement as HTMLElement;
+    const focusCards = compiled.querySelectorAll('.experience__focus-card');
+    expect(focusCards.length).toBe(5);
+  });
 });

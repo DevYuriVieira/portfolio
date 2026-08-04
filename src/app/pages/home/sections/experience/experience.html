@@ -43,6 +43,42 @@
         }
       </ol>
 
+      <!-- Current Active Learning & Evolution Block (Clean Editorial Style) -->
+      @if (currentFocus()) {
+      <div class="experience__focus">
+        <header class="experience__focus-header">
+          <div class="experience__focus-status">
+            <span class="experience__focus-pulse" aria-hidden="true"></span>
+            <span class="experience__focus-status-text">{{ currentFocus().statusBadge }}</span>
+          </div>
+          <app-heading level="h3" size="h2" class="experience__focus-title">
+            {{ currentFocus().title }}
+          </app-heading>
+          <app-text variant="body" class="experience__focus-subtitle">
+            {{ currentFocus().subtitle }}
+          </app-text>
+        </header>
+
+        <div class="experience__focus-grid">
+          @for (item of currentFocus().items; track item.id; let i = $index) {
+          <article class="experience__focus-card" [style.--focus-index]="i">
+            <div class="experience__focus-card-header">
+              <span class="experience__focus-tech">{{ item.tech }}</span>
+              <span class="experience__focus-num">0{{ i + 1 }}</span>
+            </div>
+
+            <div class="experience__focus-card-body">
+              <span class="experience__focus-category">{{ item.category }}</span>
+              <app-text variant="body" class="experience__focus-description">
+                {{ item.description }}
+              </app-text>
+            </div>
+          </article>
+          }
+        </div>
+      </div>
+      }
+
       <!-- Certifications Block -->
       @if (certifications() && certifications().length > 0) {
       <div class="experience__certifications">
