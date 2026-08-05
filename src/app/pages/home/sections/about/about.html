@@ -1,7 +1,6 @@
 <app-section id="about" spacing="lg" [ariaLabel]="data().eyebrow">
   <app-container size="xl">
     <div class="about">
-      <!-- 1. Introduction Header -->
       <header class="about__header">
         <app-text variant="caption" element="span" class="about__eyebrow">
           {{ data().eyebrow }}
@@ -14,7 +13,6 @@
         </app-text>
       </header>
 
-      <!-- 2. My Journey / Trajetória -->
       <section class="about__journey" aria-labelledby="journey-heading">
         <app-heading id="journey-heading" level="h3" size="h2" class="about__section-title">
           {{ data().journeyTitle }}
@@ -28,7 +26,6 @@
         </div>
       </section>
 
-      <!-- 3. How I Work -->
       <section class="about__philosophy" aria-labelledby="work-heading">
         <header class="about__philosophy-header">
           <app-heading id="work-heading" level="h3" size="h2" class="about__section-title">

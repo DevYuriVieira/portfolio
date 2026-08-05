@@ -1,7 +1,6 @@
 <app-section id="ai-experience" spacing="lg" [ariaLabel]="labels().ariaLabel">
   <app-container size="xl">
     <div class="ai">
-      <!-- Active Theory Editorial Header -->
       <header class="ai__header" appReveal>
         <span class="ai__badge">{{ data().badge }}</span>
 
@@ -18,11 +17,9 @@
         </app-text>
       </header>
 
-      <!-- Active Theory Interactive Canvas -->
       <div class="ai__canvas-wrapper" appReveal>
         <app-neural-canvas #neuralCanvas [lang]="currentLang()" (nodeSelect)="onNodeSelect($event)" />
 
-        <!-- Floating Glassmorphic Zoom Controls -->
         <div class="ai__zoom-toolbar" role="toolbar" [attr.aria-label]="labels().zoomToolbarAriaLabel">
           <button type="button" class="ai__zoom-btn" (click)="neuralCanvas.zoomIn()" [title]="labels().zoomInTitle"
             [attr.aria-label]="labels().zoomInAriaLabel">
@@ -64,13 +61,11 @@
           </button>
         </div>
 
-        <!-- Canvas Zoom Hint -->
         <div class="ai__canvas-hint" aria-hidden="true">
           <span>{{ labels().canvasHint }}</span>
         </div>
       </div>
 
-      <!-- Active Theory Feature Grid (Real Tools & Experience) -->
       <div class="ai__features">
         @for (feature of data().features; track feature.index; let i = $index) {
         <article class="ai__feature-card" appReveal [revealDelay]="i * 80">
@@ -94,7 +89,6 @@
         }
       </div>
 
-      <!-- Closing Statement -->
       <footer class="ai__closing" appReveal>
         <app-text variant="body" class="ai__closing-text">
           {{ data().closingStatement }}
@@ -103,7 +97,6 @@
     </div>
   </app-container>
 
-  <!-- Interactive 3D Node Detail Modal -->
   @if (selectedNodeDetail(); as detail) {
   <app-ai-node-modal [nodeDetail]="detail" (close)="closeModal()" />
   }
