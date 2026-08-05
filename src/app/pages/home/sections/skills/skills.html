@@ -1,7 +1,6 @@
 <app-section id="skills" spacing="lg" [ariaLabel]="data().ariaLabel">
   <app-container size="xl">
     <div class="skills">
-      <!-- Section Header -->
       <header class="skills__header">
         <app-text variant="caption" element="span" class="skills__eyebrow">
           {{ data().eyebrow }}
@@ -14,7 +13,6 @@
         </app-text>
       </header>
 
-      <!-- Category Grid -->
       <div class="skills__grid" [attr.aria-label]="data().ariaLabel">
         @for (category of categories(); track category.id) {
         <article class="skills__card">

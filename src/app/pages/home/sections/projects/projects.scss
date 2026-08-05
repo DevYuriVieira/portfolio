@@ -53,11 +53,15 @@
   &__grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: var(--space-8);
+    gap: var(--space-6);
 
     @include respond-to('md') {
       grid-template-columns: repeat(2, 1fr);
-      gap: var(--space-10);
+      gap: var(--space-6);
+    }
+
+    @include respond-to('lg') {
+      gap: var(--space-8);
     }
   }
 
@@ -83,6 +87,10 @@
     }
 
     @include respond-to('md') {
+      padding: var(--space-6);
+    }
+
+    @include respond-to('lg') {
       padding: var(--space-8);
     }
 
@@ -106,9 +114,14 @@
       grid-column: 1 / -1;
       background-color: rgba(18, 18, 21, 0.95);
       border-color: rgba(234, 179, 8, 0.3);
+      padding: var(--space-5) var(--space-4);
+
+      @media (min-width: 480px) {
+        padding: var(--space-6);
+      }
 
       @include respond-to('md') {
-        padding: var(--space-12);
+        padding: var(--space-8);
       }
 
       &:hover {
@@ -134,13 +147,18 @@
     &-body {
       display: flex;
       flex-direction: column;
-      gap: var(--space-5);
+      gap: var(--space-4);
+
+      @include respond-to('md') {
+        gap: var(--space-5);
+      }
     }
 
     &-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      margin-bottom: var(--space-1);
     }
 
     &-title {
@@ -148,7 +166,8 @@
       font-weight: var(--font-weight-bold);
       color: var(--text-primary);
       letter-spacing: -0.025em;
-      line-height: 1.2;
+      line-height: 1.25;
+      margin-top: var(--space-1);
     }
 
     &-description {
@@ -163,7 +182,7 @@
 
     &-subtext {
       color: var(--text-secondary);
-      line-height: 1.6;
+      line-height: 1.65;
       font-size: var(--text-xs);
 
       @include respond-to('md') {
@@ -176,9 +195,9 @@
       align-items: center;
       flex-wrap: wrap;
       gap: var(--space-4);
-      padding-top: var(--space-6);
+      padding-top: var(--space-4);
       border-top: 1px solid var(--border-subtle);
-      margin-top: var(--space-8);
+      margin-top: var(--space-5);
     }
   }
 
@@ -200,7 +219,7 @@
   &__highlights-list {
     display: flex;
     flex-direction: column;
-    gap: var(--space-1);
+    gap: var(--space-2);
     margin: 0;
     padding: 0;
   }
@@ -214,13 +233,13 @@
   &__highlight-bullet {
     color: var(--text-muted);
     font-size: var(--text-xs);
-    line-height: 1.5;
+    line-height: 1.65;
   }
 
   &__highlight-text {
     color: var(--text-secondary);
     font-size: var(--text-xs);
-    line-height: 1.5;
+    line-height: 1.65;
   }
 
 
@@ -275,7 +294,7 @@
   &__tech-list {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-2);
+    gap: var(--space-2) var(--space-3);
     margin: 0;
     padding: 0;
   }

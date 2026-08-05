@@ -1,7 +1,6 @@
 <app-section id="projects" spacing="lg" [ariaLabel]="labels().ariaLabel">
   <app-container size="xl">
     <div class="projects">
-      <!-- Section Header -->
       <header class="projects__header">
         <app-text variant="caption" element="span" class="projects__eyebrow">
           {{ labels().eyebrow }}
@@ -14,14 +13,11 @@
         </app-text>
       </header>
 
-      <!-- Projects Editorial Grid -->
       <div class="projects__grid">
         @for (project of displayedProjects(); track project.id) {
         <article class="projects__card" [class.projects__card--confidential]="project.confidential"
           [class.projects__card--featured]="project.featured">
-          <!-- Card Body -->
           <div class="projects__card-body">
-            <!-- Category & Context Metadata Header -->
             <div class="projects__card-header">
               @if (project.contextTag) {
               <span class="projects__badge projects__badge--context">
@@ -40,17 +36,14 @@
               }
             </div>
 
-            <!-- Project Title -->
             <app-heading level="h3" size="h3" class="projects__card-title">
               {{ project.title }}
             </app-heading>
 
-            <!-- Context Paragraph / Description -->
             <app-text variant="body" class="projects__card-description">
               {{ project.description || project.context }}
             </app-text>
 
-            <!-- Problem / Challenge Block -->
             @if (project.problem) {
             <div class="projects__section-block">
               <span class="projects__section-label">{{ labels().challenge }}</span>
@@ -60,7 +53,6 @@
             </div>
             }
 
-            <!-- Solution Block -->
             @if (project.solution) {
             <div class="projects__section-block">
               <span class="projects__section-label">{{ labels().solution }}</span>
@@ -70,7 +62,6 @@
             </div>
             }
 
-            <!-- Architecture Decisions -->
             @if (project.architectureDecisions && project.architectureDecisions.length > 0) {
             <div class="projects__section-block">
               <span class="projects__section-label">{{ labels().archDecisions }}</span>
@@ -101,7 +92,6 @@
             </div>
             }
 
-            <!-- Results / Impact -->
             @if (project.results) {
             <div class="projects__section-block">
               <span class="projects__section-label">{{ labels().results }}</span>
@@ -111,7 +101,6 @@
             </div>
             }
 
-            <!-- Technology Stack -->
             <div class="projects__section-block">
               <span class="projects__section-label">{{ labels().techStack }}</span>
               <ul class="projects__tech-list" [attr.aria-label]="labels().techAriaLabel">
@@ -126,7 +115,6 @@
             </div>
           </div>
 
-          <!-- Actions / Availability Footer -->
           <footer class="projects__card-footer">
             @if (project.confidential) {
             <div class="projects__confidential-footer">
@@ -157,7 +145,6 @@
         }
       </div>
 
-      <!-- Expansion / Toggle Actions -->
       <div class="projects__actions">
         <app-button variant="secondary"
           [ariaLabel]="showAll() ? labels().collapseLabel : labels().expandLabel(projects().length)"
