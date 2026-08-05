@@ -41,8 +41,8 @@ export class SeoService {
   private readonly metaService = inject(Meta);
   private readonly i18n = inject(I18nService);
 
-  private readonly defaultUrl = 'https://devyurivieira.github.io/portfolio/';
-  private readonly defaultImage = 'https://devyurivieira.github.io/portfolio/og-image.png';
+  private readonly defaultUrl = 'https://devyurivieira.vercel.app/';
+  private readonly defaultImage = 'https://devyurivieira.vercel.app/og-image.svg';
 
   public updateSeo(config: SeoConfig = {}): void {
     const lang = this.i18n.currentLang();
