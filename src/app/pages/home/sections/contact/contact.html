@@ -1,7 +1,6 @@
 <app-section id="contact" spacing="lg" [ariaLabel]="data().title">
   <app-container size="xl">
     <div class="contact">
-      <!-- Active Theory Header -->
       <header class="contact__header" appReveal>
         <span class="contact__eyebrow">{{ data().eyebrow }}</span>
 
@@ -14,9 +13,7 @@
         </app-text>
       </header>
 
-      <!-- Active Theory Editorial Grid -->
       <div class="contact__grid">
-        <!-- Direct Email Block -->
         <div class="contact__card contact__card--primary" appReveal>
           <div class="contact__card-header">
             <span class="contact__card-label">{{ data().labels.emailLabel }}</span>
@@ -41,7 +38,6 @@
           </div>
         </div>
 
-        <!-- Availability & Metadata Block -->
         <div class="contact__card" appReveal [revealDelay]="100">
           <div class="contact__info-group">
             <span class="contact__info-label">{{ data().labels.locationLabel }}</span>
