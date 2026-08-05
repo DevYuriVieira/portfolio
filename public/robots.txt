@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://devyurivieira.github.io/portfolio/sitemap.xml
+Sitemap: https://devyurivieira.vercel.app/sitemap.xml
