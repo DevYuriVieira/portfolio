@@ -44,6 +44,8 @@ __screenshots__/
 Thumbs.db
 scratch/
 
-# Playwright Test Outputs
+# Playwright & Cypress Test Outputs
 /test-results/
 /playwright-report/
+/cypress/screenshots/
+/cypress/videos/
