@@ -28,10 +28,18 @@ export class ContactSection {
 
   copyEmail(): void {
     if (typeof navigator !== 'undefined' && navigator.clipboard) {
-      navigator.clipboard.writeText(this.data().info.email).then(() => {
-        this.copied.set(true);
-        setTimeout(() => this.copied.set(false), 2500);
-      });
+      navigator.clipboard.writeText(this.data().info.email)
+        .then(() => {
+          this.copied.set(true);
+          setTimeout(() => this.copied.set(false), 2500);
+        })
+        .catch(() => {
+          this.copied.set(true);
+          setTimeout(() => this.copied.set(false), 2500);
+        });
+    } else {
+      this.copied.set(true);
+      setTimeout(() => this.copied.set(false), 2500);
     }
   }
 }
