@@ -43,3 +43,7 @@ __screenshots__/
 .DS_Store
 Thumbs.db
 scratch/
+
+# Playwright Test Outputs
+/test-results/
+/playwright-report/
