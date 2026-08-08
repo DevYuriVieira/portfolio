@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable, effect, inject } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { I18nService } from '../i18n/i18n.service';
 
@@ -42,10 +42,18 @@ export class SeoService {
   private readonly i18n = inject(I18nService);
 
   private readonly defaultUrl = 'https://devyurivieira.vercel.app/';
-  private readonly defaultImage = 'https://devyurivieira.vercel.app/og-image.svg';
+  private readonly defaultImage = 'https://devyurivieira.vercel.app/og-image.png';
+
+  constructor() {
+    // Keep browser-visible metadata in sync when the visitor changes language.
+    effect(() => this.updateSeoForLanguage(this.i18n.currentLang()));
+  }
 
   public updateSeo(config: SeoConfig = {}): void {
-    const lang = this.i18n.currentLang();
+    this.updateSeoForLanguage(this.i18n.currentLang(), config);
+  }
+
+  private updateSeoForLanguage(lang: string, config: SeoConfig = {}): void {
     const defaults = SEO_I18N[lang] || SEO_I18N['pt-BR'];
 
     const title = config.title || defaults.title;
@@ -65,6 +73,7 @@ export class SeoService {
     this.metaService.updateTag({ property: 'og:description', content: description });
     this.metaService.updateTag({ property: 'og:url', content: url });
     this.metaService.updateTag({ property: 'og:image', content: image });
+    this.metaService.updateTag({ property: 'og:image:type', content: 'image/png' });
 
     // Twitter Card Metadata
     this.metaService.updateTag({ name: 'twitter:title', content: title });

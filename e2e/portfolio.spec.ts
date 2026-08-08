@@ -22,7 +22,10 @@ test.describe('Yuri Vieira Portfolio - Comprehensive E2E Test Suite', () => {
       await expect(ogUrl).toHaveAttribute('content', 'https://devyurivieira.vercel.app/');
 
       const ogImage = page.locator('meta[property="og:image"]');
-      await expect(ogImage).toHaveAttribute('content', 'https://devyurivieira.vercel.app/og-image.svg');
+      await expect(ogImage).toHaveAttribute('content', 'https://devyurivieira.vercel.app/og-image.png');
+
+      const ogImageType = page.locator('meta[property="og:image:type"]');
+      await expect(ogImageType).toHaveAttribute('content', 'image/png');
 
       const twitterCard = page.locator('meta[name="twitter:card"]');
       await expect(twitterCard).toHaveAttribute('content', 'summary_large_image');
@@ -213,6 +216,16 @@ test.describe('Yuri Vieira Portfolio - Comprehensive E2E Test Suite', () => {
         const restoredText = await langButton.innerText();
         expect(restoredText).toBe(initialText);
       }
+    });
+
+    test('should update document metadata after switching language', async ({ page }) => {
+      await page.locator('.header__lang-btn[aria-label="English (US)"]').click();
+
+      await expect(page).toHaveTitle(/Software Engineer/);
+      await expect(page.locator('meta[property="og:description"]')).toHaveAttribute(
+        'content',
+        /Software Engineer/,
+      );
     });
   });
 

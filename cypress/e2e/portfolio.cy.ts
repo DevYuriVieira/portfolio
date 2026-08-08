@@ -15,7 +15,8 @@ describe('Yuri Vieira Portfolio - Cypress E2E Comprehensive Test Suite', () => {
     it('should have essential Open Graph and Twitter card meta tags', () => {
       cy.get('meta[property="og:title"]').should('have.attr', 'content').and('include', 'Yuri Vieira');
       cy.get('meta[property="og:url"]').should('have.attr', 'content', 'https://devyurivieira.vercel.app/');
-      cy.get('meta[property="og:image"]').should('have.attr', 'content', 'https://devyurivieira.vercel.app/og-image.svg');
+      cy.get('meta[property="og:image"]').should('have.attr', 'content', 'https://devyurivieira.vercel.app/og-image.png');
+      cy.get('meta[property="og:image:type"]').should('have.attr', 'content', 'image/png');
       cy.get('meta[name="twitter:card"]').should('have.attr', 'content', 'summary_large_image');
     });
 
@@ -130,6 +131,12 @@ describe('Yuri Vieira Portfolio - Cypress E2E Comprehensive Test Suite', () => {
 
       cy.get('.header__lang-btn[aria-label="Português (Brasil)"]').click();
       cy.get('#about .about__title').should('contain.text', 'Engenharia de Software & Visão Sistêmica');
+    });
+
+    it('should update metadata after switching language', () => {
+      cy.get('.header__lang-btn[aria-label="English (US)"]').click();
+      cy.title().should('include', 'Software Engineer');
+      cy.get('meta[property="og:description"]').should('have.attr', 'content').and('include', 'Software Engineer');
     });
   });
 

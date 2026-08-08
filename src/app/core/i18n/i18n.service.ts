@@ -34,7 +34,7 @@ export class I18nService {
 
   /** Resolve the initial language from localStorage or browser defaults */
   private resolveInitialLang(): SupportedLang {
-    if (!isPlatformBrowser(inject(PLATFORM_ID))) {
+    if (!isPlatformBrowser(this.platformId)) {
       return DEFAULT_LANG;
     }
 
