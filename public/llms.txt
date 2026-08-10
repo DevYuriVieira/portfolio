@@ -1,0 +1,12 @@
+# Yuri Vieira Portfolio
+
+> High-performance software engineering portfolio built with Angular 22 Signals, Three.js WebGL shaders, custom SCSS, dynamic i18n, and complete automated test coverage (Vitest, Playwright, Cypress).
+
+## Core Projects & Case Studies
+- [Yuri Vieira Portfolio](https://devyurivieira.vercel.app/): Main portfolio site showcasing software engineering principles, interactive WebGL neural canvas, and 13 enterprise case studies.
+- [GitHub Profile](https://github.com/DevYuriVieira): Open source repositories, backend APIs in Java & Python, and frontend applications.
+
+## Technical Capabilities
+- Frontend: Angular 22, Signals, RxJS, React 19, TypeScript 6.0, Three.js WebGL GPU shaders, SCSS Design System.
+- Backend & Systems: Java 21, Spring Boot 3, Python 3.12, Django, PostgreSQL, RESTful APIs, n8n automation.
+- QA & Automation: Vitest unit testing, Playwright E2E, Cypress visual E2E.
