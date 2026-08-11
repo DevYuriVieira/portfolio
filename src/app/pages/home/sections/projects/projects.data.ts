@@ -181,27 +181,27 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       contextTag: 'Full-Stack Python (Service Layer & Webhooks)',
       collaboration: 'Projeto pessoal',
       description:
-        'Plataforma e-commerce full-stack construída em Django e Vanilla JS puro, com arquitetura Service Layer, transações atômicas, webhook idempotente de pagamento assíncrono e renderização com HTML5 <template>.',
+        'Plataforma e-commerce full-stack construída em Django e JavaScript (ES6+), com arquitetura Service Layer, transações atômicas, webhook idempotente de pagamento assíncrono e renderização com HTML5 <template>.',
       context:
         'Projeto autoral desenvolvido para simular uma arquitetura de produção real em e-commerce, explorando desacoplamento de serviços no backend sem DRF e gerenciamento de estado leve no frontend sem frameworks.',
       problem:
         'Implementar um fluxo de checkout e pagamentos resiliente, prevenindo requisições concorrentes duplicadas (webhooks idempotentes), eliminando problemas de performance de N+1 queries e manipulando a DOM com segurança sem o overhead de frameworks SPA.',
       solution:
-        'Arquitetura MVT desacoplada com Service Layer no Django, controle transacional atômico (transaction.atomic), otimização de consultas com prefetch_related, webhook de pagamento assíncrono idempotente, frontend modular em Vanilla JS com <template> nativo (prevenção contra XSS/CSRF) e debounce estratégico.',
+        'Arquitetura MVT desacoplada com Service Layer no Django, controle transacional atômico (transaction.atomic), otimização de consultas com prefetch_related, webhook de pagamento assíncrono idempotente, frontend modular em JavaScript (ES6+) com <template> nativo (prevenção contra XSS/CSRF) e debounce estratégico.',
       development:
         'Desenvolvimento autoral Full Stack abrangendo a modelagem relacional dos modelos de dados (pedidos, cupons, favoritos), API versionada sem DRF para controle total das respostas HTTP, Service Layer para regras de negócio e módulos JS isolados por funcionalidade.',
       architectureDecisions: [
         'Padrão Service Layer no Django para isolamento completo da lógica de domínio e desacoplamento das Views',
         'Processamento assíncrono idempotente de Webhooks de pagamento (transição de status pending -> paid) com transações atômicas',
         'Otimização de performance no ORM com prefetch_related eliminando gargalos de N+1 queries no catálogo e pedidos',
-        'Frontend modular em Vanilla JS (ES6+) com componentização via <template> nativo do HTML5 e manipulação segura com textContent (XSS zero)',
+        'Frontend modular em JavaScript (ES6+) com componentização via <template> nativo do HTML5 e manipulação segura com textContent (XSS zero)',
         'Controle de acesso por API versionada com proteção CSRF rigorosa e gerenciamento de estado cliente-side customizado',
       ],
       highlights: [
         'Service Layer & Transações Atômicas no Django',
         'Processamento assíncrono idempotente via Webhook de pagamento',
         'Otimização de consultas ORM com prefetch_related (Zero N+1)',
-        'Frontend modular em Vanilla JS com HTML5 <template>',
+        'Frontend modular em JavaScript com HTML5 <template>',
         'API versionada sem DRF para controle HTTP total',
         'Sistema de cupons, favoritos e carrinho dinâmico',
         'Proteção nativa contra CSRF e vulnerabilidades XSS',
@@ -210,14 +210,14 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         'Python',
         'Django',
         'MySQL',
-        'Vanilla JS (ES6+)',
+        'JavaScript (ES6+)',
         'HTML5 <template>',
         'REST API',
         'Webhooks Idempotentes',
         'Service Layer',
       ],
       results:
-        'Processamento assíncrono idempotente de Webhooks de pagamento zerando cobranças duplicadas; eliminação de N+1 queries com prefetch_related; arquitetura frontend leve em Vanilla JS com zero overhead de frameworks e manipulação segura do DOM via <template> e textContent.',
+        'Processamento assíncrono idempotente de Webhooks de pagamento zerando cobranças duplicadas; eliminação de N+1 queries com prefetch_related; arquitetura frontend leve em JavaScript nativo com zero overhead de frameworks e manipulação segura do DOM via <template> e textContent.',
       links: {
         github: 'https://github.com/DevYuriVieira/django-ecommerce',
       },
@@ -351,35 +351,35 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       title: 'Hogwarts Interactive Hub',
       category: 'Arquitetura Frontend',
       featured: false,
-      contextTag: 'Frontend Vanilla JS',
+      contextTag: 'Frontend JavaScript Nativo',
       collaboration: 'Projeto pessoal',
       description:
-        'Single Page Application imersiva inspirada no universo Wizarding World construída inteiramente em Vanilla JavaScript (ES6 Modules) sem frameworks.',
+        'Single Page Application imersiva inspirada no universo Wizarding World construída inteiramente em JavaScript nativo (ES6 Modules) sem frameworks.',
       context:
         'Projeto autoral criado para exercitar a construção de aplicações web ricas utilizando exclusivamente APIs nativas do navegador (DOM, History API, Intersection Observer).',
       problem:
         'Criar uma experiência imersiva com animações interativas (Chapéu Seletor com efeito typewriter e Mapa do Maroto com pegadas matemáticas) mantendo alta performance sem frameworks.',
       solution:
-        'Aplicação Vanilla JS com roteador SPA próprio sobre a History API, componentes orientados a objetos em ES6 Modules, manipulação de CSS Variables para o tema Lumos/Nox e lazy animation via Intersection Observer.',
+        'Aplicação em JavaScript nativo com roteador SPA próprio sobre a History API, componentes orientados a objetos em ES6 Modules, manipulação de CSS Variables para o tema Lumos/Nox e lazy animation via Intersection Observer.',
       development:
         'Desenvolvimento de roteador cliente-side autoral, implementação de cálculos trigonométricos para trajetórias de elementos gráficos e gerenciamento de estado local em LocalStorage.',
       architectureDecisions: [
         'Roteador SPA cliente-side autoral construído do zero manipulando a History API nativa',
         'Animações interativas com efeito typewriter e cálculos trigonométricos para pegadas no Mapa do Maroto',
-        'Motor de renderização dinâmica em Vanilla JS substituindo HTML estático por componentes modulares ES6',
+        'Motor de renderização dinâmica em JavaScript nativo substituindo HTML estático por componentes modulares ES6',
         'Sistema global de temas Lumos/Nox com atualização dinâmica de variáveis CSS (:root) e suporte a atalhos de teclado',
         'Otimização de renderização e performance via Intersection Observer API para lazy animation e responsividade com clamp()',
       ],
       highlights: [
         'Roteador SPA autoral sem frameworks via History API',
-        'Arquitetura modular em Vanilla JS com ES6 Modules',
+        'Arquitetura modular em JavaScript com ES6 Modules',
         'Animações trigonométricas no Mapa do Maroto',
         'Cerimônia do Chapéu Seletor com efeito Typewriter',
         'Sistema global de temas Lumos/Nox com LocalStorage',
         'Performance nativa e lazy loading com Intersection Observer',
       ],
       technologies: [
-        'Vanilla JS',
+        'JavaScript (ES6+)',
         'ES6 Modules',
         'HTML5',
         'CSS3',
@@ -403,17 +403,17 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       contextTag: 'Frontend E-commerce (MPA)',
       collaboration: 'Projeto colaborativo (4 desenvolvedores - Residência Serratec)',
       description:
-        'Plataforma e-commerce B2C/B2B de pescados premium com arquitetura Multi-Page (MPA) em Vanilla JS (ES6+), carrinho offcanvas em LocalStorage e frete via ViaCEP API.',
+        'Plataforma e-commerce B2C/B2B de pescados premium com arquitetura Multi-Page (MPA) em JavaScript (ES6+), carrinho offcanvas em LocalStorage e frete via ViaCEP API.',
       context:
         'Projeto final da disciplina de Desenvolvimento Web Frontend da Residência Serratec 2026.1 (Turma 36 Nova Friburgo), desenvolvido em equipe de 4 integrantes (Yuri Vieira, Yasmim Veríssimo, Gabriel Maia e Ícaro Pinheiro).',
       problem:
         'Construir um e-commerce com catálogo dinâmico, regras de atacado, carrinho persistente, consulta de frete em tempo real e painel administrativo protegido sem utilizar frameworks SPA.',
       solution:
-        'Estrutura Multi-Page (MPA) em Vanilla JS e Bootstrap 5.3, carrinho offcanvas com estado cliente-side em LocalStorage, integração assíncrona com a ViaCEP REST API e CRUD administrativo com MockAPI.',
+        'Estrutura Multi-Page (MPA) em JavaScript nativo e Bootstrap 5.3, carrinho offcanvas com estado cliente-side em LocalStorage, integração assíncrona com a ViaCEP REST API e CRUD administrativo com MockAPI.',
       development:
         'Atuação em equipe na divisão de módulos JS reutilizáveis (cart, auth, catalog, admin), consumo de APIs via async/await, regras de desconto automático no atacado (> R$ 500 ou > 5kg) e layout Mobile-First.',
       architectureDecisions: [
-        'Arquitetura Multi-Page (MPA) em Vanilla JS (ES6+) eliminando o overhead de frameworks e garantindo carregamento veloz',
+        'Arquitetura Multi-Page (MPA) em JavaScript (ES6+) eliminando o overhead de frameworks e garantindo carregamento veloz',
         'Módulos JS isolados por funcionalidade para separação limpa de responsabilidades (cart.js, auth.js, catalogo.js, admin.js, checkout.js)',
         'Persistência de estado cliente-side via LocalStorage para carrinho de compras offcanvas e sessão de usuário',
         'Cálculo logístico assíncrono em tempo real integrando a ViaCEP REST API com fluxos não bloqueantes (async/await)',
@@ -421,7 +421,7 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         'Regras dinâmicas de atacado com descontos automáticos (> R$ 500 ou > 5kg) e filtros dinâmicos por URL Query Strings',
       ],
       highlights: [
-        'E-commerce frontend em Vanilla JS (ES6+) e Bootstrap 5.3',
+        'E-commerce frontend em JavaScript (ES6+) e Bootstrap 5.3',
         'Painel Admin privado com CRUD completo via MockAPI',
         'Carrinho offcanvas persistente em LocalStorage',
         'Cálculo de frete assíncrono via ViaCEP REST API',
@@ -430,7 +430,7 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         'Desenvolvimento em equipe de 4 devs (Residência Serratec 2026.1)',
       ],
       technologies: [
-        'Vanilla JS (ES6+)',
+        'JavaScript (ES6+)',
         'HTML5',
         'CSS3',
         'Bootstrap 5.3',
