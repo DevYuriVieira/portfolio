@@ -248,6 +248,124 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
       ],
     },
   },
+  es: {
+    sectionData: {
+      eyebrow: '02 // TRAYECTORIA & EVOLUCIÓN',
+      title: 'Crecimiento Continuo en Ingeniería',
+      description:
+        'Un camino de aprendizaje continuo combinando el pensamiento sistémico de la Ingeniería de Producción, especialización de posgrado y programas prácticos de ingeniería de software de alto impacto.',
+      ariaLabel: 'Trayectoria profesional, formación académica y evolución técnica',
+    },
+    milestones: [
+      {
+        id: 'production-engineering-degree',
+        year: '2017 – 2022',
+        title: 'Licenciatura en Ingeniería de Producción',
+        subtitle: 'Universidad Estácio · Base Académica',
+        description:
+          'Desarrollo de pensamiento sistémico, optimización de procesos, análisis de causa raíz, metodología Lean y ciclo PDCA para la resolución de problemas complejos.',
+      },
+      {
+        id: 'software-engineering-postgrad',
+        year: '2024 – 2025',
+        title: 'Posgrado en Ingeniería de Software',
+        subtitle: 'Universidad Estácio · Especialización Técnica',
+        description:
+          'Profundización en arquitectura de software, patrones de diseño, desarrollo web moderno, calidad de código y ciclo de vida completo de aplicaciones.',
+      },
+      {
+        id: 'senac-frontend-dev',
+        year: '2025',
+        title: 'Desarrollador Frontend con IA (80h)',
+        subtitle: 'Senac · Interfaces Web & React',
+        description:
+          'Capacitación práctica en HTML, CSS, JavaScript y React para construcción de interfaces modernas, responsivas y accesibles, aprovechando herramientas de IA para acelerar flujos de desarrollo.',
+      },
+      {
+        id: 'dio-tech-bootcamp',
+        year: '2025',
+        title: 'Bootcamp Philips Fullstack Developer | You Are You (132h)',
+        subtitle: 'Digital Innovation One (DIO) & Philips · Aceleración Práctica',
+        description:
+          'Pistas intensivas de aceleración cubriendo HTML, CSS, JavaScript, TypeScript, Angular, Java, Spring Boot y Bases de Datos (modelado relacional & SQL).',
+      },
+      {
+        id: 'senac-python-fullstack',
+        year: '2025 – 2026',
+        title: 'Programación en Python (168h)',
+        subtitle: 'Senac · Inmersión en Programación',
+        description:
+          'Capacitación práctica cubriendo Lógica de Programación, Python (Django) y Frontend Esencial (HTML5, CSS3, JavaScript) enfocada en la construcción de aplicaciones web funcionales.',
+      },
+      {
+        id: 'uece-tic-residency',
+        year: '2025',
+        title: 'Residencia TIC 12 | UECE (120h)',
+        subtitle: 'Universidad Estatal de Ceará · Programa por Pistas',
+        description:
+          'Capacitación práctica en pistas de conocimiento enfocadas en Programación Orientada a Objetos (POO) en Java, Bases de Datos MySQL y Estructuras de Datos.',
+      },
+      {
+        id: 'serratec-residency',
+        year: '2026',
+        title: 'Residencia TIC/Software Serratec Full-Stack (790h)',
+        subtitle: 'Serratec · Inmersión en Disciplinas Progresivas',
+        description:
+          'Residencia inmersiva de 790 horas en desarrollo de software abarcando Lógica, Bases de Datos, POO Java, APIs RESTful con Spring Boot, React, React Native, prácticas ágiles y entrega de proyecto final corporativo.',
+      },
+      {
+        id: 'personal-projects',
+        year: '2025 – Presente',
+        title: 'Proyectos Personales & Casos de Estudio',
+        subtitle: 'Desarrollo Práctico Autoral',
+        description:
+          'Desarrollo práctico autoral de aplicaciones web y mobile full-stack cubriendo React, React Native (Expo), TypeScript, Java (Spring Boot) y Python (Django), aprovechando herramientas de IA para asistencia, pruebas y documentación.',
+      },
+    ],
+    currentFocus: {
+      statusBadge: 'APRENDIZAJE ACTIVO & EVOLUCIÓN',
+      title: 'Enfoque Actual & Aprendizaje Activo',
+      subtitle:
+        'Especialización práctica en tecnologías clave de ingeniería para construir arquitecturas escalables, resilientes y orientadas a microservicios.',
+      items: [
+        {
+          id: 'docker-containerization',
+          tech: 'Docker & Containerización',
+          category: 'DevOps & Infraestructura',
+          description:
+            'Estandarización de entornos aislados, orquestación multi-contenedor con Docker Compose y preparación para despliegue en la nube.',
+        },
+        {
+          id: 'aws-cloud',
+          tech: 'AWS & Cloud Services',
+          category: 'Arquitectura Cloud',
+          description:
+            'Exploración práctica de servicios AWS principales (EC2, S3, IAM, CloudFront, RDS) enfocada en despliegues serverless e infraestructura cloud segura.',
+        },
+        {
+          id: 'csharp-dotnet',
+          tech: 'C# / .NET 10',
+          category: 'Backend Enterprise',
+          description:
+            'Expansión de versatilidad backend en ecosistemas Microsoft, construyendo APIs REST de alto rendimiento con C# 13, ASP.NET Core y Entity Framework Core.',
+        },
+        {
+          id: 'nosql-databases',
+          tech: 'NoSQL & Caching (MongoDB / Redis)',
+          category: 'Persistencia & Alto Rendimiento',
+          description:
+            'Modelado de documentos con MongoDB y estrategias de caché en memoria con Redis para optimización de consultas y acceso a datos de baja latencia.',
+        },
+        {
+          id: 'automated-testing',
+          tech: 'Pruebas Automatizadas & E2E (Cypress / Playwright / Selenium / Vitest / JUnit 5)',
+          category: 'Calidad & CI/CD',
+          description:
+            'Construcción de suites completas de pruebas unitarias, integración y E2E usando Cypress, Playwright, Selenium, Vitest y JUnit 5 para garantizar pipelines de entrega continua (CI/CD) sin regresiones.',
+        },
+      ],
+    },
+  },
 };
 
 export const EXPERIENCE_SECTION_DATA: ExperienceSectionData =

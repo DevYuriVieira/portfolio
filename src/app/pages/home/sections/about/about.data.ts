@@ -145,8 +145,72 @@ const ABOUT_I18N: Record<SupportedLang, AboutI18n> = {
       },
     ],
   },
+  es: {
+    eyebrow: 'Sobre mí',
+    title: 'Ingeniería de Software & Visión Sistémica',
+    intro:
+      'La trayectoria en tecnología une la visión analítica de la Ingeniería de Producción con el rigor práctico del desarrollo de software full-stack.',
+    journeyTitle: 'Trayectoria & Enfoque',
+    howIWorkTitle: 'Cómo Trabajo',
+    howIWorkDescription:
+      'Decisiones y prácticas de ingeniería que guían el desarrollo en el día a día.',
+    blocks: [
+      {
+        id: 'who-i-am',
+        label: 'Práctica Profesional',
+        text: 'Práctica de desarrollo enfocada en el ecosistema Java (Spring Boot) y React, complementada por proyectos en Python (Django), TypeScript y PostgreSQL. La experiencia abarca desde la construcción de interfaces web responsivas hasta APIs REST seguras y automatizaciones impulsadas por IA.',
+      },
+      {
+        id: 'how-i-build',
+        label: 'Ingeniería & Procesos',
+        text: 'La formación en Ingeniería de Producción aporta una ventaja estratégica: ver el software como un sistema productivo operacional. Antes de escribir código o definir la arquitectura, el enfoque se centra en mapear los flujos de trabajo del negocio e identificar los problemas reales.',
+      },
+      {
+        id: 'systemic-differentiator',
+        label: 'Formación & Práctica',
+        text: 'Base técnica consolidada a través de más de 900 horas de programas de residencia intensiva (Serratec & UECE) junto con estudios de posgrado en ingeniería de software, enfatizando código limpio, pruebas automatizadas y tipado estricto.',
+      },
+    ],
+    principles: [
+      {
+        id: 'clean-architecture',
+        title: 'Contratos de API & DTOs',
+        description:
+          'Especificación clara de contratos, esquemas y DTOs antes de la implementación de controladores.',
+      },
+      {
+        id: 'communication-first',
+        title: 'Integridad Transaccional',
+        description:
+          'Manejo de concurrencia, idempotencia en webhooks y protección contra duplicación de datos.',
+      },
+      {
+        id: 'systems-thinking',
+        title: 'Arquitectura Modular',
+        description:
+          'Separación clara de responsabilidades en capas (MVT, MVC+DAO) para mantenibilidad a largo plazo.',
+      },
+      {
+        id: 'maintainability',
+        title: 'Automatización Pragmática',
+        description:
+          'Aplicación diaria de IA y scripts automatizados para acelerar el análisis de logs bajo supervisión de ingeniería.',
+      },
+      {
+        id: 'value-delivery',
+        title: 'Alineación de Equipo',
+        description:
+          'Comunicación clara de requisitos técnicos para eliminar complejidad prematura.',
+      },
+      {
+        id: 'simplicity-scalability',
+        title: 'Análisis de Causa Raíz',
+        description:
+          'Aplicación de metodologías Lean/PDCA para abordar los problemas técnicos en su origen.',
+      },
+    ],
+  },
 };
-
 // Backward-compatible exports
 export const ABOUT_PARAGRAPHS: readonly string[] = ABOUT_I18N['pt-BR'].blocks.map(
   (b) => b.text

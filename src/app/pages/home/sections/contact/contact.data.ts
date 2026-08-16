@@ -60,6 +60,29 @@ const CONTACT_I18N: Record<SupportedLang, ContactI18n> = {
       copied: '✓ Copied!',
     },
   },
+  es: {
+    eyebrow: '06 // CONTACTO',
+    title: 'Construyamos algo extraordinario juntos.',
+    subtitle:
+      'Estoy disponible para nuevas oportunidades profesionales, proyectos desafiantes y conexiones en el campo de la ingeniería de software.',
+    info: {
+      email: 'yurivieirateixeira98@gmail.com',
+      location: 'Nova Friburgo, RJ, Brasil',
+      availability:
+        'Disponible para oportunidades remotas, híbridas o presenciales con disposición a reubicación.',
+      linkedinUrl: 'https://linkedin.com/in/yuri-vieira-teixeira/',
+      githubUrl: 'https://github.com/DevYuriVieira',
+    },
+    labels: {
+      emailLabel: '01 // CORREO DE CONTACTO DIRECTO',
+      locationLabel: '02 // UBICACIÓN',
+      availabilityLabel: '03 // DISPONIBILIDAD PROFESIONAL',
+      socialLabel: '04 // REDES & ENLACES',
+      sendEmail: 'Enviar Correo ↗',
+      copyEmail: 'Copiar Correo',
+      copied: '✓ ¡Copiado!',
+    },
+  },
 };
 
 // Backward-compatible export

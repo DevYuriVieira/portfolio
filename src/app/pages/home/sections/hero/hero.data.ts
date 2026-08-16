@@ -20,6 +20,15 @@ const HERO_I18N: Record<SupportedLang, HeroSectionData> = {
     cvCtaText: 'Download CV (EN)',
     cvUrl: 'assets/cv-yuri-vieira-teixeira-en.pdf',
   },
+  es: {
+    eyebrow: 'Ingeniero de Software · Desarrollo Full-Stack',
+    name: 'Yuri Vieira Teixeira',
+    description:
+      'Ingeniero de Software Full-Stack especializado en Java (Spring Boot), Python (Django) y TypeScript (React / Angular). Enfocado en arquitectura de software escalable, desarrollo de APIs RESTful resilientes, integridad de datos y calidad de código.',
+    projectsCtaText: 'Ver proyectos',
+    cvCtaText: 'Download CV (EN)',
+    cvUrl: 'assets/cv-yuri-vieira-teixeira-en.pdf',
+  },
 };
 
 export const HERO_SECTION_DATA: HeroSectionData = HERO_I18N['pt-BR'];

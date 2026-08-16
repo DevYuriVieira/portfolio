@@ -161,8 +161,84 @@ const SKILLS_I18N: Record<SupportedLang, SkillsI18n> = {
       },
     ],
   },
+  es: {
+    sectionData: {
+      id: 'skills',
+      eyebrow: 'Competencias',
+      title: 'Habilidades & Ingeniería',
+      description:
+        'Visión consolidada de competencias técnicas, fundamentos de ingeniería y prácticas utilizadas en el desarrollo de software.',
+      ariaLabel: 'Sección de habilidades e ingeniería',
+    },
+    categories: [
+      {
+        id: 'frontend-engineering',
+        title: 'Frontend & Mobile Engineering',
+        description:
+          'Construcción de aplicaciones web y mobile modernas, de alto rendimiento, accesibles y guiadas por design systems.',
+        skills: [
+          'React',
+          'React Native (Expo)',
+          'TypeScript',
+          'Angular',
+          'Framer Motion',
+          'HTML5 & CSS/SCSS',
+          'Componentización',
+          'Design Systems',
+        ],
+      },
+      {
+        id: 'backend-apis',
+        title: 'Backend & APIs RESTful',
+        description:
+          'Desarrollo de servicios backend seguros, escalables y orientados a reglas de negocio.',
+        skills: [
+          'Java (Spring Boot)',
+          'C# / .NET 10',
+          'Spring Security & JWT',
+          'Python (Django)',
+          'APIs RESTful',
+          'Webhooks & OCR',
+          'JPA / Hibernate',
+          'Bean Validation',
+          'Arquitectura en Capas',
+        ],
+      },
+      {
+        id: 'data-architecture',
+        title: 'Data & Software Architecture',
+        description:
+          'Modelado relacional, persistencia de datos, optimización de consultas y principios de ingeniería.',
+        skills: [
+          'PostgreSQL & SQL',
+          'Optimización N+1 Queries',
+          'Modelado Relacional',
+          'Clean Architecture',
+          'SOLID & Design Patterns',
+          'Patrón MVC + DAO',
+          'JDBC & Persistence',
+          'Swagger / OpenAPI',
+        ],
+      },
+      {
+        id: 'quality-practices',
+        title: 'Quality & Agile Practices',
+        description:
+          'Prácticas de ingeniería enfocadas en calidad, control de versiones, agilidad y entrega continua.',
+        skills: [
+          'Pruebas E2E & Automatizadas',
+          'Cypress & Playwright',
+          'Selenium & Vitest',
+          'Git / GitHub & Actions',
+          'Conventional Commits',
+          'Vercel CI/CD & Deploy',
+          'Agile / Scrum (Sprints)',
+          'Code Review & Pair Programming',
+        ],
+      },
+    ],
+  },
 };
-
 // Backward-compatible exports
 export const SKILLS_SECTION_DATA: SkillsSectionData = SKILLS_I18N['pt-BR'].sectionData;
 export const SKILLS_CATEGORIES: readonly SkillCategory[] = SKILLS_I18N['pt-BR'].categories;
