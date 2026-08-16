@@ -22,7 +22,7 @@ interface Particle {
   alpha: number;
   baseAlpha: number;
   phase: number;
-  hue: number; // 190 to 220 (Cyan to Bright Blue)
+  hue: number;
 }
 
 @Component({
@@ -56,7 +56,7 @@ export class InteractiveParticles implements OnInit, OnDestroy {
   private resizeObserver: ResizeObserver | null = null;
 
   private particles: Particle[] = [];
-  private count = 75;
+  private count = 83;
 
   private mouse = {
     x: -9999,
@@ -110,15 +110,14 @@ export class InteractiveParticles implements OnInit, OnDestroy {
     const height = window.innerHeight;
     this.particles = [];
 
-    // Responsive count for vivid density & mobile optimization
-    this.count = width < 768 ? 30 : 75;
+    this.count = width < 768 ? 30 : 83;
 
     for (let i = 0; i < this.count; i++) {
       const x = Math.random() * width;
       const y = Math.random() * height;
-      const speed = 0.4 + Math.random() * 0.7; // Active continuous speed
+      const speed = 0.4 + Math.random() * 0.7;
       const angle = Math.random() * Math.PI * 2;
-      const baseAlpha = 0.35 + Math.random() * 0.45; // High brightness
+      const baseAlpha = 0.35 + Math.random() * 0.45;
 
       this.particles.push({
         x,
@@ -127,11 +126,11 @@ export class InteractiveParticles implements OnInit, OnDestroy {
         vy: Math.sin(angle) * speed,
         speed,
         angle,
-        radius: 1.8 + Math.random() * 2.2, // Larger glowing particle radius
+        radius: 1.8 + Math.random() * 2.2,
         alpha: baseAlpha,
         baseAlpha,
         phase: Math.random() * Math.PI * 2,
-        hue: 190 + Math.random() * 30, // Cyan to electric blue range
+        hue: 190 + Math.random() * 30,
       });
     }
   }
@@ -147,26 +146,21 @@ export class InteractiveParticles implements OnInit, OnDestroy {
 
     this.ctx.clearRect(0, 0, width, height);
 
-    // Update and draw all particles with continuous random wander
     for (let i = 0; i < this.particles.length; i++) {
       const p = this.particles[i];
 
-      // Random wander trajectory angle perturbation
       p.angle += (Math.random() - 0.5) * 0.06;
       const targetVx = Math.cos(p.angle) * p.speed;
       const targetVy = Math.sin(p.angle) * p.speed;
 
-      // Smooth velocity interpolation towards wander direction
       p.vx += (targetVx - p.vx) * 0.05;
       p.vy += (targetVy - p.vy) * 0.05;
 
       p.x += p.vx;
       p.y += p.vy;
 
-      // Smooth breathing glow pulse
       p.alpha = Math.min(0.9, Math.max(0.25, p.baseAlpha + Math.sin(now * 0.0025 + p.phase) * 0.2));
 
-      // Screen boundary bounce / wrap with random angle shift
       if (p.x < -20) {
         p.x = width + 20;
         p.angle = Math.PI - p.angle;
@@ -184,7 +178,6 @@ export class InteractiveParticles implements OnInit, OnDestroy {
         p.angle = -p.angle;
       }
 
-      // Mouse drag / hover physics interaction
       const dx = p.x - this.mouse.x;
       const dy = p.y - this.mouse.y;
       const dist = Math.sqrt(dx * dx + dy * dy);
@@ -196,10 +189,9 @@ export class InteractiveParticles implements OnInit, OnDestroy {
 
         p.vx += Math.cos(angle) * force * 0.18 + this.mouse.vx * 0.08;
         p.vy += Math.sin(angle) * force * 0.18 + this.mouse.vy * 0.08;
-        p.angle = Math.atan2(p.vy, p.vx); // Redirect motion vector away
+        p.angle = Math.atan2(p.vy, p.vx);
       }
 
-      // Glowing radial gradient fill
       const gradRadius = p.radius * 2.8;
       const grad = this.ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, gradRadius);
       grad.addColorStop(0, `hsla(${p.hue}, 100%, 85%, ${p.alpha})`);
@@ -211,13 +203,11 @@ export class InteractiveParticles implements OnInit, OnDestroy {
       this.ctx.arc(p.x, p.y, gradRadius, 0, Math.PI * 2);
       this.ctx.fill();
 
-      // Bright inner core dot
       this.ctx.fillStyle = `rgba(255, 255, 255, ${Math.min(1, p.alpha * 1.2)})`;
       this.ctx.beginPath();
       this.ctx.arc(p.x, p.y, p.radius * 0.5, 0, Math.PI * 2);
       this.ctx.fill();
 
-      // Proximity connection lines with glowing cyan stroke
       for (let j = i + 1; j < this.particles.length; j++) {
         const p2 = this.particles[j];
         const pdx = p.x - p2.x;
@@ -236,12 +226,10 @@ export class InteractiveParticles implements OnInit, OnDestroy {
       }
     }
 
-    // Reset mouse velocity step
     this.mouse.vx = 0;
     this.mouse.vy = 0;
   }
 
-  // Events
   private readonly onPointerMove = (e: PointerEvent): void => {
     if (this.mouse.prevX !== -9999) {
       this.mouse.vx = e.clientX - this.mouse.prevX;
@@ -289,4 +277,3 @@ export class InteractiveParticles implements OnInit, OnDestroy {
     );
   }
 }
-
