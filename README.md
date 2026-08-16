@@ -281,7 +281,7 @@ Access in your browser at `http://localhost:4200`.
 > **Test Execution Note**: Before running Playwright (`npm run test:e2e`) or Cypress (`npm run test:cypress`), ensure the dev server is active on `http://localhost:4200` or allow Playwright's automatic `webServer` runner to launch it.
 
 ### Future Roadmap
-- [ ] PWA offline service worker caching for assets.
+- [x] PWA offline service worker caching for assets and app shell.
 - [ ] Interactive 3D WebGL architecture diagram viewer for case studies.
 - [ ] Automated Lighthouse CI audit integration in GitHub Actions pipeline.
 
@@ -536,7 +536,7 @@ Acesse no navegador pelo endereço `http://localhost:4200`.
 > **Execução de Testes E2E**: Antes de rodar os comandos do Playwright (`npm run test:e2e`) ou Cypress (`npm run test:cypress`), certifique-se de que o servidor local está ativo em `http://localhost:4200` ou permita que a inicialização automática ocorra.
 
 ### Roadmap Futuro
-- [ ] Cache offline PWA de ativos do projeto.
+- [x] Suporte a PWA com cache offline de ativos e app shell via Service Worker.
 - [ ] Visualizador de diagramas de arquitetura 3D interativo para os casos de estudo.
 - [ ] Automação de auditoria do Lighthouse CI nas GitHub Actions.
 
