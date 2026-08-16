@@ -122,7 +122,7 @@ flowchart TD
     B --> D["Page Shell: Home Container"]
     
     C --> E["I18nService - Reactive Signal State"]
-    E -- "Lang Change (PT / EN)" --> F["SeoService - Head Meta & JSON-LD"]
+    E -- "Lang Change (PT / EN / ES)" --> F["SeoService - Head Meta & JSON-LD"]
     E -- "Data Update" --> G["Section Controllers"]
     
     D --> H1["HeroSection & Particles Visual"]
@@ -377,7 +377,7 @@ flowchart TD
     B --> D["Estrutura de Página: Home Container"]
     
     C --> E["I18nService - Estado Reativo por Signals"]
-    E -- "Troca de Idioma (PT / EN)" --> F["SeoService - Meta Tags & JSON-LD"]
+    E -- "Troca de Idioma (PT / EN / ES)" --> F["SeoService - Meta Tags & JSON-LD"]
     E -- "Atualização de Dados" --> G["Controladores de Seção"]
     
     D --> H1["HeroSection & Visual de Partículas"]
