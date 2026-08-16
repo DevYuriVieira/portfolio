@@ -1116,6 +1116,481 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       },
     },
   ],
+  es: [
+    {
+      id: 'zeiss-recommendation-assistant',
+      title: 'ZEISS Recommendation Assistant',
+      category: 'Proyecto Profesional (Confidencial)',
+      featured: true,
+      contextTag: 'Proyecto Corporativo (NDA)',
+      collaboration: 'Proyecto colaborativo (11 desarrolladores + PO + Scrum Master)',
+      client: 'ZEISS Group',
+      confidential: true,
+      description:
+        'Plataforma web corporativa desarrollada en asociación con el ZEISS Group para digitalizar, estandarizar y optimizar la recomendación técnica de lentes en ópticas.',
+      context:
+        'MVP corporativo desarrollado en asociación con el ZEISS Group durante la Residencia Serratec. Trabajo en equipo ágil en desarrollo frontend React, integración de pipeline de IA y automatización de flujo de ventas.',
+      problem:
+        'Ingreso manual de prescripciones oftalmológicas complejas, recomendaciones de lentes dependientes del conocimiento individual del vendedor, alto tiempo de atención al cliente y falta de métricas de rendimiento.',
+      solution:
+        'Plataforma web con extracción automática de prescripciones vía OCR integrada con pipeline de IA (n8n/RAG), validación de datos clínicos, recomendaciones de lentes ZEISS basadas en hábitos, seguimiento del ciclo de vida de ventas y dashboards de inteligencia comercial en tiempo real.',
+      development:
+        'Desarrollo en equipo ágil con 11 ingenieros de software, Product Owner y Scrum Master. Participación directa en construcción de UI React/TypeScript, integración de pipeline de IA (n8n/RAG), arquitectura de componentes modulares y consumo de API REST protegida con RBAC.',
+      architectureDecisions: [
+        'Extracción automatizada de prescripciones vía OCR integrada en pipeline de IA con n8n y RAG',
+        'Interfaz de validación de datos clínicos previa al procesamiento para garantizar precisión',
+        'Motor de recomendación que combina métricas oftalmológicas con hábitos y preferencias del paciente',
+        'Gestión del flujo de ventas de extremo a extremo, desde la recomendación hasta la confirmación del pedido',
+        'Dashboards analíticos con indicadores de conversión, productos más recomendados y rendimiento por sucursal',
+        'Autenticación JWT, Control de Acceso Basado en Roles (RBAC) y módulos de gestión administrativa',
+      ],
+      highlights: [
+        'OCR automatizado de prescripciones & Pipeline de IA (n8n / RAG)',
+        'Recomendación inteligente de lentes ZEISS por datos clínicos y hábitos',
+        'Dashboards de analítica comercial y conversión en tiempo real',
+        'Autenticación JWT & Control de Acceso Basado en Roles (RBAC)',
+        'Arquitectura Full Stack con React, Spring Boot & PostgreSQL',
+      ],
+      technologies: ['React', 'TypeScript', 'Java', 'Spring Boot', 'PostgreSQL', 'n8n', 'OCR', 'RAG / IA'],
+      results:
+        'Estandarización de recomendaciones técnicas de lentes; lectura automatizada de prescripciones vía OCR eliminando errores de ingreso manual; generación de inteligencia comercial en tiempo real para ZEISS con dashboards de conversión y ranking de productos.',
+      links: {},
+    },
+    {
+      id: 'spring-boot-ecommerce-api',
+      title: 'Spring Boot E-Commerce API',
+      category: 'Backend Java',
+      featured: true,
+      contextTag: 'Backend Java / REST API',
+      collaboration: 'Proyecto colaborativo (Residencia Serratec)',
+      description:
+        'API RESTful de e-commerce construida en Java 17 y Spring Boot 3 con autenticación JWT stateless y autorización RBAC vía Spring Security 6.',
+      context:
+        'Servicio backend construido durante la Residencia Serratec, enfocado en el desacoplamiento estricto entre lógica de negocio y persistencia de datos.',
+      problem:
+        'Centralizar permisos granulares basados en roles, control de inventario concurrente, validación de reglas de productos y emisión de tokens de autenticación stateless en una única API.',
+      solution:
+        'API RESTful en capas (Controller, Service, Repository, DTOs) usando Spring Security 6, persistencia relacional en PostgreSQL vía JPA/Hibernate y documentación OpenAPI 3.',
+      development:
+        'Aplicación de patrones DTO para aislar la capa de presentación de las entidades de base de datos y configuración de filtros JWT de seguridad personalizados.',
+      architectureDecisions: [
+        'Arquitectura en capas (Controller, Service, Repository, DTOs) garantizando separación estricta de responsabilidades',
+        'Autenticación stateless vía JSON Web Tokens (JWT) integrada en la cadena de filtros de Spring Security 6',
+        'Mapeo relacional eficiente con JPA/Hibernate en PostgreSQL, previniendo consultas N+1',
+        'Contratos de API interactivos documentados con Swagger UI / OpenAPI 3',
+      ],
+      highlights: [
+        'Autenticación JWT stateless con Spring Security 6',
+        'Control de Acceso Granular Basado en Roles (RBAC)',
+        'Persistencia en PostgreSQL con JPA/Hibernate',
+        'Documentación interactiva con Swagger/OpenAPI 3',
+        'Patrón DTO para protección de entidades de dominio',
+      ],
+      technologies: ['Java 17', 'Spring Boot 3', 'Spring Security 6', 'PostgreSQL', 'JPA/Hibernate', 'Swagger/OpenAPI'],
+      results:
+        'Desacoplamiento estricto entre reglas de negocio y capa de presentación vía DTOs; control de acceso granular RBAC vía Spring Security 6 eliminando rutas desprotegidas; contrato de API OpenAPI 3 interactivo listo para integración frontend.',
+      links: { github: 'https://github.com/DevYuriVieira/ecommerce-serratec-api' },
+    },
+    {
+      id: 'aurora-growth-platform',
+      title: 'Aurora | Plataforma de Crecimiento Personal',
+      category: 'Mobile React Native',
+      featured: true,
+      contextTag: 'App Mobile React Native / Expo',
+      collaboration: 'Proyecto colaborativo (6 desarrolladores - Proyecto Final Serratec)',
+      description:
+        'App mobile React Native (Expo SDK 54) para seguimiento de metas, gamificación con XP/niveles, mentorías con QR Code y comunidad.',
+      context:
+        'Proyecto final de la disciplina de Desarrollo Multiplataforma de la Residencia Serratec, construido en equipo de 6 desarrolladores.',
+      problem:
+        'Consolidar flujos de navegación híbrida, gamificación de hábitos, validación estricta de formularios, persistencia segura de sesión y acceso a hardware nativo en una sola aplicación mobile.',
+      solution:
+        'Desarrollo React Native + Expo SDK 54 combinando navegación híbrida (Drawer, Stack, Tabs), gamificación (XP/Niveles/Logros), validación con React Hook Form + Zod, consumo de APIs vía Axios/MockAPI y almacenamiento seguro con Expo Secure Store.',
+      development:
+        'Trabajo en equipo de 6 desarrolladores construyendo pantallas TypeScript, consumo REST/MockAPI, arquitectura de contexto reactivo (`AuthContext`) y integración de recursos nativos del SO (Cámara, Galería, GPS).',
+      architectureDecisions: [
+        'Arquitectura de navegación híbrida combinando Drawer, Stack y Tabs vía React Navigation',
+        'Motor de gamificación del lado del cliente con cálculos dinámicos de XP, niveles y logros',
+        'Validación defensiva de formularios combinando React Hook Form con esquemas de validación Zod',
+        'Integración nativa de dispositivos vía Expo Image Picker (Cámara/Galería), Expo Location (GPS) y lector de QR Code',
+        'Persistencia segura de sesión con Expo Secure Store y caché local vía AsyncStorage',
+      ],
+      highlights: [
+        'React Native + Expo SDK 54 con TypeScript',
+        'Navegación híbrida integrada (Drawer, Stack, Tabs)',
+        'Sistema de gamificación completo con XP, Niveles y Logros',
+        'Inscripción en mentorías con verificación por QR Code nativo',
+        'Acceso nativo a Cámara, Galería, GPS y Expo Secure Store',
+        'Validación defensiva de formularios con React Hook Form + Zod',
+      ],
+      technologies: ['React Native', 'Expo SDK 54', 'TypeScript', 'React Navigation', 'Zod', 'React Hook Form', 'Axios', 'AsyncStorage', 'Expo Secure Store'],
+      results:
+        'Navegación fluida en 3 flujos híbridos (Drawer, Stack, Tabs); motor de gamificación por XP para seguimiento de metas; verificación de asistencia a mentorías por QR Code nativo y almacenamiento seguro de sesión vía Expo Secure Store.',
+      links: { github: 'https://github.com/DevYuriVieira/aurora-growth-platform' },
+    },
+    {
+      id: 'playstation-evolution-timeline',
+      title: 'PlayStation Evolution Timeline',
+      category: 'Frontend React & Motion',
+      featured: true,
+      contextTag: 'App en Producción (Vercel)',
+      collaboration: 'Proyecto personal',
+      description:
+        'Timeline interactiva de 30 años de hardware PlayStation construida en React, TypeScript y Framer Motion, publicada en Vercel con CI/CD.',
+      context:
+        'Aplicación web en producción creada para dominar animaciones declarativas avanzadas, motion design y componentes TypeScript de alto rendimiento.',
+      problem:
+        'Renderizar 30 años de especificaciones históricas de hardware con transiciones visuales ricas sin causar caídas de cuadros (FPS) o cuellos de botella.',
+      solution:
+        'Timeline interactiva construida con React, Vite y TypeScript, animada vía Framer Motion con interpolación de alto rendimiento y pipeline CI/CD automatizado en Vercel.',
+      development:
+        'Proyecto autoral enfocado en tipado estricto de datos de hardware, estructura de componentes reutilizables y pipeline de despliegue automatizado en Vercel.',
+      architectureDecisions: [
+        'Tipado estricto de especificaciones históricas de hardware usando interfaces TypeScript',
+        'Animaciones declarativas e interpoladas con Framer Motion evitando reflows del DOM',
+        'Pipeline de despliegue continuo (CI/CD) automatizado en Vercel activado por commits en main',
+        'Layout 100% responsivo para navegación fluida en dispositivos móviles y desktop',
+      ],
+      highlights: [
+        'Aplicación en producción en Vercel',
+        '30 años de historia de consolas PlayStation',
+        'Motion design avanzado con Framer Motion',
+        'Pipeline CI/CD automatizado vía GitHub + Vercel',
+        'Arquitectura TypeScript con tipado estricto',
+      ],
+      technologies: ['React', 'TypeScript', 'Framer Motion', 'Vite', 'Vercel CI/CD'],
+      results:
+        'Presentación interactiva de 30 años de hardware de consolas en timeline responsiva; renderizado de animaciones declarativas vía Framer Motion sin lag de UI; pipeline CI/CD automatizado en Vercel vinculado a commits de GitHub.',
+      links: { github: 'https://github.com/DevYuriVieira/playstation-evolution-timeline', demo: 'https://playstation-evolution-timeline.vercel.app' },
+    },
+    {
+      id: 'django-ecommerce',
+      title: 'Django Full-Stack E-Commerce',
+      category: 'Full Stack Python/Django',
+      featured: true,
+      contextTag: 'Full-Stack Python (Service Layer & Webhooks)',
+      collaboration: 'Proyecto personal',
+      description:
+        'Plataforma e-commerce full-stack construida con Django y JavaScript vanilla, con patrón Service Layer, transacciones atómicas, webhook idempotente de pagos asíncronos y renderizado modular con HTML5 <template>.',
+      context:
+        'Aplicación web autoral diseñada para simular una arquitectura de producción real de e-commerce, enfocada en desacoplamiento de servicios backend sin DRF y gestión de estado frontend ligera sin frameworks.',
+      problem:
+        'Implementar un pipeline de checkout y pagos resiliente, previniendo procesamiento de transacciones duplicadas concurrentes (webhooks idempotentes), eliminando cuellos de botella de consultas N+1 en el ORM y manipulando el DOM con seguridad sin overhead de frameworks SPA.',
+      solution:
+        'Arquitectura MVT desacoplada con Service Layer en Django, control transaccional atómico (transaction.atomic), optimización de consultas vía prefetch_related, webhooks de pago asíncronos idempotentes, frontend modular en JavaScript (ES6+) con <template> HTML5 nativo (seguridad XSS/CSRF) y debounce estratégico.',
+      development:
+        'Desarrollo full-stack de extremo a extremo cubriendo modelado relacional de datos, endpoints de API versionada sin DRF, implementación de Service Layer y módulos JS aislados por funcionalidad.',
+      architectureDecisions: [
+        'Patrón Service Layer en Django garantizando aislamiento limpio de lógica de dominio desacoplada de las vistas',
+        'Procesamiento asíncrono idempotente de Webhooks de pago (transiciones pending -> paid) respaldado por transacciones atómicas',
+        'Optimización de rendimiento de consultas ORM con prefetch_related eliminando cuellos de botella N+1',
+        'Frontend modular en JavaScript vanilla (ES6+) usando componentización con <template> HTML5 y textContent (vector XSS cero)',
+        'Control de acceso por API versionada con protección CSRF estricta y gestión de estado del lado del cliente',
+      ],
+      highlights: [
+        'Service Layer & Transacciones Atómicas en Django',
+        'Procesamiento asíncrono idempotente vía Webhook de pago',
+        'Optimización de consultas ORM con prefetch_related (Zero N+1)',
+        'Frontend modular en JavaScript con HTML5 <template>',
+        'Endpoints de API versionada sin overhead de DRF',
+        'Carrito dinámico, reglas de cupones y lista de favoritos',
+        'Protección nativa estricta contra CSRF & XSS',
+      ],
+      technologies: ['Python', 'Django', 'MySQL', 'Vanilla JS (ES6+)', 'HTML5 <template>', 'REST API', 'Webhooks Idempotentes', 'Service Layer'],
+      results:
+        'Procesamiento asíncrono idempotente de Webhooks de pago eliminando cobros dobles; eliminación de consultas N+1 vía prefetch_related; arquitectura frontend ligera en JavaScript vanilla con cero overhead de frameworks y manipulación segura del DOM vía <template> y textContent.',
+      links: { github: 'https://github.com/DevYuriVieira/django-ecommerce' },
+    },
+    {
+      id: 'anime-weather-platform',
+      title: 'Anime Weather Platform',
+      category: 'Frontend + APIs + IA',
+      featured: false,
+      contextTag: 'Frontend & Integración con IA',
+      collaboration: 'Proyecto colaborativo (Pair Programming)',
+      description:
+        'Aplicación web reactiva que combina datos climáticos (OpenWeather API) y catálogo de anime (Jikan API) con Google Gemini AI, integrando recomendaciones en JSON estructurado y chatbot interactivo.',
+      context:
+        'Plataforma construida en formato Pair Programming para practicar el consumo asíncrono de múltiples APIs externas y SDKs de IA generativa.',
+      problem:
+        'Orquestar datos en tiempo real de múltiples APIs externas y alimentar un modelo de lenguaje para producir respuestas en JSON estructurado para la UI y conversaciones interactivas de chatbot.',
+      solution:
+        'Desarrollo de interfaz React/TypeScript consumiendo OpenWeather API, Jikan API y Google Gemini AI SDK vía Prompt Engineering para cards en JSON y chatbot de juegos de palabras climáticos.',
+      development:
+        'Desarrollo en pair programming cubriendo gestión de estado asíncrono, renderizado dinámico de JSON, fallbacks de reconexión de APIs y componentes UI con estilo glassmorphism.',
+      architectureDecisions: [
+        'Consumo asíncrono y cruce de datos en tiempo real de OpenWeather API (clima) y Jikan API (catálogo de anime)',
+        'Integración con SDK de Google Gemini AI combinando Prompt Engineering para cards en JSON estricto y chatbot interactivo',
+        'Frontend responsivo construido con React, TypeScript y Vite con UI glassmorphism',
+        'Manejo defensivo de solicitudes asíncronas con estados de carga y fallbacks de error',
+      ],
+      highlights: [
+        'Prompt Engineering para respuestas en JSON estructurado',
+        'Chatbot interactivo con Google Gemini AI',
+        'Juegos de palabras climáticos contextualizados',
+        'Datos climáticos en tiempo real vía OpenWeather API',
+        'Consumo de catálogo cultural vía Jikan API',
+      ],
+      technologies: ['React', 'TypeScript', 'Vite', 'OpenWeather API', 'Jikan API', 'Google Gemini AI'],
+      results:
+        'Recomendaciones contextuales generadas por el cruce de datos climáticos y de anime vía Google Gemini AI; integración de respuestas JSON estructuradas para ensamblaje dinámico de UI junto con chatbot interactivo; UI responsiva con glassmorphism.',
+      links: { github: 'https://github.com/DevYuriVieira/anime-weather-platform' },
+    },
+    {
+      id: 'payroll-system-java',
+      title: 'Sistema de Nómina',
+      category: 'Backend Java',
+      featured: false,
+      contextTag: 'Backend Java / Arquitectura MVC+DAO',
+      collaboration: 'Proyecto colaborativo (4 desarrolladores - Residencia Serratec)',
+      description:
+        'Sistema backend en Java 17 puro (sin ORM) construido en equipo de 4 desarrolladores para procesamiento automatizado de nómina por lotes, cálculo de alícuotas progresivas de INSS e IRRF, persistencia en PostgreSQL vía JDBC y exportación CSV.',
+      context:
+        'Proyecto final de evaluación de la disciplina de POO en la Residencia TIC Serratec 2026.1, desarrollado en equipo de 4 para simular un motor de cálculo financiero corporativo de RRHH.',
+      problem:
+        'Procesar archivos CSV por lotes con datos de empleados y dependientes, aplicar validación estricta de reglas de negocio y calcular alícuotas tributarias progresivas (INSS e IRRF) con deducciones por dependiente evitando imprecisiones financieras de punto flotante.',
+      solution:
+        'Arquitectura en capas en Java 17 puro (MVC + DAO) sin frameworks ORM, persistencia relacional vía JDBC en PostgreSQL, precisión financiera con BigDecimal (RoundingMode.HALF_UP), excepciones de dominio personalizadas y E/S CSV defensiva.',
+      development:
+        'Trabajo colaborativo en equipo diseñando el modelo UML, implementando abstracciones de acceso a datos (DAO/DAOImpl), lógica de servicio de nómina y excepciones de dominio personalizadas.',
+      architectureDecisions: [
+        'Arquitectura en capas MVC + DAO en Java 17 puro sin frameworks ORM, garantizando separación limpia de responsabilidades',
+        'Uso estricto de BigDecimal con RoundingMode.HALF_UP en todas las operaciones tributarias y salariales',
+        'Patrón Singleton aplicado al gestor de conexiones JDBC para optimización de recursos de base de datos',
+        'Manejo de excepciones de dominio personalizadas previniendo registros corruptos en la base de datos',
+        'Estrategia de persistencia de doble capa: transacciones relacionales en PostgreSQL y exportación automatizada de informes CSV',
+      ],
+      highlights: [
+        'Cálculo automatizado de alícuotas progresivas de INSS & IRRF',
+        'Precisión financiera con BigDecimal & RoundingMode.HALF_UP',
+        'Arquitectura en capas MVC + DAO en Java 17 (sin frameworks)',
+        'Gestor de conexiones JDBC optimizado con Patrón Singleton',
+        'Manejo de excepciones de dominio & validación estricta de CPF',
+        'Parsing defensivo por lotes y exportación automatizada de informes CSV',
+        'Proyecto colaborativo de 4 desarrolladores (Residencia Serratec 2026.1)',
+      ],
+      technologies: ['Java 17', 'PostgreSQL', 'JDBC', 'Arquitectura MVC', 'Patrón DAO', 'BigDecimal', 'Singleton Pattern', 'E/S CSV'],
+      results:
+        'Cálculo automatizado y preciso de alícuotas progresivas de INSS e IRRF conforme legislación laboral; validación en tiempo de ejecución de CPFs y relaciones de dependientes; persistencia transaccional dual en PostgreSQL y generación automatizada de informes CSV.',
+      links: { github: 'https://github.com/DevYuriVieira/payroll-system-java' },
+    },
+    {
+      id: 'fleet-management-system',
+      title: 'Fleet Management System',
+      category: 'Aplicación Frontend',
+      featured: false,
+      contextTag: 'Frontend Operacional Logístico',
+      collaboration: 'Proyecto colaborativo',
+      description:
+        'Dashboard operacional SPA en React y TypeScript construido para monitoreo de flotas logísticas y conductores en tiempo real.',
+      context:
+        'Aplicación colaborativa diseñada para optimizar el monitoreo de estados de mantenimiento de vehículos y asignación de conductores.',
+      problem:
+        'Operadores logísticos requerían una interfaz centralizada y rápida para filtrar vehículos por estado de mantenimiento sin depender de hojas de cálculo dispersas.',
+      solution:
+        'Single Page Application (SPA) en React y TypeScript con navegación React Router, estilización modular con Styled Components y gestión de estado reactivo para filtrado dinámico.',
+      development:
+        'Desarrollo de componentes modulares reutilizables, contratos de datos tipados con TypeScript y navegación declarativa del lado del cliente sin recargas de página.',
+      architectureDecisions: [
+        'Construcción de SPA reactiva en React con TypeScript para validación de esquemas de flota',
+        'Estilización modular usando Styled Components',
+        'Enrutamiento declarativo del lado del cliente entre formularios y dashboards vía React Router',
+        'Arquitectura de componentes modulares enfocada en usabilidad del operador logístico',
+      ],
+      highlights: [
+        'SPA reactiva construida con React y TypeScript',
+        'Estilización escopada con Styled Components',
+        'Navegación fluida del lado del cliente vía React Router',
+        'Filtrado dinámico por estado de vehículo y mantenimiento',
+        'Arquitectura de componentes reutilizables',
+      ],
+      technologies: ['React', 'TypeScript', 'Styled Components', 'Vite'],
+      results:
+        'Visualización clara y centralizada de operaciones de flota; filtrado instantáneo de vehículos por disponibilidad y estado de mantenimiento; navegación rápida entre vistas operacionales vía React Router.',
+      links: { github: 'https://github.com/DevYuriVieira/fleet-management-system', demo: 'https://fleet-management-system-chi.vercel.app/' },
+    },
+    {
+      id: 'hogwarts-interactive-hub',
+      title: 'Hogwarts Interactive Hub',
+      category: 'Arquitectura Frontend',
+      featured: false,
+      contextTag: 'Frontend Vanilla JS',
+      collaboration: 'Proyecto personal',
+      description:
+        'Single Page Application inmersiva inspirada en el Wizarding World construida enteramente en JavaScript vanilla (ES6 Modules) sin frameworks.',
+      context:
+        'Proyecto autoral creado para practicar la construcción de aplicaciones web ricas usando exclusivamente APIs nativas del navegador.',
+      problem:
+        'Crear una experiencia inmersiva con animaciones interactivas (Sombrero Seleccionador con efecto typewriter y Mapa del Merodeador con pisadas trigonométricas) manteniendo alto rendimiento sin frameworks.',
+      solution:
+        'Aplicación en JavaScript vanilla con router SPA personalizado sobre History API, componentes ES6 Modules orientados a objetos, manejo de CSS Variables para tema Lumos/Nox y lazy animation vía Intersection Observer.',
+      development:
+        'Desarrollo de router del lado del cliente autoral, implementación de cálculos trigonométricos para trayectorias de elementos gráficos y gestión de estado local en LocalStorage.',
+      architectureDecisions: [
+        'Router SPA del lado del cliente sin frameworks construido desde cero manipulando History API nativa',
+        'Animaciones interactivas avanzadas con efecto typewriter y cálculos trigonométricos para pisadas del Mapa del Merodeador',
+        'Motor de renderizado dinámico del DOM en JavaScript vanilla reemplazando HTML estático con componentes ES6 modulares',
+        'Sistema global de temas Lumos/Nox actualizando propiedades CSS personalizadas (:root) con soporte de atajos de teclado',
+        'Optimización de rendimiento usando Intersection Observer API para lazy animations y responsividad con CSS clamp()',
+      ],
+      highlights: [
+        'Router SPA autoral sin frameworks sobre History API',
+        'Arquitectura modular con ES6 Modules',
+        'Animaciones trigonométricas en el Mapa del Merodeador',
+        'Ceremonia del Sombrero Seleccionador con efecto Typewriter',
+        'Sistema global de temas Lumos/Nox con LocalStorage',
+        'Rendimiento nativo & lazy loading con Intersection Observer',
+      ],
+      technologies: ['Vanilla JS', 'ES6 Modules', 'HTML5', 'CSS3', 'DOM API', 'History API', 'Intersection Observer', 'LocalStorage'],
+      results:
+        'Navegación entre secciones sin recarga de página y con cero dependencias externas; animaciones matemáticas fluidas; alternancia dinámica de tema persistida en el navegador.',
+      links: { github: 'https://github.com/DevYuriVieira/Hogwarts-Interactive-Hub', demo: 'https://devyurivieira.github.io/Hogwarts-Interactive-Hub/' },
+    },
+    {
+      id: 'kuro-seafood-ecommerce',
+      title: 'Kuro Seafood E-Commerce',
+      category: 'Frontend E-commerce',
+      featured: false,
+      contextTag: 'Frontend E-commerce (MPA)',
+      collaboration: 'Proyecto colaborativo (4 desarrolladores - Residencia Serratec)',
+      description:
+        'Plataforma e-commerce B2C/B2B de pescados premium con arquitectura Multi-Page (MPA) en JavaScript vanilla (ES6+), carrito offcanvas en LocalStorage y flete vía ViaCEP API.',
+      context:
+        'Proyecto final de la disciplina de Desarrollo Web Frontend de la Residencia Serratec 2026.1, construido en equipo de 4 desarrolladores.',
+      problem:
+        'Entregar un recorrido avanzado de e-commerce (búsqueda dinámica, filtrado por categoría, carrito persistente, reglas de mayoreo, flete asíncrono en tiempo real y dashboard CRUD administrativo protegido) sin overhead de frameworks SPA.',
+      solution:
+        'Arquitectura Multi-Page (MPA) en JavaScript vanilla y Bootstrap 5.3, gestión de estado de carrito offcanvas en LocalStorage, integración REST API no bloqueante con ViaCEP y CRUD de productos con MockAPI.',
+      development:
+        'Trabajo colaborativo en equipo en diseño de arquitectura frontend, módulos JS aislados por funcionalidad, consumo de APIs no bloqueante con async/await, reglas de descuento mayorista (> R$ 500 o > 5kg) y estilización CSS responsive Mobile-First.',
+      architectureDecisions: [
+        'Arquitectura Multi-Page (MPA) sin frameworks en JavaScript vanilla (ES6+) para máximo rendimiento',
+        'Módulos JS aislados por funcionalidad para separación limpia de responsabilidades',
+        'Estado del lado del cliente encapsulado en LocalStorage para carrito offcanvas y sesión de usuario persistentes',
+        'Cálculo de flete asíncrono en tiempo real integrando ViaCEP REST API con flujos async/await no bloqueantes',
+        'Dashboard administrativo privado con CRUD completo de productos integrado con MockAPI',
+        'Reglas dinámicas de precios mayoristas y filtros de catálogo por URL Query Strings',
+      ],
+      highlights: [
+        'E-commerce frontend en JavaScript vanilla (ES6+) & Bootstrap 5.3',
+        'Dashboard Admin privado con CRUD completo vía MockAPI',
+        'Carrito offcanvas persistente en LocalStorage',
+        'Cálculo de flete asíncrono en tiempo real vía ViaCEP API',
+        'Reglas automáticas de descuento mayorista (> R$ 500 o > 5kg)',
+        'Estructura MPA modular con cero overhead de frameworks',
+        'Proyecto colaborativo de 4 desarrolladores (Residencia Serratec 2026.1)',
+      ],
+      technologies: ['Vanilla JS (ES6+)', 'HTML5', 'CSS3', 'Bootstrap 5.3', 'ViaCEP API', 'MockAPI', 'LocalStorage'],
+      results:
+        'Búsqueda automatizada de direcciones y cálculo de flete en tiempo real vía ViaCEP API; estado de carrito de compras mantenido entre transiciones de página; dashboard administrativo seguro para gestión de catálogo.',
+      links: { github: 'https://github.com/DevYuriVieira/kuro-seafood-ecommerce', demo: 'https://kuro-seafood-ecommerce.vercel.app/' },
+    },
+    {
+      id: 'modern-fighter-jets',
+      title: 'Modern Fighter Jets',
+      category: 'Frontend React',
+      featured: false,
+      contextTag: 'Frontend React Interactivo',
+      collaboration: 'Proyecto personal',
+      description:
+        'Catálogo técnico interactivo de aeronaves militares construido en React, TypeScript y Styled Components con filtrado dinámico.',
+      context:
+        'Proyecto autoral construido para practicar componentización modular en React y tipado estricto de objetos técnicos complejos.',
+      problem:
+        'Presentar especificaciones técnicas detalladas de aeronaves militares en un layout dinámico que permita filtrado instantáneo sin recarga.',
+      solution:
+        'Catálogo interactivo en React y Styled Components con filtros por país y categoría, rutas declarativas vía React Router y estado con React Hooks.',
+      development:
+        'Desarrollo autoral usando React, TypeScript y Vite con componentes estrictamente tipados y escopados.',
+      architectureDecisions: [
+        'Arquitectura de componentes reutilizables en React con paso estricto de props',
+        'Estilización escopada y dinámica de componentes usando Styled Components',
+        'Enrutamiento declarativo del lado del cliente para vistas de detalle vía React Router',
+        'Filtrado en tiempo real gestionado por estado local con React Hooks',
+      ],
+      highlights: [
+        'Componentización limpia y reutilizable en React',
+        'Tipado de datos aeronáuticos en TypeScript',
+        'Estilización dinámica con Styled Components',
+        'Enrutamiento del lado del cliente con React Router',
+        'Gestión de estado local con React Hooks',
+      ],
+      technologies: ['React', 'JavaScript', 'React Router', 'Styled Components', 'Vite'],
+      results:
+        'Búsqueda y comparación en tiempo real de especificaciones técnicas de aeronaves militares filtradas por país y categoría; layout reactivo impulsado por componentes tipados y escopados.',
+      links: { github: 'https://github.com/DevYuriVieira/modern-fighter-jets', demo: 'https://modern-fighter-jets.vercel.app/' },
+    },
+    {
+      id: 'dental-clinic-db',
+      title: 'Dental Clinic Management System (DCMS)',
+      category: 'Base de Datos Relacional',
+      featured: false,
+      contextTag: 'Modelado de Base de Datos',
+      collaboration: 'Proyecto colaborativo (6 desarrolladores - Proyecto Final de BD Serratec)',
+      description:
+        'Sistema de base de datos relacional construido en PostgreSQL 16+ durante la Residencia Serratec para gestión de clínicas dentales.',
+      context:
+        'Proyecto final de BD de la Residencia Serratec construido en equipo de 6 desarrolladores para proveer una base transaccional robusta para aplicaciones dentales.',
+      problem:
+        'Centralizar agendamiento de citas, historial de procedimientos y registros de dentistas (CRO) con garantías de integridad referencial, previniendo registros inválidos u huérfanos.',
+      solution:
+        'Modelado normalizado en 3FN en PostgreSQL 16+, integridad referencial con RESTRICT y CASCADE, validaciones DDL vía Regex para CPF, restricciones de horarios y mapeo N:N de procedimientos.',
+      development:
+        'Trabajo en equipo de 6 desarrolladores cubriendo modelado ERD, escritura de scripts SQL completos (DDL, DML, DQL), optimización estratégica de índices y creación de Views SQL analíticas.',
+      architectureDecisions: [
+        'Normalización estricta hasta 3ª Forma Normal (3FN) cubriendo entidades como pacientes, dentistas, agendas y citas',
+        'Aplicación de reglas de negocio vía DDL: validación de CPF con Regex, restricciones lógicas de fechas y campos únicos',
+        'Control estricto de integridad referencial usando reglas RESTRICT (prevención de huérfanos) y CASCADE',
+        'Optimización de rendimiento para consultas frecuentes vía índices relacionales y Views SQL analíticas',
+      ],
+      highlights: [
+        'Base de datos relacional PostgreSQL 16+ normalizada en 3FN',
+        'Reglas de negocio vía DDL & validación de CPF con Regex',
+        'Integridad referencial con RESTRICT y CASCADE',
+        'Mapeo N:N de catálogo de procedimientos para citas',
+        'Views SQL analíticas & optimización de rendimiento por índices',
+      ],
+      technologies: ['PostgreSQL 16+', 'SQL Avanzado', 'DDL', 'DML', 'DQL', 'Database Indexing', 'SQL Views'],
+      results:
+        'Estructura relacional normalizada en 3FN en PostgreSQL; eliminación de redundancia de datos clínicos; generación rápida de informes operacionales mediante Views SQL analíticas.',
+      links: { github: 'https://github.com/DevYuriVieira/dentacare-management-system' },
+    },
+    {
+      id: 'interactive-auth-ui',
+      title: 'Interactive Authentication UI',
+      category: 'Frontend React',
+      featured: false,
+      contextTag: 'UX Engineering & Motion',
+      collaboration: 'Proyecto personal',
+      description:
+        'Interfaz de autenticación reactiva construida en React que rastrea el vector del cursor en tiempo real para animar las expresiones de los personajes.',
+      context:
+        'Prototipo autoral de UX Engineering estudiando micro-interacciones y animaciones orientadas a eventos de formulario.',
+      problem:
+        'Transformar formularios estáticos de autenticación en experiencias visuales atractivas que reaccionen dinámicamente al comportamiento del usuario.',
+      solution:
+        'Interfaz en React y CSS Modules con personajes que rastrean la posición del ratón y reaccionan al foco y escritura de los inputs.',
+      development:
+        'Desarrollo autoral aplicando cálculos de vector de posición del cursor, escopamiento de estilos con CSS Modules y soporte a temas claro y oscuro (Dark Mode).',
+      architectureDecisions: [
+        'Cálculo de vector de posición del cursor en tiempo real controlando el seguimiento ocular de los personajes',
+        'Gestión de estado en React alternando expresiones faciales según el estado de validación del input',
+        'Estilización escopada con CSS Modules garantizando cero fuga de reglas CSS',
+        'Navegación fluida entre flujos de login y recuperación de contraseña vía React Router',
+      ],
+      highlights: [
+        'Rastreo de cursor en tiempo real para animación ocular',
+        'Personajes reactivos orientados a estados de formulario',
+        'Estilización modular y escopada con CSS Modules',
+        'Soporte nativo a temas claros y oscuros (Dark Mode)',
+        'Navegación entre flujos de pantalla con React Router',
+      ],
+      technologies: ['React', 'Vite', 'CSS Modules', 'React Router'],
+      results:
+        'Animaciones reactivas en formulario de login rastreando el vector del ratón en tiempo real; aislamiento total de estilos CSS vía CSS Modules.',
+      links: { github: 'https://github.com/DevYuriVieira/kinetic-auth-ux-showcase', demo: 'https://kinetic-auth-ux-showcase.vercel.app/' },
+    },
+  ],
 };
 
 export const PROJECTS_DATA: readonly Project[] = PROJECTS_I18N['pt-BR'];

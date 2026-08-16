@@ -22,71 +22,66 @@ export class ProjectsSection {
     this.projects().slice(0, this.displayLimit())
   );
 
-  /** Labels for hardcoded template strings */
   readonly labels = computed(() => {
-    const isEn = this.i18n.currentLang() === 'en';
+    const lang = this.i18n.currentLang();
     const total = this.projects().length;
     const currentLimit = this.displayLimit();
+
+    const t = (en: string, pt: string, es: string) => {
+      if (lang === 'en') return en;
+      if (lang === 'es') return es;
+      return pt;
+    };
 
     let expandText = '';
     let expandLabel = '';
 
     if (currentLimit <= 5) {
-      expandText = isEn ? 'View more projects (7)' : 'Ver mais projetos (7)';
-      expandLabel = isEn
-        ? 'View 7 featured portfolio projects'
-        : 'Ver 7 projetos de destaque do portfólio';
+      expandText = t('View more projects (7)', 'Ver mais projetos (7)', 'Ver más proyectos (7)');
+      expandLabel = t(
+        'View 7 featured portfolio projects',
+        'Ver 7 projetos de destaque do portfólio',
+        'Ver 7 proyectos destacados del portafolio',
+      );
     } else if (currentLimit < total) {
-      expandText = isEn ? `View all projects (${total})` : `Ver todos os projetos (${total})`;
-      expandLabel = isEn
-        ? `View all ${total} portfolio projects`
-        : `Ver todos os ${total} projetos do portfólio`;
+      expandText = t(`View all projects (${total})`, `Ver todos os projetos (${total})`, `Ver todos los proyectos (${total})`);
+      expandLabel = t(
+        `View all ${total} portfolio projects`,
+        `Ver todos os ${total} projetos do portfólio`,
+        `Ver todos los ${total} proyectos del portafolio`,
+      );
     } else {
-      expandText = isEn ? 'Collapse projects' : 'Recolher projetos';
-      expandLabel = isEn ? 'Collapse project list' : 'Recolher lista de projetos';
+      expandText = t('Collapse projects', 'Recolher projetos', 'Contraer proyectos');
+      expandLabel = t('Collapse project list', 'Recolher lista de projetos', 'Contraer lista de proyectos');
     }
 
-    return isEn
-      ? {
-          eyebrow: 'Case Studies & Engineering',
-          title: 'Projects & Case Studies',
-          subtitle:
-            'A selection of enterprise applications, full-stack systems, backend APIs, and frontend experiences built with a focus on clean architecture, resilience, and real value.',
-          ariaLabel: 'Featured projects',
-          challenge: 'Challenge',
-          solution: 'Solution',
-          archDecisions: 'Architecture Decisions',
-          techHighlights: 'Technical Highlights',
-          results: 'Results',
-          techStack: 'Technology Stack',
-          confidential: 'Confidential',
-          ndaFooter: 'Serratec TIC/Software Residency • Source code restricted by NDA',
-          techAriaLabel: 'Technologies used in the project',
-          collapseLabel: 'Collapse projects',
-          expandLabel: (_count?: number) => expandLabel,
-          collapseText: 'Collapse projects',
-          expandText: (_count?: number) => expandText,
-        }
-      : {
-          eyebrow: 'Casos de Estudo & Engenharia',
-          title: 'Projetos & Casos de Estudo',
-          subtitle:
-            'Seleção de aplicações corporativas, sistemas full-stack, APIs backend e experiências frontend construídas com foco em arquitetura limpa, resiliência e valor real.',
-          ariaLabel: 'Projetos em destaque',
-          challenge: 'Desafio',
-          solution: 'Solução',
-          archDecisions: 'Decisões de Arquitetura',
-          techHighlights: 'Destaques Técnicos',
-          results: 'Resultados',
-          techStack: 'Stack Tecnológica',
-          confidential: 'Confidencial',
-          ndaFooter: 'Residência Serratec TIC/Software • Código fonte restrito por NDA',
-          techAriaLabel: 'Tecnologias utilizadas no projeto',
-          collapseLabel: 'Recolher lista de projetos',
-          expandLabel: (_count?: number) => expandLabel,
-          collapseText: 'Recolher projetos',
-          expandText: (_count?: number) => expandText,
-        };
+    return {
+      eyebrow: t('Case Studies & Engineering', 'Casos de Estudo & Engenharia', 'Casos de Estudio & Ingeniería'),
+      title: t('Projects & Case Studies', 'Projetos & Casos de Estudo', 'Proyectos & Casos de Estudio'),
+      subtitle: t(
+        'A selection of enterprise applications, full-stack systems, backend APIs, and frontend experiences built with a focus on clean architecture, resilience, and real value.',
+        'Seleção de aplicações corporativas, sistemas full-stack, APIs backend e experiências frontend construídas com foco em arquitetura limpa, resiliência e valor real.',
+        'Selección de aplicaciones corporativas, sistemas full-stack, APIs backend y experiencias frontend construidas con enfoque en arquitectura limpia, resiliencia y valor real.',
+      ),
+      ariaLabel: t('Featured projects', 'Projetos em destaque', 'Proyectos destacados'),
+      challenge: t('Challenge', 'Desafio', 'Desafío'),
+      solution: t('Solution', 'Solução', 'Solución'),
+      archDecisions: t('Architecture Decisions', 'Decisões de Arquitetura', 'Decisiones de Arquitectura'),
+      techHighlights: t('Technical Highlights', 'Destaques Técnicos', 'Aspectos Técnicos Destacados'),
+      results: t('Results', 'Resultados', 'Resultados'),
+      techStack: t('Technology Stack', 'Stack Tecnológica', 'Stack Tecnológico'),
+      confidential: t('Confidential', 'Confidencial', 'Confidencial'),
+      ndaFooter: t(
+        'Serratec TIC/Software Residency • Source code restricted by NDA',
+        'Residência Serratec TIC/Software • Código fonte restrito por NDA',
+        'Residencia Serratec TIC/Software • Código fuente restringido por NDA',
+      ),
+      techAriaLabel: t('Technologies used in the project', 'Tecnologias utilizadas no projeto', 'Tecnologías utilizadas en el proyecto'),
+      collapseLabel: t('Collapse projects', 'Recolher lista de projetos', 'Contraer lista de proyectos'),
+      expandLabel: (_count?: number) => expandLabel,
+      collapseText: t('Collapse projects', 'Recolher projetos', 'Contraer proyectos'),
+      expandText: (_count?: number) => expandText,
+    };
   });
 
   toggleShowAll(): void {
