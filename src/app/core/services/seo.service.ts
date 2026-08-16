@@ -31,6 +31,13 @@ const SEO_I18N: Record<string, SeoDefaults> = {
     keywords:
       'Yuri Vieira, Software Engineer, Full Stack Developer, Java Developer, React Developer, Angular, Spring Boot, PostgreSQL, TypeScript, Portfolio',
   },
+  es: {
+    title: 'Yuri Vieira | Ingeniero de Software | Desarrollador Full Stack',
+    description:
+      'Portafolio de Yuri Vieira | Ingeniero de Software & Desarrollador Full Stack especializado en Java, Spring Boot, TypeScript, React y Angular. Casos de estudio en arquitectura limpia, sistemas distribuidos y alto rendimiento.',
+    keywords:
+      'Yuri Vieira, Ingeniero de Software, Desarrollador Full Stack, Java Developer, React Developer, Angular, Spring Boot, PostgreSQL, TypeScript, Portafolio',
+  },
 };
 
 @Injectable({
@@ -45,7 +52,6 @@ export class SeoService {
   private readonly defaultImage = 'https://devyurivieira.vercel.app/og-image.png';
 
   constructor() {
-    // Keep browser-visible metadata in sync when the visitor changes language.
     effect(() => this.updateSeoForLanguage(this.i18n.currentLang()));
   }
 
@@ -68,14 +74,12 @@ export class SeoService {
     this.metaService.updateTag({ name: 'keywords', content: keywords });
     this.metaService.updateTag({ name: 'author', content: 'Yuri Vieira' });
 
-    // Open Graph Metadata
     this.metaService.updateTag({ property: 'og:title', content: title });
     this.metaService.updateTag({ property: 'og:description', content: description });
     this.metaService.updateTag({ property: 'og:url', content: url });
     this.metaService.updateTag({ property: 'og:image', content: image });
     this.metaService.updateTag({ property: 'og:image:type', content: 'image/png' });
 
-    // Twitter Card Metadata
     this.metaService.updateTag({ name: 'twitter:title', content: title });
     this.metaService.updateTag({ name: 'twitter:description', content: description });
     this.metaService.updateTag({ name: 'twitter:image', content: image });
