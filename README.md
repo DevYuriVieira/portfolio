@@ -11,10 +11,10 @@
 ![Cypress](https://img.shields.io/badge/Cypress-15.20-17202C?style=for-the-badge&logo=cypress&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-Deployed-000000?style=for-the-badge&logo=vercel&logoColor=white)
 
-**PT-BR:** Aplicação web frontend desenvolvida em Angular 22 com Signals, gráficos interativos Three.js (WebGL), suporte bilingue (i18n), SEO dinâmico e suíte tripla de testes automatizados.  
+**PT-BR:** Aplicação web frontend desenvolvida em Angular 22 com Signals, gráficos interativos Three.js (WebGL), suporte trilíngue (i18n - PT-BR, EN, ES), SEO dinâmico e suíte tripla de testes automatizados.  
 *Slogan: Design system proprietário, animações de alta performance e suíte de testes ponta a ponta.*
 
-**EN:** Frontend web application built with Angular 22 Signals, Three.js (WebGL) interactive visuals, dynamic i18n, SEO engine, and a triple automated testing suite.  
+**EN:** Frontend web application built with Angular 22 Signals, Three.js (WebGL) interactive visuals, dynamic tri-lingual i18n (PT-BR, EN, ES), SEO engine, and a triple automated testing suite.  
 *Slogan: Custom design system, high-performance animations, and end-to-end testing pipeline.*
 
 ---
@@ -97,7 +97,7 @@ Key Engineering Highlights:
 - **Visual Lock Badge 🔒**: Displays confidential status while showcasing technical accomplishments without exposing restricted source code.
 
 ### 5. Reactive i18n & Dynamic SEO Engine
-- **Dual-Language Support (PT-BR / EN)**: Reactive language switching powered by `I18nService` without page reloads.
+- **Tri-Lingual Support (PT-BR / EN / ES)**: Reactive language switching across Portuguese, English, and Spanish powered by `I18nService` without page reloads.
 - **Dynamic Meta Management (`SeoService`)**: Automatically updates `<title>`, `<meta name="description">`, Open Graph tags (`og:title`, `og:image`, `og:url`), Twitter Cards (`twitter:card`), and JSON-LD structured schemas upon language changes.
 
 ### 6. Contact Flow & Asynchronous Clipboard Action
@@ -304,7 +304,7 @@ Developed by **Yuri Vieira**. All rights reserved.
   - [2. Neural Canvas 3D GPU com WebGL](#2-neural-canvas-3d-gpu-com-webgl-1)
   - [3. Casos de Estudo Corporativos & Grade Progressiva](#3-casos-de-estudo-corporativos--grade-progressiva-2)
   - [4. Card de Projeto Confidencial ZEISS & Tratamento de NDA](#4-card-de-projeto-confidencial-zeiss--tratamento-de-nda-2)
-  - [5. Suporte Bilingue (i18n) & Motor Dinâmico de SEO](#5-suporte-bilingue-i18n--motor-dinâmico-de-seo-2)
+  - [5. Suporte Trilíngue (i18n) & Motor Dinâmico de SEO](#5-suporte-trilíngue-i18n--motor-dinâmico-de-seo-2)
   - [6. Seção de Contato de Alta Conversão & Cópia no Clipboard](#6-seção-de-contato-de-alta-conversão--cópia-no-clipboard-2)
   - [7. Suíte Tripla de Testes (Vitest + Playwright + Cypress)](#7-suíte-tripla-de-testes-vitest--playwright--cypress-2)
 - [Arquitetura do Sistema & Fluxo de Componentes](#-arquitetura-do-sistema--fluxo-de-componentes)
@@ -351,8 +351,8 @@ Destaques de Engenharia:
 - **Apresentação de Projeto de Residência**: Exibe a aplicação desenvolvida para a **ZEISS** dentro do programa de Residência Tecnológica Serratec TIC.
 - **Selo de Bloqueio 🔒**: Destaca o status confidencial do projeto e apresenta as conquistas técnicas sem expor código-fonte restrito.
 
-### 5. Suporte Bilingue (i18n) & Motor Dinâmico de SEO
-- **Alternância Instantânea de Idioma (PT-BR / EN)**: Troca reativa de idioma via `I18nService` sem recarregamento da página.
+### 5. Suporte Trilíngue (i18n) & Motor Dinâmico de SEO
+- **Alternância Instantânea de Idioma (PT-BR / EN / ES)**: Troca reativa entre Português, Inglês e Espanhol via `I18nService` sem recarregamento da página.
 - **Motor Dinâmico de SEO (`SeoService`)**: Atualiza automaticamente as tags `<title>`, `<meta name="description">`, Open Graph (`og:title`, `og:image`, `og:url`), Twitter Cards (`twitter:card`) e esquemas estruturados JSON-LD ao alternar entre idiomas.
 
 ### 6. Seção de Contato de Alta Conversão & Cópia no Clipboard
