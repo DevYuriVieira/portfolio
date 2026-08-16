@@ -71,7 +71,7 @@ Key Engineering Highlights:
 1. **Modern Angular Architecture**: Uses Angular Standalone Components, native Signals (`signal`, `computed`), and `ChangeDetectionStrategy.OnPush` across all views for low memory footprint and fast rendering.
 2. **GPU Visual FX**: Interactive 3D particle visuals powered by **Three.js** (`NeuralCanvasComponent` and `HeroParticlesVisual`), including raycasting mouse displacement, floating glassmorphic zoom controls (`+`, `-`, `Reset`, `Focus`), and automatic responsive fallbacks on mobile screens (<768px).
 3. **13 Detailed Engineering Case Studies**: Highlights real-world projects, architecture trade-offs, technical decisions, and a dedicated ZEISS NDA confidential project card with lock badge 🔒.
-4. **Triple-Layer QA Architecture**: 100% passing tests combining unit tests (**Vitest**), multi-browser/mobile E2E testing (**Playwright**), and visual E2E verification (**Cypress**).
+4. **Triple-Layer QA Architecture**: 121 automated tests (100% pass rate) combining unit tests (**Vitest**), multi-browser/mobile E2E and WCAG 2.1 AA accessibility tests (**Playwright + Axe-Core**), and user journey E2E verification (**Cypress**).
 
 ---
 
@@ -107,8 +107,8 @@ Key Engineering Highlights:
 
 ### 7. Triple Testing Pipeline (Vitest + Playwright + Cypress)
 - **Unit & Integration Testing (Vitest)**: 66 automated tests validating components, directives, and services.
-- **End-to-End Testing (Playwright)**: 32 E2E specs running concurrently across **Desktop Chromium** and **Mobile Pixel 7** viewports.
-- **End-to-End Visual Verification (Cypress)**: 16 E2E specs validating user journeys in the Cypress Test Runner.
+- **End-to-End & WCAG 2.1 AA Accessibility Testing (Playwright + Axe-Core)**: 38 E2E specs running concurrently across **Desktop Chromium** and **Mobile Pixel 7** viewports, including automated zero-violation WCAG 2.1 Level A & AA accessibility audits across all 3 languages.
+- **End-to-End User Journey Verification (Cypress)**: 17 E2E specs validating user journeys in the headless Cypress Test Runner.
 
 ---
 
@@ -266,8 +266,8 @@ Access in your browser at `http://localhost:4200`.
 | `npm start` | **Angular CLI** | Starts local dev server at `http://localhost:4200` |
 | `npm run build` | **Angular Build** | Compiles production bundle into `/dist/portfolio` |
 | `npm test` | **Vitest** | Executes 66 unit & component tests |
-| `npm run test:e2e` | **Playwright** | Executes 32 E2E specs concurrently (Desktop Chrome & Mobile Pixel 7) |
-| `npm run test:cypress` | **Cypress** | Executes 16 E2E specs in headless runner |
+| `npm run test:e2e` | **Playwright + Axe-Core** | Executes 38 E2E & WCAG 2.1 AA accessibility specs concurrently (Desktop Chrome & Mobile Pixel 7) |
+| `npm run test:cypress` | **Cypress** | Executes 17 E2E specs in headless runner |
 | `npm run cypress:open` | **Cypress UI** | Opens interactive Cypress Test Runner GUI |
 
 ---
@@ -326,7 +326,7 @@ Destaques de Engenharia:
 1. **Arquitetura Angular Moderna**: Componentes Standalone, Signals nativos (`signal`, `computed`) e `ChangeDetectionStrategy.OnPush` em todas as visões para alta velocidade de renderização e baixo uso de memória.
 2. **Efeitos Visuais Acelerados por GPU**: Shaders de partículas WebGL 3D em **Three.js** (`NeuralCanvasComponent` e `HeroParticlesVisual`), com interatividade por cursor, barra flutuante de zoom (`+`, `-`, `Reset`, `Foco`) e fallback automático para telas móveis (<768px).
 3. **13 Casos de Estudo de Engenharia**: Apresentação de projetos com trade-offs de arquitetura, decisões técnicas e um card de projeto confidencial da ZEISS com selo de bloqueio 🔒.
-4. **Garantia de Qualidade em 3 Camadas**: 100% dos testes aprovados unindo testes unitários (**Vitest**), testes E2E multi-browser e mobile (**Playwright**) e validação visual E2E (**Cypress**).
+4. **Garantia de Qualidade em 3 Camadas**: 121 testes automatizados (100% de aprovação) unindo testes unitários (**Vitest**), testes E2E e de acessibilidade WCAG 2.1 AA (**Playwright + Axe-Core**) e validação de fluxos E2E (**Cypress**).
 
 ---
 
@@ -362,8 +362,8 @@ Destaques de Engenharia:
 
 ### 7. Suíte Tripla de Testes (Vitest + Playwright + Cypress)
 - **Testes Unitários & de Integração (Vitest)**: 66 testes automatizados validando componentes, diretivas e serviços.
-- **Testes Ponta a Ponta (Playwright)**: 32 especificações E2E executadas em paralelo em visores de **Desktop Chrome** e **Mobile Pixel 7**.
-- **Validação Visual E2E (Cypress)**: 16 especificações E2E validando os fluxos completos no Cypress Test Runner.
+- **Testes Ponta a Ponta & Acessibilidade WCAG 2.1 AA (Playwright + Axe-Core)**: 38 especificações E2E executadas em paralelo em visores de **Desktop Chrome** e **Mobile Pixel 7**, incluindo auditoria de acessibilidade WCAG 2.1 Nível A e AA (zero violações) em todos os idiomas.
+- **Validação Visual & Fluxos E2E (Cypress)**: 17 especificações E2E validando os fluxos completos no Cypress Test Runner.
 
 ---
 
@@ -521,8 +521,8 @@ Acesse no navegador pelo endereço `http://localhost:4200`.
 | `npm start` | **Angular CLI** | Inicia o servidor de desenvolvimento em `http://localhost:4200` |
 | `npm run build` | **Angular Build** | Compila os arquivos de produção na pasta `/dist/portfolio` |
 | `npm test` | **Vitest** | Executa 66 testes unitários e de componente |
-| `npm run test:e2e` | **Playwright** | Executa 32 testes E2E em paralelo (Desktop & Mobile Pixel 7) |
-| `npm run test:cypress` | **Cypress** | Executa 16 testes E2E no executor headless do Cypress |
+| `npm run test:e2e` | **Playwright + Axe-Core** | Executa 38 testes E2E e de acessibilidade WCAG 2.1 AA em paralelo (Desktop & Mobile Pixel 7) |
+| `npm run test:cypress` | **Cypress** | Executa 17 testes E2E no executor headless do Cypress |
 | `npm run cypress:open` | **Cypress UI** | Abre a interface gráfica interativa do Cypress Test Runner |
 
 ---
