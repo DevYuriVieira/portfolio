@@ -1,0 +1,24 @@
+{
+  "name": "Yuri Vieira | Portfolio",
+  "short_name": "Yuri Vieira",
+  "theme_color": "#09090b",
+  "background_color": "#09090b",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "orientation": "portrait-primary",
+  "description": "Portfolio de Engenharia de Software e Casos de Estudo de Yuri Vieira",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "favicon.ico",
+      "sizes": "32x32",
+      "type": "image/x-icon"
+    }
+  ]
+}
