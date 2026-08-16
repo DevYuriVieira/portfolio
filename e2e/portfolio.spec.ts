@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import AxeBuilder from '@axe-core/playwright';
 
 test.describe('Yuri Vieira Portfolio - Comprehensive E2E Test Suite', () => {
 
@@ -64,6 +65,33 @@ test.describe('Yuri Vieira Portfolio - Comprehensive E2E Test Suite', () => {
         await expect(section).toBeAttached();
       }
     });
+
+    test('should pass automated WCAG 2.1 Level A & AA accessibility audit', async ({ page }) => {
+      const accessibilityScanResults = await new AxeBuilder({ page })
+        .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
+        .analyze();
+
+      expect(accessibilityScanResults.violations).toEqual([]);
+    });
+
+    test('should maintain WCAG compliance across Portuguese, English, and Spanish languages', async ({ page }) => {
+      const languageSelectors = [
+        '.header__lang-btn[aria-label="Português (Brasil)"]',
+        '.header__lang-btn[aria-label="English (US)"]',
+        '.header__lang-btn[aria-label="Español (España)"]',
+      ];
+
+      for (const selector of languageSelectors) {
+        const btn = page.locator(selector);
+        if (await btn.isVisible()) {
+          await btn.click();
+          const results = await new AxeBuilder({ page })
+            .withTags(['wcag2a', 'wcag2aa'])
+            .analyze();
+          expect(results.violations).toEqual([]);
+        }
+      }
+    });
   });
 
   test.describe('3. Hero Section Actions', () => {
@@ -87,24 +115,20 @@ test.describe('Yuri Vieira Portfolio - Comprehensive E2E Test Suite', () => {
       await projectsSection.scrollIntoViewIfNeeded();
 
       const projectCards = page.locator('#projects .projects__card');
-      const initialCount = await projectCards.count();
-      expect(initialCount).toBe(5);
+      await expect(projectCards).toHaveCount(5);
 
       const expandButton = page.locator('#projects .projects__actions button');
       await expect(expandButton).toBeVisible();
 
-      // Step 1: 5 -> 7
       await expandButton.click();
-      expect(await projectCards.count()).toBe(7);
+      await expect(projectCards).toHaveCount(7);
 
-      // Step 2: 7 -> All (13)
       await expandButton.click();
       const allCount = await projectCards.count();
       expect(allCount).toBeGreaterThan(7);
 
-      // Step 3: All -> 5
       await expandButton.click();
-      expect(await projectCards.count()).toBe(5);
+      await expect(projectCards).toHaveCount(5);
     });
 
     test('should render ZEISS confidential project card with lock badge and NDA disclaimer', async ({ page }) => {
