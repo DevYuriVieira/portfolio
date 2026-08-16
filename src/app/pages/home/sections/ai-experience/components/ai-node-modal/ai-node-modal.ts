@@ -8,9 +8,17 @@ import {
   computed,
   inject,
 } from '@angular/core';
-import { I18nService } from '@core';
+import { I18nService, SupportedLang } from '@core';
 import { Button, Heading, Text } from '@ui';
 import { AiNodeDetail } from '../../ai-experience.model';
+
+interface AiNodeModalLabels {
+  readonly practicalApps: string;
+  readonly techTools: string;
+  readonly closeBtn: string;
+  readonly closeAriaLabel: string;
+  readonly modalCloseAriaLabel: string;
+}
 
 @Component({
   selector: 'app-ai-node-modal',
@@ -26,22 +34,32 @@ export class AiNodeModal {
 
   private readonly i18n = inject(I18nService);
 
-  readonly labels = computed(() =>
-    this.i18n.currentLang() === 'en'
-      ? {
-          practicalApps: 'Practical Applications & Impact',
-          techTools: 'Technologies & Tools',
-          closeBtn: 'Close',
-          closeAriaLabel: 'Close details modal',
-          modalCloseAriaLabel: 'Close modal',
-        }
-      : {
-          practicalApps: 'Aplicações Práticas & Impacto',
-          techTools: 'Tecnologias & Ferramentas',
-          closeBtn: 'Fechar',
-          closeAriaLabel: 'Fechar modal de detalhes',
-          modalCloseAriaLabel: 'Fechar modal',
-        }
+  private readonly modalLabelsI18n: Record<SupportedLang, AiNodeModalLabels> = {
+    en: {
+      practicalApps: 'Practical Applications & Impact',
+      techTools: 'Technologies & Tools',
+      closeBtn: 'Close',
+      closeAriaLabel: 'Close details modal',
+      modalCloseAriaLabel: 'Close modal',
+    },
+    'pt-BR': {
+      practicalApps: 'Aplicações Práticas & Impacto',
+      techTools: 'Tecnologias & Ferramentas',
+      closeBtn: 'Fechar',
+      closeAriaLabel: 'Fechar modal de detalhes',
+      modalCloseAriaLabel: 'Fechar modal',
+    },
+    es: {
+      practicalApps: 'Aplicaciones Prácticas & Impacto',
+      techTools: 'Tecnologías & Herramientas',
+      closeBtn: 'Cerrar',
+      closeAriaLabel: 'Cerrar modal de detalles',
+      modalCloseAriaLabel: 'Cerrar modal',
+    },
+  };
+
+  readonly labels = computed<AiNodeModalLabels>(() =>
+    this.modalLabelsI18n[this.i18n.currentLang()] ?? this.modalLabelsI18n['pt-BR']
   );
 
   @HostListener('window:keydown.escape')

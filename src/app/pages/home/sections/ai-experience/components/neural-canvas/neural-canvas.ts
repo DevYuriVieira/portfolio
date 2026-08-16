@@ -241,19 +241,23 @@ export class NeuralCanvas implements OnInit, OnDestroy {
     this.dataPackets = [];
   }
 
-  private updateStateLabels(overrideState?: string, overrideInvariant?: string): void {
-    const isEn = this.lang === 'en';
+  private getLangText(en: string, pt: string, es: string): string {
+    if (this.lang === 'en') return en;
+    if (this.lang === 'es') return es;
+    return pt;
+  }
 
+  private updateStateLabels(overrideState?: string, overrideInvariant?: string): void {
     if (overrideState) {
       this.currentStateText = overrideState;
     } else {
-      this.currentStateText = isEn ? 'STATE: STABLE' : 'ESTADO: ESTÁVEL';
+      this.currentStateText = this.getLangText('STATE: STABLE', 'ESTADO: ESTÁVEL', 'ESTADO: ESTABLE');
     }
 
     if (overrideInvariant) {
       this.currentInvariantText = overrideInvariant;
     } else {
-      this.currentInvariantText = isEn ? 'INVARIANT: PRESERVED' : 'INVARIANTE: PRESERVADA';
+      this.currentInvariantText = this.getLangText('INVARIANT: PRESERVED', 'INVARIANTE: PRESERVADA', 'INVARIANTE: PRESERVADA');
     }
     this.cdr.markForCheck();
   }
@@ -603,24 +607,22 @@ export class NeuralCanvas implements OnInit, OnDestroy {
     node.velocityY = 0.14;
     node.edgePulseEnergy = 1.0;
 
-    const isEn = this.lang === 'en';
-
     this.updateStateLabels(
-      isEn ? 'EVENT: RECEIVED' : 'EVENTO: RECEBIDO',
-      isEn ? 'CONTEXT: UPDATING' : 'CONTEXTO: ATUALIZANDO',
+      this.getLangText('EVENT: RECEIVED', 'EVENTO: RECEBIDO', 'EVENTO: RECIBIDO'),
+      this.getLangText('CONTEXT: UPDATING', 'CONTEXTO: ATUALIZANDO', 'CONTEXTO: ACTUALIZANDO'),
     );
 
     setTimeout(() => {
       this.updateStateLabels(
-        isEn ? 'PROCESS: EXECUTING' : 'PROCESSO: EXECUTANDO',
-        isEn ? 'VALIDATION: CHECK' : 'VALIDAÇÃO: CHECAGEM',
+        this.getLangText('PROCESS: EXECUTING', 'PROCESSO: EXECUTANDO', 'PROCESO: EJECUTANDO'),
+        this.getLangText('VALIDATION: CHECK', 'VALIDAÇÃO: CHECAGEM', 'VALIDACIÓN: VERIFICACIÓN'),
       );
     }, 400);
 
     setTimeout(() => {
       this.updateStateLabels(
-        isEn ? 'STATE: TRANSITION' : 'ESTADO: TRANSIÇÃO',
-        isEn ? 'INVARIANT: PRESERVED' : 'INVARIANTE: PRESERVADA',
+        this.getLangText('STATE: TRANSITION', 'ESTADO: TRANSIÇÃO', 'ESTADO: TRANSICIÓN'),
+        this.getLangText('INVARIANT: PRESERVED', 'INVARIANTE: PRESERVADA', 'INVARIANTE: PRESERVADA'),
       );
     }, 900);
 

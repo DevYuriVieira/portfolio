@@ -308,8 +308,160 @@ const AI_I18N: Record<SupportedLang, AiManifestoData> = {
       },
     },
   },
+  es: {
+    badge: '05 // ENGINEERING INTELLIGENCE LOOP',
+    title: 'Ingeniería de Software Potenciada por IA',
+    subtitle: 'Automatización, modelos de lenguaje y pensamiento sistémico aplicados a la ingeniería de software.',
+    manifesto:
+      'Para mí, la Inteligencia Artificial no reemplaza la ingeniería: actúa como un compañero de trabajo (co-worker) de alta velocidad. Escribo código, diseño arquitecturas, estructuro problemas y orquesto la IA con automatización diaria para eliminar tareas repetitivas, analizar logs en segundos y explorar soluciones. El desarrollo gana velocidad, pero la inteligencia, la escritura del código y la responsabilidad final siguen siendo humanas.',
+    features: [
+      {
+        index: '01',
+        title: 'Automatización de Tareas Repetitivas (n8n)',
+        description:
+          'Delego el trabajo mecánico rutinario a n8n y Webhooks (como integraciones de APIs y alertas automatizadas), liberando mi energía mental para enfocarme en la lógica de negocio central y la arquitectura de software.',
+        tags: ['n8n', 'Webhooks', 'API Integration', 'Async Workflows'],
+      },
+      {
+        index: '02',
+        title: 'Diagnóstico Acelerado de Errores',
+        description:
+          'Uso la IA como un segundo par de ojos para clasificar stack traces extensos y sugerir optimizaciones SQL en segundos. La investigación se acelera, pero el diagnóstico de causa raíz y las correcciones son validados e implementados por mí.',
+        tags: ['Code Diagnostics', 'Log Analysis', 'SQL Optimization', 'Debugging'],
+      },
+      {
+        index: '03',
+        title: 'Pair Programming con Co-Worker de IA',
+        description:
+          'Trabajo junto a asistentes de IA como compañeros de pair programming, aplicando Clean Code, discutiendo estrategias de refactorización, cubriendo escenarios de prueba edge-case y revisando código bajo estándares estrictos de Clean Architecture.',
+        tags: ['Pair Programming', 'Clean Code', 'Clean Architecture', 'Unit Testing'],
+      },
+      {
+        index: '04',
+        title: 'Dirección Humana & Métodos de Ingeniería',
+        description:
+          'Las herramientas de IA solo entregan buenos resultados cuando están bien dirigidas. Aplico métodos de Ingeniería de Producción (PDCA y 5W2H) para estructurar problemas, definir el contexto correcto y garantizar sistemas de software sostenibles.',
+        tags: ['Systems Thinking', 'PDCA', 'Lean Software', 'Full-Stack'],
+      },
+    ],
+    closingStatement:
+      'El enfoque no está en herramientas aisladas de IA, sino en la aplicación pragmática de automatización combinada con ingeniería humana para construir software robusto, legible y de alto valor.',
+    nodeDetails: {
+      OBSERVE: {
+        id: 'observe',
+        index: 'CORE LOOP // 01',
+        name: 'Observe & Telemetry',
+        category: 'Ingreso de Datos & Sensores',
+        summary:
+          'Recolección de métricas y eventos en tiempo real. Permite monitorear la salud del sistema y capturar señales de entrada sin interferir en la ejecución.',
+        practicalApplications: [
+          'Captura de logs y métricas de rendimiento en tiempo real',
+          'Procesamiento de webhooks y solicitudes HTTP entrantes',
+          'Filtrado y estructuración inicial de cargas de datos',
+        ],
+        tools: ['Observability', 'Telemetry', 'Webhooks', 'Metrics'],
+      },
+      CONTEXT: {
+        id: 'context',
+        index: 'CORE LOOP // 02',
+        name: 'Context & State Buffer',
+        category: 'Gestión de Estado & Memoria',
+        summary:
+          'Organización del estado de la aplicación para asegurar que la lógica de negocio y las consultas accedan al contexto correcto antes de la toma de decisiones.',
+        practicalApplications: [
+          'Gestión de estado volátil y capas de caché',
+          'Alineación de contextos en arquitecturas de software modulares',
+          'Garantías de consistencia de datos en operaciones concurrentes',
+        ],
+        tools: ['State Management', 'Cache Layer', 'Context Isolators', 'Memory Buffer'],
+      },
+      REASONING: {
+        id: 'reasoning',
+        index: 'CORE LOOP // 03',
+        name: 'Reasoning & Logic',
+        category: 'Procesamiento & Lógica de Negocio',
+        summary:
+          'Análisis de datos y evaluación de escenarios. Aplica reglas condicionales y algoritmos para sintetizar la mejor ruta de solución para cada tarea.',
+        practicalApplications: [
+          'Descomposición analítica de reglas de negocio complejas',
+          'Evaluación de alternativas de ejecución en tiempo real',
+          'Síntesis asistida por IA para acelerar soluciones de código',
+        ],
+        tools: ['Business Logic', 'Algorithmic Reasoning', 'Code Synthesis', 'LLMs'],
+      },
+      DECISION: {
+        id: 'decision',
+        index: 'CORE LOOP // 04',
+        name: 'Decision & Routing',
+        category: 'Enrutamiento & Decisión Determinística',
+        summary:
+          'Definición de rutas claras de ejecución, transformando análisis en acciones de software concretas y validadas.',
+        practicalApplications: [
+          'Enrutamiento prioritario de mensajes y despacho de llamadas API',
+          'Validación estricta de esquemas de datos antes de la ejecución',
+          'Conmutación segura entre estrategias de fallback',
+        ],
+        tools: ['Decision Trees', 'Schema Validation', 'Event Routing', 'Dispatchers'],
+      },
+      EXECUTION: {
+        id: 'execution',
+        index: 'CORE LOOP // 05',
+        name: 'Execution & Mutating Actions',
+        category: 'Mutación & Ejecución de Tareas',
+        summary:
+          'Aplicación de mutaciones en base de datos, llamadas a APIs externas o despacho de notificaciones asíncronas en segundo plano.',
+        practicalApplications: [
+          'Ejecución de mutaciones de base de datos con control de alcance transaccional',
+          'Integraciones con APIs RESTful y Webhooks',
+          'Despacho de tareas operacionales automatizadas',
+        ],
+        tools: ['Worker Pools', 'REST APIs', 'Database Mutations', 'Async Jobs'],
+      },
+      VERIFICATION: {
+        id: 'verification',
+        index: 'CORE LOOP // 06',
+        name: 'Verification & Assertions',
+        category: 'Auditoría de Calidad & Invariantes',
+        summary:
+          'Auditoría continua de contratos y post-condiciones, asegurando que cada cambio cumpla con las pruebas y requisitos del sistema.',
+        practicalApplications: [
+          'Ejecución automatizada de pruebas unitarias y de integración',
+          'Verificación de contratos de API y comprobaciones de sanidad de datos',
+          'Activación de reintentos ante fallos operacionales transitorios',
+        ],
+        tools: ['Unit Testing', 'Contract Testing', 'Runtime Assertions', 'Automated QA'],
+      },
+      KNOWLEDGE: {
+        id: 'knowledge',
+        index: 'SUPPORTING LAYER // 01',
+        name: 'Knowledge & Ground Truth',
+        category: 'Base de Conocimiento & Persistencia',
+        summary:
+          'Almacenamiento relacional y reglas de negocio persistidas. Garantiza que los datos estructurados sirvan como fuente de verdad confiable.',
+        practicalApplications: [
+          'Modelado relacional y esquemas estrictos en PostgreSQL',
+          'Consultas optimizadas con indexación e integridad referencial',
+          'Mapeo objeto-relacional sostenible',
+        ],
+        tools: ['PostgreSQL', 'SQLite', 'SQL', 'ORM', 'Relational Modeling'],
+      },
+      'HUMAN JUDGMENT': {
+        id: 'human-judgment',
+        index: 'SUPPORTING LAYER // 02',
+        name: 'Human Judgment & Governance',
+        category: 'Supervisión Humana & Gobernanza',
+        summary:
+          'Supervisión directa y toma de decisiones humana en etapas críticas del desarrollo, garantizando conformidad, seguridad y buena arquitectura.',
+        practicalApplications: [
+          'Revisión de código (Code Review) y aprobación de despliegues',
+          'Análisis de causa raíz (5W2H) para resolución de deudas técnicas',
+          'Decisiones de arquitectura sostenible para la evolución del software',
+        ],
+        tools: ['Human Code Review', 'Policy Oversight', 'PDCA', 'Lean Engineering'],
+      },
+    },
+  },
 };
-
 export const AI_MANIFESTO_DATA: AiManifestoData = AI_I18N['pt-BR'];
 
 export function getAiData(lang: SupportedLang): AiManifestoData {
