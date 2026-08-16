@@ -8,6 +8,19 @@ import {
 import { I18nService, SupportedLang } from '@core';
 import { Container } from '@ui';
 
+interface HeaderNavLabels {
+  readonly about: string;
+  readonly experience: string;
+  readonly skills: string;
+  readonly projects: string;
+  readonly ai: string;
+  readonly contact: string;
+  readonly brandAriaLabel: string;
+  readonly navAriaLabel: string;
+  readonly mobileMenuAriaLabel: string;
+  readonly menuBtnAriaLabel: string;
+}
+
 @Component({
   selector: 'app-header',
   imports: [Container],
@@ -21,33 +34,47 @@ export class Header {
   readonly mobileMenuOpen = signal<boolean>(false);
   readonly currentLang = this.i18n.currentLang;
 
-  /** Navigation labels reactive to language */
-  get nav() {
-    return this.currentLang() === 'en'
-      ? {
-          about: 'About',
-          experience: 'Experience',
-          skills: 'Skills',
-          projects: 'Projects',
-          ai: 'AI & Automation',
-          contact: 'Contact',
-          brandAriaLabel: 'Yuri Vieira | Go to top of page',
-          navAriaLabel: 'Main navigation',
-          mobileMenuAriaLabel: 'Mobile navigation menu',
-          menuBtnAriaLabel: 'Toggle navigation menu',
-        }
-      : {
-          about: 'Sobre',
-          experience: 'Experiência',
-          skills: 'Habilidades',
-          projects: 'Projetos',
-          ai: 'IA & Automação',
-          contact: 'Contato',
-          brandAriaLabel: 'Yuri Vieira | Ir para o início da página',
-          navAriaLabel: 'Navegação principal',
-          mobileMenuAriaLabel: 'Menu de navegação mobile',
-          menuBtnAriaLabel: 'Alternar menu de navegação',
-        };
+  private readonly navI18n: Record<SupportedLang, HeaderNavLabels> = {
+    en: {
+      about: 'About',
+      experience: 'Experience',
+      skills: 'Skills',
+      projects: 'Projects',
+      ai: 'AI & Automation',
+      contact: 'Contact',
+      brandAriaLabel: 'Yuri Vieira | Go to top of page',
+      navAriaLabel: 'Main navigation',
+      mobileMenuAriaLabel: 'Mobile navigation menu',
+      menuBtnAriaLabel: 'Toggle navigation menu',
+    },
+    'pt-BR': {
+      about: 'Sobre',
+      experience: 'Experiência',
+      skills: 'Habilidades',
+      projects: 'Projetos',
+      ai: 'IA & Automação',
+      contact: 'Contato',
+      brandAriaLabel: 'Yuri Vieira | Ir para o início da página',
+      navAriaLabel: 'Navegação principal',
+      mobileMenuAriaLabel: 'Menu de navegação mobile',
+      menuBtnAriaLabel: 'Alternar menu de navegação',
+    },
+    es: {
+      about: 'Sobre mí',
+      experience: 'Experiencia',
+      skills: 'Habilidades',
+      projects: 'Proyectos',
+      ai: 'IA & Automatización',
+      contact: 'Contacto',
+      brandAriaLabel: 'Yuri Vieira | Ir al inicio de la página',
+      navAriaLabel: 'Navegación principal',
+      mobileMenuAriaLabel: 'Menú de navegación móvil',
+      menuBtnAriaLabel: 'Alternar menú de navegación',
+    },
+  };
+
+  get nav(): HeaderNavLabels {
+    return this.navI18n[this.currentLang()] ?? this.navI18n['pt-BR'];
   }
 
   switchLang(lang: SupportedLang): void {

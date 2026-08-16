@@ -69,6 +69,19 @@
               </g>
             </svg>
           </button>
+
+          <button type="button"
+            class="header__lang-btn"
+            [class.header__lang-btn--active]="currentLang() === 'es'"
+            (click)="switchLang('es')"
+            [attr.aria-pressed]="currentLang() === 'es'"
+            aria-label="Español"
+            title="Español">
+            <svg class="header__flag-icon" viewBox="0 0 640 480" aria-hidden="true">
+              <path fill="#AA151B" d="M0 0h640v480H0z"/>
+              <path fill="#F1BF00" d="M0 120h640v240H0z"/>
+            </svg>
+          </button>
         </div>
 
         <!-- Mobile Menu Toggle Button -->
