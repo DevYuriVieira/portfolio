@@ -78,6 +78,14 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
           'Residência imersiva em desenvolvimento de software com 790 horas em disciplinas de Lógica, Banco de Dados, POO em Java, APIs RESTful com Spring Boot, React, React Native, metodologias ágeis e entrega de projeto final corporativo.',
       },
       {
+        id: 'senai-faetec-instructor',
+        year: '2026 – Presente',
+        title: 'Instrutor de Programação Back-End (Java)',
+        subtitle: 'SENAI / FAETEC · Atuação Docente em Tecnologia',
+        description:
+          'Docência em Programação Back-End cobrindo lógica (JavaScript), bancos de dados relacionais (PostgreSQL/DBeaver), POO em Java e desenvolvimento de APIs RESTful com Spring Boot, além da elaboração de materiais didáticos e mentoria técnica individual.',
+      },
+      {
         id: 'personal-projects',
         year: '2025 – Presente',
         title: 'Projetos Pessoais & Casos de Estudo',
@@ -196,6 +204,14 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
           'Immersive 790-hour software development residency spanning progressive coursework in Logic, Databases, OOP Java, RESTful APIs with Spring Boot, React, React Native, agile practices, and corporate final project delivery.',
       },
       {
+        id: 'senai-faetec-instructor',
+        year: '2026 – Present',
+        title: 'Back-End Programming Instructor (Java)',
+        subtitle: 'SENAI / FAETEC · Tech Instruction & Mentorship',
+        description:
+          'Teaching Back-End Programming covering logic (JavaScript), relational databases (PostgreSQL/DBeaver), OOP in Java, and RESTful APIs with Spring Boot, alongside authoring technical courseware and providing one-on-one engineering guidance.',
+      },
+      {
         id: 'personal-projects',
         year: '2025 – Present',
         title: 'Personal Projects & Case Studies',
@@ -312,6 +328,14 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
         subtitle: 'Serratec · Inmersión en Disciplinas Progresivas',
         description:
           'Residencia inmersiva de 790 horas en desarrollo de software abarcando Lógica, Bases de Datos, POO Java, APIs RESTful con Spring Boot, React, React Native, prácticas ágiles y entrega de proyecto final corporativo.',
+      },
+      {
+        id: 'senai-faetec-instructor',
+        year: '2026 – Presente',
+        title: 'Instructor de Programación Back-End (Java)',
+        subtitle: 'SENAI / FAETEC · Docencia y Mentoría Técnica',
+        description:
+          'Docencia en Programación Back-End abarcando lógica (JavaScript), bases de datos relacionales (PostgreSQL/DBeaver), POO en Java y desarrollo de APIs RESTful con Spring Boot, junto con la elaboración de material didáctico y soporte técnico individual.',
       },
       {
         id: 'personal-projects',
