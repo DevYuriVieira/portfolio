@@ -28,7 +28,7 @@ const ABOUT_I18N: Record<SupportedLang, AboutI18n> = {
       {
         id: 'who-i-am',
         label: 'Atuação Profissional',
-        text: 'Atuação focada no ecossistema Java (Spring Boot) e React, complementada por projetos em Python (Django), TypeScript e PostgreSQL. A experiência abrange desde a construção de interfaces responsivas e acessíveis até a modelagem de APIs REST seguras e automações com inteligência artificial.',
+        text: 'Atuação como Desenvolvedor Full-Stack focado em Java (Spring Boot) e React, complementada por Python (Django), TypeScript e PostgreSQL, além da docência como Instrutor de Programação Back-End no SENAI/FAETEC. Aberto a posições remotas internacionais e nacionais, construindo desde interfaces responsivas e acessíveis até APIs REST resilientes e integrações com IA.',
       },
       {
         id: 'how-i-build',
@@ -93,7 +93,7 @@ const ABOUT_I18N: Record<SupportedLang, AboutI18n> = {
       {
         id: 'who-i-am',
         label: 'Professional Practice',
-        text: 'Development practice focused on the Java (Spring Boot) and React ecosystem, complemented by projects in Python (Django), TypeScript, and PostgreSQL. Experience spans building responsive web interfaces, secure REST APIs, and AI-driven workflow automations.',
+        text: 'Full-Stack Software Engineer focused on Java (Spring Boot) and React, complemented by Python (Django), TypeScript, and PostgreSQL, alongside serving as a Back-End Programming Instructor at SENAI / FAETEC. Actively open to international remote engineering opportunities (Canada, Europe, USA, Brazil), delivering responsive accessible UIs, resilient REST APIs, and production AI integrations.',
       },
       {
         id: 'how-i-build',
@@ -158,7 +158,7 @@ const ABOUT_I18N: Record<SupportedLang, AboutI18n> = {
       {
         id: 'who-i-am',
         label: 'Práctica Profesional',
-        text: 'Práctica de desarrollo enfocada en el ecosistema Java (Spring Boot) y React, complementada por proyectos en Python (Django), TypeScript y PostgreSQL. La experiencia abarca desde la construcción de interfaces web responsivas hasta APIs REST seguras y automatizaciones impulsadas por IA.',
+        text: 'Desarrollador Full-Stack enfocado en el ecosistema Java (Spring Boot) y React, complementado por Python (Django), TypeScript y PostgreSQL, además de actuar como Instructor de Programación Back-End en SENAI / FAETEC. Abierto a posiciones remotas internacionales y locales, construyendo interfaces accesibles, APIs REST resilientes e integraciones con IA.',
       },
       {
         id: 'how-i-build',

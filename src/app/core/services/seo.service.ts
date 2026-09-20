@@ -27,9 +27,9 @@ const SEO_I18N: Record<string, SeoDefaults> = {
   en: {
     title: 'Yuri Vieira | Software Engineer | Full Stack Developer',
     description:
-      "Yuri Vieira's Portfolio | Software Engineer & Full Stack Developer specialized in Java, Spring Boot, TypeScript, React, and Angular. Case studies in clean architecture, distributed systems, and high performance.",
+      "Yuri Vieira's Portfolio | Software Engineer & Full Stack Developer specialized in Java, Spring Boot, TypeScript, React, and Angular. Open to remote software engineering roles in Canada, Europe, USA, and Brazil.",
     keywords:
-      'Yuri Vieira, Software Engineer, Full Stack Developer, Java Developer, React Developer, Angular, Spring Boot, PostgreSQL, TypeScript, Portfolio',
+      'Yuri Vieira, Software Engineer, Full Stack Developer, Java Developer, Spring Boot, React Developer, Angular, TypeScript, PostgreSQL, Remote Software Engineer, Remote Developer Canada, Remote Developer Europe, B2B Contractor, Back-End Instructor, Portfolio',
   },
   es: {
     title: 'Yuri Vieira | Ingeniero de Software | Desarrollador Full Stack',
