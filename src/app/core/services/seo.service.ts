@@ -1,3 +1,4 @@
+import { DOCUMENT } from '@angular/common';
 import { Injectable, effect, inject } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { I18nService } from '../i18n/i18n.service';
@@ -14,6 +15,8 @@ interface SeoDefaults {
   title: string;
   description: string;
   keywords: string;
+  ogLocale: string;
+  htmlLang: string;
 }
 
 const SEO_I18N: Record<string, SeoDefaults> = {
@@ -23,6 +26,8 @@ const SEO_I18N: Record<string, SeoDefaults> = {
       'Portfolio de Yuri Vieira | Engenheiro de Software & Desenvolvedor Full Stack especializado em Java, Spring Boot, TypeScript, React e Angular. Casos de estudo em arquitetura limpa, sistemas distribuídos e alta performance.',
     keywords:
       'Yuri Vieira, Yuri Vieira Engenheiro de Software, Software Engineer, Desenvolvedor Full Stack, Java Developer, React Developer, Angular, Spring Boot, PostgreSQL, TypeScript, Portfolio',
+    ogLocale: 'pt_BR',
+    htmlLang: 'pt-BR',
   },
   en: {
     title: 'Yuri Vieira | Software Engineer | Full Stack Developer',
@@ -30,13 +35,17 @@ const SEO_I18N: Record<string, SeoDefaults> = {
       "Yuri Vieira's Portfolio | Software Engineer & Full Stack Developer specialized in Java, Spring Boot, TypeScript, React, and Angular. Open to remote software engineering roles in Canada, Europe, USA, and Brazil.",
     keywords:
       'Yuri Vieira, Software Engineer, Full Stack Developer, Java Developer, Spring Boot, React Developer, Angular, TypeScript, PostgreSQL, Remote Software Engineer, Remote Developer Canada, Remote Developer Europe, B2B Contractor, Back-End Instructor, Portfolio',
+    ogLocale: 'en_US',
+    htmlLang: 'en',
   },
   es: {
     title: 'Yuri Vieira | Ingeniero de Software | Desarrollador Full Stack',
     description:
-      'Portafolio de Yuri Vieira | Ingeniero de Software & Desarrollador Full Stack especializado en Java, Spring Boot, TypeScript, React y Angular. Casos de estudio en arquitectura limpia, sistemas distribuidos y alto rendimiento.',
+      'Portafolio de Yuri Vieira | Ingeniero de Software & Desarrollador Full Stack especializado en Java, Spring Boot, TypeScript, React y Angular. Disponible para roles remotos de ingeniería de software en Canadá, Europa, EE.UU. y Brasil.',
     keywords:
-      'Yuri Vieira, Ingeniero de Software, Desarrollador Full Stack, Java Developer, React Developer, Angular, Spring Boot, PostgreSQL, TypeScript, Portafolio',
+      'Yuri Vieira, Ingeniero de Software, Desarrollador Full Stack, Java Developer, React Developer, Angular, Spring Boot, PostgreSQL, TypeScript, Ingeniero Remoto, Desarrollador Remoto Canadá, Desarrollador Remoto Europa, Contratista B2B, Instructor Back-End, Portafolio',
+    ogLocale: 'es_ES',
+    htmlLang: 'es',
   },
 };
 
@@ -47,6 +56,7 @@ export class SeoService {
   private readonly titleService = inject(Title);
   private readonly metaService = inject(Meta);
   private readonly i18n = inject(I18nService);
+  private readonly document = inject(DOCUMENT);
 
   private readonly defaultUrl = 'https://devyurivieira.vercel.app/';
   private readonly defaultImage = 'https://devyurivieira.vercel.app/og-image.png';
@@ -68,6 +78,8 @@ export class SeoService {
     const url = config.url || this.defaultUrl;
     const image = config.image || this.defaultImage;
 
+    this.document.documentElement.lang = defaults.htmlLang;
+
     this.titleService.setTitle(title);
 
     this.metaService.updateTag({ name: 'description', content: description });
@@ -79,6 +91,7 @@ export class SeoService {
     this.metaService.updateTag({ property: 'og:url', content: url });
     this.metaService.updateTag({ property: 'og:image', content: image });
     this.metaService.updateTag({ property: 'og:image:type', content: 'image/png' });
+    this.metaService.updateTag({ property: 'og:locale', content: defaults.ogLocale });
 
     this.metaService.updateTag({ name: 'twitter:title', content: title });
     this.metaService.updateTag({ name: 'twitter:description', content: description });
