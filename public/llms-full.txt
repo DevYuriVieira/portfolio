@@ -4,7 +4,7 @@
 > Canonical Location: https://devyurivieira.vercel.app/llms-full.txt  
 > Short Manifest: https://devyurivieira.vercel.app/llms.txt  
 > Live Application: https://devyurivieira.vercel.app/  
-> Author: Yuri Vieira Teixeira (yurivieirateixeira98@gmail.com | +55 22 99896-2216)  
+> Author: Yuri Vieira Teixeira (yurivieirateixeira98@gmail.com)  
 > Professional Identity: Full-Stack Software Engineer & Back-End Programming Instructor  
 
 ---
@@ -175,7 +175,6 @@ Yuri Vieira Teixeira is a Full-Stack Software Engineer and Back-End Programming 
 
 ### Q5: How can a recruiter or hiring manager contact Yuri?
 - **Email**: yurivieirateixeira98@gmail.com
-- **Phone / WhatsApp**: +55 22 99896-2216
 - **LinkedIn**: https://linkedin.com/in/yuri-vieira-teixeira
 - **GitHub**: https://github.com/DevYuriVieira
 - **Live Portfolio**: https://devyurivieira.vercel.app/
