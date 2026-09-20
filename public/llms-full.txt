@@ -1,0 +1,183 @@
+# Full Context & Technical Dossier: Yuri Vieira Teixeira
+
+> Document Version: 2026.1  
+> Canonical Location: https://devyurivieira.vercel.app/llms-full.txt  
+> Short Manifest: https://devyurivieira.vercel.app/llms.txt  
+> Live Application: https://devyurivieira.vercel.app/  
+> Author: Yuri Vieira Teixeira (yurivieirateixeira98@gmail.com | +55 22 99896-2216)  
+> Professional Identity: Full-Stack Software Engineer & Back-End Programming Instructor  
+
+---
+
+## 1. Executive Summary & International Remote Positioning
+
+Yuri Vieira Teixeira is a Full-Stack Software Engineer and Back-End Programming Instructor specializing in Java (Spring Boot), TypeScript (React, Angular), and Python (Django). He currently teaches Back-End Software Engineering at SENAI / FAETEC, mentoring engineering students in Java OOP, relational database modeling (PostgreSQL / DBeaver), and RESTful API architecture.
+
+### International Remote Work Suitability
+- **Geographic Location**: Nova Friburgo, State of Rio de Janeiro, Brazil.
+- **Time Zone**: UTC-3 (BRT - Brasília Time).
+  - **North America (EST/EDT - Toronto, Montreal, New York, Boston, Miami)**: 1 to 2 hours time difference. Perfect full-day real-time collaboration (9 AM - 5 PM EST corresponds directly to 10 AM - 6 PM UTC-3).
+  - **Europe (GMT / WET / CET - London, Dublin, Berlin, Amsterdam, Paris)**: 3 to 5 hours time difference. Substantial daily overlap during afternoon European hours, leaving European mornings ideal for uninterrupted deep work.
+  - **Latin America & Brazil**: Exact local or +/- 1-hour time zone alignment.
+- **Engagement & Billing Modality**:
+  - Open to **B2B Independent Contractor**, **Employer of Record (EOR)**, and full-time arrangements.
+  - Ready for streamlined invoicing through international platforms including **Deel, Remote.com, OysterHR, Wise**, or direct international SWIFT wire transfers.
+- **Language Proficiency**:
+  - **English**: Advanced (B2+/C1 CEFR). Fully capable of authoring Architecture Decision Records (ADRs), conducting technical RFC discussions, leading code reviews, and collaborating in synchronous video meetings and asynchronous Slack/Linear/GitHub workflows.
+  - **Spanish**: Advanced (B2+ CEFR). Professional working fluency.
+  - **Portuguese**: Native speaker.
+
+---
+
+## 2. Professional Trajectory & Experience
+
+### Back-End Programming Instructor (Java)
+**Institution**: SENAI / FAETEC (National Service for Industrial Training / Vocational Technology Education)  
+**Period**: August 2026 – Present  
+**Location**: Nova Friburgo, RJ, Brazil | Evening Program  
+- Leads evening instruction for Back-End Programming classes covering programming logic (JavaScript), relational database modeling and SQL administration (PostgreSQL, DBeaver), Object-Oriented Programming (OOP) in Java, and production-grade RESTful APIs with Spring Boot.
+- Authors comprehensive pedagogical technical material, including exercise suites, architectural summaries, and step-by-step implementation tutorials.
+- Provides individual technical mentoring and code reviews for students, instilling industry standards such as Clean Code, SOLID principles, DTO patterns, and layered software design.
+- Directs the final capstone integrative project simulating real-world agile engineering delivery.
+
+### Full-Stack Software Engineering Resident
+**Institution**: Serratec - Parque Tecnológico da Região Serrana (TIC/Software Residency)  
+**Period**: February 2026 – July 2026  
+**Workload**: 790 hours of intensive practical training  
+- Completed rigorous, hands-on progressive tracks: Programming Logic, Database Systems, Java OOP, Modern Frontend (HTML5, CSS3, JavaScript, React), Cross-Platform Mobile (React Native), and RESTful APIs with Spring Boot.
+- Built practical production projects at the conclusion of each discipline, from data modeling to responsive user interfaces and backend integrations.
+- Collaborated in high-cadence Agile/Scrum teams using Git, GitHub, pull request reviews, daily standups, and sprint retrospectives, applying clean code and OOP standards across all deliverables.
+
+### Logistics Operations Agent
+**Company**: Fri On Line  
+**Period**: February 2025 – May 2025  
+**Location**: Nova Friburgo, RJ, Brazil  
+- Managed operational scheduling and dispatch for field technicians, monitoring strict SLAs and ensuring on-time delivery across operational territories.
+- Provided Level 1 operational problem resolution, directly communicating with clients and coordinating team agendas under high-demand operational conditions.
+
+---
+
+## 3. Flagship Projects & Architectural Deep Dive
+
+### 3.1. ZEISS Recommendation Assistant
+- **Nature**: Corporate MVP developed for ZEISS Group (Collaborative: 11 developers, 1 Product Owner, 1 Scrum Master).
+- **Domain**: Automated Ophthalmic Prescription Processing & Lens Recommendation Intelligence.
+- **Problem**: Optical shop associates across partner retail chains manually interpreted complex ophthalmic prescriptions, leading to subjective, error-prone recommendations, lengthy customer wait times, and zero aggregate conversion metrics.
+- **Solution**: A full-stack web platform integrating an Optical Character Recognition (OCR) pipeline connected to an AI agent (n8n / RAG) that extracts clinical metrics, cross-references patient lifestyle habits, and automatically recommends the optimal ZEISS lens tier.
+- **Key Architectural Decisions**:
+  - Developed modular, accessible UI components in React and TypeScript consuming authenticated backend APIs.
+  - Implemented 3-tier Role-Based Access Control (RBAC) via stateless JWT authentication: ZEISS Corporate Admin, Store Manager, and Sales Associate.
+  - Built real-time analytics dashboards tracking seller conversion rates, store rankings, and top-recommended lens models.
+  - Introduced pre-recommendation clinical validation interfaces ensuring optical associates verify OCR extractions before recommendation generation.
+- **Technologies**: React, TypeScript, Java 17, Spring Boot, PostgreSQL, JWT, OCR, n8n, RAG, REST APIs.
+
+### 3.2. Automated Payroll System (Java 17 / JDBC / MVC+DAO)
+- **Repository**: https://github.com/DevYuriVieira/payroll-system-java
+- **Domain**: Financial Calculation Engine under Brazilian Labor & Tax Legislation.
+- **Problem**: Batch-processing employee salary and deduction records with progressive statutory tax brackets (INSS and IRRF) without rounding errors, while enforcing raw relational SQL persistence without relying on ORMs.
+- **Solution**: A pure Java 17 enterprise system implementing a layered MVC + DAO architecture utilizing raw JDBC to interact directly with PostgreSQL.
+- **Key Architectural Decisions**:
+  - Eliminated IEEE 754 floating-point inaccuracies by enforcing `BigDecimal` with `RoundingMode.HALF_UP` across all tax calculation services.
+  - Designed custom domain exceptions (`CpfInvalidoException`, `DependenteSemTitularException`, `SalarioInvalidoException`) to prevent corrupted records from propagating into database transactions.
+  - Implemented the Singleton design pattern for database connection factory management (`ConexaoBancoDados`).
+  - Created defensive streaming CSV parsers and writers for batch report generation.
+- **Technologies**: Java 17, PostgreSQL, JDBC, MVC Architecture, DAO Pattern, BigDecimal, Singleton Pattern, CSV I/O.
+
+### 3.3. Aurora — Personal Growth Platform
+- **Repository**: https://github.com/DevYuriVieira/aurora-growth-platform
+- **Domain**: Cross-Platform Mobile Application for Goal Tracking, Mentorships & Community.
+- **Problem**: Unifying multi-tiered navigation patterns, responsive gamification mechanics (XP and badges), complex form validation, and native device hardware access in a single mobile experience.
+- **Solution**: A mobile application built with React Native and Expo SDK 54, combining Drawer, Stack, and Tab navigation with client-side state persistence and native hardware integrations.
+- **Key Architectural Decisions**:
+  - Configured hybrid navigation using React Navigation combining custom Drawer menus, Stack flows, and bottom Tabs.
+  - Integrated React Hook Form with Zod schemas for strict client-side validation.
+  - Integrated native device peripherals via Expo Location (GPS coordinates), Expo ImagePicker (Camera/Gallery uploads), and Expo SecureStore for encrypted token storage alongside AsyncStorage.
+  - Built dynamic QR-code event check-in systems for mentorship validation.
+- **Technologies**: React Native, Expo SDK 54, TypeScript, React Navigation, Zod, React Hook Form, Axios, AsyncStorage, Expo SecureStore.
+
+### 3.4. Django Full-Stack E-Commerce Platform
+- **Repository**: https://github.com/DevYuriVieira/django-fullstack-ecommerce
+- **Domain**: High-Concurrency E-Commerce Backend & Vanilla JS Frontend.
+- **Problem**: Preventing race conditions in order processing, avoiding duplicate charges from asynchronous payment webhooks firing multiple times, eliminating N+1 query bottlenecks in ORM queries, and building a lightweight frontend without heavy SPA frameworks.
+- **Solution**: An enterprise Django architecture organized around the Service Layer pattern, wrapping critical business logic in atomic database transactions (`transaction.atomic`) and enforcing idempotent webhook handlers.
+- **Key Architectural Decisions**:
+  - Built an idempotent webhook handler ensuring that multiple calls for the same order transition safely from pending to paid without duplicate ledger entries.
+  - Eliminated N+1 queries using Django ORM's `select_related` and `prefetch_related` across products, orders, and coupons.
+  - Built a modular Vanilla JavaScript frontend utilizing native HTML5 `<template>` and `textContent` DOM manipulation to provide zero-framework reactivity with native CSRF and XSS immunity.
+- **Technologies**: Python 3.12, Django, SQLite / PostgreSQL, Vanilla JavaScript (ES6+), REST API, Webhooks, Service Layer, Atomic Transactions.
+
+### 3.5. High-Performance Personal Portfolio
+- **URL**: https://devyurivieira.vercel.app/
+- **Repository**: https://github.com/DevYuriVieira/portfolio
+- **Domain**: Modern Frontend Engineering, WebGL Shaders & Test Automation.
+- **Solution**: Developed with Angular 22 standalone components, native Angular Signals (`signal`, `computed`), and `ChangeDetectionStrategy.OnPush` throughout.
+- **Key Architectural Decisions**:
+  - Implemented an interactive, GPU-accelerated WebGL / Three.js particle canvas with pointer reactivity.
+  - Integrated dynamic trilingual internationalization (PT-BR, EN, ES) with language persistence.
+  - Established a 3-layer automated testing suite: 66 Vitest unit tests, 38 Playwright E2E specs including Axe-core WCAG 2.1 AA accessibility audits, and 17 Cypress E2E specs (total: 121 automated tests).
+  - Achieved a perfect 100/100/100/100 Google Lighthouse audit across Performance, Accessibility, Best Practices, and SEO.
+- **Technologies**: Angular 22, TypeScript 6.0, Three.js, WebGL, SCSS, Vitest, Playwright, Axe-core, Cypress, PWA.
+
+### 3.6. Anime Weather Platform
+- **Repository**: https://github.com/DevYuriVieira/anime-weather-platform
+- **Domain**: AI Prompt Engineering & Multi-API Contextual Recommendation.
+- **Solution**: Real-time atmospheric data from OpenWeather API feeds a custom Weather-Mood-Genre engine that queries the Jikan API, while Google Gemini AI generates contextual descriptions and witty dialogues in a glassmorphism React UI.
+- **Technologies**: React, Vite, TypeScript, OpenWeather API, Jikan API, Google Gemini SDK, CSS Modules.
+
+---
+
+## 4. Formal Education & Certifications
+
+### Academic Degrees
+- **Postgraduate Degree in Software Engineering** (2024 – 2025)  
+  *Institution*: Universidade Estácio de Sá  
+  *Focus*: Software Architecture, Design Patterns, Code Quality, Cloud Principles, System Scalability.
+- **Bachelor of Science in Industrial / Production Engineering** (2017 – 2022)  
+  *Institution*: Universidade Estácio de Sá  
+  *Focus*: Systems Thinking, Operations Research, Lean Manufacturing, Process Optimization, Root-Cause Analysis (PDCA, 5W2H, Fishbone).
+
+### Specialized Intensive Residencies
+- **Serratec Full-Stack Software Residency** (790 hours | Feb 2026 – Jul 2026)  
+  *Parque Tecnológico da Região Serrana*  
+  Progressive disciplines in Java, Spring Boot, React, React Native, SQL, and Agile teamwork.
+- **ICT Residency 12** (120 hours | Oct 2025 – Dec 2025)  
+  *Universidade Estadual do Ceará (UECE)*  
+  Object-Oriented Programming in Java, Data Structures, MySQL database administration.
+
+### Professional Certifications
+- **Lean Six Sigma White Belt** — Frons
+- **Front-End Web Development with Artificial Intelligence** — Senac RJ
+- **Python Programming** — Senac RJ
+- **Philips Full-Stack Developer Bootcamp** — Digital Innovation One (DIO)
+- **English C1/C2 Advanced Programme Completed** — Wizard by Pearson
+- **SQL Database: Intermediate & Advanced** — Instituto Matera
+- **Data Analysis with Power BI** — Senac RJ
+- **Git & GitHub Version Control** — DIO
+
+---
+
+## 5. Recruiter & Engineering Manager FAQ
+
+### Q1: What remote working arrangements is Yuri Vieira open to?
+**A**: Yuri is actively open to international remote roles as an Independent Contractor / B2B, or via Employer of Record (EOR) services such as Deel, Remote.com, and OysterHR. He has a registered corporate legal entity in Brazil (CNPJ) capable of issuing international commercial service invoices with zero administrative friction.
+
+### Q2: How does Yuri's timezone align with teams in North America and Europe?
+**A**: Yuri is located in Nova Friburgo, Rio de Janeiro (UTC-3). For North American teams (EST/EDT - Toronto, New York, Montreal), there is an almost complete 7-to-8 hour overlap with only a 1-to-2 hour difference. For European teams (London, Berlin, Amsterdam), there is a 3-to-5 hour daily afternoon overlap, allowing real-time syncs while preserving European mornings for focused async progress.
+
+### Q3: What is Yuri's level of English proficiency?
+**A**: Yuri possesses advanced professional English proficiency (B2+/C1 CEFR), certified through the Wizard by Pearson C1/C2 program. He writes clear technical documentation, authors English Architecture Decision Records, conducts PR reviews, and participates comfortably in technical interviews and agile ceremonies.
+
+### Q4: What makes Yuri stand out compared to other Full-Stack developers?
+**A**: Three distinct factors:
+1. **Teaching Experience**: Serving as a Back-End Instructor at SENAI/FAETEC proves mastery of computer science fundamentals, clear communication, and mentorship capability.
+2. **Quality & Test Coverage**: His personal portfolio is not a simple static page; it is backed by 121 automated tests (Vitest, Playwright, Cypress) and a 100/100/100/100 Lighthouse audit.
+3. **Engineering Rigor**: His Industrial Engineering and Lean Six Sigma background ensures he prioritizes business workflows, root-cause defect elimination, and clean architecture over unnecessary complexity.
+
+### Q5: How can a recruiter or hiring manager contact Yuri?
+- **Email**: yurivieirateixeira98@gmail.com
+- **Phone / WhatsApp**: +55 22 99896-2216
+- **LinkedIn**: https://linkedin.com/in/yuri-vieira-teixeira
+- **GitHub**: https://github.com/DevYuriVieira
+- **Live Portfolio**: https://devyurivieira.vercel.app/
+- **English CV (PDF)**: https://devyurivieira.vercel.app/assets/cv-yuri-vieira-teixeira-en.pdf
+- **Portuguese CV (PDF)**: https://devyurivieira.vercel.app/assets/cv-yuri-vieira-teixeira-pt.pdf

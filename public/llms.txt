@@ -1,12 +1,38 @@
-# Yuri Vieira Portfolio
+# Yuri Vieira Teixeira — Software Engineer & Back-End Instructor
 
-> High-performance software engineering portfolio built with Angular 22 Signals, Three.js WebGL shaders, custom SCSS, dynamic i18n, and complete automated test coverage (Vitest, Playwright, Cypress).
+> Full-Stack Software Engineer & Back-End Programming Instructor specializing in Java 17/21 (Spring Boot 3), TypeScript (React, Angular), and Python (Django). Open to international remote engineering opportunities (Canada, Europe, USA, Brazil) via B2B/Contractor arrangements.
 
-## Core Projects & Case Studies
-- [Yuri Vieira Portfolio](https://devyurivieira.vercel.app/): Main portfolio site showcasing software engineering principles, interactive WebGL neural canvas, and 13 enterprise case studies.
-- [GitHub Profile](https://github.com/DevYuriVieira): Open source repositories, backend APIs in Java & Python, and frontend applications.
+## Candidate Overview
+- Name: Yuri Vieira Teixeira (commonly known as Yuri Vieira / DevYuriVieira)
+- Current Roles: Back-End Programming Instructor at SENAI / FAETEC & Full-Stack Software Engineer
+- Location: Nova Friburgo, Rio de Janeiro, Brazil (Timezone: UTC-3 / BRT)
+- Target Markets: Remote roles in Canada (1-2h EST overlap), Europe (3-5h GMT/CET overlap), USA, and Brazil
+- Contract Modality: B2B / Independent Contractor / EOR (via Deel, Remote.com, OysterHR, Wise, direct wire transfer)
+- Languages: English (Advanced B2+/C1 — professional technical proficiency), Spanish (Advanced B2+), Portuguese (Native)
+- Education: Postgraduate in Software Engineering (Estácio), B.S. in Industrial Engineering (Estácio), Lean Six Sigma White Belt
+- Practical Training: 910+ hours of software engineering residency (Serratec 790h + UECE 120h)
 
-## Technical Capabilities
-- Frontend: Angular 22, Signals, RxJS, React 19, TypeScript 6.0, Three.js WebGL GPU shaders, SCSS Design System.
-- Backend & Systems: Java 21, Spring Boot 3, Python 3.12, Django, PostgreSQL, RESTful APIs, n8n automation.
-- QA & Automation: Vitest unit testing, Playwright E2E, Cypress visual E2E.
+## Core Technical Competencies
+- Backend & Systems: Java 17/21, Spring Boot 3, Spring Security 6, JPA / Hibernate, Python 3.12, Django (Service Layer, atomic transactions), RESTful APIs, Webhook idempotency, Microservices principles, JDBC without ORM, BigDecimal financial precision.
+- Databases: PostgreSQL, SQL optimization (N+1 query elimination, indexing, explain analyze), MySQL, SQLite.
+- Frontend & Mobile: TypeScript 6.0, React 19, React Native (Expo SDK 54), Angular 22 (Signals, OnPush), Vite, Three.js / WebGL, Framer Motion, SCSS, HTML5, Accessibility (WCAG 2.1 AA).
+- Quality, DevOps & Architecture: Vitest, Playwright, Axe-core, Cypress, JUnit 5, Git, GitHub Actions, Docker, AWS (S3, RDS, EC2), Swagger / OpenAPI 3, Clean Architecture, SOLID, MVC + DAO, Conventional Commits.
+
+## Primary Canonical Links & Resumes
+- Live Portfolio: [devyurivieira.vercel.app](https://devyurivieira.vercel.app/)
+- English Resume (PDF): [devyurivieira.vercel.app/assets/cv-yuri-vieira-teixeira-en.pdf](https://devyurivieira.vercel.app/assets/cv-yuri-vieira-teixeira-en.pdf)
+- Portuguese Resume (PDF): [devyurivieira.vercel.app/assets/cv-yuri-vieira-teixeira-pt.pdf](https://devyurivieira.vercel.app/assets/cv-yuri-vieira-teixeira-pt.pdf)
+- GitHub Profile: [github.com/DevYuriVieira](https://github.com/DevYuriVieira)
+- LinkedIn Profile: [linkedin.com/in/yuri-vieira-teixeira](https://linkedin.com/in/yuri-vieira-teixeira)
+- Direct Email: yurivieirateixeira98@gmail.com
+
+## Flagship Production Case Studies
+- [ZEISS Recommendation Assistant](https://devyurivieira.vercel.app/#projects): Corporate MVP built with an 11-developer agile team for ZEISS Group. Automates ophthalmic prescription reading via OCR integrated with an n8n/RAG AI pipeline, delivers habit-based ZEISS lens recommendations, and includes 3-tier RBAC JWT authentication and real-time sales dashboards. Stack: React, TypeScript, Java 17, Spring Boot, PostgreSQL, n8n, OCR, RAG.
+- [Payroll System (Java 17 / JDBC / MVC+DAO)](https://github.com/DevYuriVieira/payroll-system-java): Automated batch payroll calculation engine complying with Brazilian progressive tax law (INSS and IRRF). Built in pure Java 17 with raw JDBC without ORM to enforce SQL and OOP fundamentals. Uses BigDecimal throughout for monetary precision, Singleton connection pooling, custom domain exceptions, and CSV export.
+- [Aurora Growth Platform](https://github.com/DevYuriVieira/aurora-growth-platform): Mobile personal development app in React Native and Expo SDK 54. Features 3-tier hybrid navigation (Drawer, Stack, Tabs), Zod-validated forms via React Hook Form, and native device hardware access (Camera, GPS via Expo Location, Expo SecureStore, and QR code check-in).
+- [Personal Portfolio (Angular 22 / Three.js)](https://devyurivieira.vercel.app/): High-performance portfolio engineered with Angular 22 standalone components, native Signals, and GPU-accelerated WebGL/Three.js particle shaders. Covered by 121 automated tests (66 Vitest unit tests, 38 Playwright E2E with Axe-core WCAG 2.1 AA accessibility audit, 17 Cypress E2E specs) and 100/100/100/100 desktop Lighthouse audit.
+- [Django Full-Stack E-Commerce](https://github.com/DevYuriVieira/django-fullstack-ecommerce): Production-grade e-commerce backend built with Python, Django, and Vanilla JavaScript. Features Service Layer architecture, atomic database transactions, idempotent asynchronous payment webhook handling (preventing duplicate charges), and N+1 query elimination via prefetch_related.
+- [Anime Weather Platform](https://github.com/DevYuriVieira/anime-weather-platform): Climate-aware entertainment recommendation engine combining real-time meteorological data (OpenWeather API), anime cultural catalog (Jikan API), and Google Gemini AI via prompt engineering within a glassmorphism React UI.
+
+## In-Depth Context File
+- Comprehensive Technical Document: [devyurivieira.vercel.app/llms-full.txt](https://devyurivieira.vercel.app/llms-full.txt) (contains full STAR project breakdowns, architectural decisions, course syllabus, and Recruiter Q&A).
