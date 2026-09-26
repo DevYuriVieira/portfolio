@@ -5,17 +5,18 @@
 ![Angular](https://img.shields.io/badge/Angular-22.1-DD0031?style=for-the-badge&logo=angular&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-6.0-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 ![Three.js](https://img.shields.io/badge/Three.js-0.185-000000?style=for-the-badge&logo=three.js&logoColor=white)
+![A11y](https://img.shields.io/badge/A11y-WCAG_AAA-00E5FF?style=for-the-badge&logo=w3c&logoColor=black)
 ![SCSS](https://img.shields.io/badge/SCSS-Design_System-CC6699?style=for-the-badge&logo=sass&logoColor=white)
 ![Vitest](https://img.shields.io/badge/Vitest-4.0-6E9F18?style=for-the-badge&logo=vitest&logoColor=white)
 ![Playwright](https://img.shields.io/badge/Playwright-1.62-2EAD33?style=for-the-badge&logo=playwright&logoColor=white)
 ![Cypress](https://img.shields.io/badge/Cypress-15.20-17202C?style=for-the-badge&logo=cypress&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-Deployed-000000?style=for-the-badge&logo=vercel&logoColor=white)
 
-**PT-BR:** Aplicação web frontend desenvolvida em Angular 22 com Signals, gráficos interativos Three.js (WebGL), suporte trilíngue (i18n - PT-BR, EN, ES), SEO dinâmico e suíte tripla de testes automatizados.  
-*Slogan: Design system proprietário, animações de alta performance e suíte de testes ponta a ponta.*
+**PT-BR:** Aplicação web frontend desenvolvida em Angular 22 com Signals, gráficos interativos Three.js (WebGL), motor avançado de acessibilidade (WCAG AAA & VLibras), suporte trilíngue (i18n - PT-BR, EN, ES), SEO dinâmico e suíte tripla de testes automatizados.  
+*Slogan: Design system proprietário, acessibilidade universal com VLibras, animações de alta performance e suíte de testes ponta a ponta.*
 
-**EN:** Frontend web application built with Angular 22 Signals, Three.js (WebGL) interactive visuals, dynamic tri-lingual i18n (PT-BR, EN, ES), SEO engine, and a triple automated testing suite.  
-*Slogan: Custom design system, high-performance animations, and end-to-end testing pipeline.*
+**EN:** Frontend web application built with Angular 22 Signals, Three.js (WebGL) interactive visuals, universal accessibility engine (WCAG AAA & VLibras), dynamic tri-lingual i18n (PT-BR, EN, ES), SEO engine, and a triple automated testing suite.  
+*Slogan: Custom design system, universal accessibility with VLibras, high-performance animations, and end-to-end testing pipeline.*
 
 ---
 
@@ -51,7 +52,8 @@
   - [4. ZEISS Confidential Project Card & Legal NDA Disclaimer](#4-zeiss-confidential-project-card--legal-nda-disclaimer)
   - [5. Reactive i18n & Dynamic SEO Engine](#5-reactive-i18n--dynamic-seo-engine)
   - [6. Contact Flow & Asynchronous Clipboard Action](#6-contact-flow--asynchronous-clipboard-action)
-  - [7. Triple Testing Pipeline (Vitest + Playwright + Cypress)](#7-triple-testing-pipeline-vitest--playwright--cypress)
+  - [7. Universal Accessibility Engine & Assistive Tools (WCAG AAA & VLibras)](#7-universal-accessibility-engine--assistive-tools-wcag-aaa--vlibras)
+  - [8. Triple Testing Pipeline (Vitest + Playwright + Cypress)](#8-triple-testing-pipeline-vitest--playwright--cypress)
 - [System Architecture & Component Flow](#-system-architecture--component-flow)
 - [Tech Stack & Ecosystem](#-tech-stack--ecosystem)
 - [Project Directory Structure](#-project-directory-structure)
@@ -65,13 +67,14 @@
 
 ## 🚀 Project Overview
 
-The **Yuri Vieira Portfolio** is a single-page frontend application built with **Angular 22** using standalone component architecture, fine-grained Signals, custom SCSS design tokens, interactive WebGL 3D particle animations (Three.js), and a complete multi-framework testing suite (**Vitest**, **Playwright**, and **Cypress**).
+The **Yuri Vieira Portfolio** is a single-page frontend application built with **Angular 22** using standalone component architecture, fine-grained Signals, custom SCSS design tokens, interactive WebGL 3D particle animations (Three.js), a comprehensive universal accessibility engine (**WCAG AAA & VLibras**), and a complete multi-framework testing suite (**Vitest**, **Playwright**, and **Cypress**).
 
 Key Engineering Highlights:
 1. **Modern Angular Architecture**: Uses Angular Standalone Components, native Signals (`signal`, `computed`), and `ChangeDetectionStrategy.OnPush` across all views for low memory footprint and fast rendering.
 2. **GPU Visual FX**: Interactive 3D particle visuals powered by **Three.js** (`NeuralCanvasComponent` and `HeroParticlesVisual`), including raycasting mouse displacement, floating glassmorphic zoom controls (`+`, `-`, `Reset`, `Focus`), and automatic responsive fallbacks on mobile screens (<768px).
-3. **13 Detailed Engineering Case Studies**: Highlights real-world projects, architecture trade-offs, technical decisions, and a dedicated ZEISS NDA confidential project card with lock badge 🔒.
-4. **Triple-Layer QA Architecture**: 121 automated tests (100% pass rate) combining unit tests (**Vitest**), multi-browser/mobile E2E and WCAG 2.1 AA accessibility tests (**Playwright + Axe-Core**), and user journey E2E verification (**Cypress**).
+3. **Universal Accessibility (WCAG AAA & VLibras)**: Built-in assistive features drawer with font scaling (+15%, +30%), dyslexia-friendly typography (OpenDyslexic), text/line spacing, high contrast (WCAG AAA), monochrome mode, animation pausing, interactive cursor reading guide, and on-demand official Brazilian Sign Language (**VLibras**) with zero CLS and isolated Shadow DOM lifecycle management.
+4. **13 Detailed Engineering Case Studies**: Highlights real-world projects, architecture trade-offs, technical decisions, and a dedicated ZEISS NDA confidential project card with lock badge 🔒.
+5. **Triple-Layer QA Architecture**: 129 automated tests (100% pass rate) combining unit tests (**Vitest** - 74 specs), multi-browser/mobile E2E and WCAG 2.1 AA accessibility tests (**Playwright + Axe-Core** - 38 specs), and user journey E2E verification (**Cypress** - 17 specs).
 
 ---
 
@@ -105,8 +108,18 @@ Key Engineering Highlights:
 - **One-Click Clipboard Copying**: Asynchronous `navigator.clipboard` integration with instant visual state feedback (*"Copied!"* / *"Copiado!"*).
 - **Direct Mail Composer**: Quick action links delegating to Gmail composer and system `mailto:`.
 
-### 7. Triple Testing Pipeline (Vitest + Playwright + Cypress)
-- **Unit & Integration Testing (Vitest)**: 66 automated tests validating components, directives, and services.
+### 7. Universal Accessibility Engine & Assistive Tools (WCAG AAA & VLibras)
+- **Expandable Glassmorphic Floating Action Button (FAB)**: Discrete circular button in the bottom-right corner (`z-index: 9990`); smoothly expands on hover and keyboard `:focus-visible` to reveal the *"Assistive Features"* label.
+- **Categorized Modal Drawer Dialog**: Fully accessible dialog (`role="dialog"`, `aria-modal="true"`, ESC key dismissal, click-outside backdrop) organizing 9 assistive tools into 4 semantic domains:
+  - **Inclusion & Sign Language**: Official **VLibras** (Brazilian Sign Language) translation widget lazy-loaded on-demand (~70 KB initial bundle untouched). Non-intrusive activation displaying only the floating access button without auto-opening popups, with complete lifecycle isolation handling modern VLibras v7 Shadow DOM nodes (`#vlibras-access-wrapper`, `#vlibras-app-root`).
+  - **Typography Controls**: Font scaling cycle (+15% / +30%), dyslexia-friendly typography (**OpenDyslexic**), and expanded line/letter/word spacing.
+  - **Contrast & Visuals**: High contrast mode (**WCAG AAA** yellow-on-black / cyan accent palette), Monochrome mode, and high-visibility link underline highlighting.
+  - **Focus & Navigation**: Animation pausing (`prefers-reduced-motion` override), and interactive reading guide focus ruler tracking cursor movement via hardware-accelerated `requestAnimationFrame`.
+- **Reactive State & Persistence**: Signal-driven reactive architecture (`AccessibilityService`) synchronizing root HTML attributes and persisting user preferences in `localStorage`.
+- **Tri-Lingual Localization**: Declarative i18n configurations delivering localized labels across Portuguese, English, and Spanish.
+
+### 8. Triple Testing Pipeline (Vitest + Playwright + Cypress)
+- **Unit & Integration Testing (Vitest)**: 74 automated tests validating components, directives, and services.
 - **End-to-End & WCAG 2.1 AA Accessibility Testing (Playwright + Axe-Core)**: 38 E2E specs running concurrently across **Desktop Chromium** and **Mobile Pixel 7** viewports, including automated zero-violation WCAG 2.1 Level A & AA accessibility audits across all 3 languages.
 - **End-to-End User Journey Verification (Cypress)**: 17 E2E specs validating user journeys in the headless Cypress Test Runner.
 
@@ -135,11 +148,13 @@ flowchart TD
     
     H5 --> I["Three.js WebGL Particle Engine"]
     H6 --> J["ZEISS NDA Confidential Project Card"]
+    B --> A11y["AccessibilityWidget & ReadingGuide"]
+    A11y --> VLibras["VLibras Official Service & SDK"]
     
     subgraph "QA & Test Execution Pipeline"
-        K1["Vitest (66 Unit Specs)"]
-        K2["Playwright (32 E2E Specs - Desktop & Mobile)"]
-        K3["Cypress (16 E2E Specs)"]
+        K1["Vitest (74 Unit Specs)"]
+        K2["Playwright (38 E2E Specs - Desktop & Mobile)"]
+        K3["Cypress (17 E2E Specs)"]
     end
 ```
 
@@ -151,9 +166,10 @@ flowchart TD
 | :--- | :--- | :--- |
 | **Core Framework** | Angular `^22.1.0` | Standalone UI architecture, Signals, and OnPush change detection |
 | **Language** | TypeScript `~6.0.2` | Static typing, interfaces, and strict domain models |
+| **Accessibility Engine** | Custom + VLibras | WCAG AAA contrast, OpenDyslexic, text spacing, reading guide, and sign language |
 | **3D Engine & Shaders** | Three.js `^0.185.1` | GPU particle shader visual system and raycasting |
 | **Design System** | SCSS / SASS | Custom CSS variables, glassmorphism, and responsive mixins (No UI Libraries) |
-| **Unit Testing** | Vitest `^4.0.8` | Component and unit test execution engine |
+| **Unit Testing** | Vitest `^4.0.8` | Component and unit test execution engine (74 unit specs) |
 | **E2E Testing (Multi-Browser)**| Playwright `^1.62.1` | Concurrency testing across Desktop Chrome and Mobile Pixel 7 |
 | **E2E Testing (Visual Runner)** | Cypress `^15.20.0` | Interactive E2E assertions and visual runner |
 | **Code Formatter** | Prettier `^3.8.1` | Automated code formatting and style consistency |
@@ -165,12 +181,14 @@ flowchart TD
 ```text
 src/
 ├── app/
-│   ├── core/                  # Core services, SEO engine, and i18n state
+│   ├── core/                  # Core services, SEO engine, i18n, and accessibility state
+│   │   ├── accessibility/     # AccessibilityService, VlibrasService, models, and i18n data
 │   │   ├── i18n/              # I18nService, supported languages, and dictionary loaders
 │   │   └── services/          # SeoService, meta tag updater, and JSON-LD injector
 │   ├── layout/                # Global layout shell components
 │   │   ├── header/            # Navigation header, brand logo, and flag language switcher
-│   │   └── footer/            # Footer social links, copyright, and navigation anchors
+│   │   ├── footer/            # Footer social links, copyright, and navigation anchors
+│   │   └── main-layout/       # App layout shell host integrating AccessibilityWidget
 │   ├── pages/                 # Main application view pages
 │   │   └── home/              # Main portfolio home view controller
 │   │       ├── home.ts        # Home controller managing section composition
@@ -182,7 +200,8 @@ src/
 │   │           ├── hero/          # Hero section, CTA actions, and particle visual background
 │   │           ├── projects/      # 13 case studies grid & ZEISS NDA confidential card
 │   │           └── skills/        # 4 technical clusters & tag cloud badges
-│   ├── shared/                # Shared directives and animations
+│   ├── shared/                # Shared directives and components
+│   │   ├── components/        # AccessibilityWidget & ReadingGuide components
 │   │   └── directives/        # RevealDirective (IntersectionObserver scroll animations)
 │   └── ui/                    # Standalone UI Design System primitives (@ui)
 │       ├── badge/             # Tech stack tag badges
@@ -194,6 +213,7 @@ src/
 │       └── text/              # Body text typography
 ├── assets/                    # Favicon icons, OG social images, and PDF resume download
 ├── styles/                    # SCSS design system tokens, CSS variables, and mixins
+│   └── base/_a11y.scss        # Global WCAG AAA contrast, font scaling, and VLibras visibility rules
 ├── e2e/                       # Playwright E2E test suite (portfolio.spec.ts)
 ├── cypress/                   # Cypress E2E test suite (portfolio.cy.ts)
 └── index.html                 # Main HTML entry point & primary SEO meta tags
@@ -265,7 +285,7 @@ Access in your browser at `http://localhost:4200`.
 | :--- | :--- | :--- |
 | `npm start` | **Angular CLI** | Starts local dev server at `http://localhost:4200` |
 | `npm run build` | **Angular Build** | Compiles production bundle into `/dist/portfolio` |
-| `npm test` | **Vitest** | Executes 66 unit & component tests |
+| `npm test` | **Vitest** | Executes 74 unit & component tests |
 | `npm run test:e2e` | **Playwright + Axe-Core** | Executes 38 E2E & WCAG 2.1 AA accessibility specs concurrently (Desktop Chrome & Mobile Pixel 7) |
 | `npm run test:cypress` | **Cypress** | Executes 17 E2E specs in headless runner |
 | `npm run cypress:open` | **Cypress UI** | Opens interactive Cypress Test Runner GUI |
@@ -306,7 +326,8 @@ Developed by **Yuri Vieira**. All rights reserved.
   - [4. Card de Projeto Confidencial ZEISS & Tratamento de NDA](#4-card-de-projeto-confidencial-zeiss--tratamento-de-nda-2)
   - [5. Suporte Trilíngue (i18n) & Motor Dinâmico de SEO](#5-suporte-trilíngue-i18n--motor-dinâmico-de-seo-2)
   - [6. Seção de Contato de Alta Conversão & Cópia no Clipboard](#6-seção-de-contato-de-alta-conversão--cópia-no-clipboard-2)
-  - [7. Suíte Tripla de Testes (Vitest + Playwright + Cypress)](#7-suíte-tripla-de-testes-vitest--playwright--cypress-2)
+  - [7. Motor de Acessibilidade Universal & Recursos Assistivos (WCAG AAA & VLibras)](#7-motor-de-acessibilidade-universal--recursos-assistivos-wcag-aaa--vlibras)
+  - [8. Suíte Tripla de Testes (Vitest + Playwright + Cypress)](#8-suíte-tripla-de-testes-vitest--playwright--cypress-2)
 - [Arquitetura do Sistema & Fluxo de Componentes](#-arquitetura-do-sistema--fluxo-de-componentes)
 - [Ecossistema & Tecnologias Utilizadas](#-ecossistema--tecnologias-utilizadas-1)
 - [Estrutura Detalhada do Projeto](#-estrutura-detalhada-do-projeto-1)
@@ -320,13 +341,14 @@ Developed by **Yuri Vieira**. All rights reserved.
 
 ## 🚀 Visão Geral do Projeto
 
-O **Portfólio de Yuri Vieira** é uma aplicação web frontend desenvolvida em **Angular 22** utilizando arquitetura de componentes standalone, Signals nativos, design system próprio em SCSS, animações GPU 3D com Three.js e uma suíte completa de testes automatizados (**Vitest**, **Playwright** e **Cypress**).
+O **Portfólio de Yuri Vieira** é uma aplicação web frontend desenvolvida em **Angular 22** utilizando arquitetura de componentes standalone, Signals nativos, design system próprio em SCSS, animações GPU 3D com Three.js, motor universal de acessibilidade (**WCAG AAA & VLibras**) e uma suíte completa de testes automatizados (**Vitest**, **Playwright** e **Cypress**).
 
 Destaques de Engenharia:
 1. **Arquitetura Angular Moderna**: Componentes Standalone, Signals nativos (`signal`, `computed`) e `ChangeDetectionStrategy.OnPush` em todas as visões para alta velocidade de renderização e baixo uso de memória.
 2. **Efeitos Visuais Acelerados por GPU**: Shaders de partículas WebGL 3D em **Three.js** (`NeuralCanvasComponent` e `HeroParticlesVisual`), com interatividade por cursor, barra flutuante de zoom (`+`, `-`, `Reset`, `Foco`) e fallback automático para telas móveis (<768px).
-3. **13 Casos de Estudo de Engenharia**: Apresentação de projetos com trade-offs de arquitetura, decisões técnicas e um card de projeto confidencial da ZEISS com selo de bloqueio 🔒.
-4. **Garantia de Qualidade em 3 Camadas**: 121 testes automatizados (100% de aprovação) unindo testes unitários (**Vitest**), testes E2E e de acessibilidade WCAG 2.1 AA (**Playwright + Axe-Core**) e validação de fluxos E2E (**Cypress**).
+3. **Acessibilidade Universal (WCAG AAA & VLibras)**: Gaveta modal assistiva nativa com controle de tamanho de fonte (+15%, +30%), tipografia para dislexia (OpenDyslexic), espaçamento de texto/linhas, alto contraste (WCAG AAA), modo monocromático, pausa de animações, guia de leitura com foco no cursor e tradução oficial para a Língua Brasileira de Sinais (**VLibras**) com lazy loading sob demanda e isolamento de Shadow DOM.
+4. **13 Casos de Estudo de Engenharia**: Apresentação de projetos com trade-offs de arquitetura, decisões técnicas e um card de projeto confidencial da ZEISS com selo de bloqueio 🔒.
+5. **Garantia de Qualidade em 3 Camadas**: 129 testes automatizados (100% de aprovação) unindo testes unitários (**Vitest** - 74 specs), testes E2E e de acessibilidade WCAG 2.1 AA (**Playwright + Axe-Core** - 38 specs) e validação de fluxos E2E (**Cypress** - 17 specs).
 
 ---
 
@@ -360,8 +382,18 @@ Destaques de Engenharia:
 - **Cópia para a Área de Transferência**: Integração assíncrona com `navigator.clipboard` com feedback visual imediato (*"Copiado!"* / *"Copied!"*).
 - **Envio Direto de E-mail**: Links de ação rápida direcionando para o editor do Gmail e `mailto:` do sistema.
 
-### 7. Suíte Tripla de Testes (Vitest + Playwright + Cypress)
-- **Testes Unitários & de Integração (Vitest)**: 66 testes automatizados validando componentes, diretivas e serviços.
+### 7. Motor de Acessibilidade Universal & Recursos Assistivos (WCAG AAA & VLibras)
+- **Gatilho Flutuante Expansível (FAB)**: Botão circular no canto inferior direito em *glassmorphism* (`z-index: 9990`) que se expande suavemente em hover ou foco de teclado (`Tab`) revelando o rótulo *"Recursos Assistivos"*.
+- **Painel Modal Organizado em Categorias**: Diálogo acessível (`role="dialog"`, `aria-modal="true"`, tecla ESC e backdrop blur) com 9 ferramentas distribuídas em 4 domínios semânticos:
+  - **Inclusão & Libras**: Integração oficial do **VLibras** (Tradutor de Língua Brasileira de Sinais) com carregamento sob demanda (lazy loading, mantendo o bundle inicial leve em ~70 KB). Ativação não-intrusiva que exibe apenas o ícone flutuante sem forçar a abertura da janela do avatar, com gerenciamento avançado do ciclo de vida em Shadow DOM (`#vlibras-access-wrapper` e `#vlibras-app-root`).
+  - **Controle de Fonte**: Ciclo de ampliação tipográfica (+15% / +30%), fonte amigável para dislexia (**OpenDyslexic**) e ampliação do espaçamento entre linhas e palavras.
+  - **Contraste & Cores**: Modo de Alto Contraste (**WCAG AAA** amarelo sobre preto com realce ciano), modo Monocromático (escala de cinza) e destaque visual de links.
+  - **Foco & Navegação**: Pausa geral de animações (respeito a sensibilidade vestibular) e Guia de Leitura interativo com régua de foco acelerada por hardware via `requestAnimationFrame`.
+- **Gerenciamento Reativo & Persistência**: Arquitetura orientada a Angular Signals (`AccessibilityService`) com sincronização de atributos no elemento raiz `<html>` e persistência em `localStorage`.
+- **Internacionalização Completa**: Suporte trilíngue declarativo cobrindo Português, Inglês e Espanhol.
+
+### 8. Suíte Tripla de Testes (Vitest + Playwright + Cypress)
+- **Testes Unitários & de Integração (Vitest)**: 74 testes automatizados validando componentes, diretivas e serviços.
 - **Testes Ponta a Ponta & Acessibilidade WCAG 2.1 AA (Playwright + Axe-Core)**: 38 especificações E2E executadas em paralelo em visores de **Desktop Chrome** e **Mobile Pixel 7**, incluindo auditoria de acessibilidade WCAG 2.1 Nível A e AA (zero violações) em todos os idiomas.
 - **Validação Visual & Fluxos E2E (Cypress)**: 17 especificações E2E validando os fluxos completos no Cypress Test Runner.
 
@@ -390,11 +422,13 @@ flowchart TD
     
     H5 --> I["Motor de Partículas Three.js WebGL"]
     H6 --> J["Card Confidencial ZEISS (NDA)"]
+    B --> A11y["AccessibilityWidget & ReadingGuide"]
+    A11y --> VLibras["Serviço & SDK Oficial VLibras"]
     
     subgraph "Pipeline de Garantia de Qualidade e Testes"
-        K1["Vitest (66 Testes Unitários)"]
-        K2["Playwright (32 Especificações E2E - Desktop & Mobile)"]
-        K3["Cypress (16 Especificações E2E)"]
+        K1["Vitest (74 Testes Unitários)"]
+        K2["Playwright (38 Especificações E2E - Desktop & Mobile)"]
+        K3["Cypress (17 Especificações E2E)"]
     end
 ```
 
@@ -406,9 +440,10 @@ flowchart TD
 | :--- | :--- | :--- |
 | **Framework Principal** | Angular `^22.1.0` | Arquitetura Standalone, Signals e detecção OnPush |
 | **Linguagem** | TypeScript `~6.0.2` | Tipagem estática rigorosa e modelos de domínio DTO |
+| **Motor de Acessibilidade** | Próprio + VLibras | Contraste WCAG AAA, OpenDyslexic, espaçamento de texto, régua de foco e tradução em Libras |
 | **Motor 3D & Shaders** | Three.js `^0.185.1` | Sistema visual de partículas GPU WebGL e interatividade |
 | **Design System** | SCSS / SASS | Variáveis CSS nativas, glassmorphism e utilitários (Sem bibliotecas de UI) |
-| **Testes Unitários** | Vitest `^4.0.8` | Framework de testes unitários ultrarrápido para Angular |
+| **Testes Unitários** | Vitest `^4.0.8` | Framework de testes unitários ultrarrápido para Angular (74 testes unitários) |
 | **Testes E2E (Multi-Browser)**| Playwright `^1.62.1` | Testes paralelos em visores Desktop Chrome e Mobile Pixel 7 |
 | **Testes E2E (Visual Runner)** | Cypress `^15.20.0` | Execução interativa e validação visual de fluxos E2E |
 | **Formatador de Código** | Prettier `^3.8.1` | Padronização e formatação de estilo de código |
@@ -420,12 +455,14 @@ flowchart TD
 ```text
 src/
 ├── app/
-│   ├── core/                  # Serviços centrais, motor de SEO e estado i18n
+│   ├── core/                  # Serviços centrais, motor de SEO, i18n e acessibilidade
+│   │   ├── accessibility/     # AccessibilityService, VlibrasService, modelos e dicionários i18n
 │   │   ├── i18n/              # I18nService, idiomas suportados e dicionários
 │   │   └── services/          # SeoService, atualização de meta tags e JSON-LD
 │   ├── layout/                # Componentes da estrutura global de layout
 │   │   ├── header/            # Cabeçalho, logotipo e seletor de idiomas
-│   │   └── footer/            # Rodapé, links sociais e marcas registradas
+│   │   ├── footer/            # Rodapé, links sociais e marcas registradas
+│   │   └── main-layout/       # Invólucro de layout que integra o AccessibilityWidget
 │   ├── pages/                 # Páginas principais da aplicação
 │   │   └── home/              # Controlador da página Home do portfólio
 │   │       ├── home.ts        # Controlador principal das seções
@@ -437,7 +474,8 @@ src/
 │   │           ├── hero/          # Seção Hero, botões de ação e partículas de fundo
 │   │           ├── projects/      # Grade com 13 projetos e card confidencial ZEISS
 │   │           └── skills/        # 4 grupos de habilidades e badges em nuvem
-│   ├── shared/                # Diretivas e animações compartilhadas
+│   ├── shared/                # Diretivas e componentes compartilhados
+│   │   ├── components/        # Componentes AccessibilityWidget e ReadingGuide
 │   │   └── directives/        # RevealDirective (Animações via IntersectionObserver)
 │   └── ui/                    # Componentes primitivos do Design System (@ui)
 │       ├── badge/             # Badges e etiquetas de tecnologia
@@ -449,6 +487,7 @@ src/
 │       └── text/              # Tipografia de texto
 ├── assets/                    # Favicons, imagem Open Graph e download do currículo PDF
 ├── styles/                    # Tokens, variáveis CSS e mixins do Design System SCSS
+│   └── base/_a11y.scss        # Modificadores globais WCAG AAA, escala de fontes e VLibras
 ├── e2e/                       # Suíte de testes E2E Playwright (portfolio.spec.ts)
 ├── cypress/                   # Suíte de testes E2E Cypress (portfolio.cy.ts)
 └── index.html                 # Ponto de entrada HTML e tags SEO base
@@ -520,7 +559,7 @@ Acesse no navegador pelo endereço `http://localhost:4200`.
 | :--- | :--- | :--- |
 | `npm start` | **Angular CLI** | Inicia o servidor de desenvolvimento em `http://localhost:4200` |
 | `npm run build` | **Angular Build** | Compila os arquivos de produção na pasta `/dist/portfolio` |
-| `npm test` | **Vitest** | Executa 66 testes unitários e de componente |
+| `npm test` | **Vitest** | Executa 74 testes unitários e de componente |
 | `npm run test:e2e` | **Playwright + Axe-Core** | Executa 38 testes E2E e de acessibilidade WCAG 2.1 AA em paralelo (Desktop & Mobile Pixel 7) |
 | `npm run test:cypress` | **Cypress** | Executa 17 testes E2E no executor headless do Cypress |
 | `npm run cypress:open` | **Cypress UI** | Abre a interface gráfica interativa do Cypress Test Runner |
