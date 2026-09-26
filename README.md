@@ -118,6 +118,20 @@ Key Engineering Highlights:
 - **Reactive State & Persistence**: Signal-driven reactive architecture (`AccessibilityService`) synchronizing root HTML attributes and persisting user preferences in `localStorage`.
 - **Tri-Lingual Localization**: Declarative i18n configurations delivering localized labels across Portuguese, English, and Spanish.
 
+#### ♿ Assistive Features & WCAG Compliance Matrix
+
+| Feature | Technical Implementation | Target Audience / Accessibility Goal | WCAG 2.1 Criteria |
+| :--- | :--- | :--- | :--- |
+| **Tradutor de Libras (VLibras)** | On-demand script injection (`vlibras-plugin.js`), v7 Shadow DOM isolation (`#vlibras-access-wrapper`), non-intrusive activation | Deaf and hard-of-hearing Brazilian Sign Language (Libras) users | **1.2.6 Sign Language** |
+| **Tamanho da Fonte (Font Scaling)** | Root `data-a11y-font` modifier scaling typography (+15% / +30%) without breaking layout integrity | Low-vision users, presbyopia, and elderly visitors | **1.4.4 Resize Text (Level AA)** |
+| **Fonte Legível (Dyslexic Font)** | `@font-face` injection of **OpenDyslexic** with weighted gravity bottoms to prevent letter inversion | Dyslexia, reading fatigue, and visual processing disorders | **W3C COGA Cognitive A11y** |
+| **Espaçamento entre Linhas (Spacing)** | Line height (1.85), letter spacing (0.08em), and word spacing (0.14em) overrides | Dyslexia, cognitive tracking, and reading speed retention | **1.4.12 Text Spacing (Level AA)** |
+| **Alto Contraste (High Contrast)** | WCAG AAA black/pure yellow (`#ffff00`) palette with cyan accents (`#00e5ff`) | Severe visual impairment, cataracts, and outdoor glare | **1.4.6 Contrast Enhanced (Level AAA)** |
+| **Monocromático (Monochrome)** | GPU-accelerated CSS `filter: grayscale(100%)` | Photophobia, sensory overload, ADHD distraction reduction | **Visual Comfort & Focus** |
+| **Destacar Links (Highlight Links)** | High-contrast `#ffff00` 3px underline with 5px offset on all anchor tags | Color-blind users unable to distinguish color-only links | **1.4.1 Use of Color (Level A)** |
+| **Pausar Animações (Pause Motion)** | Complete animation override (`animation-duration: 0.001ms`), stops WebGL particles | Vestibular dysfunction, motion-triggered nausea, ADHD | **2.2.2 Pause, Stop, Hide & 2.3.3 (Level AAA)** |
+| **Guia de Leitura (Reading Guide)** | Interactive focus ruler following cursor Y position via `requestAnimationFrame` | Visual tracking difficulties, dyslexia, line-skipping | **Cognitive Assistive Aid** |
+
 ### 8. Triple Testing Pipeline (Vitest + Playwright + Cypress)
 - **Unit & Integration Testing (Vitest)**: 74 automated tests validating components, directives, and services.
 - **End-to-End & WCAG 2.1 AA Accessibility Testing (Playwright + Axe-Core)**: 38 E2E specs running concurrently across **Desktop Chromium** and **Mobile Pixel 7** viewports, including automated zero-violation WCAG 2.1 Level A & AA accessibility audits across all 3 languages.
@@ -254,6 +268,24 @@ export interface SeoConfig {
 }
 ```
 
+### Accessibility State Model (`src/app/core/accessibility/accessibility.model.ts`)
+
+```typescript
+export type FontScale = 'normal' | 'large' | 'x-large';
+
+export interface AccessibilityState {
+  readonly fontScale: FontScale;
+  readonly dyslexicFont: boolean;
+  readonly textSpacing: boolean;
+  readonly highContrast: boolean;
+  readonly monochrome: boolean;
+  readonly highlightLinks: boolean;
+  readonly pauseAnimations: boolean;
+  readonly readingGuide: boolean;
+  readonly vlibrasActive: boolean;
+}
+```
+
 ---
 
 ## ⚡ Getting Started & Local Execution
@@ -296,6 +328,9 @@ Access in your browser at `http://localhost:4200`.
 
 > [!IMPORTANT]
 > **Mobile Canvas Fallback**: The 3D WebGL Neural Canvas is intentionally hidden on viewports smaller than `768px` via SCSS media queries (`@include respond-to('md')`) to prevent battery drain and maintain 60 FPS scrolling on mobile devices.
+
+> [!NOTE]
+> **PWA Service Worker & Production Cache**: The application features an offline-ready Progressive Web App (PWA) architecture powered by `@angular/service-worker`. When new production releases are deployed on Vercel, returning visitors may initially load the previous app shell from browser cache storage. To immediately invalidate cache and load the latest release, perform a hard reload (**`Ctrl + F5`** or **`Ctrl + Shift + R`**) or open in an incognito window (**`Ctrl + Shift + N`**).
 
 > [!TIP]
 > **Test Execution Note**: Before running Playwright (`npm run test:e2e`) or Cypress (`npm run test:cypress`), ensure the dev server is active on `http://localhost:4200` or allow Playwright's automatic `webServer` runner to launch it.
@@ -391,6 +426,20 @@ Destaques de Engenharia:
   - **Foco & Navegação**: Pausa geral de animações (respeito a sensibilidade vestibular) e Guia de Leitura interativo com régua de foco acelerada por hardware via `requestAnimationFrame`.
 - **Gerenciamento Reativo & Persistência**: Arquitetura orientada a Angular Signals (`AccessibilityService`) com sincronização de atributos no elemento raiz `<html>` e persistência em `localStorage`.
 - **Internacionalização Completa**: Suporte trilíngue declarativo cobrindo Português, Inglês e Espanhol.
+
+#### ♿ Matriz de Recursos Assistivos & Conformidade WCAG
+
+| Recurso | Implementação Técnica | Público-Alvo / Necessidade Atendida | Critério WCAG 2.1 |
+| :--- | :--- | :--- | :--- |
+| **Tradutor de Libras (VLibras)** | Injeção sob demanda (`vlibras-plugin.js`), isolamento v7 em Shadow DOM (`#vlibras-access-wrapper`), sem abertura intrusiva | Pessoas surdas ou com deficiência auditiva usuárias de Libras | **1.2.6 Língua de Sinais** |
+| **Tamanho da Fonte (Font Scaling)** | Modificador raiz `data-a11y-font` escalonando tipografia (+15% / +30%) sem quebra de layout | Baixa visão, presbiopia e idosos | **1.4.4 Redimensionamento de Texto (Nível AA)** |
+| **Fonte Legível (OpenDyslexic)** | Injeção `@font-face` da **OpenDyslexic** com base pesada nas letras para prevenir rotação/inversão | Pessoas com dislexia, fadiga ocular e distúrbios de leitura | **W3C COGA Acessibilidade Cognitiva** |
+| **Espaçamento de Linhas e Texto** | Altura de linha (1.85), espaçamento de letras (0.08em) e palavras (0.14em) | Dislexia, retenção visual e leitura em blocos densos | **1.4.12 Espaçamento de Texto (Nível AA)** |
+| **Alto Contraste (High Contrast)** | Paleta WCAG AAA preto puro com amarelo elétrico (`#ffff00`) e realce ciano (`#00e5ff`) | Baixa visão severa, fotofobia e ambientes com forte reflexo | **1.4.6 Contraste Aprimorado (Nível AAA)** |
+| **Monocromático (Monochrome)** | Aceleração por GPU com `filter: grayscale(100%)` | Fotofobia, sensibilidade a cores, TDAH e redução de estímulos | **Conforto Visual & Foco** |
+| **Destacar Links (Highlight Links)** | Sublinhado persistente de 3px com cor de contraste `#ffff00` e deslocamento de 5px | Usuários daltônicos que não distinguem links apenas por cor | **1.4.1 Uso de Cores (Nível A)** |
+| **Pausar Animações (Pause Motion)** | Desativação total de durações CSS (`0.001ms`) e congelamento de partículas WebGL | Labirintite, distúrbios vestibulares, epilepsia e TDAH | **2.2.2 Pausar, Parar, Ocultar & 2.3.3 (Nível AAA)** |
+| **Guia de Leitura (Reading Guide)** | Régua de foco horizontal que acompanha a coordenada Y do mouse via `requestAnimationFrame` | Dificuldade de rastreamento visual, dislexia e perda de linha | **Tecnologia Assistiva Cognitiva** |
 
 ### 8. Suíte Tripla de Testes (Vitest + Playwright + Cypress)
 - **Testes Unitários & de Integração (Vitest)**: 74 testes automatizados validando componentes, diretivas e serviços.
@@ -528,6 +577,24 @@ export interface SeoConfig {
 }
 ```
 
+### Modelo de Estado de Acessibilidade (`src/app/core/accessibility/accessibility.model.ts`)
+
+```typescript
+export type FontScale = 'normal' | 'large' | 'x-large';
+
+export interface AccessibilityState {
+  readonly fontScale: FontScale;
+  readonly dyslexicFont: boolean;
+  readonly textSpacing: boolean;
+  readonly highContrast: boolean;
+  readonly monochrome: boolean;
+  readonly highlightLinks: boolean;
+  readonly pauseAnimations: boolean;
+  readonly readingGuide: boolean;
+  readonly vlibrasActive: boolean;
+}
+```
+
 ---
 
 ## ⚡ Como Executar o Projeto
@@ -570,6 +637,9 @@ Acesse no navegador pelo endereço `http://localhost:4200`.
 
 > [!IMPORTANT]
 > **Nota de Desempenho Mobile**: O canvas 3D WebGL Neural Canvas é ocultado automaticamente em telas menores que `768px` via CSS (`@include respond-to('md')`) para evitar consumo excessivo de bateria e manter a fluidez de 60 FPS em celulares.
+
+> [!NOTE]
+> **PWA Service Worker & Cache de Produção**: A aplicação opera com arquitetura Progressive Web App (PWA) offline-first via `@angular/service-worker`. Ao publicar novas versões na Vercel, navegadores de visitantes recorrentes podem inicialmente carregar a versão salva no cache local. Para forçar a busca imediata do novo bundle da Vercel, realize uma recarga forçada (**`Ctrl + F5`** ou **`Ctrl + Shift + R`**) ou abra em aba anônima (**`Ctrl + Shift + N`**).
 
 > [!TIP]
 > **Execução de Testes E2E**: Antes de rodar os comandos do Playwright (`npm run test:e2e`) ou Cypress (`npm run test:cypress`), certifique-se de que o servidor local está ativo em `http://localhost:4200` ou permita que a inicialização automática ocorra.
