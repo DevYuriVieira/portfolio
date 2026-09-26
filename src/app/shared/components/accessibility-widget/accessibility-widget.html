@@ -1,0 +1,181 @@
+<!-- Trigger Flutuante Único de Acessibilidade -->
+<aside class="a11y-trigger-wrapper" aria-label="Acessibilidade e Recursos Assistivos">
+  <button
+    type="button"
+    class="a11y-trigger-btn a11y-trigger-btn--panel"
+    (click)="togglePanel()"
+    [attr.aria-expanded]="isPanelOpen()"
+    [attr.aria-label]="i18nLabels().assistiveFeatures"
+    [title]="i18nLabels().assistiveFeatures"
+    [class.is-active]="isPanelOpen() || hasActive()"
+  >
+    @if (hasActive()) {
+      <span class="a11y-trigger-btn__badge" aria-hidden="true"></span>
+    }
+    <svg class="a11y-trigger-btn__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 7h-6v13h-2v-6h-2v6H9V9H3V7h18v2z"/>
+    </svg>
+    <span class="a11y-trigger-btn__label">{{ i18nLabels().assistiveFeatures }}</span>
+  </button>
+</aside>
+
+
+
+
+<!-- Painel de Acessibilidade (Dialog Modal / Drawer) -->
+@if (isPanelOpen()) {
+  <div class="a11y-overlay" (click)="closePanel()">
+    <div
+      class="a11y-panel"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="a11y-panel-title"
+      (click)="$event.stopPropagation()"
+    >
+      <header class="a11y-panel__header">
+        <div class="a11y-panel__title-wrap">
+          <svg class="a11y-panel__title-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 7h-6v13h-2v-6h-2v6H9V9H3V7h18v2z"/>
+          </svg>
+          <h2 id="a11y-panel-title" class="a11y-panel__title">{{ i18nLabels().title }}</h2>
+        </div>
+
+        <button
+          type="button"
+          class="a11y-panel__close-btn"
+          (click)="closePanel()"
+          [attr.aria-label]="i18nLabels().close"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </header>
+
+      <div class="a11y-panel__content">
+        @for (section of sections; track section.titleKey) {
+          <section class="a11y-section">
+            <h3 class="a11y-section__title">
+              @switch (section.titleKey) {
+                @case ('inclusion') { {{ i18nLabels().sections.inclusion }} }
+                @case ('typography') { {{ i18nLabels().sections.typography }} }
+                @case ('visual') { {{ i18nLabels().sections.visual }} }
+                @case ('navigation') { {{ i18nLabels().sections.navigation }} }
+              }
+            </h3>
+
+            <div class="a11y-grid">
+              @for (item of section.items; track item.id) {
+                <button
+                  type="button"
+                  class="a11y-card"
+                  [class.is-active]="isItemActive(item.id)"
+                  [attr.aria-pressed]="isItemActive(item.id)"
+                  (click)="handleItemClick(item.id)"
+                >
+                  <div class="a11y-card__header">
+                    <span class="a11y-card__icon-box">
+                      @switch (item.iconType) {
+                        @case ('hands') {
+                          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                          </svg>
+                        }
+                        @case ('font-size') {
+                          <span class="a11y-icon-text">A+</span>
+                        }
+                        @case ('font-style') {
+                          <span class="a11y-icon-box-styled">A</span>
+                        }
+                        @case ('spacing') {
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <line x1="21" y1="10" x2="7" y2="10"></line>
+                            <line x1="21" y1="6" x2="3" y2="6"></line>
+                            <line x1="21" y1="14" x2="3" y2="14"></line>
+                            <line x1="21" y1="18" x2="7" y2="18"></line>
+                          </svg>
+                        }
+                        @case ('contrast') {
+                          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M12 22c5.52 0 10-4.48 10-10S17.52 2 12 2 2 6.48 2 12s4.48 10 10 10zm0-18c4.41 0 8 3.59 8 8s-3.59 8-8 8V4z"/>
+                          </svg>
+                        }
+                        @case ('palette') {
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M12 2a10 10 0 0 0 0 20"></path>
+                          </svg>
+                        }
+                        @case ('link') {
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                          </svg>
+                        }
+                        @case ('pause') {
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="10" y1="15" x2="10" y2="9"></line>
+                            <line x1="14" y1="15" x2="14" y2="9"></line>
+                          </svg>
+                        }
+                        @case ('guide') {
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <rect x="2" y="7" width="20" height="10" rx="2"></rect>
+                            <line x1="2" y1="12" x2="22" y2="12"></line>
+                          </svg>
+                        }
+                      }
+                    </span>
+
+                    @if (item.badge) {
+                      <span class="a11y-card__badge">{{ item.badge }}</span>
+                    } @else if (getItemBadge(item.id)) {
+                      <span class="a11y-card__badge" [class.is-active]="isItemActive(item.id)">
+                        {{ getItemBadge(item.id) }}
+                      </span>
+                    }
+                  </div>
+
+                  <span class="a11y-card__label">
+                    @switch (item.labelKey) {
+                      @case ('vlibras') { {{ i18nLabels().items.vlibras }} }
+                      @case ('fontScale') { {{ i18nLabels().items.fontScale }} }
+                      @case ('dyslexicFont') { {{ i18nLabels().items.dyslexicFont }} }
+                      @case ('textSpacing') { {{ i18nLabels().items.textSpacing }} }
+                      @case ('highContrast') { {{ i18nLabels().items.highContrast }} }
+                      @case ('monochrome') { {{ i18nLabels().items.monochrome }} }
+                      @case ('highlightLinks') { {{ i18nLabels().items.highlightLinks }} }
+                      @case ('pauseAnimations') { {{ i18nLabels().items.pauseAnimations }} }
+                      @case ('readingGuide') { {{ i18nLabels().items.readingGuide }} }
+                    }
+                  </span>
+                </button>
+              }
+            </div>
+          </section>
+        }
+      </div>
+
+      <footer class="a11y-panel__footer">
+        <button
+          type="button"
+          class="a11y-reset-btn"
+          (click)="resetAll()"
+          [disabled]="!hasActive()"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="1 4 1 10 7 10"></polyline>
+            <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+          </svg>
+          <span>{{ i18nLabels().reset }}</span>
+        </button>
+      </footer>
+    </div>
+  </div>
+}
+
+@if (readingGuideActive()) {
+  <app-reading-guide />
+}
