@@ -26,19 +26,19 @@ const ABOUT_I18N: Record<SupportedLang, AboutI18n> = {
       'Decisões e práticas de engenharia que guiam o desenvolvimento no dia a dia.',
     blocks: [
       {
-        id: 'who-i-am',
-        label: 'Atuação Profissional',
-        text: 'Atuação como Desenvolvedor Full-Stack focado em Java (Spring Boot) e React, complementada por Python (Django), TypeScript e PostgreSQL, além da docência como Instrutor de Programação Back-End no SENAI/FAETEC. Aberto a posições remotas internacionais e nacionais, construindo desde interfaces responsivas e acessíveis até APIs REST resilientes e integrações com IA.',
+        id: 'how-i-build',
+        label: 'Diferencial Estratégico',
+        text: 'A formação em Engenharia de Produção muda a forma de resolver problemas: antes de escrever código, o foco é mapear o fluxo de trabalho real e identificar onde está o gargalo. Essa visão sistêmica — de quem aplicou Lean, PDCA e análise de causa raiz — elimina retrabalho e entrega software que resolve o problema certo.',
       },
       {
-        id: 'how-i-build',
-        label: 'Engenharia & Processos',
-        text: 'A bagagem em Engenharia de Produção traz um diferencial estratégico: enxergar o software como um sistema produtivo. Antes de definir código ou arquitetura, o foco é mapear os fluxos de trabalho e identificar a real necessidade do negócio.',
+        id: 'who-i-am',
+        label: 'Atuação Profissional',
+        text: 'Instrutor de Programação Back-End no SENAI/FAETEC, onde ensina Java com Spring Boot, PostgreSQL e APIs RESTful para turmas em formação técnica. Paralelamente, atua como Desenvolvedor Full-Stack em projetos com Java, React, Python (Django) e integrações com IA.',
       },
       {
         id: 'systemic-differentiator',
         label: 'Formação & Prática',
-        text: 'Base sólida consolidada em mais de 900 horas de imersão técnica (Residência Serratec e UECE) e pós-graduação em Engenharia de Software, priorizando código limpo, testes e tipagem estrita.',
+        text: 'Pós-graduado em Engenharia de Software com mais de 900 horas de residência técnica (Serratec e UECE), onde desenvolveu APIs REST de produção, aplicativos mobile com React Native e pipelines de integração com Spring Boot. Prioriza código limpo, tipagem estrita e testes automatizados.',
       },
     ],
     principles: [
@@ -91,19 +91,19 @@ const ABOUT_I18N: Record<SupportedLang, AboutI18n> = {
       'Engineering practices and principles that guide daily software development.',
     blocks: [
       {
-        id: 'who-i-am',
-        label: 'Professional Practice',
-        text: 'Full-Stack Software Engineer focused on Java (Spring Boot) and React, complemented by Python (Django), TypeScript, and PostgreSQL, alongside serving as a Back-End Programming Instructor at SENAI / FAETEC. Actively open to international remote engineering opportunities (Canada, Europe, USA, Brazil), delivering responsive accessible UIs, resilient REST APIs, and production AI integrations.',
+        id: 'how-i-build',
+        label: 'Strategic Differentiator',
+        text: 'A Production Engineering background changes how problems get solved: before writing code, the focus is on mapping real workflows and finding where the bottleneck actually is. That systems-thinking mindset — built on Lean, PDCA, and root cause analysis — cuts rework and delivers software that solves the right problem.',
       },
       {
-        id: 'how-i-build',
-        label: 'Engineering & Processes',
-        text: 'A background in Production Engineering adds a strategic advantage: viewing software as an operational production system. Before committing to code or architecture, the focus remains on mapping business workflows and identifying genuine root problems.',
+        id: 'who-i-am',
+        label: 'Professional Practice',
+        text: 'Back-End Programming Instructor at SENAI/FAETEC, teaching Java with Spring Boot, PostgreSQL, and RESTful APIs to technical training cohorts. Simultaneously works as a Full-Stack Developer on projects spanning Java, React, Python (Django), and AI integrations.',
       },
       {
         id: 'systemic-differentiator',
         label: 'Education & Practice',
-        text: 'Technical foundation built through 900+ hours of intensive residency programs (Serratec & UECE) alongside postgraduate software engineering studies, emphasizing clean code, automated testing, and strict typing.',
+        text: 'Postgraduate in Software Engineering with 900+ hours of technical residency (Serratec & UECE), where production-grade REST APIs, React Native mobile apps, and Spring Boot integration pipelines were built and delivered. Prioritizes clean code, strict typing, and automated testing.',
       },
     ],
     principles: [
@@ -156,19 +156,19 @@ const ABOUT_I18N: Record<SupportedLang, AboutI18n> = {
       'Decisiones y prácticas de ingeniería que guían el desarrollo en el día a día.',
     blocks: [
       {
-        id: 'who-i-am',
-        label: 'Práctica Profesional',
-        text: 'Desarrollador Full-Stack enfocado en el ecosistema Java (Spring Boot) y React, complementado por Python (Django), TypeScript y PostgreSQL, además de actuar como Instructor de Programación Back-End en SENAI / FAETEC. Abierto a posiciones remotas internacionales y locales, construyendo interfaces accesibles, APIs REST resilientes e integraciones con IA.',
+        id: 'how-i-build',
+        label: 'Diferencial Estratégico',
+        text: 'La formación en Ingeniería de Producción cambia la forma de resolver problemas: antes de escribir código, el foco está en mapear el flujo de trabajo real e identificar dónde está el cuello de botella. Esa visión sistémica — basada en Lean, PDCA y análisis de causa raíz — elimina retrabajo y entrega software que resuelve el problema correcto.',
       },
       {
-        id: 'how-i-build',
-        label: 'Ingeniería & Procesos',
-        text: 'La formación en Ingeniería de Producción aporta una ventaja estratégica: ver el software como un sistema productivo operacional. Antes de escribir código o definir la arquitectura, el enfoque se centra en mapear los flujos de trabajo del negocio e identificar los problemas reales.',
+        id: 'who-i-am',
+        label: 'Práctica Profesional',
+        text: 'Instructor de Programación Back-End en SENAI/FAETEC, donde enseña Java con Spring Boot, PostgreSQL y APIs RESTful a grupos de formación técnica. Paralelamente, trabaja como Desarrollador Full-Stack en proyectos con Java, React, Python (Django) e integraciones con IA.',
       },
       {
         id: 'systemic-differentiator',
         label: 'Formación & Práctica',
-        text: 'Base técnica consolidada a través de más de 900 horas de programas de residencia intensiva (Serratec & UECE) junto con estudios de posgrado en ingeniería de software, enfatizando código limpio, pruebas automatizadas y tipado estricto.',
+        text: 'Posgrado en Ingeniería de Software con más de 900 horas de residencia técnica (Serratec y UECE), donde se desarrollaron APIs REST de producción, aplicaciones mobile con React Native y pipelines de integración con Spring Boot. Prioriza código limpio, tipado estricto y pruebas automatizadas.',
       },
     ],
     principles: [

@@ -3,28 +3,28 @@ import { HeroSectionData } from './hero.model';
 
 const HERO_I18N: Record<SupportedLang, HeroSectionData> = {
   'pt-BR': {
-    eyebrow: 'Software Engineer · Full-Stack Development',
+    eyebrow: 'Back-End Engineer · Java & APIs · Docente SENAI/FAETEC',
     name: 'Yuri Vieira Teixeira',
     description:
-      'Full-Stack Software Engineer especializado no ecossistema Java (Spring Boot), Python (Django) e TypeScript (React / Angular). Foco em arquitetura de software escalável, desenvolvimento de APIs RESTful resilientes, integridade de dados e qualidade de código.',
+      'Engenheiro de Software Full-Stack com foco em Java Spring Boot e atuação como Instrutor no SENAI/FAETEC. Projeta APIs REST resilientes, integra pipelines de dados e constrói interfaces acessíveis — com a visão sistêmica de quem vem da Engenharia de Produção.',
     projectsCtaText: 'Ver projetos',
     cvCtaText: 'Download CV (PT)',
     cvUrl: 'assets/cv-yuri-vieira-teixeira-pt.pdf',
   },
   en: {
-    eyebrow: 'Software Engineer · Full-Stack Development',
+    eyebrow: 'Back-End Engineer · Java & APIs · SENAI/FAETEC Instructor',
     name: 'Yuri Vieira Teixeira',
     description:
-      'Full-Stack Software Engineer specializing in Java (Spring Boot), Python (Django), and TypeScript (React / Angular). Focused on scalable software architecture, resilient RESTful API development, data integrity, and code quality.',
+      'Full-Stack Software Engineer specializing in Java Spring Boot, currently serving as a Back-End Instructor at SENAI/FAETEC. Designs resilient REST APIs, integrates data pipelines, and delivers accessible interfaces — backed by a Production Engineering mindset.',
     projectsCtaText: 'View projects',
     cvCtaText: 'Download CV (EN)',
     cvUrl: 'assets/cv-yuri-vieira-teixeira-en.pdf',
   },
   es: {
-    eyebrow: 'Ingeniero de Software · Desarrollo Full-Stack',
+    eyebrow: 'Ingeniero Back-End · Java & APIs · Docente SENAI/FAETEC',
     name: 'Yuri Vieira Teixeira',
     description:
-      'Ingeniero de Software Full-Stack especializado en Java (Spring Boot), Python (Django) y TypeScript (React / Angular). Enfocado en arquitectura de software escalable, desarrollo de APIs RESTful resilientes, integridad de datos y calidad de código.',
+      'Ingeniero de Software Full-Stack especializado en Java Spring Boot, actualmente Instructor de Programación Back-End en SENAI/FAETEC. Diseña APIs REST resilientes, integra pipelines de datos y construye interfaces accesibles — con la visión sistémica de la Ingeniería de Producción.',
     projectsCtaText: 'Ver proyectos',
     cvCtaText: 'Download CV (EN)',
     cvUrl: 'assets/cv-yuri-vieira-teixeira-en.pdf',
