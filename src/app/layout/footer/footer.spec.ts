@@ -27,4 +27,22 @@ describe('FooterComponent', () => {
     expect(component.name).toBe('Yuri Vieira Teixeira');
     expect(component.labels().positioning).toContain('Software Engineer');
   });
+
+  it('should expose engineering quality badges and GitHub repository link', () => {
+    const labels = component.labels();
+    expect(labels.badgeTestsMetric).toContain('80');
+    expect(labels.badgeA11yMetric).toContain('WCAG 2.1 AAA');
+    expect(labels.badgePwaMetric).toContain('PWA');
+    expect(labels.badgeSignalsMetric).toContain('Angular 22');
+    expect(labels.viewSourceText).toBeTruthy();
+
+    const compiled = fixture.nativeElement as HTMLElement;
+    const repoLink = compiled.querySelector('.footer__repo-link');
+    expect(repoLink).toBeTruthy();
+    expect(repoLink?.getAttribute('href')).toBe('https://github.com/DevYuriVieira/portfolio');
+    expect(repoLink?.getAttribute('target')).toBe('_blank');
+
+    const badgeCards = compiled.querySelectorAll('.footer__badge-card');
+    expect(badgeCards.length).toBe(4);
+  });
 });
