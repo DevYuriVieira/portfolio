@@ -1,0 +1,167 @@
+<div class="arch-modal-backdrop" (click)="onBackdropClick($event)" role="dialog" aria-modal="true"
+  [attr.aria-label]="labels().modalTitle">
+  <div class="arch-modal">
+    <header class="arch-modal__header">
+      <div class="arch-modal__meta">
+        <span class="arch-modal__eyebrow">{{ labels().modalEyebrow }}</span>
+        <span class="arch-modal__badge">NDA SANITIZED 🔒</span>
+      </div>
+
+      <button type="button" class="arch-modal__close-btn" (click)="closeModal()"
+        [attr.aria-label]="labels().modalCloseAriaLabel">
+        ✕
+      </button>
+    </header>
+
+    <div class="arch-modal__title-group">
+      <app-heading level="h3" size="h2" class="arch-modal__title">
+        {{ labels().modalTitle }}
+      </app-heading>
+
+      <div class="arch-modal__disclaimer">
+        <span class="arch-modal__disclaimer-icon" aria-hidden="true">🛡️</span>
+        <app-text variant="caption" element="p" class="arch-modal__disclaimer-text">
+          {{ labels().ndaDisclaimer }}
+        </app-text>
+      </div>
+    </div>
+
+    <div class="arch-modal__diagram-section">
+      <span class="arch-modal__section-heading">{{ labels().flowTitle }}</span>
+
+      <div class="arch-flow-container">
+        <div class="arch-flow">
+          <div class="arch-flow__nodes">
+            <div class="arch-node arch-node--amber">
+              <div class="arch-node__header">
+                <span class="arch-node__dot" aria-hidden="true"></span>
+                <span class="arch-node__step">{{ labels().step1Title }}</span>
+              </div>
+              <h4 class="arch-node__title">{{ labels().step1Subtitle }}</h4>
+              <div class="arch-node__divider"></div>
+              <ul class="arch-node__list">
+                <li class="arch-node__item"><span class="arch-node__bullet">▪</span><span>{{ labels().step1Desc1 }}</span></li>
+                <li class="arch-node__item"><span class="arch-node__bullet">▪</span><span>{{ labels().step1Desc2 }}</span></li>
+                <li class="arch-node__item"><span class="arch-node__bullet">▪</span><span>{{ labels().step1Desc3 }}</span></li>
+              </ul>
+              <div class="arch-node__badge">INGESTION LAYER</div>
+            </div>
+
+            <div class="arch-connector" aria-hidden="true">
+              <svg viewBox="0 0 16 16" fill="currentColor" class="arch-connector__icon">
+                <path d="M6 3l5 5-5 5V3z"/>
+              </svg>
+            </div>
+
+            <div class="arch-node arch-node--cyan">
+              <div class="arch-node__header">
+                <span class="arch-node__dot" aria-hidden="true"></span>
+                <span class="arch-node__step">{{ labels().step2Title }}</span>
+              </div>
+              <h4 class="arch-node__title">{{ labels().step2Subtitle }}</h4>
+              <div class="arch-node__divider"></div>
+              <ul class="arch-node__list">
+                <li class="arch-node__item"><span class="arch-node__bullet">▪</span><span>{{ labels().step2Desc1 }}</span></li>
+                <li class="arch-node__item"><span class="arch-node__bullet">▪</span><span>{{ labels().step2Desc2 }}</span></li>
+                <li class="arch-node__item"><span class="arch-node__bullet">▪</span><span>{{ labels().step2Desc3 }}</span></li>
+              </ul>
+              <div class="arch-node__badge">n8n / OCR ENGINE</div>
+            </div>
+
+            <div class="arch-connector" aria-hidden="true">
+              <svg viewBox="0 0 16 16" fill="currentColor" class="arch-connector__icon">
+                <path d="M6 3l5 5-5 5V3z"/>
+              </svg>
+            </div>
+
+            <div class="arch-node arch-node--blue">
+              <div class="arch-node__header">
+                <span class="arch-node__dot" aria-hidden="true"></span>
+                <span class="arch-node__step">{{ labels().step3Title }}</span>
+              </div>
+              <h4 class="arch-node__title">{{ labels().step3Subtitle }}</h4>
+              <div class="arch-node__divider"></div>
+              <ul class="arch-node__list">
+                <li class="arch-node__item"><span class="arch-node__bullet">▪</span><span>{{ labels().step3Desc1 }}</span></li>
+                <li class="arch-node__item"><span class="arch-node__bullet">▪</span><span>{{ labels().step3Desc2 }}</span></li>
+                <li class="arch-node__item"><span class="arch-node__bullet">▪</span><span>{{ labels().step3Desc3 }}</span></li>
+              </ul>
+              <div class="arch-node__badge">REACT 18 UI</div>
+            </div>
+
+            <div class="arch-connector" aria-hidden="true">
+              <svg viewBox="0 0 16 16" fill="currentColor" class="arch-connector__icon">
+                <path d="M6 3l5 5-5 5V3z"/>
+              </svg>
+            </div>
+
+            <div class="arch-node arch-node--purple">
+              <div class="arch-node__header">
+                <span class="arch-node__dot" aria-hidden="true"></span>
+                <span class="arch-node__step">{{ labels().step4Title }}</span>
+              </div>
+              <h4 class="arch-node__title">{{ labels().step4Subtitle }}</h4>
+              <div class="arch-node__divider"></div>
+              <ul class="arch-node__list">
+                <li class="arch-node__item"><span class="arch-node__bullet">▪</span><span>{{ labels().step4Desc1 }}</span></li>
+                <li class="arch-node__item"><span class="arch-node__bullet">▪</span><span>{{ labels().step4Desc2 }}</span></li>
+                <li class="arch-node__item"><span class="arch-node__bullet">▪</span><span>{{ labels().step4Desc3 }}</span></li>
+              </ul>
+              <div class="arch-node__badge">RAG & RULES</div>
+            </div>
+
+            <div class="arch-connector" aria-hidden="true">
+              <svg viewBox="0 0 16 16" fill="currentColor" class="arch-connector__icon">
+                <path d="M6 3l5 5-5 5V3z"/>
+              </svg>
+            </div>
+
+            <div class="arch-node arch-node--green">
+              <div class="arch-node__header">
+                <span class="arch-node__dot" aria-hidden="true"></span>
+                <span class="arch-node__step">{{ labels().step5Title }}</span>
+              </div>
+              <h4 class="arch-node__title">{{ labels().step5Subtitle }}</h4>
+              <div class="arch-node__divider"></div>
+              <ul class="arch-node__list">
+                <li class="arch-node__item"><span class="arch-node__bullet">▪</span><span>{{ labels().step5Desc1 }}</span></li>
+                <li class="arch-node__item"><span class="arch-node__bullet">▪</span><span>{{ labels().step5Desc2 }}</span></li>
+                <li class="arch-node__item"><span class="arch-node__bullet">▪</span><span>{{ labels().step5Desc3 }}</span></li>
+              </ul>
+              <div class="arch-node__badge">SPRING / POSTGRES</div>
+            </div>
+          </div>
+
+          <div class="arch-flow__governance">
+            <span class="arch-flow__governance-dot" aria-hidden="true"></span>
+            <span class="arch-flow__governance-text">{{ labels().securityBanner }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="arch-modal__pillars-section">
+      <span class="arch-modal__section-heading">{{ labels().pillarsTitle }}</span>
+
+      <div class="arch-modal__pillars-grid">
+        @for (pillar of labels().pillars; track pillar.title) {
+        <div class="arch-modal__pillar-card">
+          <div class="arch-modal__pillar-header">
+            <span class="arch-modal__pillar-bullet" aria-hidden="true">◆</span>
+            <span class="arch-modal__pillar-title">{{ pillar.title }}</span>
+          </div>
+          <app-text variant="caption" element="p" class="arch-modal__pillar-desc">
+            {{ pillar.description }}
+          </app-text>
+        </div>
+        }
+      </div>
+    </div>
+
+    <footer class="arch-modal__footer">
+      <app-button variant="secondary" (click)="closeModal()" [ariaLabel]="labels().closeAriaLabel">
+        {{ labels().closeBtn }}
+      </app-button>
+    </footer>
+  </div>
+</div>
