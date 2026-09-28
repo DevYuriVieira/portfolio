@@ -121,6 +121,20 @@
               <span class="projects__confidential-text">
                 {{ labels().ndaFooter }}
               </span>
+
+              <button type="button"
+                class="projects__arch-btn"
+                (click)="openArchitectureModal()"
+                [attr.aria-label]="labels().viewArchitectureAria">
+                <svg class="projects__arch-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="3" width="7" height="7" rx="1" />
+                  <rect x="14" y="3" width="7" height="7" rx="1" />
+                  <rect x="14" y="14" width="7" height="7" rx="1" />
+                  <rect x="3" y="14" width="7" height="7" rx="1" />
+                  <path d="M10 6.5h4M6.5 10v4M14 17.5H10M17.5 10v4" />
+                </svg>
+                <span>{{ labels().viewArchitecture }}</span>
+              </button>
             </div>
             } @else {
             @if (project.links.github) {
@@ -154,4 +168,8 @@
       </div>
     </div>
   </app-container>
+
+  @if (architectureModalOpen()) {
+  <app-architecture-modal (close)="closeArchitectureModal()" />
+  }
 </app-section>

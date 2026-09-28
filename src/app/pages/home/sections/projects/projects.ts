@@ -1,11 +1,12 @@
 import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { I18nService } from '@core';
 import { Button, Container, Heading, Link, Section, Text } from '@ui';
+import { ArchitectureModal } from './components/architecture-modal/architecture-modal';
 import { getProjectsData } from './projects.data';
 
 @Component({
   selector: 'app-projects',
-  imports: [Section, Container, Heading, Text, Link, Button],
+  imports: [Section, Container, Heading, Text, Link, Button, ArchitectureModal],
   templateUrl: './projects.html',
   styleUrl: './projects.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -15,6 +16,7 @@ export class ProjectsSection {
 
   readonly projects = computed(() => getProjectsData(this.i18n.currentLang()));
   readonly displayLimit = signal<number>(5);
+  readonly architectureModalOpen = signal<boolean>(false);
 
   readonly showAll = computed(() => this.displayLimit() >= this.projects().length);
 
@@ -76,13 +78,27 @@ export class ProjectsSection {
         'Residência Serratec TIC/Software • Código fonte restrito por NDA',
         'Residencia Serratec TIC/Software • Código fuente restringido por NDA',
       ),
+      viewArchitecture: t('Architecture Diagram', 'Diagrama de Arquitetura', 'Diagrama de Arquitectura'),
+      viewArchitectureAria: t(
+        'Open architecture diagram for ZEISS project',
+        'Abrir diagrama de arquitetura do projeto ZEISS',
+        'Abrir diagrama de arquitectura del proyecto ZEISS',
+      ),
       techAriaLabel: t('Technologies used in the project', 'Tecnologias utilizadas no projeto', 'Tecnologías utilizadas en el proyecto'),
-      collapseLabel: t('Collapse projects', 'Recolher lista de projetos', 'Contraer lista de proyectos'),
+      collapseLabel: t('Collapse projects', 'Recolher lista de projetos', 'Contraer lista de projetos'),
       expandLabel: (_count?: number) => expandLabel,
       collapseText: t('Collapse projects', 'Recolher projetos', 'Contraer proyectos'),
       expandText: (_count?: number) => expandText,
     };
   });
+
+  openArchitectureModal(): void {
+    this.architectureModalOpen.set(true);
+  }
+
+  closeArchitectureModal(): void {
+    this.architectureModalOpen.set(false);
+  }
 
   toggleShowAll(): void {
     const currentLimit = this.displayLimit();
