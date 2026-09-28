@@ -28,7 +28,7 @@ const ABOUT_I18N: Record<SupportedLang, AboutI18n> = {
       {
         id: 'how-i-build',
         label: 'Diferencial Estratégico',
-        text: 'A formação em Engenharia de Produção muda a forma de resolver problemas: antes de escrever código, o foco é mapear o fluxo de trabalho real e identificar onde está o gargalo. Essa visão sistêmica — de quem aplicou Lean, PDCA e análise de causa raiz — elimina retrabalho e entrega software que resolve o problema certo.',
+        text: 'A formação em Engenharia de Produção muda a forma de resolver problemas: antes de escrever código, o foco é mapear o fluxo de trabalho real e identificar onde está o gargalo. Essa visão sistêmica, construída com Lean, PDCA e análise de causa raiz, elimina retrabalho e entrega software que resolve o problema certo.',
       },
       {
         id: 'who-i-am',
@@ -93,7 +93,7 @@ const ABOUT_I18N: Record<SupportedLang, AboutI18n> = {
       {
         id: 'how-i-build',
         label: 'Strategic Differentiator',
-        text: 'A Production Engineering background changes how problems get solved: before writing code, the focus is on mapping real workflows and finding where the bottleneck actually is. That systems-thinking mindset — built on Lean, PDCA, and root cause analysis — cuts rework and delivers software that solves the right problem.',
+        text: 'A Production Engineering background changes how problems get solved: before writing code, the focus is on mapping real workflows and finding where the bottleneck actually is. That systems-thinking mindset, built on Lean, PDCA, and root cause analysis, cuts rework and delivers software that solves the right problem.',
       },
       {
         id: 'who-i-am',
@@ -158,7 +158,7 @@ const ABOUT_I18N: Record<SupportedLang, AboutI18n> = {
       {
         id: 'how-i-build',
         label: 'Diferencial Estratégico',
-        text: 'La formación en Ingeniería de Producción cambia la forma de resolver problemas: antes de escribir código, el foco está en mapear el flujo de trabajo real e identificar dónde está el cuello de botella. Esa visión sistémica — basada en Lean, PDCA y análisis de causa raíz — elimina retrabajo y entrega software que resuelve el problema correcto.',
+        text: 'La formación en Ingeniería de Producción cambia la forma de resolver problemas: antes de escribir código, el foco está en mapear el flujo de trabajo real e identificar dónde está el cuello de botella. Esa visión sistémica, basada en Lean, PDCA y análisis de causa raíz, elimina retrabajo y entrega software que resuelve el problema correcto.',
       },
       {
         id: 'who-i-am',
