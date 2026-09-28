@@ -27,8 +27,6 @@ describe('RevealDirective', () => {
   });
 
   it('should fall back to immediate reveal when IntersectionObserver is unavailable', () => {
-    // jsdom does not have IntersectionObserver, so the directive should
-    // gracefully fall back to adding is-revealed immediately
     const el = fixture.nativeElement.querySelector('[appReveal]');
     expect(el.classList.contains('is-revealed')).toBe(true);
   });

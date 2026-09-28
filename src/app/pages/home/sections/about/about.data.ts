@@ -1,7 +1,7 @@
 import { SupportedLang } from '@core';
 import { AboutBlock, EngineeringPrinciple } from './about.model';
 
-/** Structured i18n content for the About section - Balanced, Non-repetitive Copy */
+
 
 interface AboutI18n {
   eyebrow: string;
@@ -211,7 +211,6 @@ const ABOUT_I18N: Record<SupportedLang, AboutI18n> = {
     ],
   },
 };
-// Backward-compatible exports
 export const ABOUT_PARAGRAPHS: readonly string[] = ABOUT_I18N['pt-BR'].blocks.map(
   (b) => b.text
 ) as readonly string[];

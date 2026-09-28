@@ -13,7 +13,6 @@
     gap: var(--space-16);
   }
 
-  // Header
   &__header {
     display: flex;
     flex-direction: column;
@@ -107,7 +106,6 @@
     }
   }
 
-  // Floating Glassmorphic Zoom Toolbar
   &__zoom-toolbar {
     position: absolute;
     top: var(--space-4);
@@ -230,7 +228,6 @@
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
   }
 
-  // Active Theory Feature Grid
   &__features {
     display: grid;
     grid-template-columns: 1fr;
@@ -328,7 +325,6 @@
     letter-spacing: 0.05em;
   }
 
-  // Closing
   &__closing {
     max-width: 680px;
 

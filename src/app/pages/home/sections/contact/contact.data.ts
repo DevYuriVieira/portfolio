@@ -85,7 +85,6 @@ const CONTACT_I18N: Record<SupportedLang, ContactI18n> = {
   },
 };
 
-// Backward-compatible export
 export const CONTACT_SECTION_DATA: ContactSectionData = CONTACT_I18N['pt-BR'];
 
 export function getContactData(lang: SupportedLang): ContactI18n {

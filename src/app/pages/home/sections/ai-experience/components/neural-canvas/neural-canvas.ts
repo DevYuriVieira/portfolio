@@ -142,17 +142,14 @@ export class NeuralCanvas implements OnInit, OnDestroy {
   private startTime = 0;
   private isVisible = true;
 
-  // Mouse & Raycasting
   private mouse = { x: 0, y: 0 };
   private mouseVec2 = new THREE.Vector2();
   private raycaster = new THREE.Raycaster();
   private hoveredNodeIndex = -1;
 
-  // Conceptual System State Text
   public currentStateText = 'ESTADO: ESTÁVEL';
   public currentInvariantText = 'INVARIANTE: PRESERVADA';
 
-  // Controlled 180° Orbit Drag State
   private isDragging = false;
   private activePointerId: number | null = null;
   private dragDistance = 0;
@@ -161,23 +158,19 @@ export class NeuralCanvas implements OnInit, OnDestroy {
   private targetRotation = { x: 0, y: 0 };
   private currentRotation = { x: 0, y: 0 };
 
-  // 180° Angle Boundaries
   private readonly MAX_ORBIT_Y = 1.15;
   private readonly MAX_ORBIT_X = 0.45;
 
-  // Camera Zoom State
   private targetZoomZ = 8.5;
   private readonly minZoomZ = 3.8;
   private readonly maxZoomZ = 14.0;
 
-  // Scene Components
   private mainGroup: THREE.Group | null = null;
   private causalNodes: CausalNode[] = [];
   private connections: ConnectionLine[] = [];
   private dataPackets: DataPacket[] = [];
   private gridMesh: THREE.LineSegments | null = null;
 
-  // High Contrast Colors & Glow Colors
   private readonly COLOR_CHASSIS_CORE = new THREE.Color(0x282c3d);
   private readonly COLOR_CHASSIS_SUPPORT = new THREE.Color(0x1e2230);
   private readonly COLOR_BLUE_ACCENT = new THREE.Color(0x3b82f6);
@@ -214,7 +207,6 @@ export class NeuralCanvas implements OnInit, OnDestroy {
           this.animate();
         }
       } catch {
-        // WebGL Fallback
       }
     });
   }
@@ -272,7 +264,6 @@ export class NeuralCanvas implements OnInit, OnDestroy {
     this.scene = new THREE.Scene();
     this.scene.background = new THREE.Color(0x0d0f17);
 
-    // Camera Setup
     this.camera = new THREE.PerspectiveCamera(28, width / height, 0.1, 100);
     this.camera.position.set(0, 6.2, 8.5);
     this.camera.lookAt(0, -0.2, 0);
@@ -291,7 +282,6 @@ export class NeuralCanvas implements OnInit, OnDestroy {
     this.mainGroup = new THREE.Group();
     this.scene.add(this.mainGroup);
 
-    // Studio Lighting
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.55);
     this.scene.add(ambientLight);
 
@@ -777,7 +767,6 @@ export class NeuralCanvas implements OnInit, OnDestroy {
     try {
       canvas.setPointerCapture(e.pointerId);
     } catch {
-      // Fallback
     }
 
     this.updateMouseCoords(e);
@@ -810,7 +799,6 @@ export class NeuralCanvas implements OnInit, OnDestroy {
           canvas.releasePointerCapture(this.activePointerId);
         }
       } catch {
-        // Fallback
       }
     }
     this.isDragging = false;
@@ -870,7 +858,6 @@ export class NeuralCanvas implements OnInit, OnDestroy {
     }
   }
 
-  // Zoom Control API
   public zoomIn(): void {
     this.targetZoomZ = Math.max(this.minZoomZ, this.targetZoomZ - 1.5);
     this.cdr.markForCheck();

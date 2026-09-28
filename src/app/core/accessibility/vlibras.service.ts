@@ -44,7 +44,6 @@ export class VlibrasService {
 
     document.documentElement.setAttribute('data-vlibras-active', 'true');
 
-    // 1. Reexibir apenas o botão/ícone de acesso moderno (v7 Shadow DOM)
     const accessWrapper = document.getElementById('vlibras-access-wrapper');
     if (accessWrapper) {
       accessWrapper.style.removeProperty('display');
@@ -54,7 +53,6 @@ export class VlibrasService {
       accessWrapper.style.removeProperty('transform');
     }
 
-    // 2. Elementos legados (v6) se existirem - apenas o botão de acesso
     const legacyElements = document.querySelectorAll<HTMLElement>(
       '[vw], [vw-access-button]'
     );
@@ -66,7 +64,6 @@ export class VlibrasService {
       el.style.removeProperty('transform');
     });
 
-    // 3. Garantir que o app do avatar permaneça FECHADO até que o usuário clique no ícone do VLibras
     const appRoot = document.getElementById('vlibras-app-root');
     if (appRoot) {
       appRoot.dataset['active'] = 'false';
@@ -80,7 +77,6 @@ export class VlibrasService {
 
     document.documentElement.setAttribute('data-vlibras-active', 'false');
 
-    // 1. Esconder wrapper moderno do botão de acesso (v7 Shadow DOM)
     const accessWrapper = document.getElementById('vlibras-access-wrapper');
     if (accessWrapper) {
       accessWrapper.style.setProperty('display', 'none', 'important');
@@ -89,7 +85,6 @@ export class VlibrasService {
       accessWrapper.style.setProperty('pointer-events', 'none', 'important');
     }
 
-    // 2. Fechar e esconder app root do avatar VLibras (v7)
     const appRoot = document.getElementById('vlibras-app-root');
     if (appRoot) {
       appRoot.style.setProperty('display', 'none', 'important');
@@ -97,13 +92,11 @@ export class VlibrasService {
       appRoot.dataset['active'] = 'false';
     }
 
-    // 3. Fechar widget legado caso o botão de fechar exista
     const legacyCloseBtn = document.querySelector<HTMLElement>(
       '[vw] [vw-close], [vw] .vp-close, .vp-box .vp-close, .vw-btn-close'
     );
     legacyCloseBtn?.click();
 
-    // 4. Esconder elementos legados (v6)
     const legacyElements = document.querySelectorAll<HTMLElement>(
       '[vw], [vw-access-button], [vw-plugin-wrapper], .vw-plugin-top-wrapper, .vp-box, .vw-links, [class*="vw-"], [class*="vp-"]'
     );
@@ -114,11 +107,9 @@ export class VlibrasService {
       el.style.setProperty('pointer-events', 'none', 'important');
     });
 
-    // 5. Limpar storage interno do plugin para não auto-reabrir
     try {
       localStorage.removeItem('@vlibras-widget');
     } catch {
-      // Ignora erro em ambientes restritos
     }
 
     this.isActive.set(false);
@@ -142,7 +133,6 @@ export class VlibrasService {
         try {
           localStorage.removeItem('@vlibras-widget');
         } catch {
-          // Ignora erro em ambientes restritos
         }
 
         new window.VLibras.Widget(VLIBRAS_APP_URL);
@@ -158,7 +148,6 @@ export class VlibrasService {
 
     document.body.appendChild(script);
   }
-
 
   private injectVlibrasDom(): void {
     if (document.querySelector('[vw]')) {

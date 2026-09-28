@@ -1,7 +1,6 @@
 @use 'abstracts' as *;
 
 :root {
-  // Colors
   --bg-primary: #{$color-bg-primary};
   --bg-surface: #{$color-bg-surface};
   --bg-surface-elevated: #{$color-bg-surface-elevated};
@@ -14,7 +13,6 @@
   --border-color: #{$color-border};
   --border-subtle: #{$color-border-subtle};
 
-  // Typography
   --font-sans: #{$font-sans};
   --font-mono: #{$font-mono};
   --text-xs: 0.75rem;
@@ -33,7 +31,6 @@
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
 
-  // Spacing
   --space-1: #{$space-1};
   --space-2: #{$space-2};
   --space-3: #{$space-3};
@@ -48,26 +45,22 @@
   --space-32: #{$space-32};
   --space-40: #{$space-40};
 
-  // Border Radius
   --radius-sm: #{$radius-sm};
   --radius-md: #{$radius-md};
   --radius-lg: #{$radius-lg};
   --radius-xl: #{$radius-xl};
   --radius-full: #{$radius-full};
 
-  // Transitions
   --transition-fast: #{$transition-fast};
   --transition-base: #{$transition-base};
   --transition-slow: #{$transition-slow};
 
-  // Container Widths
   --container-sm: #{$container-sm};
   --container-md: #{$container-md};
   --container-lg: #{$container-lg};
   --container-xl: #{$container-xl};
   --container-max: #{$container-max};
 
-  // Motion
   --duration-fast: #{$duration-fast};
   --duration-normal: #{$duration-normal};
   --duration-slow: #{$duration-slow};
@@ -79,7 +72,6 @@
   --ease-in-out: #{$ease-in-out};
   --ease-entrance: #{$ease-entrance};
 
-  // Visual FX
   --glow-primary: #{$color-glow-primary};
   --glow-subtle: #{$color-glow-subtle};
   --grid-line: #{$color-grid-line};

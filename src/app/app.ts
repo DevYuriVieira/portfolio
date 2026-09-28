@@ -9,6 +9,5 @@ import { PwaUpdateService } from '@core';
   styleUrl: './app.scss',
 })
 export class App {
-  // Eagerly instantiate PWA automated update service
   private readonly pwaUpdateService = inject(PwaUpdateService);
 }

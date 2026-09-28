@@ -13,4 +13,3 @@ import { Header } from '../header';
 })
 export class MainLayout {}
 
-

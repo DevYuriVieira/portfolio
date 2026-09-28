@@ -2,22 +2,19 @@
   <app-container size="xl">
     <div class="hero">
       <div class="hero__content">
-        <!-- Eyebrow -->
+        
         <app-text variant="caption" element="span" class="hero__eyebrow">
           {{ data().eyebrow }}
         </app-text>
 
-        <!-- Name -->
         <app-heading level="h1" size="display" class="hero__name">
           {{ data().name }}
         </app-heading>
 
-        <!-- Description -->
         <app-text variant="lead" class="hero__description">
           {{ data().description }}
         </app-text>
 
-        <!-- Main Actions -->
         <div class="hero__actions">
           <app-button variant="primary" [ariaLabel]="data().projectsCtaText" (click)="scrollToProjects()">
             {{ data().projectsCtaText }}
@@ -30,12 +27,10 @@
         </div>
       </div>
 
-      <!-- Interactive 3D Particle Wave Mesh -->
       <div class="hero__visual" aria-hidden="true">
         <app-hero-particles-visual />
       </div>
 
-      <!-- Scroll Indicator -->
       <app-scroll-indicator class="hero__scroll" />
     </div>
   </app-container>

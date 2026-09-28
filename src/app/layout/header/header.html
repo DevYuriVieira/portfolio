@@ -1,13 +1,13 @@
 <header class="header">
   <app-container size="xl">
     <div class="header__inner">
-      <!-- Brand Logo -->
+      
       <a href="#top" class="header__brand" [attr.aria-label]="nav.brandAriaLabel"
         (click)="navigateToSection($event, 'top')">
         <span class="header__brand-name">Yuri</span>
       </a>
 
-      <!-- Desktop Navigation -->
+      
       <nav class="header__nav" [attr.aria-label]="nav.navAriaLabel">
         <ul class="header__nav-list">
           <li><a href="#about" class="header__nav-link" (click)="navigateToSection($event, 'about')">{{ nav.about }}</a></li>
@@ -23,9 +23,9 @@
         </ul>
       </nav>
 
-      <!-- Header Actions -->
+      
       <div class="header__actions">
-        <!-- Language Switcher with Flags -->
+        
         <div class="header__lang-switcher" aria-label="Language selector">
           <button type="button"
             class="header__lang-btn"
@@ -84,7 +84,7 @@
           </button>
         </div>
 
-        <!-- GitHub Profile Direct Link -->
+        
         <a href="https://github.com/DevYuriVieira"
           target="_blank"
           rel="noopener noreferrer"
@@ -97,7 +97,7 @@
           </svg>
         </a>
 
-        <!-- Mobile Menu Toggle Button -->
+        
         <button type="button" class="header__menu-btn" [attr.aria-expanded]="mobileMenuOpen()" aria-haspopup="dialog"
           aria-controls="mobile-menu" [attr.aria-label]="nav.menuBtnAriaLabel" (click)="toggleMobileMenu()">
           <svg class="header__menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
@@ -113,7 +113,7 @@
     </div>
   </app-container>
 
-  <!-- Mobile Navigation Drawer Overlay -->
+  
   @if (mobileMenuOpen()) {
   <div id="mobile-menu" class="header__mobile-overlay" role="dialog" aria-modal="true"
     [attr.aria-label]="nav.mobileMenuAriaLabel">

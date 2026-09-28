@@ -49,11 +49,9 @@ describe('SkillsSection', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     const skillItems = compiled.querySelectorAll('.skills__item');
 
-    // Calculate total expected skill items across all categories
     const totalSkills = SKILLS_CATEGORIES.reduce((acc, cat) => acc + cat.skills.length, 0);
     expect(skillItems.length).toBe(totalSkills);
 
-    // Verify progress bars or star ratings are absent
     expect(compiled.querySelector('.skills__progress-bar')).toBeNull();
     expect(compiled.querySelector('.skills__rating')).toBeNull();
   });

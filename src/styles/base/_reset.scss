@@ -1,6 +1,3 @@
-// =============================================================================
-// Reset: Base Normalization & Accessibility Defaults
-// =============================================================================
 
 *,
 *::before,
@@ -64,19 +61,16 @@ a {
   text-decoration: none;
 }
 
-// Accessible Focus States
 :focus-visible {
   outline: 2px solid var(--accent-primary);
   outline-offset: 2px;
 }
 
-// Text Selection Styling
 ::selection {
   background-color: var(--accent-subtle);
   color: var(--text-primary);
 }
 
-// Reduced Motion Accessibility
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -88,7 +82,6 @@ a {
   }
 }
 
-// Skip to Content Link (Accessibility)
 .skip-link {
   position: absolute;
   top: -100px;

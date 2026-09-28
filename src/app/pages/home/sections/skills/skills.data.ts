@@ -239,7 +239,6 @@ const SKILLS_I18N: Record<SupportedLang, SkillsI18n> = {
     ],
   },
 };
-// Backward-compatible exports
 export const SKILLS_SECTION_DATA: SkillsSectionData = SKILLS_I18N['pt-BR'].sectionData;
 export const SKILLS_CATEGORIES: readonly SkillCategory[] = SKILLS_I18N['pt-BR'].categories;
 

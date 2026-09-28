@@ -25,4 +25,3 @@ export interface Project {
   readonly links: ProjectLinks;
 }
 
-

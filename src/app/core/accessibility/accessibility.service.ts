@@ -145,7 +145,6 @@ export class AccessibilityService {
     }
   }
 
-
   private persistState(): void {
     if (!isPlatformBrowser(this.platformId)) {
       return;

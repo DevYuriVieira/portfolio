@@ -32,7 +32,6 @@
     text-decoration: none;
   }
 
-  // Stronger Brand Logo Identity (Geist Bold, Prominent Visual Anchor)
   &__brand-name {
     font-family: var(--font-sans);
     font-size: var(--text-2xl);
@@ -47,7 +46,6 @@
     }
   }
 
-  // Desktop Navigation
   &__nav {
     display: none;
 
@@ -65,7 +63,6 @@
       padding: 0;
     }
 
-    // Refined Hover & Active States (Subtle pill glow, crisp focus state)
     &-link {
       display: inline-flex;
       align-items: center;

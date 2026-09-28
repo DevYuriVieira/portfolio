@@ -1,10 +1,4 @@
-// =============================================================================
-// Mixins: Reusable SCSS Utilities
-// =============================================================================
-// Pure mixins only. This file produces no CSS output on its own.
-// =============================================================================
 
-// Breakpoints map
 $breakpoints: (
   'sm': 640px,
   'md': 768px,
@@ -13,7 +7,6 @@ $breakpoints: (
   '2xl': 1400px,
 );
 
-// Breakpoint helper
 @mixin respond-to($breakpoint) {
   $raw-breakpoint: map-get($breakpoints, $breakpoint);
 
@@ -26,7 +19,6 @@ $breakpoints: (
   }
 }
 
-// Visually hidden: accessible element hiding
 @mixin visually-hidden {
   position: absolute !important;
   width: 1px !important;

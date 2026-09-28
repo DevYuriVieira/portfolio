@@ -1,6 +1,3 @@
-// =============================================================================
-// Accessibility (A11y) Global Modifiers
-// =============================================================================
 
 html[data-a11y-font='large'] {
   font-size: 115% !important;
@@ -84,7 +81,6 @@ html.a11y-pause-animations {
   }
 }
 
-// Controle estrito de visibilidade do plugin VLibras (v6 legacy e v7 moderno com Shadow DOM)
 #vlibras-access-wrapper,
 #vlibras-app-root,
 [vw],
@@ -101,5 +97,4 @@ html.a11y-pause-animations {
     transform: scale(0) !important;
   }
 }
-
 
