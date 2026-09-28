@@ -15,7 +15,7 @@
 
       <ol class="experience__timeline" [attr.aria-label]="data().ariaLabel">
         @for (milestone of milestones(); track milestone.id) {
-        <li class="experience__item">
+        <li class="experience__item" [class.experience__item--highlighted]="milestone.highlighted">
           <div class="experience__marker" aria-hidden="true">
             <span class="experience__dot"></span>
           </div>
@@ -24,6 +24,11 @@
               <app-text variant="caption" element="span" class="experience__year">
                 {{ milestone.year }}
               </app-text>
+              @if (milestone.tag) {
+              <span class="experience__tag" [class.experience__tag--highlighted]="milestone.highlighted">
+                {{ milestone.tag }}
+              </span>
+              }
               @if (milestone.subtitle) {
               <app-text variant="caption" element="span" class="experience__category">
                 {{ milestone.subtitle }}

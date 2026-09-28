@@ -53,4 +53,16 @@ describe('ExperienceSection', () => {
     const lightTrails = compiled.querySelectorAll('.experience__focus-trail');
     expect(lightTrails.length).toBe(5);
   });
+
+  it('should render milestone tags and highlight prominent milestones in the DOM', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+    const highlightedItems = compiled.querySelectorAll('.experience__item--highlighted');
+    expect(highlightedItems.length).toBeGreaterThan(0);
+
+    const tags = compiled.querySelectorAll('.experience__tag');
+    expect(tags.length).toBe(EXPERIENCE_MILESTONES.length);
+
+    const highlightedTags = compiled.querySelectorAll('.experience__tag--highlighted');
+    expect(highlightedTags.length).toBe(highlightedItems.length);
+  });
 });

@@ -1,9 +1,5 @@
 import { SupportedLang } from '@core';
-import {
-  CurrentFocusData,
-  ExperienceSectionData,
-  TimelineMilestone,
-} from './experience.model';
+import { CurrentFocusData, ExperienceSectionData, TimelineMilestone } from './experience.model';
 
 interface ExperienceI18n {
   sectionData: ExperienceSectionData;
@@ -28,6 +24,8 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
         subtitle: 'Universidade Estácio · Formação Acadêmica de Base',
         description:
           'Desenvolvimento de visão sistêmica, otimização de processos, análise de causa raiz, pensamento enxuto (Lean) e metodologia PDCA para resolução de problemas complexos.',
+
+        tag: 'FORMAÇÃO ACADÊMICA',
       },
       {
         id: 'software-engineering-postgrad',
@@ -36,6 +34,8 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
         subtitle: 'Universidade Estácio · Especialização Técnica',
         description:
           'Aprofundamento em arquitetura de software, padrões de projeto, desenvolvimento web moderno, qualidade de código e ciclo de vida completo de aplicações.',
+
+        tag: 'PÓS-GRADUAÇÃO',
       },
       {
         id: 'senac-frontend-dev',
@@ -44,6 +44,8 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
         subtitle: 'Senac · Interfaces Web & React',
         description:
           'Capacitação prática em HTML, CSS, JavaScript e React para criação de interfaces modernas, responsivas e acessíveis, utilizando ferramentas de IA como suporte para desenvolvimento acelerado.',
+
+        tag: 'CAPACITAÇÃO TÉCNICA (80H)',
       },
       {
         id: 'dio-tech-bootcamp',
@@ -52,6 +54,8 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
         subtitle: 'Digital Innovation One (DIO) & Philips · Formação Prática',
         description:
           'Trilhas intensivas de aceleração prática cobrindo HTML, CSS, JavaScript, TypeScript, Angular, Java, Spring Boot e Banco de Dados (modelagem relacional e SQL).',
+
+        tag: 'BOOTCAMP PRÁTICO (132H)',
       },
       {
         id: 'senac-python-fullstack',
@@ -60,6 +64,8 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
         subtitle: 'Senac · Imersão em Programação',
         description:
           'Capacitação abrangendo Lógica de Programação, Python (Django) e Frontend Essencial (HTML5, CSS3, JavaScript) com foco na construção de aplicações web funcionais.',
+
+        tag: 'CAPACITAÇÃO TÉCNICA (168H)',
       },
       {
         id: 'uece-tic-residency',
@@ -68,6 +74,8 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
         subtitle: 'Universidade Estadual do Ceará · Formação em Trilhas',
         description:
           'Capacitação prática em trilhas de conhecimento focadas em Programação Orientada a Objetos (POO) em Java, Banco de Dados MySQL e Estruturas de Dados.',
+
+        tag: 'RESIDÊNCIA TÉCNICA (120H)',
       },
       {
         id: 'serratec-residency',
@@ -76,6 +84,9 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
         subtitle: 'Serratec · Imersão em Disciplinas Progressivas',
         description:
           'Residência imersiva em desenvolvimento de software com 790 horas em disciplinas de Lógica, Banco de Dados, POO em Java, APIs RESTful com Spring Boot, React, React Native, metodologias ágeis e entrega de projeto final corporativo.',
+
+        tag: 'RESIDÊNCIA IMERSIVA (790H) & ZEISS',
+        highlighted: true,
       },
       {
         id: 'senai-faetec-instructor',
@@ -84,6 +95,9 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
         subtitle: 'SENAI / FAETEC · Atuação Docente em Tecnologia',
         description:
           'Docência em Programação Back-End cobrindo lógica (JavaScript), bancos de dados relacionais (PostgreSQL/DBeaver), POO em Java e desenvolvimento de APIs RESTful com Spring Boot, além da elaboração de materiais didáticos e mentoria técnica individual.',
+
+        tag: 'DOCÊNCIA & ATUAÇÃO PROFISSIONAL',
+        highlighted: true,
       },
       {
         id: 'personal-projects',
@@ -92,6 +106,8 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
         subtitle: 'Desenvolvimento Prático Autoral',
         description:
           'Desenvolvimento prático autoral de aplicações web e mobile completas cobrindo React, React Native (Expo), TypeScript, Java (Spring Boot) e Python (Django), utilizando ferramentas de IA como suporte para aceleração de código, testes e documentação.',
+
+        tag: 'ENGENHARIA AUTORAL',
       },
     ],
     currentFocus: {
@@ -154,6 +170,8 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
         subtitle: 'Estácio University · Core Academic Foundation',
         description:
           'Developed systems thinking, process optimization, root cause analysis, Lean methodology, and PDCA cycle for solving complex problems.',
+
+        tag: 'ACADEMIC DEGREE',
       },
       {
         id: 'software-engineering-postgrad',
@@ -162,6 +180,8 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
         subtitle: 'Estácio University · Technical Specialization',
         description:
           'Deepened expertise in software architecture, design patterns, modern web development, code quality, and end-to-end application lifecycle.',
+
+        tag: 'POSTGRADUATE',
       },
       {
         id: 'senac-frontend-dev',
@@ -170,6 +190,8 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
         subtitle: 'Senac · Web Interfaces & React',
         description:
           'Practical training in HTML, CSS, JavaScript, and React for building modern, responsive, accessible interfaces, leveraging AI tools to accelerate development workflows.',
+
+        tag: 'TECHNICAL TRAINING (80H)',
       },
       {
         id: 'dio-tech-bootcamp',
@@ -178,6 +200,8 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
         subtitle: 'Digital Innovation One (DIO) & Philips · Practical Acceleration',
         description:
           'Intensive acceleration tracks covering HTML, CSS, JavaScript, TypeScript, Angular, Java, Spring Boot, and Databases (relational modeling & SQL).',
+
+        tag: 'PRACTICAL BOOTCAMP (132H)',
       },
       {
         id: 'senac-python-fullstack',
@@ -186,6 +210,8 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
         subtitle: 'Senac · Programming Immersion',
         description:
           'Practical training covering Programming Logic, Python (Django), and Essential Frontend (HTML5, CSS3, JavaScript) focused on building functional web applications.',
+
+        tag: 'TECHNICAL TRAINING (168H)',
       },
       {
         id: 'uece-tic-residency',
@@ -194,6 +220,8 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
         subtitle: 'State University of Ceará · Track-Based Program',
         description:
           'Practical training in knowledge tracks focused on Object-Oriented Programming (OOP) in Java, MySQL Databases, and Data Structures.',
+
+        tag: 'TECHNICAL RESIDENCY (120H)',
       },
       {
         id: 'serratec-residency',
@@ -202,6 +230,9 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
         subtitle: 'Serratec · Progressive Disciplines Immersion',
         description:
           'Immersive 790-hour software development residency spanning progressive coursework in Logic, Databases, OOP Java, RESTful APIs with Spring Boot, React, React Native, agile practices, and corporate final project delivery.',
+
+        tag: 'IMMERSIVE RESIDENCY (790H) & ZEISS',
+        highlighted: true,
       },
       {
         id: 'senai-faetec-instructor',
@@ -210,6 +241,9 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
         subtitle: 'SENAI / FAETEC · Tech Instruction & Mentorship',
         description:
           'Teaching Back-End Programming covering logic (JavaScript), relational databases (PostgreSQL/DBeaver), OOP in Java, and RESTful APIs with Spring Boot, alongside authoring technical courseware and providing one-on-one engineering guidance.',
+
+        tag: 'TEACHING & PROFESSIONAL PRACTICE',
+        highlighted: true,
       },
       {
         id: 'personal-projects',
@@ -218,6 +252,8 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
         subtitle: 'Hands-On Authorial Development',
         description:
           'Hands-on authorial development of full-stack web and mobile applications covering React, React Native (Expo), TypeScript, Java (Spring Boot), and Python (Django), leveraging AI tools for developer assistance, testing, and documentation.',
+
+        tag: 'AUTHORIAL ENGINEERING',
       },
     ],
     currentFocus: {
@@ -280,6 +316,8 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
         subtitle: 'Universidad Estácio · Base Académica',
         description:
           'Desarrollo de pensamiento sistémico, optimización de procesos, análisis de causa raíz, metodología Lean y ciclo PDCA para la resolución de problemas complejos.',
+
+        tag: 'FORMACIÓN ACADÉMICA',
       },
       {
         id: 'software-engineering-postgrad',
@@ -288,6 +326,8 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
         subtitle: 'Universidad Estácio · Especialización Técnica',
         description:
           'Profundización en arquitectura de software, patrones de diseño, desarrollo web moderno, calidad de código y ciclo de vida completo de aplicaciones.',
+
+        tag: 'POSGRADO',
       },
       {
         id: 'senac-frontend-dev',
@@ -296,6 +336,8 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
         subtitle: 'Senac · Interfaces Web & React',
         description:
           'Capacitación práctica en HTML, CSS, JavaScript y React para construcción de interfaces modernas, responsivas y accesibles, aprovechando herramientas de IA para acelerar flujos de desarrollo.',
+
+        tag: 'CAPACITACIÓN TÉCNICA (80H)',
       },
       {
         id: 'dio-tech-bootcamp',
@@ -304,6 +346,8 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
         subtitle: 'Digital Innovation One (DIO) & Philips · Aceleración Práctica',
         description:
           'Pistas intensivas de aceleración cubriendo HTML, CSS, JavaScript, TypeScript, Angular, Java, Spring Boot y Bases de Datos (modelado relacional & SQL).',
+
+        tag: 'BOOTCAMP PRÁCTICO (132H)',
       },
       {
         id: 'senac-python-fullstack',
@@ -312,6 +356,8 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
         subtitle: 'Senac · Inmersión en Programación',
         description:
           'Capacitación práctica cubriendo Lógica de Programación, Python (Django) y Frontend Esencial (HTML5, CSS3, JavaScript) enfocada en la construcción de aplicaciones web funcionales.',
+
+        tag: 'CAPACITACIÓN TÉCNICA (168H)',
       },
       {
         id: 'uece-tic-residency',
@@ -320,6 +366,8 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
         subtitle: 'Universidad Estatal de Ceará · Programa por Pistas',
         description:
           'Capacitación práctica en pistas de conocimiento enfocadas en Programación Orientada a Objetos (POO) en Java, Bases de Datos MySQL y Estructuras de Datos.',
+
+        tag: 'RESIDENCIA TÉCNICA (120H)',
       },
       {
         id: 'serratec-residency',
@@ -328,6 +376,9 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
         subtitle: 'Serratec · Inmersión en Disciplinas Progresivas',
         description:
           'Residencia inmersiva de 790 horas en desarrollo de software abarcando Lógica, Bases de Datos, POO Java, APIs RESTful con Spring Boot, React, React Native, prácticas ágiles y entrega de proyecto final corporativo.',
+
+        tag: 'RESIDENCIA INMERSIVA (790H) & ZEISS',
+        highlighted: true,
       },
       {
         id: 'senai-faetec-instructor',
@@ -336,6 +387,9 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
         subtitle: 'SENAI / FAETEC · Docencia y Mentoría Técnica',
         description:
           'Docencia en Programación Back-End abarcando lógica (JavaScript), bases de datos relacionales (PostgreSQL/DBeaver), POO en Java y desarrollo de APIs RESTful con Spring Boot, junto con la elaboración de material didáctico y soporte técnico individual.',
+
+        tag: 'DOCENCIA & PRÁCTICA PROFESIONAL',
+        highlighted: true,
       },
       {
         id: 'personal-projects',
@@ -344,6 +398,8 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
         subtitle: 'Desarrollo Práctico Autoral',
         description:
           'Desarrollo práctico autoral de aplicaciones web y mobile full-stack cubriendo React, React Native (Expo), TypeScript, Java (Spring Boot) y Python (Django), aprovechando herramientas de IA para asistencia, pruebas y documentación.',
+
+        tag: 'INGENIERÍA AUTORAL',
       },
     ],
     currentFocus: {
@@ -392,8 +448,7 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
   },
 };
 
-export const EXPERIENCE_SECTION_DATA: ExperienceSectionData =
-  EXPERIENCE_I18N['pt-BR'].sectionData;
+export const EXPERIENCE_SECTION_DATA: ExperienceSectionData = EXPERIENCE_I18N['pt-BR'].sectionData;
 
 export const EXPERIENCE_MILESTONES: readonly TimelineMilestone[] =
   EXPERIENCE_I18N['pt-BR'].milestones;

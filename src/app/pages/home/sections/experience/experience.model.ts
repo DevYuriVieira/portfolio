@@ -18,6 +18,8 @@ export interface TimelineMilestone {
   readonly title: string;
   readonly subtitle?: string;
   readonly description: string;
+  readonly tag?: string;
+  readonly highlighted?: boolean;
 }
 
 export interface ExperienceSectionData {
