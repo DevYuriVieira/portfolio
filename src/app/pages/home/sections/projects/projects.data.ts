@@ -31,15 +31,25 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         'Autenticação segura JWT com Controle de Acesso por Perfis (RBAC) e módulos de gestão administrativa',
       ],
       highlights: [
-        'Leitura automatizada de receitas com OCR e IA (n8n / RAG)',
-        'Recomendação inteligente de lentes por perfil clínico e hábitos',
-        'Dashboards comerciais e métricas de conversão em tempo real',
-        'Autenticação JWT e Controle de Acesso por Perfis (RBAC)',
-        'Desenvolvimento Full Stack com React, Spring Boot e PostgreSQL',
+        'Extração automatizada de prescrições via OCR e pipeline de IA (n8n / RAG)',
+        'Interface de validação clínica assistida para conferência prévia dos parâmetros óticos',
+        'Motor de recomendação personalizada alinhando especificações clínicas aos hábitos do paciente',
+        'Dashboards analíticos de inteligência comercial com dados de conversão e desempenho por filial',
+        'Autenticação JWT com Controle de Acesso por Perfis (RBAC)',
+        'Arquitetura corporativa com React, Spring Boot e PostgreSQL (Projeto sob NDA)',
       ],
-      technologies: ['React', 'TypeScript', 'Java', 'Spring Boot', 'PostgreSQL', 'n8n', 'OCR', 'RAG / IA'],
+      technologies: [
+        'React',
+        'TypeScript',
+        'Java',
+        'Spring Boot',
+        'PostgreSQL',
+        'n8n',
+        'OCR',
+        'RAG / IA',
+      ],
       results:
-        'Padronização da recomendação técnica de lentes nas ópticas parceiras; eliminação do preenchimento manual de prescrições e redução drástica de erros de digitação via OCR; geração de inteligência comercial em tempo real para a ZEISS com métricas de conversão e ranking de produtos.',
+        'Padronização do processo de recomendação técnica de lentes nas ópticas parceiras; transição do fluxo manual de prescrições para captura automatizada via OCR com etapa de confirmação humana; geração de inteligência comercial com visibilidade em tempo real sobre produtos mais recomendados e demanda por região para o ZEISS Group.',
       links: {},
     },
     {
@@ -252,7 +262,14 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         'Dados de clima em tempo real via OpenWeather API',
         'Consumo do catálogo cultural via Jikan API',
       ],
-      technologies: ['React', 'TypeScript', 'Vite', 'OpenWeather API', 'Jikan API', 'Google Gemini AI'],
+      technologies: [
+        'React',
+        'TypeScript',
+        'Vite',
+        'OpenWeather API',
+        'Jikan API',
+        'Google Gemini AI',
+      ],
       results:
         'Recomendações culturais personalizadas geradas pelo cruzamento de clima e animes via IA; interface reativa com suporte a chatbot e cards montados dinamicamente via JSON.',
       links: {
@@ -513,7 +530,15 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         'Mapeamento N:N entre consultas e catálogo de procedimentos',
         'Views analíticas em SQL e otimização por Índices',
       ],
-      technologies: ['PostgreSQL 16+', 'SQL Avançado', 'DDL', 'DML', 'DQL', 'Database Indexing', 'SQL Views'],
+      technologies: [
+        'PostgreSQL 16+',
+        'SQL Avançado',
+        'DDL',
+        'DML',
+        'DQL',
+        'Database Indexing',
+        'SQL Views',
+      ],
       results:
         'Estrutura relacional normalizada em 3FN no PostgreSQL; eliminação de redundância de dados clínicos; emissão ágil de relatórios operacionais por meio de Views analíticas em SQL.',
       links: {
@@ -588,15 +613,25 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         'JWT authentication, Role-Based Access Control (RBAC), and administrative management modules',
       ],
       highlights: [
-        'Automated prescription OCR & AI Pipeline (n8n / RAG)',
-        'Smart ZEISS lens recommendation matching clinical & habit data',
-        'Real-time conversion & commercial analytics dashboards',
-        'JWT Authentication & Role-Based Access Control (RBAC)',
-        'Full Stack architecture with React, Spring Boot & PostgreSQL',
+        'Extracción automatizada de prescripciones vía OCR y pipeline de IA (n8n / RAG)',
+        'Interfaz de validación clínica asistida para comprobación previa de parámetros ópticos',
+        'Motor de recomendación personalizada combinando especificaciones clínicas y hábitos del paciente',
+        'Dashboards analíticos de inteligencia comercial con métricas de conversión y rendimiento por sucursal',
+        'Autenticación JWT y Control de Acceso Basado en Roles (RBAC)',
+        'Arquitectura corporativa con React, Spring Boot y PostgreSQL (Proyecto bajo NDA)',
       ],
-      technologies: ['React', 'TypeScript', 'Java', 'Spring Boot', 'PostgreSQL', 'n8n', 'OCR', 'RAG / AI'],
+      technologies: [
+        'React',
+        'TypeScript',
+        'Java',
+        'Spring Boot',
+        'PostgreSQL',
+        'n8n',
+        'OCR',
+        'RAG / AI',
+      ],
       results:
-        'Standardization of technical lens recommendations previously reliant on individual seller judgment; automated prescription reading via OCR eliminating manual entry errors; real-time business intelligence generation for ZEISS featuring top-selling lens dashboards, conversion rates, and store performance rankings.',
+        'Estandarización del proceso de recomendación técnica de lentes en ópticas asociadas; transición de la captura manual de prescripciones a la lectura automatizada por OCR con etapa de confirmación humana; generación de inteligencia comercial con visibilidad en tiempo real de productos más recomendados y demanda por región para ZEISS Group.',
       links: {},
     },
     {
@@ -809,7 +844,14 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         'Real-time weather data via OpenWeather API',
         'Anime catalog consumption via Jikan API',
       ],
-      technologies: ['React', 'TypeScript', 'Vite', 'OpenWeather API', 'Jikan API', 'Google Gemini AI'],
+      technologies: [
+        'React',
+        'TypeScript',
+        'Vite',
+        'OpenWeather API',
+        'Jikan API',
+        'Google Gemini AI',
+      ],
       results:
         'Contextual recommendations generated by cross-referencing OpenWeather and Jikan API data via Google Gemini AI; integration of structured JSON responses for dynamic UI assembly alongside an interactive weather pun chatbot using text content manipulation (`textContent`); responsive glassmorphism UI.',
       links: {
@@ -1070,7 +1112,15 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         'N:N procedure catalog mapping for appointments',
         'Analytical SQL Views & Index performance optimization',
       ],
-      technologies: ['PostgreSQL 16+', 'Advanced SQL', 'DDL', 'DML', 'DQL', 'Database Indexing', 'SQL Views'],
+      technologies: [
+        'PostgreSQL 16+',
+        'Advanced SQL',
+        'DDL',
+        'DML',
+        'DQL',
+        'Database Indexing',
+        'SQL Views',
+      ],
       results:
         '3FN normalized relational structure in PostgreSQL; elimination of clinical data redundancy; fast operational report generation using analytical SQL Views.',
       links: {
@@ -1151,7 +1201,16 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         'Autenticación JWT & Control de Acceso Basado en Roles (RBAC)',
         'Arquitectura Full Stack con React, Spring Boot & PostgreSQL',
       ],
-      technologies: ['React', 'TypeScript', 'Java', 'Spring Boot', 'PostgreSQL', 'n8n', 'OCR', 'RAG / IA'],
+      technologies: [
+        'React',
+        'TypeScript',
+        'Java',
+        'Spring Boot',
+        'PostgreSQL',
+        'n8n',
+        'OCR',
+        'RAG / IA',
+      ],
       results:
         'Estandarización de recomendaciones técnicas de lentes; lectura automatizada de prescripciones vía OCR eliminando errores de ingreso manual; generación de inteligencia comercial en tiempo real para ZEISS con dashboards de conversión y ranking de productos.',
       links: {},
@@ -1186,7 +1245,14 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         'Documentación interactiva con Swagger/OpenAPI 3',
         'Patrón DTO para protección de entidades de dominio',
       ],
-      technologies: ['Java 17', 'Spring Boot 3', 'Spring Security 6', 'PostgreSQL', 'JPA/Hibernate', 'Swagger/OpenAPI'],
+      technologies: [
+        'Java 17',
+        'Spring Boot 3',
+        'Spring Security 6',
+        'PostgreSQL',
+        'JPA/Hibernate',
+        'Swagger/OpenAPI',
+      ],
       results:
         'Desacoplamiento estricto entre reglas de negocio y capa de presentación vía DTOs; control de acceso granular RBAC vía Spring Security 6 eliminando rutas desprotegidas; contrato de API OpenAPI 3 interactivo listo para integración frontend.',
       links: { github: 'https://github.com/DevYuriVieira/ecommerce-serratec-api' },
@@ -1223,7 +1289,17 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         'Acceso nativo a Cámara, Galería, GPS y Expo Secure Store',
         'Validación defensiva de formularios con React Hook Form + Zod',
       ],
-      technologies: ['React Native', 'Expo SDK 54', 'TypeScript', 'React Navigation', 'Zod', 'React Hook Form', 'Axios', 'AsyncStorage', 'Expo Secure Store'],
+      technologies: [
+        'React Native',
+        'Expo SDK 54',
+        'TypeScript',
+        'React Navigation',
+        'Zod',
+        'React Hook Form',
+        'Axios',
+        'AsyncStorage',
+        'Expo Secure Store',
+      ],
       results:
         'Navegación fluida en 3 flujos híbridos (Drawer, Stack, Tabs); motor de gamificación por XP para seguimiento de metas; verificación de asistencia a mentorías por QR Code nativo y almacenamiento seguro de sesión vía Expo Secure Store.',
       links: { github: 'https://github.com/DevYuriVieira/aurora-growth-platform' },
@@ -1261,7 +1337,10 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       technologies: ['React', 'TypeScript', 'Framer Motion', 'Vite', 'Vercel CI/CD'],
       results:
         'Presentación interactiva de 30 años de hardware de consolas en timeline responsiva; renderizado de animaciones declarativas vía Framer Motion sin lag de UI; pipeline CI/CD automatizado en Vercel vinculado a commits de GitHub.',
-      links: { github: 'https://github.com/DevYuriVieira/playstation-evolution-timeline', demo: 'https://playstation-evolution-timeline.vercel.app' },
+      links: {
+        github: 'https://github.com/DevYuriVieira/playstation-evolution-timeline',
+        demo: 'https://playstation-evolution-timeline.vercel.app',
+      },
     },
     {
       id: 'django-ecommerce',
@@ -1296,7 +1375,16 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         'Carrito dinámico, reglas de cupones y lista de favoritos',
         'Protección nativa estricta contra CSRF & XSS',
       ],
-      technologies: ['Python', 'Django', 'MySQL', 'Vanilla JS (ES6+)', 'HTML5 <template>', 'REST API', 'Webhooks Idempotentes', 'Service Layer'],
+      technologies: [
+        'Python',
+        'Django',
+        'MySQL',
+        'Vanilla JS (ES6+)',
+        'HTML5 <template>',
+        'REST API',
+        'Webhooks Idempotentes',
+        'Service Layer',
+      ],
       results:
         'Procesamiento asíncrono idempotente de Webhooks de pago eliminando cobros dobles; eliminación de consultas N+1 vía prefetch_related; arquitectura frontend ligera en JavaScript vanilla con cero overhead de frameworks y manipulación segura del DOM vía <template> y textContent.',
       links: { github: 'https://github.com/DevYuriVieira/django-ecommerce' },
@@ -1331,7 +1419,14 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         'Datos climáticos en tiempo real vía OpenWeather API',
         'Consumo de catálogo cultural vía Jikan API',
       ],
-      technologies: ['React', 'TypeScript', 'Vite', 'OpenWeather API', 'Jikan API', 'Google Gemini AI'],
+      technologies: [
+        'React',
+        'TypeScript',
+        'Vite',
+        'OpenWeather API',
+        'Jikan API',
+        'Google Gemini AI',
+      ],
       results:
         'Recomendaciones contextuales generadas por el cruce de datos climáticos y de anime vía Google Gemini AI; integración de respuestas JSON estructuradas para ensamblaje dinámico de UI junto con chatbot interactivo; UI responsiva con glassmorphism.',
       links: { github: 'https://github.com/DevYuriVieira/anime-weather-platform' },
@@ -1369,7 +1464,16 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         'Parsing defensivo por lotes y exportación automatizada de informes CSV',
         'Proyecto colaborativo de 4 desarrolladores (Residencia Serratec 2026.1)',
       ],
-      technologies: ['Java 17', 'PostgreSQL', 'JDBC', 'Arquitectura MVC', 'Patrón DAO', 'BigDecimal', 'Singleton Pattern', 'E/S CSV'],
+      technologies: [
+        'Java 17',
+        'PostgreSQL',
+        'JDBC',
+        'Arquitectura MVC',
+        'Patrón DAO',
+        'BigDecimal',
+        'Singleton Pattern',
+        'E/S CSV',
+      ],
       results:
         'Cálculo automatizado y preciso de alícuotas progresivas de INSS e IRRF conforme legislación laboral; validación en tiempo de ejecución de CPFs y relaciones de dependientes; persistencia transaccional dual en PostgreSQL y generación automatizada de informes CSV.',
       links: { github: 'https://github.com/DevYuriVieira/payroll-system-java' },
@@ -1407,7 +1511,10 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       technologies: ['React', 'TypeScript', 'Styled Components', 'Vite'],
       results:
         'Visualización clara y centralizada de operaciones de flota; filtrado instantáneo de vehículos por disponibilidad y estado de mantenimiento; navegación rápida entre vistas operacionales vía React Router.',
-      links: { github: 'https://github.com/DevYuriVieira/fleet-management-system', demo: 'https://fleet-management-system-chi.vercel.app/' },
+      links: {
+        github: 'https://github.com/DevYuriVieira/fleet-management-system',
+        demo: 'https://fleet-management-system-chi.vercel.app/',
+      },
     },
     {
       id: 'hogwarts-interactive-hub',
@@ -1441,10 +1548,22 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         'Sistema global de temas Lumos/Nox con LocalStorage',
         'Rendimiento nativo & lazy loading con Intersection Observer',
       ],
-      technologies: ['Vanilla JS', 'ES6 Modules', 'HTML5', 'CSS3', 'DOM API', 'History API', 'Intersection Observer', 'LocalStorage'],
+      technologies: [
+        'Vanilla JS',
+        'ES6 Modules',
+        'HTML5',
+        'CSS3',
+        'DOM API',
+        'History API',
+        'Intersection Observer',
+        'LocalStorage',
+      ],
       results:
         'Navegación entre secciones sin recarga de página y con cero dependencias externas; animaciones matemáticas fluidas; alternancia dinámica de tema persistida en el navegador.',
-      links: { github: 'https://github.com/DevYuriVieira/Hogwarts-Interactive-Hub', demo: 'https://devyurivieira.github.io/Hogwarts-Interactive-Hub/' },
+      links: {
+        github: 'https://github.com/DevYuriVieira/Hogwarts-Interactive-Hub',
+        demo: 'https://devyurivieira.github.io/Hogwarts-Interactive-Hub/',
+      },
     },
     {
       id: 'kuro-seafood-ecommerce',
@@ -1480,10 +1599,21 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         'Estructura MPA modular con cero overhead de frameworks',
         'Proyecto colaborativo de 4 desarrolladores (Residencia Serratec 2026.1)',
       ],
-      technologies: ['Vanilla JS (ES6+)', 'HTML5', 'CSS3', 'Bootstrap 5.3', 'ViaCEP API', 'MockAPI', 'LocalStorage'],
+      technologies: [
+        'Vanilla JS (ES6+)',
+        'HTML5',
+        'CSS3',
+        'Bootstrap 5.3',
+        'ViaCEP API',
+        'MockAPI',
+        'LocalStorage',
+      ],
       results:
         'Búsqueda automatizada de direcciones y cálculo de flete en tiempo real vía ViaCEP API; estado de carrito de compras mantenido entre transiciones de página; dashboard administrativo seguro para gestión de catálogo.',
-      links: { github: 'https://github.com/DevYuriVieira/kuro-seafood-ecommerce', demo: 'https://kuro-seafood-ecommerce.vercel.app/' },
+      links: {
+        github: 'https://github.com/DevYuriVieira/kuro-seafood-ecommerce',
+        demo: 'https://kuro-seafood-ecommerce.vercel.app/',
+      },
     },
     {
       id: 'modern-fighter-jets',
@@ -1518,7 +1648,10 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       technologies: ['React', 'JavaScript', 'React Router', 'Styled Components', 'Vite'],
       results:
         'Búsqueda y comparación en tiempo real de especificaciones técnicas de aeronaves militares filtradas por país y categoría; layout reactivo impulsado por componentes tipados y escopados.',
-      links: { github: 'https://github.com/DevYuriVieira/modern-fighter-jets', demo: 'https://modern-fighter-jets.vercel.app/' },
+      links: {
+        github: 'https://github.com/DevYuriVieira/modern-fighter-jets',
+        demo: 'https://modern-fighter-jets.vercel.app/',
+      },
     },
     {
       id: 'dental-clinic-db',
@@ -1550,7 +1683,15 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         'Mapeo N:N de catálogo de procedimientos para citas',
         'Views SQL analíticas & optimización de rendimiento por índices',
       ],
-      technologies: ['PostgreSQL 16+', 'SQL Avanzado', 'DDL', 'DML', 'DQL', 'Database Indexing', 'SQL Views'],
+      technologies: [
+        'PostgreSQL 16+',
+        'SQL Avanzado',
+        'DDL',
+        'DML',
+        'DQL',
+        'Database Indexing',
+        'SQL Views',
+      ],
       results:
         'Estructura relacional normalizada en 3FN en PostgreSQL; eliminación de redundancia de datos clínicos; generación rápida de informes operacionales mediante Views SQL analíticas.',
       links: { github: 'https://github.com/DevYuriVieira/dentacare-management-system' },
@@ -1588,7 +1729,10 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       technologies: ['React', 'Vite', 'CSS Modules', 'React Router'],
       results:
         'Animaciones reactivas en formulario de login rastreando el vector del ratón en tiempo real; aislamiento total de estilos CSS vía CSS Modules.',
-      links: { github: 'https://github.com/DevYuriVieira/kinetic-auth-ux-showcase', demo: 'https://kinetic-auth-ux-showcase.vercel.app/' },
+      links: {
+        github: 'https://github.com/DevYuriVieira/kinetic-auth-ux-showcase',
+        demo: 'https://kinetic-auth-ux-showcase.vercel.app/',
+      },
     },
   ],
 };
