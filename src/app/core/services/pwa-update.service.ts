@@ -5,6 +5,7 @@ import { SwUpdate, VersionReadyEvent } from '@angular/service-worker';
 import { filter } from 'rxjs/operators';
 import { interval } from 'rxjs';
 
+/** Intervalo de polling para verificar updates do SW (5 minutos) */
 const UPDATE_POLL_MS = 5 * 60 * 1000;
 
 @Injectable({
@@ -24,6 +25,7 @@ export class PwaUpdateService {
       return;
     }
 
+    // Ativa a nova versão do SW imediatamente e recarrega para garantir os novos assets
     this.swUpdate.versionUpdates
       .pipe(
         filter((evt): evt is VersionReadyEvent => evt.type === 'VERSION_READY'),
@@ -35,12 +37,15 @@ export class PwaUpdateService {
         });
       });
 
+    // Verifica imediatamente na inicialização (captura cache desatualizado no primeiro acesso)
     this.checkForUpdate();
 
+    // Polling a cada 5 minutos para tabs abertas por longo tempo também receberem updates
     interval(UPDATE_POLL_MS)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe(() => this.checkForUpdate());
 
+    // Verifica também quando o usuário retorna à aba (tab inativa não recebe polling)
     const handleFocus = (): void => {
       this.checkForUpdate();
     };

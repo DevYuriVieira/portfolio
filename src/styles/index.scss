@@ -1,4 +1,7 @@
 
+// A ordem dos @use importa:
+//   1. abstracts — tokens e mixins (nenhum CSS gerado diretamente)
+//   2. base — reset, tipografia e utilitários globais
 @use 'abstracts' as *;
 @use 'base';
 

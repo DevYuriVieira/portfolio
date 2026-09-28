@@ -81,6 +81,8 @@ html.a11y-pause-animations {
   }
 }
 
+// Controle estrito de visibilidade do VLibras: cobre v6 (legacy) e v7 (Shadow DOM)
+// Os seletores incomuns são necessários para neutralizar ambas as gerações do plugin
 #vlibras-access-wrapper,
 #vlibras-app-root,
 [vw],
