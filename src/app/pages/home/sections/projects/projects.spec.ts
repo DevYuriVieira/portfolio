@@ -31,7 +31,6 @@ describe('ProjectsSection', () => {
     expect(cards.length).toBe(5);
     expect(component.displayedProjects().length).toBe(5);
 
-    // First toggle expansion (5 -> 7)
     component.toggleShowAll();
     fixture.detectChanges();
 
@@ -39,7 +38,6 @@ describe('ProjectsSection', () => {
     expect(cards.length).toBe(7);
     expect(component.displayedProjects().length).toBe(7);
 
-    // Second toggle expansion (7 -> totalCount)
     component.toggleShowAll();
     fixture.detectChanges();
 
@@ -54,7 +52,6 @@ describe('ProjectsSection', () => {
   });
 
   it('should render external project links securely with target _blank', () => {
-    // Expand projects first to render links
     component.toggleShowAll();
     fixture.detectChanges();
 
@@ -85,15 +82,12 @@ describe('ProjectsSection', () => {
   });
 
   it('should smooth scroll to top of projects section when collapsing', () => {
-    // Expand to 7
     component.toggleShowAll();
     expect(component.displayLimit()).toBe(7);
 
-    // Expand to all
     component.toggleShowAll();
     expect(component.showAll()).toBe(true);
 
-    // Give element id projects and mock scrollIntoView
     const compiled = fixture.nativeElement as HTMLElement;
     const section = compiled.querySelector('app-section') || compiled;
     section.id = 'projects';
@@ -105,10 +99,28 @@ describe('ProjectsSection', () => {
       }
     };
 
-    // Collapse
     component.toggleShowAll();
     expect(component.showAll()).toBe(false);
     expect(component.displayLimit()).toBe(5);
     expect(scrolled).toBe(true);
+  });
+
+  it('should toggle architecture modal for confidential project', () => {
+    expect(component.architectureModalOpen()).toBe(false);
+
+    const compiled = fixture.nativeElement as HTMLElement;
+    const archBtn = compiled.querySelector('.projects__arch-btn') as HTMLButtonElement;
+    expect(archBtn).toBeTruthy();
+
+    archBtn.click();
+    fixture.detectChanges();
+    expect(component.architectureModalOpen()).toBe(true);
+
+    const modal = compiled.querySelector('app-architecture-modal');
+    expect(modal).toBeTruthy();
+
+    component.closeArchitectureModal();
+    fixture.detectChanges();
+    expect(component.architectureModalOpen()).toBe(false);
   });
 });
