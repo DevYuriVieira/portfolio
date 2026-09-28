@@ -75,4 +75,13 @@ describe('Header', () => {
 
     document.body.removeChild(targetElement);
   });
+
+  it('should render GitHub profile direct link in header actions', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+    const githubLink = compiled.querySelector('.header__social-btn') as HTMLAnchorElement;
+    expect(githubLink).toBeTruthy();
+    expect(githubLink.href).toContain('github.com/DevYuriVieira');
+    expect(githubLink.getAttribute('target')).toBe('_blank');
+    expect(githubLink.getAttribute('rel')).toContain('noopener');
+  });
 });
