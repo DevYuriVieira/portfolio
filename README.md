@@ -317,10 +317,18 @@ Access in your browser at `http://localhost:4200`.
 | :--- | :--- | :--- |
 | `npm start` | **Angular CLI** | Starts local dev server at `http://localhost:4200` |
 | `npm run build` | **Angular Build** | Compiles production bundle into `/dist/portfolio` |
-| `npm test` | **Vitest** | Executes 74 unit & component tests |
-| `npm run test:e2e` | **Playwright + Axe-Core** | Executes 38 E2E & WCAG 2.1 AA accessibility specs concurrently (Desktop Chrome & Mobile Pixel 7) |
-| `npm run test:cypress` | **Cypress** | Executes 17 E2E specs in headless runner |
+| `npm test` | **Vitest** | Executes 90 unit, component & property-based tests in watch mode |
+| `npm run test:run` | **Vitest** | Single-run headless execution of unit & property tests |
+| `npm run test:coverage` | **Vitest + V8** | Generates detailed code coverage report with branch, statement & line metrics |
+| `npm run test:e2e` | **Playwright + Axe-Core** | Executes full E2E & WCAG 2.1 AA accessibility specs across 5 engines (Chrome, Firefox, Safari/WebKit, Pixel 7, iPhone 14) |
+| `npm run test:perf` | **Playwright** | Non-functional testing: Core Web Vitals (FCP, CLS), TTFB & DOM complexity benchmarks |
+| `npm run test:pwa` | **Playwright** | Resilience testing: Service worker registration, offline navigation & network reconnection |
+| `npm run test:security` | **Playwright** | Security testing: Reverse tabnabbing defense (`target="_blank"`), XSS reflection & credential leak audit |
+| `npm run test:visual` | **Playwright** | Visual regression testing: Pixel-perfect layout screenshot comparison with dynamic canvas masking |
+| `npm run test:visual:update` | **Playwright** | Updates reference golden images for visual regression testing |
+| `npm run test:cypress` | **Cypress** | Executes E2E functional user journeys in headless runner |
 | `npm run cypress:open` | **Cypress UI** | Opens interactive Cypress Test Runner GUI |
+| `npm run test:all` | **Vitest + Playwright** | Runs complete test pipeline across unit and E2E |
 
 ---
 
@@ -626,10 +634,18 @@ Acesse no navegador pelo endereço `http://localhost:4200`.
 | :--- | :--- | :--- |
 | `npm start` | **Angular CLI** | Inicia o servidor de desenvolvimento em `http://localhost:4200` |
 | `npm run build` | **Angular Build** | Compila os arquivos de produção na pasta `/dist/portfolio` |
-| `npm test` | **Vitest** | Executa 74 testes unitários e de componente |
-| `npm run test:e2e` | **Playwright + Axe-Core** | Executa 38 testes E2E e de acessibilidade WCAG 2.1 AA em paralelo (Desktop & Mobile Pixel 7) |
-| `npm run test:cypress` | **Cypress** | Executa 17 testes E2E no executor headless do Cypress |
+| `npm test` | **Vitest** | Executa 90 testes unitários, de componente e baseados em propriedades em modo watch |
+| `npm run test:run` | **Vitest** | Execução única headless dos testes de unidade e componentes |
+| `npm run test:coverage` | **Vitest + V8** | Gera relatório completo de cobertura de código com métricas de statements, branches e funções |
+| `npm run test:e2e` | **Playwright + Axe-Core** | Executa suíte completa E2E e de acessibilidade WCAG 2.1 AA em 5 navegadores (Chrome, Firefox, Safari/WebKit, Pixel 7, iPhone 14) |
+| `npm run test:perf` | **Playwright** | Testes não-funcionais: Core Web Vitals (FCP, CLS), TTFB e complexidade da árvore DOM |
+| `npm run test:pwa` | **Playwright** | Testes de resiliência: Registro de Service Worker, navegação offline e reconexão de rede |
+| `npm run test:security` | **Playwright** | Testes de segurança: Proteção contra Reverse Tabnabbing (`target="_blank"`), injeção XSS e auditoria de segredos |
+| `npm run test:visual` | **Playwright** | Teste de regressão visual: Comparação pixel-a-pixel com mascaramento de canvas dinâmico |
+| `npm run test:visual:update` | **Playwright** | Atualiza os snapshots de imagem de referência da suíte visual |
+| `npm run test:cypress` | **Cypress** | Executa jornadas de usuário ponta a ponta no executor headless do Cypress |
 | `npm run cypress:open` | **Cypress UI** | Abre a interface gráfica interativa do Cypress Test Runner |
+| `npm run test:all` | **Vitest + Playwright** | Executa o pipeline completo de testes (unidade + E2E) |
 
 ---
 
