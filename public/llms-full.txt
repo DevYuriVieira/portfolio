@@ -145,13 +145,13 @@ Yuri Vieira Teixeira is a Full-Stack Software Engineer and Back-End Programming 
   Object-Oriented Programming in Java, Data Structures, MySQL database administration.
 
 ### Professional Certifications
+- **Software Testing & Quality Assurance (24h)** — Instituto de Pesquisas Eldorado
 - **Lean Six Sigma White Belt** — Frons
 - **Front-End Web Development with Artificial Intelligence** — Senac RJ
 - **Python Programming** — Senac RJ
 - **Philips Full-Stack Developer Bootcamp** — Digital Innovation One (DIO)
 - **English C1/C2 Advanced Programme Completed** — Wizard by Pearson
 - **SQL Database: Intermediate & Advanced** — Instituto Matera
-- **Data Analysis with Power BI** — Senac RJ
 - **Git & GitHub Version Control** — DIO
 
 ---
