@@ -28,7 +28,7 @@
           </header>
 
           <ul class="skills__list" [attr.aria-label]="category.title">
-            @for (skill of category.skills; track skill) {
+            @for (skill of category.skills; track $index) {
             <li class="skills__item">
               <span class="skills__bullet" aria-hidden="true"></span>
               <app-text variant="body" class="skills__name">

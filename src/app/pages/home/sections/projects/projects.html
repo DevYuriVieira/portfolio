@@ -66,7 +66,7 @@
             <div class="projects__section-block">
               <span class="projects__section-label">{{ labels().archDecisions }}</span>
               <ul class="projects__highlights-list">
-                @for (decision of project.architectureDecisions; track decision) {
+                @for (decision of project.architectureDecisions; track $index) {
                 <li class="projects__highlight-item">
                   <span class="projects__highlight-bullet" aria-hidden="true">•</span>
                   <app-text variant="caption" element="span" class="projects__highlight-text">
@@ -80,7 +80,7 @@
             <div class="projects__section-block">
               <span class="projects__section-label">{{ labels().techHighlights }}</span>
               <ul class="projects__highlights-list">
-                @for (highlight of project.highlights; track highlight) {
+                @for (highlight of project.highlights; track $index) {
                 <li class="projects__highlight-item">
                   <span class="projects__highlight-bullet" aria-hidden="true">•</span>
                   <app-text variant="caption" element="span" class="projects__highlight-text">
@@ -104,7 +104,7 @@
             <div class="projects__section-block">
               <span class="projects__section-label">{{ labels().techStack }}</span>
               <ul class="projects__tech-list" [attr.aria-label]="labels().techAriaLabel">
-                @for (tech of project.technologies; track tech) {
+                @for (tech of project.technologies; track $index) {
                 <li class="projects__tech-item">
                   <app-text variant="caption" element="span" class="projects__tech-text">
                     {{ tech }}
