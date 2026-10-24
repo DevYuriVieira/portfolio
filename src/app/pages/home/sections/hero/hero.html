@@ -28,7 +28,9 @@
       </div>
 
       <div class="hero__visual" aria-hidden="true">
-        <app-hero-particles-visual />
+        @defer (when isDesktop()) {
+          <app-hero-particles-visual />
+        }
       </div>
 
       <app-scroll-indicator class="hero__scroll" />

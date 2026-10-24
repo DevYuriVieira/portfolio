@@ -135,6 +135,45 @@ export class HeroParticlesVisual implements OnInit, OnDestroy {
     this.renderer.setClearColor(0x000000, 0);
   }
 
+  private generateSingleWordTarget(word: string, ctx: CanvasRenderingContext2D): Float32Array {
+    ctx.clearRect(0, 0, 256, 128);
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '900 44px monospace, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(word, 128, 64);
+
+    const imgData = ctx.getImageData(0, 0, 256, 128);
+    const data = imgData.data;
+    const validPoints: { x: number; y: number }[] = [];
+
+    for (let y = 0; y < 128; y += 2) {
+      for (let x = 0; x < 256; x += 2) {
+        const alpha = data[(y * 256 + x) * 4 + 3];
+        if (alpha > 128) {
+          validPoints.push({
+            x: ((x - 128) / 128) * 3.8,
+            y: -((y - 64) / 64) * 1.4,
+          });
+        }
+      }
+    }
+
+    const targetPositions = new Float32Array(this.count * 3);
+    const pointsCount = validPoints.length;
+
+    for (let i = 0; i < this.count; i++) {
+      const point = pointsCount > 0 ? validPoints[i % pointsCount] : { x: 0, y: 0 };
+      const zDepth = (Math.random() - 0.5) * 0.2;
+
+      targetPositions[i * 3] = point.x + (Math.random() - 0.5) * 0.03;
+      targetPositions[i * 3 + 1] = point.y + (Math.random() - 0.5) * 0.03;
+      targetPositions[i * 3 + 2] = zDepth;
+    }
+
+    return targetPositions;
+  }
+
   private generateWordTargets(): void {
     if (typeof document === 'undefined') return;
 
@@ -144,44 +183,25 @@ export class HeroParticlesVisual implements OnInit, OnDestroy {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    this.wordTargets = this.morphWords.map((word) => {
-      ctx.clearRect(0, 0, 256, 128);
-      ctx.fillStyle = '#ffffff';
-      ctx.font = '900 44px monospace, sans-serif';
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.fillText(word, 128, 64);
+    this.wordTargets = new Array(this.morphWords.length);
+    this.wordTargets[0] = this.generateSingleWordTarget(this.morphWords[0], ctx);
 
-      const imgData = ctx.getImageData(0, 0, 256, 128);
-      const data = imgData.data;
-      const validPoints: { x: number; y: number }[] = [];
-
-      for (let y = 0; y < 128; y += 2) {
-        for (let x = 0; x < 256; x += 2) {
-          const alpha = data[(y * 256 + x) * 4 + 3];
-          if (alpha > 128) {
-            validPoints.push({
-              x: ((x - 128) / 128) * 3.8,
-              y: -((y - 64) / 64) * 1.4,
-            });
-          }
-        }
+    let nextIdx = 1;
+    const scheduleNext = () => {
+      if (nextIdx >= this.morphWords.length) return;
+      const work = () => {
+        if (!ctx) return;
+        this.wordTargets[nextIdx] = this.generateSingleWordTarget(this.morphWords[nextIdx], ctx);
+        nextIdx++;
+        scheduleNext();
+      };
+      if (typeof window !== 'undefined' && 'requestIdleCallback' in window) {
+        window.requestIdleCallback(work);
+      } else {
+        setTimeout(work, 60);
       }
-
-      const targetPositions = new Float32Array(this.count * 3);
-      const pointsCount = validPoints.length;
-
-      for (let i = 0; i < this.count; i++) {
-        const point = pointsCount > 0 ? validPoints[i % pointsCount] : { x: 0, y: 0 };
-        const zDepth = (Math.random() - 0.5) * 0.2;
-
-        targetPositions[i * 3] = point.x + (Math.random() - 0.5) * 0.03;
-        targetPositions[i * 3 + 1] = point.y + (Math.random() - 0.5) * 0.03;
-        targetPositions[i * 3 + 2] = zDepth;
-      }
-
-      return targetPositions;
-    });
+    };
+    scheduleNext();
   }
 
   private createParticleLattice(): void {
