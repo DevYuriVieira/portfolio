@@ -57,6 +57,8 @@ export class InteractiveParticles implements OnInit, OnDestroy {
 
   private particles: Particle[] = [];
   private count = 83;
+  private width = 0;
+  private height = 0;
 
   private mouse = {
     x: -9999,
@@ -97,8 +99,10 @@ export class InteractiveParticles implements OnInit, OnDestroy {
   private resizeCanvas(): void {
     const canvas = this.canvasRef.nativeElement;
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    canvas.width = window.innerWidth * dpr;
-    canvas.height = window.innerHeight * dpr;
+    this.width = window.innerWidth;
+    this.height = window.innerHeight;
+    canvas.width = this.width * dpr;
+    canvas.height = this.height * dpr;
 
     if (this.ctx) {
       this.ctx.scale(dpr, dpr);
@@ -106,8 +110,8 @@ export class InteractiveParticles implements OnInit, OnDestroy {
   }
 
   private createParticles(): void {
-    const width = window.innerWidth;
-    const height = window.innerHeight;
+    const width = this.width || window.innerWidth;
+    const height = this.height || window.innerHeight;
     this.particles = [];
 
     this.count = width < 768 ? 30 : 83;
@@ -140,8 +144,8 @@ export class InteractiveParticles implements OnInit, OnDestroy {
 
     if (!this.ctx) return;
 
-    const width = window.innerWidth;
-    const height = window.innerHeight;
+    const width = this.width;
+    const height = this.height;
     const now = performance.now();
 
     this.ctx.clearRect(0, 0, width, height);

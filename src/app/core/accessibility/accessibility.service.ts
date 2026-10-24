@@ -67,14 +67,32 @@ export class AccessibilityService {
       const links = this.highlightLinks();
       const pause = this.pauseAnimations();
 
-      root.setAttribute('data-a11y-font', font);
-      contrast ? root.setAttribute('data-a11y-contrast', 'high') : root.removeAttribute('data-a11y-contrast');
+      if (root.getAttribute('data-a11y-font') !== font) {
+        root.setAttribute('data-a11y-font', font);
+      }
+      if (contrast) {
+        if (root.getAttribute('data-a11y-contrast') !== 'high') {
+          root.setAttribute('data-a11y-contrast', 'high');
+        }
+      } else if (root.hasAttribute('data-a11y-contrast')) {
+        root.removeAttribute('data-a11y-contrast');
+      }
 
-      root.classList.toggle('a11y-dyslexic-font', dyslexic);
-      root.classList.toggle('a11y-text-spacing', spacing);
-      root.classList.toggle('a11y-monochrome', mono);
-      root.classList.toggle('a11y-highlight-links', links);
-      root.classList.toggle('a11y-pause-animations', pause);
+      if (root.classList.contains('a11y-dyslexic-font') !== dyslexic) {
+        root.classList.toggle('a11y-dyslexic-font', dyslexic);
+      }
+      if (root.classList.contains('a11y-text-spacing') !== spacing) {
+        root.classList.toggle('a11y-text-spacing', spacing);
+      }
+      if (root.classList.contains('a11y-monochrome') !== mono) {
+        root.classList.toggle('a11y-monochrome', mono);
+      }
+      if (root.classList.contains('a11y-highlight-links') !== links) {
+        root.classList.toggle('a11y-highlight-links', links);
+      }
+      if (root.classList.contains('a11y-pause-animations') !== pause) {
+        root.classList.toggle('a11y-pause-animations', pause);
+      }
 
       this.persistState();
     });
