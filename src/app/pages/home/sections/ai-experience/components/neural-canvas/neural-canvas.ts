@@ -88,11 +88,12 @@ import {
       border-radius: 50%;
       background: #3b82f6;
       box-shadow: 0 0 12px #3b82f6;
+      will-change: transform, opacity;
       animation: pulseGlow 1.8s infinite ease-in-out;
     }
     @keyframes pulseGlow {
-      0%, 100% { opacity: 0.5; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.35); }
+      0%, 100% { opacity: 0.5; transform: scale3d(1, 1, 1); }
+      50% { opacity: 1; transform: scale3d(1.35, 1.35, 1); }
     }
     .readout-tag {
       font-family: var(--font-mono, monospace);

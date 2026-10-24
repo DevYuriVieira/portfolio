@@ -162,6 +162,7 @@
   flex-direction: column;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
   overflow: hidden;
+  will-change: transform, opacity;
   animation: slideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 
   @media (min-width: 640px) {
@@ -382,11 +383,11 @@
 
 @keyframes slideUp {
   from {
-    transform: translateY(20px);
+    transform: translate3d(0, 20px, 0);
     opacity: 0;
   }
   to {
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
     opacity: 1;
   }
 }
