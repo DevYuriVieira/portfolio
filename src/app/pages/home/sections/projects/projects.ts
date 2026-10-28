@@ -2,11 +2,12 @@ import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@a
 import { I18nService } from '@core';
 import { Button, Container, Heading, Link, Section, Text } from '@ui';
 import { ArchitectureModal } from './components/architecture-modal/architecture-modal';
+import { FleetOpsModal } from './components/fleetops-modal/fleetops-modal';
 import { getProjectsData } from './projects.data';
 
 @Component({
   selector: 'app-projects',
-  imports: [Section, Container, Heading, Text, Link, Button, ArchitectureModal],
+  imports: [Section, Container, Heading, Text, Link, Button, ArchitectureModal, FleetOpsModal],
   templateUrl: './projects.html',
   styleUrl: './projects.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -17,6 +18,7 @@ export class ProjectsSection {
   readonly projects = computed(() => getProjectsData(this.i18n.currentLang()));
   readonly displayLimit = signal<number>(5);
   readonly architectureModalOpen = signal<boolean>(false);
+  readonly fleetOpsModalOpen = signal<boolean>(false);
 
   readonly showAll = computed(() => this.displayLimit() >= this.projects().length);
 
@@ -84,6 +86,12 @@ export class ProjectsSection {
         'Abrir diagrama de arquitetura do projeto ZEISS',
         'Abrir diagrama de arquitectura del proyecto ZEISS',
       ),
+      viewFleetOpsDossier: t('Dossier & Architecture', 'Dossiê & Arquitetura', 'Dossier & Arquitectura'),
+      viewFleetOpsAria: t(
+        'Open technical architecture dossier for FleetOps API',
+        'Abrir dossiê técnico de arquitetura do projeto FleetOps API',
+        'Abrir dossier técnico de arquitectura del proyecto FleetOps API',
+      ),
       techAriaLabel: t('Technologies used in the project', 'Tecnologias utilizadas no projeto', 'Tecnologías utilizadas en el proyecto'),
       collapseLabel: t('Collapse projects', 'Recolher lista de projetos', 'Contraer lista de projetos'),
       expandLabel: (_count?: number) => expandLabel,
@@ -98,6 +106,14 @@ export class ProjectsSection {
 
   closeArchitectureModal(): void {
     this.architectureModalOpen.set(false);
+  }
+
+  openFleetOpsModal(): void {
+    this.fleetOpsModalOpen.set(true);
+  }
+
+  closeFleetOpsModal(): void {
+    this.fleetOpsModalOpen.set(false);
   }
 
   toggleShowAll(): void {

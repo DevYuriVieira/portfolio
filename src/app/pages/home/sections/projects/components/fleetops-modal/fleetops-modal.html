@@ -1,0 +1,716 @@
+<div class="fleetops-modal-backdrop" (click)="onBackdropClick($event)" role="dialog" aria-modal="true"
+  [attr.aria-label]="data().modalTitle">
+  <div class="fleetops-modal">
+    <header class="fleetops-modal__header">
+      <div class="fleetops-modal__header-top">
+        <div class="fleetops-modal__eyebrow-group">
+          <span class="fleetops-modal__eyebrow">{{ data().modalEyebrow }}</span>
+          <span class="fleetops-modal__badge fleetops-modal__badge--accent">.NET 10 & C# 14</span>
+          <span class="fleetops-modal__badge fleetops-modal__badge--green">300 TESTS PASSING</span>
+          <span class="fleetops-modal__badge fleetops-modal__badge--green">QUALITY GATE VERIFIED</span>
+        </div>
+
+        <div class="fleetops-modal__header-actions">
+          <div class="fleetops-modal__lang-switcher" role="group" aria-label="Language selection">
+            <button type="button" class="fleetops-modal__lang-btn" [class.is-active]="activeLang() === 'pt-BR'"
+              (click)="setLanguage('pt-BR')">
+              🇧🇷 PT
+            </button>
+            <button type="button" class="fleetops-modal__lang-btn" [class.is-active]="activeLang() === 'en'"
+              (click)="setLanguage('en')">
+              🇺🇸 EN
+            </button>
+          </div>
+
+          <button type="button" class="fleetops-modal__close-btn" (click)="closeModal()"
+            [attr.aria-label]="data().closeAria">
+            ✕
+          </button>
+        </div>
+      </div>
+
+      <div class="fleetops-modal__title-group">
+        <app-heading level="h2" size="h1" class="fleetops-modal__title">
+          FleetOps API
+        </app-heading>
+        <app-text variant="lead" class="fleetops-modal__subtitle">
+          {{ data().modalSubtitle }}
+        </app-text>
+
+        <div class="fleetops-modal__badges-ribbon">
+          @for (badge of data().badges; track badge.label) {
+          <span class="fleetops-modal__tech-badge" [class.fleetops-modal__tech-badge--green]="badge.color === 'green'"
+            [class.fleetops-modal__tech-badge--purple]="badge.color === 'purple'"
+            [class.fleetops-modal__tech-badge--blue]="badge.color === 'blue'"
+            [class.fleetops-modal__tech-badge--amber]="badge.color === 'amber'">
+            {{ badge.label }}
+          </span>
+          }
+        </div>
+
+        <div class="fleetops-modal__toolbar">
+          <a [href]="data().githubUrl" target="_blank" rel="noopener noreferrer" class="fleetops-modal__tool-btn fleetops-modal__tool-btn--primary">
+            <svg class="fleetops-modal__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+            </svg>
+            <span>GitHub Repository</span>
+            <span class="fleetops-modal__arrow" aria-hidden="true">↗</span>
+          </a>
+
+          <button type="button" class="fleetops-modal__tool-btn" (click)="copyMarkdown()">
+            <svg class="fleetops-modal__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+            </svg>
+            <span>{{ copied() ? data().copiedMarkdown : data().copyMarkdown }}</span>
+          </button>
+
+          <button type="button" class="fleetops-modal__tool-btn" (click)="downloadDossier()">
+            <svg class="fleetops-modal__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            <span>{{ data().downloadMarkdown }}</span>
+          </button>
+        </div>
+      </div>
+
+      <nav class="fleetops-modal__nav" aria-label="Seções do Dossiê">
+        <button type="button" class="fleetops-modal__tab" [class.is-active]="activeTab() === 'overview'"
+          (click)="setTab('overview')">
+          <span class="fleetops-modal__tab-icon" aria-hidden="true">🏛️</span>
+          <span>{{ data().tabs.overview }}</span>
+        </button>
+
+        <button type="button" class="fleetops-modal__tab" [class.is-active]="activeTab() === 'outbox'"
+          (click)="setTab('outbox')">
+          <span class="fleetops-modal__tab-icon" aria-hidden="true">⚡</span>
+          <span>{{ data().tabs.outbox }}</span>
+        </button>
+
+        <button type="button" class="fleetops-modal__tab" [class.is-active]="activeTab() === 'messaging'"
+          (click)="setTab('messaging')">
+          <span class="fleetops-modal__tab-icon" aria-hidden="true">📨</span>
+          <span>{{ data().tabs.messaging }}</span>
+        </button>
+
+        <button type="button" class="fleetops-modal__tab" [class.is-active]="activeTab() === 'security'"
+          (click)="setTab('security')">
+          <span class="fleetops-modal__tab-icon" aria-hidden="true">🔒</span>
+          <span>{{ data().tabs.security }}</span>
+        </button>
+
+        <button type="button" class="fleetops-modal__tab" [class.is-active]="activeTab() === 'benchmarks'"
+          (click)="setTab('benchmarks')">
+          <span class="fleetops-modal__tab-icon" aria-hidden="true">🧪</span>
+          <span>{{ data().tabs.benchmarks }}</span>
+        </button>
+
+        <button type="button" class="fleetops-modal__tab" [class.is-active]="activeTab() === 'readme'"
+          (click)="setTab('readme')">
+          <span class="fleetops-modal__tab-icon" aria-hidden="true">📜</span>
+          <span>{{ data().tabs.readme }}</span>
+        </button>
+      </nav>
+    </header>
+
+    <main class="fleetops-modal__body">
+      @if (activeTab() === 'overview') {
+      <div class="fleetops-section">
+        <div class="fleetops-card fleetops-card--featured">
+          <div class="fleetops-card__header">
+            <span class="fleetops-card__tag">EXECUTIVE SUMMARY</span>
+            <h3 class="fleetops-card__title">{{ activeLang() === 'en' ? 'Quick Engineering Summary' : 'Resumo Executivo de Engenharia' }}</h3>
+          </div>
+          <div class="fleetops-table-wrapper">
+            <table class="fleetops-table">
+              <thead>
+                <tr>
+                  <th>{{ activeLang() === 'en' ? 'Area' : 'Área' }}</th>
+                  <th>{{ activeLang() === 'en' ? 'FleetOps Implementation' : 'Implementação no FleetOps' }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (row of data().executiveSummary; track row.area) {
+                <tr>
+                  <td class="fleetops-table__area">{{ row.area }}</td>
+                  <td>{{ row.implementation }}</td>
+                </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="fleetops-card">
+          <div class="fleetops-card__header">
+            <span class="fleetops-card__tag">SYSTEM ARCHITECTURE</span>
+            <h3 class="fleetops-card__title">{{ activeLang() === 'en' ? 'Synchronous ACID Mutation & Async Messaging Lifecycle' : 'Arquitetura do Sistema: Mutação ACID e Mensageria Assíncrona' }}</h3>
+            <p class="fleetops-card__desc">
+              {{ activeLang() === 'en' 
+                ? 'The architecture guarantees that local state mutation and outbox event persistence are committed atomically within the same PostgreSQL ACID transaction. RabbitMQ operates strictly as an asynchronous downstream component, never participating in the original database transaction.'
+                : 'A gravação do estado da aplicação e a produção de eventos ocorrem sob a mesma transação ACID do PostgreSQL. O RabbitMQ opera como downstream assíncrono desacoplado, sem jamais participar da transação original.'
+              }}
+            </p>
+          </div>
+
+          <div class="fleetops-flow">
+            <div class="fleetops-flow__step">
+              <div class="fleetops-flow__num">01</div>
+              <div class="fleetops-flow__content">
+                <span class="fleetops-flow__layer">HTTP Client</span>
+                <h4>POST /api/maintenances/...</h4>
+                <p>Thin Controller repassa comando fortemente tipado e propaga CancellationToken.</p>
+              </div>
+            </div>
+            <div class="fleetops-flow__arrow" aria-hidden="true">→</div>
+
+            <div class="fleetops-flow__step">
+              <div class="fleetops-flow__num">02</div>
+              <div class="fleetops-flow__content">
+                <span class="fleetops-flow__layer">Domain Layer (DDD)</span>
+                <h4>Execute Invariants & Events</h4>
+                <p>O Aggregate executa regras de negócio e registra DomainEvent em memória.</p>
+              </div>
+            </div>
+            <div class="fleetops-flow__arrow" aria-hidden="true">→</div>
+
+            <div class="fleetops-flow__step fleetops-flow__step--accent">
+              <div class="fleetops-flow__num">03</div>
+              <div class="fleetops-flow__content">
+                <span class="fleetops-flow__layer">PostgreSQL 18 ACID</span>
+                <h4>Transactional Outbox Atomic Commit</h4>
+                <p>DbContext grava estado do Agregado E serializa mensagem na tabela outbox_messages na MESMA transação relacional.</p>
+              </div>
+            </div>
+            <div class="fleetops-flow__arrow" aria-hidden="true">→</div>
+
+            <div class="fleetops-flow__step">
+              <div class="fleetops-flow__num">04</div>
+              <div class="fleetops-flow__content">
+                <span class="fleetops-flow__layer">Outbox Worker</span>
+                <h4>SKIP LOCKED Polling</h4>
+                <p>BackgroundService seleciona lotes com FOR UPDATE SKIP LOCKED sem espera de lock entre instâncias.</p>
+              </div>
+            </div>
+            <div class="fleetops-flow__arrow" aria-hidden="true">→</div>
+
+            <div class="fleetops-flow__step">
+              <div class="fleetops-flow__num">05</div>
+              <div class="fleetops-flow__content">
+                <span class="fleetops-flow__layer">RabbitMQ 3.x</span>
+                <h4>Publisher Confirms</h4>
+                <p>Publicação com confirmação explícita do broker na exchange Topic fleetops.events.</p>
+              </div>
+            </div>
+            <div class="fleetops-flow__arrow" aria-hidden="true">→</div>
+
+            <div class="fleetops-flow__step fleetops-flow__step--green">
+              <div class="fleetops-flow__num">06</div>
+              <div class="fleetops-flow__content">
+                <span class="fleetops-flow__layer">Idempotent Consumer</span>
+                <h4>Single Business Effect</h4>
+                <p>Deduplicação atômica via MessageId PK, ACK manual e roteamento para filas TTL / DLQ em falhas.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="fleetops-card">
+          <div class="fleetops-card__header">
+            <span class="fleetops-card__tag">DOMAIN-DRIVEN DESIGN</span>
+            <h3 class="fleetops-card__title">{{ activeLang() === 'en' ? '5 Delimited Bounded Contexts (Aggregates)' : '5 Contextos Delimitados (Agregados DDD)' }}</h3>
+          </div>
+          <div class="fleetops-grid-cards">
+            @for (ctx of data().domainContexts; track ctx.name) {
+            <div class="fleetops-mini-card">
+              <div class="fleetops-mini-card__header">
+                <span class="fleetops-mini-card__tag">AGGREGATE ROOT</span>
+                <h4 class="fleetops-mini-card__title">{{ ctx.name }}</h4>
+                <span class="fleetops-mini-card__sub">{{ ctx.title }}</span>
+              </div>
+              <ul class="fleetops-mini-card__list">
+                @for (inv of ctx.invariants; track inv) {
+                <li>
+                  <span class="fleetops-bullet" aria-hidden="true">✓</span>
+                  <span>{{ inv }}</span>
+                </li>
+                }
+              </ul>
+            </div>
+            }
+          </div>
+        </div>
+      </div>
+      }
+
+      @if (activeTab() === 'outbox') {
+      <div class="fleetops-section">
+        <div class="fleetops-card">
+          <div class="fleetops-card__header">
+            <span class="fleetops-card__tag">TRANSACTIONAL OUTBOX PATTERN</span>
+            <h3 class="fleetops-card__title">Dual-Write Hazard vs Atômico com Outbox</h3>
+            <p class="fleetops-card__desc">
+              Em sistemas distribuídos, publicar diretamente no broker durante a requisição HTTP gera risco de perda irreversível de mensagens se houver crash da aplicação ou falha de rede logo após o commit do banco. O Transactional Outbox unifica o estado e o evento sob a mesma transação ACID do PostgreSQL.
+            </p>
+          </div>
+
+          <div class="fleetops-code-block">
+            <div class="fleetops-code-block__header">
+              <span>FleetOpsDbContext.SaveChangesAsync (Interceptação ChangeTracker)</span>
+              <span class="fleetops-code-block__lang">C# 14 / EF Core 10</span>
+            </div>
+            <pre><code>public override async Task&lt;int&gt; SaveChangesAsync(CancellationToken cancellationToken = default)
+&#123;
+    var aggregatesWithEvents = ChangeTracker.Entries&lt;AggregateRoot&gt;()
+        .Where(e =&gt; e.Entity.DomainEvents.Count &gt; 0)
+        .Select(e =&gt; e.Entity)
+        .ToList();
+
+    if (aggregatesWithEvents.Count &gt; 0)
+    &#123;
+        var outboxMessages = aggregatesWithEvents
+            .SelectMany(a =&gt; a.DomainEvents)
+            .Select(OutboxMessage.FromDomainEvent)
+            .ToList();
+
+        await OutboxMessages.AddRangeAsync(outboxMessages, cancellationToken);
+    &#125;
+
+    var result = await base.SaveChangesAsync(cancellationToken);
+
+    // Eventos de domínio são limpos da memória SOMENTE se o commit tiver 100% de êxito
+    foreach (var aggregate in aggregatesWithEvents)
+    &#123;
+        aggregate.ClearDomainEvents();
+    &#125;
+
+    return result;
+&#125;</code></pre>
+          </div>
+        </div>
+
+        <div class="fleetops-card">
+          <div class="fleetops-card__header">
+            <span class="fleetops-card__tag">HIGH-CONCURRENCY WORKERS</span>
+            <h3 class="fleetops-card__title">Concorrência Multi-Réplica via FOR UPDATE SKIP LOCKED</h3>
+            <p class="fleetops-card__desc">
+              Em clusters Kubernetes com múltiplos pods da API executando em paralelo, múltiplos processos de Outbox realizam polling na tabela outbox_messages. O FleetOps resolve contenção de lock com bloqueio pessimista a nível de linha: workers paralelos selecionam lotes disjuntos imediatamente sem aguardar linhas bloqueadas por réplicas concorrentes.
+            </p>
+          </div>
+
+          <div class="fleetops-code-block">
+            <div class="fleetops-code-block__header">
+              <span>SQL Polling Concorrente sem Bloqueio</span>
+              <span class="fleetops-code-block__lang">PostgreSQL 18</span>
+            </div>
+            <pre><code>SELECT * FROM outbox_messages
+WHERE processed_on_utc IS NULL AND attempts &lt; &#64;maxAttempts
+ORDER BY occurred_on_utc
+LIMIT &#64;batchSize
+FOR UPDATE SKIP LOCKED;</code></pre>
+          </div>
+
+          <div class="fleetops-benefits-grid">
+            <div class="fleetops-benefit-item">
+              <span class="fleetops-benefit-item__icon" aria-hidden="true">⚡</span>
+              <h4>Particionamento Dinâmico de Carga</h4>
+              <p>Réplica 1 bloqueia mensagens 1 a 20. A Réplica 2 ignora imediatamente as linhas travadas e consome as mensagens 21 a 40 sem espera.</p>
+            </div>
+            <div class="fleetops-benefit-item">
+              <span class="fleetops-benefit-item__icon" aria-hidden="true">🛡️</span>
+              <h4>Zero Espera de Lock na Seleção</h4>
+              <p>Elimina contenção de polling (lock_wait = 0ms), impedindo deadlocks entre pods paralelos sob alta vazão.</p>
+            </div>
+            <div class="fleetops-benefit-item">
+              <span class="fleetops-benefit-item__icon" aria-hidden="true">🔄</span>
+              <h4>Isolamento de Falha Automático</h4>
+              <p>Em crash abrupto de uma réplica, a transação aborta e o PostgreSQL libera os locks instantaneamente para o worker seguinte.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="fleetops-card">
+          <div class="fleetops-card__header">
+            <span class="fleetops-card__tag">OPTIMISTIC CONCURRENCY</span>
+            <h3 class="fleetops-card__title">Concorrência Otimista com PostgreSQL xmin (MVCC)</h3>
+            <p class="fleetops-card__desc">
+              Todas as entidades principais utilizam a coluna de sistema oculta do PostgreSQL xmin mapeada como token de concorrência. Se duas conexões lerem o veículo na versão X e tentarem alterar atributos concorrentemente, o PostgreSQL atualiza para X+1 no primeiro commit; o segundo falha com DbUpdateConcurrencyException, sendo mapeado para HTTP 409 Conflict ProblemDetails.
+            </p>
+          </div>
+        </div>
+      </div>
+      }
+
+      @if (activeTab() === 'messaging') {
+      <div class="fleetops-section">
+        <div class="fleetops-card">
+          <div class="fleetops-card__header">
+            <span class="fleetops-card__tag">MESSAGING TOPOLOGY</span>
+            <h3 class="fleetops-card__title">Topologia de Mensageria Resiliente RabbitMQ</h3>
+            <p class="fleetops-card__desc">
+              Arquitetura de mensageria assíncrona desacoplada com Publisher Confirms, Dead-Letter Exchange (DLX), Filas de Retry com TTL nativo escalonado e Dead-Letter Queue (DLQ).
+            </p>
+          </div>
+
+          <div class="fleetops-topology-grid">
+            <div class="fleetops-topology-card">
+              <span class="fleetops-topology-badge">TOPIC EXCHANGE</span>
+              <h4>fleetops.events</h4>
+              <p>Exchange durável que recebe eventos de negócio publicados pelo OutboxProcessor sob Publisher Confirms.</p>
+            </div>
+
+            <div class="fleetops-topology-card">
+              <span class="fleetops-topology-badge fleetops-topology-badge--blue">FILA PRINCIPAL</span>
+              <h4>fleetops.vehicle-maintenance.completed</h4>
+              <p>Fila durável configurada com x-dead-letter-exchange: fleetops.events.dlx para roteamento de falhas.</p>
+            </div>
+
+            <div class="fleetops-topology-card">
+              <span class="fleetops-topology-badge fleetops-topology-badge--amber">FILAS TTL (RETRY)</span>
+              <h4>10s → 30s → 90s</h4>
+              <p>Escalonamento de retries sem loop de requeue em CPU; após TTL, RabbitMQ encaminha à DLX para reprocessamento.</p>
+            </div>
+
+            <div class="fleetops-topology-card">
+              <span class="fleetops-topology-badge fleetops-topology-badge--red">DEAD-LETTER QUEUE</span>
+              <h4>...completed.dlq</h4>
+              <p>Destino final para mensagens com retries esgotados ou JSON corrompido (poison messages) com headers de diagnóstico.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="fleetops-card">
+          <div class="fleetops-card__header">
+            <span class="fleetops-card__tag">FAILURE ENGINEERING</span>
+            <h3 class="fleetops-card__title">Matriz de Resiliência a Cenários de Falha Distribuídos</h3>
+          </div>
+          <div class="fleetops-table-wrapper">
+            <table class="fleetops-table">
+              <thead>
+                <tr>
+                  <th>Cenário de Falha</th>
+                  <th>Comportamento Esperado do Sistema</th>
+                  <th>Garantia Arquitetural</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (sc of data().failureScenarios; track sc.scenario) {
+                <tr>
+                  <td class="fleetops-table__area">{{ sc.scenario }}</td>
+                  <td>{{ sc.behavior }}</td>
+                  <td><span class="fleetops-badge-guarantee">{{ sc.guarantee }}</span></td>
+                </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      }
+
+      @if (activeTab() === 'security') {
+      <div class="fleetops-section">
+        <div class="fleetops-card">
+          <div class="fleetops-card__header">
+            <span class="fleetops-card__tag">OIDC RESOURCE SERVER</span>
+            <h3 class="fleetops-card__title">Autenticação OAuth 2.0 / OpenID Connect via Keycloak</h3>
+            <p class="fleetops-card__desc">
+              O FleetOps opera estritamente como um Resource Server, delegando credenciais e emissão para o Identity Provider Keycloak. Tokens JWT são assinados assimetricamente com RS256 e validados dinamicamente via JWKS dinâmico com cache in-memory e resiliência offline contra quedas do IdP.
+            </p>
+          </div>
+
+          <div class="fleetops-grid-cards">
+            <div class="fleetops-mini-card">
+              <h4 class="fleetops-mini-card__title">Assinatura Assimétrica RS256</h4>
+              <p class="fleetops-mini-card__desc">Keycloak assina com chave privada RSA-2048; a API consome a chave pública via descoberta OIDC e certificados JWKS (/certs) com rotação transparente sem reinicialização.</p>
+            </div>
+            <div class="fleetops-mini-card">
+              <h4 class="fleetops-mini-card__title">Backchannel vs Emissor Canônico</h4>
+              <p class="fleetops-mini-card__desc">No Docker, valida o emissor público canônico (http://localhost:8080/realms/fleetops) enquanto consome JWKS pela rede interna (http://keycloak:8080/...), prevenindo hairpinning DNS.</p>
+            </div>
+            <div class="fleetops-mini-card">
+              <h4 class="fleetops-mini-card__title">RBAC com Extração Estrita</h4>
+              <p class="fleetops-mini-card__desc">Roles de cliente extraídas estritamente de resource_access.fleetops-api.roles mapeadas para ClaimTypes.Role, prevenindo escalonamento de privilégios.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="fleetops-card">
+          <div class="fleetops-card__header">
+            <span class="fleetops-card__tag">TEST ACCOUNTS</span>
+            <h3 class="fleetops-card__title">Usuários Sintéticos de Demonstração e Testes (Realm: fleetops)</h3>
+          </div>
+          <div class="fleetops-table-wrapper">
+            <table class="fleetops-table">
+              <thead>
+                <tr>
+                  <th>Usuário</th>
+                  <th>Roles Atribuídas</th>
+                  <th>Escopo de Acesso</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (u of data().syntheticUsers; track u.user) {
+                <tr>
+                  <td class="fleetops-table__area">{{ u.user }}</td>
+                  <td><code>{{ u.roles }}</code></td>
+                  <td>{{ u.scope }}</td>
+                </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="fleetops-card">
+          <div class="fleetops-card__header">
+            <span class="fleetops-card__tag">DISTRIBUTED TRACING</span>
+            <h3 class="fleetops-card__title">Rastreamento Distribuído Ponta a Ponta com OpenTelemetry & Jaeger</h3>
+            <p class="fleetops-card__desc">
+              Propagação contínua de contexto W3C traceparent através de todas as fronteiras assíncronas: HTTP Request → Gravação do Outbox → Polling do Worker → Cabeçalho AMQP RabbitMQ → Consumidor Idempotente. Spans são exportados via OTLP gRPC (porta 4317) para visualização causal no Jaeger UI.
+            </p>
+          </div>
+        </div>
+
+        <div class="fleetops-card">
+          <div class="fleetops-card__header">
+            <span class="fleetops-card__tag">API CONTRACT</span>
+            <h3 class="fleetops-card__title">Inventário de Endpoints REST (27 Endpoints de Negócio)</h3>
+          </div>
+          @for (cat of data().endpointCategories; track cat.category) {
+          <div class="fleetops-endpoint-cat">
+            <div class="fleetops-endpoint-cat__header">
+              <h4>{{ cat.category }}</h4>
+              <span class="fleetops-endpoint-cat__roles">Roles: <code>{{ cat.roles }}</code></span>
+            </div>
+            <div class="fleetops-table-wrapper">
+              <table class="fleetops-table fleetops-table--compact">
+                <thead>
+                  <tr>
+                    <th>Método</th>
+                    <th>Rota</th>
+                    <th>Objetivo Operacional</th>
+                    <th>Status Sucesso</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (ep of cat.endpoints; track ep.route) {
+                  <tr>
+                    <td>
+                      <span class="fleetops-method-badge" [class.fleetops-method-badge--post]="ep.method === 'POST'"
+                        [class.fleetops-method-badge--get]="ep.method === 'GET'"
+                        [class.fleetops-method-badge--delete]="ep.method === 'DELETE'">
+                        {{ ep.method }}
+                      </span>
+                    </td>
+                    <td><code>{{ ep.route }}</code></td>
+                    <td>{{ ep.purpose }}</td>
+                    <td><span class="fleetops-badge-success">{{ ep.success }}</span></td>
+                  </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+          </div>
+          }
+        </div>
+      </div>
+      }
+
+      @if (activeTab() === 'benchmarks') {
+      <div class="fleetops-section">
+        <div class="fleetops-stats-row">
+          <div class="fleetops-stat-box">
+            <span class="fleetops-stat-box__val">300</span>
+            <span class="fleetops-stat-box__label">Testes Automatizados</span>
+            <span class="fleetops-stat-box__sub">166 Unitários + 134 Integração</span>
+          </div>
+          <div class="fleetops-stat-box fleetops-stat-box--green">
+            <span class="fleetops-stat-box__val">100%</span>
+            <span class="fleetops-stat-box__label">Taxa de Aprovação</span>
+            <span class="fleetops-stat-box__sub">Zero Falhas / Zero Ignorados</span>
+          </div>
+          <div class="fleetops-stat-box">
+            <span class="fleetops-stat-box__val">278</span>
+            <span class="fleetops-stat-box__label">RPS Sustentado (k6 P2)</span>
+            <span class="fleetops-stat-box__sub">Escritas ACID com xmin no Postgres</span>
+          </div>
+          <div class="fleetops-stat-box">
+            <span class="fleetops-stat-box__val">16</span>
+            <span class="fleetops-stat-box__label">ADRs Formalizadas</span>
+            <span class="fleetops-stat-box__sub">Architecture Decision Records</span>
+          </div>
+        </div>
+
+        <div class="fleetops-card">
+          <div class="fleetops-card__header">
+            <span class="fleetops-card__tag">EVIDENCE-BASED CAPACITY ENGINEERING (SPRINT P2)</span>
+            <h3 class="fleetops-card__title">Tabela de Capacidade Empírica Observada (Carga Transacional com Banco de Dados)</h3>
+            <p class="fleetops-card__desc">
+              Medição real direcionada ao endpoint autenticado de escrita transacional POST /api/vehicles, exercitando validação de token JWT RS256, invariantes DDD, transações ACID com MVCC xmin no PostgreSQL 18 e persistência no Transactional Outbox.
+            </p>
+          </div>
+          <div class="fleetops-table-wrapper">
+            <table class="fleetops-table">
+              <thead>
+                <tr>
+                  <th>Workload</th>
+                  <th>Concorrência</th>
+                  <th>Requisições</th>
+                  <th>Throughput</th>
+                  <th>P50</th>
+                  <th>P90</th>
+                  <th>P95</th>
+                  <th>Max</th>
+                  <th>Erros</th>
+                  <th>Veredito</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (b of data().benchmarks; track b.workload) {
+                <tr>
+                  <td class="fleetops-table__area">{{ b.workload }}</td>
+                  <td>{{ b.concurrency }}</td>
+                  <td>{{ b.requests }}</td>
+                  <td><strong>{{ b.throughput }}</strong></td>
+                  <td>{{ b.p50 }}</td>
+                  <td>{{ b.p90 }}</td>
+                  <td>{{ b.p95 }}</td>
+                  <td>{{ b.max }}</td>
+                  <td>{{ b.errors }}</td>
+                  <td><span class="fleetops-badge-success">{{ b.verdict }}</span></td>
+                </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="fleetops-grid-2col">
+          <div class="fleetops-card">
+            <div class="fleetops-card__header">
+              <span class="fleetops-card__tag">GOVERNANCE</span>
+              <h3 class="fleetops-card__title">16 Architecture Decision Records (ADRs)</h3>
+            </div>
+            <div class="fleetops-table-wrapper">
+              <table class="fleetops-table fleetops-table--compact">
+                <thead>
+                  <tr>
+                    <th>ADR</th>
+                    <th>Título</th>
+                    <th>Status</th>
+                    <th>Foco Arquitetural</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (adr of data().adrs; track adr.code) {
+                  <tr>
+                    <td><code>{{ adr.code }}</code></td>
+                    <td class="fleetops-table__area">{{ adr.title }}</td>
+                    <td><span class="fleetops-badge-guarantee">{{ adr.status }}</span></td>
+                    <td>{{ adr.focus }}</td>
+                  </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="fleetops-card">
+            <div class="fleetops-card__header">
+              <span class="fleetops-card__tag">SRE RUNBOOKS & SLOS</span>
+              <h3 class="fleetops-card__title">4 Cadernos Operacionais de Remediação (Runbooks)</h3>
+            </div>
+            <div class="fleetops-table-wrapper">
+              <table class="fleetops-table fleetops-table--compact">
+                <thead>
+                  <tr>
+                    <th>Incidente</th>
+                    <th>Gatilho / Detecção</th>
+                    <th>Ação de Mitigação</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (rb of data().runbooks; track rb.name) {
+                  <tr>
+                    <td class="fleetops-table__area">{{ rb.name }}</td>
+                    <td>{{ rb.trigger }}</td>
+                    <td>{{ rb.mitigation }}</td>
+                  </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+
+            <div class="fleetops-card__header" style="margin-top: 1.5rem;">
+              <span class="fleetops-card__tag">SERVICE LEVEL OBJECTIVES</span>
+              <h3 class="fleetops-card__title">Objetivos de Nível de Serviço (SLOs) e Error Budget</h3>
+            </div>
+            <div class="fleetops-table-wrapper">
+              <table class="fleetops-table fleetops-table--compact">
+                <thead>
+                  <tr>
+                    <th>Serviço / Fluxo</th>
+                    <th>SLI</th>
+                    <th>Meta SLO</th>
+                    <th>Error Budget</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (slo of data().slos; track slo.service) {
+                  <tr>
+                    <td class="fleetops-table__area">{{ slo.service }}</td>
+                    <td>{{ slo.sli }}</td>
+                    <td><strong>{{ slo.target }}</strong></td>
+                    <td>{{ slo.budget }}</td>
+                  </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      }
+
+      @if (activeTab() === 'readme') {
+      <div class="fleetops-section">
+        <div class="fleetops-card">
+          <div class="fleetops-card__header fleetops-card__header--split">
+            <div>
+              <span class="fleetops-card__tag">TECHNICAL DOSSIER</span>
+              <h3 class="fleetops-card__title">{{ activeLang() === 'en' ? 'Complete Technical Dossier (38 Chapters)' : 'Dossiê Técnico Completo (38 Capítulos)' }}</h3>
+            </div>
+            <div class="fleetops-card__actions">
+              <button type="button" class="fleetops-modal__tool-btn" (click)="copyMarkdown()">
+                <span>{{ copied() ? data().copiedMarkdown : data().copyMarkdown }}</span>
+              </button>
+              <button type="button" class="fleetops-modal__tool-btn" (click)="downloadDossier()">
+                <span>{{ data().downloadMarkdown }}</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="fleetops-markdown-viewer">
+            <pre class="fleetops-markdown-text"><code>{{ markdownContent() }}</code></pre>
+          </div>
+        </div>
+      </div>
+      }
+    </main>
+
+    <footer class="fleetops-modal__footer">
+      <div class="fleetops-modal__footer-left">
+        <span class="fleetops-modal__footer-author">Autor: <strong>Yuri Vieira</strong></span>
+        <a [href]="data().githubUrl" target="_blank" rel="noopener noreferrer" class="fleetops-modal__footer-link">
+          github.com/DevYuriVieira/fleetops-api ↗
+        </a>
+      </div>
+      <button type="button" class="fleetops-modal__close-action-btn" (click)="closeModal()">
+        {{ data().closeBtn }}
+      </button>
+    </footer>
+  </div>
+</div>

@@ -53,6 +53,59 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       links: {},
     },
     {
+      id: 'fleetops-api',
+      title: 'FleetOps API',
+      category: 'Backend Distribuído (.NET 10)',
+      featured: true,
+      contextTag: 'Estudo Arquitetural & Referência',
+      collaboration: 'Projeto autoral de referência técnica',
+      description:
+        'Motor backend distribuído e orientado a eventos para gestão de frotas e logística em .NET 10 (C# 14), demonstrando Clean Architecture, Transactional Outbox, RabbitMQ, PostgreSQL 18 e Keycloak OIDC com 300 testes automatizados.',
+      context:
+        'Projeto de estudo e referência técnica para resolver desafios críticos de sistemas distribuídos: prevenção de dual-write hazard, semântica de entrega at-least-once com consumidor idempotente e concorrência defensiva.',
+      problem:
+        'Prevenção de inconsistência entre banco relacional e mensageria (dual-write hazard), duplicação de processamento por falhas de rede transitórias e contenção de locks em workers de polling concorrentes.',
+      solution:
+        'Arquitetura orientada a eventos com Transactional Outbox e FOR UPDATE SKIP LOCKED no PostgreSQL 18, mensageria com Publisher Confirms no RabbitMQ (DLX/TTL/DLQ), concorrência otimista via xmin, rastreamento distribuído W3C com OpenTelemetry/Jaeger e autenticação OIDC via Keycloak (RS256/JWKS).',
+      development:
+        'Desenvolvimento baseado em Clean Architecture e DDD em 5 contextos delimitados (Veículos, Motoristas, Entregas, Rotas e Manutenção), implementação de worker resiliente com RabbitMQ.Client 7.2.2 e suíte de 300 testes automatizados.',
+      architectureDecisions: [
+        'Transactional Outbox Pattern integrado ao DbContext.SaveChangesAsync eliminando dual-write hazard',
+        'Concorrência multi-worker via PostgreSQL FOR UPDATE SKIP LOCKED sem espera de locks',
+        'Concorrência otimista física via coluna de sistema PostgreSQL xmin (MVCC)',
+        'Consumidor idempotente com chave MessageId e semântica Bounded At-Least-Once',
+        'Topologia resiliente RabbitMQ com Filas TTL de Retry (10s, 30s, 90s) e Dead-Letter Queue (DLQ)',
+        'Rastreamento distribuído ponta a ponta W3C traceparent (HTTP → Outbox → RabbitMQ → Consumidor) no Jaeger',
+        'Resource Server OAuth 2.0 / OIDC com Keycloak, validação assimétrica RS256 e descoberta JWKS dinâmica',
+        'Rate Limiting Fixed Window em memória (RFC 9457 / HTTP 429) e métricas System.Diagnostics.Metrics',
+      ],
+      highlights: [
+        '300 testes automatizados (166 unitários + 134 integração, concorrência e injeção de falhas)',
+        'Clean Architecture + DDD com isolamento estrito em 5 contextos delimitados',
+        'PostgreSQL 18 com índices parciais únicos e integridade referencial estrita',
+        'RabbitMQ 3.x com Async API e Publisher Confirms habilitado',
+        'OpenTelemetry .NET + Jaeger UI com visualização causal de latência',
+        'Capacidade transacional empírica de 278 RPS em escritas ACID de domínio (k6 P2)',
+      ],
+      technologies: [
+        'C# 14',
+        '.NET 10',
+        'ASP.NET Core',
+        'PostgreSQL 18',
+        'EF Core 10',
+        'RabbitMQ',
+        'Docker Compose',
+        'OpenTelemetry',
+        'Keycloak OIDC',
+        'xUnit (300 Testes)',
+      ],
+      results:
+        '300 testes automatizados aprovados (0 falhas); throughput sustentado de 278 RPS em escritas ACID de domínio no PostgreSQL; recuperação em < 15ms sob spikes; zero perda de eventos sob queda do RabbitMQ e revisão arquitetural verificada.',
+      links: {
+        github: 'https://github.com/DevYuriVieira/fleetops-api',
+      },
+    },
+    {
       id: 'spring-boot-ecommerce-api',
       title: 'Spring Boot E-Commerce API',
       category: 'Backend Java',
@@ -146,44 +199,6 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       },
     },
     {
-      id: 'playstation-evolution-timeline',
-      title: 'PlayStation Evolution Timeline',
-      category: 'Frontend React & Motion',
-      featured: true,
-      contextTag: 'App em Produção (Vercel)',
-      collaboration: 'Projeto pessoal',
-      description:
-        'Timeline interativa sobre 30 anos de hardware PlayStation desenvolvida em React, TypeScript e Framer Motion, publicada no Vercel com esteira CI/CD.',
-      context:
-        'Aplicação web em produção criada para explorar conceitos avançados de motion design, interpolação de animações declarativas e arquitetura de componentes em TypeScript.',
-      problem:
-        'Exibir três décadas de dados de hardware e fichas técnicas com transições visuais ricas e animadas sem gerar queda de taxa de quadros (FPS) ou engasgos no navegador.',
-      solution:
-        'Interface reativa construída com React, Vite e TypeScript, utilizando Framer Motion para interpolação de elementos no DOM, CSS moderno e deploy automatizado no Vercel.',
-      development:
-        'Projeto autoral cobrindo a estruturação de interfaces TypeScript para dados de consoles, desenvolvimento de componentes de timeline reutilizáveis e automação da esteira de publicação.',
-      architectureDecisions: [
-        'Tipagem estrita das especificações históricas de hardware utilizando interfaces TypeScript',
-        'Animações declarativas e interpoladas com Framer Motion sem provocar reflows indesejados no DOM',
-        'Esteira de deploy contínuo (CI/CD) automatizada no Vercel a cada commit no repositório',
-        'Layout responsivo otimizado para navegação fluida em dispositivos móveis e desktops',
-      ],
-      highlights: [
-        'Aplicação em produção no Vercel',
-        '30 anos de história de consoles PlayStation',
-        'Motion design avançado com Framer Motion',
-        'Pipeline CI/CD automatizado via GitHub + Vercel',
-        'Arquitetura em TypeScript com tipagem estrita',
-      ],
-      technologies: ['React', 'TypeScript', 'Framer Motion', 'Vite', 'Vercel CI/CD'],
-      results:
-        'Navegação imersiva e responsiva por 30 anos de evolução tecnológica dos videogames; animações fluidas a 60 FPS alimentadas por Framer Motion; esteira de entrega contínua ativa e integrada ao GitHub.',
-      links: {
-        github: 'https://github.com/DevYuriVieira/playstation-evolution-timeline',
-        demo: 'https://playstation-evolution-timeline.vercel.app',
-      },
-    },
-    {
       id: 'django-ecommerce',
       title: 'Django Full-Stack E-Commerce',
       category: 'Full Stack Python/Django',
@@ -233,47 +248,41 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       },
     },
     {
-      id: 'anime-weather-platform',
-      title: 'Anime Weather Platform',
-      category: 'Frontend + APIs + IA',
-      featured: false,
-      contextTag: 'Frontend & Integração com IA',
-      collaboration: 'Projeto colaborativo (Pair Programming)',
+      id: 'playstation-evolution-timeline',
+      title: 'PlayStation Evolution Timeline',
+      category: 'Frontend React & Motion',
+      featured: true,
+      contextTag: 'App em Produção (Vercel)',
+      collaboration: 'Projeto pessoal',
       description:
-        'Aplicação web reativa que cruza dados climáticos (OpenWeather API) e catálogo de animes (Jikan API) com o Google Gemini AI, exibindo recomendações em JSON e chatbot de trocadilhos.',
+        'Timeline interativa sobre 30 anos de hardware PlayStation desenvolvida em React, TypeScript e Framer Motion, publicada no Vercel com esteira CI/CD.',
       context:
-        'Plataforma criada em Pair Programming para explorar a integração entre múltiplas APIs externas REST e SDKs de inteligência artificial generativa.',
+        'Aplicação web em produção criada para explorar conceitos avançados de motion design, interpolação de animações declarativas e arquitetura de componentes em TypeScript.',
       problem:
-        'Combinar em tempo real dados de localização geográfica, clima e acervo cultural, alimentando um modelo de linguagem para produzir tanto cards em JSON estruturado quanto diálogos interativos.',
+        'Exibir três décadas de dados de hardware e fichas técnicas com transições visuais ricas e animadas sem gerar queda de taxa de quadros (FPS) ou engasgos no navegador.',
       solution:
-        'Aplicação React e TypeScript que detecta o clima local via OpenWeather API, busca animes compatíveis na Jikan API e envia contexto ao Google Gemini AI via Prompt Engineering para montagem da UI e suporte ao chatbot.',
+        'Interface reativa construída com React, Vite e TypeScript, utilizando Framer Motion para interpolação de elementos no DOM, CSS moderno e deploy automatizado no Vercel.',
       development:
-        'Desenvolvimento em dupla cobrindo gerenciamento de estado assíncrono, renderização dinâmica de dados, tratamento de erros de API e estilo visual glassmorphic.',
+        'Projeto autoral cobrindo a estruturação de interfaces TypeScript para dados de consoles, desenvolvimento de componentes de timeline reutilizáveis e automação da esteira de publicação.',
       architectureDecisions: [
-        'Consumo assíncrono e cruzamento de dados em tempo real da OpenWeather API (clima) e Jikan API (animes)',
-        'Integração com SDK do Google Gemini AI unindo Engenharia de Prompts para respostas estruturadas em JSON nos cards e chatbot interativo',
-        'Interface responsiva desenvolvida em React, TypeScript e Vite com componentes em estilo glassmorphism',
-        'Tratamento defensivo de requisições com indicadores de carregamento e fallbacks de erro',
+        'Tipagem estrita das especificações históricas de hardware utilizando interfaces TypeScript',
+        'Animações declarativas e interpoladas com Framer Motion sem provocar reflows indesejados no DOM',
+        'Esteira de deploy contínuo (CI/CD) automatizada no Vercel a cada commit no repositório',
+        'Layout responsivo otimizado para navegação fluida em dispositivos móveis e desktops',
       ],
       highlights: [
-        'Engenharia de Prompts para respostas estruturadas em JSON',
-        'Chatbot interativo com Google Gemini AI',
-        'Trocadilhos climáticos contextualizados via text content',
-        'Dados de clima em tempo real via OpenWeather API',
-        'Consumo do catálogo cultural via Jikan API',
+        'Aplicação em produção no Vercel',
+        '30 anos de história de consoles PlayStation',
+        'Motion design avançado com Framer Motion',
+        'Pipeline CI/CD automatizado via GitHub + Vercel',
+        'Arquitetura em TypeScript com tipagem estrita',
       ],
-      technologies: [
-        'React',
-        'TypeScript',
-        'Vite',
-        'OpenWeather API',
-        'Jikan API',
-        'Google Gemini AI',
-      ],
+      technologies: ['React', 'TypeScript', 'Framer Motion', 'Vite', 'Vercel CI/CD'],
       results:
-        'Recomendações culturais personalizadas geradas pelo cruzamento de clima e animes via IA; interface reativa com suporte a chatbot e cards montados dinamicamente via JSON.',
+        'Navegação imersiva e responsiva por 30 anos de evolução tecnológica dos videogames; animações fluidas a 60 FPS alimentadas por Framer Motion; esteira de entrega contínua ativa e integrada ao GitHub.',
       links: {
-        github: 'https://github.com/DevYuriVieira/anime-weather-platform',
+        github: 'https://github.com/DevYuriVieira/playstation-evolution-timeline',
+        demo: 'https://playstation-evolution-timeline.vercel.app',
       },
     },
     {
@@ -361,6 +370,50 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       links: {
         github: 'https://github.com/DevYuriVieira/fleet-management-system',
         demo: 'https://fleet-management-system-chi.vercel.app/',
+      },
+    },
+    {
+      id: 'anime-weather-platform',
+      title: 'Anime Weather Platform',
+      category: 'Frontend + APIs + IA',
+      featured: false,
+      contextTag: 'Frontend & Integração com IA',
+      collaboration: 'Projeto colaborativo (Pair Programming)',
+      description:
+        'Aplicação web reativa que cruza dados climáticos (OpenWeather API) e catálogo de animes (Jikan API) com o Google Gemini AI, exibindo recomendações em JSON e chatbot de trocadilhos.',
+      context:
+        'Plataforma criada em Pair Programming para explorar a integração entre múltiplas APIs externas REST e SDKs de inteligência artificial generativa.',
+      problem:
+        'Combinar em tempo real dados de localização geográfica, clima e acervo cultural, alimentando um modelo de linguagem para produzir tanto cards em JSON estruturado quanto diálogos interativos.',
+      solution:
+        'Aplicação React e TypeScript que detecta o clima local via OpenWeather API, busca animes compatíveis na Jikan API e envia contexto ao Google Gemini AI via Prompt Engineering para montagem da UI e suporte ao chatbot.',
+      development:
+        'Desenvolvimento em dupla cobrindo gerenciamento de estado assíncrono, renderização dinâmica de dados, tratamento de erros de API e estilo visual glassmorphic.',
+      architectureDecisions: [
+        'Consumo assíncrono e cruzamento de dados em tempo real da OpenWeather API (clima) e Jikan API (animes)',
+        'Integração com SDK do Google Gemini AI unindo Engenharia de Prompts para respostas estruturadas em JSON nos cards e chatbot interativo',
+        'Interface responsiva desenvolvida em React, TypeScript e Vite com componentes em estilo glassmorphism',
+        'Tratamento defensivo de requisições com indicadores de carregamento e fallbacks de erro',
+      ],
+      highlights: [
+        'Engenharia de Prompts para respostas estruturadas em JSON',
+        'Chatbot interativo com Google Gemini AI',
+        'Trocadilhos climáticos contextualizados via text content',
+        'Dados de clima em tempo real via OpenWeather API',
+        'Consumo do catálogo cultural via Jikan API',
+      ],
+      technologies: [
+        'React',
+        'TypeScript',
+        'Vite',
+        'OpenWeather API',
+        'Jikan API',
+        'Google Gemini AI',
+      ],
+      results:
+        'Recomendações culturais personalizadas geradas pelo cruzamento de clima e animes via IA; interface reativa com suporte a chatbot e cards montados dinamicamente via JSON.',
+      links: {
+        github: 'https://github.com/DevYuriVieira/anime-weather-platform',
       },
     },
     {
@@ -635,6 +688,59 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       links: {},
     },
     {
+      id: 'fleetops-api',
+      title: 'FleetOps API',
+      category: 'Distributed Backend (.NET 10)',
+      featured: true,
+      contextTag: 'Architectural Study & Reference',
+      collaboration: 'Authorial technical reference project',
+      description:
+        'Distributed, event-driven fleet operations REST API backend engine built with .NET 10 (C# 14) demonstrating Clean Architecture, Transactional Outbox, RabbitMQ, PostgreSQL 18, and Keycloak OIDC with 300 automated tests.',
+      context:
+        'Architectural reference study designed to solve core distributed systems challenges: dual-write hazard elimination, at-least-once delivery with idempotent consumers, and defensive concurrency control.',
+      problem:
+        'Preventing state drift between relational persistence and message brokers (dual-write hazard), avoiding duplicate side-effects from transient network retries, and eliminating lock contention across concurrent workers.',
+      solution:
+        'Event-driven architecture with Transactional Outbox and FOR UPDATE SKIP LOCKED on PostgreSQL 18, RabbitMQ with Publisher Confirms (DLX/TTL/DLQ topology), optimistic concurrency via xmin, end-to-end W3C distributed tracing with OpenTelemetry/Jaeger, and OIDC auth via Keycloak (RS256/JWKS).',
+      development:
+        'Built with Clean Architecture and DDD across 5 Bounded Contexts (Vehicles, Drivers, Deliveries, Routes, Maintenance), resilient worker pipeline with RabbitMQ.Client 7.2.2, and 300 automated tests.',
+      architectureDecisions: [
+        'Transactional Outbox Pattern integrated into DbContext.SaveChangesAsync eliminating dual-write hazard',
+        'Multi-worker concurrency via PostgreSQL FOR UPDATE SKIP LOCKED without lock waiting',
+        'Physical optimistic concurrency control via PostgreSQL system column xmin (MVCC)',
+        'Idempotent consumer deduplication via MessageId PK with Bounded At-Least-Once semantics',
+        'Resilient RabbitMQ messaging topology with staged TTL Retry Queues (10s, 30s, 90s) and DLQ',
+        'End-to-end W3C traceparent propagation (HTTP → Outbox → RabbitMQ → Consumer) to Jaeger',
+        'OAuth 2.0 / OIDC Resource Server with Keycloak, asymmetric RS256 validation, and dynamic JWKS discovery',
+        'In-memory Fixed Window Rate Limiting (RFC 9457 / HTTP 429) and bounded telemetry cardinality',
+      ],
+      highlights: [
+        '300 automated tests (166 unit + 134 integration, outbox concurrency, and fault injection)',
+        'Clean Architecture + DDD with strict layer isolation across 5 Bounded Contexts',
+        'PostgreSQL 18 with partial unique indexes and strict referential integrity',
+        'RabbitMQ 3.x with Async API and Publisher Confirms enabled',
+        'OpenTelemetry .NET + Jaeger UI with causal latency waterfall visualization',
+        'Empirical domain transactional capacity of 278 RPS under ACID writes (k6 P2)',
+      ],
+      technologies: [
+        'C# 14',
+        '.NET 10',
+        'ASP.NET Core',
+        'PostgreSQL 18',
+        'EF Core 10',
+        'RabbitMQ',
+        'Docker Compose',
+        'OpenTelemetry',
+        'Keycloak OIDC',
+        'xUnit (300 Tests)',
+      ],
+      results:
+        '300 passing automated tests (0 failures); sustained 278 RPS throughput under domain ACID writes in PostgreSQL; recovery in < 15ms after traffic spikes; zero event loss during RabbitMQ outages, and verified quality gate.',
+      links: {
+        github: 'https://github.com/DevYuriVieira/fleetops-api',
+      },
+    },
+    {
       id: 'spring-boot-ecommerce-api',
       title: 'Spring Boot E-Commerce API',
       category: 'Backend Java',
@@ -728,44 +834,6 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       },
     },
     {
-      id: 'playstation-evolution-timeline',
-      title: 'PlayStation Evolution Timeline',
-      category: 'Frontend React & Motion',
-      featured: true,
-      contextTag: 'Production App (Vercel)',
-      collaboration: 'Personal project',
-      description:
-        'Interactive timeline covering 30 years of PlayStation hardware built in React, TypeScript, and Framer Motion, published on Vercel with CI/CD.',
-      context:
-        'Production web application live on Vercel built to master declarative animations, advanced motion design, and high-performance TypeScript components.',
-      problem:
-        'Render 30 years of historical hardware specifications and data with rich visual transitions without causing frame drops (FPS) or rendering bottlenecks.',
-      solution:
-        'Interactive timeline built with React, Vite, and TypeScript, animated via Framer Motion with high-performance interpolation and automated Vercel CI/CD pipeline.',
-      development:
-        'Authorial project focused on strict hardware data typing, reusable component structure, and automated deployment pipeline on Vercel.',
-      architectureDecisions: [
-        'Strict typing of historical hardware specs using TypeScript interfaces',
-        'Declarative and interpolated animations with Framer Motion avoiding DOM reflows',
-        'Automated continuous deployment (CI/CD) pipeline on Vercel triggered by main branch commits',
-        '100% responsive layout tailored for smooth navigation across mobile and desktop devices',
-      ],
-      highlights: [
-        'Live production app on Vercel',
-        '30 years of PlayStation console history',
-        'Advanced motion design with Framer Motion',
-        'Automated CI/CD pipeline via GitHub + Vercel',
-        'Strictly typed TypeScript architecture',
-      ],
-      technologies: ['React', 'TypeScript', 'Framer Motion', 'Vite', 'Vercel CI/CD'],
-      results:
-        'Interactive presentation of 30 years of console hardware in a responsive timeline; declarative animation rendering via Framer Motion without UI lag; automated CI/CD pipeline on Vercel linked to GitHub commits.',
-      links: {
-        github: 'https://github.com/DevYuriVieira/playstation-evolution-timeline',
-        demo: 'https://playstation-evolution-timeline.vercel.app',
-      },
-    },
-    {
       id: 'django-ecommerce',
       title: 'Django Full-Stack E-Commerce',
       category: 'Full Stack Python/Django',
@@ -815,47 +883,41 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       },
     },
     {
-      id: 'anime-weather-platform',
-      title: 'Anime Weather Platform',
-      category: 'Frontend + APIs + IA',
-      featured: false,
-      contextTag: 'Frontend & AI Integration',
-      collaboration: 'Collaborative project (Pair Programming)',
+      id: 'playstation-evolution-timeline',
+      title: 'PlayStation Evolution Timeline',
+      category: 'Frontend React & Motion',
+      featured: true,
+      contextTag: 'Production App (Vercel)',
+      collaboration: 'Personal project',
       description:
-        'Reactive web application combining weather data (OpenWeather API) and anime catalog (Jikan API) with Google Gemini AI, integrating structured JSON recommendations and an interactive chatbot generating weather puns.',
+        'Interactive timeline covering 30 years of PlayStation hardware built in React, TypeScript, and Framer Motion, published on Vercel with CI/CD.',
       context:
-        'Platform built in Pair Programming format to practice asynchronous consumption of composite external APIs and generative AI SDKs.',
+        'Production web application live on Vercel built to master declarative animations, advanced motion design, and high-performance TypeScript components.',
       problem:
-        'Orchestrate real-time data from multiple external APIs and feed a language model to produce both structured JSON UI responses and interactive chatbot conversations without connection failures.',
+        'Render 30 years of historical hardware specifications and data with rich visual transitions without causing frame drops (FPS) or rendering bottlenecks.',
       solution:
-        'Development of a React and TypeScript interface consuming OpenWeather API for local weather, Jikan API for anime catalog, and Google Gemini AI SDK via Prompt Engineering (returning strict JSON for recommendation cards and interactive textContent for the weather pun chatbot).',
+        'Interactive timeline built with React, Vite, and TypeScript, animated via Framer Motion with high-performance interpolation and automated Vercel CI/CD pipeline.',
       development:
-        'Pair programming development covering async state management, dynamic JSON and text rendering (`textContent`), API reconnection fallbacks, and glassmorphism UI components.',
+        'Authorial project focused on strict hardware data typing, reusable component structure, and automated deployment pipeline on Vercel.',
       architectureDecisions: [
-        'Async consumption and real-time cross-referencing of OpenWeather API (weather) and Jikan API (anime catalog)',
-        'Integration with Google Gemini AI SDK combining Prompt Engineering for strict JSON cards and an interactive weather pun chatbot',
-        'Responsive frontend built with React, TypeScript, and Vite featuring glassmorphism UI',
-        'Defensive async request handling with loading states and error fallbacks',
+        'Strict typing of historical hardware specs using TypeScript interfaces',
+        'Declarative and interpolated animations with Framer Motion avoiding DOM reflows',
+        'Automated continuous deployment (CI/CD) pipeline on Vercel triggered by main branch commits',
+        '100% responsive layout tailored for smooth navigation across mobile and desktop devices',
       ],
       highlights: [
-        'Prompt Engineering for structured JSON responses',
-        'Interactive chatbot powered by Google Gemini AI',
-        'Contextual weather puns via text content manipulation',
-        'Real-time weather data via OpenWeather API',
-        'Anime catalog consumption via Jikan API',
+        'Live production app on Vercel',
+        '30 years of PlayStation console history',
+        'Advanced motion design with Framer Motion',
+        'Automated CI/CD pipeline via GitHub + Vercel',
+        'Strictly typed TypeScript architecture',
       ],
-      technologies: [
-        'React',
-        'TypeScript',
-        'Vite',
-        'OpenWeather API',
-        'Jikan API',
-        'Google Gemini AI',
-      ],
+      technologies: ['React', 'TypeScript', 'Framer Motion', 'Vite', 'Vercel CI/CD'],
       results:
-        'Contextual recommendations generated by cross-referencing OpenWeather and Jikan API data via Google Gemini AI; integration of structured JSON responses for dynamic UI assembly alongside an interactive weather pun chatbot using text content manipulation (`textContent`); responsive glassmorphism UI.',
+        'Interactive presentation of 30 years of console hardware in a responsive timeline; declarative animation rendering via Framer Motion without UI lag; automated CI/CD pipeline on Vercel linked to GitHub commits.',
       links: {
-        github: 'https://github.com/DevYuriVieira/anime-weather-platform',
+        github: 'https://github.com/DevYuriVieira/playstation-evolution-timeline',
+        demo: 'https://playstation-evolution-timeline.vercel.app',
       },
     },
     {
@@ -943,6 +1005,50 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       links: {
         github: 'https://github.com/DevYuriVieira/fleet-management-system',
         demo: 'https://fleet-management-system-chi.vercel.app/',
+      },
+    },
+    {
+      id: 'anime-weather-platform',
+      title: 'Anime Weather Platform',
+      category: 'Frontend + APIs + IA',
+      featured: false,
+      contextTag: 'Frontend & AI Integration',
+      collaboration: 'Collaborative project (Pair Programming)',
+      description:
+        'Reactive web application combining weather data (OpenWeather API) and anime catalog (Jikan API) with Google Gemini AI, integrating structured JSON recommendations and an interactive chatbot generating weather puns.',
+      context:
+        'Platform built in Pair Programming format to practice asynchronous consumption of composite external APIs and generative AI SDKs.',
+      problem:
+        'Orchestrate real-time data from multiple external APIs and feed a language model to produce both structured JSON UI responses and interactive chatbot conversations without connection failures.',
+      solution:
+        'Development of a React and TypeScript interface consuming OpenWeather API for local weather, Jikan API for anime catalog, and Google Gemini AI SDK via Prompt Engineering (returning strict JSON for recommendation cards and interactive textContent for the weather pun chatbot).',
+      development:
+        'Pair programming development covering async state management, dynamic JSON and text rendering (`textContent`), API reconnection fallbacks, and glassmorphism UI components.',
+      architectureDecisions: [
+        'Async consumption and real-time cross-referencing of OpenWeather API (weather) and Jikan API (anime catalog)',
+        'Integration with Google Gemini AI SDK combining Prompt Engineering for strict JSON cards and an interactive weather pun chatbot',
+        'Responsive frontend built with React, TypeScript, and Vite featuring glassmorphism UI',
+        'Defensive async request handling with loading states and error fallbacks',
+      ],
+      highlights: [
+        'Prompt Engineering for structured JSON responses',
+        'Interactive chatbot powered by Google Gemini AI',
+        'Contextual weather puns via text content manipulation',
+        'Real-time weather data via OpenWeather API',
+        'Anime catalog consumption via Jikan API',
+      ],
+      technologies: [
+        'React',
+        'TypeScript',
+        'Vite',
+        'OpenWeather API',
+        'Jikan API',
+        'Google Gemini AI',
+      ],
+      results:
+        'Contextual recommendations generated by cross-referencing OpenWeather and Jikan API data via Google Gemini AI; integration of structured JSON responses for dynamic UI assembly alongside an interactive weather pun chatbot using text content manipulation (`textContent`); responsive glassmorphism UI.',
+      links: {
+        github: 'https://github.com/DevYuriVieira/anime-weather-platform',
       },
     },
     {
@@ -1216,6 +1322,59 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       links: {},
     },
     {
+      id: 'fleetops-api',
+      title: 'FleetOps API',
+      category: 'Backend Distribuido (.NET 10)',
+      featured: true,
+      contextTag: 'Estudio Arquitectural & Referencia',
+      collaboration: 'Proyecto autoral de referencia técnica',
+      description:
+        'Motor backend distribuido y orientado a eventos para gestión de flotas y logística en .NET 10 (C# 14), demostrando Clean Architecture, Transactional Outbox, RabbitMQ, PostgreSQL 18 y Keycloak OIDC con 300 pruebas automatizadas.',
+      context:
+        'Proyecto de estudio y referencia técnica para resolver desafíos críticos de sistemas distribuidos: prevención de dual-write hazard, semántica de entrega at-least-once con consumidor idempotente y concurrencia defensiva.',
+      problem:
+        'Prevención de inconsistencias entre base de datos relacional y mensajería (dual-write hazard), duplicación por fallas de red transitorias y contención de bloqueos en trabajadores concurrentes.',
+      solution:
+        'Arquitectura orientada a eventos con Transactional Outbox y FOR UPDATE SKIP LOCKED en PostgreSQL 18, mensajería con Publisher Confirms en RabbitMQ (DLX/TTL/DLQ), concurrencia optimista vía xmin, trazabilidad distribuida W3C con OpenTelemetry/Jaeger y autenticación OIDC vía Keycloak (RS256/JWKS).',
+      development:
+        'Desarrollo basado en Clean Architecture y DDD en 5 contextos delimitados (Vehículos, Conductores, Entregas, Rutas y Mantenimiento), implementación de worker resiliente con RabbitMQ.Client 7.2.2 y suite de 300 pruebas automatizadas.',
+      architectureDecisions: [
+        'Transactional Outbox Pattern integrado en DbContext.SaveChangesAsync eliminando dual-write hazard',
+        'Concurrencia multi-worker vía PostgreSQL FOR UPDATE SKIP LOCKED sin espera de bloqueos',
+        'Concurrencia optimista física vía columna de sistema PostgreSQL xmin (MVCC)',
+        'Consumidor idempotente con clave MessageId y semántica Bounded At-Least-Once',
+        'Topología resiliente RabbitMQ con Colas TTL de Reintento (10s, 30s, 90s) y Dead-Letter Queue (DLQ)',
+        'Trazabilidad distribuida continua W3C traceparent (HTTP → Outbox → RabbitMQ → Consumidor) en Jaeger',
+        'Resource Server OAuth 2.0 / OIDC con Keycloak, validación asimétrica RS256 y descubrimiento JWKS dinámico',
+        'Rate Limiting Fixed Window en memoria (RFC 9457 / HTTP 429) y métricas con cardinalidad delimitada',
+      ],
+      highlights: [
+        '300 pruebas automatizadas (166 unitarias + 134 integración, concurrencia e inyección de fallas)',
+        'Clean Architecture + DDD con aislamiento estricto en 5 contextos delimitados',
+        'PostgreSQL 18 con índices parciales únicos e integridad referencial estricta',
+        'RabbitMQ 3.x con Async API e Publisher Confirms habilitado',
+        'OpenTelemetry .NET + Jaeger UI con visualización causal de latencia',
+        'Capacidad transaccional empírica de 278 RPS en escrituras ACID de dominio (k6 P2)',
+      ],
+      technologies: [
+        'C# 14',
+        '.NET 10',
+        'ASP.NET Core',
+        'PostgreSQL 18',
+        'EF Core 10',
+        'RabbitMQ',
+        'Docker Compose',
+        'OpenTelemetry',
+        'Keycloak OIDC',
+        'xUnit (300 Pruebas)',
+      ],
+      results:
+        '300 pruebas automatizadas aprobadas (0 fallas); rendimiento sostenido de 278 RPS en escrituras ACID de dominio en PostgreSQL; recuperación en < 15ms bajo picos de tráfico; cero pérdida de eventos bajo caída de RabbitMQ y revisión arquitectural verificada.',
+      links: {
+        github: 'https://github.com/DevYuriVieira/fleetops-api',
+      },
+    },
+    {
       id: 'spring-boot-ecommerce-api',
       title: 'Spring Boot E-Commerce API',
       category: 'Backend Java',
@@ -1305,44 +1464,6 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       links: { github: 'https://github.com/DevYuriVieira/aurora-growth-platform' },
     },
     {
-      id: 'playstation-evolution-timeline',
-      title: 'PlayStation Evolution Timeline',
-      category: 'Frontend React & Motion',
-      featured: true,
-      contextTag: 'App en Producción (Vercel)',
-      collaboration: 'Proyecto personal',
-      description:
-        'Timeline interactiva de 30 años de hardware PlayStation construida en React, TypeScript y Framer Motion, publicada en Vercel con CI/CD.',
-      context:
-        'Aplicación web en producción creada para dominar animaciones declarativas avanzadas, motion design y componentes TypeScript de alto rendimiento.',
-      problem:
-        'Renderizar 30 años de especificaciones históricas de hardware con transiciones visuales ricas sin causar caídas de cuadros (FPS) o cuellos de botella.',
-      solution:
-        'Timeline interactiva construida con React, Vite y TypeScript, animada vía Framer Motion con interpolación de alto rendimiento y pipeline CI/CD automatizado en Vercel.',
-      development:
-        'Proyecto autoral enfocado en tipado estricto de datos de hardware, estructura de componentes reutilizables y pipeline de despliegue automatizado en Vercel.',
-      architectureDecisions: [
-        'Tipado estricto de especificaciones históricas de hardware usando interfaces TypeScript',
-        'Animaciones declarativas e interpoladas con Framer Motion evitando reflows del DOM',
-        'Pipeline de despliegue continuo (CI/CD) automatizado en Vercel activado por commits en main',
-        'Layout 100% responsivo para navegación fluida en dispositivos móviles y desktop',
-      ],
-      highlights: [
-        'Aplicación en producción en Vercel',
-        '30 años de historia de consolas PlayStation',
-        'Motion design avanzado con Framer Motion',
-        'Pipeline CI/CD automatizado vía GitHub + Vercel',
-        'Arquitectura TypeScript con tipado estricto',
-      ],
-      technologies: ['React', 'TypeScript', 'Framer Motion', 'Vite', 'Vercel CI/CD'],
-      results:
-        'Presentación interactiva de 30 años de hardware de consolas en timeline responsiva; renderizado de animaciones declarativas vía Framer Motion sin lag de UI; pipeline CI/CD automatizado en Vercel vinculado a commits de GitHub.',
-      links: {
-        github: 'https://github.com/DevYuriVieira/playstation-evolution-timeline',
-        demo: 'https://playstation-evolution-timeline.vercel.app',
-      },
-    },
-    {
       id: 'django-ecommerce',
       title: 'Django Full-Stack E-Commerce',
       category: 'Full Stack Python/Django',
@@ -1390,46 +1511,42 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       links: { github: 'https://github.com/DevYuriVieira/django-ecommerce' },
     },
     {
-      id: 'anime-weather-platform',
-      title: 'Anime Weather Platform',
-      category: 'Frontend + APIs + IA',
-      featured: false,
-      contextTag: 'Frontend & Integración con IA',
-      collaboration: 'Proyecto colaborativo (Pair Programming)',
+      id: 'playstation-evolution-timeline',
+      title: 'PlayStation Evolution Timeline',
+      category: 'Frontend React & Motion',
+      featured: true,
+      contextTag: 'App en Producción (Vercel)',
+      collaboration: 'Proyecto personal',
       description:
-        'Aplicación web reactiva que combina datos climáticos (OpenWeather API) y catálogo de anime (Jikan API) con Google Gemini AI, integrando recomendaciones en JSON estructurado y chatbot interactivo.',
+        'Timeline interactiva de 30 años de hardware PlayStation construida en React, TypeScript y Framer Motion, publicada en Vercel con CI/CD.',
       context:
-        'Plataforma construida en formato Pair Programming para practicar el consumo asíncrono de múltiples APIs externas y SDKs de IA generativa.',
+        'Aplicación web en producción creada para dominar animaciones declarativas avanzadas, motion design y componentes TypeScript de alto rendimiento.',
       problem:
-        'Orquestar datos en tiempo real de múltiples APIs externas y alimentar un modelo de lenguaje para producir respuestas en JSON estructurado para la UI y conversaciones interactivas de chatbot.',
+        'Renderizar 30 años de especificaciones históricas de hardware con transiciones visuales ricas sin causar caídas de cuadros (FPS) o cuellos de botella.',
       solution:
-        'Desarrollo de interfaz React/TypeScript consumiendo OpenWeather API, Jikan API y Google Gemini AI SDK vía Prompt Engineering para cards en JSON y chatbot de juegos de palabras climáticos.',
+        'Timeline interactiva construida con React, Vite y TypeScript, animada vía Framer Motion con interpolación de alto rendimiento y pipeline CI/CD automatizado en Vercel.',
       development:
-        'Desarrollo en pair programming cubriendo gestión de estado asíncrono, renderizado dinámico de JSON, fallbacks de reconexión de APIs y componentes UI con estilo glassmorphism.',
+        'Proyecto autoral enfocado en tipado estricto de datos de hardware, estructura de componentes reutilizables y pipeline de despliegue automatizado en Vercel.',
       architectureDecisions: [
-        'Consumo asíncrono y cruce de datos en tiempo real de OpenWeather API (clima) y Jikan API (catálogo de anime)',
-        'Integración con SDK de Google Gemini AI combinando Prompt Engineering para cards en JSON estricto y chatbot interactivo',
-        'Frontend responsivo construido con React, TypeScript y Vite con UI glassmorphism',
-        'Manejo defensivo de solicitudes asíncronas con estados de carga y fallbacks de error',
+        'Tipado estricto de especificaciones históricas de hardware usando interfaces TypeScript',
+        'Animaciones declarativas e interpoladas con Framer Motion evitando reflows del DOM',
+        'Pipeline de despliegue continuo (CI/CD) automatizado en Vercel activado por commits en main',
+        'Layout 100% responsivo para navegación fluida en dispositivos móviles y desktop',
       ],
       highlights: [
-        'Prompt Engineering para respuestas en JSON estructurado',
-        'Chatbot interactivo con Google Gemini AI',
-        'Juegos de palabras climáticos contextualizados',
-        'Datos climáticos en tiempo real vía OpenWeather API',
-        'Consumo de catálogo cultural vía Jikan API',
+        'Aplicación en producción en Vercel',
+        '30 años de historia de consolas PlayStation',
+        'Motion design avanzado con Framer Motion',
+        'Pipeline CI/CD automatizado vía GitHub + Vercel',
+        'Arquitectura TypeScript con tipado estricto',
       ],
-      technologies: [
-        'React',
-        'TypeScript',
-        'Vite',
-        'OpenWeather API',
-        'Jikan API',
-        'Google Gemini AI',
-      ],
+      technologies: ['React', 'TypeScript', 'Framer Motion', 'Vite', 'Vercel CI/CD'],
       results:
-        'Recomendaciones contextuales generadas por el cruce de datos climáticos y de anime vía Google Gemini AI; integración de respuestas JSON estructuradas para ensamblaje dinámico de UI junto con chatbot interactivo; UI responsiva con glassmorphism.',
-      links: { github: 'https://github.com/DevYuriVieira/anime-weather-platform' },
+        'Presentación interactiva de 30 años de hardware de consolas en timeline responsiva; renderizado de animaciones declarativas vía Framer Motion sin lag de UI; pipeline CI/CD automatizado en Vercel vinculado a commits de GitHub.',
+      links: {
+        github: 'https://github.com/DevYuriVieira/playstation-evolution-timeline',
+        demo: 'https://playstation-evolution-timeline.vercel.app',
+      },
     },
     {
       id: 'payroll-system-java',
@@ -1515,6 +1632,48 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         github: 'https://github.com/DevYuriVieira/fleet-management-system',
         demo: 'https://fleet-management-system-chi.vercel.app/',
       },
+    },
+    {
+      id: 'anime-weather-platform',
+      title: 'Anime Weather Platform',
+      category: 'Frontend + APIs + IA',
+      featured: false,
+      contextTag: 'Frontend & Integración con IA',
+      collaboration: 'Proyecto colaborativo (Pair Programming)',
+      description:
+        'Aplicación web reactiva que combina datos climáticos (OpenWeather API) y catálogo de anime (Jikan API) con Google Gemini AI, integrando recomendaciones en JSON estructurado y chatbot interactivo.',
+      context:
+        'Plataforma construida en formato Pair Programming para practicar el consumo asíncrono de múltiples APIs externas y SDKs de IA generativa.',
+      problem:
+        'Orquestar datos en tiempo real de múltiples APIs externas y alimentar un modelo de lenguaje para producir respuestas en JSON estructurado para la UI y conversaciones interactivas de chatbot.',
+      solution:
+        'Desarrollo de interfaz React/TypeScript consumiendo OpenWeather API, Jikan API y Google Gemini AI SDK vía Prompt Engineering para cards en JSON y chatbot de juegos de palabras climáticos.',
+      development:
+        'Desarrollo en pair programming cubriendo gestión de estado asíncrono, renderizado dinámico de JSON, fallbacks de reconexión de APIs y componentes UI con estilo glassmorphism.',
+      architectureDecisions: [
+        'Consumo asíncrono y cruce de datos en tiempo real de OpenWeather API (clima) y Jikan API (catálogo de anime)',
+        'Integración con SDK de Google Gemini AI combinando Prompt Engineering para cards en JSON estricto y chatbot interactivo',
+        'Frontend responsivo construido con React, TypeScript y Vite con UI glassmorphism',
+        'Manejo defensivo de solicitudes asíncronas con estados de carga y fallbacks de error',
+      ],
+      highlights: [
+        'Prompt Engineering para respuestas en JSON estructurado',
+        'Chatbot interactivo con Google Gemini AI',
+        'Juegos de palabras climáticos contextualizados',
+        'Datos climáticos en tiempo real vía OpenWeather API',
+        'Consumo de catálogo cultural vía Jikan API',
+      ],
+      technologies: [
+        'React',
+        'TypeScript',
+        'Vite',
+        'OpenWeather API',
+        'Jikan API',
+        'Google Gemini AI',
+      ],
+      results:
+        'Recomendaciones contextuales generadas por el cruce de datos climáticos y de anime vía Google Gemini AI; integración de respuestas JSON estructuradas para ensamblaje dinámico de UI junto con chatbot interactivo; UI responsiva con glassmorphism.',
+      links: { github: 'https://github.com/DevYuriVieira/anime-weather-platform' },
     },
     {
       id: 'hogwarts-interactive-hub',

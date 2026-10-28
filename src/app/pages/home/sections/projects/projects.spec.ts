@@ -48,7 +48,8 @@ describe('ProjectsSection', () => {
 
   it('should render project titles correctly', () => {
     expect(component.projects()[0].title).toBe('ZEISS Recommendation Assistant');
-    expect(component.projects()[1].title).toBe('Spring Boot E-Commerce API');
+    expect(component.projects()[1].title).toBe('FleetOps API');
+    expect(component.projects()[2].title).toBe('Spring Boot E-Commerce API');
   });
 
   it('should render external project links securely with target _blank', () => {
@@ -123,4 +124,24 @@ describe('ProjectsSection', () => {
     fixture.detectChanges();
     expect(component.architectureModalOpen()).toBe(false);
   });
+
+  it('should toggle FleetOps modal for fleetops-api project', () => {
+    expect(component.fleetOpsModalOpen()).toBe(false);
+
+    const compiled = fixture.nativeElement as HTMLElement;
+    const fleetOpsBtn = compiled.querySelector('.projects__fleetops-btn') as HTMLButtonElement;
+    expect(fleetOpsBtn).toBeTruthy();
+
+    fleetOpsBtn.click();
+    fixture.detectChanges();
+    expect(component.fleetOpsModalOpen()).toBe(true);
+
+    const modal = compiled.querySelector('app-fleetops-modal');
+    expect(modal).toBeTruthy();
+
+    component.closeFleetOpsModal();
+    fixture.detectChanges();
+    expect(component.fleetOpsModalOpen()).toBe(false);
+  });
 });
+
