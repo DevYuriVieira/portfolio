@@ -71,7 +71,22 @@ Yuri Vieira Teixeira is a Full-Stack Software Engineer and former Back-End Progr
   - Introduced pre-recommendation clinical validation interfaces ensuring optical associates verify OCR extractions before recommendation generation.
 - **Technologies**: React, TypeScript, Java 17, Spring Boot, PostgreSQL, JWT, OCR, n8n, RAG, REST APIs.
 
-### 3.2. Automated Payroll System (Java 17 / JDBC / MVC+DAO)
+### 3.2. FleetOps API — Distributed Fleet & Logistics Backend Engine (.NET 10)
+- **Repository**: https://github.com/DevYuriVieira/fleetops-api
+- **Domain**: High-Throughput Distributed Logistics Engine & Transactional Outbox Architecture.
+- **Problem**: Eliminating dual-write hazards between relational state persistence and asynchronous broker message delivery, coordinating concurrent distributed workers without table lock contention, and preventing poison-message broker head-of-line blocking.
+- **Solution**: A production-grade backend engine engineered in C# 14 and ASP.NET Core 10 following Clean Architecture and Domain-Driven Design (DDD), backed by PostgreSQL 18 and RabbitMQ 3.x.
+- **Key Architectural Decisions**:
+  - Implemented the Transactional Outbox Pattern atomically integrated into EF Core's `DbContext.SaveChangesAsync` transaction boundary, eliminating dual-write failure states.
+  - Employed `FOR UPDATE SKIP LOCKED` on outbox polling queries, enabling multiple parallel worker replicas to pull disjunct batches with zero lock contention.
+  - Built an asynchronous RabbitMQ messaging pipeline with Publisher Confirms, 3-tier TTL exponential retry queues (10s, 30s, 90s), and a dedicated Dead-Letter Queue (DLQ).
+  - Enforced consumer idempotency via primary-key message auditing within the business database transaction.
+  - Secured endpoints using Keycloak OIDC / OAuth 2.0 Resource Server architecture with asymmetric RS256 token verification and dynamic JWKS discovery.
+  - Instrumenting end-to-end W3C distributed tracing (`traceparent`) via OpenTelemetry .NET through HTTP, Outbox, and RabbitMQ consumer boundaries into Jaeger.
+  - Backed by an automated test suite of 300 tests (166 unit + 134 integration/resilience tests in xUnit) and empirical k6 performance benchmarks.
+- **Technologies**: C# 14, .NET 10, ASP.NET Core, EF Core 10, PostgreSQL 18, RabbitMQ, Docker Compose, OpenTelemetry, Keycloak OIDC RS256, xUnit, k6.
+
+### 3.3. Automated Payroll System (Java 17 / JDBC / MVC+DAO)
 - **Repository**: https://github.com/DevYuriVieira/payroll-system-java
 - **Domain**: Financial Calculation Engine under Brazilian Labor & Tax Legislation.
 - **Problem**: Batch-processing employee salary and deduction records with progressive statutory tax brackets (INSS and IRRF) without rounding errors, while enforcing raw relational SQL persistence without relying on ORMs.
@@ -83,7 +98,7 @@ Yuri Vieira Teixeira is a Full-Stack Software Engineer and former Back-End Progr
   - Created defensive streaming CSV parsers and writers for batch report generation.
 - **Technologies**: Java 17, PostgreSQL, JDBC, MVC Architecture, DAO Pattern, BigDecimal, Singleton Pattern, CSV I/O.
 
-### 3.3. Aurora — Personal Growth Platform
+### 3.4. Aurora — Personal Growth Platform
 - **Repository**: https://github.com/DevYuriVieira/aurora-growth-platform
 - **Domain**: Cross-Platform Mobile Application for Goal Tracking, Mentorships & Community.
 - **Problem**: Unifying multi-tiered navigation patterns, responsive gamification mechanics (XP and badges), complex form validation, and native device hardware access in a single mobile experience.
@@ -95,7 +110,7 @@ Yuri Vieira Teixeira is a Full-Stack Software Engineer and former Back-End Progr
   - Built dynamic QR-code event check-in systems for mentorship validation.
 - **Technologies**: React Native, Expo SDK 54, TypeScript, React Navigation, Zod, React Hook Form, Axios, AsyncStorage, Expo SecureStore.
 
-### 3.4. Django Full-Stack E-Commerce Platform
+### 3.5. Django Full-Stack E-Commerce Platform
 - **Repository**: https://github.com/DevYuriVieira/django-fullstack-ecommerce
 - **Domain**: High-Concurrency E-Commerce Backend & Vanilla JS Frontend.
 - **Problem**: Preventing race conditions in order processing, avoiding duplicate charges from asynchronous payment webhooks firing multiple times, eliminating N+1 query bottlenecks in ORM queries, and building a lightweight frontend without heavy SPA frameworks.
@@ -106,19 +121,22 @@ Yuri Vieira Teixeira is a Full-Stack Software Engineer and former Back-End Progr
   - Built a modular Vanilla JavaScript frontend utilizing native HTML5 `<template>` and `textContent` DOM manipulation to provide zero-framework reactivity with native CSRF and XSS immunity.
 - **Technologies**: Python 3.12, Django, SQLite / PostgreSQL, Vanilla JavaScript (ES6+), REST API, Webhooks, Service Layer, Atomic Transactions.
 
-### 3.5. High-Performance Personal Portfolio
+### 3.6. High-Performance Personal Portfolio
 - **URL**: https://devyurivieira.vercel.app/
 - **Repository**: https://github.com/DevYuriVieira/portfolio
-- **Domain**: Modern Frontend Engineering, WebGL Shaders & Test Automation.
+- **Domain**: Modern Frontend Engineering, WebGL Shaders, Telemetry & Test Automation.
 - **Solution**: Developed with Angular 22 standalone components, native Angular Signals (`signal`, `computed`), and `ChangeDetectionStrategy.OnPush` throughout.
 - **Key Architectural Decisions**:
+  - Implemented formal Architectural Decision Records (ADR-001 through ADR-005) documenting engineering invariants.
+  - Built a browser-native Real User Monitoring (RUM) telemetry service via `PerformanceObserver` tracking Core Web Vitals (LCP, CLS, INP, TTFB, Long Tasks) with 0 KB external bundle footprint.
+  - Hardened with enterprise HTTP security headers (Strict CSP Level 3, HSTS Preload, Permissions-Policy).
   - Implemented an interactive, GPU-accelerated WebGL / Three.js particle canvas with pointer reactivity.
   - Integrated dynamic trilingual internationalization (PT-BR, EN, ES) with language persistence.
-  - Established a 3-layer automated testing suite: 66 Vitest unit tests, 38 Playwright E2E specs including Axe-core WCAG 2.1 AA accessibility audits, and 17 Cypress E2E specs (total: 121 automated tests).
+  - Established a 3-layer automated testing suite: 112 Vitest unit tests, 38 Playwright E2E specs including Axe-core WCAG 2.1 AA accessibility audits, and 17 Cypress E2E specs (total: 167 automated tests, 100% pass rate).
   - Achieved a perfect 100/100/100/100 Google Lighthouse audit across Performance, Accessibility, Best Practices, and SEO.
-- **Technologies**: Angular 22, TypeScript 6.0, Three.js, WebGL, SCSS, Vitest, Playwright, Axe-core, Cypress, PWA.
+- **Technologies**: Angular 22, TypeScript 6.0, Three.js, WebGL, SCSS, Vitest, Playwright, Axe-core, Cypress, PWA, RUM Telemetry.
 
-### 3.6. Anime Weather Platform
+### 3.7. Anime Weather Platform
 - **Repository**: https://github.com/DevYuriVieira/anime-weather-platform
 - **Domain**: AI Prompt Engineering & Multi-API Contextual Recommendation.
 - **Solution**: Real-time atmospheric data from OpenWeather API feeds a custom Weather-Mood-Genre engine that queries the Jikan API, while Google Gemini AI generates contextual descriptions and witty dialogues in a glassmorphism React UI.

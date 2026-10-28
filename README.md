@@ -7,16 +7,17 @@
 ![Three.js](https://img.shields.io/badge/Three.js-0.185-000000?style=for-the-badge&logo=three.js&logoColor=white)
 ![A11y](https://img.shields.io/badge/A11y-WCAG_AAA-00E5FF?style=for-the-badge&logo=w3c&logoColor=black)
 ![SCSS](https://img.shields.io/badge/SCSS-Design_System-CC6699?style=for-the-badge&logo=sass&logoColor=white)
-![Vitest](https://img.shields.io/badge/Vitest-4.0-6E9F18?style=for-the-badge&logo=vitest&logoColor=white)
+![Tests](https://img.shields.io/badge/Tests-167_Passed-10B981?style=for-the-badge&logo=vitest&logoColor=white)
+![Vitest](https://img.shields.io/badge/Vitest-112_Unit_Specs-6E9F18?style=for-the-badge&logo=vitest&logoColor=white)
 ![Playwright](https://img.shields.io/badge/Playwright-1.62-2EAD33?style=for-the-badge&logo=playwright&logoColor=white)
 ![Cypress](https://img.shields.io/badge/Cypress-15.20-17202C?style=for-the-badge&logo=cypress&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-Deployed-000000?style=for-the-badge&logo=vercel&logoColor=white)
 
-**PT-BR:** Aplicação web frontend desenvolvida em Angular 22 com Signals, gráficos interativos Three.js (WebGL), motor avançado de acessibilidade (WCAG AAA & VLibras), suporte trilíngue (i18n - PT-BR, EN, ES), SEO dinâmico e suíte tripla de testes automatizados.  
-*Slogan: Design system proprietário, acessibilidade universal com VLibras, animações de alta performance e suíte de testes ponta a ponta.*
+**PT-BR:** Aplicação web frontend desenvolvida em Angular 22 com Signals, gráficos interativos Three.js (WebGL), Registros de Decisão de Arquitetura (ADRs), telemetria RUM nativa, motor avançado de acessibilidade (WCAG AAA & VLibras), suporte trilíngue (i18n - PT-BR, EN, ES), SEO dinâmico e suíte tripla de testes automatizados (167 testes).  
+*Slogan: Design system proprietário, acessibilidade universal com VLibras, arquitetura documentada com ADRs, telemetria em tempo real e suíte de testes ponta a ponta.*
 
-**EN:** Frontend web application built with Angular 22 Signals, Three.js (WebGL) interactive visuals, universal accessibility engine (WCAG AAA & VLibras), dynamic tri-lingual i18n (PT-BR, EN, ES), SEO engine, and a triple automated testing suite.  
-*Slogan: Custom design system, universal accessibility with VLibras, high-performance animations, and end-to-end testing pipeline.*
+**EN:** Frontend web application built with Angular 22 Signals, Three.js (WebGL) interactive visuals, Architectural Decision Records (ADRs), native browser RUM telemetry, universal accessibility engine (WCAG AAA & VLibras), dynamic tri-lingual i18n (PT-BR, EN, ES), SEO engine, and a triple automated testing suite (167 tests).  
+*Slogan: Custom design system, universal accessibility with VLibras, documented architecture with ADRs, real-time telemetry, and end-to-end testing pipeline.*
 
 ---
 
@@ -54,6 +55,8 @@
   - [6. Contact Flow & Asynchronous Clipboard Action](#6-contact-flow--asynchronous-clipboard-action)
   - [7. Universal Accessibility Engine & Assistive Tools (WCAG AAA & VLibras)](#7-universal-accessibility-engine--assistive-tools-wcag-aaa--vlibras)
   - [8. Triple Testing Pipeline (Vitest + Playwright + Cypress)](#8-triple-testing-pipeline-vitest--playwright--cypress)
+  - [9. Architectural Decision Records (ADRs) & Engineering Governance](#9-architectural-decision-records-adrs--engineering-governance)
+  - [10. Native Real User Monitoring (RUM) & Enterprise Security Headers](#10-native-real-user-monitoring-rum--enterprise-security-headers)
 - [System Architecture & Component Flow](#-system-architecture--component-flow)
 - [Tech Stack & Ecosystem](#-tech-stack--ecosystem)
 - [Project Directory Structure](#-project-directory-structure)
@@ -73,8 +76,9 @@ Key Engineering Highlights:
 1. **Modern Angular Architecture**: Uses Angular Standalone Components, native Signals (`signal`, `computed`), and `ChangeDetectionStrategy.OnPush` across all views for low memory footprint and fast rendering.
 2. **GPU Visual FX**: Interactive 3D particle visuals powered by **Three.js** (`NeuralCanvasComponent` and `HeroParticlesVisual`), including raycasting mouse displacement, floating glassmorphic zoom controls (`+`, `-`, `Reset`, `Focus`), and automatic responsive fallbacks on mobile screens (<768px).
 3. **Universal Accessibility (WCAG AAA & VLibras)**: Built-in assistive features drawer with font scaling (+15%, +30%), dyslexia-friendly typography (OpenDyslexic), text/line spacing, high contrast (WCAG AAA), monochrome mode, animation pausing, interactive cursor reading guide, and on-demand official Brazilian Sign Language (**VLibras**) with zero CLS and isolated Shadow DOM lifecycle management.
-4. **13 Detailed Engineering Case Studies**: Highlights real-world projects, architecture trade-offs, technical decisions, and a dedicated ZEISS NDA confidential project card with lock badge 🔒.
-5. **Triple-Layer QA Architecture**: 129 automated tests (100% pass rate) combining unit tests (**Vitest** - 74 specs), multi-browser/mobile E2E and WCAG 2.1 AA accessibility tests (**Playwright + Axe-Core** - 38 specs), and user journey E2E verification (**Cypress** - 17 specs).
+4. **14 Detailed Engineering Case Studies**: Highlights real-world projects, architecture trade-offs, technical decisions, FleetOps API (.NET 10 / C# 14 / PostgreSQL 18 / RabbitMQ / 300 tests) reference study modal, and a dedicated ZEISS NDA confidential project card with lock badge 🔒.
+5. **Triple-Layer QA Architecture**: 167 automated tests (100% pass rate) combining unit tests (**Vitest** - 112 specs across 26 test files), multi-browser/mobile E2E and WCAG 2.1 AA accessibility tests (**Playwright + Axe-Core** - 38 specs), and user journey E2E verification (**Cypress** - 17 specs).
+6. **Architectural Decision Records (ADRs) & Native RUM Telemetry**: 5 formal engineering records (ADR-001 through ADR-005) in English detailing architecture invariants, paired with a zero-dependency browser-native Real User Monitoring service (`PerformanceObserver` tracking Core Web Vitals) and enterprise HTTP security hardening (`vercel.json`).
 
 ---
 
@@ -92,8 +96,8 @@ Key Engineering Highlights:
 - **Mobile Fallback**: WebGL canvas automatically hidden on viewports under `768px` to preserve mobile battery life and maintain 60 FPS scrolling.
 
 ### 3. Case Studies & Progressive Grid Expansion
-- **13 Case Studies**: Structured breakdown featuring Challenge, Solution, Architecture Decisions, Technical Highlights, Results, and Tech Stack badges.
-- **3-Stage Progressive Expansion**: Initial 5 featured items → 7 expanded items → All 13 projects → Smooth scroll collapse back to 5 items.
+- **14 Case Studies**: Structured breakdown featuring Challenge, Solution, Architecture Decisions, Technical Highlights, Results, and Tech Stack badges. Includes the FleetOps API distributed engine study with interactive technical dossier.
+- **3-Stage Progressive Expansion**: Initial 5 featured items → 7 expanded items → All 14 projects → Smooth scroll collapse back to 5 items.
 
 ### 4. ZEISS Confidential Project Card & Legal NDA Disclaimer
 - **Residency Project Presentation**: Highlights enterprise software developed for **ZEISS** during the Serratec TIC Residency.
@@ -133,9 +137,24 @@ Key Engineering Highlights:
 | **Guia de Leitura (Reading Guide)** | Interactive focus ruler following cursor Y position via `requestAnimationFrame` | Visual tracking difficulties, dyslexia, line-skipping | **Cognitive Assistive Aid** |
 
 ### 8. Triple Testing Pipeline (Vitest + Playwright + Cypress)
-- **Unit & Integration Testing (Vitest)**: 74 automated tests validating components, directives, and services.
+- **Unit & Integration Testing (Vitest)**: 112 automated tests across 26 test suites validating components, directives, and services with 100% pass rate.
 - **End-to-End & WCAG 2.1 AA Accessibility Testing (Playwright + Axe-Core)**: 38 E2E specs running concurrently across **Desktop Chromium** and **Mobile Pixel 7** viewports, including automated zero-violation WCAG 2.1 Level A & AA accessibility audits across all 3 languages.
 - **End-to-End User Journey Verification (Cypress)**: 17 E2E specs validating user journeys in the headless Cypress Test Runner.
+
+### 9. Architectural Decision Records (ADRs) & Engineering Governance
+- **Formal Decision Dossier**: Interactive accessible modal documenting technical trade-offs, architecture invariants, and non-negotiable design principles of the portfolio.
+- **5 Standardized English Records**:
+  - **ADR-001**: Pure Reactive State Architecture via Angular Signals and OnPush Strategy.
+  - **ADR-002**: Zero-Runtime CSS Design Tokens and BEM Modular Encapsulation.
+  - **ADR-003**: Deterministic Quality Engineering with Vitest and Property-Based Regressions.
+  - **ADR-004**: Decoupled WebGL Render Pipeline with IntersectionObserver Gating and Frame Budgeting.
+  - **ADR-005**: Offline-First Progressive Web Architecture with Byte-Budget and Silent Updates.
+- **Governance & Verification**: Standardized RFC format (Context, Decision, Positive Invariants, Trade-offs & Constraints, Alternatives Considered), keyboard navigable with instant Markdown export.
+
+### 10. Native Real User Monitoring (RUM) & Enterprise Security Headers
+- **Browser-Native RUM Telemetry (`TelemetryService`)**: Zero-dependency performance monitoring utilizing browser `PerformanceObserver` API. Tracks Core Web Vitals in real-time (LCP, CLS, INP, TTFB, and Long Tasks >50ms) with 0 KB external bundle tax.
+- **Live Footer Rating HUD**: Live pulse indicator in the footer displaying real-time Web Vitals rating (`RUM: OPTIMAL`).
+- **Enterprise HTTP Security Hardening (`vercel.json`)**: Configured with Strict Transport Security (`HSTS` max-age 63072000 with preload), strict Content-Security-Policy Level 3 (supporting VLibras and Google Fonts), `X-Frame-Options: DENY`, `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`, and `Permissions-Policy`.
 
 ---
 
@@ -166,7 +185,7 @@ flowchart TD
     A11y --> VLibras["VLibras Official Service & SDK"]
     
     subgraph "QA & Test Execution Pipeline"
-        K1["Vitest (74 Unit Specs)"]
+        K1["Vitest (112 Unit Specs)"]
         K2["Playwright (38 E2E Specs - Desktop & Mobile)"]
         K3["Cypress (17 E2E Specs)"]
     end
@@ -183,7 +202,9 @@ flowchart TD
 | **Accessibility Engine** | Custom + VLibras | WCAG AAA contrast, OpenDyslexic, text spacing, reading guide, and sign language |
 | **3D Engine & Shaders** | Three.js `^0.185.1` | GPU particle shader visual system and raycasting |
 | **Design System** | SCSS / SASS | Custom CSS variables, glassmorphism, and responsive mixins (No UI Libraries) |
-| **Unit Testing** | Vitest `^4.0.8` | Component and unit test execution engine (74 unit specs) |
+| **Telemetry & RUM** | Browser Native | Native `PerformanceObserver` tracking Core Web Vitals (LCP, CLS, INP, TTFB) |
+| **Security Hardening** | Enterprise Headers | Strict CSP Level 3, HSTS Preload, Permissions-Policy, X-Frame-Options |
+| **Unit Testing** | Vitest `^4.0.8` | Component and unit test execution engine (112 unit specs, 100% pass rate) |
 | **E2E Testing (Multi-Browser)**| Playwright `^1.62.1` | Concurrency testing across Desktop Chrome and Mobile Pixel 7 |
 | **E2E Testing (Visual Runner)** | Cypress `^15.20.0` | Interactive E2E assertions and visual runner |
 | **Code Formatter** | Prettier `^3.8.1` | Automated code formatting and style consistency |
@@ -198,10 +219,11 @@ src/
 │   ├── core/                  # Core services, SEO engine, i18n, and accessibility state
 │   │   ├── accessibility/     # AccessibilityService, VlibrasService, models, and i18n data
 │   │   ├── i18n/              # I18nService, supported languages, and dictionary loaders
-│   │   └── services/          # SeoService, meta tag updater, and JSON-LD injector
+│   │   └── services/          # SeoService, TelemetryService (RUM), PwaUpdateService
 │   ├── layout/                # Global layout shell components
+│   │   ├── components/        # AdrModal (Architectural Decision Records interactive dossier)
 │   │   ├── header/            # Navigation header, brand logo, and flag language switcher
-│   │   ├── footer/            # Footer social links, copyright, and navigation anchors
+│   │   ├── footer/            # Footer social links, quality badges, live RUM pill & ADR action
 │   │   └── main-layout/       # App layout shell host integrating AccessibilityWidget
 │   ├── pages/                 # Main application view pages
 │   │   └── home/              # Main portfolio home view controller
@@ -212,7 +234,7 @@ src/
 │   │           ├── contact/       # Contact card, email composer, and clipboard copy action
 │   │           ├── experience/    # Career timeline milestones and focus cards
 │   │           ├── hero/          # Hero section, CTA actions, and particle visual background
-│   │           ├── projects/      # 13 case studies grid & ZEISS NDA confidential card
+│   │           ├── projects/      # 14 case studies, FleetOps API modal & ZEISS NDA card
 │   │           └── skills/        # 4 technical clusters & tag cloud badges
 │   ├── shared/                # Shared directives and components
 │   │   ├── components/        # AccessibilityWidget & ReadingGuide components
@@ -371,6 +393,8 @@ Developed by **Yuri Vieira**. All rights reserved.
   - [6. Seção de Contato de Alta Conversão & Cópia no Clipboard](#6-seção-de-contato-de-alta-conversão--cópia-no-clipboard-2)
   - [7. Motor de Acessibilidade Universal & Recursos Assistivos (WCAG AAA & VLibras)](#7-motor-de-acessibilidade-universal--recursos-assistivos-wcag-aaa--vlibras)
   - [8. Suíte Tripla de Testes (Vitest + Playwright + Cypress)](#8-suíte-tripla-de-testes-vitest--playwright--cypress-2)
+  - [9. Registros de Decisão de Arquitetura (ADRs) & Governança Técnica](#9-registros-de-decisão-de-arquitetura-adrs--governança-técnica)
+  - [10. Telemetria RUM Nativa & Cabeçalhos de Segurança HTTP Enterprise](#10-telemetria-rum-nativa--cabeçalhos-de-segurança-http-enterprise)
 - [Arquitetura do Sistema & Fluxo de Componentes](#-arquitetura-do-sistema--fluxo-de-componentes)
 - [Ecossistema & Tecnologias Utilizadas](#-ecossistema--tecnologias-utilizadas-1)
 - [Estrutura Detalhada do Projeto](#-estrutura-detalhada-do-projeto-1)
@@ -390,8 +414,9 @@ Destaques de Engenharia:
 1. **Arquitetura Angular Moderna**: Componentes Standalone, Signals nativos (`signal`, `computed`) e `ChangeDetectionStrategy.OnPush` em todas as visões para alta velocidade de renderização e baixo uso de memória.
 2. **Efeitos Visuais Acelerados por GPU**: Shaders de partículas WebGL 3D em **Three.js** (`NeuralCanvasComponent` e `HeroParticlesVisual`), com interatividade por cursor, barra flutuante de zoom (`+`, `-`, `Reset`, `Foco`) e fallback automático para telas móveis (<768px).
 3. **Acessibilidade Universal (WCAG AAA & VLibras)**: Gaveta modal assistiva nativa com controle de tamanho de fonte (+15%, +30%), tipografia para dislexia (OpenDyslexic), espaçamento de texto/linhas, alto contraste (WCAG AAA), modo monocromático, pausa de animações, guia de leitura com foco no cursor e tradução oficial para a Língua Brasileira de Sinais (**VLibras**) com lazy loading sob demanda e isolamento de Shadow DOM.
-4. **13 Casos de Estudo de Engenharia**: Apresentação de projetos com trade-offs de arquitetura, decisões técnicas e um card de projeto confidencial da ZEISS com selo de bloqueio 🔒.
-5. **Garantia de Qualidade em 3 Camadas**: 129 testes automatizados (100% de aprovação) unindo testes unitários (**Vitest** - 74 specs), testes E2E e de acessibilidade WCAG 2.1 AA (**Playwright + Axe-Core** - 38 specs) e validação de fluxos E2E (**Cypress** - 17 specs).
+4. **14 Casos de Estudo de Engenharia**: Apresentação de projetos com trade-offs de arquitetura, decisões técnicas, estudo de referência do FleetOps API (.NET 10 / C# 14 / PostgreSQL 18 / RabbitMQ / 300 testes) com modal interativo e card de projeto confidencial da ZEISS com selo de bloqueio 🔒.
+5. **Garantia de Qualidade em 3 Camadas**: 167 testes automatizados (100% de aprovação) unindo testes unitários (**Vitest** - 112 specs em 26 suítes), testes E2E e de acessibilidade WCAG 2.1 AA (**Playwright + Axe-Core** - 38 specs) e validação de fluxos E2E (**Cypress** - 17 specs).
+6. **Registros de Decisão de Arquitetura (ADRs) & Telemetria RUM**: 5 registros formais (ADR-001 a ADR-005) em inglês detalhando invariantes de arquitetura, aliados a um serviço nativo de monitoramento de performance em tempo real (`PerformanceObserver` para Core Web Vitals) e segurança HTTP enterprise (`vercel.json`).
 
 ---
 
@@ -409,8 +434,8 @@ Destaques de Engenharia:
 - **Desempenho Adaptativo**: O canvas WebGL é ocultado automaticamente em telas menores que `768px` para preservar a bateria e a fluidez em dispositivos móveis.
 
 ### 3. Casos de Estudo Corporativos & Grade Progressiva
-- **13 Casos de Estudo de Engenharia**: Estruturados com Desafio, Solução, Decisões de Arquitetura, Destaques Técnicos, Resultados e Badges de Tecnologias.
-- **Grade Progressiva em 3 Etapas**: Exibição inicial de 5 projetos em destaque → Expansão para 7 projetos → Expansão completa para 13 projetos → Recolhimento com rolagem suave de volta para 5 itens.
+- **14 Casos de Estudo de Engenharia**: Estruturados com Desafio, Solução, Decisões de Arquitetura, Destaques Técnicos, Resultados e Badges de Tecnologias. Inclui o estudo do FleetOps API com dossiê técnico interativo.
+- **Grade Progressiva em 3 Etapas**: Exibição inicial de 5 projetos em destaque → Expansão para 7 projetos → Expansão completa para 14 projetos → Recolhimento com rolagem suave de volta para 5 itens.
 
 ### 4. Card de Projeto Confidencial ZEISS & Tratamento de NDA
 - **Apresentação de Projeto de Residência**: Exibe a aplicação desenvolvida para a **ZEISS** dentro do programa de Residência Tecnológica Serratec TIC.
@@ -450,9 +475,24 @@ Destaques de Engenharia:
 | **Guia de Leitura (Reading Guide)** | Régua de foco horizontal que acompanha a coordenada Y do mouse via `requestAnimationFrame` | Dificuldade de rastreamento visual, dislexia e perda de linha | **Tecnologia Assistiva Cognitiva** |
 
 ### 8. Suíte Tripla de Testes (Vitest + Playwright + Cypress)
-- **Testes Unitários & de Integração (Vitest)**: 74 testes automatizados validando componentes, diretivas e serviços.
+- **Testes Unitários & de Integração (Vitest)**: 112 testes automatizados em 26 suítes validando componentes, diretivas e serviços com 100% de aprovação.
 - **Testes Ponta a Ponta & Acessibilidade WCAG 2.1 AA (Playwright + Axe-Core)**: 38 especificações E2E executadas em paralelo em visores de **Desktop Chrome** e **Mobile Pixel 7**, incluindo auditoria de acessibilidade WCAG 2.1 Nível A e AA (zero violações) em todos os idiomas.
 - **Validação Visual & Fluxos E2E (Cypress)**: 17 especificações E2E validando os fluxos completos no Cypress Test Runner.
+
+### 9. Registros de Decisão de Arquitetura (ADRs) & Governança Técnica
+- **Dossiê Formal de Decisões**: Modal interativo e acessível documentando trade-offs técnicos, invariantes e princípios de design do portfólio.
+- **5 Registros Padronizados em Inglês Técnico**:
+  - **ADR-001**: Pure Reactive State Architecture via Angular Signals and OnPush Strategy.
+  - **ADR-002**: Zero-Runtime CSS Design Tokens and BEM Modular Encapsulation.
+  - **ADR-003**: Deterministic Quality Engineering with Vitest and Property-Based Regressions.
+  - **ADR-004**: Decoupled WebGL Render Pipeline with IntersectionObserver Gating and Frame Budgeting.
+  - **ADR-005**: Offline-First Progressive Web Architecture with Byte-Budget and Silent Updates.
+- **Governança & Rigor**: Formato padrão RFC (Contexto, Decisão, Invariantes Positivas, Trade-offs & Restrições, Alternativas Consideradas), navegável por teclado com cópia instantânea para Markdown.
+
+### 10. Telemetria RUM Nativa & Cabeçalhos de Segurança HTTP Enterprise
+- **Telemetria RUM Nativa (`TelemetryService`)**: Monitoramento de performance em tempo real sem dependências externas via API `PerformanceObserver` do navegador. Rastreia Core Web Vitals (LCP, CLS, INP, TTFB e Tarefas Longas >50ms) com 0 KB de impacto no bundle.
+- **Indicador HUD no Footer**: Pílula de pulso no rodapé exibindo a classificação em tempo real dos Web Vitals (`RUM: OPTIMAL`).
+- **Segurança HTTP Enterprise (`vercel.json`)**: Configurado com Strict Transport Security (`HSTS` max-age 63072000 com preload), Content-Security-Policy Level 3 estrito (com suporte a VLibras e Google Fonts), `X-Frame-Options: DENY`, `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin` e `Permissions-Policy`.
 
 ---
 
@@ -483,7 +523,7 @@ flowchart TD
     A11y --> VLibras["Serviço & SDK Oficial VLibras"]
     
     subgraph "Pipeline de Garantia de Qualidade e Testes"
-        K1["Vitest (74 Testes Unitários)"]
+        K1["Vitest (112 Testes Unitários em 26 Suítes)"]
         K2["Playwright (38 Especificações E2E - Desktop & Mobile)"]
         K3["Cypress (17 Especificações E2E)"]
     end
@@ -500,7 +540,9 @@ flowchart TD
 | **Motor de Acessibilidade** | Próprio + VLibras | Contraste WCAG AAA, OpenDyslexic, espaçamento de texto, régua de foco e tradução em Libras |
 | **Motor 3D & Shaders** | Three.js `^0.185.1` | Sistema visual de partículas GPU WebGL e interatividade |
 | **Design System** | SCSS / SASS | Variáveis CSS nativas, glassmorphism e utilitários (Sem bibliotecas de UI) |
-| **Testes Unitários** | Vitest `^4.0.8` | Framework de testes unitários ultrarrápido para Angular (74 testes unitários) |
+| **Telemetria & RUM** | Nativo do Navegador | `PerformanceObserver` nativo rastreando Core Web Vitals (LCP, CLS, INP, TTFB) |
+| **Segurança & Hardening** | Headers Enterprise | CSP Level 3 estrito, HSTS Preload, Permissions-Policy, X-Frame-Options |
+| **Testes Unitários** | Vitest `^4.0.8` | Framework de testes unitários ultrarrápido para Angular (112 unit specs, 100% de aprovação) |
 | **Testes E2E (Multi-Browser)**| Playwright `^1.62.1` | Testes paralelos em visores Desktop Chrome e Mobile Pixel 7 |
 | **Testes E2E (Visual Runner)** | Cypress `^15.20.0` | Execução interativa e validação visual de fluxos E2E |
 | **Formatador de Código** | Prettier `^3.8.1` | Padronização e formatação de estilo de código |
@@ -512,13 +554,14 @@ flowchart TD
 ```text
 src/
 ├── app/
-│   ├── core/                  # Serviços centrais, motor de SEO, i18n e acessibilidade
+│   ├── core/                  # Serviços centrais, motor de SEO, i18n, telemetria e acessibilidade
 │   │   ├── accessibility/     # AccessibilityService, VlibrasService, modelos e dicionários i18n
 │   │   ├── i18n/              # I18nService, idiomas suportados e dicionários
-│   │   └── services/          # SeoService, atualização de meta tags e JSON-LD
+│   │   └── services/          # SeoService, TelemetryService (RUM), PwaUpdateService
 │   ├── layout/                # Componentes da estrutura global de layout
+│   │   ├── components/        # AdrModal (Dossiê interativo de Architectural Decision Records)
 │   │   ├── header/            # Cabeçalho, logotipo e seletor de idiomas
-│   │   ├── footer/            # Rodapé, links sociais e marcas registradas
+│   │   ├── footer/            # Rodapé, links sociais, pílula de RUM em tempo real e botão ADR
 │   │   └── main-layout/       # Invólucro de layout que integra o AccessibilityWidget
 │   ├── pages/                 # Páginas principais da aplicação
 │   │   └── home/              # Controlador da página Home do portfólio
@@ -529,7 +572,7 @@ src/
 │   │           ├── contact/       # Card de contato, compositor de e-mail e cópia
 │   │           ├── experience/    # Linha do tempo profissional e cards de foco
 │   │           ├── hero/          # Seção Hero, botões de ação e partículas de fundo
-│   │           ├── projects/      # Grade com 13 projetos e card confidencial ZEISS
+│   │           ├── projects/      # 14 projetos, modal técnico FleetOps API e card confidencial ZEISS
 │   │           └── skills/        # 4 grupos de habilidades e badges em nuvem
 │   ├── shared/                # Diretivas e componentes compartilhados
 │   │   ├── components/        # Componentes AccessibilityWidget e ReadingGuide
