@@ -45,4 +45,28 @@ describe('FooterComponent', () => {
     const badgeCards = compiled.querySelectorAll('.footer__badge-card');
     expect(badgeCards.length).toBe(4);
   });
+
+  it('should render RUM indicator and ADR trigger button', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+    const rumPill = compiled.querySelector('.footer__rum-pill');
+    const adrBtn = compiled.querySelector('.footer__adr-btn');
+
+    expect(rumPill).toBeTruthy();
+    expect(adrBtn).toBeTruthy();
+    expect(component.isAdrModalOpen()).toBe(false);
+  });
+
+  it('should toggle ADR modal state', () => {
+    component.openAdrModal();
+    fixture.detectChanges();
+    expect(component.isAdrModalOpen()).toBe(true);
+
+    const compiled = fixture.nativeElement as HTMLElement;
+    const modal = compiled.querySelector('app-adr-modal');
+    expect(modal).toBeTruthy();
+
+    component.closeAdrModal();
+    fixture.detectChanges();
+    expect(component.isAdrModalOpen()).toBe(false);
+  });
 });

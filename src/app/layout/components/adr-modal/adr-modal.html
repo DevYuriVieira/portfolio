@@ -1,0 +1,172 @@
+<div class="adr-modal-backdrop" (click)="onBackdropClick($event)" role="dialog" aria-modal="true" aria-labelledby="adrModalTitle">
+  <div class="adr-modal-container">
+    <header class="adr-modal-header">
+      <div class="adr-modal-header__info">
+        <span class="adr-modal-header__eyebrow">FRONT-END ARCHITECTURE &amp; QUALITY STANDARDS</span>
+        <h2 id="adrModalTitle" class="adr-modal-header__title">Architectural Decision Records (ADRs)</h2>
+        <p class="adr-modal-header__subtitle">
+          Formal engineering RFCs documenting technical trade-offs, architecture invariants, and non-negotiable design principles of this portfolio.
+        </p>
+      </div>
+
+      <div class="adr-modal-header__actions">
+        <button
+          type="button"
+          class="adr-modal-action-btn adr-modal-action-btn--copy"
+          (click)="copyCurrentAdr()"
+          [attr.aria-label]="copied() ? 'ADR copied to clipboard' : 'Copy current ADR as Markdown'">
+          <svg class="adr-modal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            @if (copied()) {
+              <polyline points="20 6 9 17 4 12"></polyline>
+            } @else {
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            }
+          </svg>
+          <span>{{ copied() ? 'Copied!' : 'Copy Markdown' }}</span>
+        </button>
+
+        <button
+          type="button"
+          class="adr-modal-close-btn"
+          (click)="close.emit()"
+          aria-label="Close Architectural Decision Records modal">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="adr-modal-body">
+      <aside class="adr-modal-sidebar">
+        <div class="adr-modal-search">
+          <svg class="adr-modal-search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input
+            type="search"
+            class="adr-modal-search__input"
+            placeholder="Filter ADRs by keyword..."
+            [value]="searchTerm()"
+            (input)="updateSearch($event)"
+            aria-label="Filter Architectural Decision Records" />
+        </div>
+
+        <nav class="adr-modal-nav" aria-label="Architectural Decision Records list">
+          @for (adr of filteredAdrs(); track adr.id) {
+            <button
+              type="button"
+              class="adr-nav-item"
+              [class.adr-nav-item--active]="adr.id === activeAdr().id"
+              (click)="selectAdr(adr.id)">
+              <div class="adr-nav-item__top">
+                <span class="adr-nav-item__code">{{ adr.code }}</span>
+                <span class="adr-nav-item__category">{{ adr.category }}</span>
+              </div>
+              <span class="adr-nav-item__title">{{ adr.title }}</span>
+              <div class="adr-nav-item__bottom">
+                <span class="adr-status-pill adr-status-pill--{{ adr.status.toLowerCase() }}">
+                  {{ adr.status }}
+                </span>
+                <span class="adr-nav-item__date">{{ adr.date }}</span>
+              </div>
+            </button>
+          } @empty {
+            <div class="adr-modal-nav__empty">
+              No architectural records match your filter criteria.
+            </div>
+          }
+        </nav>
+      </aside>
+
+      <main class="adr-modal-content" tabindex="0" aria-label="ADR detail view">
+        <article class="adr-article">
+          <div class="adr-article__header">
+            <div class="adr-article__meta-strip">
+              <span class="adr-article__badge">{{ activeAdr().code }}</span>
+              <span class="adr-status-pill adr-status-pill--{{ activeAdr().status.toLowerCase() }}">
+                {{ activeAdr().status }}
+              </span>
+              <span class="adr-article__meta-item">
+                <strong>Date:</strong> {{ activeAdr().date }}
+              </span>
+              <span class="adr-article__meta-item">
+                <strong>Category:</strong> {{ activeAdr().category }}
+              </span>
+            </div>
+
+            <h3 class="adr-article__title">{{ activeAdr().title }}</h3>
+
+            <div class="adr-article__deciders">
+              <span class="adr-article__deciders-label">DECIDERS & GOVERNANCE:</span>
+              <span class="adr-article__deciders-val">{{ activeAdr().deciders }}</span>
+            </div>
+          </div>
+
+          <section class="adr-section">
+            <h4 class="adr-section__title">1. Context & Problem Statement</h4>
+            <div class="adr-section__card adr-section__card--context">
+              <p class="adr-section__text">{{ activeAdr().context }}</p>
+            </div>
+          </section>
+
+          <section class="adr-section">
+            <h4 class="adr-section__title">2. Architectural Decision</h4>
+            <div class="adr-section__card adr-section__card--decision">
+              <p class="adr-section__text">{{ activeAdr().decision }}</p>
+            </div>
+          </section>
+
+          <section class="adr-section">
+            <h4 class="adr-section__title">3. Consequences & Trade-offs</h4>
+            <div class="adr-consequences-grid">
+              <div class="adr-consequence-card adr-consequence-card--positive">
+                <div class="adr-consequence-card__header">
+                  <svg class="adr-consequence-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span class="adr-consequence-card__title">Positive Invariants (Gains)</span>
+                </div>
+                <ul class="adr-consequence-list">
+                  @for (gain of activeAdr().consequences.positive; track gain) {
+                    <li class="adr-consequence-list__item">{{ gain }}</li>
+                  }
+                </ul>
+              </div>
+
+              <div class="adr-consequence-card adr-consequence-card--negative">
+                <div class="adr-consequence-card__header">
+                  <svg class="adr-consequence-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                  </svg>
+                  <span class="adr-consequence-card__title">Trade-offs & Constraints</span>
+                </div>
+                <ul class="adr-consequence-list">
+                  @for (drawback of activeAdr().consequences.negative; track drawback) {
+                    <li class="adr-consequence-list__item">{{ drawback }}</li>
+                  }
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section class="adr-section">
+            <h4 class="adr-section__title">4. Alternatives Considered & Rejection Rationale</h4>
+            <div class="adr-section__card adr-section__card--alternatives">
+              <ul class="adr-alternatives-list">
+                @for (alt of activeAdr().alternatives; track alt) {
+                  <li class="adr-alternatives-list__item">{{ alt }}</li>
+                }
+              </ul>
+            </div>
+          </section>
+        </article>
+      </main>
+    </div>
+  </div>
+</div>

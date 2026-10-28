@@ -1,6 +1,14 @@
-import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
-import { I18nService, SupportedLang } from '@core';
+import { UpperCasePipe } from '@angular/common';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+  signal,
+} from '@angular/core';
+import { I18nService, SupportedLang, TelemetryService } from '@core';
 import { Container, Text } from '@ui';
+import { AdrModal } from '../components/adr-modal/adr-modal';
 
 interface FooterLabels {
   readonly positioning: string;
@@ -18,21 +26,25 @@ interface FooterLabels {
   readonly badgePwaLabel: string;
   readonly badgeSignalsMetric: string;
   readonly badgeSignalsLabel: string;
+  readonly adrBtnText: string;
+  readonly adrBtnAria: string;
 }
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [Container, Text],
+  imports: [Container, Text, UpperCasePipe, AdrModal],
   templateUrl: './footer.html',
   styleUrl: './footer.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FooterComponent {
   private readonly i18n = inject(I18nService);
+  readonly telemetry = inject(TelemetryService);
 
   readonly name = 'Yuri Vieira Teixeira';
   readonly currentYear = new Date().getFullYear();
+  readonly isAdrModalOpen = signal<boolean>(false);
 
   private readonly labelsI18n: Record<SupportedLang, FooterLabels> = {
     en: {
@@ -54,6 +66,8 @@ export class FooterComponent {
       badgePwaLabel: 'Smart Caching & Auto-Update',
       badgeSignalsMetric: 'Angular 22 Signals',
       badgeSignalsLabel: 'Reactive Architecture & SSR',
+      adrBtnText: 'Architecture Decisions (ADRs)',
+      adrBtnAria: 'Open Portfolio Architecture Decision Records modal',
     },
     'pt-BR': {
       positioning: 'Software Engineer • Sistemas Web Modernos & Código Limpo',
@@ -74,6 +88,8 @@ export class FooterComponent {
       badgePwaLabel: 'Cache Inteligente & Auto-Update',
       badgeSignalsMetric: 'Angular 22 Signals',
       badgeSignalsLabel: 'Arquitetura Reativa & SSR',
+      adrBtnText: 'Decisões de Arquitetura (ADRs)',
+      adrBtnAria: 'Abrir modal de Registros de Decisão de Arquitetura (ADRs)',
     },
     es: {
       positioning: 'Software Engineer • Sistemas Web Modernos & Código Limpio',
@@ -94,10 +110,20 @@ export class FooterComponent {
       badgePwaLabel: 'Caché Inteligente & Auto-Update',
       badgeSignalsMetric: 'Angular 22 Signals',
       badgeSignalsLabel: 'Arquitectura Reactiva & SSR',
+      adrBtnText: 'Decisiones de Arquitectura (ADRs)',
+      adrBtnAria: 'Abrir modal de Registros de Decisión de Arquitectura (ADRs)',
     },
   };
 
   readonly labels = computed<FooterLabels>(() =>
     this.labelsI18n[this.i18n.currentLang()] ?? this.labelsI18n['pt-BR']
   );
+
+  openAdrModal(): void {
+    this.isAdrModalOpen.set(true);
+  }
+
+  closeAdrModal(): void {
+    this.isAdrModalOpen.set(false);
+  }
 }
