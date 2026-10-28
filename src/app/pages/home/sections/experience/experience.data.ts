@@ -90,13 +90,13 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
       },
       {
         id: 'senai-faetec-instructor',
-        year: '2026 – Presente',
+        year: 'Ago 2026 – Out 2026',
         title: 'Instrutor de Programação Back-End (Java)',
-        subtitle: 'SENAI / FAETEC · Atuação Docente em Tecnologia',
+        subtitle: 'SENAI / FAETEC · Contrato Determinado (Docência)',
         description:
-          'Docência em Programação Back-End cobrindo lógica (JavaScript), bancos de dados relacionais (PostgreSQL/DBeaver), POO em Java e desenvolvimento de APIs RESTful com Spring Boot, além da elaboração de materiais didáticos e mentoria técnica individual.',
+          'Docência em Programação Back-End sob contrato determinado, cobrindo lógica (JavaScript), bancos de dados relacionais (PostgreSQL/DBeaver), POO em Java e desenvolvimento de APIs RESTful com Spring Boot, além da elaboração de materiais didáticos e mentoria técnica individual.',
 
-        tag: 'DOCÊNCIA & ATUAÇÃO PROFISSIONAL',
+        tag: 'DOCÊNCIA · CONTRATO DETERMINADO',
         highlighted: true,
       },
       {
@@ -236,13 +236,13 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
       },
       {
         id: 'senai-faetec-instructor',
-        year: '2026 – Present',
+        year: 'Aug 2026 – Oct 2026',
         title: 'Back-End Programming Instructor (Java)',
-        subtitle: 'SENAI / FAETEC · Tech Instruction & Mentorship',
+        subtitle: 'SENAI / FAETEC · Fixed-Term Contract (Teaching)',
         description:
-          'Teaching Back-End Programming covering logic (JavaScript), relational databases (PostgreSQL/DBeaver), OOP in Java, and RESTful APIs with Spring Boot, alongside authoring technical courseware and providing one-on-one engineering guidance.',
+          'Teaching Back-End Programming under a fixed-term contract covering logic (JavaScript), relational databases (PostgreSQL/DBeaver), OOP in Java, and RESTful APIs with Spring Boot, alongside authoring technical courseware and providing one-on-one engineering guidance.',
 
-        tag: 'TEACHING & PROFESSIONAL PRACTICE',
+        tag: 'TEACHING · FIXED-TERM CONTRACT',
         highlighted: true,
       },
       {
@@ -382,13 +382,13 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
       },
       {
         id: 'senai-faetec-instructor',
-        year: '2026 – Presente',
+        year: 'Ago 2026 – Oct 2026',
         title: 'Instructor de Programación Back-End (Java)',
-        subtitle: 'SENAI / FAETEC · Docencia y Mentoría Técnica',
+        subtitle: 'SENAI / FAETEC · Contrato de Plazo Fijo (Docencia)',
         description:
-          'Docencia en Programación Back-End abarcando lógica (JavaScript), bases de datos relacionales (PostgreSQL/DBeaver), POO en Java y desarrollo de APIs RESTful con Spring Boot, junto con la elaboración de material didáctico y soporte técnico individual.',
+          'Docencia en Programación Back-End bajo contrato de plazo fijo abarcando lógica (JavaScript), bases de datos relacionales (PostgreSQL/DBeaver), POO en Java y desarrollo de APIs RESTful con Spring Boot, junto con la elaboración de material didáctico y soporte técnico individual.',
 
-        tag: 'DOCENCIA & PRÁCTICA PROFESIONAL',
+        tag: 'DOCENCIA · CONTRATO DETERMINADO',
         highlighted: true,
       },
       {

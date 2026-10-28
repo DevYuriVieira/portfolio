@@ -5,13 +5,13 @@
 > Short Manifest: https://devyurivieira.vercel.app/llms.txt  
 > Live Application: https://devyurivieira.vercel.app/  
 > Author: Yuri Vieira Teixeira (yurivieirateixeira98@gmail.com)  
-> Professional Identity: Full-Stack Software Engineer & Back-End Programming Instructor  
+> Professional Identity: Full-Stack Software Engineer & Former Back-End Programming Instructor  
 
 ---
 
 ## 1. Executive Summary & International Remote Positioning
 
-Yuri Vieira Teixeira is a Full-Stack Software Engineer and Back-End Programming Instructor specializing in Java (Spring Boot), TypeScript (React, Angular), and Python (Django). He currently teaches Back-End Software Engineering at SENAI / FAETEC, mentoring engineering students in Java OOP, relational database modeling (PostgreSQL / DBeaver), and RESTful API architecture.
+Yuri Vieira Teixeira is a Full-Stack Software Engineer and former Back-End Programming Instructor specializing in Java (Spring Boot), .NET/C# (ASP.NET Core, EF Core, RabbitMQ), TypeScript (React, Angular), and Python (Django). He taught Back-End Software Engineering at SENAI / FAETEC under a fixed-term contract (August 2026 – October 2026), mentoring engineering students in Java OOP, relational database modeling (PostgreSQL / DBeaver), and RESTful API architecture.
 
 ### International Remote Work Suitability
 - **Geographic Location**: Nova Friburgo, State of Rio de Janeiro, Brazil.
@@ -33,7 +33,7 @@ Yuri Vieira Teixeira is a Full-Stack Software Engineer and Back-End Programming 
 
 ### Back-End Programming Instructor (Java)
 **Institution**: SENAI / FAETEC (National Service for Industrial Training / Vocational Technology Education)  
-**Period**: August 2026 – Present  
+**Period**: August 2026 – October 2026 (Fixed-Term Contract)  
 **Location**: Nova Friburgo, RJ, Brazil | Evening Program  
 - Leads evening instruction for Back-End Programming classes covering programming logic (JavaScript), relational database modeling and SQL administration (PostgreSQL, DBeaver), Object-Oriented Programming (OOP) in Java, and production-grade RESTful APIs with Spring Boot.
 - Authors comprehensive pedagogical technical material, including exercise suites, architectural summaries, and step-by-step implementation tutorials.

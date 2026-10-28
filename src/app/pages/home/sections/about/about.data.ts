@@ -33,7 +33,7 @@ const ABOUT_I18N: Record<SupportedLang, AboutI18n> = {
       {
         id: 'who-i-am',
         label: 'Atuação Profissional',
-        text: 'Instrutor de Programação Back-End no SENAI/FAETEC, onde ensina Java com Spring Boot, PostgreSQL e APIs RESTful para turmas em formação técnica. Paralelamente, atua como Desenvolvedor Full-Stack em projetos com Java, React, Python (Django) e integrações com IA.',
+        text: 'Instrutor de Programação Back-End no SENAI/FAETEC (contrato temporário encerrado em Out/2026), onde lecionou Java com Spring Boot, PostgreSQL e APIs RESTful para turmas em formação técnica. Atua como Engenheiro de Software Full-Stack em projetos e sistemas de alta performance com Java (Spring Boot), .NET/C#, React, Python (Django) e integrações com IA.',
       },
       {
         id: 'systemic-differentiator',
@@ -98,7 +98,7 @@ const ABOUT_I18N: Record<SupportedLang, AboutI18n> = {
       {
         id: 'who-i-am',
         label: 'Professional Practice',
-        text: 'Back-End Programming Instructor at SENAI/FAETEC, teaching Java with Spring Boot, PostgreSQL, and RESTful APIs to technical training cohorts. Simultaneously works as a Full-Stack Developer on projects spanning Java, React, Python (Django), and AI integrations.',
+        text: 'Former Back-End Programming Instructor at SENAI/FAETEC (fixed-term contract, Aug–Oct 2026), teaching Java with Spring Boot, PostgreSQL, and RESTful APIs to technical training cohorts. Works as a Full-Stack Software Engineer on high-throughput systems and projects spanning Java, .NET/C#, React, Python (Django), and AI integrations.',
       },
       {
         id: 'systemic-differentiator',
@@ -163,7 +163,7 @@ const ABOUT_I18N: Record<SupportedLang, AboutI18n> = {
       {
         id: 'who-i-am',
         label: 'Práctica Profesional',
-        text: 'Instructor de Programación Back-End en SENAI/FAETEC, donde enseña Java con Spring Boot, PostgreSQL y APIs RESTful a grupos de formación técnica. Paralelamente, trabaja como Desarrollador Full-Stack en proyectos con Java, React, Python (Django) e integraciones con IA.',
+        text: 'Exdocente de Programación Back-End en SENAI/FAETEC (contrato de plazo fijo, Ago–Oct 2026), donde dictó clases de Java con Spring Boot, PostgreSQL y APIs RESTful a grupos de formación técnica. Se desempeña como Ingeniero de Software Full-Stack en proyectos de alto rendimiento con Java, .NET/C#, React, Python (Django) e integraciones con IA.',
       },
       {
         id: 'systemic-differentiator',

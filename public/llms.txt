@@ -1,10 +1,10 @@
 # Yuri Vieira Teixeira — Software Engineer & Back-End Instructor
 
-> Full-Stack Software Engineer & Back-End Programming Instructor specializing in Java 17/21 (Spring Boot 3), TypeScript (React, Angular), and Python (Django). Open to international remote engineering opportunities (Canada, Europe, USA, Brazil) via B2B/Contractor arrangements.
+> Full-Stack Software Engineer & Back-End Programming Instructor specializing in Java 17/21 (Spring Boot 3), C# 14 (.NET 10 / ASP.NET Core), TypeScript (React, Angular), and Python (Django). Open to international remote engineering opportunities (Canada, Europe, USA, Brazil) via B2B/Contractor arrangements.
 
 ## Candidate Overview
 - Name: Yuri Vieira Teixeira (commonly known as Yuri Vieira / DevYuriVieira)
-- Current Roles: Back-End Programming Instructor at SENAI / FAETEC & Full-Stack Software Engineer
+- Experience: Former Back-End Programming Instructor at SENAI / FAETEC (Fixed-term contract, Aug–Oct 2026) & Full-Stack Software Engineer
 - Location: Nova Friburgo, Rio de Janeiro, Brazil (Timezone: UTC-3 / BRT)
 - Target Markets: Remote roles in Canada (1-2h EST overlap), Europe (3-5h GMT/CET overlap), USA, and Brazil
 - Contract Modality: B2B / Independent Contractor / EOR (via Deel, Remote.com, OysterHR, Wise, direct wire transfer)
@@ -13,7 +13,7 @@
 - Practical Training: 910+ hours of software engineering residency (Serratec 790h + UECE 120h)
 
 ## Core Technical Competencies
-- Backend & Systems: Java 17/21, Spring Boot 3, Spring Security 6, JPA / Hibernate, Python 3.12, Django (Service Layer, atomic transactions), RESTful APIs, Webhook idempotency, Microservices principles, JDBC without ORM, BigDecimal financial precision.
+- Backend & Systems: Java 17/21, Spring Boot 3, C# 14, .NET 10, ASP.NET Core, EF Core, RabbitMQ, Spring Security 6, JPA / Hibernate, Python 3.12, Django (Service Layer, atomic transactions), RESTful APIs, Webhook idempotency, Microservices principles, JDBC without ORM, BigDecimal financial precision.
 - Databases: PostgreSQL, SQL optimization (N+1 query elimination, indexing, explain analyze), MySQL, SQLite.
 - Frontend & Mobile: TypeScript 6.0, React 19, React Native (Expo SDK 54), Angular 22 (Signals, OnPush), Vite, Three.js / WebGL, Framer Motion, SCSS, HTML5, Accessibility (WCAG 2.1 AA).
 - Quality, DevOps & Architecture: Vitest, Playwright, Axe-core, Cypress, JUnit 5, Git, GitHub Actions, Docker, AWS (S3, RDS, EC2), Swagger / OpenAPI 3, Clean Architecture, SOLID, MVC + DAO, Conventional Commits.
