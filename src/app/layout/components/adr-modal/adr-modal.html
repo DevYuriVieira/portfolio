@@ -1,11 +1,22 @@
-<div class="adr-modal-backdrop" (click)="onBackdropClick($event)" role="dialog" aria-modal="true" aria-labelledby="adrModalTitle">
+<div
+  class="adr-modal-backdrop"
+  (click)="onBackdropClick($event)"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="adrModalTitle"
+>
   <div class="adr-modal-container">
     <header class="adr-modal-header">
       <div class="adr-modal-header__info">
-        <span class="adr-modal-header__eyebrow">FRONT-END ARCHITECTURE &amp; QUALITY STANDARDS</span>
-        <h2 id="adrModalTitle" class="adr-modal-header__title">Architectural Decision Records (ADRs)</h2>
+        <span class="adr-modal-header__eyebrow"
+          >FRONT-END ARCHITECTURE &amp; QUALITY STANDARDS</span
+        >
+        <h2 id="adrModalTitle" class="adr-modal-header__title">
+          Architectural Decision Records (ADRs)
+        </h2>
         <p class="adr-modal-header__subtitle">
-          Formal engineering RFCs documenting technical trade-offs, architecture invariants, and non-negotiable design principles of this portfolio.
+          Formal engineering RFCs documenting technical trade-offs, architecture invariants, and
+          non-negotiable design principles of this portfolio.
         </p>
       </div>
 
@@ -14,8 +25,16 @@
           type="button"
           class="adr-modal-action-btn adr-modal-action-btn--copy"
           (click)="copyCurrentAdr()"
-          [attr.aria-label]="copied() ? 'ADR copied to clipboard' : 'Copy current ADR as Markdown'">
-          <svg class="adr-modal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          [attr.aria-label]="copied() ? 'ADR copied to clipboard' : 'Copy current ADR as Markdown'"
+        >
+          <svg
+            class="adr-modal-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            aria-hidden="true"
+          >
             @if (copied()) {
               <polyline points="20 6 9 17 4 12"></polyline>
             } @else {
@@ -30,8 +49,15 @@
           type="button"
           class="adr-modal-close-btn"
           (click)="close.emit()"
-          aria-label="Close Architectural Decision Records modal">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          aria-label="Close Architectural Decision Records modal"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            aria-hidden="true"
+          >
             <line x1="18" y1="6" x2="6" y2="18"></line>
             <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
@@ -42,7 +68,14 @@
     <div class="adr-modal-body">
       <aside class="adr-modal-sidebar">
         <div class="adr-modal-search">
-          <svg class="adr-modal-search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <svg
+            class="adr-modal-search__icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            aria-hidden="true"
+          >
             <circle cx="11" cy="11" r="8"></circle>
             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
           </svg>
@@ -52,7 +85,8 @@
             placeholder="Filter ADRs by keyword..."
             [value]="searchTerm()"
             (input)="updateSearch($event)"
-            aria-label="Filter Architectural Decision Records" />
+            aria-label="Filter Architectural Decision Records"
+          />
         </div>
 
         <nav class="adr-modal-nav" aria-label="Architectural Decision Records list">
@@ -61,7 +95,8 @@
               type="button"
               class="adr-nav-item"
               [class.adr-nav-item--active]="adr.id === activeAdr().id"
-              (click)="selectAdr(adr.id)">
+              (click)="selectAdr(adr.id)"
+            >
               <div class="adr-nav-item__top">
                 <span class="adr-nav-item__code">{{ adr.code }}</span>
                 <span class="adr-nav-item__category">{{ adr.category }}</span>
@@ -125,7 +160,14 @@
             <div class="adr-consequences-grid">
               <div class="adr-consequence-card adr-consequence-card--positive">
                 <div class="adr-consequence-card__header">
-                  <svg class="adr-consequence-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <svg
+                    class="adr-consequence-card__icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
                     <polyline points="20 6 9 17 4 12"></polyline>
                   </svg>
                   <span class="adr-consequence-card__title">Positive Invariants (Gains)</span>
@@ -139,7 +181,14 @@
 
               <div class="adr-consequence-card adr-consequence-card--negative">
                 <div class="adr-consequence-card__header">
-                  <svg class="adr-consequence-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <svg
+                    class="adr-consequence-card__icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    aria-hidden="true"
+                  >
                     <circle cx="12" cy="12" r="10"></circle>
                     <line x1="12" y1="8" x2="12" y2="12"></line>
                     <line x1="12" y1="16" x2="12.01" y2="16"></line>

@@ -35,7 +35,7 @@ export class AdrModal {
         adr.code.toLowerCase().includes(term) ||
         adr.title.toLowerCase().includes(term) ||
         adr.category.toLowerCase().includes(term) ||
-        adr.context.toLowerCase().includes(term)
+        adr.context.toLowerCase().includes(term),
     );
   });
 
