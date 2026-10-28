@@ -117,7 +117,7 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
       statusBadge: 'EM APRENDIZADO ATIVO & EXPANSÃO',
       title: 'Foco Atual & Aprendizado Ativo',
       subtitle:
-        'Aprofundamento prático em tecnologias estratégicas para construção de arquiteturas escaláveis, resilientes e orientadas a microsserviços.',
+        'Aprofundamento prático em tecnologias estratégicas para construção de arquiteturas escaláveis, resilientes e orientadas a mensageria e eventos.',
       items: [
         {
           id: 'docker-containerization',
@@ -266,7 +266,7 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
       statusBadge: 'ACTIVE LEARNING & EVOLUTION',
       title: 'Current Focus & Active Learning',
       subtitle:
-        'Hands-on specialization in key engineering technologies to build scalable, resilient, and microservices-oriented architectures.',
+        'Hands-on specialization in key engineering technologies to build scalable, resilient, and event-driven architectures with messaging.',
       items: [
         {
           id: 'docker-containerization',
@@ -415,7 +415,7 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
       statusBadge: 'APRENDIZAJE ACTIVO & EVOLUCIÓN',
       title: 'Enfoque Actual & Aprendizaje Activo',
       subtitle:
-        'Especialización práctica en tecnologías clave de ingeniería para construir arquitecturas escalables, resilientes y orientadas a microservicios.',
+        'Especialización práctica en tecnologías clave de ingeniería para construir arquitecturas escalables, resilientes y orientadas a eventos y mensajería.',
       items: [
         {
           id: 'docker-containerization',
