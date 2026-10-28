@@ -21,11 +21,12 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
         id: 'production-engineering-degree',
         year: '2017 – 2022',
         title: 'Bacharelado em Engenharia de Produção',
-        subtitle: 'Universidade Estácio · Formação Acadêmica de Base',
+        subtitle: 'Universidade Estácio · Bacharelado',
         description:
           'Desenvolvimento de visão sistêmica, otimização de processos, análise de causa raiz, pensamento enxuto (Lean) e metodologia PDCA para resolução de problemas complexos.',
 
-        tag: 'FORMAÇÃO ACADÊMICA',
+        tag: 'GRADUAÇÃO',
+        highlighted: true,
       },
       {
         id: 'software-engineering-postgrad',
@@ -36,6 +37,7 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
           'Aprofundamento em arquitetura de software, padrões de projeto, desenvolvimento web moderno, qualidade de código e ciclo de vida completo de aplicações.',
 
         tag: 'PÓS-GRADUAÇÃO',
+        highlighted: true,
       },
       {
         id: 'senac-frontend-dev',
@@ -105,9 +107,10 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
         title: 'Projetos Pessoais & Casos de Estudo',
         subtitle: 'Desenvolvimento Prático Autoral',
         description:
-          'Desenvolvimento prático autoral de aplicações web e mobile completas cobrindo React, React Native (Expo), TypeScript, Java (Spring Boot) e Python (Django), utilizando ferramentas de IA como suporte para aceleração de código, testes e documentação.',
+          'Desenvolvimento prático autoral de arquiteturas distribuídas e aplicações completas cobrindo C# (.NET 10 / ASP.NET Core), Java (Spring Boot 3), Python (Django), React e TypeScript, aplicando padrões corporativos de resiliência e alta performance.',
 
         tag: 'ENGENHARIA AUTORAL',
+        highlighted: true,
       },
     ],
     currentFocus: {
@@ -135,7 +138,7 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
           tech: 'C# / .NET 10',
           category: 'Backend Enterprise',
           description:
-            'Expansão da versatilidade backend em ecossistema Microsoft, desenvolvendo APIs RESTful de alta performance com C# 13, ASP.NET Core e Entity Framework Core.',
+            'Expansão da versatilidade backend em ecossistema Microsoft, desenvolvendo APIs RESTful de alta performance com C# 14, ASP.NET Core e Entity Framework Core.',
         },
         {
           id: 'nosql-databases',
@@ -167,11 +170,12 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
         id: 'production-engineering-degree',
         year: '2017 – 2022',
         title: "Bachelor's in Production Engineering",
-        subtitle: 'Estácio University · Core Academic Foundation',
+        subtitle: "Estácio University · Bachelor's Degree",
         description:
           'Developed systems thinking, process optimization, root cause analysis, Lean methodology, and PDCA cycle for solving complex problems.',
 
-        tag: 'ACADEMIC DEGREE',
+        tag: "BACHELOR'S DEGREE",
+        highlighted: true,
       },
       {
         id: 'software-engineering-postgrad',
@@ -182,6 +186,7 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
           'Deepened expertise in software architecture, design patterns, modern web development, code quality, and end-to-end application lifecycle.',
 
         tag: 'POSTGRADUATE',
+        highlighted: true,
       },
       {
         id: 'senac-frontend-dev',
@@ -251,9 +256,10 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
         title: 'Personal Projects & Case Studies',
         subtitle: 'Hands-On Authorial Development',
         description:
-          'Hands-on authorial development of full-stack web and mobile applications covering React, React Native (Expo), TypeScript, Java (Spring Boot), and Python (Django), leveraging AI tools for developer assistance, testing, and documentation.',
+          'Hands-on authorial development of distributed architectures and end-to-end applications covering C# (.NET 10 / ASP.NET Core), Java (Spring Boot 3), Python (Django), React, and TypeScript, applying enterprise resilience and performance patterns.',
 
         tag: 'AUTHORIAL ENGINEERING',
+        highlighted: true,
       },
     ],
     currentFocus: {
@@ -281,7 +287,7 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
           tech: 'C# / .NET 10',
           category: 'Enterprise Backend',
           description:
-            'Expanding backend versatility into Microsoft ecosystems, building high-performance REST APIs with C# 13, ASP.NET Core, and Entity Framework Core.',
+            'Expanding backend versatility into Microsoft ecosystems, building high-performance REST APIs with C# 14, ASP.NET Core, and Entity Framework Core.',
         },
         {
           id: 'nosql-databases',
@@ -313,11 +319,12 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
         id: 'production-engineering-degree',
         year: '2017 – 2022',
         title: 'Licenciatura en Ingeniería de Producción',
-        subtitle: 'Universidad Estácio · Base Académica',
+        subtitle: 'Universidad Estácio · Licenciatura',
         description:
           'Desarrollo de pensamiento sistémico, optimización de procesos, análisis de causa raíz, metodología Lean y ciclo PDCA para la resolución de problemas complejos.',
 
-        tag: 'FORMACIÓN ACADÉMICA',
+        tag: 'GRADUACIÓN',
+        highlighted: true,
       },
       {
         id: 'software-engineering-postgrad',
@@ -328,6 +335,7 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
           'Profundización en arquitectura de software, patrones de diseño, desarrollo web moderno, calidad de código y ciclo de vida completo de aplicaciones.',
 
         tag: 'POSGRADO',
+        highlighted: true,
       },
       {
         id: 'senac-frontend-dev',
@@ -400,6 +408,7 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
           'Desarrollo práctico autoral de aplicaciones web y mobile full-stack cubriendo React, React Native (Expo), TypeScript, Java (Spring Boot) y Python (Django), aprovechando herramientas de IA para asistencia, pruebas y documentación.',
 
         tag: 'INGENIERÍA AUTORAL',
+        highlighted: true,
       },
     ],
     currentFocus: {
@@ -427,7 +436,7 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
           tech: 'C# / .NET 10',
           category: 'Backend Enterprise',
           description:
-            'Expansión de versatilidad backend en ecosistemas Microsoft, construyendo APIs REST de alto rendimiento con C# 13, ASP.NET Core y Entity Framework Core.',
+            'Expansión de versatilidad backend en ecosistemas Microsoft, construyendo APIs REST de alto rendimiento con C# 14, ASP.NET Core y Entity Framework Core.',
         },
         {
           id: 'nosql-databases',
