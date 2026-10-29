@@ -30,7 +30,7 @@ describe('FooterComponent', () => {
 
   it('should expose engineering quality badges and GitHub repository link', () => {
     const labels = component.labels();
-    expect(labels.badgeTestsMetric).toContain('80');
+    expect(labels.badgeTestsMetric).toContain('167');
     expect(labels.badgeA11yMetric).toContain('WCAG 2.1 AAA');
     expect(labels.badgePwaMetric).toContain('PWA');
     expect(labels.badgeSignalsMetric).toContain('Angular 22');

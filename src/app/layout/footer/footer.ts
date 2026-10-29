@@ -58,7 +58,7 @@ export class FooterComponent {
       viewSourceText: 'Source Code, Architecture & Tests on GitHub',
       viewSourceAria:
         'View portfolio source code, architecture and tests on GitHub (opens in a new tab)',
-      badgeTestsMetric: '80+ Vitest Tests',
+      badgeTestsMetric: '167 Automated Tests',
       badgeTestsLabel: '100% Automated Pass Rate',
       badgeA11yMetric: 'WCAG 2.1 AAA',
       badgeA11yLabel: 'Accessibility & Native VLibras',
@@ -80,7 +80,7 @@ export class FooterComponent {
       viewSourceText: 'Código-fonte, Arquitetura & Testes no GitHub',
       viewSourceAria:
         'Ver código-fonte, arquitetura e testes do portfólio no GitHub (abre em nova aba)',
-      badgeTestsMetric: '80+ Testes Vitest',
+      badgeTestsMetric: '167 Testes Automatizados',
       badgeTestsLabel: '100% de Aprovação Automatizada',
       badgeA11yMetric: 'WCAG 2.1 AAA',
       badgeA11yLabel: 'Acessibilidade & VLibras Nativo',
@@ -102,7 +102,7 @@ export class FooterComponent {
       viewSourceText: 'Código Fuente, Arquitectura & Pruebas en GitHub',
       viewSourceAria:
         'Ver código fuente, arquitectura y pruebas del portafolio en GitHub (abre en nueva pestaña)',
-      badgeTestsMetric: '80+ Pruebas Vitest',
+      badgeTestsMetric: '167 Pruebas Automatizadas',
       badgeTestsLabel: '100% Aprobación Automatizada',
       badgeA11yMetric: 'WCAG 2.1 AAA',
       badgeA11yLabel: 'Accesibilidad & VLibras Nativo',
