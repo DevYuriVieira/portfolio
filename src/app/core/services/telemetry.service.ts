@@ -9,6 +9,15 @@ import {
 } from '@angular/core';
 
 export type WebVitalsRating = 'optimal' | 'good' | 'degraded';
+export type CvTrackEvent = 'fullstack' | 'backend' | 'frontend';
+export type WhatsAppSourceEvent = 'hero' | 'contact';
+
+export interface ConversionSnapshot {
+  readonly cvDownloads: Record<CvTrackEvent, number>;
+  readonly totalCvDownloads: number;
+  readonly whatsappClicks: number;
+  readonly lastEvent: string | null;
+}
 
 export interface VitalsSnapshot {
   readonly lcp: number | null;
@@ -18,6 +27,14 @@ export interface VitalsSnapshot {
   readonly longTasks: number;
   readonly memoryMb: number | null;
   readonly rating: WebVitalsRating;
+}
+
+const ANALYTICS_STORAGE_KEY = 'yv_portfolio_analytics_v1';
+
+interface StoredAnalyticsState {
+  cvDownloads: Record<CvTrackEvent, number>;
+  whatsappClicks: number;
+  lastEvent: string | null;
 }
 
 @Injectable({
@@ -35,6 +52,26 @@ export class TelemetryService {
   readonly ttfb = signal<number | null>(null);
   readonly longTasks = signal<number>(0);
   readonly memoryMb = signal<number | null>(null);
+
+  readonly cvDownloadsByTrack = signal<Record<CvTrackEvent, number>>({
+    fullstack: 0,
+    backend: 0,
+    frontend: 0,
+  });
+  readonly whatsappClicks = signal<number>(0);
+  readonly lastEvent = signal<string | null>(null);
+
+  readonly totalCvDownloads = computed<number>(() => {
+    const counts = this.cvDownloadsByTrack();
+    return counts.fullstack + counts.backend + counts.frontend;
+  });
+
+  readonly conversions = computed<ConversionSnapshot>(() => ({
+    cvDownloads: this.cvDownloadsByTrack(),
+    totalCvDownloads: this.totalCvDownloads(),
+    whatsappClicks: this.whatsappClicks(),
+    lastEvent: this.lastEvent(),
+  }));
 
   readonly rating = computed<WebVitalsRating>(() => {
     const lcpVal = this.lcp();
@@ -75,6 +112,7 @@ export class TelemetryService {
       return;
     }
 
+    this.restoreAnalyticsFromStorage();
     this.initNavigationTiming();
     this.initPerformanceObservers();
     this.sampleMemory();
@@ -82,6 +120,86 @@ export class TelemetryService {
     this.destroyRef.onDestroy(() => {
       this.disconnectObservers();
     });
+  }
+
+  trackCvDownload(track: CvTrackEvent, lang: string): void {
+    this.cvDownloadsByTrack.update((prev) => ({
+      ...prev,
+      [track]: (prev[track] ?? 0) + 1,
+    }));
+    const eventLabel = `cv_download:${track}:${lang}`;
+    this.lastEvent.set(eventLabel);
+    this.persistAnalyticsToStorage();
+    this.dispatchExternalAnalytics('cv_download', { track, lang });
+  }
+
+  trackWhatsAppClick(source: WhatsAppSourceEvent, lang: string): void {
+    this.whatsappClicks.update((prev) => prev + 1);
+    const eventLabel = `whatsapp_click:${source}:${lang}`;
+    this.lastEvent.set(eventLabel);
+    this.persistAnalyticsToStorage();
+    this.dispatchExternalAnalytics('whatsapp_click', { source, lang });
+  }
+
+  private restoreAnalyticsFromStorage(): void {
+    try {
+      if (typeof localStorage === 'undefined') return;
+      const raw = localStorage.getItem(ANALYTICS_STORAGE_KEY);
+      if (!raw) return;
+      const parsed = JSON.parse(raw) as Partial<StoredAnalyticsState>;
+      if (parsed && typeof parsed === 'object') {
+        if (parsed.cvDownloads && typeof parsed.cvDownloads === 'object') {
+          this.cvDownloadsByTrack.set({
+            fullstack: Number(parsed.cvDownloads.fullstack) || 0,
+            backend: Number(parsed.cvDownloads.backend) || 0,
+            frontend: Number(parsed.cvDownloads.frontend) || 0,
+          });
+        }
+        if (typeof parsed.whatsappClicks === 'number') {
+          this.whatsappClicks.set(parsed.whatsappClicks);
+        }
+        if (typeof parsed.lastEvent === 'string') {
+          this.lastEvent.set(parsed.lastEvent);
+        }
+      }
+    } catch {}
+  }
+
+  private persistAnalyticsToStorage(): void {
+    try {
+      if (typeof localStorage === 'undefined') return;
+      const state: StoredAnalyticsState = {
+        cvDownloads: this.cvDownloadsByTrack(),
+        whatsappClicks: this.whatsappClicks(),
+        lastEvent: this.lastEvent(),
+      };
+      localStorage.setItem(ANALYTICS_STORAGE_KEY, JSON.stringify(state));
+    } catch {}
+  }
+
+  private dispatchExternalAnalytics(eventName: string, payload: Record<string, string>): void {
+    if (!isPlatformBrowser(this.platformId) || typeof window === 'undefined') {
+      return;
+    }
+
+    try {
+      const win = window as Window & {
+        dataLayer?: Record<string, unknown>[];
+      };
+      if (Array.isArray(win.dataLayer)) {
+        win.dataLayer.push({
+          event: eventName,
+          ...payload,
+          timestamp: Date.now(),
+        });
+      }
+
+      window.dispatchEvent(
+        new CustomEvent('portfolio:analytics', {
+          detail: { event: eventName, ...payload, timestamp: Date.now() },
+        })
+      );
+    } catch {}
   }
 
   private initNavigationTiming(): void {

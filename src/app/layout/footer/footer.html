@@ -13,6 +13,16 @@
             <span class="footer__rum-rating">{{ telemetry.rating() | uppercase }}</span>
           </div>
 
+          <div
+            class="footer__analytics-pill"
+            [attr.title]="'Event Tracker: CV Full-Stack (' + telemetry.cvDownloadsByTrack().fullstack + ') · Back-End (' + telemetry.cvDownloadsByTrack().backend + ') · Front-End (' + telemetry.cvDownloadsByTrack().frontend + ') | WhatsApp Clicks (' + telemetry.whatsappClicks() + ')'">
+            <span class="footer__analytics-dot" aria-hidden="true"></span>
+            <span class="footer__analytics-label">EVENTS:</span>
+            <span class="footer__analytics-metric">
+              CV {{ telemetry.totalCvDownloads() }} (FS:{{ telemetry.cvDownloadsByTrack().fullstack }}·BE:{{ telemetry.cvDownloadsByTrack().backend }}·FE:{{ telemetry.cvDownloadsByTrack().frontend }}) · WA {{ telemetry.whatsappClicks() }}
+            </span>
+          </div>
+
           <button
             type="button"
             class="footer__adr-btn"

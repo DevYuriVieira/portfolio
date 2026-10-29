@@ -6,6 +6,10 @@ describe('TelemetryService', () => {
   let service: TelemetryService;
 
   beforeEach(() => {
+    try {
+      localStorage.removeItem('yv_portfolio_analytics_v1');
+    } catch {}
+
     TestBed.configureTestingModule({
       providers: [TelemetryService],
     });
@@ -50,5 +54,31 @@ describe('TelemetryService', () => {
   it('should set rating to degraded when INP exceeds 500ms', () => {
     service.inp.set(650);
     expect(service.rating()).toBe('degraded');
+  });
+
+  it('should track CV downloads by track and compute total downloads', () => {
+    expect(service.totalCvDownloads()).toBe(0);
+
+    service.trackCvDownload('fullstack', 'pt-BR');
+    service.trackCvDownload('backend', 'en');
+    service.trackCvDownload('fullstack', 'pt-BR');
+
+    expect(service.cvDownloadsByTrack()).toEqual({
+      fullstack: 2,
+      backend: 1,
+      frontend: 0,
+    });
+    expect(service.totalCvDownloads()).toBe(3);
+    expect(service.lastEvent()).toBe('cv_download:fullstack:pt-BR');
+  });
+
+  it('should track WhatsApp clicks across hero and contact sources', () => {
+    expect(service.whatsappClicks()).toBe(0);
+
+    service.trackWhatsAppClick('hero', 'pt-BR');
+    service.trackWhatsAppClick('contact', 'en');
+
+    expect(service.whatsappClicks()).toBe(2);
+    expect(service.lastEvent()).toBe('whatsapp_click:contact:en');
   });
 });
