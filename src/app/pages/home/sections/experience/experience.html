@@ -14,8 +14,11 @@
       </header>
 
       <ol class="experience__timeline" [attr.aria-label]="data().ariaLabel">
-        @for (milestone of milestones(); track milestone.id) {
-        <li class="experience__item" [class.experience__item--highlighted]="milestone.highlighted">
+        @for (milestone of displayedMilestones(); track milestone.id) {
+        <li
+          class="experience__item"
+          [class.is-visible]="showAllMilestones()"
+          [class.experience__item--highlighted]="milestone.highlighted">
           <div class="experience__marker" aria-hidden="true">
             <span class="experience__dot"></span>
           </div>
@@ -46,39 +49,97 @@
         }
       </ol>
 
+      <div class="experience__timeline-actions">
+        <button
+          type="button"
+          class="experience__timeline-toggle"
+          [attr.aria-expanded]="showAllMilestones()"
+          (click)="toggleMilestones()">
+          <span>{{ timelineToggleLabel() }}</span>
+          <span class="experience__timeline-chevron" [class.is-open]="showAllMilestones()" aria-hidden="true">▾</span>
+        </button>
+      </div>
+
       @if (currentFocus()) {
       <div class="experience__focus">
-        <header class="experience__focus-header">
-          <div class="experience__focus-status">
-            <span class="experience__focus-pulse" aria-hidden="true"></span>
-            <span class="experience__focus-status-text">{{ currentFocus().statusBadge }}</span>
+        <div class="experience__focus-top">
+          <header class="experience__focus-header">
+            <div class="experience__focus-status">
+              <span class="experience__focus-pulse" aria-hidden="true"></span>
+              <span class="experience__focus-status-text">{{ currentFocus().statusBadge }}</span>
+            </div>
+            <app-heading level="h3" size="h2" class="experience__focus-title">
+              {{ currentFocus().title }}
+            </app-heading>
+            <app-text variant="body" class="experience__focus-subtitle">
+              {{ currentFocus().subtitle }}
+            </app-text>
+          </header>
+
+          <div class="experience__carousel-nav">
+            <div class="experience__carousel-dots" role="tablist" [attr.aria-label]="currentFocus().title">
+              @for (item of currentFocus().items; track item.id; let i = $index) {
+              <button
+                type="button"
+                role="tab"
+                class="experience__carousel-dot"
+                [class.is-active]="isFocusCardVisible(i)"
+                [attr.aria-selected]="activeFocusIndex() === i"
+                [attr.aria-label]="item.tech"
+                (click)="selectFocus(i)">
+              </button>
+              }
+            </div>
+
+            <div class="experience__carousel-arrows">
+              <button
+                type="button"
+                class="experience__carousel-btn"
+                (click)="prevFocus()"
+                aria-label="Card anterior">
+                <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <button
+                type="button"
+                class="experience__carousel-btn"
+                (click)="nextFocus()"
+                aria-label="Próximo card">
+                <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
           </div>
-          <app-heading level="h3" size="h2" class="experience__focus-title">
-            {{ currentFocus().title }}
-          </app-heading>
-          <app-text variant="body" class="experience__focus-subtitle">
-            {{ currentFocus().subtitle }}
-          </app-text>
-        </header>
+        </div>
 
-        <div class="experience__focus-grid">
-          @for (item of currentFocus().items; track item.id; let i = $index) {
-          <article class="experience__focus-card" [style.--focus-index]="i">
-            <div class="experience__focus-trail" aria-hidden="true"></div>
+        <div class="experience__focus-viewport">
+          <div
+            class="experience__focus-carousel"
+            [style.--track-index]="activeFocusIndex()">
+            @for (item of currentFocus().items; track item.id; let i = $index) {
+            <article
+              class="experience__focus-card"
+              [class.is-active]="isFocusCardVisible(i)"
+              [style.--focus-index]="i"
+              (click)="selectFocus(i)">
+              <div class="experience__focus-trail" aria-hidden="true"></div>
 
-            <div class="experience__focus-card-header">
-              <span class="experience__focus-tech">{{ item.tech }}</span>
-              <span class="experience__focus-num">0{{ i + 1 }}</span>
-            </div>
+              <div class="experience__focus-card-header">
+                <span class="experience__focus-tech">{{ item.tech }}</span>
+                <span class="experience__focus-num">0{{ i + 1 }}</span>
+              </div>
 
-            <div class="experience__focus-card-body">
-              <span class="experience__focus-category">{{ item.category }}</span>
-              <app-text variant="body" class="experience__focus-description">
-                {{ item.description }}
-              </app-text>
-            </div>
-          </article>
-          }
+              <div class="experience__focus-card-body">
+                <span class="experience__focus-category">{{ item.category }}</span>
+                <app-text variant="body" class="experience__focus-description">
+                  {{ item.description }}
+                </app-text>
+              </div>
+            </article>
+            }
+          </div>
         </div>
       </div>
       }

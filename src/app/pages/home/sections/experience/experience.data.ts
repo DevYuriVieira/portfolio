@@ -92,24 +92,24 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
       },
       {
         id: 'senai-faetec-instructor',
-        year: 'Ago 2026 – Out 2026',
-        title: 'Instrutor de Programação Back-End (Java)',
-        subtitle: 'SENAI / FAETEC · Contrato Determinado (Docência)',
+        year: 'Ago – Out 2026',
+        title: 'Instrutor de Programação Back-End',
+        subtitle: 'SENAI / FAETEC · Docência em Formação Técnica',
         description:
-          'Docência em Programação Back-End sob contrato determinado, cobrindo lógica (JavaScript), bancos de dados relacionais (PostgreSQL/DBeaver), POO em Java e desenvolvimento de APIs RESTful com Spring Boot, além da elaboração de materiais didáticos e mentoria técnica individual.',
+          'Docência em Programação cobrindo lógica de programação (JavaScript), bancos de dados relacionais (PostgreSQL/DBeaver), POO em Java e desenvolvimento de APIs RESTful com Spring Boot, além da elaboração de materiais didáticos e mentoria técnica.',
 
-        tag: 'DOCÊNCIA · CONTRATO DETERMINADO',
+        tag: 'DOCÊNCIA TÉCNICA',
         highlighted: true,
       },
       {
         id: 'personal-projects',
         year: '2025 – Presente',
-        title: 'Projetos Pessoais & Casos de Estudo',
-        subtitle: 'Desenvolvimento Prático Autoral',
+        title: 'Desenvolvimento Full-Stack Freelance & Projetos Autorais',
+        subtitle: 'Engenharia de Software & Soluções Sob Demanda',
         description:
-          'Desenvolvimento prático autoral de arquiteturas distribuídas e aplicações completas cobrindo C# (.NET 10 / ASP.NET Core), Java (Spring Boot 3), TypeScript, React e Angular, aplicando padrões corporativos de resiliência e alta performance.',
+          'Desenvolvimento de sistemas sob demanda como freelancer e projetos autorais de arquitetura distribuída cobrindo C# (.NET 10 / ASP.NET Core), Java (Spring Boot 3), TypeScript, React e Angular, aplicando padrões corporativos de resiliência e alta performance.',
 
-        tag: 'ENGENHARIA AUTORAL',
+        tag: 'FREELANCE & ENGENHARIA AUTORAL',
         highlighted: true,
       },
     ],
@@ -241,24 +241,24 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
       },
       {
         id: 'senai-faetec-instructor',
-        year: 'Aug 2026 – Oct 2026',
-        title: 'Back-End Programming Instructor (Java)',
-        subtitle: 'SENAI / FAETEC · Fixed-Term Contract (Teaching)',
+        year: 'Aug – Oct 2026',
+        title: 'Back-End Programming Instructor',
+        subtitle: 'SENAI / FAETEC · Technical Education',
         description:
-          'Teaching Back-End Programming under a fixed-term contract covering logic (JavaScript), relational databases (PostgreSQL/DBeaver), OOP in Java, and RESTful APIs with Spring Boot, alongside authoring technical courseware and providing one-on-one engineering guidance.',
+          'Taught programming logic (JavaScript), relational databases (PostgreSQL/DBeaver), OOP in Java, and RESTful APIs with Spring Boot, alongside authoring technical courseware and providing hands-on engineering mentorship.',
 
-        tag: 'TEACHING · FIXED-TERM CONTRACT',
+        tag: 'TECHNICAL TEACHING',
         highlighted: true,
       },
       {
         id: 'personal-projects',
         year: '2025 – Present',
-        title: 'Personal Projects & Case Studies',
-        subtitle: 'Hands-On Authorial Development',
+        title: 'Full-Stack Freelance & Authorial Engineering Projects',
+        subtitle: 'Software Engineering & Custom Solutions',
         description:
-          'Hands-on authorial development of distributed architectures and end-to-end applications covering C# (.NET 10 / ASP.NET Core), Java (Spring Boot 3), TypeScript, React, and Angular, applying enterprise resilience and performance patterns.',
+          'Delivering custom freelance solutions and authorial distributed architectures covering C# (.NET 10 / ASP.NET Core), Java (Spring Boot 3), TypeScript, React, and Angular, applying enterprise resilience and high-performance patterns.',
 
-        tag: 'AUTHORIAL ENGINEERING',
+        tag: 'FREELANCE & AUTHORIAL ENGINEERING',
         highlighted: true,
       },
     ],
@@ -390,24 +390,24 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
       },
       {
         id: 'senai-faetec-instructor',
-        year: 'Ago 2026 – Oct 2026',
-        title: 'Instructor de Programación Back-End (Java)',
-        subtitle: 'SENAI / FAETEC · Contrato de Plazo Fijo (Docencia)',
+        year: 'Ago – Oct 2026',
+        title: 'Instructor de Programación Back-End',
+        subtitle: 'SENAI / FAETEC · Docencia en Formación Técnica',
         description:
-          'Docencia en Programación Back-End bajo contrato de plazo fijo abarcando lógica (JavaScript), bases de datos relacionales (PostgreSQL/DBeaver), POO en Java y desarrollo de APIs RESTful con Spring Boot, junto con la elaboración de material didáctico y soporte técnico individual.',
+          'Docencia en programación abarcando lógica de programación (JavaScript), bases de datos relacionales (PostgreSQL/DBeaver), POO en Java y desarrollo de APIs RESTful con Spring Boot, junto con la elaboración de material didáctico y mentoría técnica.',
 
-        tag: 'DOCENCIA · CONTRATO DETERMINADO',
+        tag: 'DOCENCIA TÉCNICA',
         highlighted: true,
       },
       {
         id: 'personal-projects',
         year: '2025 – Presente',
-        title: 'Proyectos Personales & Casos de Estudio',
-        subtitle: 'Desarrollo Práctico Autoral',
+        title: 'Desarrollo Full-Stack Freelance & Proyectos Autorales',
+        subtitle: 'Ingeniería de Software & Soluciones a Medida',
         description:
-          'Desarrollo práctico autoral de arquitecturas distribuidas y aplicaciones web y mobile full-stack cubriendo C# (.NET 10 / ASP.NET Core), Java (Spring Boot 3), TypeScript, React y Angular, aplicando patrones corporativos de resiliencia y alto rendimiento.',
+          'Desarrollo de soluciones a medida como freelancer y proyectos autorales de arquitectura distribuida cubriendo C# (.NET 10 / ASP.NET Core), Java (Spring Boot 3), TypeScript, React y Angular, aplicando patrones corporativos de resiliencia y alto rendimiento.',
 
-        tag: 'INGENIERÍA AUTORAL',
+        tag: 'FREELANCE & INGENIERÍA AUTORAL',
         highlighted: true,
       },
     ],

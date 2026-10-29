@@ -29,10 +29,17 @@ describe('ExperienceSection', () => {
     expect(component.milestones().length).toBe(EXPERIENCE_MILESTONES.length);
   });
 
-  it('should render all timeline items in the DOM', () => {
+  it('should render highlighted timeline items initially and all items when expanded', () => {
     const compiled = fixture.nativeElement as HTMLElement;
-    const items = compiled.querySelectorAll('.experience__item');
+    const highlightedCount = EXPERIENCE_MILESTONES.filter((m) => m.highlighted).length;
+    let items = compiled.querySelectorAll('.experience__item');
 
+    expect(items.length).toBe(highlightedCount);
+
+    component.toggleMilestones();
+    fixture.detectChanges();
+
+    items = compiled.querySelectorAll('.experience__item');
     expect(items.length).toBe(EXPERIENCE_MILESTONES.length);
   });
 
@@ -52,9 +59,19 @@ describe('ExperienceSection', () => {
     expect(focusCards.length).toBe(5);
     const lightTrails = compiled.querySelectorAll('.experience__focus-trail');
     expect(lightTrails.length).toBe(5);
+
+    expect(component.activeFocusIndex()).toBe(0);
+    component.nextFocus();
+    expect(component.activeFocusIndex()).toBeGreaterThan(0);
+    component.prevFocus();
+    expect(component.activeFocusIndex()).toBe(0);
+    component.selectFocus(3);
+    expect(component.activeFocusIndex()).toBe(3);
   });
 
   it('should render milestone tags and highlight prominent milestones in the DOM', () => {
+    component.toggleMilestones();
+    fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
     const highlightedItems = compiled.querySelectorAll('.experience__item--highlighted');
     expect(highlightedItems.length).toBeGreaterThan(0);
