@@ -1,4 +1,4 @@
-name: CI Pipeline
+name: CI Quality Gate
 
 on:
   push:
@@ -11,9 +11,66 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  validate:
-    name: Lint, Test & Build
+  quality-gate:
+    name: Static Analysis, Unit Tests & Production Build
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install dependencies (Clean Lockfile)
+        run: npm ci
+
+      - name: Security Audit (High/Critical Production Vulnerabilities)
+        run: npm audit --omit=dev --audit-level=high
+
+      - name: TypeScript Strict Typecheck (App & Specs)
+        run: |
+          npx tsc --project tsconfig.app.json --noEmit
+          npx tsc --project tsconfig.spec.json --noEmit
+
+      - name: Verify CV Assets & Static Configurations
+        run: |
+          for file in \
+            public/assets/cv-yuri-vieira-teixeira-pt.pdf \
+            public/assets/cv-yuri-vieira-teixeira-en.pdf \
+            public/assets/cv-yuri-vieira-teixeira-backend-pt.pdf \
+            public/assets/cv-yuri-vieira-teixeira-backend-en.pdf \
+            public/assets/cv-yuri-vieira-teixeira-frontend-pt.pdf \
+            public/assets/cv-yuri-vieira-teixeira-frontend-en.pdf \
+            vercel.json \
+            ngsw-config.json; do
+            if [ ! -s "$file" ]; then
+              echo "Missing or empty required file: $file"
+              exit 1
+            fi
+          done
+
+      - name: Unit, Property-Based & Architecture Tests (Vitest + Coverage)
+        run: npm run test:coverage
+
+      - name: Production Build & Bundle Budget Verification
+        run: npm run build
+
+      - name: Upload Production Bundle Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: angular-production-dist
+          path: dist/portfolio
+          retention-days: 7
+
+  e2e-audit:
+    name: Playwright E2E Security, Performance & PWA Audit
+    runs-on: ubuntu-latest
+    needs: quality-gate
     timeout-minutes: 15
 
     steps:
@@ -29,8 +86,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run unit & architecture tests
-        run: npm run test:run
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
 
-      - name: Build production bundle
-        run: npm run build
+      - name: Run Security, Performance & PWA E2E Suites
+        run: npx playwright test e2e/security.spec.ts e2e/performance.spec.ts e2e/pwa-offline.spec.ts --project=chromium
