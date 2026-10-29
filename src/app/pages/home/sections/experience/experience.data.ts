@@ -13,7 +13,7 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
       eyebrow: '02 // TRAJETÓRIA & EVOLUÇÃO',
       title: 'Evolução Contínua em Engenharia',
       description:
-        'Uma jornada de aprendizado constante, combinando o raciocínio sistêmico da Engenharia de Produção, pós-graduação e formações práticas de alto impacto em desenvolvimento de software.',
+        'Uma jornada de aprendizado constante, combinando o raciocínio sistêmico da Engenharia de Produção e de Software e formações práticas de alto impacto.',
       ariaLabel: 'Trajetória profissional, acadêmica e evolução técnica',
     },
     milestones: [
@@ -162,7 +162,7 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
       eyebrow: '02 // JOURNEY & EVOLUTION',
       title: 'Continuous Growth in Engineering',
       description:
-        'A continuous learning path combining Production Engineering systems thinking, postgraduate specialization, and high-impact practical software engineering programs.',
+        'A continuous learning path combining the systems thinking of Production and Software Engineering with high-impact practical training programs.',
       ariaLabel: 'Professional journey, academic background, and technical evolution',
     },
     milestones: [
@@ -311,7 +311,7 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
       eyebrow: '02 // TRAYECTORIA & EVOLUCIÓN',
       title: 'Crecimiento Continuo en Ingeniería',
       description:
-        'Un camino de aprendizaje continuo combinando el pensamiento sistémico de la Ingeniería de Producción, especialización de posgrado y programas prácticos de ingeniería de software de alto impacto.',
+        'Un camino de aprendizaje continuo combinando el pensamiento sistémico de la Ingeniería de Producción y de Software y formaciones prácticas de alto impacto.',
       ariaLabel: 'Trayectoria profesional, formación académica y evolución técnica',
     },
     milestones: [
