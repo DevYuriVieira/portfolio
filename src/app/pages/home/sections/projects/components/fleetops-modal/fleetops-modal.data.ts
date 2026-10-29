@@ -128,8 +128,6 @@ export const FLEETOPS_MODAL_DATA: Record<'pt-BR' | 'en', FleetOpsModalI18n> = {
       { label: 'Docker Compose', color: 'blue' },
       { label: 'OpenTelemetry', color: 'green' },
       { label: 'Keycloak OIDC RS256', color: 'blue' },
-      { label: '300 Testes Aprovados', color: 'green' },
-      { label: 'Quality Gate Verificado', color: 'green' },
     ],
     executiveSummary: [
       { area: 'Arquitetura', implementation: 'Clean Architecture + Domain-Driven Design (DDD) com isolamento estrito' },
@@ -360,8 +358,6 @@ export const FLEETOPS_MODAL_DATA: Record<'pt-BR' | 'en', FleetOpsModalI18n> = {
       { label: 'Docker Compose', color: 'blue' },
       { label: 'OpenTelemetry', color: 'green' },
       { label: 'Keycloak OIDC RS256', color: 'blue' },
-      { label: '300 Tests Passing', color: 'green' },
-      { label: 'Quality Gate Verified', color: 'green' },
     ],
     executiveSummary: [
       { area: 'Architecture', implementation: 'Clean Architecture + Domain-Driven Design (DDD) with strict layer isolation' },

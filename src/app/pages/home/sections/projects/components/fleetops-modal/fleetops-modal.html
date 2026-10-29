@@ -11,17 +11,6 @@
         </div>
 
         <div class="fleetops-modal__header-actions">
-          <div class="fleetops-modal__lang-switcher" role="group" aria-label="Language selection">
-            <button type="button" class="fleetops-modal__lang-btn" [class.is-active]="activeLang() === 'pt-BR'"
-              (click)="setLanguage('pt-BR')">
-              🇧🇷 PT
-            </button>
-            <button type="button" class="fleetops-modal__lang-btn" [class.is-active]="activeLang() === 'en'"
-              (click)="setLanguage('en')">
-              🇺🇸 EN
-            </button>
-          </div>
-
           <button type="button" class="fleetops-modal__close-btn" (click)="closeModal()"
             [attr.aria-label]="data().closeAria">
             ✕
@@ -30,12 +19,43 @@
       </div>
 
       <div class="fleetops-modal__title-group">
-        <app-heading level="h2" size="h1" class="fleetops-modal__title">
-          FleetOps API
-        </app-heading>
-        <app-text variant="lead" class="fleetops-modal__subtitle">
-          {{ data().modalSubtitle }}
-        </app-text>
+        <div class="fleetops-modal__title-row">
+          <div>
+            <app-heading level="h2" size="h2" class="fleetops-modal__title">
+              FleetOps API
+            </app-heading>
+            <app-text variant="caption" class="fleetops-modal__subtitle">
+              {{ data().modalSubtitle }}
+            </app-text>
+          </div>
+
+          <div class="fleetops-modal__toolbar">
+            <a [href]="data().githubUrl" target="_blank" rel="noopener noreferrer" class="fleetops-modal__tool-btn fleetops-modal__tool-btn--primary">
+              <svg class="fleetops-modal__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+              </svg>
+              <span>GitHub Repository</span>
+              <span class="fleetops-modal__arrow" aria-hidden="true">↗</span>
+            </a>
+
+            <button type="button" class="fleetops-modal__tool-btn" (click)="copyMarkdown()">
+              <svg class="fleetops-modal__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+              </svg>
+              <span>{{ copied() ? data().copiedMarkdown : data().copyMarkdown }}</span>
+            </button>
+
+            <button type="button" class="fleetops-modal__tool-btn" (click)="downloadDossier()">
+              <svg class="fleetops-modal__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+              <span>{{ data().downloadMarkdown }}</span>
+            </button>
+          </div>
+        </div>
 
         <div class="fleetops-modal__badges-ribbon">
           @for (badge of data().badges; track badge.label) {
@@ -46,33 +66,6 @@
             {{ badge.label }}
           </span>
           }
-        </div>
-
-        <div class="fleetops-modal__toolbar">
-          <a [href]="data().githubUrl" target="_blank" rel="noopener noreferrer" class="fleetops-modal__tool-btn fleetops-modal__tool-btn--primary">
-            <svg class="fleetops-modal__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
-            </svg>
-            <span>GitHub Repository</span>
-            <span class="fleetops-modal__arrow" aria-hidden="true">↗</span>
-          </a>
-
-          <button type="button" class="fleetops-modal__tool-btn" (click)="copyMarkdown()">
-            <svg class="fleetops-modal__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-            </svg>
-            <span>{{ copied() ? data().copiedMarkdown : data().copyMarkdown }}</span>
-          </button>
-
-          <button type="button" class="fleetops-modal__tool-btn" (click)="downloadDossier()">
-            <svg class="fleetops-modal__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-              <polyline points="7 10 12 15 17 10" />
-              <line x1="12" y1="15" x2="12" y2="3" />
-            </svg>
-            <span>{{ data().downloadMarkdown }}</span>
-          </button>
         </div>
       </div>
 
@@ -680,7 +673,7 @@ FOR UPDATE SKIP LOCKED;</code></pre>
           <div class="fleetops-card__header fleetops-card__header--split">
             <div>
               <span class="fleetops-card__tag">TECHNICAL DOSSIER</span>
-              <h3 class="fleetops-card__title">{{ activeLang() === 'en' ? 'Complete Technical Dossier (38 Chapters)' : 'Dossiê Técnico Completo (38 Capítulos)' }}</h3>
+              <h3 class="fleetops-card__title">{{ activeLang() === 'en' ? 'Complete Technical Dossier (Markdown)' : 'Dossiê Técnico Completo (Markdown)' }}</h3>
             </div>
             <div class="fleetops-card__actions">
               <button type="button" class="fleetops-modal__tool-btn" (click)="copyMarkdown()">
