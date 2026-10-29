@@ -30,20 +30,34 @@
     display: inline-flex;
     align-items: center;
     text-decoration: none;
-  }
-
-  &__brand-name {
-    font-family: var(--font-sans);
-    font-size: var(--text-2xl);
-    font-weight: var(--font-weight-bold);
-    color: var(--text-primary);
-    letter-spacing: -0.04em;
-    line-height: 1;
-    transition: color var(--duration-fast) var(--ease-default);
+    border-radius: 11px;
+    transition:
+      transform var(--duration-fast) var(--ease-default),
+      filter var(--duration-fast) var(--ease-default);
 
     &:hover {
-      color: var(--text-secondary);
+      transform: translateY(-1px) scale(1.03);
+      filter: drop-shadow(0 0 14px rgba(56, 189, 248, 0.35));
     }
+
+    &:focus-visible {
+      outline: 2px solid var(--accent-primary);
+      outline-offset: 3px;
+    }
+  }
+
+  &__logo-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+  }
+
+  &__logo-svg {
+    width: 100%;
+    height: 100%;
+    display: block;
   }
 
   &__nav {

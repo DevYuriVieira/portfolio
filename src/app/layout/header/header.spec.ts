@@ -20,10 +20,10 @@ describe('Header', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render brand name Yuri', () => {
+  it('should render brand logo mark SVG', () => {
     const compiled = fixture.nativeElement as HTMLElement;
-    const brand = compiled.querySelector('.header__brand-name');
-    expect(brand?.textContent).toContain('Yuri');
+    const brandLogo = compiled.querySelector('.header__logo-mark svg');
+    expect(brandLogo).toBeTruthy();
   });
 
   it('should have mobile menu closed by default', () => {
