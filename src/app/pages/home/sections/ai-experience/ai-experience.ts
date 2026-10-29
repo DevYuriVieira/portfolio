@@ -37,6 +37,11 @@ export class AiExperienceSection {
   readonly currentLang = computed(() => this.i18n.currentLang());
   readonly data = computed(() => getAiData(this.i18n.currentLang()));
   readonly selectedNodeDetail = signal<AiNodeDetail | null>(null);
+  readonly activeFeatureIndex = signal<number>(0);
+
+  selectFeature(index: number): void {
+    this.activeFeatureIndex.set(index);
+  }
 
   private readonly labelsI18n: Record<SupportedLang, AiExperienceLabels> = {
     en: {

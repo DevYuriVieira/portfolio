@@ -67,27 +67,47 @@
         </div>
       </div>
 
-      <div class="ai__features">
-        @for (feature of data().features; track feature.index; let i = $index) {
-        <article class="ai__feature-card" appReveal [revealDelay]="i * 80">
-          <div class="ai__feature-header">
-            <span class="ai__feature-index">{{ feature.index }}</span>
-            <app-heading level="h3" size="h3" class="ai__feature-title">
-              {{ feature.title }}
-            </app-heading>
-          </div>
+      <div class="ai__features-showcase" appReveal>
+        <div class="ai__features-tabs" role="tablist" [attr.aria-label]="data().title">
+          @for (feature of data().features; track feature.index; let i = $index) {
+          <button
+            type="button"
+            role="tab"
+            class="ai__feature-tab"
+            [class.is-active]="activeFeatureIndex() === i"
+            [attr.aria-selected]="activeFeatureIndex() === i"
+            (click)="selectFeature(i)">
+            <span class="ai__feature-tab-index">{{ feature.index }}</span>
+            <span class="ai__feature-tab-title">{{ feature.title }}</span>
+          </button>
+          }
+        </div>
 
-          <app-text variant="body" class="ai__feature-description">
-            {{ feature.description }}
-          </app-text>
+        <div class="ai__features">
+          @for (feature of data().features; track feature.index; let i = $index) {
+          <article
+            class="ai__feature-card"
+            [class.is-active]="activeFeatureIndex() === i"
+            [attr.aria-hidden]="activeFeatureIndex() !== i">
+            <div class="ai__feature-header">
+              <span class="ai__feature-index">{{ feature.index }}</span>
+              <app-heading level="h3" size="h3" class="ai__feature-title">
+                {{ feature.title }}
+              </app-heading>
+            </div>
 
-          <div class="ai__feature-tags">
-            @for (tag of feature.tags; track $index) {
-            <span class="ai__feature-tag">{{ tag }}</span>
-            }
-          </div>
-        </article>
-        }
+            <app-text variant="body" class="ai__feature-description">
+              {{ feature.description }}
+            </app-text>
+
+            <div class="ai__feature-tags">
+              @for (tag of feature.tags; track $index) {
+              <span class="ai__feature-tag">{{ tag }}</span>
+              }
+            </div>
+          </article>
+          }
+        </div>
       </div>
 
       <footer class="ai__closing" appReveal>

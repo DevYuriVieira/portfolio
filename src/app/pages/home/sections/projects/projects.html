@@ -44,43 +44,11 @@
               {{ project.description || project.context }}
             </app-text>
 
-            @if (project.problem) {
-            <div class="projects__section-block">
-              <span class="projects__section-label">{{ labels().challenge }}</span>
-              <app-text variant="body" class="projects__card-subtext">
-                {{ project.problem }}
-              </app-text>
-            </div>
-            }
-
-            @if (project.solution) {
-            <div class="projects__section-block">
-              <span class="projects__section-label">{{ labels().solution }}</span>
-              <app-text variant="body" class="projects__card-subtext">
-                {{ project.solution }}
-              </app-text>
-            </div>
-            }
-
-            @if (project.architectureDecisions && project.architectureDecisions.length > 0) {
-            <div class="projects__section-block">
-              <span class="projects__section-label">{{ labels().archDecisions }}</span>
-              <ul class="projects__highlights-list">
-                @for (decision of project.architectureDecisions; track $index) {
-                <li class="projects__highlight-item">
-                  <span class="projects__highlight-bullet" aria-hidden="true">•</span>
-                  <app-text variant="caption" element="span" class="projects__highlight-text">
-                    {{ decision }}
-                  </app-text>
-                </li>
-                }
-              </ul>
-            </div>
-            } @else if (project.highlights && project.highlights.length > 0) {
+            @if (project.highlights && project.highlights.length > 0) {
             <div class="projects__section-block">
               <span class="projects__section-label">{{ labels().techHighlights }}</span>
               <ul class="projects__highlights-list">
-                @for (highlight of project.highlights; track $index) {
+                @for (highlight of (isProjectExpanded(project.id) ? project.highlights : project.highlights.slice(0, 4)); track $index) {
                 <li class="projects__highlight-item">
                   <span class="projects__highlight-bullet" aria-hidden="true">•</span>
                   <app-text variant="caption" element="span" class="projects__highlight-text">
@@ -92,14 +60,60 @@
             </div>
             }
 
-            @if (project.results) {
-            <div class="projects__section-block">
-              <span class="projects__section-label">{{ labels().results }}</span>
-              <app-text variant="body" class="projects__card-subtext">
-                {{ project.results }}
-              </app-text>
+            <button
+              type="button"
+              class="projects__details-toggle"
+              [class.is-open]="isProjectExpanded(project.id)"
+              [attr.aria-expanded]="isProjectExpanded(project.id)"
+              (click)="toggleProjectDetails(project.id)">
+              <span>{{ isProjectExpanded(project.id) ? labels().hideDetails : labels().showDetails }}</span>
+              <span class="projects__details-chevron" aria-hidden="true">▾</span>
+            </button>
+
+            <div class="projects__collapsible-details" [class.is-expanded]="isProjectExpanded(project.id)">
+              @if (project.problem) {
+              <div class="projects__section-block">
+                <span class="projects__section-label">{{ labels().challenge }}</span>
+                <app-text variant="body" class="projects__card-subtext">
+                  {{ project.problem }}
+                </app-text>
+              </div>
+              }
+
+              @if (project.solution) {
+              <div class="projects__section-block">
+                <span class="projects__section-label">{{ labels().solution }}</span>
+                <app-text variant="body" class="projects__card-subtext">
+                  {{ project.solution }}
+                </app-text>
+              </div>
+              }
+
+              @if (project.architectureDecisions && project.architectureDecisions.length > 0) {
+              <div class="projects__section-block">
+                <span class="projects__section-label">{{ labels().archDecisions }}</span>
+                <ul class="projects__highlights-list">
+                  @for (decision of project.architectureDecisions; track $index) {
+                  <li class="projects__highlight-item">
+                    <span class="projects__highlight-bullet" aria-hidden="true">•</span>
+                    <app-text variant="caption" element="span" class="projects__highlight-text">
+                      {{ decision }}
+                    </app-text>
+                  </li>
+                  }
+                </ul>
+              </div>
+              }
+
+              @if (project.results) {
+              <div class="projects__section-block">
+                <span class="projects__section-label">{{ labels().results }}</span>
+                <app-text variant="body" class="projects__card-subtext">
+                  {{ project.results }}
+                </app-text>
+              </div>
+              }
             </div>
-            }
 
             <div class="projects__section-block">
               <span class="projects__section-label">{{ labels().techStack }}</span>

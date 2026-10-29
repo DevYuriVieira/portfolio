@@ -18,10 +18,16 @@
           {{ data().journeyTitle }}
         </app-heading>
         <div class="about__journey-content">
-          @for (block of blocks(); track block.id) {
-          <app-text variant="body" class="about__paragraph">
-            {{ block.text }}
-          </app-text>
+          @for (block of blocks(); track block.id; let i = $index) {
+          <article class="about__journey-card">
+            <div class="about__journey-card-header">
+              <span class="about__journey-badge">{{ block.label }}</span>
+              <span class="about__journey-index">0{{ i + 1 }}</span>
+            </div>
+            <app-text variant="body" class="about__paragraph">
+              {{ block.text }}
+            </app-text>
+          </article>
           }
         </div>
       </section>

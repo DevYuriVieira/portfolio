@@ -7,6 +7,7 @@ import {
   OnDestroy,
   PLATFORM_ID,
   computed,
+  effect,
   inject,
 } from '@angular/core';
 import { I18nService } from '@core';
@@ -31,6 +32,15 @@ export class AboutSection implements AfterViewInit, OnDestroy {
   private readonly platformId = inject(PLATFORM_ID);
   private observer: IntersectionObserver | null = null;
 
+  constructor() {
+    effect(() => {
+      this.i18n.currentLang();
+      if (isPlatformBrowser(this.platformId)) {
+        queueMicrotask(() => this.observeCards());
+      }
+    });
+  }
+
   ngAfterViewInit(): void {
     if (!isPlatformBrowser(this.platformId)) {
       return;
@@ -47,17 +57,28 @@ export class AboutSection implements AfterViewInit, OnDestroy {
           });
         },
         {
-          threshold: 0.15,
-          rootMargin: '0px 0px -40px 0px',
+          threshold: 0.12,
+          rootMargin: '0px 0px -20px 0px',
         }
       );
 
+      this.observeCards();
+    } else {
       const cards = this.elementRef.nativeElement.querySelectorAll('.about__principle-card');
-      cards.forEach((card: Element, index: number) => {
-        (card as HTMLElement).style.setProperty('--delay-index', index.toString());
-        this.observer?.observe(card);
-      });
+      cards.forEach((card: Element) => card.classList.add('is-visible'));
     }
+  }
+
+  private observeCards(): void {
+    const cards = this.elementRef.nativeElement.querySelectorAll('.about__principle-card');
+    cards.forEach((card: Element, index: number) => {
+      (card as HTMLElement).style.setProperty('--delay-index', index.toString());
+      if (this.observer) {
+        this.observer.observe(card);
+      } else {
+        card.classList.add('is-visible');
+      }
+    });
   }
 
   ngOnDestroy(): void {

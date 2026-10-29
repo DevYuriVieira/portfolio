@@ -19,6 +19,18 @@ export class ProjectsSection {
   readonly displayLimit = signal<number>(5);
   readonly architectureModalOpen = signal<boolean>(false);
   readonly fleetOpsModalOpen = signal<boolean>(false);
+  readonly expandedProjectIds = signal<Record<string, boolean>>({});
+
+  isProjectExpanded(id: string): boolean {
+    return !!this.expandedProjectIds()[id];
+  }
+
+  toggleProjectDetails(id: string): void {
+    this.expandedProjectIds.update((state) => ({
+      ...state,
+      [id]: !state[id],
+    }));
+  }
 
   readonly showAll = computed(() => this.displayLimit() >= this.projects().length);
 
@@ -93,6 +105,8 @@ export class ProjectsSection {
         'Abrir dossier técnico de arquitectura del proyecto FleetOps API',
       ),
       techAriaLabel: t('Technologies used in the project', 'Tecnologias utilizadas no projeto', 'Tecnologías utilizadas en el proyecto'),
+      showDetails: t('View Challenge, Solution & Results', 'Ver Desafio, Solução & Resultados', 'Ver Desafío, Solución & Resultados'),
+      hideDetails: t('Hide technical details', 'Ocultar detalhes técnicos', 'Ocultar detalles técnicos'),
       collapseLabel: t('Collapse projects', 'Recolher lista de projetos', 'Contraer lista de projetos'),
       expandLabel: (_count?: number) => expandLabel,
       collapseText: t('Collapse projects', 'Recolher projetos', 'Contraer proyectos'),

@@ -1,8 +1,6 @@
 import { SupportedLang } from '@core';
 import { AboutBlock, EngineeringPrinciple } from './about.model';
 
-
-
 interface AboutI18n {
   eyebrow: string;
   title: string;
@@ -19,26 +17,26 @@ const ABOUT_I18N: Record<SupportedLang, AboutI18n> = {
     eyebrow: 'Sobre mim',
     title: 'Engenharia de Software & Visão Sistêmica',
     intro:
-      'A trajetória na tecnologia une a visão analítica da Engenharia de Produção ao rigor prático do desenvolvimento de software full-stack.',
+      'Minha trajetória na tecnologia une a visão analítica da Engenharia de Produção ao rigor prático do desenvolvimento de software full-stack.',
     journeyTitle: 'Trajetória & Foco',
     howIWorkTitle: 'Como Trabalho',
     howIWorkDescription:
-      'Decisões e práticas de engenharia que guiam o desenvolvimento no dia a dia.',
+      'Decisões e práticas de engenharia que guiam meu desenvolvimento no dia a dia.',
     blocks: [
       {
         id: 'how-i-build',
         label: 'Diferencial Estratégico',
-        text: 'A formação em Engenharia de Produção muda a forma de resolver problemas: antes de escrever código, o foco é mapear o fluxo de trabalho real e identificar onde está o gargalo. Essa visão sistêmica, construída com Lean, PDCA e análise de causa raiz, elimina retrabalho e entrega software que resolve o problema certo.',
+        text: 'Minha formação em Engenharia de Produção mudou minha forma de resolver problemas: antes de escrever código, mapeio o fluxo de trabalho real para identificar onde está o gargalo. Essa visão sistêmica, apoiada em Lean, PDCA e análise de causa raiz, elimina retrabalho e garante que eu entregue software que resolve o problema certo.',
       },
       {
         id: 'who-i-am',
         label: 'Atuação Profissional',
-        text: 'Instrutor de Programação Back-End no SENAI/FAETEC (contrato temporário encerrado em Out/2026), onde lecionou Java com Spring Boot, PostgreSQL e APIs RESTful para turmas em formação técnica. Atua como Engenheiro de Software Full-Stack em projetos e sistemas de alta performance com Java (Spring Boot), .NET/C#, TypeScript (React / Angular / React Native) e integrações com IA.',
+        text: 'Atuo como Engenheiro de Software Full-Stack e Freelancer no desenvolvimento de soluções e arquiteturas de alta performance com Java (Spring Boot), .NET/C#, TypeScript (React, Angular e React Native) e integrações com IA. Também atuei como Instrutor de Programação no SENAI/FAETEC, onde lecionei lógica de programação com JavaScript, POO em Java com Spring Boot, PostgreSQL e criação de APIs RESTful para turmas em formação técnica.',
       },
       {
         id: 'systemic-differentiator',
         label: 'Formação & Prática',
-        text: 'Pós-graduado em Engenharia de Software com mais de 900 horas de residência técnica (Serratec e UECE), onde desenvolveu APIs REST de produção, aplicativos mobile com React Native e pipelines de integração com Spring Boot. Prioriza código limpo, tipagem estrita e testes automatizados.',
+        text: 'Sou pós-graduado em Engenharia de Software e acumulo mais de 900 horas de residência técnica (Serratec e UECE), onde desenvolvi APIs REST de produção, aplicativos mobile com React Native e pipelines de integração com Spring Boot. No dia a dia, priorizo código limpo, tipagem estrita e testes automatizados.',
       },
     ],
     principles: [
@@ -84,26 +82,26 @@ const ABOUT_I18N: Record<SupportedLang, AboutI18n> = {
     eyebrow: 'About me',
     title: 'Software Engineering & Systems Thinking',
     intro:
-      'Combining the analytical mindset of Production Engineering with the practical rigor of full-stack software development.',
+      'My journey in technology combines the analytical mindset of Production Engineering with the practical rigor of full-stack software development.',
     journeyTitle: 'Journey & Focus',
     howIWorkTitle: 'How I Work',
     howIWorkDescription:
-      'Engineering practices and principles that guide daily software development.',
+      'Engineering practices and principles that guide my daily software development.',
     blocks: [
       {
         id: 'how-i-build',
         label: 'Strategic Differentiator',
-        text: 'A Production Engineering background changes how problems get solved: before writing code, the focus is on mapping real workflows and finding where the bottleneck actually is. That systems-thinking mindset, built on Lean, PDCA, and root cause analysis, cuts rework and delivers software that solves the right problem.',
+        text: 'My Production Engineering background shaped how I solve problems: before writing code, I map out the real workflow to pinpoint the actual bottleneck. That systems-thinking mindset, grounded in Lean, PDCA, and root cause analysis, eliminates rework and ensures I deliver software that solves the right problem.',
       },
       {
         id: 'who-i-am',
         label: 'Professional Practice',
-        text: 'Former Back-End Programming Instructor at SENAI/FAETEC (fixed-term contract, Aug–Oct 2026), teaching Java with Spring Boot, PostgreSQL, and RESTful APIs to technical training cohorts. Works as a Full-Stack Software Engineer on high-throughput systems and projects spanning Java (Spring Boot), .NET/C#, TypeScript (React / Angular / React Native), and AI integrations.',
+        text: 'I work as a Full-Stack Software Engineer and Freelancer building high-performance solutions and architectures with Java (Spring Boot), .NET/C#, TypeScript (React, Angular, and React Native), and AI integrations. I also served as a Programming Instructor at SENAI/FAETEC, where I taught programming logic with JavaScript, OOP in Java with Spring Boot, PostgreSQL, and RESTful APIs to technical training cohorts.',
       },
       {
         id: 'systemic-differentiator',
         label: 'Education & Practice',
-        text: 'Postgraduate in Software Engineering with 900+ hours of technical residency (Serratec & UECE), where production-grade REST APIs, React Native mobile apps, and Spring Boot integration pipelines were built and delivered. Prioritizes clean code, strict typing, and automated testing.',
+        text: 'I hold a postgraduate degree in Software Engineering with 900+ hours of technical residency (Serratec & UECE), where I built and delivered production-grade REST APIs, React Native mobile apps, and Spring Boot integration pipelines. I prioritize clean code, strict typing, and automated testing.',
       },
     ],
     principles: [
@@ -149,26 +147,26 @@ const ABOUT_I18N: Record<SupportedLang, AboutI18n> = {
     eyebrow: 'Sobre mí',
     title: 'Ingeniería de Software & Visión Sistémica',
     intro:
-      'La trayectoria en tecnología une la visión analítica de la Ingeniería de Producción con el rigor práctico del desarrollo de software full-stack.',
+      'Mi trayectoria en tecnología une la visión analítica de la Ingeniería de Producción con el rigor práctico del desarrollo de software full-stack.',
     journeyTitle: 'Trayectoria & Enfoque',
     howIWorkTitle: 'Cómo Trabajo',
     howIWorkDescription:
-      'Decisiones y prácticas de ingeniería que guían el desarrollo en el día a día.',
+      'Decisiones y prácticas de ingeniería que guían mi desarrollo en el día a día.',
     blocks: [
       {
         id: 'how-i-build',
         label: 'Diferencial Estratégico',
-        text: 'La formación en Ingeniería de Producción cambia la forma de resolver problemas: antes de escribir código, el foco está en mapear el flujo de trabajo real e identificar dónde está el cuello de botella. Esa visión sistémica, basada en Lean, PDCA y análisis de causa raíz, elimina retrabajo y entrega software que resuelve el problema correcto.',
+        text: 'Mi formación en Ingeniería de Producción cambió mi forma de resolver problemas: antes de escribir código, mapeo el flujo de trabajo real para identificar dónde está el cuello de botella. Esa visión sistémica, basada en Lean, PDCA y análisis de causa raíz, elimina retrabajo y asegura que entregue software que resuelve el problema correcto.',
       },
       {
         id: 'who-i-am',
         label: 'Práctica Profesional',
-        text: 'Exdocente de Programación Back-End en SENAI/FAETEC (contrato de plazo fijo, Ago–Oct 2026), donde dictó clases de Java con Spring Boot, PostgreSQL y APIs RESTful a grupos de formación técnica. Se desempeña como Ingeniero de Software Full-Stack en proyectos de alto rendimiento con Java (Spring Boot), .NET/C#, TypeScript (React / Angular / React Native) e integraciones con IA.',
+        text: 'Me desempeño como Ingeniero de Software Full-Stack y Freelancer en el desarrollo de soluciones y arquitecturas de alto rendimiento con Java (Spring Boot), .NET/C#, TypeScript (React, Angular y React Native) e integraciones con IA. También actué como Instructor de Programación en SENAI/FAETEC, donde dicté clases de lógica de programación con JavaScript, POO en Java con Spring Boot, PostgreSQL y APIs RESTful para grupos de formación técnica.',
       },
       {
         id: 'systemic-differentiator',
         label: 'Formación & Práctica',
-        text: 'Posgrado en Ingeniería de Software con más de 900 horas de residencia técnica (Serratec y UECE), donde se desarrollaron APIs REST de producción, aplicaciones mobile con React Native y pipelines de integración con Spring Boot. Prioriza código limpio, tipado estricto y pruebas automatizadas.',
+        text: 'Soy posgraduado en Ingeniería de Software y cuento con más de 900 horas de residencia técnica (Serratec y UECE), donde desarrollé APIs REST de producción, aplicaciones mobile con React Native y pipelines de integración con Spring Boot. Priorizo código limpio, tipado estricto y pruebas automatizadas.',
       },
     ],
     principles: [
@@ -211,6 +209,7 @@ const ABOUT_I18N: Record<SupportedLang, AboutI18n> = {
     ],
   },
 };
+
 export const ABOUT_PARAGRAPHS: readonly string[] = ABOUT_I18N['pt-BR'].blocks.map(
   (b) => b.text
 ) as readonly string[];
