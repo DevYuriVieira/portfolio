@@ -56,7 +56,7 @@ export class HeroParticlesVisual implements OnInit, OnDestroy {
   private velocities: Float32Array | null = null;
   private count = 2400;
 
-  private readonly morphWords = ['JAVA', 'SPRING', 'REACT', 'ANGULAR', 'PYTHON', 'BUILD', 'YURI'];
+  private readonly morphWords = ['JAVA', 'SPRING', 'C#', '.NET', 'TYPESCRIPT', 'REACT', 'ANGULAR', 'BUILD', 'YURI'];
   private wordTargets: Float32Array[] = [];
 
   private isDragging = false;
@@ -138,7 +138,8 @@ export class HeroParticlesVisual implements OnInit, OnDestroy {
   private generateSingleWordTarget(word: string, ctx: CanvasRenderingContext2D): Float32Array {
     ctx.clearRect(0, 0, 256, 128);
     ctx.fillStyle = '#ffffff';
-    ctx.font = '900 44px monospace, sans-serif';
+    const fontSize = word.length > 7 ? 32 : 44;
+    ctx.font = `900 ${fontSize}px monospace, sans-serif`;
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText(word, 128, 64);
