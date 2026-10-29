@@ -107,7 +107,7 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
         title: 'Projetos Pessoais & Casos de Estudo',
         subtitle: 'Desenvolvimento Prático Autoral',
         description:
-          'Desenvolvimento prático autoral de arquiteturas distribuídas e aplicações completas cobrindo C# (.NET 10 / ASP.NET Core), Java (Spring Boot 3), Python (Django), React e TypeScript, aplicando padrões corporativos de resiliência e alta performance.',
+          'Desenvolvimento prático autoral de arquiteturas distribuídas e aplicações completas cobrindo C# (.NET 10 / ASP.NET Core), Java (Spring Boot 3), TypeScript, React e Angular, aplicando padrões corporativos de resiliência e alta performance.',
 
         tag: 'ENGENHARIA AUTORAL',
         highlighted: true,
@@ -256,7 +256,7 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
         title: 'Personal Projects & Case Studies',
         subtitle: 'Hands-On Authorial Development',
         description:
-          'Hands-on authorial development of distributed architectures and end-to-end applications covering C# (.NET 10 / ASP.NET Core), Java (Spring Boot 3), Python (Django), React, and TypeScript, applying enterprise resilience and performance patterns.',
+          'Hands-on authorial development of distributed architectures and end-to-end applications covering C# (.NET 10 / ASP.NET Core), Java (Spring Boot 3), TypeScript, React, and Angular, applying enterprise resilience and performance patterns.',
 
         tag: 'AUTHORIAL ENGINEERING',
         highlighted: true,
@@ -405,7 +405,7 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
         title: 'Proyectos Personales & Casos de Estudio',
         subtitle: 'Desarrollo Práctico Autoral',
         description:
-          'Desarrollo práctico autoral de aplicaciones web y mobile full-stack cubriendo React, React Native (Expo), TypeScript, Java (Spring Boot) y Python (Django), aprovechando herramientas de IA para asistencia, pruebas y documentación.',
+          'Desarrollo práctico autoral de arquitecturas distribuidas y aplicaciones web y mobile full-stack cubriendo C# (.NET 10 / ASP.NET Core), Java (Spring Boot 3), TypeScript, React y Angular, aplicando patrones corporativos de resiliencia y alto rendimiento.',
 
         tag: 'INGENIERÍA AUTORAL',
         highlighted: true,
