@@ -40,12 +40,12 @@ jobs:
       - name: Verify CV Assets & Static Configurations
         run: |
           for file in \
-            public/assets/cv-yuri-vieira-teixeira-pt.pdf \
-            public/assets/cv-yuri-vieira-teixeira-en.pdf \
-            public/assets/cv-yuri-vieira-teixeira-backend-pt.pdf \
-            public/assets/cv-yuri-vieira-teixeira-backend-en.pdf \
-            public/assets/cv-yuri-vieira-teixeira-frontend-pt.pdf \
-            public/assets/cv-yuri-vieira-teixeira-frontend-en.pdf \
+            src/assets/cv-yuri-vieira-teixeira-pt.pdf \
+            src/assets/cv-yuri-vieira-teixeira-en.pdf \
+            src/assets/cv-yuri-vieira-teixeira-backend-pt.pdf \
+            src/assets/cv-yuri-vieira-teixeira-backend-en.pdf \
+            src/assets/cv-yuri-vieira-teixeira-frontend-pt.pdf \
+            src/assets/cv-yuri-vieira-teixeira-frontend-en.pdf \
             vercel.json \
             ngsw-config.json; do
             if [ ! -s "$file" ]; then
