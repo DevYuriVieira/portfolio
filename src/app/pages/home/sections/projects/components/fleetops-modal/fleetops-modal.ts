@@ -42,6 +42,10 @@ export class FleetOpsModal {
 
   readonly data = computed(() => FLEETOPS_MODAL_DATA[this.activeLang()]);
 
+  setLanguage(lang: 'pt-BR' | 'en'): void {
+    this.i18n.setLang(lang);
+  }
+
   setTab(tab: FleetOpsTab): void {
     this.activeTab.set(tab);
   }
