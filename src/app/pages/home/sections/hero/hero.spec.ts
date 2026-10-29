@@ -28,4 +28,24 @@ describe('HeroSection', () => {
     expect(component.data().eyebrow).toBe(HERO_SECTION_DATA.eyebrow);
     expect(component.data().description).toBe(HERO_SECTION_DATA.description);
   });
+
+  it('should switch CV track between fullstack, backend and frontend', () => {
+    expect(component.selectedCvTrack()).toBe('fullstack');
+    expect(component.activeCv().url).toContain('cv-yuri-vieira-teixeira-pt.pdf');
+
+    component.selectCvTrack('backend');
+    expect(component.selectedCvTrack()).toBe('backend');
+    expect(component.activeCv().url).toContain('cv-yuri-vieira-teixeira-backend-pt.pdf');
+
+    component.selectCvTrack('frontend');
+    expect(component.selectedCvTrack()).toBe('frontend');
+    expect(component.activeCv().url).toContain('cv-yuri-vieira-teixeira-frontend-pt.pdf');
+  });
+
+  it('should track CV downloads and WhatsApp clicks via TelemetryService', () => {
+    component.selectCvTrack('backend');
+    component.onCvDownload();
+    component.onWhatsAppClick();
+    expect(component.data().whatsappUrl).toContain('wa.me/5522998962216');
+  });
 });

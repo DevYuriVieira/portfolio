@@ -99,10 +99,10 @@ test.describe('Yuri Vieira Portfolio - Comprehensive E2E Test Suite', () => {
       const heroName = page.locator('#top .hero__name');
       await expect(heroName).toHaveText(/Yuri Vieira/i);
 
-      const projectsCta = page.locator('#top .hero__actions button');
+      const projectsCta = page.locator('#top .hero__actions app-button button');
       await expect(projectsCta).toBeVisible();
 
-      const cvLink = page.locator('#top .hero__actions a');
+      const cvLink = page.locator('#top .hero__actions a.hero__cv-main-btn');
       await expect(cvLink).toBeVisible();
       await expect(cvLink).toHaveAttribute('target', '_blank');
       await expect(cvLink).toHaveAttribute('href', /\.pdf/i);

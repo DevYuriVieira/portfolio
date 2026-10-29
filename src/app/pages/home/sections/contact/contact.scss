@@ -148,8 +148,9 @@
 
       @media (min-width: 480px) {
         flex-direction: row;
+        flex-wrap: wrap;
         align-items: center;
-        gap: var(--space-4);
+        gap: var(--space-3);
       }
 
       app-button {
@@ -173,6 +174,52 @@
         }
       }
     }
+  }
+
+  &__whatsapp-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    width: 100%;
+    min-height: 44px;
+    padding: 0 var(--space-4);
+    border-radius: var(--radius-md);
+    background-color: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.32);
+    color: #f8fafc;
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-medium);
+    text-decoration: none;
+    white-space: nowrap;
+    box-sizing: border-box;
+    transition:
+      background-color var(--duration-fast) var(--ease-default),
+      border-color var(--duration-fast) var(--ease-default),
+      transform var(--duration-fast) var(--ease-default);
+
+    @media (min-width: 480px) {
+      width: auto;
+    }
+
+    &:hover {
+      background-color: rgba(34, 197, 94, 0.18);
+      border-color: rgba(34, 197, 94, 0.55);
+      transform: translateY(-1px);
+    }
+
+    &:focus-visible {
+      outline: 2px solid #22c55e;
+      outline-offset: 2px;
+    }
+  }
+
+  &__whatsapp-icon {
+    width: 16px;
+    height: 16px;
+    color: #22c55e;
+    flex-shrink: 0;
   }
 
   &__email {

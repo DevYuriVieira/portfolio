@@ -50,8 +50,8 @@ describe('Yuri Vieira Portfolio - Cypress E2E Comprehensive Test Suite', () => {
   context('3. Hero Section Actions', () => {
     it('should render hero name, eyebrow, and action buttons', () => {
       cy.get('#top .hero__name').should('contain.text', 'Yuri Vieira');
-      cy.get('#top .hero__actions button').should('be.visible');
-      cy.get('#top .hero__actions a')
+      cy.get('#top .hero__actions app-button button').should('be.visible');
+      cy.get('#top .hero__actions a.hero__cv-main-btn')
         .should('be.visible')
         .and('have.attr', 'target', '_blank')
         .and('have.attr', 'href').and('match', /\.pdf$/i);

@@ -1,5 +1,6 @@
 export interface ContactInfo {
   readonly email: string;
+  readonly whatsappUrl: string;
   readonly location: string;
   readonly availability: string;
   readonly linkedinUrl: string;

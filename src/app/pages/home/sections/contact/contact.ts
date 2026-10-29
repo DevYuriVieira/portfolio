@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
-import { I18nService } from '@core';
+import { I18nService, TelemetryService } from '@core';
 import { RevealDirective } from '@shared';
 import { Button, Container, Heading, Link, Section, Text } from '@ui';
 import { getContactData } from './contact.data';
@@ -14,6 +14,7 @@ import { getContactData } from './contact.data';
 })
 export class ContactSection {
   private readonly i18n = inject(I18nService);
+  private readonly telemetry = inject(TelemetryService);
 
   readonly data = computed(() => getContactData(this.i18n.currentLang()));
   readonly copied = signal<boolean>(false);
@@ -24,6 +25,10 @@ export class ContactSection {
 
   get mailtoUrl(): string {
     return `mailto:${this.data().info.email}`;
+  }
+
+  onWhatsAppClick(): void {
+    this.telemetry.trackWhatsAppClick('contact', this.i18n.currentLang());
   }
 
   copyEmail(): void {

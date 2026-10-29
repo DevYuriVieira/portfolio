@@ -20,10 +20,69 @@
             {{ data().projectsCtaText }}
           </app-button>
 
-          <app-link [href]="data().cvUrl" [external]="true" ariaLabel="Download CV Yuri Vieira Teixeira"
-            class="hero__cta-secondary">
-            {{ data().cvCtaText }}
-          </app-link>
+          <div class="hero__cv-split">
+            <a [href]="activeCv().url"
+              target="_blank"
+              rel="noopener noreferrer"
+              [attr.aria-label]="activeCv().ctaText"
+              class="hero__cv-main-btn"
+              (click)="onCvDownload()">
+              <svg class="hero__cv-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M10 3.25V12.75M10 12.75L6.5 9.25M10 12.75L13.5 9.25" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M4 14.75V15.5C4 16.1904 4.55964 16.75 5.25 16.75H14.75C15.4404 16.75 16 16.1904 16 15.5V14.75" stroke="currentColor" stroke-width="1.65" stroke-linecap="round"/>
+              </svg>
+              <span>Download CV</span>
+              <span class="hero__cv-active-tag">{{ activeCv().shortLabel }}</span>
+            </a>
+
+            <button
+              type="button"
+              class="hero__cv-trigger-btn"
+              [class.is-open]="cvMenuOpen()"
+              [attr.aria-label]="data().cvSelectorAriaLabel"
+              [attr.aria-expanded]="cvMenuOpen()"
+              aria-haspopup="menu"
+              (click)="toggleCvMenu()">
+              <svg class="hero__cv-chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+
+            @if (cvMenuOpen()) {
+              <div class="hero__cv-menu" role="menu" [attr.aria-label]="data().cvSelectorAriaLabel">
+                @for (option of data().cvOptions; track option.id) {
+                  <button
+                    type="button"
+                    role="menuitemradio"
+                    class="hero__cv-menu-item"
+                    [class.is-selected]="selectedCvTrack() === option.id"
+                    [attr.aria-checked]="selectedCvTrack() === option.id"
+                    (click)="selectCvTrack(option.id)">
+                    <div class="hero__cv-menu-top">
+                      <span class="hero__cv-menu-label">{{ option.label }}</span>
+                      @if (selectedCvTrack() === option.id) {
+                        <span class="hero__cv-menu-check" aria-hidden="true">✓</span>
+                      }
+                    </div>
+                    <span class="hero__cv-menu-badge">{{ option.badge }}</span>
+                  </button>
+                }
+              </div>
+            }
+          </div>
+
+          <a
+            [href]="data().whatsappUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            [attr.aria-label]="data().whatsappAriaLabel"
+            class="hero__whatsapp-btn"
+            (click)="onWhatsAppClick()">
+            <svg class="hero__whatsapp-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12.031 2c-5.516 0-9.999 4.486-9.999 10.002 0 1.766.461 3.49 1.337 5.011L2 22l5.121-1.343a9.96 9.96 0 0 0 4.91 1.294h.004c5.515 0 10.001-4.486 10.001-10.002A9.965 9.965 0 0 0 19.107 4.93 9.936 9.936 0 0 0 12.031 2Zm5.845 14.273c-.246.693-1.434 1.326-1.995 1.41-.513.076-1.163.109-1.878-.118-.434-.138-.99-.322-1.703-.63-2.999-1.295-4.958-4.316-5.107-4.516-.15-.199-1.22-1.622-1.22-3.094 0-1.472.771-2.196 1.045-2.495.274-.299.598-.374.797-.374.199 0 .398.002.573.01.184.009.43-.07.673.514.249.599.847 2.071.922 2.221.075.15.125.324.025.524-.1.199-.15.324-.299.499-.15.174-.314.39-.448.524-.15.149-.306.311-.131.611.174.299.774 1.277 1.662 2.069 1.142 1.018 2.105 1.334 2.404 1.484.299.149.473.125.648-.075.174-.199.747-.873.947-1.172.199-.299.398-.249.672-.149.274.1 1.744.823 2.043.972.299.15.498.225.573.35.075.124.075.723-.17 1.416Z"/>
+            </svg>
+            <span>{{ data().whatsappCtaText }}</span>
+          </a>
         </div>
       </div>
 

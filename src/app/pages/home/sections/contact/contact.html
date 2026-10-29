@@ -35,6 +35,18 @@
               (click)="copyEmail()">
               {{ copied() ? data().labels.copied : data().labels.copyEmail }}
             </app-button>
+
+            <a [href]="data().info.whatsappUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              [attr.aria-label]="data().labels.whatsappAria"
+              class="contact__whatsapp-btn"
+              (click)="onWhatsAppClick()">
+              <svg class="contact__whatsapp-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12.031 2c-5.516 0-9.999 4.486-9.999 10.002 0 1.766.461 3.49 1.337 5.011L2 22l5.121-1.343a9.96 9.96 0 0 0 4.91 1.294h.004c5.515 0 10.001-4.486 10.001-10.002A9.965 9.965 0 0 0 19.107 4.93 9.936 9.936 0 0 0 12.031 2Zm5.845 14.273c-.246.693-1.434 1.326-1.995 1.41-.513.076-1.163.109-1.878-.118-.434-.138-.99-.322-1.703-.63-2.999-1.295-4.958-4.316-5.107-4.516-.15-.199-1.22-1.622-1.22-3.094 0-1.472.771-2.196 1.045-2.495.274-.299.598-.374.797-.374.199 0 .398.002.573.01.184.009.43-.07.673.514.249.599.847 2.071.922 2.221.075.15.125.324.025.524-.1.199-.15.324-.299.499-.15.174-.314.39-.448.524-.15.149-.306.311-.131.611.174.299.774 1.277 1.662 2.069 1.142 1.018 2.105 1.334 2.404 1.484.299.149.473.125.648-.075.174-.199.747-.873.947-1.172.199-.299.398-.249.672-.149.274.1 1.744.823 2.043.972.299.15.498.225.573.35.075.124.075.723-.17 1.416Z"/>
+              </svg>
+              <span>{{ data().labels.whatsappCta }}</span>
+            </a>
           </div>
         </div>
 
@@ -63,6 +75,10 @@
               <app-link [href]="data().info.githubUrl" [external]="true" ariaLabel="GitHub Profile"
                 class="contact__social-link">
                 GitHub ↗
+              </app-link>
+              <app-link [href]="data().info.whatsappUrl" [external]="true" [ariaLabel]="data().labels.whatsappAria"
+                class="contact__social-link" (click)="onWhatsAppClick()">
+                WhatsApp ↗
               </app-link>
             </div>
           </div>

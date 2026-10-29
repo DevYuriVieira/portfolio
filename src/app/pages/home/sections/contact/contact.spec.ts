@@ -27,6 +27,7 @@ describe('ContactSection', () => {
     expect(component.data().title).toBe(CONTACT_SECTION_DATA.title);
     expect(component.data().info.email).toBe(CONTACT_SECTION_DATA.info.email);
     expect(component.data().info.location).toBe(CONTACT_SECTION_DATA.info.location);
+    expect(component.data().info.whatsappUrl).toContain('wa.me/5522998962216');
   });
 
   it('should start with copied signal set to false', () => {
@@ -37,5 +38,10 @@ describe('ContactSection', () => {
     expect(component.emailUrl).toContain('https://mail.google.com/mail/');
     expect(component.emailUrl).toContain(component.data().info.email);
     expect(component.mailtoUrl).toBe('mailto:' + component.data().info.email);
+  });
+
+  it('should track WhatsApp clicks when onWhatsAppClick is called', () => {
+    component.onWhatsAppClick();
+    expect(component.data().info.whatsappUrl).toContain('5522998962216');
   });
 });
