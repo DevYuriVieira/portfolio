@@ -2,39 +2,38 @@
 
 <app-hero />
 
-@defer (on idle) {
+@defer (on viewport) {
   <app-about />
 } @placeholder {
-  <div class="home__section-placeholder" aria-hidden="true"></div>
+  <div id="about" class="home__section-placeholder" aria-hidden="true"></div>
 }
 
-@defer (on idle) {
+@defer (on viewport) {
   <app-experience />
 } @placeholder {
-  <div class="home__section-placeholder" aria-hidden="true"></div>
+  <div id="experience" class="home__section-placeholder" aria-hidden="true"></div>
 }
 
-@defer (on idle) {
+@defer (on viewport) {
   <app-skills />
 } @placeholder {
-  <div class="home__section-placeholder" aria-hidden="true"></div>
+  <div id="skills" class="home__section-placeholder" aria-hidden="true"></div>
 }
 
-@defer (on idle) {
+@defer (on viewport) {
   <app-projects />
 } @placeholder {
-  <div class="home__section-placeholder" aria-hidden="true"></div>
+  <div id="projects" class="home__section-placeholder" aria-hidden="true"></div>
 }
 
-@defer (on idle) {
+@defer (on viewport) {
   <app-ai-experience />
 } @placeholder {
-  <div class="home__section-placeholder" aria-hidden="true"></div>
+  <div id="ai-experience" class="home__section-placeholder" aria-hidden="true"></div>
 }
 
-@defer (on idle) {
+@defer (on viewport) {
   <app-contact />
 } @placeholder {
-  <div class="home__section-placeholder" aria-hidden="true"></div>
+  <div id="contact" class="home__section-placeholder" aria-hidden="true"></div>
 }
-

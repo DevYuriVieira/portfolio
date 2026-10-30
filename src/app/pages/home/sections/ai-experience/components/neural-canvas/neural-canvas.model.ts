@@ -1,4 +1,14 @@
-import * as THREE from 'three';
+import type {
+  Color,
+  Group,
+  Line,
+  LineSegments,
+  Mesh,
+  PointLight,
+  QuadraticBezierCurve3,
+  Sprite,
+  Vector3,
+} from 'three';
 
 export const CORE_LOOP_NODES = [
   'OBSERVE',
@@ -25,13 +35,13 @@ export interface CausalNode {
   name: CapabilityName;
   index: number;
   isSupporting: boolean;
-  group: THREE.Group;
-  baseChassis: THREE.Mesh;
-  labelSprite: THREE.Sprite;
-  metaSprite: THREE.Sprite;
-  borderLines: THREE.LineSegments;
-  pulseGlowLines: THREE.LineSegments;
-  basePosition: THREE.Vector3;
+  group: Group;
+  baseChassis: Mesh;
+  labelSprite: Sprite;
+  metaSprite: Sprite;
+  borderLines: LineSegments;
+  pulseGlowLines: LineSegments;
+  basePosition: Vector3;
   targetY: number;
   currentY: number;
   velocityY: number;
@@ -39,17 +49,17 @@ export interface CausalNode {
 }
 
 export interface ConnectionLine {
-  curve: THREE.QuadraticBezierCurve3;
-  lineMesh: THREE.Line;
+  curve: QuadraticBezierCurve3;
+  lineMesh: Line;
   fromIndex: number;
   toIndex: number;
 }
 
 export interface DataPacket {
-  mesh: THREE.Mesh;
-  light: THREE.PointLight;
-  curve: THREE.QuadraticBezierCurve3;
+  mesh: Mesh;
+  light: PointLight;
+  curve: QuadraticBezierCurve3;
   progress: number;
   speed: number;
-  color: THREE.Color;
+  color: Color;
 }

@@ -15,7 +15,38 @@ import {
   inject,
 } from '@angular/core';
 import { SupportedLang } from '@core';
-import * as THREE from 'three';
+import {
+  AmbientLight,
+  BoxGeometry,
+  BufferGeometry,
+  CanvasTexture,
+  Color,
+  DirectionalLight,
+  EdgesGeometry,
+  Float32BufferAttribute,
+  Group,
+  Line,
+  LineBasicMaterial,
+  LinearFilter,
+  LineSegments,
+  Material,
+  Mesh,
+  MeshBasicMaterial,
+  MeshPhysicalMaterial,
+  PCFSoftShadowMap,
+  PerspectiveCamera,
+  PointLight,
+  QuadraticBezierCurve3,
+  Raycaster,
+  Scene,
+  SphereGeometry,
+  Sprite,
+  SpriteMaterial,
+  Texture,
+  Vector2,
+  Vector3,
+  WebGLRenderer,
+} from 'three';
 import {
   CAPABILITY_NODES,
   CORE_LOOP_NODES,
@@ -134,9 +165,9 @@ export class NeuralCanvas implements OnInit, OnDestroy {
   private readonly platformId = inject(PLATFORM_ID);
   private readonly cdr = inject(ChangeDetectorRef);
 
-  private renderer: THREE.WebGLRenderer | null = null;
-  private scene: THREE.Scene | null = null;
-  private camera: THREE.PerspectiveCamera | null = null;
+  private renderer: WebGLRenderer | null = null;
+  private scene: Scene | null = null;
+  private camera: PerspectiveCamera | null = null;
   private animationId: number | null = null;
   private resizeObserver: ResizeObserver | null = null;
   private intersectionObserver: IntersectionObserver | null = null;
@@ -144,8 +175,8 @@ export class NeuralCanvas implements OnInit, OnDestroy {
   private isVisible = true;
 
   private mouse = { x: 0, y: 0 };
-  private mouseVec2 = new THREE.Vector2();
-  private raycaster = new THREE.Raycaster();
+  private mouseVec2 = new Vector2();
+  private raycaster = new Raycaster();
   private hoveredNodeIndex = -1;
 
   public currentStateText = 'ESTADO: ESTÁVEL';
@@ -166,19 +197,19 @@ export class NeuralCanvas implements OnInit, OnDestroy {
   private readonly minZoomZ = 3.8;
   private readonly maxZoomZ = 14.0;
 
-  private mainGroup: THREE.Group | null = null;
+  private mainGroup: Group | null = null;
   private causalNodes: CausalNode[] = [];
   private connections: ConnectionLine[] = [];
   private dataPackets: DataPacket[] = [];
-  private gridMesh: THREE.LineSegments | null = null;
+  private gridMesh: LineSegments | null = null;
 
-  private readonly COLOR_CHASSIS_CORE = new THREE.Color(0x282c3d);
-  private readonly COLOR_CHASSIS_SUPPORT = new THREE.Color(0x1e2230);
-  private readonly COLOR_BLUE_ACCENT = new THREE.Color(0x3b82f6);
-  private readonly COLOR_BRIGHT_GLOW = new THREE.Color(0x60a5fa);
-  private readonly COLOR_WHITE = new THREE.Color(0xffffff);
+  private readonly COLOR_CHASSIS_CORE = new Color(0x282c3d);
+  private readonly COLOR_CHASSIS_SUPPORT = new Color(0x1e2230);
+  private readonly COLOR_BLUE_ACCENT = new Color(0x3b82f6);
+  private readonly COLOR_BRIGHT_GLOW = new Color(0x60a5fa);
+  private readonly COLOR_WHITE = new Color(0xffffff);
 
-  private disposables: (THREE.BufferGeometry | THREE.Material | THREE.Texture)[] = [];
+  private disposables: (BufferGeometry | Material | Texture)[] = [];
 
   ngOnInit(): void {
     if (!isPlatformBrowser(this.platformId)) return;
@@ -262,14 +293,14 @@ export class NeuralCanvas implements OnInit, OnDestroy {
 
     this.startTime = performance.now();
 
-    this.scene = new THREE.Scene();
-    this.scene.background = new THREE.Color(0x0d0f17);
+    this.scene = new Scene();
+    this.scene.background = new Color(0x0d0f17);
 
-    this.camera = new THREE.PerspectiveCamera(28, width / height, 0.1, 100);
+    this.camera = new PerspectiveCamera(28, width / height, 0.1, 100);
     this.camera.position.set(0, 6.2, 8.5);
     this.camera.lookAt(0, -0.2, 0);
 
-    this.renderer = new THREE.WebGLRenderer({
+    this.renderer = new WebGLRenderer({
       canvas,
       antialias: true,
       alpha: false,
@@ -278,15 +309,15 @@ export class NeuralCanvas implements OnInit, OnDestroy {
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     this.renderer.setSize(width, height);
     this.renderer.shadowMap.enabled = true;
-    this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    this.renderer.shadowMap.type = PCFSoftShadowMap;
 
-    this.mainGroup = new THREE.Group();
+    this.mainGroup = new Group();
     this.scene.add(this.mainGroup);
 
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.55);
+    const ambientLight = new AmbientLight(0xffffff, 0.55);
     this.scene.add(ambientLight);
 
-    const keyLight = new THREE.DirectionalLight(0xf8fafc, 2.2);
+    const keyLight = new DirectionalLight(0xf8fafc, 2.2);
     keyLight.position.set(6, 14, 6);
     keyLight.castShadow = true;
     keyLight.shadow.mapSize.width = 2048;
@@ -294,15 +325,15 @@ export class NeuralCanvas implements OnInit, OnDestroy {
     keyLight.shadow.bias = -0.0001;
     this.scene.add(keyLight);
 
-    const fillLight = new THREE.DirectionalLight(0xc7d2fe, 1.2);
+    const fillLight = new DirectionalLight(0xc7d2fe, 1.2);
     fillLight.position.set(-6, 8, -4);
     this.scene.add(fillLight);
 
-    const rimLight = new THREE.DirectionalLight(0x60a5fa, 1.4);
+    const rimLight = new DirectionalLight(0x60a5fa, 1.4);
     rimLight.position.set(-8, 4, -6);
     this.scene.add(rimLight);
 
-    const topLight = new THREE.DirectionalLight(0xffffff, 1.0);
+    const topLight = new DirectionalLight(0xffffff, 1.0);
     topLight.position.set(0, 10, 0);
     this.scene.add(topLight);
   }
@@ -312,7 +343,7 @@ export class NeuralCanvas implements OnInit, OnDestroy {
 
     const size = 18;
     const divisions = 36;
-    const gridGeo = new THREE.BufferGeometry();
+    const gridGeo = new BufferGeometry();
     const positions: number[] = [];
 
     const step = size / divisions;
@@ -323,14 +354,14 @@ export class NeuralCanvas implements OnInit, OnDestroy {
       positions.push(i, -0.45, -half, i, -0.45, half);
     }
 
-    gridGeo.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
-    const gridMat = new THREE.LineBasicMaterial({
+    gridGeo.setAttribute('position', new Float32BufferAttribute(positions, 3));
+    const gridMat = new LineBasicMaterial({
       color: 0x2e354f,
       transparent: true,
       opacity: 0.5,
     });
 
-    this.gridMesh = new THREE.LineSegments(gridGeo, gridMat);
+    this.gridMesh = new LineSegments(gridGeo, gridMat);
     this.mainGroup.add(this.gridMesh);
     this.disposables.push(gridGeo, gridMat);
   }
@@ -338,10 +369,10 @@ export class NeuralCanvas implements OnInit, OnDestroy {
   private createArchitectureTopology(): void {
     if (!this.mainGroup) return;
 
-    const coreBoxGeo = new THREE.BoxGeometry(0.92, 0.22, 0.48);
-    const supportBoxGeo = new THREE.BoxGeometry(1.42, 0.18, 0.56);
-    const coreEdges = new THREE.EdgesGeometry(coreBoxGeo);
-    const supportEdges = new THREE.EdgesGeometry(supportBoxGeo);
+    const coreBoxGeo = new BoxGeometry(0.92, 0.22, 0.48);
+    const supportBoxGeo = new BoxGeometry(1.42, 0.18, 0.56);
+    const coreEdges = new EdgesGeometry(coreBoxGeo);
+    const supportEdges = new EdgesGeometry(supportBoxGeo);
 
     this.disposables.push(coreBoxGeo, supportBoxGeo, coreEdges, supportEdges);
 
@@ -349,32 +380,32 @@ export class NeuralCanvas implements OnInit, OnDestroy {
     const rz = 2.6;
 
     CORE_LOOP_NODES.forEach((name, i) => {
-      const nodeGroup = new THREE.Group();
+      const nodeGroup = new Group();
       const theta = (i / CORE_LOOP_NODES.length) * Math.PI * 2 + Math.PI / 6;
       const posX = Math.cos(theta) * rx;
       const posZ = Math.sin(theta) * rz;
 
-      const chassisMat = new THREE.MeshPhysicalMaterial({
+      const chassisMat = new MeshPhysicalMaterial({
         color: this.COLOR_CHASSIS_CORE,
         metalness: 0.75,
         roughness: 0.2,
         clearcoat: 0.3,
       });
 
-      const edgeMat = new THREE.LineBasicMaterial({ color: 0x64748b, transparent: true, opacity: 0.8 });
-      const glowMat = new THREE.LineBasicMaterial({ color: 0x60a5fa, transparent: true, opacity: 0.0 });
+      const edgeMat = new LineBasicMaterial({ color: 0x64748b, transparent: true, opacity: 0.8 });
+      const glowMat = new LineBasicMaterial({ color: 0x60a5fa, transparent: true, opacity: 0.0 });
 
       this.disposables.push(chassisMat, edgeMat, glowMat);
 
-      const baseChassis = new THREE.Mesh(coreBoxGeo, chassisMat);
+      const baseChassis = new Mesh(coreBoxGeo, chassisMat);
       baseChassis.castShadow = true;
       baseChassis.receiveShadow = true;
       nodeGroup.add(baseChassis);
 
-      const borderLines = new THREE.LineSegments(coreEdges, edgeMat);
+      const borderLines = new LineSegments(coreEdges, edgeMat);
       nodeGroup.add(borderLines);
 
-      const pulseGlowLines = new THREE.LineSegments(coreEdges, glowMat);
+      const pulseGlowLines = new LineSegments(coreEdges, glowMat);
       pulseGlowLines.scale.set(1.04, 1.04, 1.04);
       nodeGroup.add(pulseGlowLines);
 
@@ -399,7 +430,7 @@ export class NeuralCanvas implements OnInit, OnDestroy {
         metaSprite,
         borderLines,
         pulseGlowLines,
-        basePosition: new THREE.Vector3(posX, 0, posZ),
+        basePosition: new Vector3(posX, 0, posZ),
         targetY: 0,
         currentY: 0,
         velocityY: 0,
@@ -408,33 +439,33 @@ export class NeuralCanvas implements OnInit, OnDestroy {
     });
 
     const supportingCoords = [
-      { name: 'KNOWLEDGE' as const, pos: new THREE.Vector3(-1.8, -0.22, 0) },
-      { name: 'HUMAN JUDGMENT' as const, pos: new THREE.Vector3(1.8, -0.22, 0) },
+      { name: 'KNOWLEDGE' as const, pos: new Vector3(-1.8, -0.22, 0) },
+      { name: 'HUMAN JUDGMENT' as const, pos: new Vector3(1.8, -0.22, 0) },
     ];
 
     supportingCoords.forEach((sup, idx) => {
-      const nodeGroup = new THREE.Group();
+      const nodeGroup = new Group();
 
-      const chassisMat = new THREE.MeshPhysicalMaterial({
+      const chassisMat = new MeshPhysicalMaterial({
         color: this.COLOR_CHASSIS_SUPPORT,
         metalness: 0.7,
         roughness: 0.25,
         clearcoat: 0.2,
       });
 
-      const edgeMat = new THREE.LineBasicMaterial({ color: 0x475569, transparent: true, opacity: 0.8 });
-      const glowMat = new THREE.LineBasicMaterial({ color: 0x60a5fa, transparent: true, opacity: 0.0 });
+      const edgeMat = new LineBasicMaterial({ color: 0x475569, transparent: true, opacity: 0.8 });
+      const glowMat = new LineBasicMaterial({ color: 0x60a5fa, transparent: true, opacity: 0.0 });
       this.disposables.push(chassisMat, edgeMat, glowMat);
 
-      const baseChassis = new THREE.Mesh(supportBoxGeo, chassisMat);
+      const baseChassis = new Mesh(supportBoxGeo, chassisMat);
       baseChassis.castShadow = true;
       baseChassis.receiveShadow = true;
       nodeGroup.add(baseChassis);
 
-      const borderLines = new THREE.LineSegments(supportEdges, edgeMat);
+      const borderLines = new LineSegments(supportEdges, edgeMat);
       nodeGroup.add(borderLines);
 
-      const pulseGlowLines = new THREE.LineSegments(supportEdges, glowMat);
+      const pulseGlowLines = new LineSegments(supportEdges, glowMat);
       pulseGlowLines.scale.set(1.04, 1.04, 1.04);
       nodeGroup.add(pulseGlowLines);
 
@@ -491,20 +522,20 @@ export class NeuralCanvas implements OnInit, OnDestroy {
     const start = this.causalNodes[fromIdx].basePosition;
     const end = this.causalNodes[toIdx].basePosition;
 
-    const mid = new THREE.Vector3().addVectors(start, end).multiplyScalar(0.5);
+    const mid = new Vector3().addVectors(start, end).multiplyScalar(0.5);
     mid.y += 0.35;
 
-    const curve = new THREE.QuadraticBezierCurve3(start, mid, end);
+    const curve = new QuadraticBezierCurve3(start, mid, end);
     const points = curve.getPoints(28);
 
-    const lineGeo = new THREE.BufferGeometry().setFromPoints(points);
-    const lineMat = new THREE.LineBasicMaterial({
+    const lineGeo = new BufferGeometry().setFromPoints(points);
+    const lineMat = new LineBasicMaterial({
       color: 0x64748b,
       transparent: true,
       opacity: 0.6,
     });
 
-    const lineMesh = new THREE.Line(lineGeo, lineMat);
+    const lineMesh = new Line(lineGeo, lineMat);
     this.mainGroup!.add(lineMesh);
     this.disposables.push(lineGeo, lineMat);
 
@@ -516,7 +547,7 @@ export class NeuralCanvas implements OnInit, OnDestroy {
     });
   }
 
-  private createLabelSprite(title: string, indexTag: string, isSupporting: boolean): THREE.Sprite {
+  private createLabelSprite(title: string, indexTag: string, isSupporting: boolean): Sprite {
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d')!;
     const dpr = Math.min(window.devicePixelRatio, 2);
@@ -538,12 +569,12 @@ export class NeuralCanvas implements OnInit, OnDestroy {
     ctx.letterSpacing = '0.1em';
     ctx.fillText(title, 210, 25);
 
-    const texture = new THREE.CanvasTexture(canvas);
-    texture.minFilter = THREE.LinearFilter;
-    texture.magFilter = THREE.LinearFilter;
+    const texture = new CanvasTexture(canvas);
+    texture.minFilter = LinearFilter;
+    texture.magFilter = LinearFilter;
     this.disposables.push(texture);
 
-    const mat = new THREE.SpriteMaterial({
+    const mat = new SpriteMaterial({
       map: texture,
       transparent: true,
       opacity: 0.98,
@@ -551,12 +582,12 @@ export class NeuralCanvas implements OnInit, OnDestroy {
     });
     this.disposables.push(mat);
 
-    const sprite = new THREE.Sprite(mat);
+    const sprite = new Sprite(mat);
     sprite.scale.set(isSupporting ? 2.5 : 2.1, 0.35, 1);
     return sprite;
   }
 
-  private createMetaSprite(text: string): THREE.Sprite {
+  private createMetaSprite(text: string): Sprite {
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d')!;
     const dpr = Math.min(window.devicePixelRatio, 2);
@@ -573,12 +604,12 @@ export class NeuralCanvas implements OnInit, OnDestroy {
     ctx.letterSpacing = '0.12em';
     ctx.fillText(text, 128, 18);
 
-    const texture = new THREE.CanvasTexture(canvas);
-    texture.minFilter = THREE.LinearFilter;
-    texture.magFilter = THREE.LinearFilter;
+    const texture = new CanvasTexture(canvas);
+    texture.minFilter = LinearFilter;
+    texture.magFilter = LinearFilter;
     this.disposables.push(texture);
 
-    const mat = new THREE.SpriteMaterial({
+    const mat = new SpriteMaterial({
       map: texture,
       transparent: true,
       opacity: 0.85,
@@ -586,7 +617,7 @@ export class NeuralCanvas implements OnInit, OnDestroy {
     });
     this.disposables.push(mat);
 
-    const sprite = new THREE.Sprite(mat);
+    const sprite = new Sprite(mat);
     sprite.scale.set(1.4, 0.2, 1);
     return sprite;
   }
@@ -635,20 +666,20 @@ export class NeuralCanvas implements OnInit, OnDestroy {
     });
   }
 
-  private spawnDataPacket(curve: THREE.QuadraticBezierCurve3, color: THREE.Color, speed: number): void {
+  private spawnDataPacket(curve: QuadraticBezierCurve3, color: Color, speed: number): void {
     if (!this.mainGroup) return;
 
-    const pGeo = new THREE.SphereGeometry(0.065, 16, 16);
-    const pMat = new THREE.MeshBasicMaterial({
+    const pGeo = new SphereGeometry(0.065, 16, 16);
+    const pMat = new MeshBasicMaterial({
       color,
       transparent: true,
       opacity: 1.0,
     });
     this.disposables.push(pGeo, pMat);
 
-    const mesh = new THREE.Mesh(pGeo, pMat);
+    const mesh = new Mesh(pGeo, pMat);
 
-    const light = new THREE.PointLight(color.getHex(), 1.2, 2.5);
+    const light = new PointLight(color.getHex(), 1.2, 2.5);
     mesh.add(light);
 
     this.mainGroup.add(mesh);
@@ -709,10 +740,10 @@ export class NeuralCanvas implements OnInit, OnDestroy {
       const isHovered = i === this.hoveredNodeIndex;
       const effectivePulse = Math.max(isHovered ? 1.0 : 0.0, node.edgePulseEnergy);
 
-      const borderMat = node.borderLines.material as THREE.LineBasicMaterial;
-      borderMat.color.lerpColors(new THREE.Color(0x64748b), this.COLOR_BRIGHT_GLOW, effectivePulse);
+      const borderMat = node.borderLines.material as LineBasicMaterial;
+      borderMat.color.lerpColors(new Color(0x64748b), this.COLOR_BRIGHT_GLOW, effectivePulse);
 
-      const glowMat = node.pulseGlowLines.material as THREE.LineBasicMaterial;
+      const glowMat = node.pulseGlowLines.material as LineBasicMaterial;
       glowMat.opacity = effectivePulse * 0.95;
       node.pulseGlowLines.scale.setScalar(1.02 + effectivePulse * 0.06);
 
@@ -730,7 +761,7 @@ export class NeuralCanvas implements OnInit, OnDestroy {
       if (p.progress >= 1.0) {
         if (this.mainGroup) this.mainGroup.remove(p.mesh);
         p.mesh.geometry.dispose();
-        (p.mesh.material as THREE.Material).dispose();
+        (p.mesh.material as Material).dispose();
         p.light.dispose();
         this.dataPackets.splice(i, 1);
         continue;
@@ -740,7 +771,7 @@ export class NeuralCanvas implements OnInit, OnDestroy {
       p.mesh.position.copy(point);
 
       const fade = Math.sin(p.progress * Math.PI);
-      (p.mesh.material as THREE.MeshBasicMaterial).opacity = 0.3 + fade * 0.7;
+      (p.mesh.material as MeshBasicMaterial).opacity = 0.3 + fade * 0.7;
       p.light.intensity = fade * 1.5;
     }
   }

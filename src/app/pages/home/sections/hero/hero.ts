@@ -82,10 +82,18 @@ export class HeroSection implements OnInit {
     if (!isPlatformBrowser(this.platformId)) return;
 
     if (window.innerWidth >= 768) {
-      if ('requestIdleCallback' in window) {
-        window.requestIdleCallback(() => this.isDesktop.set(true));
+      const scheduleVisual = () => {
+        if ('requestIdleCallback' in window) {
+          window.requestIdleCallback(() => this.isDesktop.set(true), { timeout: 2500 });
+        } else {
+          setTimeout(() => this.isDesktop.set(true), 200);
+        }
+      };
+
+      if (document.readyState === 'complete') {
+        setTimeout(scheduleVisual, 250);
       } else {
-        setTimeout(() => this.isDesktop.set(true), 50);
+        window.addEventListener('load', () => setTimeout(scheduleVisual, 250), { once: true });
       }
     }
   }

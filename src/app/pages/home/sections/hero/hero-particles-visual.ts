@@ -10,7 +10,23 @@ import {
   PLATFORM_ID,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import * as THREE from 'three';
+import {
+  AdditiveBlending,
+  BufferAttribute,
+  BufferGeometry,
+  CanvasTexture,
+  Color,
+  Material,
+  PerspectiveCamera,
+  Points,
+  PointsMaterial,
+  Raycaster,
+  Scene,
+  Texture,
+  Vector2,
+  Vector3,
+  WebGLRenderer,
+} from 'three';
 
 @Component({
   selector: 'app-hero-particles-visual',
@@ -41,16 +57,16 @@ export class HeroParticlesVisual implements OnInit, OnDestroy {
   private readonly zone = inject(NgZone);
   private readonly platformId = inject(PLATFORM_ID);
 
-  private renderer: THREE.WebGLRenderer | null = null;
-  private scene: THREE.Scene | null = null;
-  private camera: THREE.PerspectiveCamera | null = null;
+  private renderer: WebGLRenderer | null = null;
+  private scene: Scene | null = null;
+  private camera: PerspectiveCamera | null = null;
   private animationId: number | null = null;
   private resizeObserver: ResizeObserver | null = null;
   private startTime = 0;
 
-  private particleGeo: THREE.BufferGeometry | null = null;
-  private particleMat: THREE.PointsMaterial | null = null;
-  private particles: THREE.Points | null = null;
+  private particleGeo: BufferGeometry | null = null;
+  private particleMat: PointsMaterial | null = null;
+  private particles: Points | null = null;
   private basePositions: Float32Array | null = null;
   private currentPositions: Float32Array | null = null;
   private velocities: Float32Array | null = null;
@@ -61,12 +77,12 @@ export class HeroParticlesVisual implements OnInit, OnDestroy {
 
   private isDragging = false;
   private previousPointer = { x: 0, y: 0 };
-  private pointerPos = new THREE.Vector2(9999, 9999);
-  private pointerVel = new THREE.Vector2(0, 0);
+  private pointerPos = new Vector2(9999, 9999);
+  private pointerVel = new Vector2(0, 0);
   private rotationTarget = { x: 0, y: 0 };
   private rotationCurrent = { x: 0, y: 0 };
 
-  private disposables: (THREE.BufferGeometry | THREE.Material | THREE.Texture)[] = [];
+  private disposables: (BufferGeometry | Material | Texture)[] = [];
 
   ngOnInit(): void {
     if (!isPlatformBrowser(this.platformId)) return;
@@ -121,11 +137,11 @@ export class HeroParticlesVisual implements OnInit, OnDestroy {
 
     this.startTime = performance.now();
 
-    this.scene = new THREE.Scene();
-    this.camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
+    this.scene = new Scene();
+    this.camera = new PerspectiveCamera(45, width / height, 0.1, 100);
     this.camera.position.set(0, 0, 10);
 
-    this.renderer = new THREE.WebGLRenderer({
+    this.renderer = new WebGLRenderer({
       canvas,
       antialias: true,
       alpha: true,
@@ -213,8 +229,8 @@ export class HeroParticlesVisual implements OnInit, OnDestroy {
     this.velocities = new Float32Array(this.count * 3);
 
     const colors = new Float32Array(this.count * 3);
-    const accentColor = new THREE.Color(0x0066ff);
-    const secondaryColor = new THREE.Color(0xa1a1aa);
+    const accentColor = new Color(0x0066ff);
+    const secondaryColor = new Color(0xa1a1aa);
 
     const side = Math.floor(Math.sqrt(this.count));
     let idx = 0;
@@ -250,9 +266,9 @@ export class HeroParticlesVisual implements OnInit, OnDestroy {
       }
     }
 
-    this.particleGeo = new THREE.BufferGeometry();
-    this.particleGeo.setAttribute('position', new THREE.BufferAttribute(this.currentPositions, 3));
-    this.particleGeo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+    this.particleGeo = new BufferGeometry();
+    this.particleGeo.setAttribute('position', new BufferAttribute(this.currentPositions, 3));
+    this.particleGeo.setAttribute('color', new BufferAttribute(colors, 3));
 
     const canvas = document.createElement('canvas');
     canvas.width = 64;
@@ -267,22 +283,22 @@ export class HeroParticlesVisual implements OnInit, OnDestroy {
     ctx.arc(32, 32, 32, 0, Math.PI * 2);
     ctx.fill();
 
-    const texture = new THREE.CanvasTexture(canvas);
+    const texture = new CanvasTexture(canvas);
     this.disposables.push(texture);
 
-    this.particleMat = new THREE.PointsMaterial({
+    this.particleMat = new PointsMaterial({
       size: 0.12,
       vertexColors: true,
       map: texture,
       transparent: true,
       opacity: 0.85,
-      blending: THREE.AdditiveBlending,
+      blending: AdditiveBlending,
       depthWrite: false,
       sizeAttenuation: true,
     });
     this.disposables.push(this.particleGeo, this.particleMat);
 
-    this.particles = new THREE.Points(this.particleGeo, this.particleMat);
+    this.particles = new Points(this.particleGeo, this.particleMat);
     this.particles.position.set(0, 0.85, 0);
     this.scene.add(this.particles);
   }
@@ -321,8 +337,8 @@ export class HeroParticlesVisual implements OnInit, OnDestroy {
   private updateParticlePhysics(elapsed: number, isWordActive: boolean): void {
     if (!this.basePositions || !this.currentPositions || !this.velocities || !this.particleGeo) return;
 
-    const posAttr = this.particleGeo.attributes['position'] as THREE.BufferAttribute;
-    const raycaster = new THREE.Raycaster();
+    const posAttr = this.particleGeo.attributes['position'] as BufferAttribute;
+    const raycaster = new Raycaster();
     raycaster.setFromCamera(this.pointerPos, this.camera!);
 
     const ray = raycaster.ray;
@@ -363,12 +379,12 @@ export class HeroParticlesVisual implements OnInit, OnDestroy {
       let cy = this.currentPositions[idx + 1];
       let cz = this.currentPositions[idx + 2];
 
-      const particleVec = new THREE.Vector3(cx, cy, cz).applyMatrix4(this.particles!.matrixWorld);
+      const particleVec = new Vector3(cx, cy, cz).applyMatrix4(this.particles!.matrixWorld);
       const distToRay = ray.distanceToPoint(particleVec);
 
       if (distToRay < 2.0) {
         const force = (1 - distToRay / 2.0) * (this.isDragging ? 0.35 : 0.15);
-        const dir = particleVec.clone().sub(ray.closestPointToPoint(particleVec, new THREE.Vector3())).normalize();
+        const dir = particleVec.clone().sub(ray.closestPointToPoint(particleVec, new Vector3())).normalize();
 
         this.velocities[idx] += dir.x * force + this.pointerVel.x * force * 0.1;
         this.velocities[idx + 1] += dir.y * force + this.pointerVel.y * force * 0.1;
