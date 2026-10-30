@@ -21,13 +21,16 @@
 
     &.is-reveal-ready {
       opacity: 0;
-      transform: translateY(20px);
+      visibility: hidden;
+      transform: translateY(16px);
       transition:
         opacity var(--duration-entrance) var(--ease-entrance),
+        visibility var(--duration-entrance) var(--ease-entrance),
         transform var(--duration-entrance) var(--ease-entrance);
 
       &.is-revealed {
         opacity: 1;
+        visibility: visible;
         transform: translateY(0);
       }
     }
@@ -38,7 +41,7 @@
     font-size: var(--text-xs);
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--accent-primary);
+    color: #38bdf8;
   }
 
   &__title {
@@ -54,7 +57,7 @@
     display: block;
     font-family: var(--font-mono);
     font-size: var(--text-sm);
-    color: var(--accent-primary);
+    color: #38bdf8;
     letter-spacing: 0.02em;
     line-height: 1.6;
   }
@@ -94,13 +97,16 @@
 
     &.is-reveal-ready {
       opacity: 0;
+      visibility: hidden;
       transform: translateY(16px);
       transition:
         opacity var(--duration-entrance) var(--ease-entrance),
+        visibility var(--duration-entrance) var(--ease-entrance),
         transform var(--duration-entrance) var(--ease-entrance);
 
       &.is-revealed {
         opacity: 1;
+        visibility: visible;
         transform: translateY(0);
       }
     }
@@ -245,13 +251,16 @@
 
     &.is-reveal-ready {
       opacity: 0;
+      visibility: hidden;
       transform: translateY(16px);
       transition:
         opacity var(--duration-entrance) var(--ease-entrance),
+        visibility var(--duration-entrance) var(--ease-entrance),
         transform var(--duration-entrance) var(--ease-entrance);
 
       &.is-revealed {
         opacity: 1;
+        visibility: visible;
         transform: translateY(0);
       }
     }
@@ -352,7 +361,7 @@
     font-family: var(--font-mono);
     font-size: var(--text-sm);
     letter-spacing: 0.1em;
-    color: var(--accent-primary);
+    color: #38bdf8;
     font-weight: var(--font-weight-semibold);
   }
 
@@ -391,13 +400,16 @@
 
     &.is-reveal-ready {
       opacity: 0;
-      transform: translateY(12px);
+      visibility: hidden;
+      transform: translateY(16px);
       transition:
         opacity var(--duration-entrance) var(--ease-entrance),
+        visibility var(--duration-entrance) var(--ease-entrance),
         transform var(--duration-entrance) var(--ease-entrance);
 
       &.is-revealed {
         opacity: 1;
+        visibility: visible;
         transform: translateY(0);
       }
     }

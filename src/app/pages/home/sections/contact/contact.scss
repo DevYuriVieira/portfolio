@@ -21,13 +21,16 @@
 
     &.is-reveal-ready {
       opacity: 0;
-      transform: translateY(20px);
+      visibility: hidden;
+      transform: translateY(16px);
       transition:
         opacity var(--duration-entrance) var(--ease-entrance),
+        visibility var(--duration-entrance) var(--ease-entrance),
         transform var(--duration-entrance) var(--ease-entrance);
 
       &.is-revealed {
         opacity: 1;
+        visibility: visible;
         transform: translateY(0);
       }
     }
@@ -38,7 +41,7 @@
     font-size: var(--text-xs);
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--accent-primary);
+    color: #38bdf8;
   }
 
   &__title {
@@ -111,13 +114,16 @@
 
     &.is-reveal-ready {
       opacity: 0;
+      visibility: hidden;
       transform: translateY(16px);
       transition:
         opacity var(--duration-entrance) var(--ease-entrance),
+        visibility var(--duration-entrance) var(--ease-entrance),
         transform var(--duration-entrance) var(--ease-entrance);
 
       &.is-revealed {
         opacity: 1;
+        visibility: visible;
         transform: translateY(0);
       }
     }
@@ -253,7 +259,7 @@
     font-size: var(--text-xs);
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--accent-primary);
+    color: #38bdf8;
   }
 
   &__info-value {
