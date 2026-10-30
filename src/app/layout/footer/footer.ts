@@ -57,7 +57,7 @@ export class FooterComponent {
       qualityEyebrow: 'ENGINEERING STANDARDS & QUALITY ASSURANCE',
       viewSourceText: 'Source Code, Architecture & Tests on GitHub',
       viewSourceAria:
-        'View portfolio source code, architecture and tests on GitHub (opens in a new tab)',
+        'Source Code, Architecture & Tests on GitHub (opens in a new tab)',
       badgeTestsMetric: '167 Automated Tests',
       badgeTestsLabel: '100% Automated Pass Rate',
       badgeA11yMetric: 'WCAG 2.1 AAA',
@@ -67,7 +67,7 @@ export class FooterComponent {
       badgeSignalsMetric: 'Angular 22 Signals',
       badgeSignalsLabel: 'Reactive Architecture & SSR',
       adrBtnText: 'Architecture Decisions (ADRs)',
-      adrBtnAria: 'Open Portfolio Architecture Decision Records modal',
+      adrBtnAria: 'Architecture Decisions (ADRs) - Open modal',
     },
     'pt-BR': {
       positioning: 'Software Engineer • Sistemas Web Modernos & Código Limpo',
@@ -79,7 +79,7 @@ export class FooterComponent {
       qualityEyebrow: 'ESPECIFICAÇÕES & ENGENHARIA DE QUALIDADE',
       viewSourceText: 'Código-fonte, Arquitetura & Testes no GitHub',
       viewSourceAria:
-        'Ver código-fonte, arquitetura e testes do portfólio no GitHub (abre em nova aba)',
+        'Código-fonte, Arquitetura & Testes no GitHub (abre em nova aba)',
       badgeTestsMetric: '167 Testes Automatizados',
       badgeTestsLabel: '100% de Aprovação Automatizada',
       badgeA11yMetric: 'WCAG 2.1 AAA',
@@ -89,7 +89,7 @@ export class FooterComponent {
       badgeSignalsMetric: 'Angular 22 Signals',
       badgeSignalsLabel: 'Arquitetura Reativa & SSR',
       adrBtnText: 'Decisões de Arquitetura (ADRs)',
-      adrBtnAria: 'Abrir modal de Registros de Decisão de Arquitetura (ADRs)',
+      adrBtnAria: 'Decisões de Arquitetura (ADRs) - Abrir modal',
     },
     es: {
       positioning: 'Software Engineer • Sistemas Web Modernos & Código Limpio',
@@ -101,7 +101,7 @@ export class FooterComponent {
       qualityEyebrow: 'ESTÁNDARES DE INGENIERÍA & CALIDAD',
       viewSourceText: 'Código Fuente, Arquitectura & Pruebas en GitHub',
       viewSourceAria:
-        'Ver código fuente, arquitectura y pruebas del portafolio en GitHub (abre en nueva pestaña)',
+        'Código Fuente, Arquitectura & Pruebas en GitHub (abre en nueva pestaña)',
       badgeTestsMetric: '167 Pruebas Automatizadas',
       badgeTestsLabel: '100% Aprobación Automatizada',
       badgeA11yMetric: 'WCAG 2.1 AAA',
@@ -111,7 +111,7 @@ export class FooterComponent {
       badgeSignalsMetric: 'Angular 22 Signals',
       badgeSignalsLabel: 'Arquitectura Reactiva & SSR',
       adrBtnText: 'Decisiones de Arquitectura (ADRs)',
-      adrBtnAria: 'Abrir modal de Registros de Decisión de Arquitectura (ADRs)',
+      adrBtnAria: 'Decisiones de Arquitectura (ADRs) - Abrir modal',
     },
   };
 

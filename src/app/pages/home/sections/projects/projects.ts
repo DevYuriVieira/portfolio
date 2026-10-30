@@ -55,20 +55,20 @@ export class ProjectsSection {
     if (currentLimit <= 5) {
       expandText = t('View more projects (7)', 'Ver mais projetos (7)', 'Ver más proyectos (7)');
       expandLabel = t(
-        'View 7 featured portfolio projects',
-        'Ver 7 projetos de destaque do portfólio',
-        'Ver 7 proyectos destacados del portafolio',
+        'View more projects (7) - Featured portfolio projects',
+        'Ver mais projetos (7) de destaque do portfólio',
+        'Ver más proyectos (7) destacados del portafolio',
       );
     } else if (currentLimit < total) {
       expandText = t(`View all projects (${total})`, `Ver todos os projetos (${total})`, `Ver todos los proyectos (${total})`);
       expandLabel = t(
-        `View all ${total} portfolio projects`,
-        `Ver todos os ${total} projetos do portfólio`,
-        `Ver todos los ${total} proyectos del portafolio`,
+        `View all projects (${total}) in portfolio`,
+        `Ver todos os projetos (${total}) do portfólio`,
+        `Ver todos los proyectos (${total}) del portafolio`,
       );
     } else {
       expandText = t('Collapse projects', 'Recolher projetos', 'Contraer proyectos');
-      expandLabel = t('Collapse project list', 'Recolher lista de projetos', 'Contraer lista de proyectos');
+      expandLabel = t('Collapse projects list', 'Recolher projetos do portfólio', 'Contraer proyectos del portafolio');
     }
 
     return {
@@ -94,20 +94,20 @@ export class ProjectsSection {
       ),
       viewArchitecture: t('Architecture Diagram', 'Diagrama de Arquitetura', 'Diagrama de Arquitectura'),
       viewArchitectureAria: t(
-        'Open architecture diagram for ZEISS project',
-        'Abrir diagrama de arquitetura do projeto ZEISS',
-        'Abrir diagrama de arquitectura del proyecto ZEISS',
+        'Architecture Diagram - ZEISS project',
+        'Diagrama de Arquitetura - Projeto ZEISS',
+        'Diagrama de Arquitectura - Proyecto ZEISS',
       ),
       viewFleetOpsDossier: t('Dossier & Architecture', 'Dossiê & Arquitetura', 'Dossier & Arquitectura'),
       viewFleetOpsAria: t(
-        'Open technical architecture dossier for FleetOps API',
-        'Abrir dossiê técnico de arquitetura do projeto FleetOps API',
-        'Abrir dossier técnico de arquitectura del proyecto FleetOps API',
+        'Dossier & Architecture - FleetOps API',
+        'Dossiê & Arquitetura - FleetOps API',
+        'Dossier & Arquitectura - FleetOps API',
       ),
       techAriaLabel: t('Technologies used in the project', 'Tecnologias utilizadas no projeto', 'Tecnologías utilizadas en el proyecto'),
       showDetails: t('View Challenge, Solution & Results', 'Ver Desafio, Solução & Resultados', 'Ver Desafío, Solución & Resultados'),
       hideDetails: t('Hide technical details', 'Ocultar detalhes técnicos', 'Ocultar detalles técnicos'),
-      collapseLabel: t('Collapse projects', 'Recolher lista de projetos', 'Contraer lista de projetos'),
+      collapseLabel: t('Collapse projects list', 'Recolher projetos do portfólio', 'Contraer proyectos del portafolio'),
       expandLabel: (_count?: number) => expandLabel,
       collapseText: t('Collapse projects', 'Recolher projetos', 'Contraer proyectos'),
       expandText: (_count?: number) => expandText,
