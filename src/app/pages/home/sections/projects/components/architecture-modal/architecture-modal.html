@@ -1,7 +1,7 @@
 <div class="arch-modal-backdrop" (click)="onBackdropClick($event)" role="dialog" aria-modal="true"
   [attr.aria-label]="labels().modalTitle">
   <div class="arch-modal">
-    <header class="arch-modal__header">
+    <div class="arch-modal__header">
       <div class="arch-modal__meta">
         <span class="arch-modal__eyebrow">{{ labels().modalEyebrow }}</span>
         <span class="arch-modal__badge">NDA SANITIZED 🔒</span>
@@ -11,7 +11,7 @@
         [attr.aria-label]="labels().modalCloseAriaLabel">
         ✕
       </button>
-    </header>
+    </div>
 
     <div class="arch-modal__title-group">
       <app-heading level="h3" size="h2" class="arch-modal__title">

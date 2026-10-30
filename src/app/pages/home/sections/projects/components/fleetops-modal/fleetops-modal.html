@@ -1,7 +1,7 @@
 <div class="fleetops-modal-backdrop" (click)="onBackdropClick($event)" role="dialog" aria-modal="true"
   [attr.aria-label]="data().modalTitle">
   <div class="fleetops-modal">
-    <header class="fleetops-modal__header">
+    <div class="fleetops-modal__header">
       <div class="fleetops-modal__header-top">
         <div class="fleetops-modal__eyebrow-group">
           <span class="fleetops-modal__eyebrow">{{ data().modalEyebrow }}</span>
@@ -106,9 +106,9 @@
           <span>{{ data().tabs.readme }}</span>
         </button>
       </nav>
-    </header>
+    </div>
 
-    <main class="fleetops-modal__body">
+    <div class="fleetops-modal__body" tabindex="0" role="region" aria-label="FleetOps Dossier Content">
       @if (activeTab() === 'overview') {
       <div class="fleetops-section">
         <div class="fleetops-card fleetops-card--featured">
@@ -691,9 +691,9 @@ FOR UPDATE SKIP LOCKED;</code></pre>
         </div>
       </div>
       }
-    </main>
+    </div>
 
-    <footer class="fleetops-modal__footer">
+    <div class="fleetops-modal__footer">
       <div class="fleetops-modal__footer-left">
         <span class="fleetops-modal__footer-author">Autor: <strong>Yuri Vieira</strong></span>
         <a [href]="data().githubUrl" target="_blank" rel="noopener noreferrer" class="fleetops-modal__footer-link">
@@ -703,6 +703,6 @@ FOR UPDATE SKIP LOCKED;</code></pre>
       <button type="button" class="fleetops-modal__close-action-btn" (click)="closeModal()">
         {{ data().closeBtn }}
       </button>
-    </footer>
+    </div>
   </div>
 </div>
