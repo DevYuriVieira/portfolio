@@ -80,7 +80,6 @@
     padding-top: var(--space-6);
   }
 
-  /* Compact Vercel/Linear Split-Button for CV Download & Track Switcher */
   &__cv-split {
     position: relative;
     display: inline-flex;
@@ -257,35 +256,44 @@
     min-height: 44px;
     padding: 0 var(--space-4);
     border-radius: var(--radius-md);
-    background-color: rgba(34, 197, 94, 0.08);
-    border: 1px solid rgba(34, 197, 94, 0.28);
-    color: #f8fafc;
+    background: linear-gradient(135deg, #25d366 0%, #16a34a 100%);
+    border: 1px solid #22c55e;
+    color: #ffffff;
     font-family: var(--font-sans);
     font-size: var(--text-sm);
-    font-weight: var(--font-weight-medium);
+    font-weight: var(--font-weight-semibold);
     text-decoration: none;
     white-space: nowrap;
+    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
     transition:
-      background-color var(--duration-fast) var(--ease-default),
+      background var(--duration-fast) var(--ease-default),
       border-color var(--duration-fast) var(--ease-default),
+      box-shadow var(--duration-fast) var(--ease-default),
       transform var(--duration-fast) var(--ease-default);
 
     &:hover {
-      background-color: rgba(34, 197, 94, 0.16);
-      border-color: rgba(34, 197, 94, 0.5);
+      background: linear-gradient(135deg, #2ae06c 0%, #15803d 100%);
+      border-color: #4ade80;
+      box-shadow: 0 6px 22px rgba(37, 211, 102, 0.55);
       transform: translateY(-1px);
+      color: #ffffff;
+    }
+
+    &:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 8px rgba(37, 211, 102, 0.3);
     }
 
     &:focus-visible {
-      outline: 2px solid #22c55e;
+      outline: 2px solid #25d366;
       outline-offset: 2px;
     }
   }
 
   &__whatsapp-icon {
-    width: 16px;
-    height: 16px;
-    color: #22c55e;
+    width: 18px;
+    height: 18px;
+    color: #ffffff;
     flex-shrink: 0;
   }
 

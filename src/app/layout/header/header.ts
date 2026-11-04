@@ -9,6 +9,7 @@ import { I18nService, SupportedLang } from '@core';
 import { Container } from '@ui';
 
 interface HeaderNavLabels {
+  readonly home: string;
   readonly about: string;
   readonly experience: string;
   readonly skills: string;
@@ -36,6 +37,7 @@ export class Header {
 
   private readonly navI18n: Record<SupportedLang, HeaderNavLabels> = {
     en: {
+      home: 'Home',
       about: 'About',
       experience: 'Experience',
       skills: 'Skills',
@@ -48,6 +50,7 @@ export class Header {
       menuBtnAriaLabel: 'Toggle navigation menu',
     },
     'pt-BR': {
+      home: 'Início',
       about: 'Sobre',
       experience: 'Experiência',
       skills: 'Habilidades',
@@ -60,6 +63,7 @@ export class Header {
       menuBtnAriaLabel: 'Alternar menu de navegação',
     },
     es: {
+      home: 'Inicio',
       about: 'Sobre mí',
       experience: 'Experiencia',
       skills: 'Habilidades',

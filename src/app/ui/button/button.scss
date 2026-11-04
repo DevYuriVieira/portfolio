@@ -27,10 +27,24 @@
     background-color: var(--accent-primary);
     color: #ffffff;
     border-color: var(--accent-primary);
+    box-shadow: 0 4px 16px rgba(0, 102, 255, 0.35);
+    transition:
+      background-color var(--duration-fast) var(--ease-default),
+      border-color var(--duration-fast) var(--ease-default),
+      color var(--duration-fast) var(--ease-default),
+      box-shadow var(--duration-fast) var(--ease-default),
+      transform var(--duration-fast) var(--ease-default);
 
     &:hover:not(:disabled) {
       background-color: var(--accent-hover);
       border-color: var(--accent-hover);
+      box-shadow: 0 6px 24px rgba(0, 102, 255, 0.55);
+      transform: translateY(-1px);
+    }
+
+    &:active:not(:disabled) {
+      transform: translateY(0);
+      box-shadow: 0 2px 8px rgba(0, 102, 255, 0.3);
     }
   }
 
