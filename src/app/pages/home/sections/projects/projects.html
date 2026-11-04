@@ -185,9 +185,9 @@
 
             @if (project.links.demo) {
             <app-link [href]="project.links.demo" [external]="true"
-              [ariaLabel]="'Live demo: ' + project.title"
+              [ariaLabel]="(project.links.demoLabel ?? 'Live demo') + ': ' + project.title"
               class="projects__link projects__link--demo">
-              <span class="projects__link-text">Live Demo</span>
+              <span class="projects__link-text">{{ project.links.demoLabel ?? 'Live Demo' }}</span>
               <span class="projects__link-icon" aria-hidden="true">↗</span>
             </app-link>
             }

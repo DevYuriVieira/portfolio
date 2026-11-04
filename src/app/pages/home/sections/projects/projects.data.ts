@@ -201,6 +201,7 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       links: {
         github: 'https://github.com/DevYuriVieira/Work-Fitness',
         demo: 'https://viniciusantos.vercel.app/',
+        demoLabel: 'Ver em Produção',
       },
     },
     {
@@ -947,6 +948,7 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       links: {
         github: 'https://github.com/DevYuriVieira/Work-Fitness',
         demo: 'https://viniciusantos.vercel.app/',
+        demoLabel: 'Live in Production',
       },
     },
     {
@@ -1690,6 +1692,7 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       links: {
         github: 'https://github.com/DevYuriVieira/Work-Fitness',
         demo: 'https://viniciusantos.vercel.app/',
+        demoLabel: 'Ver en Producción',
       },
     },
     {

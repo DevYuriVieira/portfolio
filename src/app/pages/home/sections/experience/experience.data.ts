@@ -104,10 +104,10 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
       {
         id: 'personal-projects',
         year: '2025 – Presente',
-        title: 'Desenvolvimento Full-Stack Freelance & Projetos Autorais',
-        subtitle: 'Engenharia de Software & Soluções Sob Demanda',
+        title: 'Engenharia de Software Freelance & Sistemas Distribuídos',
+        subtitle: 'Sistemas Comerciais Sob Demanda & Arquiteturas Distribuídas',
         description:
-          'Entrega de soluções digitais de alto impacto como engenheiro freelancer e arquiteto de software: criação da plataforma comercial Work-Fitness para consultoria esportiva (Clean Architecture, motor biomecânico clínico, nota 100/100 no Google Lighthouse e captação multicanal de leads via WhatsApp/Pixel) e desenvolvimento de sistemas distribuídos de alta complexidade, incluindo o ecossistema mobile Offline-First do FarmFlow (138 testes, telemetria IoT e conformidade MAPA) e microsserviços orientados a eventos com .NET 10, Java 21, RabbitMQ e PostgreSQL.',
+          'Atuação como engenheiro freelancer no desenvolvimento da plataforma comercial Work-Fitness, aplicando Clean Architecture, esteiras CI/CD automatizadas, nota 100/100 no Lighthouse e captação de leads. Em paralelo, concepção e desenvolvimento de projetos autorais de alta complexidade como FarmFlow e FleetOps, explorando mensageria com RabbitMQ, mobile Offline-First e microsserviços distribuídos em Java 21 e .NET 10.',
 
         tag: 'FREELANCE & ENGENHARIA AUTORAL',
         highlighted: true,
@@ -253,10 +253,10 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
       {
         id: 'personal-projects',
         year: '2025 – Present',
-        title: 'Full-Stack Freelance & Authorial Engineering Projects',
-        subtitle: 'Software Engineering & Custom Solutions',
+        title: 'Freelance Software Engineering & Distributed Systems',
+        subtitle: 'On-Demand Commercial Systems & Distributed Architectures',
         description:
-          'Delivering high-impact software solutions as a freelance engineer and systems architect: engineered the Work-Fitness commercial platform for sports consulting (Clean Architecture, clinical biomechanical engine, perfect 100/100 Google Lighthouse audit, and multi-channel lead funnel via WhatsApp/Pixel), alongside architecting mission-critical distributed systems, including FarmFlow\'s Offline-First mobile ecosystem (138 tests, IoT telemetry, and MAPA compliance) and event-driven microservices with .NET 10, Java 21, RabbitMQ, and PostgreSQL.',
+          'Freelance engineering delivery of the Work-Fitness commercial platform, implementing Clean Architecture, automated CI/CD pipelines, a perfect 100/100 Google Lighthouse audit, and lead conversion. In parallel, architecting complex authorial engineering systems including FarmFlow and FleetOps, focusing on event-driven messaging with RabbitMQ, Offline-First mobile sync, and distributed microservices across Java 21 and .NET 10.',
 
         tag: 'FREELANCE & AUTHORIAL ENGINEERING',
         highlighted: true,
@@ -402,10 +402,10 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
       {
         id: 'personal-projects',
         year: '2025 – Presente',
-        title: 'Desarrollo Full-Stack Freelance & Proyectos Autorales',
-        subtitle: 'Ingeniería de Software & Soluciones a Medida',
+        title: 'Ingeniería de Software Freelance & Sistemas Distribuidos',
+        subtitle: 'Sistemas Comerciales a Medida & Arquitecturas Distribuidas',
         description:
-          'Entrega de soluciones digitales de alto impacto como ingeniero freelance y arquitecto de software: creación de la plataforma comercial Work-Fitness para consultoría deportiva (Clean Architecture, motor biomecánico clínico, 100/100 perfecto en Google Lighthouse y captación multicanal de leads vía WhatsApp/Pixel) y diseño de sistemas distribuidos de alta complejidad, incluyendo el ecosistema móvil Offline-First FarmFlow (138 pruebas, telemetría IoT y cumplimiento MAPA) y microservicios orientados a eventos con .NET 10, Java 21, RabbitMQ y PostgreSQL.',
+          'Actuación como ingeniero freelance en el desarrollo de la plataforma comercial Work-Fitness, aplicando Clean Architecture, pipelines CI/CD automatizados, nota 100/100 en Lighthouse y captación de leads. En paralelo, concepción y diseño de proyectos autorales de alta complejidad como FarmFlow y FleetOps, explorando mensajería con RabbitMQ, móvil Offline-First y microservicios distribuidos en Java 21 e .NET 10.',
 
         tag: 'FREELANCE & INGENIERÍA AUTORAL',
         highlighted: true,

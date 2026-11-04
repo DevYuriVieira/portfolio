@@ -2,6 +2,7 @@ export interface ProjectLinks {
   readonly github?: string;
   readonly backendGithub?: string;
   readonly demo?: string;
+  readonly demoLabel?: string;
 }
 
 export interface Project {
