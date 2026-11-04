@@ -199,7 +199,6 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       results:
         'Plataforma comercial em produção com 100/100 cravado nas 4 categorias do Google Lighthouse (LCP < 0.8s, CLS 0.00, bundle minificado de 32 kB); aumento da conversão de novos alunos para o personal trainer com leads pré-qualificados recebidos diretamente no WhatsApp; 170 testes automatizados garantindo zero regressões.',
       links: {
-        github: 'https://github.com/DevYuriVieira/Work-Fitness',
         demo: 'https://viniciusantos.vercel.app/',
         demoLabel: 'Ver em Produção',
       },
@@ -946,7 +945,6 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       results:
         'Production platform scoring a perfect 100/100 across all Google Lighthouse categories (LCP < 0.8s, CLS 0.00, 32 kB minified bundle); increased qualified lead conversion directly into the client\'s WhatsApp; 170 automated tests delivering zero regressions.',
       links: {
-        github: 'https://github.com/DevYuriVieira/Work-Fitness',
         demo: 'https://viniciusantos.vercel.app/',
         demoLabel: 'Live in Production',
       },
@@ -1690,7 +1688,6 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       results:
         'Plataforma en producción con 100/100 en todas las categorías de Google Lighthouse (LCP < 0.8s, CLS 0.00, bundle minificado de 32 kB); aumento en la captación de leads calificados directamente al WhatsApp del cliente; 170 pruebas automatizadas garantizando cero regresiones.',
       links: {
-        github: 'https://github.com/DevYuriVieira/Work-Fitness',
         demo: 'https://viniciusantos.vercel.app/',
         demoLabel: 'Ver en Producción',
       },
