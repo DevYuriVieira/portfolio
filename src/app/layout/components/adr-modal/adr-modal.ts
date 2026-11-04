@@ -5,9 +5,16 @@ import {
   HostListener,
   Output,
   computed,
+  inject,
   signal,
 } from '@angular/core';
-import { AdrRecord, PORTFOLIO_ADRS } from './adr-modal.data';
+import { I18nService } from '@core';
+import {
+  ADR_MODAL_LABELS,
+  AdrModalLabels,
+  AdrRecord,
+  PORTFOLIO_ADRS_I18N,
+} from './adr-modal.data';
 
 @Component({
   selector: 'app-adr-modal',
@@ -18,19 +25,31 @@ import { AdrRecord, PORTFOLIO_ADRS } from './adr-modal.data';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AdrModal {
+  private readonly i18n = inject(I18nService);
+
   @Output() close = new EventEmitter<void>();
 
-  readonly adrs = PORTFOLIO_ADRS;
   readonly activeAdrId = signal<string>('adr-001');
   readonly searchTerm = signal<string>('');
   readonly copied = signal<boolean>(false);
 
+  readonly currentLang = this.i18n.currentLang;
+
+  readonly labels = computed<AdrModalLabels>(() => {
+    return ADR_MODAL_LABELS[this.currentLang()] ?? ADR_MODAL_LABELS['pt-BR'];
+  });
+
+  readonly adrs = computed<readonly AdrRecord[]>(() => {
+    return PORTFOLIO_ADRS_I18N[this.currentLang()] ?? PORTFOLIO_ADRS_I18N['pt-BR'];
+  });
+
   readonly filteredAdrs = computed<readonly AdrRecord[]>(() => {
+    const list = this.adrs();
     const term = this.searchTerm().trim().toLowerCase();
     if (!term) {
-      return this.adrs;
+      return list;
     }
-    return this.adrs.filter(
+    return list.filter(
       (adr) =>
         adr.code.toLowerCase().includes(term) ||
         adr.title.toLowerCase().includes(term) ||
@@ -40,8 +59,9 @@ export class AdrModal {
   });
 
   readonly activeAdr = computed<AdrRecord>(() => {
-    const found = this.adrs.find((a) => a.id === this.activeAdrId());
-    return found ?? this.adrs[0];
+    const list = this.adrs();
+    const found = list.find((a) => a.id === this.activeAdrId());
+    return found ?? list[0];
   });
 
   @HostListener('document:keydown.escape')
@@ -60,25 +80,26 @@ export class AdrModal {
 
   async copyCurrentAdr(): Promise<void> {
     const adr = this.activeAdr();
+    const l = this.labels();
     const content = [
       `# ${adr.code}: ${adr.title}`,
-      `Status: ${adr.status} | Date: ${adr.date}`,
-      `Deciders: ${adr.deciders}`,
-      `Category: ${adr.category}`,
+      `Status: ${adr.statusLabel} | ${l.dateLabel} ${adr.date}`,
+      `${l.decidersLabel} ${adr.deciders}`,
+      `${l.categoryLabel} ${adr.category}`,
       '',
-      '## Context',
+      `## ${l.section1Title}`,
       adr.context,
       '',
-      '## Decision',
+      `## ${l.section2Title}`,
       adr.decision,
       '',
-      '## Consequences',
-      '### Positive',
+      `## ${l.section3Title}`,
+      `### ${l.positiveTitle}`,
       ...adr.consequences.positive.map((p) => `- ${p}`),
-      '### Negative',
+      `### ${l.negativeTitle}`,
       ...adr.consequences.negative.map((n) => `- ${n}`),
       '',
-      '## Alternatives Considered',
+      `## ${l.section4Title}`,
       ...adr.alternatives.map((a) => `- ${a}`),
     ].join('\n');
 
