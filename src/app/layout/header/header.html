@@ -1,7 +1,6 @@
 <header class="header">
   <app-container size="xl">
     <div class="header__inner">
-      
       <a href="#top" class="header__brand" [attr.aria-label]="nav.brandAriaLabel"
         (click)="navigateToSection($event, 'top')">
         <span class="header__logo-mark" aria-hidden="true">
@@ -32,7 +31,6 @@
         </span>
       </a>
 
-      
       <nav class="header__nav" [attr.aria-label]="nav.navAriaLabel">
         <ul class="header__nav-list">
           <li><a href="#top" class="header__nav-link" (click)="navigateToSection($event, 'top')">{{ nav.home }}</a></li>
@@ -49,68 +47,175 @@
         </ul>
       </nav>
 
-      
       <div class="header__actions">
-        
-        <div class="header__lang-switcher" aria-label="Language selector">
-          <button type="button"
-            class="header__lang-btn"
-            [class.header__lang-btn--active]="currentLang() === 'pt-BR'"
-            (click)="switchLang('pt-BR')"
-            [attr.aria-pressed]="currentLang() === 'pt-BR'"
-            aria-label="Português (Brasil)"
-            title="Português (Brasil)">
-            <svg class="header__flag-icon" viewBox="0 0 640 480" aria-hidden="true">
-              <path fill="#229e45" d="M0 0h640v480H0z"/>
-              <path fill="#f8e509" d="M321.4 36.2 609.4 240 321.4 443.8 33.4 240z"/>
-              <circle fill="#2b49a3" cx="321.4" cy="240" r="113.6"/>
-              <path fill="#fff" d="M195.6 248.1c0-41.2 22-79.4 57.8-100.1a114 114 0 0 0-45 30.2c-23.4 27.4-31 64-20 97.3 11 33.3 37 58.5 68 67.6a113.6 113.6 0 0 1-60.8-95z"/>
-            </svg>
-          </button>
+        <a
+          [href]="nav.whatsappUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          [attr.aria-label]="nav.whatsappAriaLabel"
+          class="header__whatsapp-btn"
+          [class.is-visible]="isScrolledPastHero()"
+          [attr.tabindex]="isScrolledPastHero() ? 0 : -1"
+          (click)="onWhatsAppClick()">
+          <svg class="header__whatsapp-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12.031 2c-5.516 0-9.999 4.486-9.999 10.002 0 1.766.461 3.49 1.337 5.011L2 22l5.121-1.343a9.96 9.96 0 0 0 4.91 1.294h.004c5.515 0 10.001-4.486 10.001-10.002A9.965 9.965 0 0 0 19.107 4.93 9.936 9.936 0 0 0 12.031 2Zm5.845 14.273c-.246.693-1.434 1.326-1.995 1.41-.513.076-1.163.109-1.878-.118-.434-.138-.99-.322-1.703-.63-2.999-1.295-4.958-4.316-5.107-4.516-.15-.199-1.22-1.622-1.22-3.094 0-1.472.771-2.196 1.045-2.495.274-.299.598-.374.797-.374.199 0 .398.002.573.01.184.009.43-.07.673.514.249.599.847 2.071.922 2.221.075.15.125.324.025.524-.1.199-.15.324-.299.499-.15.174-.314.39-.448.524-.15.149-.306.311-.131.611.174.299.774 1.277 1.662 2.069 1.142 1.018 2.105 1.334 2.404 1.484.299.149.473.125.648-.075.174-.199.747-.873.947-1.172.199-.299.398-.249.672-.149.274.1 1.744.823 2.043.972.299.15.498.225.573.35.075.124.075.723-.17 1.416Z"/>
+          </svg>
+          <span class="header__whatsapp-text">{{ nav.whatsappCta }}</span>
+        </a>
 
-          <button type="button"
-            class="header__lang-btn"
-            [class.header__lang-btn--active]="currentLang() === 'en'"
-            (click)="switchLang('en')"
-            [attr.aria-pressed]="currentLang() === 'en'"
-            aria-label="English (US)"
-            title="English (US)">
-            <svg class="header__flag-icon" viewBox="0 0 640 480" aria-hidden="true">
-              <path fill="#bd3d44" d="M0 0h640v37h-640zm0 73.9h640v37h-640zm0 73.8h640v37h-640zm0 73.8h640v37h-640zm0 74h640v36.8h-640zm0 73.7h640v37h-640zm0 73.9h640v37h-640z"/>
-              <path fill="#fff" d="M0 37h640v36.9h-640zm0 73.8h640v36.9h-640zm0 73.8h640v37h-640zm0 73.9h640v37h-640zm0 73.8h640v37h-640zm0 73.8h640v37h-640z"/>
-              <path fill="#192f5d" d="M0 0h364.8v258.5H0z"/>
-              <g fill="#fff">
-                <g id="us-d"><g id="us-c"><g id="us-b"><g id="us-a">
-                  <path d="M30 11l3.5 10.7h11.3l-9.1 6.6 3.5 10.7-9.2-6.7-9.1 6.7 3.5-10.7-9.2-6.6h11.3z"/>
-                  <path d="M30 47.7l3.5 10.7h11.3l-9.1 6.7 3.5 10.6-9.2-6.6-9.1 6.6 3.5-10.6-9.2-6.7h11.3z"/>
-                </g>
-                <path d="M30 84.5l3.5 10.7h11.3l-9.1 6.6 3.5 10.7-9.2-6.7-9.1 6.7 3.5-10.7-9.2-6.6h11.3z"/>
-                </g>
-                <use href="#us-a" x="60.8"/>
-                </g>
-                <use href="#us-b" x="121.6"/>
-                </g>
-                <use href="#us-c" x="182.4"/>
-                <use href="#us-d" x="243.2"/>
-              </g>
-            </svg>
-          </button>
+        <div class="header__lang-wrapper">
+          <div
+            class="header__lang-switcher"
+            [class.header__lang-switcher--collapsed]="isScrolledPastHero()"
+            [class.header__lang-switcher--menu-open]="langMenuOpen()"
+            (click)="onLangSwitcherClick($event)"
+            [attr.role]="isScrolledPastHero() ? 'button' : 'group'"
+            [attr.tabindex]="isScrolledPastHero() ? 0 : null"
+            [attr.aria-haspopup]="isScrolledPastHero() ? 'menu' : null"
+            [attr.aria-expanded]="isScrolledPastHero() ? langMenuOpen() : null"
+            [attr.aria-label]="isScrolledPastHero() ? nav.langMenuAriaLabel : 'Language selector'"
+            (keydown.enter)="onLangSwitcherKeydown($event)"
+            (keydown.space)="onLangSwitcherKeydown($event)">
 
-          <button type="button"
-            class="header__lang-btn"
-            [class.header__lang-btn--active]="currentLang() === 'es'"
-            (click)="switchLang('es')"
-            [attr.aria-pressed]="currentLang() === 'es'"
-            aria-label="Español"
-            title="Español">
-            <svg class="header__flag-icon" viewBox="0 0 640 480" aria-hidden="true">
-              <path fill="#AA151B" d="M0 0h640v480H0z"/>
-              <path fill="#F1BF00" d="M0 120h640v240H0z"/>
-            </svg>
-          </button>
+            <button type="button"
+              class="header__lang-btn"
+              [class.header__lang-btn--active]="currentLang() === 'pt-BR'"
+              [class.header__lang-btn--hidden]="isScrolledPastHero() && currentLang() !== 'pt-BR'"
+              (click)="onLangBtnClick('pt-BR', $event)"
+              [attr.tabindex]="isScrolledPastHero() ? -1 : 0"
+              [attr.aria-pressed]="currentLang() === 'pt-BR'"
+              aria-label="Português (Brasil)"
+              title="Português (Brasil)">
+              <svg class="header__flag-icon" viewBox="0 0 640 480" aria-hidden="true">
+                <path fill="#229e45" d="M0 0h640v480H0z"/>
+                <path fill="#f8e509" d="M321.4 36.2 609.4 240 321.4 443.8 33.4 240z"/>
+                <circle fill="#2b49a3" cx="321.4" cy="240" r="113.6"/>
+                <path fill="#fff" d="M195.6 248.1c0-41.2 22-79.4 57.8-100.1a114 114 0 0 0-45 30.2c-23.4 27.4-31 64-20 97.3 11 33.3 37 58.5 68 67.6a113.6 113.6 0 0 1-60.8-95z"/>
+              </svg>
+            </button>
+
+            <button type="button"
+              class="header__lang-btn"
+              [class.header__lang-btn--active]="currentLang() === 'en'"
+              [class.header__lang-btn--hidden]="isScrolledPastHero() && currentLang() !== 'en'"
+              (click)="onLangBtnClick('en', $event)"
+              [attr.tabindex]="isScrolledPastHero() ? -1 : 0"
+              [attr.aria-pressed]="currentLang() === 'en'"
+              aria-label="English (US)"
+              title="English (US)">
+              <svg class="header__flag-icon" viewBox="0 0 640 480" aria-hidden="true">
+                <path fill="#bd3d44" d="M0 0h640v37h-640zm0 73.9h640v37h-640zm0 73.8h640v37h-640zm0 73.8h640v37h-640zm0 74h640v36.8h-640zm0 73.7h640v37h-640zm0 73.9h640v37h-640z"/>
+                <path fill="#fff" d="M0 37h640v36.9h-640zm0 73.8h640v36.9h-640zm0 73.8h640v37h-640zm0 73.9h640v37h-640zm0 73.8h640v37h-640zm0 73.8h640v37h-640z"/>
+                <path fill="#192f5d" d="M0 0h364.8v258.5H0z"/>
+                <g fill="#fff">
+                  <g id="us-d"><g id="us-c"><g id="us-b"><g id="us-a">
+                    <path d="M30 11l3.5 10.7h11.3l-9.1 6.6 3.5 10.7-9.2-6.7-9.1 6.7 3.5-10.7-9.2-6.6h11.3z"/>
+                    <path d="M30 47.7l3.5 10.7h11.3l-9.1 6.7 3.5 10.6-9.2-6.6-9.1 6.6 3.5-10.6-9.2-6.7h11.3z"/>
+                  </g>
+                  <path d="M30 84.5l3.5 10.7h11.3l-9.1 6.6 3.5 10.7-9.2-6.7-9.1 6.7 3.5-10.7-9.2-6.6h11.3z"/>
+                  </g>
+                  <use href="#us-a" x="60.8"/>
+                  </g>
+                  <use href="#us-b" x="121.6"/>
+                  </g>
+                  <use href="#us-c" x="182.4"/>
+                  <use href="#us-d" x="243.2"/>
+                </g>
+              </svg>
+            </button>
+
+            <button type="button"
+              class="header__lang-btn"
+              [class.header__lang-btn--active]="currentLang() === 'es'"
+              [class.header__lang-btn--hidden]="isScrolledPastHero() && currentLang() !== 'es'"
+              (click)="onLangBtnClick('es', $event)"
+              [attr.tabindex]="isScrolledPastHero() ? -1 : 0"
+              [attr.aria-pressed]="currentLang() === 'es'"
+              aria-label="Español"
+              title="Español">
+              <svg class="header__flag-icon" viewBox="0 0 640 480" aria-hidden="true">
+                <path fill="#AA151B" d="M0 0h640v480H0z"/>
+                <path fill="#F1BF00" d="M0 120h640v240H0z"/>
+              </svg>
+            </button>
+
+            <span class="header__lang-chevron" [class.is-visible]="isScrolledPastHero()" [class.is-open]="langMenuOpen()" aria-hidden="true">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 7.5L10 12.5L15 7.5" />
+              </svg>
+            </span>
+          </div>
+
+          @if (isScrolledPastHero() && langMenuOpen()) {
+            <div class="header__lang-menu" role="menu" [attr.aria-label]="nav.langMenuAriaLabel">
+              <button
+                type="button"
+                role="menuitem"
+                class="header__lang-menu-item"
+                [class.is-selected]="currentLang() === 'pt-BR'"
+                (click)="selectLangAndClose('pt-BR', $event)">
+                <svg class="header__flag-icon" viewBox="0 0 640 480" aria-hidden="true">
+                  <path fill="#229e45" d="M0 0h640v480H0z"/>
+                  <path fill="#f8e509" d="M321.4 36.2 609.4 240 321.4 443.8 33.4 240z"/>
+                  <circle fill="#2b49a3" cx="321.4" cy="240" r="113.6"/>
+                  <path fill="#fff" d="M195.6 248.1c0-41.2 22-79.4 57.8-100.1a114 114 0 0 0-45 30.2c-23.4 27.4-31 64-20 97.3 11 33.3 37 58.5 68 67.6a113.6 113.6 0 0 1-60.8-95z"/>
+                </svg>
+                <span class="header__lang-menu-name">Português (BR)</span>
+                @if (currentLang() === 'pt-BR') {
+                  <span class="header__lang-menu-check" aria-hidden="true">✓</span>
+                }
+              </button>
+
+              <button
+                type="button"
+                role="menuitem"
+                class="header__lang-menu-item"
+                [class.is-selected]="currentLang() === 'en'"
+                (click)="selectLangAndClose('en', $event)">
+                <svg class="header__flag-icon" viewBox="0 0 640 480" aria-hidden="true">
+                  <path fill="#bd3d44" d="M0 0h640v37h-640zm0 73.9h640v37h-640zm0 73.8h640v37h-640zm0 73.8h640v37h-640zm0 74h640v36.8h-640zm0 73.7h640v37h-640zm0 73.9h640v37h-640z"/>
+                  <path fill="#fff" d="M0 37h640v36.9h-640zm0 73.8h640v36.9h-640zm0 73.8h640v37h-640zm0 73.9h640v37h-640zm0 73.8h640v37h-640zm0 73.8h640v37h-640z"/>
+                  <path fill="#192f5d" d="M0 0h364.8v258.5H0z"/>
+                  <g fill="#fff">
+                    <g id="us-d"><g id="us-c"><g id="us-b"><g id="us-a">
+                      <path d="M30 11l3.5 10.7h11.3l-9.1 6.6 3.5 10.7-9.2-6.7-9.1 6.7 3.5-10.7-9.2-6.6h11.3z"/>
+                      <path d="M30 47.7l3.5 10.7h11.3l-9.1 6.7 3.5 10.6-9.2-6.6-9.1 6.6 3.5-10.6-9.2-6.7h11.3z"/>
+                    </g>
+                    <path d="M30 84.5l3.5 10.7h11.3l-9.1 6.6 3.5 10.7-9.2-6.7-9.1 6.7 3.5-10.7-9.2-6.6h11.3z"/>
+                    </g>
+                    <use href="#us-a" x="60.8"/>
+                    </g>
+                    <use href="#us-b" x="121.6"/>
+                    </g>
+                    <use href="#us-c" x="182.4"/>
+                    <use href="#us-d" x="243.2"/>
+                  </g>
+                </svg>
+                <span class="header__lang-menu-name">English (US)</span>
+                @if (currentLang() === 'en') {
+                  <span class="header__lang-menu-check" aria-hidden="true">✓</span>
+                }
+              </button>
+
+              <button
+                type="button"
+                role="menuitem"
+                class="header__lang-menu-item"
+                [class.is-selected]="currentLang() === 'es'"
+                (click)="selectLangAndClose('es', $event)">
+                <svg class="header__flag-icon" viewBox="0 0 640 480" aria-hidden="true">
+                  <path fill="#AA151B" d="M0 0h640v480H0z"/>
+                  <path fill="#F1BF00" d="M0 120h640v240H0z"/>
+                </svg>
+                <span class="header__lang-menu-name">Español</span>
+                @if (currentLang() === 'es') {
+                  <span class="header__lang-menu-check" aria-hidden="true">✓</span>
+                }
+              </button>
+            </div>
+          }
         </div>
 
-        
         <a href="https://github.com/DevYuriVieira"
           target="_blank"
           rel="noopener noreferrer"
@@ -123,7 +228,6 @@
           </svg>
         </a>
 
-        
         <button type="button" class="header__menu-btn" [attr.aria-expanded]="mobileMenuOpen()" aria-haspopup="dialog"
           aria-controls="mobile-menu" [attr.aria-label]="nav.menuBtnAriaLabel" (click)="toggleMobileMenu()">
           <svg class="header__menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
@@ -139,7 +243,6 @@
     </div>
   </app-container>
 
-  
   @if (mobileMenuOpen()) {
   <div id="mobile-menu" class="header__mobile-overlay" role="dialog" aria-modal="true"
     [attr.aria-label]="nav.mobileMenuAriaLabel">

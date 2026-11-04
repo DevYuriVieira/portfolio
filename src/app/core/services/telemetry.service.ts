@@ -10,7 +10,7 @@ import {
 
 export type WebVitalsRating = 'optimal' | 'good' | 'degraded';
 export type CvTrackEvent = 'fullstack' | 'backend' | 'frontend';
-export type WhatsAppSourceEvent = 'hero' | 'contact';
+export type WhatsAppSourceEvent = 'hero' | 'contact' | 'header';
 
 export interface ConversionSnapshot {
   readonly cvDownloads: Record<CvTrackEvent, number>;
