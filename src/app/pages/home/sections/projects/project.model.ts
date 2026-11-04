@@ -1,5 +1,6 @@
 export interface ProjectLinks {
   readonly github?: string;
+  readonly backendGithub?: string;
   readonly demo?: string;
 }
 

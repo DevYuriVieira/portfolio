@@ -149,6 +149,117 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         github: 'https://github.com/DevYuriVieira/ecommerce-serratec-api',
       },
     },
+
+{
+      id: 'work-fitness',
+      title: 'Work-Fitness | Plataforma Comercial & Consultoria',
+      category: 'Plataforma Comercial (Freelance)',
+      featured: true,
+      contextTag: 'Projeto Comercial em Produção',
+      collaboration: 'Projeto freelance autoral sob medida',
+      client: 'Vinicius Santos (Personal Trainer)',
+      description:
+        'Plataforma web comercial e motor de avaliação biomecânica desenvolvida sob medida para consultoria fitness, combinando Clean Architecture, cálculos antropométricos clínicos (IMC OMS, gordura Deurenberg 1991, TMB Mifflin-St Jeor), conversão multicanal (GA4, GTM, Meta Pixel, WhatsApp com UTM) e resiliência offline PWA.',
+      context:
+        'Solução comercial desenvolvida como engenheiro freelancer para o personal trainer Vinicius Santos (Arena Complexo Esportivo, Nova Friburgo - RJ), substituindo formulários e planilhas manuais por um fluxo automatizado de captação de leads qualificados com diagnóstico corporal instantâneo.',
+      problem:
+        'Captação dispersa de leads com perda de contexto nas conversas de WhatsApp, ausência de triagem preliminar de dores e restrições articulares, e dependência de ferramentas terceiras lentas com mensalidades recorrentes.',
+      solution:
+        'Aplicação web em Vanilla TypeScript 5.7 e Vite 6 estruturada em Clean Architecture com desacoplamento estrito entre o núcleo matemático (src/core/) e a camada visual (src/modules/). Telemetria síncrona nos 3 canais (GA4, GTM, Meta Pixel), mensagem pré-formatada para WhatsApp com preservação de tags UTM, suíte WCAG 2.1 AA com VLibras, PWA offline e conteinerização Docker multi-stage Nginx.',
+      architectureDecisions: [
+        'Clean Architecture estrita isolando fórmulas científicas (OMS, Deurenberg, Mifflin-St Jeor) com zero acoplamento visual',
+        'Engenharia de conversão multicanal síncrona (GA4, GTM, Meta Pixel) com montagem de mensagem no WhatsApp preservando parâmetros UTM',
+        'Design System CSS modular orientado a tokens com zero runtime de CSS-in-JS, atingindo First Contentful Paint sub-segundo',
+        'Suíte de acessibilidade universal WCAG 2.1 AA com régua de leitura RAF, fonte OpenDyslexic, alto contraste, monocromático e VLibras',
+        'Esteira quádrupla de testes: 162 testes unitários no Vitest (19 suítes em < 5s), 47 specs E2E no Playwright em 26 viewports, Cypress e k6',
+        'Imagem Docker multi-stage (Node 22 Alpine builder + Nginx 1.27 Alpine runtime) com compressão gzip e cabeçalhos de segurança estritos',
+      ],
+      highlights: [
+        'Nota 100/100 nas 4 categorias do Google Lighthouse em produção',
+        '162 testes unitários no Vitest + 47 specs E2E no Playwright em 26 viewports',
+        'Bundle ultraleve compilado de apenas 32.46 kB JS (11.34 kB gzipped)',
+        'Core Web Vitals de excelência: LCP < 0.8s, CLS = 0.00, INP < 16ms',
+        'Motor de cálculos antropométricos e triagem articular',
+        'Rastreamento de conversão em 3 canais (GA4, GTM, Meta Pixel)',
+        'Acessibilidade WCAG 2.1 AA com VLibras integrado',
+        'Containerização Docker Compose com Nginx Alpine',
+      ],
+      technologies: [
+        'TypeScript',
+        'Vite',
+        'Clean Architecture',
+        'Vitest (162 Testes)',
+        'Playwright',
+        'Docker',
+        'Nginx Alpine',
+        'PWA Offline',
+        'Google Analytics 4',
+        'Meta Pixel',
+      ],
+      results:
+        'Plataforma comercial em produção com 100/100 cravado nas 4 categorias do Google Lighthouse (LCP < 0.8s, CLS 0.00, bundle minificado de 32 kB); aumento da conversão de novos alunos para o personal trainer com leads pré-qualificados recebidos diretamente no WhatsApp; 162 testes automatizados garantindo zero regressões.',
+      links: {
+        github: 'https://github.com/DevYuriVieira/Work-Fitness',
+        demo: 'https://viniciusantos.vercel.app/',
+      },
+    },
+    {
+      id: 'farmflow',
+      title: 'FarmFlow | Plataforma Agroindustrial & Mobile Precision',
+      category: 'Full-Stack Agroindustrial (Mobile & API)',
+      featured: true,
+      contextTag: 'Mobile Offline-First & API Distribuída',
+      collaboration: 'Projeto autoral de arquitetura distribuída',
+      description:
+        'Ecossistema agroindustrial completo de alta confiabilidade combinando aplicativo mobile Offline-First em React Native (Expo SDK 54, React 19) e motor backend distribuído em Java 21 LTS (Spring Boot 4.1.1, Virtual Threads Loom, RabbitMQ, PostgreSQL 17 particionado) para operações remotas de campo, conformidade regulatória MAPA com assinatura digital SHA-256 e telemetria IoT de pivôs e silos.',
+      context:
+        'Solução de engenharia desenvolvida para resolver os desafios críticos do agronegócio em campo: conectividade nula ou intermitente, necessidade de assinatura digital em caderno de defensivos para auditoria do MAPA e telemetria contínua de pivôs de irrigação e sensores termométricos de grãos.',
+      problem:
+        'Gargalo de conexão em áreas rurais remotas provocando perda de apontamentos de pulverização, divergência de estoques químicos, multas pelo MAPA por falha em dossiês e falta de visibilidade em tempo real sobre maquinário e sensores de silos.',
+      solution:
+        'Arquitetura integrada ponta a ponta: frontend mobile Offline-First com fila transacional FIFO de mutações e reconciliação assíncrona; backend distribuído em Java 21 com Virtual Threads (Loom), Transactional Outbox Pattern e FOR UPDATE SKIP LOCKED no RabbitMQ, PostgreSQL 17 com particionamento temporal declarativo e RLS fail-closed, além de 549+ testes automatizados (411 no backend + 138 no mobile).',
+      architectureDecisions: [
+        'Frontend Mobile Offline-First com fila FIFO transacional em AsyncStorage e reconciliação determinística com netinfo',
+        'Módulo regulatório do MAPA com geração de caderno de aplicação e assinatura digital em Canvas com hash SHA-256',
+        'Backend em Java 21 LTS com Virtual Threads (Project Loom) e Spring Boot 4.1.1 sustentando 2.450 req/s em testes de carga k6',
+        'Transactional Outbox Pattern com RabbitMQ (CloudEvents v1.0, DLX, TTL, Dead Letter Queue) e FOR UPDATE SKIP LOCKED',
+        'PostgreSQL 17 com Particionamento Temporal Declarativo, índices BRIN e Fail-Closed Row Level Security (RLS)',
+        'Sagas distribuídas orquestradas com locks consultivos (pg_try_advisory_xact_lock) e rastreamento W3C traceparent OpenTelemetry',
+        'Autenticação Keycloak 26.1 OIDC com proteção contra enumeração IDOR (HTTP 404 em vez de 403) e biometria mobile',
+        'Suíte massiva de 549+ testes automatizados (411 no backend com 100 Virtual Threads e 138 no mobile em 26 suítes Jest)',
+      ],
+      highlights: [
+        '549+ testes automatizados (411 testes no Backend Java + 138 testes no Mobile)',
+        'Mobile Offline-First em React Native (Expo 54, React 19) com fila FIFO',
+        'Backend Java 21 LTS com Virtual Threads sustentando 2.450 req/s (k6)',
+        'Transactional Outbox com RabbitMQ e CloudEvents v1.0',
+        'PostgreSQL 17 com particionamento temporal e Row Level Security (RLS)',
+        'Caderno regulatório MAPA com assinatura digital canvas SHA-256',
+        'Telemetria IoT de pivôs de irrigação central e silos graneleiros',
+        'Rastreamento distribuído ponta a ponta W3C com OpenTelemetry',
+      ],
+      technologies: [
+        'React Native',
+        'Expo SDK 54',
+        'Java 21 LTS',
+        'Spring Boot 4',
+        'Virtual Threads (Loom)',
+        'PostgreSQL 17',
+        'RabbitMQ',
+        'Offline-First',
+        'IoT Telemetry',
+        'Docker Compose',
+        'Keycloak OIDC',
+        'OpenTelemetry',
+      ],
+      results:
+        'Sincronização 100% resiliente de dados de campo em áreas sem conectividade via fila FIFO; conformidade regulatória estrita com exigências de defensivos do MAPA; capacidade de alta vazão no backend de 2.450 req/s com zero erros 5xx; 549+ testes automatizados garantindo qualidade total entre cliente mobile e API.',
+      links: {
+        github: 'https://github.com/DevYuriVieira/farmflow-mobile',
+        backendGithub: 'https://github.com/DevYuriVieira/farmflow-backend',
+      },
+    },
+
     {
       id: 'aurora-growth-platform',
       title: 'Aurora | Plataforma de Evolução Pessoal',
@@ -784,6 +895,117 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         github: 'https://github.com/DevYuriVieira/ecommerce-serratec-api',
       },
     },
+
+{
+      id: 'work-fitness',
+      title: 'Work-Fitness | Commercial Platform & Consulting',
+      category: 'Commercial Platform (Freelance)',
+      featured: true,
+      contextTag: 'Production Commercial Project',
+      collaboration: 'Bespoke freelance client project',
+      client: 'Vinicius Santos (Personal Trainer)',
+      description:
+        'Commercial web platform and biomechanical assessment engine built for a fitness consulting business, combining Clean Architecture, clinical anthropometric calculations (WHO BMI, Deurenberg 1991 body fat, Mifflin-St Jeor BMR), multi-channel conversion tracking (GA4, GTM, Meta Pixel, UTM-preserved WhatsApp leads), and PWA offline resilience.',
+      context:
+        'Commercial solution engineered as a freelance software engineer for personal trainer Vinicius Santos (Arena Sports Complex, Nova Friburgo - RJ), replacing manual spreadsheets with an automated qualification pipeline and instant body diagnostics.',
+      problem:
+        'Scattered lead intake without context in WhatsApp chats, lack of preliminary joint injury screening, and reliance on costly, slow third-party landing page builders.',
+      solution:
+        'High-performance TypeScript 5.7 and Vite 6 web application built with Clean Architecture, fully decoupling the mathematical calculation core (src/core/) from UI components (src/modules/). Synchronized telemetry across GA4, GTM, and Meta Pixel with automated UTM-preserved WhatsApp message generation, full WCAG 2.1 AA compliance with native VLibras, offline PWA caching, and multi-stage Nginx Alpine Docker containerization.',
+      architectureDecisions: [
+        'Strict Clean Architecture isolating scientific formulas (WHO, Deurenberg, Mifflin-St Jeor) with zero visual coupling',
+        'Synchronous conversion engineering dispatching events to GA4, GTM, and Meta Pixel while retaining UTM parameters in WhatsApp links',
+        'Modular token-driven CSS architecture with zero CSS-in-JS runtime overhead for sub-second first contentful paint',
+        'Universal WCAG 2.1 AA accessibility suite featuring requestAnimationFrame reading guide, OpenDyslexic font, high contrast, monochrome, and VLibras',
+        'Quad-layer test suite: 162 Vitest unit tests (19 suites in < 5s), 47 Playwright E2E specs across 26 viewports, Cypress, and k6 load tests',
+        'Multi-stage Docker containerization (Node 22 Alpine builder + Nginx 1.27 Alpine runtime) with gzip compression and strict security headers',
+      ],
+      highlights: [
+        'Perfect 100/100 across all 4 Google Lighthouse production audits',
+        '162 Vitest unit tests + 47 Playwright E2E specs across 26 viewports',
+        'Ultra-lightweight minified bundle of just 32.46 kB JS (11.34 kB gzipped)',
+        'Elite Core Web Vitals: LCP < 0.8s, CLS = 0.00, INP < 16ms',
+        'Clinical-precision anthropometric calculation engine and joint screening',
+        '3-channel conversion tracking (GA4, GTM, Meta Pixel)',
+        'Universal WCAG 2.1 AA accessibility & VLibras integration',
+        'Docker Compose containerization with Nginx Alpine',
+      ],
+      technologies: [
+        'TypeScript',
+        'Vite',
+        'Clean Architecture',
+        'Vitest (162 Tests)',
+        'Playwright',
+        'Docker',
+        'Nginx Alpine',
+        'PWA Offline',
+        'Google Analytics 4',
+        'Meta Pixel',
+      ],
+      results:
+        'Production platform scoring a perfect 100/100 across all Google Lighthouse categories (LCP < 0.8s, CLS 0.00, 32 kB minified bundle); increased qualified lead conversion directly into the client\'s WhatsApp; 162 automated tests delivering zero regressions.',
+      links: {
+        github: 'https://github.com/DevYuriVieira/Work-Fitness',
+        demo: 'https://viniciusantos.vercel.app/',
+      },
+    },
+    {
+      id: 'farmflow',
+      title: 'FarmFlow | Precision Agriculture & Mobile Engine',
+      category: 'Full-Stack Agro-Industrial (Mobile & API)',
+      featured: true,
+      contextTag: 'Offline-First Mobile & Distributed API',
+      collaboration: 'Authorial distributed systems project',
+      description:
+        'Complete mission-critical agro-industrial ecosystem combining an offline-first mobile application in React Native (Expo SDK 54, React 19) and a distributed backend engine in Java 21 LTS (Spring Boot 4.1.1, Loom Virtual Threads, RabbitMQ, partitioned PostgreSQL 17) for remote field operations, MAPA spray regulatory compliance with SHA-256 digital signatures, and IoT pivot/silo telemetry.',
+      context:
+        'Engineered to overcome connectivity constraints in remote agricultural operations, enabling farm operators and agronomists to perform spray logging, regulatory dossier compliance, and IoT sensor monitoring without internet access.',
+      problem:
+        'Connectivity dead-zones in remote agricultural areas causing data loss, chemical inventory mismatches, heavy MAPA regulatory fines due to unsigned spray logs, and lack of real-time asset telemetry.',
+      solution:
+        'End-to-end integrated architecture: Offline-First mobile frontend with transactional FIFO mutation queue and asynchronous reconciliation; distributed Java 21 backend with Virtual Threads (Loom), Transactional Outbox Pattern with FOR UPDATE SKIP LOCKED over RabbitMQ, PostgreSQL 17 with declarative range time-series partitioning and fail-closed RLS, backed by 549+ automated tests (411 on backend + 138 on mobile).',
+      architectureDecisions: [
+        'Offline-First mobile architecture with transactional FIFO mutation queue in AsyncStorage guaranteeing deterministic replay upon reconnection',
+        'MAPA regulatory compliance module with technical dossier generation and SHA-256 hashed canvas digital signatures',
+        'Java 21 LTS backend with Virtual Threads (Project Loom) and Spring Boot 4.1.1 sustaining 2,450 req/s in k6 load tests',
+        'Transactional Outbox Pattern with RabbitMQ (CloudEvents v1.0, DLX, TTL, Dead Letter Queue) and FOR UPDATE SKIP LOCKED',
+        'PostgreSQL 17 with Declarative Range Partitioning, BRIN indexes, and Fail-Closed Row Level Security (RLS)',
+        'Distributed choreographed sagas with advisory locks (pg_try_advisory_xact_lock) and W3C traceparent OpenTelemetry tracing',
+        'Keycloak 26.1 OIDC authentication with IDOR protection (HTTP 404 instead of 403) and mobile biometrics',
+        'Massive 549+ automated test suite (411 backend tests under 100 Virtual Threads and 138 mobile tests across 26 Jest suites)',
+      ],
+      highlights: [
+        '549+ automated tests (411 Java Backend tests + 138 Mobile tests)',
+        'Offline-First mobile client in React Native (Expo 54, React 19) with FIFO sync',
+        'Java 21 LTS backend with Virtual Threads sustaining 2,450 req/s (k6)',
+        'Transactional Outbox with RabbitMQ and CloudEvents v1.0',
+        'PostgreSQL 17 with time-series partitioning and Row Level Security (RLS)',
+        'MAPA regulatory spray dossier with SHA-256 digital signatures',
+        'IoT telemetry for central irrigation pivots and grain silos',
+        'End-to-end W3C distributed tracing with OpenTelemetry',
+      ],
+      technologies: [
+        'React Native',
+        'Expo SDK 54',
+        'Java 21 LTS',
+        'Spring Boot 4',
+        'Virtual Threads (Loom)',
+        'PostgreSQL 17',
+        'RabbitMQ',
+        'Offline-First',
+        'IoT Telemetry',
+        'Docker Compose',
+        'Keycloak OIDC',
+        'OpenTelemetry',
+      ],
+      results:
+        '100% resilient data synchronization for field operations in zero-connectivity zones via FIFO queue; strict regulatory compliance with MAPA agrochemical application guidelines; high-throughput backend capacity of 2,450 req/s with zero 5xx errors; 549+ automated tests ensuring end-to-end stability.',
+      links: {
+        github: 'https://github.com/DevYuriVieira/farmflow-mobile',
+        backendGithub: 'https://github.com/DevYuriVieira/farmflow-backend',
+      },
+    },
+
     {
       id: 'aurora-growth-platform',
       title: 'Aurora | Personal Growth Platform',
@@ -1416,6 +1638,117 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         'Desacoplamiento estricto entre reglas de negocio y capa de presentación vía DTOs; control de acceso granular RBAC vía Spring Security 6 eliminando rutas desprotegidas; contrato de API OpenAPI 3 interactivo listo para integración frontend.',
       links: { github: 'https://github.com/DevYuriVieira/ecommerce-serratec-api' },
     },
+
+{
+      id: 'work-fitness',
+      title: 'Work-Fitness | Plataforma Comercial & Consultoría',
+      category: 'Plataforma Comercial (Freelance)',
+      featured: true,
+      contextTag: 'Proyecto Comercial en Producción',
+      collaboration: 'Proyecto freelance a medida',
+      client: 'Vinicius Santos (Personal Trainer)',
+      description:
+        'Plataforma web comercial y motor de evaluación biomecánica desarrollada a medida para consultoría fitness, combinando Clean Architecture, cálculos antropométricos clínicos (IMC OMS, grasa Deurenberg 1991, TMB Mifflin-St Jeor), conversión multicanal (GA4, GTM, Meta Pixel, WhatsApp con UTM) y resiliencia offline PWA.',
+      context:
+        'Solución comercial desarrollada como ingeniero freelance para el entrenador Vinicius Santos (Arena Complejo Deportivo, Nova Friburgo - RJ), sustituyendo planillas manuales por un flujo automatizado de captación de leads calificados y diagnóstico corporal instantáneo.',
+      problem:
+        'Captación dispersa de leads con pérdida de contexto en WhatsApp, ausencia de triaje preliminar de lesiones articulares y dependencia de herramientas externas lentas con suscripciones costosas.',
+      solution:
+        'Aplicación web en Vanilla TypeScript 5.7 y Vite 6 estructurada en Clean Architecture, desacoplando el núcleo de cálculo matemático (src/core/) de la interfaz (src/modules/). Integración simultánea con GA4, GTM y Meta Pixel con generación de mensajes en WhatsApp con parámetros UTM, accesibilidad WCAG 2.1 AA con VLibras, PWA offline y Docker multi-stage Nginx.',
+      architectureDecisions: [
+        'Clean Architecture estricta aislando fórmulas científicas (OMS, Deurenberg, Mifflin-St Jeor) con cero acoplamiento visual',
+        'Ingeniería de conversión síncrona disparando eventos en Google Analytics 4, GTM y Meta Pixel conservando parámetros UTM en WhatsApp',
+        'Diseño modular CSS orientado a tokens con cero overhead de CSS-in-JS en runtime para renderizado instantáneo',
+        'Suite de accesibilidad universal WCAG 2.1 AA con regla de lectura RAF, fuente OpenDyslexic, alto contraste, monocromático y VLibras',
+        'Suite cuádruple de pruebas: 162 pruebas unitarias en Vitest (19 suites en < 5s), 47 specs E2E en Playwright en 26 viewports, Cypress y k6',
+        'Imagen Docker multi-stage (Node 22 Alpine builder + Nginx 1.27 Alpine runtime) con compresión gzip y cabeceras estrictas de seguridad',
+      ],
+      highlights: [
+        'Nota 100/100 en las 4 categorías de Google Lighthouse en producción',
+        '162 pruebas unitarias en Vitest + 47 specs E2E en Playwright en 26 viewports',
+        'Bundle ultraligero compilado de apenas 32.46 kB JS (11.34 kB gzipped)',
+        'Core Web Vitals de élite: LCP < 0.8s, CLS = 0.00, INP < 16ms',
+        'Motor de cálculos antropométricos clínicos y triaje articular',
+        'Rastreo de conversión en 3 canales (GA4, GTM, Meta Pixel)',
+        'Accesibilidad universal WCAG 2.1 AA y VLibras integrado',
+        'Contenedor Docker Compose con Nginx Alpine',
+      ],
+      technologies: [
+        'TypeScript',
+        'Vite',
+        'Clean Architecture',
+        'Vitest (162 Pruebas)',
+        'Playwright',
+        'Docker',
+        'Nginx Alpine',
+        'PWA Offline',
+        'Google Analytics 4',
+        'Meta Pixel',
+      ],
+      results:
+        'Plataforma en producción con 100/100 en todas las categorías de Google Lighthouse (LCP < 0.8s, CLS 0.00, bundle minificado de 32 kB); aumento en la captación de leads calificados directamente al WhatsApp del cliente; 162 pruebas automatizadas garantizando cero regresiones.',
+      links: {
+        github: 'https://github.com/DevYuriVieira/Work-Fitness',
+        demo: 'https://viniciusantos.vercel.app/',
+      },
+    },
+    {
+      id: 'farmflow',
+      title: 'FarmFlow | Plataforma Agroindustrial & Mobile Precision',
+      category: 'Full-Stack Agroindustrial (Mobile & API)',
+      featured: true,
+      contextTag: 'Mobile Offline-First & API Distribuida',
+      collaboration: 'Proyecto autoral de arquitectura distribuida',
+      description:
+        'Ecosistema agroindustrial completo de alta confiabilidad combinando aplicación móvil Offline-First en React Native (Expo SDK 54, React 19) y motor backend distribuido en Java 21 LTS (Spring Boot 4.1.1, Loom Virtual Threads, RabbitMQ, PostgreSQL 17 particionado) para operaciones remotas de campo, cumplimiento normativo del MAPA con firma digital SHA-256 y telemetría IoT de pivotes y silos.',
+      context:
+        'Solución de ingeniería diseñada para superar los retos del agronegocio: conectividad nula o intermitente en áreas rurales, necesidad de firma digital en cuadernos de campo para auditorías del MAPA y telemetría continua de activos.',
+      problem:
+        'Operaciones agrícolas críticas en zonas sin señal provocando pérdida de datos de pulverización, desajustes de inventario, multas del MAPA por falta de cuadernos firmados y falta de telemetría de activos.',
+      solution:
+        'Arquitectura integrada de extremo a extremo: frontend móvil Offline-First con cola transaccional FIFO y sincronización determinista; backend distribuido en Java 21 con Virtual Threads (Loom), Transactional Outbox Pattern y FOR UPDATE SKIP LOCKED sobre RabbitMQ, PostgreSQL 17 con particionamiento temporal y RLS fail-closed, respaldado por más de 549 pruebas automatizadas (411 en backend + 138 en móvil).',
+      architectureDecisions: [
+        'Frontend móvil Offline-First con cola FIFO transaccional en AsyncStorage y reconciliación determinista con netinfo',
+        'Módulo regulatorio del MAPA con generación de cuaderno técnico y firma digital en Canvas con hash SHA-256',
+        'Backend en Java 21 LTS con Virtual Threads (Project Loom) y Spring Boot 4.1.1 soportando 2.450 req/s en pruebas k6',
+        'Transactional Outbox Pattern con RabbitMQ (CloudEvents v1.0, DLX, TTL, Dead Letter Queue) y FOR UPDATE SKIP LOCKED',
+        'PostgreSQL 17 con Particionamiento Temporal Declarativo, índices BRIN y Fail-Closed Row Level Security (RLS)',
+        'Sagas distribuidas orquestadas con locks consultivos (pg_try_advisory_xact_lock) y trazabilidad W3C traceparent OpenTelemetry',
+        'Autenticación Keycloak 26.1 OIDC con protección contra enumeración IDOR (HTTP 404 en vez de 403) y biometría móvil',
+        'Suite masiva de 549+ pruebas automatizadas (411 en backend con 100 Virtual Threads y 138 en móvil en 26 suites Jest)',
+      ],
+      highlights: [
+        '549+ pruebas automatizadas (411 pruebas en Backend Java + 138 pruebas en Móvil)',
+        'Cliente móvil Offline-First en React Native (Expo 54, React 19) con sincronización FIFO',
+        'Backend Java 21 LTS con Virtual Threads soportando 2.450 req/s (k6)',
+        'Transactional Outbox con RabbitMQ y CloudEvents v1.0',
+        'PostgreSQL 17 con particionamiento temporal y Row Level Security (RLS)',
+        'Cuaderno regulatorio MAPA con firma digital canvas SHA-256',
+        'Telemetría IoT para pivotes de riego central y silos graneleros',
+        'Trazabilidad distribuida de extremo a extremo W3C con OpenTelemetry',
+      ],
+      technologies: [
+        'React Native',
+        'Expo SDK 54',
+        'Java 21 LTS',
+        'Spring Boot 4',
+        'Virtual Threads (Loom)',
+        'PostgreSQL 17',
+        'RabbitMQ',
+        'Offline-First',
+        'IoT Telemetry',
+        'Docker Compose',
+        'Keycloak OIDC',
+        'OpenTelemetry',
+      ],
+      results:
+        'Sincronización 100% íntegra de datos de campo en zonas sin señal vía cola FIFO; cumplimiento normativo estricto con exigencias del MAPA; capacidad de alto rendimiento en backend de 2.450 req/s con cero errores 5xx; 549+ pruebas automatizadas garantizando estabilidad total.',
+      links: {
+        github: 'https://github.com/DevYuriVieira/farmflow-mobile',
+        backendGithub: 'https://github.com/DevYuriVieira/farmflow-backend',
+      },
+    },
+
     {
       id: 'aurora-growth-platform',
       title: 'Aurora | Plataforma de Crecimiento Personal',

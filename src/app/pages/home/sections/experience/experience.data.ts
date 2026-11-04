@@ -107,7 +107,7 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
         title: 'Desenvolvimento Full-Stack Freelance & Projetos Autorais',
         subtitle: 'Engenharia de Software & Soluções Sob Demanda',
         description:
-          'Desenvolvimento de sistemas sob demanda como freelancer e projetos autorais de arquitetura distribuída cobrindo C# (.NET 10 / ASP.NET Core), Java (Spring Boot 3), TypeScript, React e Angular, aplicando padrões corporativos de resiliência e alta performance.',
+          'Entrega de soluções digitais de alto impacto como engenheiro freelancer e arquiteto de software: criação da plataforma comercial Work-Fitness para consultoria esportiva (Clean Architecture, motor biomecânico clínico, nota 100/100 no Google Lighthouse e captação multicanal de leads via WhatsApp/Pixel) e desenvolvimento de sistemas distribuídos de alta complexidade, incluindo o ecossistema mobile Offline-First do FarmFlow (138 testes, telemetria IoT e conformidade MAPA) e microsserviços orientados a eventos com .NET 10, Java 21, RabbitMQ e PostgreSQL.',
 
         tag: 'FREELANCE & ENGENHARIA AUTORAL',
         highlighted: true,
@@ -256,7 +256,7 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
         title: 'Full-Stack Freelance & Authorial Engineering Projects',
         subtitle: 'Software Engineering & Custom Solutions',
         description:
-          'Delivering custom freelance solutions and authorial distributed architectures covering C# (.NET 10 / ASP.NET Core), Java (Spring Boot 3), TypeScript, React, and Angular, applying enterprise resilience and high-performance patterns.',
+          'Delivering high-impact software solutions as a freelance engineer and systems architect: engineered the Work-Fitness commercial platform for sports consulting (Clean Architecture, clinical biomechanical engine, perfect 100/100 Google Lighthouse audit, and multi-channel lead funnel via WhatsApp/Pixel), alongside architecting mission-critical distributed systems, including FarmFlow\'s Offline-First mobile ecosystem (138 tests, IoT telemetry, and MAPA compliance) and event-driven microservices with .NET 10, Java 21, RabbitMQ, and PostgreSQL.',
 
         tag: 'FREELANCE & AUTHORIAL ENGINEERING',
         highlighted: true,
@@ -405,7 +405,7 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
         title: 'Desarrollo Full-Stack Freelance & Proyectos Autorales',
         subtitle: 'Ingeniería de Software & Soluciones a Medida',
         description:
-          'Desarrollo de soluciones a medida como freelancer y proyectos autorales de arquitectura distribuida cubriendo C# (.NET 10 / ASP.NET Core), Java (Spring Boot 3), TypeScript, React y Angular, aplicando patrones corporativos de resiliencia y alto rendimiento.',
+          'Entrega de soluciones digitales de alto impacto como ingeniero freelance y arquitecto de software: creación de la plataforma comercial Work-Fitness para consultoría deportiva (Clean Architecture, motor biomecánico clínico, 100/100 perfecto en Google Lighthouse y captación multicanal de leads vía WhatsApp/Pixel) y diseño de sistemas distribuidos de alta complejidad, incluyendo el ecosistema móvil Offline-First FarmFlow (138 pruebas, telemetría IoT y cumplimiento MAPA) y microservicios orientados a eventos con .NET 10, Java 21, RabbitMQ y PostgreSQL.',
 
         tag: 'FREELANCE & INGENIERÍA AUTORAL',
         highlighted: true,

@@ -170,7 +170,15 @@
             @if (project.links.github) {
             <app-link [href]="project.links.github" [external]="true"
               [ariaLabel]="'GitHub repository: ' + project.title" class="projects__link">
-              <span class="projects__link-text">GitHub</span>
+              <span class="projects__link-text">{{ project.links.backendGithub ? 'GitHub (Mobile)' : 'GitHub' }}</span>
+              <span class="projects__link-icon" aria-hidden="true">↗</span>
+            </app-link>
+            }
+
+            @if (project.links.backendGithub) {
+            <app-link [href]="project.links.backendGithub" [external]="true"
+              [ariaLabel]="'GitHub Backend repository: ' + project.title" class="projects__link">
+              <span class="projects__link-text">GitHub (Backend)</span>
               <span class="projects__link-icon" aria-hidden="true">↗</span>
             </app-link>
             }
