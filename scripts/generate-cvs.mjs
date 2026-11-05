@@ -744,10 +744,19 @@ const BACKEND_PT = `<!DOCTYPE html>
 
       <div class="entry">
         <div class="entry-title">Spring Boot E-Commerce API - <a href="https://github.com/DevYuriVieira/ecommerce-serratec-api">github.com/DevYuriVieira/ecommerce-serratec-api</a></div>
-        <div class="entry-meta">Colaborativo (Residência Serratec) | 2026 | Java 17 | Spring Boot 3 | Spring Security 6 | PostgreSQL | JPA/Hibernate | Swagger/OpenAPI 3</div>
+        <div class="entry-meta">Colaborativo (5 devs - Residência Serratec) | 2026 | Java 17 | Spring Boot 3 | Spring Security 6 | PostgreSQL | JPA/Hibernate | Swagger/OpenAPI 3</div>
         <ul class="bullets">
-          <li>API RESTful desenvolvida em equipe em <strong>Java 17 e Spring Boot 3</strong> estruturada em camadas desacopladas (Controller, Service, Repository, DTOs), gerenciando ciclo de pedidos com relacionamento N:N (Muitos-para-Muitos), totalização dinâmica de itens e controle concorrente de estoque.</li>
-          <li>Segurança na cadeia de filtros do <strong>Spring Security 6 (JWT / RBAC)</strong>, integração com ViaCEP para autopreenchimento de endereços, disparos de e-mails transacionais via JavaMail, tratamento centralizado com <code>@ControllerAdvice</code> e documentação interativa via Swagger UI / OpenAPI 3.</li>
+          <li>API RESTful desenvolvida em equipe em <strong>Java 17 e Spring Boot 3</strong> estruturada em camadas desacopladas (Controller, Service, Repository, DTOs), gerenciando ciclo de pedidos com relacionamento N:N, totalização dinâmica de itens e controle concorrente de estoque.</li>
+          <li>Segurança na cadeia de filtros do <strong>Spring Security 6 (JWT / RBAC)</strong>, integração com ViaCEP para autopreenchimento de endereços, disparos de e-mails transacionais via JavaMail, tratamento centralizado com <code>@ControllerAdvice</code> e documentação via Swagger UI / OpenAPI 3.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-title">Sistema de Folha de Pagamento - <a href="https://github.com/DevYuriVieira/payroll-system-java">github.com/DevYuriVieira/payroll-system-java</a></div>
+        <div class="entry-meta">Colaborativo (4 devs - Residência Serratec) | 2026 | Java 17 | PostgreSQL | JDBC | Arquitetura MVC + DAO | BigDecimal | Singleton Pattern</div>
+        <ul class="bullets">
+          <li>Processamento em lote e cálculo de alíquotas progressivas de <strong>INSS e IRRF</strong> com deduções por dependente, leitura de funcionários via CSV e persistência com <strong>JDBC puro no PostgreSQL</strong> em arquitetura <strong>MVC + DAO</strong> sem ORM.</li>
+          <li>Precisão monetária exata com <code>BigDecimal (RoundingMode.HALF_UP)</code>, gerenciador de conexões com padrão <strong>Singleton</strong>, exceções customizadas de domínio (<code>CpfInvalidoException</code>, <code>SalarioInvalidoException</code>) e exportação automatizada em CSV.</li>
         </ul>
       </div>
 
@@ -785,9 +794,9 @@ const BACKEND_PT = `<!DOCTYPE html>
       <h2 class="section-title">CERTIFICAÇÕES</h2>
       <ul class="cert-list">
         <li><strong>Programação em Python (Django) (168 h)</strong> - Senac</li>
+        <li><strong>Bootcamp Philips Full-Stack Developer (Java, Spring Boot, SQL) (132 h)</strong> - DIO</li>
         <li><strong>Banco de Dados SQL - Intermediário e Avançado</strong> - Instituto Matera</li>
         <li><strong>Fundamentos em Teste de Software (24 h)</strong> - Instituto de Pesquisas Eldorado</li>
-        <li><strong>Bootcamp Philips Full-Stack Developer (Java, Spring Boot, SQL)</strong> - DIO</li>
         <li><strong>White Belt - Lean Six Sigma</strong> - Frons</li>
       </ul>
     </section>
@@ -900,9 +909,8 @@ const BACKEND_EN = `<!DOCTYPE html>
         <div class="entry-title">Full-Stack / Back-End Developer (Software Residency)</div>
         <div class="entry-meta">Serratec - TIC/Software Residency | Feb 2026 - Jul 2026 | Petropolis, Brazil | 790 h</div>
         <ul class="bullets">
-          <li>Completed a 790-hour intensive programme in progressive tracks with strong emphasis on <strong>PostgreSQL Databases</strong>, <strong>OOP in Java 17</strong> and <strong>RESTful APIs with Spring Boot and Spring Security</strong>, closing with a corporate MVP delivered under contract in partnership with <strong>Zeiss</strong>.</li>
-          <li>Designed and implemented layered backend architectures (Controller, Service, Repository, DAO, DTOs), 3NF relational schemas, JWT/RBAC authentication and API integrations.</li>
-          <li>Worked in an Agile team with Git, code reviews and sprints, applying OOP, SOLID and clean-code standards across all deliverables.</li>
+          <li>Completed a 790-hour intensive programme with strong emphasis on <strong>PostgreSQL Databases</strong>, <strong>OOP in Java 17</strong> and <strong>RESTful APIs with Spring Boot and Spring Security</strong>, closing with a corporate MVP delivered under contract in partnership with <strong>Zeiss</strong>.</li>
+          <li>Designed and implemented layered backend architectures (Controller, Service, Repository, DAO, DTOs), 3NF relational schemas, JWT/RBAC authentication and API integrations in an Agile team (Scrum, Git and Code Review).</li>
         </ul>
       </div>
     </section>
@@ -941,10 +949,19 @@ const BACKEND_EN = `<!DOCTYPE html>
 
       <div class="entry">
         <div class="entry-title">Spring Boot E-Commerce API - <a href="https://github.com/DevYuriVieira/ecommerce-serratec-api">github.com/DevYuriVieira/ecommerce-serratec-api</a></div>
-        <div class="entry-meta">Collaborative (Serratec Residency) | 2026 | Java 17 | Spring Boot 3 | Spring Security 6 | PostgreSQL | JPA/Hibernate | Swagger/OpenAPI 3</div>
+        <div class="entry-meta">Collaborative (5 devs - Serratec Residency) | 2026 | Java 17 | Spring Boot 3 | Spring Security 6 | PostgreSQL | JPA/Hibernate | Swagger/OpenAPI 3</div>
         <ul class="bullets">
           <li>Team-developed RESTful API in <strong>Java 17 and Spring Boot 3</strong> structured in decoupled layers (Controller, Service, Repository, DTOs), managing order lifecycles with N:N mappings, dynamic item totalization and concurrent inventory control.</li>
-          <li>Robust security via <strong>Spring Security 6 filter chain (stateless JWT / RBAC)</strong>, integration with external ViaCEP API for automatic address resolution, transactional email notifications with JavaMail, global exception handling (<code>@ControllerAdvice</code>) and interactive OpenAPI 3 / Swagger UI contracts.</li>
+          <li>Robust security via <strong>Spring Security 6 filter chain (stateless JWT / RBAC)</strong>, integration with external ViaCEP API for automatic address resolution, transactional email notifications with JavaMail, global exception handling (<code>@ControllerAdvice</code>) and OpenAPI 3 / Swagger UI contracts.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-title">Payroll System - <a href="https://github.com/DevYuriVieira/payroll-system-java">github.com/DevYuriVieira/payroll-system-java</a></div>
+        <div class="entry-meta">Collaborative (4 devs - Serratec Residency) | 2026 | Java 17 | PostgreSQL | JDBC | MVC + DAO Architecture | BigDecimal | Singleton Pattern</div>
+        <ul class="bullets">
+          <li>Automates batch processing and progressive <strong>INSS and IRRF</strong> payroll tax calculations with dependent deductions, reading employee data via CSV and persisting through <strong>raw JDBC on PostgreSQL</strong> in a layered <strong>MVC + DAO</strong> architecture built without an ORM.</li>
+          <li>Exact monetary precision with <code>BigDecimal (RoundingMode.HALF_UP)</code>, <strong>Singleton</strong> JDBC connection manager, custom domain exceptions (<code>CpfInvalidoException</code>, <code>SalarioInvalidoException</code>) and automated CSV report export.</li>
         </ul>
       </div>
 
@@ -982,9 +999,9 @@ const BACKEND_EN = `<!DOCTYPE html>
       <h2 class="section-title">CERTIFICATIONS</h2>
       <ul class="cert-list">
         <li><strong>Programming in Python (Django) (168 h)</strong> - Senac</li>
+        <li><strong>Philips Full-Stack Developer Bootcamp (Java, Spring Boot, SQL) (132 h)</strong> - DIO</li>
         <li><strong>SQL Database - Intermediate and Advanced</strong> - Instituto Matera</li>
         <li><strong>Software Testing Fundamentals (24 h)</strong> - Instituto de Pesquisas Eldorado</li>
-        <li><strong>Philips Full-Stack Developer Bootcamp (Java, Spring Boot, SQL)</strong> - DIO</li>
         <li><strong>White Belt - Lean Six Sigma</strong> - Frons</li>
       </ul>
     </section>
