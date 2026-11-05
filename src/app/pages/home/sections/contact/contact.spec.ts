@@ -44,4 +44,31 @@ describe('ContactSection', () => {
     component.onWhatsAppClick();
     expect(component.data().info.whatsappUrl).toContain('5522998962216');
   });
+
+  it('should render location badge, availability pulse and social chips with brand links', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+
+    const locationText = compiled.querySelector('.contact__location-text');
+    expect(locationText?.textContent?.trim()).toBe(component.data().info.location);
+
+    const pulseDot = compiled.querySelector('.contact__whatsapp-pulse .contact__status-dot');
+    expect(pulseDot).toBeTruthy();
+
+    const availabilityIcon = compiled.querySelector('.contact__availability-icon');
+    expect(availabilityIcon).toBeTruthy();
+
+    const whatsappHighlight = compiled.querySelector('.contact__whatsapp-highlight');
+    expect(whatsappHighlight).toBeTruthy();
+    expect(whatsappHighlight?.textContent).toContain(component.data().labels.whatsappHighlightLabel);
+    expect(whatsappHighlight?.textContent).toContain(component.data().labels.whatsappHighlightText);
+
+    const chips = compiled.querySelectorAll('.contact__social-chip');
+    expect(chips.length).toBe(2);
+
+    const linkedin = compiled.querySelector('.contact__social-chip--linkedin') as HTMLAnchorElement;
+    expect(linkedin.href).toContain('linkedin.com');
+
+    const github = compiled.querySelector('.contact__social-chip--github') as HTMLAnchorElement;
+    expect(github.href).toContain('github.com');
+  });
 });

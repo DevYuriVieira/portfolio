@@ -22,20 +22,33 @@
                 {{ data().info.email }}
               </a>
             </app-heading>
+            <div class="contact__email-actions">
+              <app-button variant="primary" [href]="emailUrl" target="_blank" rel="noopener noreferrer"
+                ariaLabel="Send email to Yuri Vieira">
+                {{ data().labels.sendEmail }}
+              </app-button>
+
+              <app-button variant="secondary"
+                [ariaLabel]="copied() ? data().labels.copied : data().labels.copyEmail"
+                (click)="copyEmail()">
+                {{ copied() ? data().labels.copied : data().labels.copyEmail }}
+              </app-button>
+            </div>
           </div>
 
-          <div class="contact__card-actions">
-            <app-button variant="primary" [href]="emailUrl" target="_blank" rel="noopener noreferrer"
-              ariaLabel="Send email to Yuri Vieira">
-              {{ data().labels.sendEmail }}
-            </app-button>
-
-            <app-button variant="secondary"
-              [ariaLabel]="copied() ? data().labels.copied : data().labels.copyEmail"
-              (click)="copyEmail()">
-              {{ copied() ? data().labels.copied : data().labels.copyEmail }}
-            </app-button>
-
+          <div class="contact__whatsapp-highlight">
+            <div class="contact__whatsapp-highlight-header">
+              <span class="contact__whatsapp-pill">
+                <span class="contact__whatsapp-pulse" aria-hidden="true">
+                  <span class="contact__status-dot"></span>
+                  <span class="contact__status-ping"></span>
+                </span>
+                <span>{{ data().labels.whatsappHighlightLabel }}</span>
+              </span>
+            </div>
+            <p class="contact__whatsapp-highlight-text">
+              {{ data().labels.whatsappHighlightText }}
+            </p>
             <a [href]="data().info.whatsappUrl"
               target="_blank"
               rel="noopener noreferrer"
@@ -53,33 +66,54 @@
         <div class="contact__card" appReveal [revealDelay]="100">
           <div class="contact__info-group">
             <span class="contact__info-label">{{ data().labels.locationLabel }}</span>
-            <app-text variant="body" class="contact__info-value">
-              📍 {{ data().info.location }}
-            </app-text>
+            <div class="contact__location-badge">
+              <svg class="contact__location-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <span class="contact__location-text">{{ data().info.location }}</span>
+            </div>
           </div>
 
           <div class="contact__info-group">
             <span class="contact__info-label">{{ data().labels.availabilityLabel }}</span>
-            <app-text variant="body" class="contact__info-value">
-              🟢 {{ data().info.availability }}
-            </app-text>
+            <div class="contact__availability-badge">
+              <svg class="contact__availability-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M2 12h20" />
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+              </svg>
+              <span class="contact__availability-text">{{ data().info.availability }}</span>
+            </div>
           </div>
 
           <div class="contact__info-group">
             <span class="contact__info-label">{{ data().labels.socialLabel }}</span>
-            <div class="contact__social-links">
-              <app-link [href]="data().info.linkedinUrl" [external]="true" ariaLabel="LinkedIn Profile"
-                class="contact__social-link">
-                LinkedIn ↗
-              </app-link>
-              <app-link [href]="data().info.githubUrl" [external]="true" ariaLabel="GitHub Profile"
-                class="contact__social-link">
-                GitHub ↗
-              </app-link>
-              <app-link [href]="data().info.whatsappUrl" [external]="true" [ariaLabel]="data().labels.whatsappAria"
-                class="contact__social-link" (click)="onWhatsAppClick()">
-                WhatsApp ↗
-              </app-link>
+            <div class="contact__social-chips">
+              <a [href]="data().info.linkedinUrl"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="contact__social-chip contact__social-chip--linkedin"
+                aria-label="LinkedIn Profile - Yuri Vieira">
+                <svg class="contact__social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76c-.97 0-1.75-.79-1.75-1.76s.78-1.75 1.75-1.75 1.76.78 1.76 1.75-.79 1.76-1.76 1.76m1.39 9.74v-8.37H5.07v8.37h2.78Z" />
+                </svg>
+                <span>LinkedIn</span>
+                <span class="contact__social-arrow" aria-hidden="true">↗</span>
+              </a>
+
+              <a [href]="data().info.githubUrl"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="contact__social-chip contact__social-chip--github"
+                aria-label="GitHub Profile - Yuri Vieira">
+                <svg class="contact__social-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                </svg>
+                <span>GitHub</span>
+                <span class="contact__social-arrow" aria-hidden="true">↗</span>
+              </a>
             </div>
           </div>
         </div>

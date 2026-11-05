@@ -1,13 +1,13 @@
 import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { I18nService, TelemetryService } from '@core';
 import { RevealDirective } from '@shared';
-import { Button, Container, Heading, Link, Section, Text } from '@ui';
+import { Button, Container, Heading, Section, Text } from '@ui';
 import { getContactData } from './contact.data';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [Section, Container, Heading, Text, Button, Link, RevealDirective],
+  imports: [Section, Container, Heading, Text, Button, RevealDirective],
   templateUrl: './contact.html',
   styleUrl: './contact.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

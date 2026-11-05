@@ -12,6 +12,8 @@ interface ContactI18n extends ContactSectionData {
     copied: string;
     whatsappCta: string;
     whatsappAria: string;
+    whatsappHighlightLabel: string;
+    whatsappHighlightText: string;
   };
 }
 
@@ -27,7 +29,7 @@ const CONTACT_I18N: Record<SupportedLang, ContactI18n> = {
         'https://wa.me/5522998962216?text=Ol%C3%A1%20Yuri%21%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20sobre%20uma%20oportunidade.',
       location: 'Nova Friburgo, RJ, Brasil',
       availability:
-        'Disponível para oportunidades remotas, híbridas ou presenciais com possibilidade de mudança.',
+        'Disponível para oportunidades remotas ou híbridas (aberto a relocação para presencial).',
       linkedinUrl: 'https://linkedin.com/in/yuri-vieira-teixeira/',
       githubUrl: 'https://github.com/DevYuriVieira',
     },
@@ -39,8 +41,11 @@ const CONTACT_I18N: Record<SupportedLang, ContactI18n> = {
       sendEmail: 'Enviar E-mail ↗',
       copyEmail: 'Copiar E-mail',
       copied: '✓ Copiado!',
-      whatsappCta: 'WhatsApp Direto ↗',
+      whatsappCta: 'Chamar no WhatsApp ↗',
       whatsappAria: 'Falar diretamente com Yuri Vieira pelo WhatsApp',
+      whatsappHighlightLabel: 'CANAL PREFERENCIAL • TEMPO REAL',
+      whatsappHighlightText:
+        'Canal direto para conversas rápidas sobre oportunidades, propostas de trabalho ou novos projetos.',
     },
   },
   en: {
@@ -54,7 +59,7 @@ const CONTACT_I18N: Record<SupportedLang, ContactI18n> = {
         'https://wa.me/5522998962216?text=Hi%20Yuri%21%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect%20regarding%20an%20opportunity.',
       location: 'Nova Friburgo, RJ, Brazil',
       availability:
-        'Available for remote, hybrid, or on-site opportunities with willingness to relocate.',
+        'Available for remote or hybrid opportunities (open to on-site relocation).',
       linkedinUrl: 'https://linkedin.com/in/yuri-vieira-teixeira/',
       githubUrl: 'https://github.com/DevYuriVieira',
     },
@@ -66,8 +71,11 @@ const CONTACT_I18N: Record<SupportedLang, ContactI18n> = {
       sendEmail: 'Send Email ↗',
       copyEmail: 'Copy Email',
       copied: '✓ Copied!',
-      whatsappCta: 'Direct WhatsApp ↗',
+      whatsappCta: 'Chat on WhatsApp ↗',
       whatsappAria: 'Chat directly with Yuri Vieira on WhatsApp',
+      whatsappHighlightLabel: 'FAST-TRACK CHANNEL • REAL-TIME',
+      whatsappHighlightText:
+        'Direct channel for quick conversations regarding job opportunities, proposals, or new projects.',
     },
   },
   es: {
@@ -81,7 +89,7 @@ const CONTACT_I18N: Record<SupportedLang, ContactI18n> = {
         'https://wa.me/5522998962216?text=Hola%20Yuri%21%20Vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20conversar%20sobre%20una%20oportunidad.',
       location: 'Nova Friburgo, RJ, Brasil',
       availability:
-        'Disponible para oportunidades remotas, híbridas o presenciales con disposición a reubicación.',
+        'Disponible para oportunidades remotas o híbridas (abierto a reubicación presencial).',
       linkedinUrl: 'https://linkedin.com/in/yuri-vieira-teixeira/',
       githubUrl: 'https://github.com/DevYuriVieira',
     },
@@ -93,8 +101,11 @@ const CONTACT_I18N: Record<SupportedLang, ContactI18n> = {
       sendEmail: 'Enviar Correo ↗',
       copyEmail: 'Copiar Correo',
       copied: '✓ ¡Copiado!',
-      whatsappCta: 'WhatsApp Directo ↗',
+      whatsappCta: 'Hablar por WhatsApp ↗',
       whatsappAria: 'Hablar directamente con Yuri Vieira por WhatsApp',
+      whatsappHighlightLabel: 'CANAL PREFERENCIAL • TIEMPO REAL',
+      whatsappHighlightText:
+        'Canal directo para conversaciones rápidas sobre oportunidades laborales, propuestas o nuevos proyectos.',
     },
   },
 };
