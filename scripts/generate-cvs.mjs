@@ -239,16 +239,16 @@ const FRONTEND_PT = `<!DOCTYPE html>
       <h2 class="section-title">DESTAQUES</h2>
       <table class="ach-table">
         <tr>
-          <td class="ach-label">App em Produção<br>(Angular 22 &amp; WebGL)</td>
-          <td>Portfólio pessoal desenvolvido em Angular 22 e TypeScript, com Signals nativos e sistema de partículas WebGL acelerado por GPU, coberto por 195 testes automatizados (Vitest, Playwright + Axe-Core e Cypress) e auditoria Lighthouse 100/100/100/100 no desktop.</td>
-        </tr>
-        <tr>
           <td class="ach-label">Zeiss - Plataforma de<br>Recomendação com IA</td>
-          <td>MVP construído com um time de 11 pessoas para a Zeiss, desenvolvendo a interface em React e TypeScript para validação clínica de receitas via OCR + recomendação de lentes via IA e dashboards de vendas em tempo real.</td>
+          <td>MVP corporativo construído com um time de 11 pessoas para a Zeiss, desenvolvendo a interface em React 19 e TypeScript para validação clínica assistida via OCR + recomendação de lentes via IA e dashboards analíticos em tempo real.</td>
         </tr>
         <tr>
-          <td class="ach-label">Instrutor de<br>Programação</td>
-          <td>Lecionei Programação (JavaScript, lógica, integração de APIs e bancos de dados) para uma turma de 10 alunos no SENAI/FAETEC, elaborando todo o material didático a partir da ementa da instituição.</td>
+          <td class="ach-label">Work-Fitness &amp; Portfólio<br>(Apps em Produção)</td>
+          <td>Plataforma comercial freelance (TypeScript, Clean Architecture, Docker/Nginx, 217 testes) e portfólio interativo (Angular 22 Signals, WebGL/Three.js, 195 testes), ambos com nota máxima 100/100 nas 4 categorias do Google Lighthouse.</td>
+        </tr>
+        <tr>
+          <td class="ach-label">FarmFlow Mobile<br>(React Native Offline-First)</td>
+          <td>App de precisão agrícola em React Native (Expo SDK 54, React 19) com fila transacional FIFO offline-first, caderno regulatório MAPA com assinatura digital em canvas (SHA-256), login biométrico OIDC e 138 testes em 26 suítes Jest.</td>
         </tr>
       </table>
     </section>
@@ -262,27 +262,27 @@ const FRONTEND_PT = `<!DOCTYPE html>
         </tr>
         <tr>
           <td class="sk-label">Frontend Web</td>
-          <td>React | Angular 22 (Signals, Standalone, OnPush, SSR, PWA) | Three.js / WebGL | Framer Motion | Styled Components | CSS Modules | Vite</td>
+          <td>React 18/19 | Angular 22 (Signals, Standalone, OnPush, SSR, PWA) | Three.js / WebGL | Framer Motion | Styled Components | CSS Modules | Vite</td>
         </tr>
         <tr>
           <td class="sk-label">Mobile &amp; UI/UX</td>
-          <td>React Native (Expo SDK 54) | React Navigation (Drawer, Stack, Tabs) | React Hook Form | Zod | Design Systems | Responsividade &amp; Acessibilidade (WCAG 2.1 AA/AAA)</td>
+          <td>React Native (Expo SDK 54, Arquitetura Offline-First) | React Navigation | React Hook Form | Zod | Design Systems | Acessibilidade (WCAG 2.1 AA/AAA &amp; VLibras)</td>
         </tr>
         <tr>
-          <td class="sk-label">Testes Front-End</td>
-          <td>Vitest | Playwright | Cypress | Axe-Core (Testes de Acessibilidade) | Testes Unitários e E2E</td>
+          <td class="sk-label">Testes &amp; Qualidade</td>
+          <td>Vitest | Jest | Playwright (Multi-Viewport E2E) | Cypress | Axe-Core (Auditoria WCAG) | Lighthouse 100/100</td>
         </tr>
         <tr>
           <td class="sk-label">Integração &amp; Backend</td>
-          <td>Consumo de APIs REST | Axios | JWT &amp; RBAC | Integração com IA (Google Gemini AI / n8n / OCR) | Java (Spring Boot) | C# (.NET) | PostgreSQL</td>
+          <td>Consumo de APIs REST | Keycloak OIDC &amp; JWT (RBAC) | Integração com IA (Gemini SDK / n8n / OCR) | Java 21 (Spring Boot 4) | C# (.NET 10) | PostgreSQL</td>
         </tr>
         <tr>
-          <td class="sk-label">Ferramentas</td>
-          <td>Git | GitHub | GitHub Actions | Vercel (CI/CD) | Docker | Figma | Swagger / OpenAPI</td>
+          <td class="sk-label">DevOps &amp; Ferramentas</td>
+          <td>Docker &amp; Docker Compose | Nginx | CI/CD (GitHub Actions &amp; Vercel) | Git | GA4 / GTM / Meta Pixel | Figma | Swagger / OpenAPI 3</td>
         </tr>
         <tr>
-          <td class="sk-label">Metodologias</td>
-          <td>Agile / Scrum | Componentização Modular | Mobile-First | Clean Architecture</td>
+          <td class="sk-label">Arquitetura &amp; Métodos</td>
+          <td>Clean Architecture | Offline-First | Componentização Modular | Mobile-First | Agile / Scrum</td>
         </tr>
       </table>
     </section>
@@ -332,6 +332,25 @@ const FRONTEND_PT = `<!DOCTYPE html>
       </div>
 
       <div class="entry">
+        <div class="entry-title">FarmFlow - App Mobile Offline-First - <a href="https://github.com/DevYuriVieira/farmflow-mobile">github.com/DevYuriVieira/farmflow-mobile</a></div>
+        <div class="entry-meta">Pessoal | 2026 | React Native | Expo SDK 54 | React 19 | TypeScript | AsyncStorage | NetInfo | Jest | API Java 21 / Spring Boot 4</div>
+        <ul class="bullets">
+          <li>App para operadores de campo que trabalham sem sinal: <strong>fila FIFO transacional</strong> persistida em AsyncStorage com reconciliação determinística ao reconectar (NetInfo), para que nenhum apontamento de pulverização se perca.</li>
+          <li>Caderno de defensivos exigido pelo MAPA com <strong>assinatura digital desenhada em canvas e hash SHA-256</strong>, login com biometria e Keycloak OIDC, consumindo uma API Java 21 que sustentou <strong>2.450 req/s</strong> em testes k6.</li>
+          <li><strong>138 testes em 26 suítes Jest</strong> no cliente, dentro de um conjunto de 549 testes entre app e API.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-title">Work-Fitness - Plataforma Comercial em Produção - <a href="https://github.com/DevYuriVieira/Work-Fitness">github.com/DevYuriVieira/Work-Fitness</a> · <a href="https://viniciusantos.vercel.app/">viniciusantos.vercel.app</a></div>
+        <div class="entry-meta">Freelance (cliente real) | 2025 - Presente | TypeScript 5.7 | Vite 6 | Clean Architecture | Vitest | Playwright | WCAG 2.1 AA | VLibras | Docker | Nginx | GA4 / GTM / Meta Pixel</div>
+        <ul class="bullets">
+          <li>Plataforma comercial entregue de ponta a ponta para um personal trainer, no lugar de planilhas e de um WhatsApp sem triagem: motor de avaliação corporal (IMC da OMS, gordura corporal por Deurenberg, TMB por Mifflin-St Jeor) isolado em um <strong>core de Clean Architecture sem DOM</strong> e leads qualificados com UTM preservado direto no WhatsApp. Nota <strong>100/100 nas 4 categorias do Lighthouse</strong>, com bundle de 32 kB.</li>
+          <li>Acessibilidade tratada como requisito (WCAG 2.1 AA, VLibras sem layout shift, leitura bionic e filtros para daltonismo), <strong>170 testes Vitest e 47 specs Playwright em 26 viewports</strong>, telemetria GA4, GTM e Meta Pixel, e deploy em contêiner Docker multi-stage com Nginx.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
         <div class="entry-title">Portfólio Pessoal - <a href="https://devyurivieira.vercel.app">devyurivieira.vercel.app</a></div>
         <div class="entry-meta">Pessoal | 2026 | Angular 22 | TypeScript | Three.js / WebGL | SCSS | Vitest | Playwright | Cypress | PWA | Em produção</div>
         <ul class="bullets">
@@ -341,29 +360,11 @@ const FRONTEND_PT = `<!DOCTYPE html>
       </div>
 
       <div class="entry">
-        <div class="entry-title">Aurora - Plataforma de Evolução Pessoal - <a href="https://github.com/DevYuriVieira/aurora-growth-platform">github.com/DevYuriVieira/aurora-growth-platform</a></div>
-        <div class="entry-meta">Colaborativo (6 devs) | 2026 | React Native | Expo SDK 54 | TypeScript | React Navigation | Zod | AsyncStorage | Projeto Final - Aplicações Multiplataformas</div>
-        <ul class="bullets">
-          <li>Aplicativo mobile em <strong>React Native (Expo SDK 54) e TypeScript</strong> para acompanhamento de metas pessoais, gamificação com cálculo dinâmico de XP/níveis, mentorias e comunidade, com sessão persistida (AsyncStorage), rotas protegidas via Context API (<code>AuthContext</code>) e módulo de metas com CRUD completo.</li>
-          <li>Combina três padrões de navegação híbrida em um só app (Drawer, Stack e Tabs), formulários validados defensivamente com <strong>React Hook Form + Zod</strong>, e recursos nativos do dispositivo como câmera, galeria, mapas/geolocalização via Expo Location, armazenamento criptografado com <strong>Expo Secure Store</strong> e check-in de eventos por leitura nativa de <strong>QR Code</strong>.</li>
-        </ul>
-      </div>
-
-      <div class="entry">
         <div class="entry-title">PlayStation Evolution Timeline - <a href="https://playstation-evolution-timeline.vercel.app">playstation-evolution-timeline.vercel.app</a></div>
         <div class="entry-meta">Pessoal | 2026 | React 18 | TypeScript 5 | Vite 5 | Framer Motion 11 | CSS Modules | Intersection Observer - <a href="https://github.com/DevYuriVieira/playstation-evolution-timeline">github.com/DevYuriVieira/playstation-evolution-timeline</a></div>
         <ul class="bullets">
           <li>Aplicação web interativa em produção na Vercel que apresenta 30 anos de evolução de hardware dos consoles PlayStation (do PS1 ao PS5 Pro), construída com arquitetura modular em <strong>React 18, TypeScript e CSS Modules</strong> e orquestração de scroll no centro da viewport via <strong>Intersection Observer API</strong> (<code>rootMargin: "-50%"</code>), eliminando listeners pesados de scroll.</li>
           <li>Implementa contadores numéricos animados sob demanda (<code>StatsAnimated</code>) e transições declarativas a <strong>60 FPS estáveis com Framer Motion</strong> sem provocar layout thrashing, navegação lateral adaptativa (<code>SideTimeline</code>) e esteira de deploy contínuo (CI/CD) automatizada via GitHub e Vercel.</li>
-        </ul>
-      </div>
-
-      <div class="entry">
-        <div class="entry-title">Anime Weather Platform - <a href="https://github.com/DevYuriVieira/anime-weather-platform">github.com/DevYuriVieira/anime-weather-platform</a></div>
-        <div class="entry-meta">Colaborativo (Pair Programming) | 2026 | React 18 | Vite | Google Gemini SDK | OpenWeather API | Jikan API | CSS Modules | Glassmorphism</div>
-        <ul class="bullets">
-          <li>Sistema de orquestração frontend desenvolvido em <strong>React 18, Vite e CSS Modules</strong> com pipeline lógico multicamada (<strong>Clima → Humor Atmosférico → Gênero de Anime</strong>), consumindo condições meteorológicas em tempo real da <strong>OpenWeather API</strong> e cruzando com o catálogo cultural do MyAnimeList via <strong>Jikan API</strong>.</li>
-          <li>Integra o SDK do <strong>Google Gemini AI</strong> aplicando Engenharia de Prompts para gerar recomendações contextualizadas com a cidade e o clima ao vivo do usuário, combinadas com temas visuais adaptativos em tempo real, estética <em>Glassmorphism</em>, ambientação sonora Lofi e rotas protegidas.</li>
         </ul>
       </div>
     </section>
@@ -443,16 +444,16 @@ const FRONTEND_EN = `<!DOCTYPE html>
       <h2 class="section-title">KEY ACHIEVEMENTS</h2>
       <table class="ach-table">
         <tr>
-          <td class="ach-label">Live Production App<br>(Angular 22 &amp; WebGL)</td>
-          <td>Personal portfolio built with Angular 22 and TypeScript, native Signals and a GPU-accelerated WebGL particle system, covered by 195 automated tests (Vitest, Playwright + Axe-Core and Cypress) and a 100/100/100/100 Lighthouse audit on desktop.</td>
-        </tr>
-        <tr>
           <td class="ach-label">Zeiss AI Recommendation<br>Platform</td>
-          <td>MVP built with an 11-person team for Zeiss, developing the React and TypeScript frontend for assisted OCR prescription validation, AI-driven lens recommendations and real-time sales dashboards.</td>
+          <td>Corporate MVP built with an 11-person team for Zeiss, developing the React 19 and TypeScript frontend for assisted OCR prescription validation, AI-driven lens recommendations and real-time sales dashboards.</td>
         </tr>
         <tr>
-          <td class="ach-label">Programming Instructor</td>
-          <td>Taught Programming (JavaScript logic, REST API integration and relational databases) to a class of 10 students at SENAI/FAETEC, creating all teaching material from the institution's syllabus.</td>
+          <td class="ach-label">Work-Fitness &amp; Portfolio<br>(Live Production Apps)</td>
+          <td>Freelance commercial platform (TypeScript, Clean Architecture, Docker/Nginx, 217 tests) and interactive portfolio (Angular 22 Signals, WebGL/Three.js, 195 tests), both scoring 100/100 across all 4 Google Lighthouse categories.</td>
+        </tr>
+        <tr>
+          <td class="ach-label">FarmFlow Mobile<br>(Offline-First React Native)</td>
+          <td>Precision agri-tech mobile app in React Native (Expo SDK 54, React 19) with an offline-first FIFO mutation queue, MAPA spray records with canvas SHA-256 digital signatures, OIDC biometric login and 138 tests across 26 Jest suites.</td>
         </tr>
       </table>
     </section>
@@ -466,27 +467,27 @@ const FRONTEND_EN = `<!DOCTYPE html>
         </tr>
         <tr>
           <td class="sk-label">Frontend Web</td>
-          <td>React | Angular 22 (Signals, Standalone, OnPush, SSR, PWA) | Three.js / WebGL | Framer Motion | Styled Components | CSS Modules | Vite</td>
+          <td>React 18/19 | Angular 22 (Signals, Standalone, OnPush, SSR, PWA) | Three.js / WebGL | Framer Motion | Styled Components | CSS Modules | Vite</td>
         </tr>
         <tr>
           <td class="sk-label">Mobile &amp; UI/UX</td>
-          <td>React Native (Expo SDK 54) | React Navigation (Drawer, Stack, Tabs) | React Hook Form | Zod | Design Systems | Responsive Design &amp; Accessibility (WCAG 2.1 AA/AAA)</td>
+          <td>React Native (Expo SDK 54, Offline-First Architecture) | React Navigation | React Hook Form | Zod | Design Systems | Accessibility (WCAG 2.1 AA/AAA &amp; VLibras)</td>
         </tr>
         <tr>
-          <td class="sk-label">Automated Testing</td>
-          <td>Vitest | Playwright | Cypress | Axe-Core (WCAG Accessibility Audits) | Unit &amp; End-to-End (E2E) Testing</td>
+          <td class="sk-label">Testing &amp; Quality</td>
+          <td>Vitest | Jest | Playwright (Multi-Viewport E2E) | Cypress | Axe-Core (WCAG Audits) | Lighthouse 100/100</td>
         </tr>
         <tr>
           <td class="sk-label">API &amp; Backend Integration</td>
-          <td>REST APIs | Axios | JWT &amp; RBAC | Generative AI Integration (Google Gemini AI / n8n / OCR) | Java (Spring Boot) | C# (.NET) | PostgreSQL</td>
+          <td>REST APIs | Keycloak OIDC &amp; JWT (RBAC) | Generative AI Integration (Gemini SDK / n8n / OCR) | Java 21 (Spring Boot 4) | C# (.NET 10) | PostgreSQL</td>
         </tr>
         <tr>
-          <td class="sk-label">Tools</td>
-          <td>Git | GitHub | GitHub Actions | Vercel (CI/CD) | Docker | Figma | Swagger / OpenAPI</td>
+          <td class="sk-label">DevOps &amp; Tools</td>
+          <td>Docker &amp; Docker Compose | Nginx | CI/CD (GitHub Actions &amp; Vercel) | Git | GA4 / GTM / Meta Pixel | Figma | Swagger / OpenAPI 3</td>
         </tr>
         <tr>
-          <td class="sk-label">Practices</td>
-          <td>Agile / Scrum | Modular Componentization | Mobile-First | Clean Architecture</td>
+          <td class="sk-label">Architecture &amp; Practices</td>
+          <td>Clean Architecture | Offline-First | Modular Componentization | Mobile-First | Agile / Scrum</td>
         </tr>
       </table>
     </section>
@@ -527,6 +528,25 @@ const FRONTEND_EN = `<!DOCTYPE html>
       </div>
 
       <div class="entry">
+        <div class="entry-title">FarmFlow - Offline-First Mobile App - <a href="https://github.com/DevYuriVieira/farmflow-mobile">github.com/DevYuriVieira/farmflow-mobile</a></div>
+        <div class="entry-meta">Personal | 2026 | React Native | Expo SDK 54 | React 19 | TypeScript | AsyncStorage | NetInfo | Jest | Java 21 / Spring Boot 4 API</div>
+        <ul class="bullets">
+          <li>App for field operators who work with no signal: a <strong>transactional FIFO mutation queue</strong> persisted in AsyncStorage with deterministic reconciliation on reconnect (NetInfo), so no spray record is ever lost.</li>
+          <li>MAPA-mandated spray records with a <strong>canvas-drawn digital signature hashed with SHA-256</strong>, biometric login with Keycloak OIDC, backed by a Java 21 API that sustained <strong>2,450 req/s</strong> in k6 tests.</li>
+          <li><strong>138 tests across 26 Jest suites</strong> on the client, within a 549-test suite spanning app and API.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-title">Work-Fitness - Production Commercial Platform - <a href="https://github.com/DevYuriVieira/Work-Fitness">github.com/DevYuriVieira/Work-Fitness</a> · <a href="https://viniciusantos.vercel.app/">viniciusantos.vercel.app</a></div>
+        <div class="entry-meta">Freelance (real client) | 2025 - Present | TypeScript 5.7 | Vite 6 | Clean Architecture | Vitest | Playwright | WCAG 2.1 AA | VLibras | Docker | Nginx | GA4 / GTM / Meta Pixel</div>
+        <ul class="bullets">
+          <li>Commercial platform delivered end to end for a personal trainer, replacing spreadsheets and an untriaged WhatsApp inbox: a body-assessment engine (WHO BMI, Deurenberg body fat, Mifflin-St Jeor BMR) isolated in a <strong>DOM-free Clean Architecture core</strong>, and qualified leads with UTM tags preserved straight into WhatsApp. A <strong>100/100 score in all 4 Lighthouse categories</strong> with a 32 kB bundle.</li>
+          <li>Accessibility treated as a requirement (WCAG 2.1 AA, VLibras with no layout shift, bionic reading and colorblind filters), <strong>170 Vitest tests and 47 Playwright specs across 26 viewports</strong>, GA4, GTM and Meta Pixel telemetry, and a multi-stage Docker container served by Nginx.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
         <div class="entry-title">Personal Portfolio - <a href="https://devyurivieira.vercel.app">devyurivieira.vercel.app</a></div>
         <div class="entry-meta">Personal | 2026 | Angular 22 | TypeScript | Three.js / WebGL | SCSS | Vitest | Playwright | Cypress | PWA | Live in production</div>
         <ul class="bullets">
@@ -536,29 +556,11 @@ const FRONTEND_EN = `<!DOCTYPE html>
       </div>
 
       <div class="entry">
-        <div class="entry-title">Aurora - Personal Growth Platform - <a href="https://github.com/DevYuriVieira/aurora-growth-platform">github.com/DevYuriVieira/aurora-growth-platform</a></div>
-        <div class="entry-meta">Collaborative (6 devs) | 2026 | React Native | Expo SDK 54 | TypeScript | React Navigation | Zod | AsyncStorage | Final Project - Multiplatform Applications</div>
-        <ul class="bullets">
-          <li>A <strong>React Native (Expo SDK 54) and TypeScript</strong> mobile app for tracking personal goals, XP/level gamification, mentorships and community activity, with session persistence (AsyncStorage), Context-API-protected routes (<code>AuthContext</code>), and a goals module with full CRUD.</li>
-          <li>Combines three hybrid navigation patterns in one app (Drawer, Stack and Tabs), Zod-validated forms via <strong>React Hook Form + Zod</strong>, and native device features such as camera, gallery, maps/geolocation through Expo Location, encrypted storage via <strong>Expo Secure Store</strong>, plus a community feed and native <strong>QR-code</strong> event check-in.</li>
-        </ul>
-      </div>
-
-      <div class="entry">
         <div class="entry-title">PlayStation Evolution Timeline - <a href="https://playstation-evolution-timeline.vercel.app">playstation-evolution-timeline.vercel.app</a></div>
         <div class="entry-meta">Personal | 2026 | React 18 | TypeScript 5 | Vite 5 | Framer Motion 11 | CSS Modules | Intersection Observer - <a href="https://github.com/DevYuriVieira/playstation-evolution-timeline">github.com/DevYuriVieira/playstation-evolution-timeline</a></div>
         <ul class="bullets">
           <li>Live production web application showcasing 30 years of PlayStation console hardware evolution (PS1 to PS5 Pro), engineered with modular <strong>React 18, TypeScript and CSS Modules</strong> components and viewport-centered scroll orchestration via the <strong>Intersection Observer API</strong> (<code>rootMargin: "-50%"</code>), eliminating expensive window scroll listeners.</li>
           <li>Implements visibility-triggered numeric counters (<code>StatsAnimated</code>) and hardware-accelerated <strong>60 FPS animations using Framer Motion</strong> without layout thrashing, an adaptive <code>SideTimeline</code> navigation bar, and an automated CI/CD pipeline via GitHub and Vercel.</li>
-        </ul>
-      </div>
-
-      <div class="entry">
-        <div class="entry-title">Anime Weather Platform - <a href="https://github.com/DevYuriVieira/anime-weather-platform">github.com/DevYuriVieira/anime-weather-platform</a></div>
-        <div class="entry-meta">Collaborative (Pair Programming) | 2026 | React 18 | Vite | Google Gemini SDK | OpenWeather API | Jikan API | CSS Modules | Glassmorphism</div>
-        <ul class="bullets">
-          <li>Frontend orchestration system built with <strong>React 18, Vite and CSS Modules</strong> implementing a multi-layered logic pipeline (<strong>Weather → Atmospheric Mood → Anime Genre</strong>), consuming live meteorological data from the <strong>OpenWeather API</strong> and cross-referencing cultural catalogs from MyAnimeList via the <strong>Jikan API</strong>.</li>
-          <li>Integrates the <strong>Google Gemini AI SDK</strong> via Prompt Engineering to synthesize context-aware recommendations tailored to the user's live city climate, paired with real-time weather-adaptive UI themes, <em>Glassmorphism</em> styling, ambient Lofi audio and protected routes.</li>
         </ul>
       </div>
     </section>
@@ -630,7 +632,7 @@ const BACKEND_PT = `<!DOCTYPE html>
     <section class="section">
       <h2 class="section-title">RESUMO PROFISSIONAL</h2>
       <p class="summary">
-        Engenheiro de Software Back-End com foco em <strong>Java (Spring Boot)</strong> e <strong>.NET 10 (C# 14 / ASP.NET Core)</strong>, com sólida experiência prática em <strong>APIs RESTful</strong>, <strong>mensageria assíncrona (RabbitMQ)</strong>, <strong>PostgreSQL</strong> e <strong>Clean Architecture / DDD</strong>. Desenvolvo sistemas distribuídos seguros (JWT, Spring Security, Keycloak OIDC), resilientes e cobertos por testes automatizados (xUnit e JUnit 5). Mais de 910 h de formação prática em software pelo Serratec e UECE. Pós-graduado em Engenharia de Software. Inglês Avançado (B2+), com programa C1/C2 concluído pela Wizard. Disponível para atuação remota nacional e internacional.
+        Engenheiro de Software Back-End com foco em <strong>Java 21 LTS (Spring Boot 4 &amp; Virtual Threads)</strong> e <strong>.NET 10 (C# 14 / ASP.NET Core)</strong>, com sólida experiência prática em <strong>APIs RESTful</strong>, <strong>mensageria assíncrona (RabbitMQ &amp; Transactional Outbox)</strong>, <strong>PostgreSQL</strong> e <strong>Clean Architecture / DDD</strong>. Desenvolvo sistemas distribuídos seguros (JWT, Spring Security, Keycloak OIDC), resilientes e cobertos por testes automatizados (xUnit, JUnit 5 e k6). Mais de 910 h de formação prática em software pelo Serratec e UECE. Pós-graduado em Engenharia de Software. Inglês Avançado (B2+), com programa C1/C2 concluído pela Wizard. Disponível para atuação remota nacional e internacional.
       </p>
     </section>
 
@@ -638,16 +640,16 @@ const BACKEND_PT = `<!DOCTYPE html>
       <h2 class="section-title">DESTAQUES</h2>
       <table class="ach-table">
         <tr>
-          <td class="ach-label">FleetOps API<br>(.NET 10 &amp; RabbitMQ)</td>
-          <td>Arquitetura corporativa em C# 14 / .NET 10 com Clean Architecture, DDD, Transactional Outbox, RabbitMQ, Keycloak OIDC, PostgreSQL 18 (SKIP LOCKED / xmin), 300 testes automatizados em xUnit e throughput de 278 RPS ACID no k6.</td>
-        </tr>
-        <tr>
           <td class="ach-label">Zeiss - Plataforma de<br>Recomendação com IA</td>
-          <td>MVP construído com um time de 11 pessoas para a Zeiss, integrando APIs REST em Java 17 / Spring Boot 4, PostgreSQL, controle de acesso JWT em 3 níveis e pipeline de OCR + IA (n8n/RAG).</td>
+          <td>MVP corporativo construído com um time de 11 pessoas para a Zeiss, integrando APIs REST em Java / Spring Boot 4.1, WebFlux, PostgreSQL 18, controle de acesso JWT em 3 níveis e pipeline de OCR + IA (n8n/RAG).</td>
         </tr>
         <tr>
-          <td class="ach-label">Instrutor Back-End<br>(Java &amp; Spring Boot)</td>
-          <td>Lecionei Programação Back-End (Java, POO, PostgreSQL/DBeaver e APIs REST com Spring Boot) para uma turma de 10 alunos no SENAI/FAETEC, elaborando todo o material didático da instituição.</td>
+          <td class="ach-label">FleetOps API<br>(.NET 10 &amp; RabbitMQ)</td>
+          <td>Arquitetura distribuída em C# 14 / .NET 10 com Clean Architecture, DDD, Transactional Outbox, RabbitMQ (DLQ), Keycloak OIDC, PostgreSQL 18 (SKIP LOCKED / xmin), 300 testes em xUnit e 278 RPS ACID no k6.</td>
+        </tr>
+        <tr>
+          <td class="ach-label">FarmFlow Backend<br>(Java 21 &amp; Virtual Threads)</td>
+          <td>Motor distribuído em Java 21 LTS e Spring Boot 4.1 sustentando 2.450 req/s no k6 com zero erros 5xx, Transactional Outbox com RabbitMQ (CloudEvents), PostgreSQL 17 particionado com RLS fail-closed e 411 testes automatizados.</td>
         </tr>
       </table>
     </section>
@@ -657,31 +659,31 @@ const BACKEND_PT = `<!DOCTYPE html>
       <table class="skills-table">
         <tr>
           <td class="sk-label">Linguagens</td>
-          <td>Java 17+ | C# 14 (.NET 10) | SQL | TypeScript / JavaScript</td>
+          <td>Java 21 LTS (Java 17/21) | C# 14 (.NET 10) | SQL | TypeScript / JavaScript</td>
         </tr>
         <tr>
           <td class="sk-label">Frameworks Backend</td>
-          <td>Spring Boot 3/4 | Spring Security 6 | ASP.NET Core (.NET 10) | JPA / Hibernate | Entity Framework Core 10 | JDBC Puro | Bean Validation</td>
+          <td>Spring Boot 3/4 | Virtual Threads | Spring WebFlux | Spring Security 6 | ASP.NET Core (.NET 10) | JPA / Hibernate | Entity Framework Core 10</td>
         </tr>
         <tr>
           <td class="sk-label">Mensageria &amp; Segurança</td>
-          <td>RabbitMQ (Publisher Confirms, Filas TTL Retry, DLX/DLQ) | Transactional Outbox Pattern | Consumidor Idempotente | Keycloak OIDC (RS256/JWKS) | JWT &amp; RBAC</td>
+          <td>RabbitMQ (CloudEvents v1.0, Publisher Confirms, TTL Retry, DLX/DLQ) | Transactional Outbox | Sagas Coreografadas | Keycloak OIDC (RS256/JWKS) | JWT &amp; RBAC</td>
         </tr>
         <tr>
           <td class="sk-label">Banco de Dados</td>
-          <td>PostgreSQL 16/18 (MVCC xmin, FOR UPDATE SKIP LOCKED, Modelagem 3FN, Views, Índices, Triggers) | MySQL | Otimização de Consultas (N+1)</td>
+          <td>PostgreSQL 16–18 (Particionamento Temporal, Índices BRIN, RLS Fail-Closed, FOR UPDATE SKIP LOCKED, MVCC xmin, 3FN) | MySQL | Otimização N+1</td>
         </tr>
         <tr>
           <td class="sk-label">Testes &amp; Observabilidade</td>
-          <td>xUnit (Unitários, Integração e Injeção de Falhas) | JUnit 5 | k6 (Testes de Carga) | OpenTelemetry &amp; Jaeger (Tracing Distribuído W3C)</td>
+          <td>JUnit 5 (411 testes sob Virtual Threads) | xUnit (300 testes Unitários/Integração/Fault Injection) | k6 (Load Testing) | OpenTelemetry &amp; Jaeger (W3C Tracing)</td>
         </tr>
         <tr>
-          <td class="sk-label">Ferramentas &amp; DevOps</td>
-          <td>Docker &amp; Docker Compose | Git | GitHub Actions | DBeaver | Swagger / OpenAPI 3 | Maven | n8n | OCR &amp; RAG</td>
+          <td class="sk-label">DevOps &amp; Ferramentas</td>
+          <td>Docker &amp; Docker Compose | CI/CD (GitHub Actions) | Git | Linux / Nginx | DBeaver | Swagger / OpenAPI 3 | Maven | n8n (OCR &amp; RAG)</td>
         </tr>
         <tr>
           <td class="sk-label">Arquitetura &amp; Métodos</td>
-          <td>Clean Architecture | Domain-Driven Design (DDD) | SOLID | Arquitetura em Camadas (MVC + DAO / DTOs) | API-First | Agile / Scrum</td>
+          <td>Clean Architecture | Domain-Driven Design (DDD) | Event-Driven Architecture | SOLID | Idempotência &amp; Concorrência | API-First | Agile / Scrum</td>
         </tr>
       </table>
     </section>
@@ -741,20 +743,21 @@ const BACKEND_PT = `<!DOCTYPE html>
       </div>
 
       <div class="entry">
+        <div class="entry-title">FarmFlow - Plataforma Agro Distribuída (Java 21) - <a href="https://github.com/DevYuriVieira/farmflow-backend">github.com/DevYuriVieira/farmflow-backend</a></div>
+        <div class="entry-meta">Pessoal | 2026 | Java 21 LTS | Spring Boot 4.1 | Virtual Threads | PostgreSQL 17 | RabbitMQ | Keycloak OIDC | OpenTelemetry | k6</div>
+        <ul class="bullets">
+          <li>Projeto autoral para um problema real do campo: operador sem sinal, caderno de defensivos exigido pelo MAPA e telemetria de pivôs e silos. Projetei um backend em <strong>Java 21 com Virtual Threads e Spring Boot 4.1</strong> que sustentou <strong>2.450 req/s</strong> em testes de carga k6, com zero erros 5xx.</li>
+          <li>Consistência sem dual-write: <strong>Transactional Outbox</strong> com <strong>RabbitMQ</strong> (CloudEvents v1.0, DLX, TTL e Dead Letter Queue), polling concorrente com <code>FOR UPDATE SKIP LOCKED</code>, sagas coreografadas com advisory locks (<code>pg_try_advisory_xact_lock</code>) e tracing W3C ponta a ponta com OpenTelemetry.</li>
+          <li>Dados e segurança pensados para escala e auditoria: <strong>PostgreSQL 17</strong> com particionamento temporal declarativo, índices BRIN e <strong>Row Level Security fail-closed</strong>; Keycloak 26.1 (OIDC) com proteção contra enumeração IDOR (404 no lugar de 403) e <strong>411 testes no backend</strong> executados sob 100 Virtual Threads.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
         <div class="entry-title">Spring Boot E-Commerce API - <a href="https://github.com/DevYuriVieira/ecommerce-serratec-api">github.com/DevYuriVieira/ecommerce-serratec-api</a></div>
         <div class="entry-meta">Colaborativo (Residência Serratec) | 2026 | Java 17 | Spring Boot 3 | Spring Security 6 | PostgreSQL | JPA/Hibernate | Swagger/OpenAPI 3</div>
         <ul class="bullets">
           <li>API RESTful de e-commerce construída em <strong>Java 17 e Spring Boot 3</strong> estruturada em camadas (Controller, Service, Repository e DTOs) para isolar as regras de negócio, gerenciar controle de estoque concorrente, validar pedidos e blindar as entidades de domínio contra exposição direta.</li>
           <li>Implementa filtros customizados na cadeia do <strong>Spring Security 6 para autenticação stateless via JWT</strong> e autorização granular baseada em perfis (RBAC), mapeamento objeto-relacional otimizado com <strong>JPA/Hibernate no PostgreSQL</strong> e contratos de API interativos documentados com Swagger UI / OpenAPI 3.</li>
-        </ul>
-      </div>
-
-      <div class="entry">
-        <div class="entry-title">Sistema de Folha de Pagamento - <a href="https://github.com/DevYuriVieira/payroll-system-java">github.com/DevYuriVieira/payroll-system-java</a></div>
-        <div class="entry-meta">Colaborativo (4 devs) | 2026 | Java 17 | PostgreSQL | JDBC | MVC | DAO | Projeto Final POO Serratec</div>
-        <ul class="bullets">
-          <li>Automatiza o processamento em lote e o cálculo de alíquotas progressivas de <strong>INSS e IRRF</strong> e deduções por dependentes conforme a legislação brasileira, lendo dados de funcionários via CSV e persistindo tudo com <strong>JDBC puro no PostgreSQL</strong> em uma arquitetura em camadas <strong>MVC + DAO</strong> construída sem ORM para reforçar os fundamentos de SQL e POO.</li>
-          <li>Usa <code>BigDecimal (RoundingMode.HALF_UP)</code> para precisão monetária exata em todos os cálculos, padrão <strong>Singleton</strong> no gerenciador de conexões com o banco, exceções de domínio customizadas (<code>CpfInvalidoException</code>, <code>SalarioInvalidoException</code>) e exportação automatizada de relatórios CSV.</li>
         </ul>
       </div>
 
@@ -834,7 +837,7 @@ const BACKEND_EN = `<!DOCTYPE html>
     <section class="section">
       <h2 class="section-title">PROFESSIONAL SUMMARY</h2>
       <p class="summary">
-        Back-End Software Engineer specializing in <strong>Java (Spring Boot)</strong> and <strong>.NET 10 (C# 14 / ASP.NET Core)</strong>, with hands-on experience in <strong>RESTful APIs</strong>, <strong>asynchronous messaging (RabbitMQ)</strong>, <strong>PostgreSQL</strong> and <strong>Clean Architecture / DDD</strong>. I build secure (JWT, Spring Security, Keycloak OIDC), resilient distributed backend services backed by automated test suites (xUnit and JUnit 5). Over 910 h of software development training at Serratec and UECE. Postgraduate in Software Engineering. Advanced English (B2+), with a C1/C2 programme completed at Wizard. Open to national and international remote roles.
+        Back-End Software Engineer specializing in <strong>Java 21 LTS (Spring Boot 4 &amp; Virtual Threads)</strong> and <strong>.NET 10 (C# 14 / ASP.NET Core)</strong>, with hands-on experience in <strong>RESTful APIs</strong>, <strong>asynchronous messaging (RabbitMQ &amp; Transactional Outbox)</strong>, <strong>PostgreSQL</strong> and <strong>Clean Architecture / DDD</strong>. I build secure (JWT, Spring Security, Keycloak OIDC), resilient distributed backend services backed by automated test suites (xUnit, JUnit 5 and k6). Over 910 h of software development training at Serratec and UECE. Postgraduate in Software Engineering. Advanced English (B2+), with a C1/C2 programme completed at Wizard. Open to national and international remote roles.
       </p>
     </section>
 
@@ -842,16 +845,16 @@ const BACKEND_EN = `<!DOCTYPE html>
       <h2 class="section-title">KEY ACHIEVEMENTS</h2>
       <table class="ach-table">
         <tr>
-          <td class="ach-label">FleetOps API<br>(.NET 10 &amp; RabbitMQ)</td>
-          <td>Corporate reference architecture in C# 14 / .NET 10 with Clean Architecture, DDD, Transactional Outbox, RabbitMQ, Keycloak OIDC, PostgreSQL 18 (SKIP LOCKED / xmin), 300 automated xUnit tests and 278 RPS ACID throughput on k6.</td>
-        </tr>
-        <tr>
           <td class="ach-label">Zeiss AI Recommendation<br>Platform</td>
-          <td>MVP built with an 11-person team for Zeiss, integrating Java 17 / Spring Boot 4 REST APIs, PostgreSQL, three-tier JWT role-based access control and an OCR + AI pipeline (n8n/RAG).</td>
+          <td>Corporate MVP built with an 11-person team for Zeiss, integrating Java / Spring Boot 4.1 REST APIs, WebFlux, PostgreSQL 18, three-tier JWT role-based access control and an OCR + AI pipeline (n8n/RAG).</td>
         </tr>
         <tr>
-          <td class="ach-label">Back-End Instructor<br>(Java &amp; Spring Boot)</td>
-          <td>Taught Back-End Programming (Java, OOP, PostgreSQL/DBeaver and REST APIs with Spring Boot) to a class of 10 students at SENAI/FAETEC, creating all teaching material from the institution's syllabus.</td>
+          <td class="ach-label">FleetOps API<br>(.NET 10 &amp; RabbitMQ)</td>
+          <td>Distributed architecture in C# 14 / .NET 10 with Clean Architecture, DDD, Transactional Outbox, RabbitMQ (DLQ), Keycloak OIDC, PostgreSQL 18 (SKIP LOCKED / xmin), 300 xUnit tests and 278 RPS ACID throughput on k6.</td>
+        </tr>
+        <tr>
+          <td class="ach-label">FarmFlow Backend<br>(Java 21 &amp; Virtual Threads)</td>
+          <td>Distributed engine in Java 21 LTS and Spring Boot 4.1 sustaining 2,450 req/s in k6 with zero 5xx errors, Transactional Outbox over RabbitMQ (CloudEvents), time-series partitioned PostgreSQL 17 with fail-closed RLS and 411 automated tests.</td>
         </tr>
       </table>
     </section>
@@ -861,31 +864,31 @@ const BACKEND_EN = `<!DOCTYPE html>
       <table class="skills-table">
         <tr>
           <td class="sk-label">Languages</td>
-          <td>Java 17+ | C# 14 (.NET 10) | SQL | TypeScript / JavaScript</td>
+          <td>Java 21 LTS (Java 17/21) | C# 14 (.NET 10) | SQL | TypeScript / JavaScript</td>
         </tr>
         <tr>
           <td class="sk-label">Backend Frameworks</td>
-          <td>Spring Boot 3/4 | Spring Security 6 | ASP.NET Core (.NET 10) | JPA / Hibernate | Entity Framework Core 10 | Raw JDBC | Bean Validation</td>
+          <td>Spring Boot 3/4 | Virtual Threads | Spring WebFlux | Spring Security 6 | ASP.NET Core (.NET 10) | JPA / Hibernate | Entity Framework Core 10</td>
         </tr>
         <tr>
           <td class="sk-label">Messaging &amp; Security</td>
-          <td>RabbitMQ (Publisher Confirms, TTL Retry Queues, DLX/DLQ) | Transactional Outbox Pattern | Idempotent Consumer | Keycloak OIDC (RS256/JWKS) | JWT &amp; RBAC</td>
+          <td>RabbitMQ (CloudEvents v1.0, Publisher Confirms, TTL Retry, DLX/DLQ) | Transactional Outbox | Choreographed Sagas | Keycloak OIDC (RS256/JWKS) | JWT &amp; RBAC</td>
         </tr>
         <tr>
           <td class="sk-label">Databases</td>
-          <td>PostgreSQL 16/18 (MVCC xmin, FOR UPDATE SKIP LOCKED, 3NF Modeling, Views, Indexes, Triggers) | MySQL | Query Optimisation (N+1 elimination)</td>
+          <td>PostgreSQL 16–18 (Time-Series Partitioning, BRIN Indexes, Fail-Closed RLS, FOR UPDATE SKIP LOCKED, MVCC xmin, 3NF) | MySQL | N+1 Query Optimisation</td>
         </tr>
         <tr>
           <td class="sk-label">Testing &amp; Observability</td>
-          <td>xUnit (Unit, Integration &amp; Fault Injection) | JUnit 5 | k6 (Load Testing) | OpenTelemetry &amp; Jaeger (W3C Distributed Tracing)</td>
+          <td>JUnit 5 (411 tests under Virtual Threads) | xUnit (300 Unit/Integration/Fault-Injection tests) | k6 (Load Testing) | OpenTelemetry &amp; Jaeger (W3C Tracing)</td>
         </tr>
         <tr>
-          <td class="sk-label">Tools &amp; DevOps</td>
-          <td>Docker &amp; Docker Compose | Git | GitHub Actions | DBeaver | Swagger / OpenAPI 3 | Maven | n8n | OCR &amp; RAG</td>
+          <td class="sk-label">DevOps &amp; Tools</td>
+          <td>Docker &amp; Docker Compose | CI/CD (GitHub Actions) | Git | Linux / Nginx | DBeaver | Swagger / OpenAPI 3 | Maven | n8n (OCR &amp; RAG)</td>
         </tr>
         <tr>
           <td class="sk-label">Architecture &amp; Practices</td>
-          <td>Clean Architecture | Domain-Driven Design (DDD) | SOLID | Layered Architecture (MVC + DAO / DTOs) | API-First | Agile / Scrum</td>
+          <td>Clean Architecture | Domain-Driven Design (DDD) | Event-Driven Architecture | SOLID | Idempotency &amp; Concurrency | API-First | Agile / Scrum</td>
         </tr>
       </table>
     </section>
@@ -936,20 +939,21 @@ const BACKEND_EN = `<!DOCTYPE html>
       </div>
 
       <div class="entry">
+        <div class="entry-title">FarmFlow - Distributed Agri-Tech Platform (Java 21) - <a href="https://github.com/DevYuriVieira/farmflow-backend">github.com/DevYuriVieira/farmflow-backend</a></div>
+        <div class="entry-meta">Personal | 2026 | Java 21 LTS | Spring Boot 4.1 | Virtual Threads | PostgreSQL 17 | RabbitMQ | Keycloak OIDC | OpenTelemetry | k6</div>
+        <ul class="bullets">
+          <li>Self-driven project built around a real field problem: operators with no signal, spray logs required by Brazil's MAPA regulator, and irrigation pivot and silo telemetry. I designed a <strong>Java 21, Virtual Threads and Spring Boot 4.1</strong> backend that sustained <strong>2,450 req/s</strong> in k6 load tests with zero 5xx errors.</li>
+          <li>Consistency without dual-writes: <strong>Transactional Outbox</strong> over <strong>RabbitMQ</strong> (CloudEvents v1.0, DLX, TTL and Dead Letter Queue), concurrent polling with <code>FOR UPDATE SKIP LOCKED</code>, choreographed sagas with advisory locks (<code>pg_try_advisory_xact_lock</code>) and end-to-end W3C tracing with OpenTelemetry.</li>
+          <li>Data and security designed for scale and audit: <strong>PostgreSQL 17</strong> with declarative time-series partitioning, BRIN indexes and <strong>fail-closed Row Level Security</strong>; Keycloak 26.1 (OIDC) with IDOR enumeration protection (404 instead of 403) and <strong>411 backend tests</strong> running under 100 Virtual Threads.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
         <div class="entry-title">Spring Boot E-Commerce API - <a href="https://github.com/DevYuriVieira/ecommerce-serratec-api">github.com/DevYuriVieira/ecommerce-serratec-api</a></div>
         <div class="entry-meta">Collaborative (Serratec Residency) | 2026 | Java 17 | Spring Boot 3 | Spring Security 6 | PostgreSQL | JPA/Hibernate | Swagger/OpenAPI 3</div>
         <ul class="bullets">
           <li>RESTful e-commerce backend built in <strong>Java 17 and Spring Boot 3</strong> structured in layers (Controller, Service, Repository and DTOs) to decouple business rules, handle concurrent inventory control, validate orders and protect domain entities from direct exposure.</li>
           <li>Implements custom security filters in the <strong>Spring Security 6 filter chain for stateless JWT authentication</strong> and granular Role-Based Access Control (RBAC), optimized relational mapping with <strong>JPA/Hibernate on PostgreSQL</strong>, and interactive OpenAPI 3 / Swagger UI documentation.</li>
-        </ul>
-      </div>
-
-      <div class="entry">
-        <div class="entry-title">Payroll System - <a href="https://github.com/DevYuriVieira/payroll-system-java">github.com/DevYuriVieira/payroll-system-java</a></div>
-        <div class="entry-meta">Collaborative (4 devs) | 2026 | Java 17 | PostgreSQL | JDBC | MVC | DAO | Serratec OOP Final Project</div>
-        <ul class="bullets">
-          <li>Automates batch processing and progressive <strong>INSS and IRRF</strong> payroll tax calculations with dependent deductions under Brazilian tax law, reading employee data from CSV and persisting everything through <strong>raw JDBC on PostgreSQL</strong> in a layered <strong>MVC + DAO</strong> architecture built without an ORM to reinforce SQL and OOP fundamentals.</li>
-          <li>Uses <code>BigDecimal (RoundingMode.HALF_UP)</code> throughout for exact monetary precision, a <strong>Singleton</strong> for the JDBC database connection manager, custom domain exceptions (<code>CpfInvalidoException</code>, <code>SalarioInvalidoException</code>) and automated CSV report export.</li>
         </ul>
       </div>
 
@@ -1029,7 +1033,7 @@ const FULLSTACK_PT = `<!DOCTYPE html>
     <section class="section">
       <h2 class="section-title">RESUMO PROFISSIONAL</h2>
       <p class="summary">
-        Engenheiro de Software Full-Stack com foco em <strong>Java (Spring Boot)</strong>, <strong>.NET 10 (C#)</strong> e <strong>TypeScript (React, Angular e React Native)</strong>, além de sólida experiência prática em <strong>Python (Django)</strong>, <strong>APIs REST</strong>, <strong>RabbitMQ</strong> e <strong>PostgreSQL</strong>. Desenvolvo aplicações completas com segurança (JWT, Keycloak OIDC), integrações com IA generativa e suítes de testes automatizados. Mais de 910 h de formação prática em software pelo Serratec e UECE. Pós-graduado em Engenharia de Software. Inglês Avançado (B2+), com programa C1/C2 concluído pela Wizard. Disponível para atuação remota nacional e internacional.
+        Engenheiro de Software Full-Stack com foco em <strong>Java 21 LTS (Spring Boot 4 &amp; Virtual Threads)</strong>, <strong>.NET 10 (C# 14)</strong> e <strong>TypeScript (React 19, Angular 22 e React Native)</strong>, além de sólida experiência prática em <strong>Python (Django)</strong>, <strong>APIs REST</strong>, <strong>RabbitMQ</strong> e <strong>PostgreSQL</strong>. Desenvolvo sistemas distribuídos e aplicações web/mobile completas com segurança (JWT, Keycloak OIDC), integrações com IA generativa e suítes de testes automatizados. Mais de 910 h de formação prática em software pelo Serratec e UECE. Pós-graduado em Engenharia de Software. Inglês Avançado (B2+), com programa C1/C2 concluído pela Wizard. Disponível para atuação remota nacional e internacional.
       </p>
     </section>
 
@@ -1037,16 +1041,16 @@ const FULLSTACK_PT = `<!DOCTYPE html>
       <h2 class="section-title">DESTAQUES</h2>
       <table class="ach-table">
         <tr>
-          <td class="ach-label">App em Produção<br>(Angular 22 &amp; WebGL)</td>
-          <td>Portfólio pessoal desenvolvido em Angular 22 e TypeScript, com Signals nativos e sistema de partículas WebGL acelerado por GPU, coberto por 195 testes automatizados (Vitest, Playwright + Axe-Core e Cypress) e auditoria Lighthouse 100/100/100/100 no desktop.</td>
-        </tr>
-        <tr>
           <td class="ach-label">Zeiss - Plataforma de<br>Recomendação com IA</td>
-          <td>MVP full-stack construído com um time de 11 pessoas para a Zeiss (React, TypeScript e Java/Spring Boot 4), substituindo a leitura manual de receitas por OCR + recomendação de lentes via IA e dashboards de vendas em tempo real.</td>
+          <td>MVP corporativo full-stack construído com um time de 11 pessoas para a Zeiss (React 19, TypeScript e Java/Spring Boot 4.1), substituindo a leitura manual de receitas por OCR + IA (n8n/RAG) e dashboards analíticos em tempo real.</td>
         </tr>
         <tr>
-          <td class="ach-label">Instrutor de<br>Programação</td>
-          <td>Lecionei Programação Back-End (Java/Spring Boot, POO e PostgreSQL) para uma turma de 10 alunos no SENAI/FAETEC, elaborando todo o material didático a partir da ementa da instituição.</td>
+          <td class="ach-label">FarmFlow &amp; FleetOps<br>(Sistemas Distribuídos)</td>
+          <td>Arquiteturas orientadas a eventos com Transactional Outbox, RabbitMQ, Keycloak OIDC e PostgreSQL (SKIP LOCKED / RLS): FarmFlow (Java 21 Virtual Threads + React Native Offline-First, 2.450 req/s, 549 testes) e FleetOps (.NET 10, 278 RPS ACID, 300 testes).</td>
+        </tr>
+        <tr>
+          <td class="ach-label">Work-Fitness &amp; Portfólio<br>(Apps em Produção)</td>
+          <td>Plataforma comercial freelance (TypeScript, Clean Architecture, Docker/Nginx, 217 testes) e portfólio interativo (Angular 22 Signals, WebGL/Three.js, 195 testes), ambos com nota máxima 100/100 nas 4 categorias do Google Lighthouse.</td>
         </tr>
       </table>
     </section>
@@ -1056,31 +1060,31 @@ const FULLSTACK_PT = `<!DOCTYPE html>
       <table class="skills-table">
         <tr>
           <td class="sk-label">Linguagens</td>
-          <td>Java 17+ | C# 14 (.NET 10) | TypeScript | JavaScript (ES6+) | Python | SQL</td>
+          <td>Java 21 LTS (Java 17/21) | C# 14 (.NET 10) | TypeScript | JavaScript (ES6+) | Python | SQL</td>
         </tr>
         <tr>
           <td class="sk-label">Frontend &amp; Mobile</td>
-          <td>React | Angular 22 (Signals, Standalone, OnPush, PWA) | React Native (Expo SDK 54) | Three.js / WebGL | SCSS | Zod | HTML5 | CSS3</td>
+          <td>React 18/19 | Angular 22 (Signals, Standalone, OnPush, PWA) | React Native (Expo SDK 54, Offline-First) | Three.js / WebGL | SCSS | Zod | WCAG 2.1 AA/AAA</td>
         </tr>
         <tr>
           <td class="sk-label">Backend &amp; Mensageria</td>
-          <td>Spring Boot 3/4 | ASP.NET Core (.NET 10) | Django | APIs REST | RabbitMQ (Outbox, DLQ) | JPA/Hibernate | EF Core 10 | Spring Security 6 | Keycloak OIDC | JWT &amp; Webhooks</td>
+          <td>Spring Boot 3/4 (Virtual Threads, WebFlux) | ASP.NET Core (.NET 10) | Django | RabbitMQ (Outbox, CloudEvents, DLQ) | JPA/Hibernate | EF Core 10 | Keycloak OIDC &amp; JWT</td>
         </tr>
         <tr>
-          <td class="sk-label">Testes &amp; Qualidade</td>
-          <td>xUnit | JUnit 5 | Vitest | Playwright | Cypress | Axe-Core (WCAG) | k6 (Testes de Carga) | OpenTelemetry &amp; Jaeger</td>
+          <td class="sk-label">Testes &amp; Observabilidade</td>
+          <td>JUnit 5 | xUnit | Vitest | Jest | Playwright (E2E) | Cypress | Axe-Core (WCAG) | k6 (Load Testing) | OpenTelemetry &amp; Jaeger (W3C Tracing)</td>
         </tr>
         <tr>
           <td class="sk-label">Banco de Dados</td>
-          <td>PostgreSQL 16/18 (FOR UPDATE SKIP LOCKED, MVCC xmin, 3FN) | MySQL | SQLite | SQL | Otimização de Consultas (N+1)</td>
+          <td>PostgreSQL 16–18 (Particionamento Temporal, Índices BRIN, RLS Fail-Closed, FOR UPDATE SKIP LOCKED, MVCC xmin, 3FN) | MySQL | SQLite | Otimização N+1</td>
         </tr>
         <tr>
-          <td class="sk-label">Ferramentas</td>
-          <td>Git | GitHub Actions | Docker &amp; Docker Compose | DBeaver | Vercel (CI/CD) | Swagger / OpenAPI 3 | Maven | n8n &amp; OCR</td>
+          <td class="sk-label">DevOps &amp; Ferramentas</td>
+          <td>Docker &amp; Docker Compose | Nginx | CI/CD (GitHub Actions &amp; Vercel) | Git | DBeaver | Swagger / OpenAPI 3 | Maven | n8n (OCR &amp; RAG)</td>
         </tr>
         <tr>
-          <td class="sk-label">Metodologias</td>
-          <td>Clean Architecture | Domain-Driven Design (DDD) | SOLID | Agile / Scrum | API-First</td>
+          <td class="sk-label">Arquitetura &amp; Métodos</td>
+          <td>Clean Architecture | Domain-Driven Design (DDD) | Event-Driven Architecture | Offline-First | SOLID | Agile / Scrum | API-First</td>
         </tr>
       </table>
     </section>
@@ -1139,29 +1143,30 @@ const FULLSTACK_PT = `<!DOCTYPE html>
       </div>
 
       <div class="entry">
+        <div class="entry-title">FarmFlow - Mobile Offline-First + Backend Distribuído - <a href="https://github.com/DevYuriVieira/farmflow-mobile">farmflow-mobile</a> · <a href="https://github.com/DevYuriVieira/farmflow-backend">farmflow-backend</a></div>
+        <div class="entry-meta">Pessoal | 2026 | React Native | Expo SDK 54 | React 19 | Java 21 | Spring Boot 4.1 | Virtual Threads | PostgreSQL 17 | RabbitMQ | Keycloak OIDC | OpenTelemetry</div>
+        <ul class="bullets">
+          <li>Plataforma ponta a ponta para o agro, onde a internet some no meio da lavoura: app em <strong>React Native com fila FIFO offline-first</strong> e reconciliação determinística ao reconectar, caderno de defensivos do MAPA com <strong>assinatura digital em canvas e hash SHA-256</strong>, e telemetria IoT de pivôs e silos.</li>
+          <li>Backend em <strong>Java 21 com Virtual Threads</strong> sustentando <strong>2.450 req/s</strong> em testes k6 com zero erros 5xx, usando <strong>Transactional Outbox</strong> com RabbitMQ (CloudEvents, DLQ), <code>FOR UPDATE SKIP LOCKED</code>, PostgreSQL 17 com particionamento temporal e Row Level Security fail-closed, e tracing W3C com OpenTelemetry.</li>
+          <li>Qualidade verificável nos dois lados: <strong>549 testes automatizados</strong> (411 no backend e 138 no mobile, em 26 suítes Jest), autenticação Keycloak OIDC com biometria no app e proteção contra enumeração IDOR na API.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-title">Work-Fitness - Plataforma Comercial em Produção - <a href="https://github.com/DevYuriVieira/Work-Fitness">github.com/DevYuriVieira/Work-Fitness</a> · <a href="https://viniciusantos.vercel.app/">viniciusantos.vercel.app</a></div>
+        <div class="entry-meta">Freelance (cliente real) | 2025 - Presente | TypeScript 5.7 | Vite 6 | Clean Architecture | Vitest | Playwright | WCAG 2.1 AA | VLibras | Docker | Nginx | GA4 / GTM / Meta Pixel</div>
+        <ul class="bullets">
+          <li>Plataforma comercial entregue de ponta a ponta para um personal trainer, no lugar de planilhas e de um WhatsApp sem triagem: motor de avaliação corporal (IMC da OMS, gordura corporal por Deurenberg, TMB por Mifflin-St Jeor) isolado em um <strong>core de Clean Architecture sem DOM</strong> e leads qualificados com UTM preservado direto no WhatsApp. Nota <strong>100/100 nas 4 categorias do Lighthouse</strong>, com bundle de 32 kB.</li>
+          <li>Acessibilidade tratada como requisito (WCAG 2.1 AA, VLibras sem layout shift, leitura bionic e filtros para daltonismo), <strong>170 testes Vitest e 47 specs Playwright em 26 viewports</strong>, telemetria GA4, GTM e Meta Pixel, e deploy em contêiner Docker multi-stage com Nginx.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
         <div class="entry-title">Portfólio Pessoal - <a href="https://devyurivieira.vercel.app">devyurivieira.vercel.app</a></div>
         <div class="entry-meta">Pessoal | 2026 | Angular 22 | TypeScript | Three.js / WebGL | SCSS | Vitest | Playwright | Cypress | PWA | Em produção</div>
         <ul class="bullets">
           <li>Desenvolvido com componentes standalone do <strong>Angular 22</strong>, Signals nativos (<code>signal/computed</code>) e <code>OnPush</code> em todos os componentes, incluindo um sistema de partículas <strong>WebGL/Three.js</strong> acelerado por GPU com interatividade por mouse e toque, configurado como PWA com service worker.</li>
           <li>Coberto por <strong>195 testes automatizados</strong> em três camadas (140 unitários Vitest, 38 E2E Playwright com auditoria WCAG 2.1 AA/AAA via Axe-Core, 17 E2E Cypress), suporte trilíngue i18n (PT/EN/ES) e auditoria Google Lighthouse 100/100/100/100 no desktop.</li>
-        </ul>
-      </div>
-
-      <div class="entry">
-        <div class="entry-title">Spring Boot E-Commerce API - <a href="https://github.com/DevYuriVieira/ecommerce-serratec-api">github.com/DevYuriVieira/ecommerce-serratec-api</a></div>
-        <div class="entry-meta">Colaborativo (Residência Serratec) | 2026 | Java 17 | Spring Boot 3 | Spring Security 6 | PostgreSQL | JPA/Hibernate | Swagger/OpenAPI 3</div>
-        <ul class="bullets">
-          <li>API RESTful de e-commerce construída em <strong>Java 17 e Spring Boot 3</strong> estruturada em camadas (Controller, Service, Repository e DTOs) para isolar regras de negócio, gerenciar controle de estoque concorrente e blindar entidades de domínio.</li>
-          <li>Implementa autenticação stateless via <strong>JWT e autorização RBAC no Spring Security 6</strong>, persistência relacional otimizada com <strong>JPA/Hibernate no PostgreSQL</strong> e documentação interativa com Swagger UI / OpenAPI 3.</li>
-        </ul>
-      </div>
-
-      <div class="entry">
-        <div class="entry-title">Aurora - Plataforma de Evolução Pessoal - <a href="https://github.com/DevYuriVieira/aurora-growth-platform">github.com/DevYuriVieira/aurora-growth-platform</a></div>
-        <div class="entry-meta">Colaborativo (6 devs) | 2026 | React Native | Expo SDK 54 | TypeScript | React Navigation | Zod | AsyncStorage | Projeto Final - Aplicações Multiplataformas</div>
-        <ul class="bullets">
-          <li>App <strong>React Native/Expo SDK 54 e TypeScript</strong> para acompanhamento de metas pessoais, gamificação por XP, mentorias e comunidade, com sessão persistida (AsyncStorage), rotas protegidas via Context API e módulo de metas com CRUD completo.</li>
-          <li>Combina três padrões de navegação (Drawer, Stack e Tabs), formulários validados com <strong>React Hook Form + Zod</strong>, e recursos nativos como câmera, galeria, mapas/geolocalização via Expo Location, <strong>Expo Secure Store</strong> e check-in de eventos por <strong>QR Code</strong>.</li>
         </ul>
       </div>
 
@@ -1243,7 +1248,7 @@ const FULLSTACK_EN = `<!DOCTYPE html>
     <section class="section">
       <h2 class="section-title">PROFESSIONAL SUMMARY</h2>
       <p class="summary">
-        Full-Stack Software Engineer with a focus on <strong>Java (Spring Boot)</strong>, <strong>.NET 10 (C#)</strong> and <strong>TypeScript (React, Angular and React Native)</strong>, plus hands-on experience in <strong>Python (Django)</strong>, <strong>REST APIs</strong>, <strong>RabbitMQ</strong> and <strong>PostgreSQL</strong>. I build complete applications covering security (JWT, Keycloak OIDC), generative AI integrations and automated test suites. Over 910 h of software development training at Serratec and UECE. Postgraduate in Software Engineering. Advanced English (B2+), with a C1/C2 programme completed at Wizard. Open to national and international remote roles.
+        Full-Stack Software Engineer with a focus on <strong>Java 21 LTS (Spring Boot 4 &amp; Virtual Threads)</strong>, <strong>.NET 10 (C# 14)</strong> and <strong>TypeScript (React 19, Angular 22 and React Native)</strong>, plus hands-on experience in <strong>Python (Django)</strong>, <strong>REST APIs</strong>, <strong>RabbitMQ</strong> and <strong>PostgreSQL</strong>. I build distributed systems and full web/mobile applications covering security (JWT, Keycloak OIDC), generative AI integrations and automated test suites. Over 910 h of software development training at Serratec and UECE. Postgraduate in Software Engineering. Advanced English (B2+), with a C1/C2 programme completed at Wizard. Open to national and international remote roles.
       </p>
     </section>
 
@@ -1251,16 +1256,16 @@ const FULLSTACK_EN = `<!DOCTYPE html>
       <h2 class="section-title">KEY ACHIEVEMENTS</h2>
       <table class="ach-table">
         <tr>
-          <td class="ach-label">Live Production App<br>(Angular 22 &amp; WebGL)</td>
-          <td>Personal portfolio built with Angular 22 and TypeScript, native Signals and a GPU-accelerated WebGL particle system, covered by 195 automated tests (Vitest, Playwright + Axe-Core and Cypress) and a 100/100/100/100 Lighthouse audit on desktop.</td>
-        </tr>
-        <tr>
           <td class="ach-label">Zeiss AI Recommendation<br>Platform</td>
-          <td>Full-stack MVP built with an 11-person team for Zeiss (React, TypeScript and Java/Spring Boot 4), replacing manual prescription reading with OCR + AI-driven lens recommendations and real-time sales dashboards.</td>
+          <td>Corporate full-stack MVP built with an 11-person team for Zeiss (React 19, TypeScript and Java/Spring Boot 4.1), replacing manual prescription reading with OCR + AI (n8n/RAG) and real-time analytics dashboards.</td>
         </tr>
         <tr>
-          <td class="ach-label">Programming Instructor</td>
-          <td>Taught Back-End Programming (Java/Spring Boot, OOP and PostgreSQL) to a class of 10 students at SENAI/FAETEC, creating all teaching material from the institution's syllabus.</td>
+          <td class="ach-label">FarmFlow &amp; FleetOps<br>(Distributed Systems)</td>
+          <td>Event-driven architectures with Transactional Outbox, RabbitMQ, Keycloak OIDC and PostgreSQL (SKIP LOCKED / RLS): FarmFlow (Java 21 Virtual Threads + Offline-First React Native, 2,450 req/s, 549 tests) and FleetOps (.NET 10, 278 ACID RPS, 300 tests).</td>
+        </tr>
+        <tr>
+          <td class="ach-label">Work-Fitness &amp; Portfolio<br>(Live Production Apps)</td>
+          <td>Freelance commercial platform (TypeScript, Clean Architecture, Docker/Nginx, 217 tests) and interactive portfolio (Angular 22 Signals, WebGL/Three.js, 195 tests), both scoring 100/100 across all 4 Google Lighthouse categories.</td>
         </tr>
       </table>
     </section>
@@ -1270,31 +1275,31 @@ const FULLSTACK_EN = `<!DOCTYPE html>
       <table class="skills-table">
         <tr>
           <td class="sk-label">Languages</td>
-          <td>Java 17+ | C# 14 (.NET 10) | TypeScript | JavaScript (ES6+) | Python | SQL</td>
+          <td>Java 21 LTS (Java 17/21) | C# 14 (.NET 10) | TypeScript | JavaScript (ES6+) | Python | SQL</td>
         </tr>
         <tr>
           <td class="sk-label">Frontend &amp; Mobile</td>
-          <td>React | Angular 22 (Signals, Standalone, OnPush, PWA) | React Native (Expo SDK 54) | Three.js / WebGL | SCSS | Zod | HTML5 | CSS3</td>
+          <td>React 18/19 | Angular 22 (Signals, Standalone, OnPush, PWA) | React Native (Expo SDK 54, Offline-First) | Three.js / WebGL | SCSS | Zod | WCAG 2.1 AA/AAA</td>
         </tr>
         <tr>
           <td class="sk-label">Backend &amp; Messaging</td>
-          <td>Spring Boot 3/4 | ASP.NET Core (.NET 10) | Django | REST APIs | RabbitMQ (Outbox, DLQ) | JPA/Hibernate | EF Core 10 | Spring Security 6 | Keycloak OIDC | JWT &amp; Webhooks</td>
+          <td>Spring Boot 3/4 (Virtual Threads, WebFlux) | ASP.NET Core (.NET 10) | Django | RabbitMQ (Outbox, CloudEvents, DLQ) | JPA/Hibernate | EF Core 10 | Keycloak OIDC &amp; JWT</td>
         </tr>
         <tr>
-          <td class="sk-label">Testing &amp; Quality</td>
-          <td>xUnit | JUnit 5 | Vitest | Playwright | Cypress | Axe-Core (WCAG) | k6 (Load Testing) | OpenTelemetry &amp; Jaeger</td>
+          <td class="sk-label">Testing &amp; Observability</td>
+          <td>JUnit 5 | xUnit | Vitest | Jest | Playwright (E2E) | Cypress | Axe-Core (WCAG) | k6 (Load Testing) | OpenTelemetry &amp; Jaeger (W3C Tracing)</td>
         </tr>
         <tr>
           <td class="sk-label">Databases</td>
-          <td>PostgreSQL 16/18 (FOR UPDATE SKIP LOCKED, MVCC xmin, 3NF) | MySQL | SQLite | SQL | Query Optimisation (N+1 elimination)</td>
+          <td>PostgreSQL 16–18 (Time-Series Partitioning, BRIN Indexes, Fail-Closed RLS, FOR UPDATE SKIP LOCKED, MVCC xmin, 3NF) | MySQL | SQLite | N+1 Query Optimisation</td>
         </tr>
         <tr>
-          <td class="sk-label">Tools</td>
-          <td>Git | GitHub Actions | Docker &amp; Docker Compose | DBeaver | Vercel (CI/CD) | Swagger / OpenAPI 3 | Maven | n8n &amp; OCR</td>
+          <td class="sk-label">DevOps &amp; Tools</td>
+          <td>Docker &amp; Docker Compose | Nginx | CI/CD (GitHub Actions &amp; Vercel) | Git | DBeaver | Swagger / OpenAPI 3 | Maven | n8n (OCR &amp; RAG)</td>
         </tr>
         <tr>
-          <td class="sk-label">Practices</td>
-          <td>Clean Architecture | Domain-Driven Design (DDD) | SOLID | Agile / Scrum | API-First</td>
+          <td class="sk-label">Architecture &amp; Practices</td>
+          <td>Clean Architecture | Domain-Driven Design (DDD) | Event-Driven Architecture | Offline-First | SOLID | Agile / Scrum | API-First</td>
         </tr>
       </table>
     </section>
@@ -1344,29 +1349,30 @@ const FULLSTACK_EN = `<!DOCTYPE html>
       </div>
 
       <div class="entry">
+        <div class="entry-title">FarmFlow - Offline-First Mobile + Distributed Backend - <a href="https://github.com/DevYuriVieira/farmflow-mobile">farmflow-mobile</a> · <a href="https://github.com/DevYuriVieira/farmflow-backend">farmflow-backend</a></div>
+        <div class="entry-meta">Personal | 2026 | React Native | Expo SDK 54 | React 19 | Java 21 | Spring Boot 4.1 | Virtual Threads | PostgreSQL 17 | RabbitMQ | Keycloak OIDC | OpenTelemetry</div>
+        <ul class="bullets">
+          <li>End-to-end agri-tech platform for places where the connection drops mid-field: a <strong>React Native app with an offline-first FIFO mutation queue</strong> and deterministic reconciliation on reconnect, MAPA spray records with a <strong>canvas digital signature hashed with SHA-256</strong>, and IoT telemetry for irrigation pivots and silos.</li>
+          <li>A <strong>Java 21 Virtual Threads</strong> backend sustaining <strong>2,450 req/s</strong> in k6 tests with zero 5xx errors, built on the <strong>Transactional Outbox</strong> pattern with RabbitMQ (CloudEvents, DLQ), <code>FOR UPDATE SKIP LOCKED</code>, PostgreSQL 17 with time-series partitioning and fail-closed Row Level Security, and W3C tracing with OpenTelemetry.</li>
+          <li>Verifiable quality on both sides: <strong>549 automated tests</strong> (411 backend and 138 mobile across 26 Jest suites), Keycloak OIDC authentication with biometrics in the app and IDOR enumeration protection in the API.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="entry-title">Work-Fitness - Production Commercial Platform - <a href="https://github.com/DevYuriVieira/Work-Fitness">github.com/DevYuriVieira/Work-Fitness</a> · <a href="https://viniciusantos.vercel.app/">viniciusantos.vercel.app</a></div>
+        <div class="entry-meta">Freelance (real client) | 2025 - Present | TypeScript 5.7 | Vite 6 | Clean Architecture | Vitest | Playwright | WCAG 2.1 AA | VLibras | Docker | Nginx | GA4 / GTM / Meta Pixel</div>
+        <ul class="bullets">
+          <li>Commercial platform delivered end to end for a personal trainer, replacing spreadsheets and an untriaged WhatsApp inbox: a body-assessment engine (WHO BMI, Deurenberg body fat, Mifflin-St Jeor BMR) isolated in a <strong>DOM-free Clean Architecture core</strong>, and qualified leads with UTM tags preserved straight into WhatsApp. A <strong>100/100 score in all 4 Lighthouse categories</strong> with a 32 kB bundle.</li>
+          <li>Accessibility treated as a requirement (WCAG 2.1 AA, VLibras with no layout shift, bionic reading and colorblind filters), <strong>170 Vitest tests and 47 Playwright specs across 26 viewports</strong>, GA4, GTM and Meta Pixel telemetry, and a multi-stage Docker container served by Nginx.</li>
+        </ul>
+      </div>
+
+      <div class="entry">
         <div class="entry-title">Personal Portfolio - <a href="https://devyurivieira.vercel.app">devyurivieira.vercel.app</a></div>
         <div class="entry-meta">Personal | 2026 | Angular 22 | TypeScript | Three.js / WebGL | SCSS | Vitest | Playwright | Cypress | PWA | Live in production</div>
         <ul class="bullets">
           <li>Built with <strong>Angular 22</strong> standalone components, native Signals (<code>signal/computed</code>) and <code>OnPush</code> change detection throughout, including a GPU-accelerated <strong>Three.js/WebGL</strong> particle system with mouse and touch interactivity, configured as a PWA with a service worker.</li>
           <li>Covered by <strong>195 automated tests</strong> across three layers (140 Vitest unit tests, 38 Playwright E2E specs with WCAG 2.1 AA/AAA accessibility audits via Axe-Core, 17 Cypress E2E specs), trilingual i18n (PT/EN/ES) and a 100/100/100/100 Google Lighthouse audit on desktop.</li>
-        </ul>
-      </div>
-
-      <div class="entry">
-        <div class="entry-title">Spring Boot E-Commerce API - <a href="https://github.com/DevYuriVieira/ecommerce-serratec-api">github.com/DevYuriVieira/ecommerce-serratec-api</a></div>
-        <div class="entry-meta">Collaborative (Serratec Residency) | 2026 | Java 17 | Spring Boot 3 | Spring Security 6 | PostgreSQL | JPA/Hibernate | Swagger/OpenAPI 3</div>
-        <ul class="bullets">
-          <li>RESTful e-commerce backend built in <strong>Java 17 and Spring Boot 3</strong> structured in layers (Controller, Service, Repository and DTOs) to decouple business rules, handle concurrent inventory control and protect domain entities from direct exposure.</li>
-          <li>Implements stateless <strong>JWT authentication and granular RBAC in Spring Security 6</strong>, optimized relational mapping with <strong>JPA/Hibernate on PostgreSQL</strong>, and interactive OpenAPI 3 / Swagger UI documentation.</li>
-        </ul>
-      </div>
-
-      <div class="entry">
-        <div class="entry-title">Aurora - Personal Growth Platform - <a href="https://github.com/DevYuriVieira/aurora-growth-platform">github.com/DevYuriVieira/aurora-growth-platform</a></div>
-        <div class="entry-meta">Collaborative (6 devs) | 2026 | React Native | Expo SDK 54 | TypeScript | React Navigation | Zod | AsyncStorage | Final Project - Multiplatform Applications</div>
-        <ul class="bullets">
-          <li>A <strong>React Native/Expo SDK 54 and TypeScript</strong> app for tracking personal goals, XP gamification, mentorships and community activity, with session persistence (AsyncStorage), Context-API-protected routes and a goals module with full CRUD.</li>
-          <li>Combines three navigation patterns in one app (Drawer, Stack and Tabs), Zod-validated forms via <strong>React Hook Form + Zod</strong>, and native device features such as camera, gallery, maps/geolocation through Expo Location, <strong>Expo Secure Store</strong> and <strong>QR-code</strong> event check-in.</li>
         </ul>
       </div>
 
