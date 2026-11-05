@@ -8,6 +8,7 @@ describe('FooterComponent', () => {
   let fixture: ComponentFixture<FooterComponent>;
 
   beforeEach(async () => {
+    localStorage.removeItem('portfolio-lang');
     await TestBed.configureTestingModule({
       imports: [FooterComponent],
       providers: [provideRouter([])],

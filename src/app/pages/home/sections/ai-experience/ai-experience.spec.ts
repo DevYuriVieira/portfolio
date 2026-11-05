@@ -7,6 +7,7 @@ describe('AiExperienceSection', () => {
   let fixture: ComponentFixture<AiExperienceSection>;
 
   beforeEach(async () => {
+    localStorage.removeItem('portfolio-lang');
     await TestBed.configureTestingModule({
       imports: [AiExperienceSection],
     }).compileComponents();

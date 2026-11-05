@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { I18nService, TelemetryService } from '@core';
 import { Header } from './header';
 
@@ -10,6 +10,7 @@ describe('Header', () => {
   let i18n: I18nService;
 
   beforeEach(async () => {
+    localStorage.removeItem('portfolio-lang');
     await TestBed.configureTestingModule({
       imports: [Header],
     }).compileComponents();
@@ -18,7 +19,12 @@ describe('Header', () => {
     component = fixture.componentInstance;
     telemetry = TestBed.inject(TelemetryService);
     i18n = TestBed.inject(I18nService);
+    i18n.setLang('pt-BR');
     fixture.detectChanges();
+  });
+
+  afterEach(() => {
+    localStorage.removeItem('portfolio-lang');
   });
 
   it('should create the component', () => {

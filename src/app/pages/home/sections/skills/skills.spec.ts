@@ -9,6 +9,7 @@ describe('SkillsSection', () => {
   let fixture: ComponentFixture<SkillsSection>;
 
   beforeEach(async () => {
+    localStorage.removeItem('portfolio-lang');
     await TestBed.configureTestingModule({
       imports: [SkillsSection],
       providers: [provideRouter([])],
