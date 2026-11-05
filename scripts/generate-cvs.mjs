@@ -794,6 +794,7 @@ const BACKEND_PT = `<!DOCTYPE html>
     <section class="section">
       <h2 class="section-title">CERTIFICAÇÕES</h2>
       <ul class="cert-list">
+        <li><strong>Programação em Python (Django) (168 h)</strong> - Senac</li>
         <li><strong>Banco de Dados SQL - Intermediário e Avançado</strong> - Instituto Matera</li>
         <li><strong>Fundamentos em Teste de Software (24 h)</strong> - Instituto de Pesquisas Eldorado</li>
         <li><strong>Bootcamp Philips Full-Stack Developer (Java, Spring Boot, SQL)</strong> - DIO</li>
@@ -990,6 +991,7 @@ const BACKEND_EN = `<!DOCTYPE html>
     <section class="section">
       <h2 class="section-title">CERTIFICATIONS</h2>
       <ul class="cert-list">
+        <li><strong>Programming in Python (Django) (168 h)</strong> - Senac</li>
         <li><strong>SQL Database - Intermediate and Advanced</strong> - Instituto Matera</li>
         <li><strong>Software Testing Fundamentals (24 h)</strong> - Instituto de Pesquisas Eldorado</li>
         <li><strong>Philips Full-Stack Developer Bootcamp (Java, Spring Boot, SQL)</strong> - DIO</li>
@@ -1033,7 +1035,7 @@ const FULLSTACK_PT = `<!DOCTYPE html>
     <section class="section">
       <h2 class="section-title">RESUMO PROFISSIONAL</h2>
       <p class="summary">
-        Engenheiro de Software Full-Stack com foco em <strong>Java 21 LTS (Spring Boot 4 &amp; Virtual Threads)</strong>, <strong>.NET 10 (C# 14)</strong> e <strong>TypeScript (React 19, Angular 22 e React Native)</strong>, além de sólida experiência prática em <strong>Python (Django)</strong>, <strong>APIs REST</strong>, <strong>RabbitMQ</strong> e <strong>PostgreSQL</strong>. Desenvolvo sistemas distribuídos e aplicações web/mobile completas com segurança (JWT, Keycloak OIDC), integrações com IA generativa e suítes de testes automatizados. Mais de 910 h de formação prática em software pelo Serratec e UECE. Pós-graduado em Engenharia de Software. Inglês Avançado (B2+), com programa C1/C2 concluído pela Wizard. Disponível para atuação remota nacional e internacional.
+        Engenheiro de Software Full-Stack com foco em <strong>Java 21 LTS (Spring Boot 4 &amp; Virtual Threads)</strong>, <strong>.NET 10 (C# 14)</strong> e <strong>TypeScript (React 19, Angular 22 e React Native)</strong>, além de experiência prática em <strong>Python (Django)</strong>, <strong>APIs REST</strong>, <strong>RabbitMQ</strong> e <strong>PostgreSQL</strong>. Desenvolvo sistemas distribuídos e aplicações web/mobile com segurança (JWT, Keycloak OIDC), integrações com IA e testes automatizados. Mais de 910 h de formação prática em software pelo Serratec e UECE. Pós-graduado em Engenharia de Software. Inglês Avançado (B2+), com programa C1/C2 concluído pela Wizard. Disponível para atuação remota nacional e internacional.
       </p>
     </section>
 
@@ -1076,7 +1078,7 @@ const FULLSTACK_PT = `<!DOCTYPE html>
         </tr>
         <tr>
           <td class="sk-label">Banco de Dados</td>
-          <td>PostgreSQL 16–18 (Particionamento Temporal, Índices BRIN, RLS Fail-Closed, FOR UPDATE SKIP LOCKED, MVCC xmin, 3FN) | MySQL | SQLite | Otimização N+1</td>
+          <td>PostgreSQL 16–18 (Particionamento Temporal, Índices BRIN, RLS Fail-Closed, FOR UPDATE SKIP LOCKED, MVCC xmin, 3FN) | MySQL | Otimização N+1</td>
         </tr>
         <tr>
           <td class="sk-label">DevOps &amp; Ferramentas</td>
@@ -1169,15 +1171,6 @@ const FULLSTACK_PT = `<!DOCTYPE html>
           <li>Coberto por <strong>195 testes automatizados</strong> em três camadas (140 unitários Vitest, 38 E2E Playwright com auditoria WCAG 2.1 AA/AAA via Axe-Core, 17 E2E Cypress), suporte trilíngue i18n (PT/EN/ES) e auditoria Google Lighthouse 100/100/100/100 no desktop.</li>
         </ul>
       </div>
-
-      <div class="entry">
-        <div class="entry-title">E-commerce Full-Stack - <a href="https://github.com/DevYuriVieira/liquor-store-django">github.com/DevYuriVieira/liquor-store-django</a></div>
-        <div class="entry-meta">Pessoal | 2025 | Python 3.11+ | Django 5.x | SQLite | Vanilla JS (ES6+) | HTML5 &lt;template&gt; | API REST | Webhook Idempotente</div>
-        <ul class="bullets">
-          <li>Plataforma e-commerce full-stack construída do zero (autenticação, carrinho, cupons, pedidos) organizada em <strong>Service Layer no Django 5</strong>, projetada para lidar com concorrência crítica e eliminar gargalos de N+1 queries via <code>prefetch_related</code> e <code>select_related</code>.</li>
-          <li>Implementa <strong>webhook de pagamento assíncrono idempotente</strong> com transações atômicas (<code>transaction.atomic</code>), API REST versionada sem DRF, e frontend modular em Vanilla JS (ES6+) com <code>&lt;template&gt;</code> nativo, proteção CSRF e manipulação segura do DOM via <code>textContent</code> contra XSS.</li>
-        </ul>
-      </div>
     </section>
 
     <section class="section">
@@ -1203,11 +1196,11 @@ const FULLSTACK_PT = `<!DOCTYPE html>
     <section class="section">
       <h2 class="section-title">CERTIFICAÇÕES</h2>
       <ul class="cert-list">
+        <li><strong>Programação em Python (Django) (168 h)</strong> - Senac</li>
+        <li><strong>Desenvolvimento Front-End com Inteligência Artificial (80 h)</strong> - Senac</li>
         <li><strong>Fundamentos em Teste de Software (24 h)</strong> - Instituto de Pesquisas Eldorado</li>
         <li><strong>Banco de Dados SQL - Intermediário e Avançado</strong> - Instituto Matera</li>
-        <li><strong>Desenvolvimento Front-End com Inteligência Artificial (80 h)</strong> - Senac</li>
         <li><strong>Bootcamp Philips Full-Stack Developer (Java, Spring Boot, Angular)</strong> - DIO</li>
-        <li><strong>Programação em Python</strong> - Senac</li>
         <li><strong>White Belt - Lean Six Sigma</strong> - Frons</li>
       </ul>
     </section>
@@ -1291,7 +1284,7 @@ const FULLSTACK_EN = `<!DOCTYPE html>
         </tr>
         <tr>
           <td class="sk-label">Databases</td>
-          <td>PostgreSQL 16–18 (Time-Series Partitioning, BRIN Indexes, Fail-Closed RLS, FOR UPDATE SKIP LOCKED, MVCC xmin, 3NF) | MySQL | SQLite | N+1 Query Optimisation</td>
+          <td>PostgreSQL 16–18 (Time-Series Partitioning, BRIN Indexes, Fail-Closed RLS, FOR UPDATE SKIP LOCKED, MVCC xmin, 3NF) | MySQL | N+1 Query Optimisation</td>
         </tr>
         <tr>
           <td class="sk-label">DevOps &amp; Tools</td>
@@ -1375,15 +1368,6 @@ const FULLSTACK_EN = `<!DOCTYPE html>
           <li>Covered by <strong>195 automated tests</strong> across three layers (140 Vitest unit tests, 38 Playwright E2E specs with WCAG 2.1 AA/AAA accessibility audits via Axe-Core, 17 Cypress E2E specs), trilingual i18n (PT/EN/ES) and a 100/100/100/100 Google Lighthouse audit on desktop.</li>
         </ul>
       </div>
-
-      <div class="entry">
-        <div class="entry-title">Django Full-Stack E-commerce - <a href="https://github.com/DevYuriVieira/liquor-store-django">github.com/DevYuriVieira/liquor-store-django</a></div>
-        <div class="entry-meta">Personal | 2025 | Python 3.11+ | Django 5.x | SQLite | Vanilla JS (ES6+) | HTML5 &lt;template&gt; | REST API | Idempotent Webhook</div>
-        <ul class="bullets">
-          <li>Full-stack e-commerce platform built from scratch (auth, cart, coupons, orders) organised around a <strong>Django 5 Service Layer</strong>, engineered to handle critical concurrency edge cases and eliminate N+1 query bottlenecks via <code>prefetch_related</code> and <code>select_related</code>.</li>
-          <li>Implements an <strong>idempotent async payment webhook</strong> wrapped in atomic transactions (<code>transaction.atomic</code>), a versioned REST API built without DRF, and a modular Vanilla JS (ES6+) frontend using native HTML5 <code>&lt;template&gt;</code>, CSRF protection and XSS-safe DOM handling via <code>textContent</code>.</li>
-        </ul>
-      </div>
     </section>
 
     <section class="section">
@@ -1409,11 +1393,11 @@ const FULLSTACK_EN = `<!DOCTYPE html>
     <section class="section">
       <h2 class="section-title">CERTIFICATIONS</h2>
       <ul class="cert-list">
+        <li><strong>Programming in Python (Django) (168 h)</strong> - Senac</li>
+        <li><strong>Front-End Development with Artificial Intelligence (80 h)</strong> - Senac</li>
         <li><strong>Software Testing Fundamentals (24 h)</strong> - Instituto de Pesquisas Eldorado</li>
         <li><strong>SQL Database - Intermediate and Advanced</strong> - Instituto Matera</li>
-        <li><strong>Front-End Development with Artificial Intelligence (80 h)</strong> - Senac</li>
         <li><strong>Philips Full-Stack Developer Bootcamp (Java, Spring Boot, Angular)</strong> - DIO</li>
-        <li><strong>Programming in Python</strong> - Senac</li>
         <li><strong>White Belt - Lean Six Sigma</strong> - Frons</li>
       </ul>
     </section>
