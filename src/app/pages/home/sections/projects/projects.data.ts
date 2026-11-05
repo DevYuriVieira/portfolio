@@ -240,7 +240,6 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       results:
         'Plataforma comercial em produção com nota máxima cravada de 100/100 em todas as 4 categorias do Google Lighthouse (LCP < 0.8s, CLS = 0.00, INP < 16ms e bundle de 32 kB); aumento substancial na taxa de conversão de novos alunos para o treinador Vinicius Santos, entregando leads qualificados com queixas articulares e histórico físico direto no WhatsApp; 170 testes automatizados garantindo zero regressões.',
       links: {
-        github: 'https://github.com/DevYuriVieira/Work-Fitness',
         demo: 'https://viniciusantos.vercel.app/',
         demoLabel: 'Ver em Produção',
       },
@@ -1161,7 +1160,6 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       results:
         'Production commercial platform scoring a perfect 100/100 across all Google Lighthouse categories (LCP < 0.8s, CLS = 0.00, INP < 16ms, and 32 kB minified bundle); substantial surge in qualified leads delivered directly to trainer Vinicius Santos\'s WhatsApp with joint history and physical background; 170 automated tests guaranteeing zero regressions.',
       links: {
-        github: 'https://github.com/DevYuriVieira/Work-Fitness',
         demo: 'https://viniciusantos.vercel.app/',
         demoLabel: 'Live in Production',
       },
@@ -2080,7 +2078,6 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       results:
         'Plataforma comercial en producción con nota máxima de 100/100 en todas las categorías de Google Lighthouse (LCP < 0.8s, CLS = 0.00, INP < 16ms y bundle de 32 kB); aumento sustancial en la tasa de conversión de nuevos alumnos para el entrenador Vinicius Santos, entregando leads calificados con historial articular directo en WhatsApp; 170 pruebas automatizadas garantizando cero regresiones.',
       links: {
-        github: 'https://github.com/DevYuriVieira/Work-Fitness',
         demo: 'https://viniciusantos.vercel.app/',
         demoLabel: 'Ver en Producción',
       },

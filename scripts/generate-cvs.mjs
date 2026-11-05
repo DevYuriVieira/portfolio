@@ -342,7 +342,7 @@ const FRONTEND_PT = `<!DOCTYPE html>
       </div>
 
       <div class="entry">
-        <div class="entry-title">Work-Fitness - Plataforma Comercial em Produção - <a href="https://github.com/DevYuriVieira/Work-Fitness">github.com/DevYuriVieira/Work-Fitness</a> · <a href="https://viniciusantos.vercel.app/">viniciusantos.vercel.app</a></div>
+        <div class="entry-title">Work-Fitness - Plataforma Comercial em Produção - <a href="https://viniciusantos.vercel.app/">viniciusantos.vercel.app</a></div>
         <div class="entry-meta">Freelance (cliente real) | 2025 - Presente | TypeScript 5.7 | Vite 6 | Clean Architecture | Vitest | Playwright | WCAG 2.1 AA | VLibras | Docker | Nginx | GA4 / GTM / Meta Pixel</div>
         <ul class="bullets">
           <li>Plataforma comercial entregue de ponta a ponta para um personal trainer, no lugar de planilhas e de um WhatsApp sem triagem: motor de avaliação corporal (IMC da OMS, gordura corporal por Deurenberg, TMB por Mifflin-St Jeor) isolado em um <strong>core de Clean Architecture sem DOM</strong> e leads qualificados com UTM preservado direto no WhatsApp. Nota <strong>100/100 nas 4 categorias do Lighthouse</strong>, com bundle de 32 kB.</li>
@@ -351,7 +351,7 @@ const FRONTEND_PT = `<!DOCTYPE html>
       </div>
 
       <div class="entry">
-        <div class="entry-title">Portfólio Pessoal - <a href="https://devyurivieira.vercel.app">devyurivieira.vercel.app</a></div>
+        <div class="entry-title">Portfólio Pessoal - <a href="https://github.com/DevYuriVieira/portfolio">github.com/DevYuriVieira/portfolio</a> · <a href="https://devyurivieira.vercel.app">devyurivieira.vercel.app</a></div>
         <div class="entry-meta">Pessoal | 2026 | Angular 22 | TypeScript | Three.js / WebGL | SCSS | Vitest | Playwright | Cypress | PWA | Em produção</div>
         <ul class="bullets">
           <li>Desenvolvido com componentes standalone do <strong>Angular 22</strong>, <strong>Signals nativos (signal/computed)</strong> e detecção de mudanças <code>OnPush</code> em todos os componentes, incluindo um sistema de partículas <strong>WebGL/Three.js</strong> acelerado por GPU com interatividade por mouse e toque, e configurado como PWA offline-ready com service worker.</li>
@@ -360,8 +360,8 @@ const FRONTEND_PT = `<!DOCTYPE html>
       </div>
 
       <div class="entry">
-        <div class="entry-title">PlayStation Evolution Timeline - <a href="https://playstation-evolution-timeline.vercel.app">playstation-evolution-timeline.vercel.app</a></div>
-        <div class="entry-meta">Pessoal | 2026 | React 18 | TypeScript 5 | Vite 5 | Framer Motion 11 | CSS Modules | Intersection Observer - <a href="https://github.com/DevYuriVieira/playstation-evolution-timeline">github.com/DevYuriVieira/playstation-evolution-timeline</a></div>
+        <div class="entry-title">PlayStation Evolution Timeline - <a href="https://github.com/DevYuriVieira/playstation-evolution-timeline">github.com/DevYuriVieira/playstation-evolution-timeline</a> · <a href="https://playstation-evolution-timeline.vercel.app">playstation-evolution-timeline.vercel.app</a></div>
+        <div class="entry-meta">Pessoal | 2026 | React 18 | TypeScript 5 | Vite 5 | Framer Motion 11 | CSS Modules | Intersection Observer</div>
         <ul class="bullets">
           <li>Aplicação web interativa em produção na Vercel que apresenta 30 anos de evolução de hardware dos consoles PlayStation (do PS1 ao PS5 Pro), construída com arquitetura modular em <strong>React 18, TypeScript e CSS Modules</strong> e orquestração de scroll no centro da viewport via <strong>Intersection Observer API</strong> (<code>rootMargin: "-50%"</code>), eliminando listeners pesados de scroll.</li>
           <li>Implementa contadores numéricos animados sob demanda (<code>StatsAnimated</code>) e transições declarativas a <strong>60 FPS estáveis com Framer Motion</strong> sem provocar layout thrashing, navegação lateral adaptativa (<code>SideTimeline</code>) e esteira de deploy contínuo (CI/CD) automatizada via GitHub e Vercel.</li>
@@ -538,7 +538,7 @@ const FRONTEND_EN = `<!DOCTYPE html>
       </div>
 
       <div class="entry">
-        <div class="entry-title">Work-Fitness - Production Commercial Platform - <a href="https://github.com/DevYuriVieira/Work-Fitness">github.com/DevYuriVieira/Work-Fitness</a> · <a href="https://viniciusantos.vercel.app/">viniciusantos.vercel.app</a></div>
+        <div class="entry-title">Work-Fitness - Production Commercial Platform - <a href="https://viniciusantos.vercel.app/">viniciusantos.vercel.app</a></div>
         <div class="entry-meta">Freelance (real client) | 2025 - Present | TypeScript 5.7 | Vite 6 | Clean Architecture | Vitest | Playwright | WCAG 2.1 AA | VLibras | Docker | Nginx | GA4 / GTM / Meta Pixel</div>
         <ul class="bullets">
           <li>Commercial platform delivered end to end for a personal trainer, replacing spreadsheets and an untriaged WhatsApp inbox: a body-assessment engine (WHO BMI, Deurenberg body fat, Mifflin-St Jeor BMR) isolated in a <strong>DOM-free Clean Architecture core</strong>, and qualified leads with UTM tags preserved straight into WhatsApp. A <strong>100/100 score in all 4 Lighthouse categories</strong> with a 32 kB bundle.</li>
@@ -547,7 +547,7 @@ const FRONTEND_EN = `<!DOCTYPE html>
       </div>
 
       <div class="entry">
-        <div class="entry-title">Personal Portfolio - <a href="https://devyurivieira.vercel.app">devyurivieira.vercel.app</a></div>
+        <div class="entry-title">Personal Portfolio - <a href="https://github.com/DevYuriVieira/portfolio">github.com/DevYuriVieira/portfolio</a> · <a href="https://devyurivieira.vercel.app">devyurivieira.vercel.app</a></div>
         <div class="entry-meta">Personal | 2026 | Angular 22 | TypeScript | Three.js / WebGL | SCSS | Vitest | Playwright | Cypress | PWA | Live in production</div>
         <ul class="bullets">
           <li>Built with <strong>Angular 22</strong> standalone components, <strong>native Signals (signal/computed)</strong> and <code>OnPush</code> change detection throughout, including a GPU-accelerated <strong>Three.js/WebGL</strong> particle system with mouse and touch interactivity, configured as an offline-ready PWA with a service worker.</li>
@@ -556,8 +556,8 @@ const FRONTEND_EN = `<!DOCTYPE html>
       </div>
 
       <div class="entry">
-        <div class="entry-title">PlayStation Evolution Timeline - <a href="https://playstation-evolution-timeline.vercel.app">playstation-evolution-timeline.vercel.app</a></div>
-        <div class="entry-meta">Personal | 2026 | React 18 | TypeScript 5 | Vite 5 | Framer Motion 11 | CSS Modules | Intersection Observer - <a href="https://github.com/DevYuriVieira/playstation-evolution-timeline">github.com/DevYuriVieira/playstation-evolution-timeline</a></div>
+        <div class="entry-title">PlayStation Evolution Timeline - <a href="https://github.com/DevYuriVieira/playstation-evolution-timeline">github.com/DevYuriVieira/playstation-evolution-timeline</a> · <a href="https://playstation-evolution-timeline.vercel.app">playstation-evolution-timeline.vercel.app</a></div>
+        <div class="entry-meta">Personal | 2026 | React 18 | TypeScript 5 | Vite 5 | Framer Motion 11 | CSS Modules | Intersection Observer</div>
         <ul class="bullets">
           <li>Live production web application showcasing 30 years of PlayStation console hardware evolution (PS1 to PS5 Pro), engineered with modular <strong>React 18, TypeScript and CSS Modules</strong> components and viewport-centered scroll orchestration via the <strong>Intersection Observer API</strong> (<code>rootMargin: "-50%"</code>), eliminating expensive window scroll listeners.</li>
           <li>Implements visibility-triggered numeric counters (<code>StatsAnimated</code>) and hardware-accelerated <strong>60 FPS animations using Framer Motion</strong> without layout thrashing, an adaptive <code>SideTimeline</code> navigation bar, and an automated CI/CD pipeline via GitHub and Vercel.</li>
@@ -696,7 +696,7 @@ const BACKEND_PT = `<!DOCTYPE html>
         <div class="entry-meta">SENAI / FAETEC | Ago 2026 - Out 2026 (Contrato) | Nova Friburgo, RJ</div>
         <ul class="bullets">
           <li>Lecionei turma de 10 alunos em Programação Back-End cobrindo lógica de programação, banco de dados relacional com <strong>DBeaver e PostgreSQL</strong>, <strong>POO em Java</strong> e desenvolvimento de <strong>APIs REST com Spring Boot</strong>, encerrando com projeto integrador.</li>
-          <li>Elaborei todo o material didático (PDFs de exercícios, resumos, tutoriais e materiais de apoio) a partir da ementa da instituição, além de tirar dúvidas individuais dos alunos.</li>
+          <li>Elaborei todo o material didático (PDFs de exercícios, resumos, tutoriais e materiais de apoio) a partir da ementa da instituição, além de prestar suporte individual aos alunos.</li>
         </ul>
       </div>
 
@@ -704,18 +704,8 @@ const BACKEND_PT = `<!DOCTYPE html>
         <div class="entry-title">Desenvolvedor Full-Stack / Back-End (Residência de Software)</div>
         <div class="entry-meta">Serratec - Residência TIC/Software | Fev 2026 - Jul 2026 | Petrópolis, RJ | 790 h</div>
         <ul class="bullets">
-          <li>Concluí formação intensiva de 790 h em trilhas progressivas com forte foco em <strong>Banco de Dados PostgreSQL</strong>, <strong>POO em Java 17</strong> e <strong>APIs RESTful com Spring Boot e Spring Security</strong>, encerrando com projeto final entregue como MVP corporativo sob contrato em parceria com a <strong>Zeiss</strong>.</li>
-          <li>Projetei e implementei arquiteturas em camadas (Controller, Service, Repository, DAO, DTOs), modelagem relacional 3FN, autenticação JWT/RBAC e integrações de serviços.</li>
-          <li>Atuei em equipe Ágil com Git, revisões de código e sprints, aplicando POO, SOLID e boas práticas em todos os entregáveis.</li>
-        </ul>
-      </div>
-
-      <div class="entry">
-        <div class="entry-title">Agente de Operações Logísticas</div>
-        <div class="entry-meta">Fri On Line | Fev 2025 - Mai 2025 | Nova Friburgo, RJ</div>
-        <ul class="bullets">
-          <li>Gerenciei agenda operacional de técnicos de campo, acompanhando SLAs e garantindo cumprimento dos cronogramas de atendimento.</li>
-          <li>Realizei suporte operacional Nível 1, atuando na resolução de conflitos de agenda e comunicação direta com clientes.</li>
+          <li>Concluí formação intensiva de 790 h com forte foco em <strong>Banco de Dados PostgreSQL</strong>, <strong>POO em Java 17</strong> e <strong>APIs RESTful com Spring Boot e Spring Security</strong>, encerrando com projeto final entregue como MVP corporativo sob contrato em parceria com a <strong>Zeiss</strong>.</li>
+          <li>Projetei e implementei arquiteturas em camadas (Controller, Service, Repository, DAO, DTOs), modelagem relacional 3FN, autenticação JWT/RBAC e integrações de serviços em equipe Ágil (Scrum, Git e Code Review).</li>
         </ul>
       </div>
     </section>
@@ -727,8 +717,8 @@ const BACKEND_PT = `<!DOCTYPE html>
         <div class="entry-title">Zeiss - Assistente de Recomendações</div>
         <div class="entry-meta">Colaborativo (11 devs, 1 PO, 1 SM) | 2026 | Java 17 | Spring Boot 4.1 | Spring WebFlux | PostgreSQL 18 | JWT (RBAC) | n8n (OCR &amp; RAG) | OpenAPI 3 - Projeto Final Serratec · MVP corporativo (contrato)</div>
         <ul class="bullets">
-          <li>Para substituir a leitura manual inconsistente de receitas oftálmicas em óticas parceiras, foi construída uma API REST corporativa em <strong>Java 17, Spring Boot 4.1 e PostgreSQL 18</strong> com integração reativa não-bloqueante via <strong>Spring WebFlux <code>WebClient</code></strong> para streaming multipart de receitas ao webhook <strong>n8n (OCR &amp; RAG)</strong>, cálculo de confiabilidade (<code>ConfidenceAssessmentService</code>) e motor multiparamétrico de recomendação de lentes Zeiss.</li>
-          <li>Implementa <strong>autenticação stateless JWT (JJWT) com BCrypt, controle de acesso RBAC em três níveis</strong> (admin Zeiss, gerente e funcionário) e auditoria ativa de sessões com rastreamento de IP, máquina de estados comercial (<code>RECOMMENDED</code>, <code>SOLD</code>, <code>CANCELLED</code>), endpoints de agregação analítica de conversão e CRUD completo documentado via Swagger / OpenAPI 3.0.</li>
+          <li>API REST corporativa em <strong>Java 17, Spring Boot 4.1 e PostgreSQL 18</strong> com streaming não-bloqueante via <strong>Spring WebFlux <code>WebClient</code></strong> para pipeline de OCR e IA (n8n/RAG), cálculo de confiabilidade da receita e recomendação de lentes Zeiss.</li>
+          <li>Autenticação stateless JWT com RBAC em três níveis (admin Zeiss, gerente e funcionário), auditoria de sessões por IP, máquina de estados comercial (<code>RECOMMENDED</code>, <code>SOLD</code>, <code>CANCELLED</code>) e CRUD completo documentado com Swagger / OpenAPI 3.</li>
         </ul>
       </div>
 
@@ -736,9 +726,8 @@ const BACKEND_PT = `<!DOCTYPE html>
         <div class="entry-title">FleetOps API (C# / .NET) - <a href="https://github.com/DevYuriVieira/fleetops-api">github.com/DevYuriVieira/fleetops-api</a></div>
         <div class="entry-meta">Pessoal | 2026 | C# 14 | .NET 10 | ASP.NET Core | PostgreSQL 18 | EF Core 10 | RabbitMQ | Keycloak OIDC | OpenTelemetry | xUnit</div>
         <ul class="bullets">
-          <li>Motor back-end distribuído e orientado a eventos em <strong>.NET 10 (C# 14)</strong> para gestão de frotas e logística (27 endpoints REST em 5 contextos delimitados DDD: Veículos, Motoristas, Entregas, Rotas e Manutenção), operando como Resource Server OAuth 2.0 / OIDC com <strong>Keycloak (validação assimétrica RS256/JWKS)</strong> e RBAC para quatro papéis.</li>
-          <li>Implementa <strong>Transactional Outbox</strong> atômico no DbContext eliminando <em>dual-write hazard</em>, polling concorrente multi-réplica com <code>FOR UPDATE SKIP LOCKED</code>, concorrência otimista física via <code>xmin</code> do PostgreSQL, topologia <strong>RabbitMQ</strong> (Publisher Confirms, filas de retry com TTL 10s/30s/90s e Dead-Letter Queue), consumidor idempotente por <code>MessageId</code> e tracing distribuído W3C no Jaeger.</li>
-          <li>Suíte de <strong>300 testes automatizados</strong> (166 unitários e 134 de integração/injeção de falhas) em xUnit com 100% de aprovação e capacidade transacional aferida de <strong>278 RPS sustentados</strong> em escritas ACID no PostgreSQL (k6).</li>
+          <li>Motor back-end distribuído em <strong>.NET 10 (C# 14)</strong> para gestão de frotas e logística (27 endpoints em 5 contextos delimitados DDD) com Clean Architecture, Resource Server OAuth 2.0 / OIDC com <strong>Keycloak (RS256/JWKS)</strong> e RBAC para quatro papéis.</li>
+          <li>Implementa <strong>Transactional Outbox</strong> com <strong>RabbitMQ</strong> (Publisher Confirms, filas de retry com TTL e DLQ), consumidor idempotente por <code>MessageId</code>, concorrência otimista física (<code>xmin</code> / <code>FOR UPDATE SKIP LOCKED</code>), tracing no Jaeger, <strong>300 testes em xUnit</strong> e <strong>278 RPS sustentados</strong> em escritas ACID (k6).</li>
         </ul>
       </div>
 
@@ -746,9 +735,8 @@ const BACKEND_PT = `<!DOCTYPE html>
         <div class="entry-title">FarmFlow - Plataforma Agro Distribuída (Java 21) - <a href="https://github.com/DevYuriVieira/farmflow-backend">github.com/DevYuriVieira/farmflow-backend</a></div>
         <div class="entry-meta">Pessoal | 2026 | Java 21 LTS | Spring Boot 4.1 | Virtual Threads | PostgreSQL 17 | RabbitMQ | Keycloak OIDC | OpenTelemetry | k6</div>
         <ul class="bullets">
-          <li>Projeto autoral para um problema real do campo: operador sem sinal, caderno de defensivos exigido pelo MAPA e telemetria de pivôs e silos. Projetei um backend em <strong>Java 21 com Virtual Threads e Spring Boot 4.1</strong> que sustentou <strong>2.450 req/s</strong> em testes de carga k6, com zero erros 5xx.</li>
-          <li>Consistência sem dual-write: <strong>Transactional Outbox</strong> com <strong>RabbitMQ</strong> (CloudEvents v1.0, DLX, TTL e Dead Letter Queue), polling concorrente com <code>FOR UPDATE SKIP LOCKED</code>, sagas coreografadas com advisory locks (<code>pg_try_advisory_xact_lock</code>) e tracing W3C ponta a ponta com OpenTelemetry.</li>
-          <li>Dados e segurança pensados para escala e auditoria: <strong>PostgreSQL 17</strong> com particionamento temporal declarativo, índices BRIN e <strong>Row Level Security fail-closed</strong>; Keycloak 26.1 (OIDC) com proteção contra enumeração IDOR (404 no lugar de 403) e <strong>411 testes no backend</strong> executados sob 100 Virtual Threads.</li>
+          <li>Motor distribuído em <strong>Java 21 com Virtual Threads e Spring Boot 4.1</strong> sustentando <strong>2.450 req/s</strong> no k6 (zero erros 5xx), <strong>Transactional Outbox</strong> com RabbitMQ (CloudEvents v1.0, DLQ), <code>FOR UPDATE SKIP LOCKED</code>, sagas coreografadas com advisory locks (<code>pg_try_advisory_xact_lock</code>) e tracing W3C OpenTelemetry.</li>
+          <li><strong>PostgreSQL 17</strong> com particionamento temporal declarativo, índices BRIN e <strong>Row Level Security fail-closed</strong>, autenticação Keycloak 26.1 OIDC com proteção IDOR (404 no lugar de 403) e <strong>411 testes no backend</strong> sob 100 Virtual Threads.</li>
         </ul>
       </div>
 
@@ -756,8 +744,7 @@ const BACKEND_PT = `<!DOCTYPE html>
         <div class="entry-title">Spring Boot E-Commerce API - <a href="https://github.com/DevYuriVieira/ecommerce-serratec-api">github.com/DevYuriVieira/ecommerce-serratec-api</a></div>
         <div class="entry-meta">Colaborativo (Residência Serratec) | 2026 | Java 17 | Spring Boot 3 | Spring Security 6 | PostgreSQL | JPA/Hibernate | Swagger/OpenAPI 3</div>
         <ul class="bullets">
-          <li>API RESTful de e-commerce construída em <strong>Java 17 e Spring Boot 3</strong> estruturada em camadas (Controller, Service, Repository e DTOs) para isolar as regras de negócio, gerenciar controle de estoque concorrente, validar pedidos e blindar as entidades de domínio contra exposição direta.</li>
-          <li>Implementa filtros customizados na cadeia do <strong>Spring Security 6 para autenticação stateless via JWT</strong> e autorização granular baseada em perfis (RBAC), mapeamento objeto-relacional otimizado com <strong>JPA/Hibernate no PostgreSQL</strong> e contratos de API interativos documentados com Swagger UI / OpenAPI 3.</li>
+          <li>API RESTful em camadas (Controller, Service, Repository, DTOs) com <strong>Spring Security 6 (JWT / RBAC)</strong>, controle de estoque concorrente, mapeamento relacional otimizado com <strong>JPA/Hibernate no PostgreSQL</strong> e contratos documentados via Swagger UI / OpenAPI 3.</li>
         </ul>
       </div>
 
@@ -765,8 +752,7 @@ const BACKEND_PT = `<!DOCTYPE html>
         <div class="entry-title">Dental Clinic Management System (DCMS) - <a href="https://github.com/DevYuriVieira/dentacare-management-system">github.com/DevYuriVieira/dentacare-management-system</a></div>
         <div class="entry-meta">Colaborativo (6 devs - Residência Serratec 2026.1) | 2026 | PostgreSQL 16+ | SQL Avançado (DDL, DML, DQL) | Modelagem 3FN | Database Indexing | SQL Views</div>
         <ul class="bullets">
-          <li>Sistema de banco de dados relacional transacional projetado em <strong>PostgreSQL 16+</strong> e estritamente normalizado até a <strong>3ª Forma Normal (3FN)</strong> para centralizar agendamentos clínicos com máquina de estados (Agendada, Realizada, Cancelada), histórico associativo N:N de procedimentos (<code>consulta_procedimento</code>) e dentistas (CRO) sem redundância.</li>
-          <li>Implementa regras de negócio via <strong>DDL</strong> (validação de CPF e CRO com expressões regulares <strong>Regex</strong>, restrições temporais e campos únicos), integridade referencial com <code>RESTRICT</code> e <code>CASCADE</code>, além de <strong>Índices relacionais</strong> estratégicos e <strong>Views analíticas em SQL</strong> para relatórios de faturamento e agendamentos.</li>
+          <li>Banco relacional transacional em <strong>PostgreSQL 16+</strong> estritamente normalizado até a <strong>3ª Forma Normal (3FN)</strong>, com máquina de estados de agendamentos, integridade referencial estrita, validações DDL via Regex, <strong>Índices relacionais</strong> e <strong>Views analíticas</strong> de faturamento.</li>
         </ul>
       </div>
     </section>
@@ -924,8 +910,8 @@ const BACKEND_EN = `<!DOCTYPE html>
         <div class="entry-title">Zeiss - AI Recommendation Platform</div>
         <div class="entry-meta">Collaborative (11 devs, 1 PO, 1 SM) | 2026 | Java 17 | Spring Boot 4.1 | Spring WebFlux | PostgreSQL 18 | JWT (RBAC) | n8n (OCR &amp; RAG) | OpenAPI 3 - Serratec Final Project · Corporate MVP (contract)</div>
         <ul class="bullets">
-          <li>To replace inconsistent manual prescription reading across optical shops, the team engineered an enterprise REST API in <strong>Java 17, Spring Boot 4.1 and PostgreSQL 18</strong> featuring non-blocking multipart prescription streaming via <strong>Spring WebFlux <code>WebClient</code></strong> to an <strong>n8n (OCR &amp; RAG)</strong> webhook, automated extraction scoring (<code>ConfidenceAssessmentService</code>) and a multi-parametric Zeiss lens recommendation engine.</li>
-          <li>Implemented <strong>stateless JWT authentication (JJWT) with BCrypt, three-tier RBAC</strong> (Zeiss admin, store manager, employee) and active session IP auditing, a transactional sales lifecycle state machine (<code>RECOMMENDED</code>, <code>SOLD</code>, <code>CANCELLED</code>), analytical aggregation endpoints for store conversion metrics and full CRUD documented with Swagger / OpenAPI 3.0.</li>
+          <li>Enterprise REST API in <strong>Java 17, Spring Boot 4.1 and PostgreSQL 18</strong> featuring non-blocking prescription streaming via <strong>Spring WebFlux <code>WebClient</code></strong> to an OCR and AI pipeline (n8n/RAG), extraction scoring and Zeiss lens recommendation.</li>
+          <li>Stateless JWT authentication with three-tier RBAC (admin, manager, staff), session IP auditing, commercial sales state machine (<code>RECOMMENDED</code>, <code>SOLD</code>, <code>CANCELLED</code>) and full CRUD documented via Swagger / OpenAPI 3.</li>
         </ul>
       </div>
 
@@ -933,9 +919,8 @@ const BACKEND_EN = `<!DOCTYPE html>
         <div class="entry-title">FleetOps API (C# / .NET) - <a href="https://github.com/DevYuriVieira/fleetops-api">github.com/DevYuriVieira/fleetops-api</a></div>
         <div class="entry-meta">Personal | 2026 | C# 14 | .NET 10 | ASP.NET Core | PostgreSQL 18 | EF Core 10 | RabbitMQ | Keycloak OIDC | OpenTelemetry | xUnit</div>
         <ul class="bullets">
-          <li>Distributed, event-driven fleet and logistics REST API engine in <strong>.NET 10 (C# 14)</strong> (27 endpoints across 5 DDD Bounded Contexts: Vehicles, Drivers, Deliveries, Routes and Maintenance), operating as an OAuth 2.0 / OIDC Resource Server with <strong>Keycloak (asymmetric RS256/JWKS validation)</strong> and RBAC across four roles.</li>
-          <li>Implements the <strong>Transactional Outbox pattern</strong> atomically inside DbContext eliminating dual-write hazards, multi-replica polling via <code>FOR UPDATE SKIP LOCKED</code>, optimistic concurrency with PostgreSQL <code>xmin</code>, <strong>RabbitMQ</strong> publishing (Publisher Confirms, 10s/30s/90s TTL retry queues and a Dead-Letter Queue), an idempotent consumer keyed by <code>MessageId</code>, and W3C distributed tracing with OpenTelemetry and Jaeger.</li>
-          <li>Suite of <strong>300 automated tests</strong> (166 unit and 134 integration/fault-injection) in xUnit with 100% pass rate and empirical throughput of <strong>278 sustained RPS</strong> under ACID writes in PostgreSQL (k6).</li>
+          <li>Distributed fleet and logistics REST API engine in <strong>.NET 10 (C# 14)</strong> (27 endpoints across 5 DDD Bounded Contexts) with Clean Architecture, OAuth 2.0 / OIDC Resource Server with <strong>Keycloak (RS256/JWKS)</strong> and RBAC across four roles.</li>
+          <li>Implements <strong>Transactional Outbox</strong> with <strong>RabbitMQ</strong> (Publisher Confirms, TTL retry queues and DLQ), idempotent consumer by <code>MessageId</code>, optimistic concurrency (<code>xmin</code> / <code>FOR UPDATE SKIP LOCKED</code>), Jaeger tracing, <strong>300 xUnit tests</strong> and <strong>278 sustained RPS</strong> under ACID writes (k6).</li>
         </ul>
       </div>
 
@@ -943,9 +928,8 @@ const BACKEND_EN = `<!DOCTYPE html>
         <div class="entry-title">FarmFlow - Distributed Agri-Tech Platform (Java 21) - <a href="https://github.com/DevYuriVieira/farmflow-backend">github.com/DevYuriVieira/farmflow-backend</a></div>
         <div class="entry-meta">Personal | 2026 | Java 21 LTS | Spring Boot 4.1 | Virtual Threads | PostgreSQL 17 | RabbitMQ | Keycloak OIDC | OpenTelemetry | k6</div>
         <ul class="bullets">
-          <li>Self-driven project built around a real field problem: operators with no signal, spray logs required by Brazil's MAPA regulator, and irrigation pivot and silo telemetry. I designed a <strong>Java 21, Virtual Threads and Spring Boot 4.1</strong> backend that sustained <strong>2,450 req/s</strong> in k6 load tests with zero 5xx errors.</li>
-          <li>Consistency without dual-writes: <strong>Transactional Outbox</strong> over <strong>RabbitMQ</strong> (CloudEvents v1.0, DLX, TTL and Dead Letter Queue), concurrent polling with <code>FOR UPDATE SKIP LOCKED</code>, choreographed sagas with advisory locks (<code>pg_try_advisory_xact_lock</code>) and end-to-end W3C tracing with OpenTelemetry.</li>
-          <li>Data and security designed for scale and audit: <strong>PostgreSQL 17</strong> with declarative time-series partitioning, BRIN indexes and <strong>fail-closed Row Level Security</strong>; Keycloak 26.1 (OIDC) with IDOR enumeration protection (404 instead of 403) and <strong>411 backend tests</strong> running under 100 Virtual Threads.</li>
+          <li>Distributed engine in <strong>Java 21 with Virtual Threads and Spring Boot 4.1</strong> sustaining <strong>2,450 req/s</strong> in k6 (zero 5xx errors), <strong>Transactional Outbox</strong> over RabbitMQ (CloudEvents v1.0, DLQ), <code>FOR UPDATE SKIP LOCKED</code>, choreographed sagas (<code>pg_try_advisory_xact_lock</code>) and OpenTelemetry W3C tracing.</li>
+          <li><strong>PostgreSQL 17</strong> with declarative time-series partitioning, BRIN indexes and <strong>fail-closed Row Level Security</strong>, Keycloak 26.1 OIDC with IDOR protection (404 instead of 403) and <strong>411 backend tests</strong> running under 100 Virtual Threads.</li>
         </ul>
       </div>
 
@@ -953,8 +937,7 @@ const BACKEND_EN = `<!DOCTYPE html>
         <div class="entry-title">Spring Boot E-Commerce API - <a href="https://github.com/DevYuriVieira/ecommerce-serratec-api">github.com/DevYuriVieira/ecommerce-serratec-api</a></div>
         <div class="entry-meta">Collaborative (Serratec Residency) | 2026 | Java 17 | Spring Boot 3 | Spring Security 6 | PostgreSQL | JPA/Hibernate | Swagger/OpenAPI 3</div>
         <ul class="bullets">
-          <li>RESTful e-commerce backend built in <strong>Java 17 and Spring Boot 3</strong> structured in layers (Controller, Service, Repository and DTOs) to decouple business rules, handle concurrent inventory control, validate orders and protect domain entities from direct exposure.</li>
-          <li>Implements custom security filters in the <strong>Spring Security 6 filter chain for stateless JWT authentication</strong> and granular Role-Based Access Control (RBAC), optimized relational mapping with <strong>JPA/Hibernate on PostgreSQL</strong>, and interactive OpenAPI 3 / Swagger UI documentation.</li>
+          <li>Layered RESTful API (Controller, Service, Repository, DTOs) with <strong>Spring Security 6 (JWT / RBAC)</strong>, concurrent inventory control, optimized relational mapping with <strong>JPA/Hibernate on PostgreSQL</strong> and interactive Swagger / OpenAPI 3 contracts.</li>
         </ul>
       </div>
 
@@ -962,8 +945,7 @@ const BACKEND_EN = `<!DOCTYPE html>
         <div class="entry-title">Dental Clinic Management System (DCMS) - <a href="https://github.com/DevYuriVieira/dentacare-management-system">github.com/DevYuriVieira/dentacare-management-system</a></div>
         <div class="entry-meta">Collaborative (6 devs - Serratec Residency 2026.1) | 2026 | PostgreSQL 16+ | Advanced SQL (DDL, DML, DQL) | 3NF Modeling | Database Indexing | SQL Views</div>
         <ul class="bullets">
-          <li>Transactional relational database system engineered in <strong>PostgreSQL 16+</strong> and strictly normalized up to <strong>3rd Normal Form (3NF)</strong> to centralize appointment lifecycle workflows (Scheduled, Completed, Canceled), N:N associative procedure histories (<code>consulta_procedimento</code>) and dentist records (CRO) with zero orphan data.</li>
-          <li>Enforces business rules via <strong>DDL constraints</strong> (Regex validation for CPF and CRO, logical temporal check constraints and unique keys), strict referential integrity using <code>RESTRICT</code> and <code>CASCADE</code>, plus strategic <strong>relational Indexes</strong> and <strong>analytical SQL Views</strong> for operational and revenue reporting.</li>
+          <li>Transactional relational database in <strong>PostgreSQL 16+</strong> strictly normalized up to <strong>3rd Normal Form (3NF)</strong>, with appointment state machine, strict referential integrity, DDL regex validations, <strong>relational indexes</strong> and analytical revenue <strong>SQL views</strong>.</li>
         </ul>
       </div>
     </section>
@@ -1155,7 +1137,7 @@ const FULLSTACK_PT = `<!DOCTYPE html>
       </div>
 
       <div class="entry">
-        <div class="entry-title">Work-Fitness - Plataforma Comercial em Produção - <a href="https://github.com/DevYuriVieira/Work-Fitness">github.com/DevYuriVieira/Work-Fitness</a> · <a href="https://viniciusantos.vercel.app/">viniciusantos.vercel.app</a></div>
+        <div class="entry-title">Work-Fitness - Plataforma Comercial em Produção - <a href="https://viniciusantos.vercel.app/">viniciusantos.vercel.app</a></div>
         <div class="entry-meta">Freelance (cliente real) | 2025 - Presente | TypeScript 5.7 | Vite 6 | Clean Architecture | Vitest | Playwright | WCAG 2.1 AA | VLibras | Docker | Nginx | GA4 / GTM / Meta Pixel</div>
         <ul class="bullets">
           <li>Plataforma comercial entregue de ponta a ponta para um personal trainer, no lugar de planilhas e de um WhatsApp sem triagem: motor de avaliação corporal (IMC da OMS, gordura corporal por Deurenberg, TMB por Mifflin-St Jeor) isolado em um <strong>core de Clean Architecture sem DOM</strong> e leads qualificados com UTM preservado direto no WhatsApp. Nota <strong>100/100 nas 4 categorias do Lighthouse</strong>, com bundle de 32 kB.</li>
@@ -1164,7 +1146,7 @@ const FULLSTACK_PT = `<!DOCTYPE html>
       </div>
 
       <div class="entry">
-        <div class="entry-title">Portfólio Pessoal - <a href="https://devyurivieira.vercel.app">devyurivieira.vercel.app</a></div>
+        <div class="entry-title">Portfólio Pessoal - <a href="https://github.com/DevYuriVieira/portfolio">github.com/DevYuriVieira/portfolio</a> · <a href="https://devyurivieira.vercel.app">devyurivieira.vercel.app</a></div>
         <div class="entry-meta">Pessoal | 2026 | Angular 22 | TypeScript | Three.js / WebGL | SCSS | Vitest | Playwright | Cypress | PWA | Em produção</div>
         <ul class="bullets">
           <li>Desenvolvido com componentes standalone do <strong>Angular 22</strong>, Signals nativos (<code>signal/computed</code>) e <code>OnPush</code> em todos os componentes, incluindo um sistema de partículas <strong>WebGL/Three.js</strong> acelerado por GPU com interatividade por mouse e toque, configurado como PWA com service worker.</li>
@@ -1352,7 +1334,7 @@ const FULLSTACK_EN = `<!DOCTYPE html>
       </div>
 
       <div class="entry">
-        <div class="entry-title">Work-Fitness - Production Commercial Platform - <a href="https://github.com/DevYuriVieira/Work-Fitness">github.com/DevYuriVieira/Work-Fitness</a> · <a href="https://viniciusantos.vercel.app/">viniciusantos.vercel.app</a></div>
+        <div class="entry-title">Work-Fitness - Production Commercial Platform - <a href="https://viniciusantos.vercel.app/">viniciusantos.vercel.app</a></div>
         <div class="entry-meta">Freelance (real client) | 2025 - Present | TypeScript 5.7 | Vite 6 | Clean Architecture | Vitest | Playwright | WCAG 2.1 AA | VLibras | Docker | Nginx | GA4 / GTM / Meta Pixel</div>
         <ul class="bullets">
           <li>Commercial platform delivered end to end for a personal trainer, replacing spreadsheets and an untriaged WhatsApp inbox: a body-assessment engine (WHO BMI, Deurenberg body fat, Mifflin-St Jeor BMR) isolated in a <strong>DOM-free Clean Architecture core</strong>, and qualified leads with UTM tags preserved straight into WhatsApp. A <strong>100/100 score in all 4 Lighthouse categories</strong> with a 32 kB bundle.</li>
@@ -1361,7 +1343,7 @@ const FULLSTACK_EN = `<!DOCTYPE html>
       </div>
 
       <div class="entry">
-        <div class="entry-title">Personal Portfolio - <a href="https://devyurivieira.vercel.app">devyurivieira.vercel.app</a></div>
+        <div class="entry-title">Personal Portfolio - <a href="https://github.com/DevYuriVieira/portfolio">github.com/DevYuriVieira/portfolio</a> · <a href="https://devyurivieira.vercel.app">devyurivieira.vercel.app</a></div>
         <div class="entry-meta">Personal | 2026 | Angular 22 | TypeScript | Three.js / WebGL | SCSS | Vitest | Playwright | Cypress | PWA | Live in production</div>
         <ul class="bullets">
           <li>Built with <strong>Angular 22</strong> standalone components, native Signals (<code>signal/computed</code>) and <code>OnPush</code> change detection throughout, including a GPU-accelerated <strong>Three.js/WebGL</strong> particle system with mouse and touch interactivity, configured as a PWA with a service worker.</li>
