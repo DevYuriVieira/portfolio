@@ -726,8 +726,9 @@ const BACKEND_PT = `<!DOCTYPE html>
         <div class="entry-title">FleetOps API (C# / .NET) - <a href="https://github.com/DevYuriVieira/fleetops-api">github.com/DevYuriVieira/fleetops-api</a></div>
         <div class="entry-meta">Pessoal | 2026 | C# 14 | .NET 10 | ASP.NET Core | PostgreSQL 18 | EF Core 10 | RabbitMQ | Keycloak OIDC | OpenTelemetry | xUnit</div>
         <ul class="bullets">
-          <li>Motor back-end distribuído em <strong>.NET 10 (C# 14)</strong> para gestão de frotas e logística (27 endpoints em 5 contextos delimitados DDD) com Clean Architecture, Resource Server OAuth 2.0 / OIDC com <strong>Keycloak (RS256/JWKS)</strong> e RBAC para quatro papéis.</li>
-          <li>Implementa <strong>Transactional Outbox</strong> com <strong>RabbitMQ</strong> (Publisher Confirms, filas de retry com TTL e DLQ), consumidor idempotente por <code>MessageId</code>, concorrência otimista física (<code>xmin</code> / <code>FOR UPDATE SKIP LOCKED</code>), tracing no Jaeger, <strong>300 testes em xUnit</strong> e <strong>278 RPS sustentados</strong> em escritas ACID (k6).</li>
+          <li>Motor back-end distribuído e orientado a eventos em <strong>.NET 10 (C# 14)</strong> para gestão de frotas e logística (27 endpoints REST em 5 contextos delimitados DDD: Veículos, Motoristas, Entregas, Rotas e Manutenção) com Clean Architecture, operando como Resource Server OAuth 2.0 / OIDC com <strong>Keycloak (RS256/JWKS)</strong> e RBAC para quatro papéis.</li>
+          <li>Implementa <strong>Transactional Outbox</strong> integrado ao DbContext eliminando dual-write hazard, concorrência otimista via <code>xmin</code> do PostgreSQL, polling concorrente via <code>FOR UPDATE SKIP LOCKED</code>, mensageria com <strong>RabbitMQ</strong> (Publisher Confirms, filas TTL de retry e DLQ), consumidor idempotente com <code>MessageId</code> e tracing distribuído W3C com OpenTelemetry e Jaeger.</li>
+          <li>Suíte de <strong>300 testes automatizados</strong> (166 unitários e 134 integração/falhas) em xUnit com 100% de aprovação e throughput transacional de <strong>278 RPS sustentados</strong> em escritas ACID de domínio sob testes de carga k6.</li>
         </ul>
       </div>
 
@@ -735,8 +736,9 @@ const BACKEND_PT = `<!DOCTYPE html>
         <div class="entry-title">FarmFlow - Plataforma Agro Distribuída (Java 21) - <a href="https://github.com/DevYuriVieira/farmflow-backend">github.com/DevYuriVieira/farmflow-backend</a></div>
         <div class="entry-meta">Pessoal | 2026 | Java 21 LTS | Spring Boot 4.1 | Virtual Threads | PostgreSQL 17 | RabbitMQ | Keycloak OIDC | OpenTelemetry | k6</div>
         <ul class="bullets">
-          <li>Motor distribuído em <strong>Java 21 com Virtual Threads e Spring Boot 4.1</strong> sustentando <strong>2.450 req/s</strong> no k6 (zero erros 5xx), <strong>Transactional Outbox</strong> com RabbitMQ (CloudEvents v1.0, DLQ), <code>FOR UPDATE SKIP LOCKED</code>, sagas coreografadas com advisory locks (<code>pg_try_advisory_xact_lock</code>) e tracing W3C OpenTelemetry.</li>
-          <li><strong>PostgreSQL 17</strong> com particionamento temporal declarativo, índices BRIN e <strong>Row Level Security fail-closed</strong>, autenticação Keycloak 26.1 OIDC com proteção IDOR (404 no lugar de 403) e <strong>411 testes no backend</strong> sob 100 Virtual Threads.</li>
+          <li>Projeto autoral para operações críticas do agro: motor distribuído em <strong>Java 21 LTS com Virtual Threads e Spring Boot 4.1</strong> sustentando <strong>2.450 req/s</strong> em testes de carga k6 com zero erros 5xx, arquitetado para telemetria IoT de pivôs/silos e conformidade regulatória com o MAPA.</li>
+          <li>Garantia de consistência sem dual-write: <strong>Transactional Outbox</strong> sobre RabbitMQ (CloudEvents v1.0, Publisher Confirms, DLQ), polling concorrente com <code>FOR UPDATE SKIP LOCKED</code>, sagas coreografadas com locks consultivos (<code>pg_try_advisory_xact_lock</code>) e tracing distribuído ponta a ponta W3C com OpenTelemetry.</li>
+          <li>Engenharia de dados e segurança de alta performance: <strong>PostgreSQL 17</strong> com particionamento temporal declarativo, índices BRIN e <strong>Row Level Security fail-closed</strong>; Keycloak 26.1 OIDC com proteção contra enumeração IDOR (404) e <strong>411 testes automatizados</strong> sob 100 Virtual Threads.</li>
         </ul>
       </div>
 
@@ -744,7 +746,8 @@ const BACKEND_PT = `<!DOCTYPE html>
         <div class="entry-title">Spring Boot E-Commerce API - <a href="https://github.com/DevYuriVieira/ecommerce-serratec-api">github.com/DevYuriVieira/ecommerce-serratec-api</a></div>
         <div class="entry-meta">Colaborativo (Residência Serratec) | 2026 | Java 17 | Spring Boot 3 | Spring Security 6 | PostgreSQL | JPA/Hibernate | Swagger/OpenAPI 3</div>
         <ul class="bullets">
-          <li>API RESTful em camadas (Controller, Service, Repository, DTOs) com <strong>Spring Security 6 (JWT / RBAC)</strong>, controle de estoque concorrente, mapeamento relacional otimizado com <strong>JPA/Hibernate no PostgreSQL</strong> e contratos documentados via Swagger UI / OpenAPI 3.</li>
+          <li>API RESTful desenvolvida em equipe em <strong>Java 17 e Spring Boot 3</strong> estruturada em camadas desacopladas (Controller, Service, Repository, DTOs), gerenciando ciclo de pedidos com relacionamento N:N (Muitos-para-Muitos), totalização dinâmica de itens e controle concorrente de estoque.</li>
+          <li>Segurança na cadeia de filtros do <strong>Spring Security 6 (JWT / RBAC)</strong>, integração com ViaCEP para autopreenchimento de endereços, disparos de e-mails transacionais via JavaMail, tratamento centralizado com <code>@ControllerAdvice</code> e documentação interativa via Swagger UI / OpenAPI 3.</li>
         </ul>
       </div>
 
@@ -752,7 +755,8 @@ const BACKEND_PT = `<!DOCTYPE html>
         <div class="entry-title">Dental Clinic Management System (DCMS) - <a href="https://github.com/DevYuriVieira/dentacare-management-system">github.com/DevYuriVieira/dentacare-management-system</a></div>
         <div class="entry-meta">Colaborativo (6 devs - Residência Serratec 2026.1) | 2026 | PostgreSQL 16+ | SQL Avançado (DDL, DML, DQL) | Modelagem 3FN | Database Indexing | SQL Views</div>
         <ul class="bullets">
-          <li>Banco relacional transacional em <strong>PostgreSQL 16+</strong> estritamente normalizado até a <strong>3ª Forma Normal (3FN)</strong>, com máquina de estados de agendamentos, integridade referencial estrita, validações DDL via Regex, <strong>Índices relacionais</strong> e <strong>Views analíticas</strong> de faturamento.</li>
+          <li>Banco relacional transacional em <strong>PostgreSQL 16+</strong> estritamente normalizado até a <strong>3ª Forma Normal (3FN)</strong>, centralizando ciclo de vida de consultas e agendamentos, histórico N:N de procedimentos clínicos e cadastro de profissionais (CRO) com zero dados órfãos.</li>
+          <li>Regras de negócio via DDL (validações Regex para CPF e CRO, restrições temporais e chaves únicas), integridade referencial estrita (RESTRICT e CASCADE), índices relacionais estratégicos e <strong>Views analíticas em SQL</strong> para relatórios operacionais e de faturamento.</li>
         </ul>
       </div>
     </section>
@@ -919,8 +923,9 @@ const BACKEND_EN = `<!DOCTYPE html>
         <div class="entry-title">FleetOps API (C# / .NET) - <a href="https://github.com/DevYuriVieira/fleetops-api">github.com/DevYuriVieira/fleetops-api</a></div>
         <div class="entry-meta">Personal | 2026 | C# 14 | .NET 10 | ASP.NET Core | PostgreSQL 18 | EF Core 10 | RabbitMQ | Keycloak OIDC | OpenTelemetry | xUnit</div>
         <ul class="bullets">
-          <li>Distributed fleet and logistics REST API engine in <strong>.NET 10 (C# 14)</strong> (27 endpoints across 5 DDD Bounded Contexts) with Clean Architecture, OAuth 2.0 / OIDC Resource Server with <strong>Keycloak (RS256/JWKS)</strong> and RBAC across four roles.</li>
-          <li>Implements <strong>Transactional Outbox</strong> with <strong>RabbitMQ</strong> (Publisher Confirms, TTL retry queues and DLQ), idempotent consumer by <code>MessageId</code>, optimistic concurrency (<code>xmin</code> / <code>FOR UPDATE SKIP LOCKED</code>), Jaeger tracing, <strong>300 xUnit tests</strong> and <strong>278 sustained RPS</strong> under ACID writes (k6).</li>
+          <li>Distributed, event-driven fleet and logistics REST API engine in <strong>.NET 10 (C# 14)</strong> (27 endpoints across 5 DDD Bounded Contexts: Vehicles, Drivers, Deliveries, Routes and Maintenance) with Clean Architecture, operating as an OAuth 2.0 / OIDC Resource Server with <strong>Keycloak (RS256/JWKS)</strong> and RBAC across four roles.</li>
+          <li>Implements <strong>Transactional Outbox</strong> integrated into DbContext eliminating dual-write hazards, optimistic concurrency via PostgreSQL <code>xmin</code>, concurrent polling via <code>FOR UPDATE SKIP LOCKED</code>, <strong>RabbitMQ</strong> messaging (Publisher Confirms, 10s/30s/90s TTL retry queues and DLQ), idempotent consumer by <code>MessageId</code> and W3C distributed tracing with OpenTelemetry and Jaeger.</li>
+          <li>Suite of <strong>300 automated tests</strong> (166 unit and 134 integration/concurrency/fault-injection) in xUnit with 100% pass rate and empirical throughput of <strong>278 sustained RPS</strong> under ACID domain writes in k6 load tests.</li>
         </ul>
       </div>
 
@@ -928,8 +933,9 @@ const BACKEND_EN = `<!DOCTYPE html>
         <div class="entry-title">FarmFlow - Distributed Agri-Tech Platform (Java 21) - <a href="https://github.com/DevYuriVieira/farmflow-backend">github.com/DevYuriVieira/farmflow-backend</a></div>
         <div class="entry-meta">Personal | 2026 | Java 21 LTS | Spring Boot 4.1 | Virtual Threads | PostgreSQL 17 | RabbitMQ | Keycloak OIDC | OpenTelemetry | k6</div>
         <ul class="bullets">
-          <li>Distributed engine in <strong>Java 21 with Virtual Threads and Spring Boot 4.1</strong> sustaining <strong>2,450 req/s</strong> in k6 (zero 5xx errors), <strong>Transactional Outbox</strong> over RabbitMQ (CloudEvents v1.0, DLQ), <code>FOR UPDATE SKIP LOCKED</code>, choreographed sagas (<code>pg_try_advisory_xact_lock</code>) and OpenTelemetry W3C tracing.</li>
-          <li><strong>PostgreSQL 17</strong> with declarative time-series partitioning, BRIN indexes and <strong>fail-closed Row Level Security</strong>, Keycloak 26.1 OIDC with IDOR protection (404 instead of 403) and <strong>411 backend tests</strong> running under 100 Virtual Threads.</li>
+          <li>Authorial distributed platform engineered for critical agro-industrial field operations: <strong>Java 21 LTS with Virtual Threads and Spring Boot 4.1</strong> backend sustaining <strong>2,450 req/s</strong> in k6 load tests with zero 5xx errors, built for IoT pivot/silo telemetry and MAPA regulatory compliance.</li>
+          <li>Consistency without dual-writes: <strong>Transactional Outbox</strong> over RabbitMQ (CloudEvents v1.0, Publisher Confirms, DLQ), concurrent polling via <code>FOR UPDATE SKIP LOCKED</code>, choreographed sagas with advisory locks (<code>pg_try_advisory_xact_lock</code>) and end-to-end W3C tracing with OpenTelemetry.</li>
+          <li>Data and security at scale: <strong>PostgreSQL 17</strong> with declarative time-series partitioning, BRIN indexes and <strong>fail-closed Row Level Security</strong>; Keycloak 26.1 OIDC with IDOR enumeration protection (404 instead of 403) and <strong>411 automated tests</strong> executing under 100 Virtual Threads.</li>
         </ul>
       </div>
 
@@ -937,7 +943,8 @@ const BACKEND_EN = `<!DOCTYPE html>
         <div class="entry-title">Spring Boot E-Commerce API - <a href="https://github.com/DevYuriVieira/ecommerce-serratec-api">github.com/DevYuriVieira/ecommerce-serratec-api</a></div>
         <div class="entry-meta">Collaborative (Serratec Residency) | 2026 | Java 17 | Spring Boot 3 | Spring Security 6 | PostgreSQL | JPA/Hibernate | Swagger/OpenAPI 3</div>
         <ul class="bullets">
-          <li>Layered RESTful API (Controller, Service, Repository, DTOs) with <strong>Spring Security 6 (JWT / RBAC)</strong>, concurrent inventory control, optimized relational mapping with <strong>JPA/Hibernate on PostgreSQL</strong> and interactive Swagger / OpenAPI 3 contracts.</li>
+          <li>Team-developed RESTful API in <strong>Java 17 and Spring Boot 3</strong> structured in decoupled layers (Controller, Service, Repository, DTOs), managing order lifecycles with N:N mappings, dynamic item totalization and concurrent inventory control.</li>
+          <li>Robust security via <strong>Spring Security 6 filter chain (stateless JWT / RBAC)</strong>, integration with external ViaCEP API for automatic address resolution, transactional email notifications with JavaMail, global exception handling (<code>@ControllerAdvice</code>) and interactive OpenAPI 3 / Swagger UI contracts.</li>
         </ul>
       </div>
 
@@ -945,7 +952,8 @@ const BACKEND_EN = `<!DOCTYPE html>
         <div class="entry-title">Dental Clinic Management System (DCMS) - <a href="https://github.com/DevYuriVieira/dentacare-management-system">github.com/DevYuriVieira/dentacare-management-system</a></div>
         <div class="entry-meta">Collaborative (6 devs - Serratec Residency 2026.1) | 2026 | PostgreSQL 16+ | Advanced SQL (DDL, DML, DQL) | 3NF Modeling | Database Indexing | SQL Views</div>
         <ul class="bullets">
-          <li>Transactional relational database in <strong>PostgreSQL 16+</strong> strictly normalized up to <strong>3rd Normal Form (3NF)</strong>, with appointment state machine, strict referential integrity, DDL regex validations, <strong>relational indexes</strong> and analytical revenue <strong>SQL views</strong>.</li>
+          <li>Transactional relational database in <strong>PostgreSQL 16+</strong> strictly normalized up to <strong>3rd Normal Form (3NF)</strong>, centralizing appointment lifecycle workflows, N:N associative clinical procedure histories and dentist records (CRO) with zero orphan data.</li>
+          <li>Enforces domain rules via DDL constraints (Regex validations for CPF and CRO, temporal logical checks and unique keys), strict referential integrity (RESTRICT and CASCADE), strategic B-Tree indexes and <strong>analytical SQL views</strong> for operational and revenue reporting.</li>
         </ul>
       </div>
     </section>
