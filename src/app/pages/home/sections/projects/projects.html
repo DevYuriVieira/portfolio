@@ -48,7 +48,7 @@
             <div class="projects__section-block">
               <span class="projects__section-label">{{ labels().techHighlights }}</span>
               <ul class="projects__highlights-list">
-                @for (highlight of (isProjectExpanded(project.id) ? project.highlights : project.highlights.slice(0, 4)); track $index) {
+                @for (highlight of project.highlights.slice(0, 4); track $index) {
                 <li class="projects__highlight-item">
                   <span class="projects__highlight-bullet" aria-hidden="true">•</span>
                   <app-text variant="caption" element="span" class="projects__highlight-text">
@@ -62,58 +62,81 @@
 
             <button
               type="button"
-              class="projects__details-toggle"
-              [class.is-open]="isProjectExpanded(project.id)"
-              [attr.aria-expanded]="isProjectExpanded(project.id)"
-              (click)="toggleProjectDetails(project.id)">
-              <span>{{ isProjectExpanded(project.id) ? labels().hideDetails : labels().showDetails }}</span>
-              <span class="projects__details-chevron" aria-hidden="true">▾</span>
-            </button>
+              class="projects__case-summary"
+              (click)="openCaseStudyModal(project)"
+              [attr.aria-label]="labels().viewCaseStudyAria(project.title)">
+              <div class="projects__case-summary-header">
+                <span class="projects__case-summary-title">
+                  {{ labels().caseStudyTitle }}
+                </span>
+                <span class="projects__case-summary-action">
+                  <span>{{ labels().openCaseStudy }}</span>
+                  <span class="projects__case-summary-arrow" aria-hidden="true">↗</span>
+                </span>
+              </div>
 
-            <div class="projects__collapsible-details" [class.is-expanded]="isProjectExpanded(project.id)">
               @if (project.problem) {
-              <div class="projects__section-block">
-                <span class="projects__section-label">{{ labels().challenge }}</span>
-                <app-text variant="body" class="projects__card-subtext">
-                  {{ project.problem }}
-                </app-text>
+              <div class="projects__case-row">
+                <div class="projects__case-tag projects__case-tag--challenge">
+                  <svg class="projects__case-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="12" y1="8" x2="12" y2="12" />
+                    <line x1="12" y1="16" x2="12.01" y2="16" />
+                  </svg>
+                  <span>{{ labels().challenge }}</span>
+                </div>
+                <span class="projects__case-text" [attr.title]="project.problem">
+                  {{ project.summaryProblem || project.problem }}
+                </span>
               </div>
               }
 
               @if (project.solution) {
-              <div class="projects__section-block">
-                <span class="projects__section-label">{{ labels().solution }}</span>
-                <app-text variant="body" class="projects__card-subtext">
-                  {{ project.solution }}
-                </app-text>
+              <div class="projects__case-row">
+                <div class="projects__case-tag projects__case-tag--solution">
+                  <svg class="projects__case-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polyline points="16 18 22 12 16 6" />
+                    <polyline points="8 6 2 12 8 18" />
+                  </svg>
+                  <span>{{ labels().solution }}</span>
+                </div>
+                <span class="projects__case-text" [attr.title]="project.solution">
+                  {{ project.summarySolution || project.solution }}
+                </span>
               </div>
               }
 
               @if (project.architectureDecisions && project.architectureDecisions.length > 0) {
-              <div class="projects__section-block">
-                <span class="projects__section-label">{{ labels().archDecisions }}</span>
-                <ul class="projects__highlights-list">
-                  @for (decision of project.architectureDecisions; track $index) {
-                  <li class="projects__highlight-item">
-                    <span class="projects__highlight-bullet" aria-hidden="true">•</span>
-                    <app-text variant="caption" element="span" class="projects__highlight-text">
-                      {{ decision }}
-                    </app-text>
-                  </li>
-                  }
-                </ul>
+              <div class="projects__case-row">
+                <div class="projects__case-tag projects__case-tag--arch">
+                  <svg class="projects__case-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                    <polyline points="2 17 12 22 22 17" />
+                    <polyline points="2 12 12 17 22 12" />
+                  </svg>
+                  <span>{{ labels().archDecisions }}</span>
+                </div>
+                <span class="projects__case-text" [attr.title]="project.architectureDecisions[0]">
+                  {{ project.summaryArch || project.architectureDecisions[0] }}
+                </span>
               </div>
               }
 
               @if (project.results) {
-              <div class="projects__section-block">
-                <span class="projects__section-label">{{ labels().results }}</span>
-                <app-text variant="body" class="projects__card-subtext">
-                  {{ project.results }}
-                </app-text>
+              <div class="projects__case-row projects__case-row--highlight">
+                <div class="projects__case-tag projects__case-tag--results">
+                  <svg class="projects__case-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                    <polyline points="17 6 23 6 23 12" />
+                  </svg>
+                  <span>{{ labels().results }}</span>
+                </div>
+                <span class="projects__case-text projects__case-text--success" [attr.title]="project.results">
+                  {{ project.summaryResults || project.results }}
+                </span>
               </div>
               }
-            </div>
+            </button>
 
             <div class="projects__section-block">
               <span class="projects__section-label">{{ labels().techStack }}</span>
@@ -233,5 +256,14 @@
 
   @if (farmFlowModalOpen()) {
   <app-farmflow-modal (close)="closeFarmFlowModal()" />
+  }
+
+  @if (selectedCaseStudyProject(); as activeProject) {
+  <app-case-study-modal
+    [project]="activeProject"
+    (close)="closeCaseStudyModal()"
+    (openArchitecture)="openArchitectureModal()"
+    (openFleetOps)="openFleetOpsModal()"
+    (openFarmFlow)="openFarmFlowModal()" />
   }
 </app-section>

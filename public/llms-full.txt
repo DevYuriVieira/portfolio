@@ -111,7 +111,7 @@ Yuri Vieira Teixeira is a Full-Stack Software Engineer and former Back-End Progr
 - **Technologies**: React Native, Expo SDK 54, TypeScript, React Navigation, Zod, React Hook Form, Axios, AsyncStorage, Expo SecureStore.
 
 ### 3.5. Django Full-Stack E-Commerce Platform
-- **Repository**: https://github.com/DevYuriVieira/django-fullstack-ecommerce
+- **Repository**: https://github.com/DevYuriVieira/liquor-store-django
 - **Domain**: High-Concurrency E-Commerce Backend & Vanilla JS Frontend.
 - **Problem**: Preventing race conditions in order processing, avoiding duplicate charges from asynchronous payment webhooks firing multiple times, eliminating N+1 query bottlenecks in ORM queries, and building a lightweight frontend without heavy SPA frameworks.
 - **Solution**: An enterprise Django architecture organized around the Service Layer pattern, wrapping critical business logic in atomic database transactions (`transaction.atomic`) and enforcing idempotent webhook handlers.

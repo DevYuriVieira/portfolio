@@ -4,11 +4,24 @@ import { Button, Container, Heading, Link, Section, Text } from '@ui';
 import { ArchitectureModal } from './components/architecture-modal/architecture-modal';
 import { FleetOpsModal } from './components/fleetops-modal/fleetops-modal';
 import { FarmFlowModal } from './components/farmflow-modal/farmflow-modal';
+import { CaseStudyModal } from './components/case-study-modal/case-study-modal';
+import { Project } from './project.model';
 import { getProjectsData } from './projects.data';
 
 @Component({
   selector: 'app-projects',
-  imports: [Section, Container, Heading, Text, Link, Button, ArchitectureModal, FleetOpsModal, FarmFlowModal],
+  imports: [
+    Section,
+    Container,
+    Heading,
+    Text,
+    Link,
+    Button,
+    ArchitectureModal,
+    FleetOpsModal,
+    FarmFlowModal,
+    CaseStudyModal,
+  ],
   templateUrl: './projects.html',
   styleUrl: './projects.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -21,18 +34,7 @@ export class ProjectsSection {
   readonly architectureModalOpen = signal<boolean>(false);
   readonly fleetOpsModalOpen = signal<boolean>(false);
   readonly farmFlowModalOpen = signal<boolean>(false);
-  readonly expandedProjectIds = signal<Record<string, boolean>>({});
-
-  isProjectExpanded(id: string): boolean {
-    return !!this.expandedProjectIds()[id];
-  }
-
-  toggleProjectDetails(id: string): void {
-    this.expandedProjectIds.update((state) => ({
-      ...state,
-      [id]: !state[id],
-    }));
-  }
+  readonly selectedCaseStudyProject = signal<Project | null>(null);
 
   readonly showAll = computed(() => this.displayLimit() >= this.projects().length);
 
@@ -85,10 +87,19 @@ export class ProjectsSection {
       challenge: t('Challenge', 'Desafio', 'Desafío'),
       solution: t('Solution', 'Solução', 'Solución'),
       archDecisions: t('Architecture Decisions', 'Decisões de Arquitetura', 'Decisiones de Arquitectura'),
+      archDecisionsBadge: t('Architecture', 'Arquitetura', 'Arquitectura'),
       techHighlights: t('Technical Highlights', 'Destaques Técnicos', 'Aspectos Técnicos Destacados'),
       results: t('Results', 'Resultados', 'Resultados'),
       techStack: t('Technology Stack', 'Stack Tecnológica', 'Stack Tecnológico'),
       confidential: t('Confidential', 'Confidencial', 'Confidencial'),
+      caseStudyTitle: t('Challenge, Solution & Results', 'Desafio, Solução & Resultados', 'Desafío, Solución & Resultados'),
+      openCaseStudy: t('View Details', 'Ver Detalhes', 'Ver Detalles'),
+      viewCaseStudyAria: (title: string) =>
+        t(
+          `View technical details, challenge, and solution for ${title}`,
+          `Ver detalhes técnicos, desafio e solução de ${title}`,
+          `Ver detalles técnicos, desafío y solución de ${title}`,
+        ),
       ndaFooter: t(
         'Serratec TIC/Software Residency • Source code restricted by NDA',
         'Residência Serratec TIC/Software • Código fonte restrito por NDA',
@@ -113,14 +124,20 @@ export class ProjectsSection {
         'Dossier & Arquitectura - FarmFlow Ecosystem',
       ),
       techAriaLabel: t('Technologies used in the project', 'Tecnologias utilizadas no projeto', 'Tecnologías utilizadas en el proyecto'),
-      showDetails: t('View Challenge, Solution & Results', 'Ver Desafio, Solução & Resultados', 'Ver Desafío, Solución & Resultados'),
-      hideDetails: t('Hide technical details', 'Ocultar detalhes técnicos', 'Ocultar detalles técnicos'),
-      collapseLabel: t('Collapse projects list', 'Recolher projetos do portfólio', 'Contraer proyectos del portafolio'),
+      collapseLabel: t('Collapse projects list', 'Recolher projetos do portfólio', 'Contraer projetos del portafolio'),
       expandLabel: (_count?: number) => expandLabel,
       collapseText: t('Collapse projects', 'Recolher projetos', 'Contraer proyectos'),
       expandText: (_count?: number) => expandText,
     };
   });
+
+  openCaseStudyModal(project: Project): void {
+    this.selectedCaseStudyProject.set(project);
+  }
+
+  closeCaseStudyModal(): void {
+    this.selectedCaseStudyProject.set(null);
+  }
 
   openArchitectureModal(): void {
     this.architectureModalOpen.set(true);

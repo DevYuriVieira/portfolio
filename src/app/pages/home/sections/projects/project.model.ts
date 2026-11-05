@@ -23,7 +23,10 @@ export interface Project {
   readonly development?: string;
   readonly highlights?: readonly string[];
   readonly results?: string;
+  readonly summaryProblem?: string;
+  readonly summarySolution?: string;
+  readonly summaryArch?: string;
+  readonly summaryResults?: string;
   readonly technologies: readonly string[];
   readonly links: ProjectLinks;
 }
-

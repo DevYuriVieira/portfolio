@@ -96,22 +96,20 @@ All descriptions follow recruiter-oriented PT-BR storytelling with technical cla
 
 ---
 
-# 6. Payroll System (Sistema de Folha de Pagamento)
+# 6. Bootcamp Management System (Java OOP & Streams)
 
-- **Título**: Sistema de Folha de Pagamento (Payroll System)
-- **Categoria**: Backend Java / Arquitetura MVC+DAO
-- **Contexto**: Sistema backend para processamento automatizado em lote de folha de pagamento, cálculo de alíquotas progressivas de INSS e Imposto de Renda (IRRF) conforme a legislação vigente, desenvolvido durante a Residência em TIC Serratec 2026.1 (Turma 36 Nova Friburgo).
-- **Como foi desenvolvido**: Projeto colaborativo desenvolvido em equipe de 4 desenvolvedores (Yuri Vieira, Yasmim Veríssimo, Gabriel Maia e Ícaro Pinheiro) em Java 17 puro (sem frameworks ORM) aplicando arquitetura MVC + DAO, persistência via JDBC no PostgreSQL, exceções customizadas de domínio e manipulação I/O defensiva de arquivos CSV.
+- **Título**: Bootcamp Management System
+- **Categoria**: Backend Java / OOP & Stream API
+- **Contexto**: Motor backend em Java 17 puro modelando uma plataforma de treinamento e cursos de tecnologia com aplicação profunda dos pilares de POO (Abstração, Encapsulamento, Herança e Polimorfismo), Java Collections API e Stream API para cálculo dinâmico de XP e ranking de alunos.
+- **Como foi desenvolvido**: Projeto autoral desenvolvido no Desafio Santander Bootcamp / DIO para demonstrar domínio de modelagem conceitual orientada a objetos sem acoplamento a frameworks, garantindo unicidade de conteúdos e integridade de matrículas.
 - **Destaques técnicos**:
-  - Arquitetura em camadas MVC + DAO em Java 17 sem dependência de ORM
-  - Cálculo progressivo automatizado de INSS e IRRF com deduções por dependente
-  - Precisão financeira exata com `BigDecimal` e `RoundingMode.HALF_UP`
-  - Padrão Singleton no gerenciador de conexões JDBC (`ConexaoBancoDados`)
-  - Tratamento de exceções customizadas de domínio (`CpfInvalidoException`, `DependenteSemTitularException`, `SalarioInvalidoException`)
-  - Leitura e exportação automatizada de relatórios em arquivos CSV (`CsvReader`, `CsvWriter`)
-  - Modelo relacional normalizado no PostgreSQL (`departamento`, `funcionario`, `dependente`, `folha_pagamento`)
-- **Stack**: Java 17, PostgreSQL, JDBC, MVC, DAO, BigDecimal, Singleton Pattern
-- **Links**: GitHub (https://github.com/DevYuriVieira/payroll-system-java)
+  - Abstração polimórfica via classe base abstrata `Conteudo`, estendida por `Curso` (com carga horária) e `Mentoria` (com data de sessão ao vivo)
+  - Gestão de matrículas com `LinkedHashSet` para preservação da ordem cronológica e garantia estrita contra duplicações
+  - Processamento funcional declarativo com Java Stream API (`mapToDouble` e `sum`) para cálculo acumulativo de XP
+  - Sobrescrita consistente de `equals()` e `hashCode()` baseada na identidade do conteúdo
+  - Regras de negócio de progressão e ranking de desenvolvedores sem mutações colaterais
+- **Stack**: Java 17, POO (OOP), Collections API, Stream API, LinkedHashSet, Polimorfismo
+- **Links**: GitHub (https://github.com/DevYuriVieira/bootcamp-management-system)
 
 ---
 
@@ -132,22 +130,21 @@ All descriptions follow recruiter-oriented PT-BR storytelling with technical cla
 
 ---
 
-# 8. Kuro Seafood E-Commerce
+# 8. Prime Grill (Cardápio Digital Interativo)
 
-- **Título**: Kuro Seafood E-Commerce
-- **Categoria**: Frontend E-commerce (MPA)
-- **Contexto**: Plataforma e-commerce B2C/B2B de pescados premium construída durante a Residência em TIC Serratec 2026.1 (Turma 36 Nova Friburgo) em arquitetura Multi-Page (MPA) sem frameworks, simulando uma experiência completa de compras de nível de produção.
-- **Como foi desenvolvido**: Projeto colaborativo desenvolvido em equipe de 4 desenvolvedores (Yuri Vieira, Yasmim Veríssimo, Gabriel Maia e Ícaro Pinheiro) com módulos JS isolados por funcionalidade (`cart.js`, `auth.js`, `catalogo.js`, `admin.js`, `checkout.js`, `dashboard-crud.js`), consumo de APIs assíncronas (`async/await`) e renderização via template literals.
+- **Título**: Prime Grill | Cardápio Digital Interativo
+- **Categoria**: Frontend / JavaScript & UX Delivery
+- **Contexto**: Cardápio digital moderno e responsivo para churrascaria comercial fictícia inspirado em aplicativos de delivery como o iFood, desenvolvido durante a formação de Front-End com IA no SENAC RJ.
+- **Como foi desenvolvido**: Projeto individual desenvolvido com Vanilla JavaScript, HTML5 semântico e CSS3 modular, implementando catálogo com filtros dinâmicos por categoria, carrinho interativo em tempo real e fechamento de pedidos com mensagem estruturada para a API do WhatsApp.
 - **Destaques técnicos**:
-  - Arquitetura Multi-Page (MPA) em Vanilla JS (ES6+) eliminando overhead de frameworks
-  - Painel administrativo privado com CRUD completo de produtos (Create, Read, Update, Delete) via MockAPI
-  - Carrinho offcanvas persistente com controle de estado cliente-side via LocalStorage
-  - Cálculo de frete e preenchimento de endereço em tempo real via ViaCEP REST API
-  - Regras automáticas de desconto para vendas no atacado (> R$ 500 ou > 5kg)
-  - Sistema de busca e filtragem dinâmica de catálogo via URL Query Strings
-  - Design responsivo Mobile-First construído do zero com Bootstrap 5.3 e CSS3
-- **Stack**: Vanilla JS (ES6+), HTML5, CSS3, Bootstrap 5.3, ViaCEP API, MockAPI, LocalStorage
-- **Links**: GitHub (https://github.com/DevYuriVieira/kuro-seafood-ecommerce), Live Demo (https://kuro-seafood-ecommerce.vercel.app/)
+  - Carrinho de compras interativo com cálculo reativo em tempo real de subtotais e totais
+  - Integração direta com API do WhatsApp para fechamento ágil e envio estruturado de pedidos
+  - Filtros dinâmicos por categoria (Carnes Nobres, Guarnições, Bebidas, Sobremesas)
+  - Carrossel dinâmico de pratos em destaque e microinterações fluidas
+  - Arquitetura leve em Vanilla JavaScript sem dependências pesadas, garantindo carregamento sub-segundo
+  - Layout totalmente responsivo com foco em UX mobile-first
+- **Stack**: JavaScript, HTML5 Semântico, CSS3 Modular, WhatsApp API, UX/UI Design, GitHub Pages
+- **Links**: GitHub (https://github.com/DevYuriVieira/Projeto-Front-End), Live Demo (https://devyurivieira.github.io/Projeto-Front-End/)
 
 ---
 

@@ -162,5 +162,24 @@ describe('ProjectsSection', () => {
     fixture.detectChanges();
     expect(component.farmFlowModalOpen()).toBe(false);
   });
+
+  it('should toggle CaseStudyModal when case summary box is clicked', () => {
+    expect(component.selectedCaseStudyProject()).toBeNull();
+
+    const compiled = fixture.nativeElement as HTMLElement;
+    const caseSummaryBtn = compiled.querySelector('.projects__case-summary') as HTMLButtonElement;
+    expect(caseSummaryBtn).toBeTruthy();
+
+    caseSummaryBtn.click();
+    fixture.detectChanges();
+    expect(component.selectedCaseStudyProject()).toBeTruthy();
+
+    const modal = compiled.querySelector('app-case-study-modal');
+    expect(modal).toBeTruthy();
+
+    component.closeCaseStudyModal();
+    fixture.detectChanges();
+    expect(component.selectedCaseStudyProject()).toBeNull();
+  });
 });
 

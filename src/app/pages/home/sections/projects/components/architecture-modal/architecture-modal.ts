@@ -69,7 +69,7 @@ export class ArchitectureModal {
   private readonly labelsI18n: Record<SupportedLang, ArchitectureModalLabels> = {
     'pt-BR': {
       modalTitle: 'ZEISS Recommendation Assistant — Arquitetura de Solução',
-      modalEyebrow: '01 // TOPOLOGIA DE ENGENHARIA & PIPELINE (NDA SANITIZED)',
+      modalEyebrow: '01 // TOPOLOGIA DE ENGENHARIA & PIPELINE',
       closeBtn: 'Fechar',
       closeAriaLabel: 'Fechar modal de arquitetura',
       modalCloseAriaLabel: 'Fechar modal',
@@ -129,7 +129,7 @@ export class ArchitectureModal {
     },
     en: {
       modalTitle: 'ZEISS Recommendation Assistant — Solution Architecture',
-      modalEyebrow: '01 // ENGINEERING TOPOLOGY & PIPELINE (NDA SANITIZED)',
+      modalEyebrow: '01 // ENGINEERING TOPOLOGY & PIPELINE',
       closeBtn: 'Close',
       closeAriaLabel: 'Close architecture modal',
       modalCloseAriaLabel: 'Close modal',
@@ -189,7 +189,7 @@ export class ArchitectureModal {
     },
     es: {
       modalTitle: 'ZEISS Recommendation Assistant — Arquitectura de Solución',
-      modalEyebrow: '01 // TOPOLOGÍA DE INGENIERÍA & PIPELINE (NDA SANITIZED)',
+      modalEyebrow: '01 // TOPOLOGÍA DE INGENIERÍA & PIPELINE',
       closeBtn: 'Cerrar',
       closeAriaLabel: 'Cerrar modal de arquitectura',
       modalCloseAriaLabel: 'Cerrar modal',

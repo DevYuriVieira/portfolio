@@ -13,7 +13,7 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       client: 'ZEISS Group',
       confidential: true,
       description:
-        'Plataforma web corporativa desenvolvida em parceria com o ZEISS Group para digitalizar e otimizar a recomendação técnica de lentes em ópticas.',
+        'Plataforma web corporativa desenvolvida em parceria com o ZEISS Group para digitalizar e otimizar a recomendação técnica de lentes em lojas ZEISS Vision Center e óticas parceiras credenciadas.',
       context:
         'MVP corporativo desenvolvido durante a Residência Serratec em parceria direta com o ZEISS Group. Atuação em equipe ágil no desenvolvimento frontend em React, integração de fluxos de IA e automação de recomendação comercial.',
       problem:
@@ -355,7 +355,7 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       results:
         'Processamento assíncrono idempotente de Webhooks de pagamento zerando cobranças duplicadas; eliminação de N+1 queries com prefetch_related; arquitetura frontend leve em JavaScript nativo com zero overhead de frameworks e manipulação segura do DOM via <template> e textContent.',
       links: {
-        github: 'https://github.com/DevYuriVieira/django-ecommerce',
+        github: 'https://github.com/DevYuriVieira/liquor-store-django',
       },
     },
     {
@@ -759,7 +759,7 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       client: 'ZEISS Group',
       confidential: true,
       description:
-        'Corporate web platform developed in partnership with the ZEISS Group to digitize, standardize, and optimize technical service and lens recommendations in optical stores.',
+        'Corporate web platform developed in partnership with the ZEISS Group to digitize, standardize, and optimize technical service and lens recommendations across ZEISS Vision Center stores and authorized partner optical clinics.',
       context:
         'Corporate MVP developed in partnership with the ZEISS Group during the Serratec Residency. Worked in an agile team on React frontend development, AI pipeline integration, and sales workflow automation.',
       problem:
@@ -1101,7 +1101,7 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       results:
         'Idempotent async payment Webhook processing eliminating double charges under concurrent requests; N+1 query elimination via prefetch_related; lightweight Vanilla JS frontend architecture delivering zero framework overhead and safe DOM manipulation via native <template> and textContent.',
       links: {
-        github: 'https://github.com/DevYuriVieira/django-ecommerce',
+        github: 'https://github.com/DevYuriVieira/liquor-store-django',
       },
     },
     {
@@ -1505,7 +1505,7 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       client: 'ZEISS Group',
       confidential: true,
       description:
-        'Plataforma web corporativa desarrollada en asociación con el ZEISS Group para digitalizar, estandarizar y optimizar la recomendación técnica de lentes en ópticas.',
+        'Plataforma web corporativa desarrollada en asociación con el ZEISS Group para digitalizar, estandarizar y optimizar la recomendación técnica de lentes en tiendas ZEISS Vision Center y ópticas asociadas autorizadas.',
       context:
         'MVP corporativo desarrollado en asociación con el ZEISS Group durante la Residencia Serratec. Trabajo en equipo ágil en desarrollo frontend React, integración de pipeline de IA y automatización de flujo de ventas.',
       problem:
@@ -1841,7 +1841,7 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       ],
       results:
         'Procesamiento asíncrono idempotente de Webhooks de pago eliminando cobros dobles; eliminación de consultas N+1 vía prefetch_related; arquitectura frontend ligera en JavaScript vanilla con cero overhead de frameworks y manipulación segura del DOM vía <template> y textContent.',
-      links: { github: 'https://github.com/DevYuriVieira/django-ecommerce' },
+      links: { github: 'https://github.com/DevYuriVieira/liquor-store-django' },
     },
     {
       id: 'playstation-evolution-timeline',
