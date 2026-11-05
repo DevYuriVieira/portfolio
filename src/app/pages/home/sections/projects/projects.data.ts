@@ -807,30 +807,41 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       title: 'Dental Clinic Management System (DCMS)',
       category: 'Banco de Dados Relacional',
       featured: false,
-      contextTag: 'Modelagem de Banco de Dados',
+      contextTag: 'Modelagem de Banco de Dados / 3FN',
       collaboration: 'Projeto colaborativo (6 desenvolvedores - Residência Serratec)',
       description:
-        'Sistema de banco de dados relacional construído em PostgreSQL 16+ durante a Residência Serratec para gestão de clínicas odontológicas.',
+        'Sistema de banco de dados relacional modelado rigorosamente em 3FN e implementado em PostgreSQL 16+ durante a Residência Serratec para gestão integral de clínicas odontológicas, integrando controle de pacientes, dentistas (CRO), agenda semanal dinâmica, prontuário com ciclo de vida e catálogo N:N de procedimentos.',
       context:
-        'Projeto final da disciplina de Banco de Dados da Residência Serratec, desenvolvido em equipe de 6 integrantes para prover uma base transacional consistente para aplicações odontológicas.',
+        'Projeto final da disciplina de Banco de Dados da Residência em TIC Serratec 2026.1, desenvolvido em equipe de 6 integrantes (Yuri Vieira, Pedro Martins, Marcelo Ribeiro, Jhonata Raibolt, Lucas Alves e Pedro Dayer) para prover uma base transacional consistente, padronizada e de alta performance para softwares de gestão odontológica.',
+      summaryProblem:
+        'Centralizar prontuários e agendamentos odontológicos prevenindo registros órfãos e dados inconsistentes',
       problem:
-        'Centralizar agendamentos, históricos de procedimentos e dados de dentistas (CRO) com integridade referencial e prevenção contra registros órfãos ou inconsistentes.',
+        'Centralizar agendamentos, históricos clínicos e dados de profissionais com tolerância zero a inconsistências, prevenindo registros órfãos, conflitos de agenda e redundância de procedimentos sem depender de regras dispersas no código da aplicação.',
+      summarySolution:
+        'Banco relacional em PostgreSQL 16+ normalizado em 3FN com regras de negócio direto no DDL',
       solution:
-        'Modelagem relacional normalizada em 3FN no PostgreSQL 16+, integridade referencial com RESTRICT e CASCADE, validações DDL via Regex para CPF e Views analíticas em SQL.',
+        'Modelagem relacional conceitual e lógica normalizada em 3FN no PostgreSQL 16+, regras de negócio impostas via DDL com validação de CPF e CRO por Regex, restrições lógicas de datas, integridade referencial estrita com RESTRICT e CASCADE, mapeamento N:N de procedimentos por consulta, índices estratégicos e Views analíticas em SQL.',
       development:
-        'Atuação em equipe de 6 integrantes na confecção do DER conceitual, escrita dos scripts SQL (DDL, DML, DQL), criação de índices relacionais e elaboração de Views de relatórios.',
+        'Atuação em equipe de 6 desenvolvedores: elaboração dos diagramas conceituais e lógicos (DER), escrita completa dos scripts SQL estruturados em DDL (criação e constraints), DML (carga de dados) e DQL (consultas complexas com joins e agregações), criação de índices de alta seletividade e views analíticas para relatórios clínicos.',
+      summaryArch:
+        'Normalização 3FN, integridade com RESTRICT/CASCADE, validação de CPF/CRO com Regex, índices e Views SQL',
       architectureDecisions: [
-        'Normalização estrita até a 3ª Forma Normal (3FN) abrangendo entidades como pacientes, dentistas, agendas e consultas',
-        'Aplicação de regras de negócio via DDL: validação de CPF com Regex, restrições lógicas de datas e campos Únicos',
-        'Controle estrito de integridade referencial utilizando regras RESTRICT (prevenção de órfãos) e CASCADE',
-        'Otimização de performance em consultas frequentes por meio de Índices relacionais e Views SQL para relatórios',
+        'Normalização relacional estrita até a 3ª Forma Normal (3FN) abrangendo pacientes, dentistas, horários de atendimento, procedimentos e consultas',
+        'Aplicação de regras de negócio via DDL: validação de CPF e CRO por Regex, restrições lógicas de datas e horários, e constraints de unicidade',
+        'Controle estrito de integridade referencial utilizando RESTRICT (prevenção de registros órfãos) e CASCADE (limpeza de vínculos dependentes)',
+        'Modelagem N:N entre consultas e procedimentos com tabela associativa (consulta_procedimento) suportando múltiplos tratamentos por sessão',
+        'Otimização de performance com índices estratégicos em chaves estrangeiras e campos de busca frequente',
+        'Criação de Views analíticas em SQL encapsulando consultas complexas com joins e agregações para relatórios gerenciais e clínicos',
       ],
       highlights: [
-        'Banco relacional PostgreSQL 16+ normalizado em 3FN',
-        'Regras de negócio via DDL e validação de CPF com Regex',
-        'Integridade referencial com RESTRICT e CASCADE',
-        'Mapeamento N:N entre consultas e catálogo de procedimentos',
-        'Views analíticas em SQL e otimização por Índices',
+        'Banco relacional PostgreSQL 16+ totalmente normalizado em 3FN',
+        'Regras de negócio via DDL com validação de CPF e CRO por Regex',
+        'Integridade referencial robusta com RESTRICT e CASCADE',
+        'Modelagem N:N entre consultas e catálogo de procedimentos',
+        'Controle dinâmico de disponibilidade e agenda semanal por dentista',
+        'Máquina de estados de consulta: Agendada, Realizada e Cancelada',
+        'Otimização com índices relacionais e Views analíticas em SQL',
+        'Projeto colaborativo em equipe de 6 desenvolvedores (Serratec)',
       ],
       technologies: [
         'PostgreSQL 16+',
@@ -840,9 +851,12 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         'DQL',
         'Database Indexing',
         'SQL Views',
+        'Modelagem DER (3FN)',
       ],
+      summaryResults:
+        'Zero redundância clínica, integridade referencial garantida, consultas analíticas velozes e relatórios via Views',
       results:
-        'Estrutura relacional normalizada em 3FN no PostgreSQL; eliminação de redundância de dados clínicos; emissão ágil de relatórios operacionais por meio de Views analíticas em SQL.',
+        'Eliminação completa de redundâncias e anomalias de atualização via normalização em 3FN no PostgreSQL; garantia de integridade referencial e validação defensiva de dados na camada DDL; e geração ágil de relatórios clínicos e operacionais através de Views analíticas otimizadas por índices.',
       links: {
         github: 'https://github.com/DevYuriVieira/dentacare-management-system',
       },
@@ -1691,30 +1705,41 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       title: 'Dental Clinic Management System (DCMS)',
       category: 'Relational Database',
       featured: false,
-      contextTag: 'Database Modeling',
-      collaboration: 'Collaborative project (6 developers - Serratec Database Final Project)',
+      contextTag: 'Database Modeling / 3NF',
+      collaboration: 'Collaborative project (6 developers - Serratec Residency)',
       description:
-        'Relational database system built in PostgreSQL 16+ during the Serratec Residency for dental clinic management, featuring database-level business rules and validation.',
+        'Relational database system rigorously modeled in 3NF and implemented in PostgreSQL 16+ during the Serratec Residency for dental clinic management, integrating patients, dentists (CRO), dynamic weekly scheduling, clinical appointments lifecycle, and an N:N procedure catalog.',
       context:
-        'Serratec Residency Database final project built in a 6-developer team to provide a robust, high-performance transactional foundation for dental applications.',
+        'Final database project for the Serratec ICT Residency 2026.1, developed by a team of 6 engineers (Yuri Vieira, Pedro Martins, Marcelo Ribeiro, Jhonata Raibolt, Lucas Alves, and Pedro Dayer) to provide a consistent, standardized, and high-performance transactional core for dental practice software.',
+      summaryProblem:
+        'Centralize dental records and scheduling with zero tolerance for orphan records or inconsistent data',
       problem:
-        'Centralize appointment scheduling, procedure history, and professional dentist records (CRO) with referential integrity guarantees, preventing invalid registrations or orphan records.',
+        'Centralize appointment scheduling, clinical records, and practitioner data with zero tolerance for inconsistency, preventing orphan records, schedule collisions, and procedure redundancy without scattering rules across application code.',
+      summarySolution:
+        'Relational PostgreSQL 16+ database normalized to 3NF with business logic enforced via DDL constraints',
       solution:
-        'Normalized 3FN conceptual and logical modeling in PostgreSQL 16+, enforcing referential integrity via RESTRICT and CASCADE, defensive Regex CPF validations, schedule restrictions, and N:N procedure mapping.',
+        'Conceptual and logical relational modeling normalized in 3NF on PostgreSQL 16+, business constraints enforced via DDL with Regex validation for CPF and CRO, logical temporal restrictions, strict referential integrity via RESTRICT and CASCADE, N:N procedure mapping, strategic indexes, and analytical SQL Views.',
       development:
-        'Worked in a 6-developer team covering ERD modeling, writing complete SQL scripts (DDL, DML, DQL), strategic index optimization, and creating analytical SQL Views for clinical reporting.',
+        'Collaborated in a team of 6 developers: authored conceptual and logical ERDs, developed full SQL scripts structured into DDL (tables and constraints), DML (seed data), and DQL (complex multi-table queries with joins and aggregations), created high-selectivity indexes, and built analytical views for clinical reporting.',
+      summaryArch:
+        '3NF normalization, RESTRICT/CASCADE referential integrity, Regex CPF/CRO validation, indexes, and SQL Views',
       architectureDecisions: [
-        'Strict normalization up to 3rd Normal Form (3FN) covering entities such as patients, dentists, schedules, and appointments',
-        'Enforcement of business rules via DDL: Regex CPF validation, logical date check constraints, and Unique fields',
-        'Strict referential integrity control using RESTRICT rules (orphan prevention) and CASCADE triggers',
-        'Performance optimization for frequent queries via relational Indexes and analytical SQL Views for reporting',
+        'Strict relational normalization up to 3rd Normal Form (3NF) covering patients, dentists, weekly schedules, procedures, and appointments',
+        'Enforcement of business rules via DDL: Regex validation for CPF and CRO, logical temporal constraints for dates/times, and unique keys',
+        'Strict referential integrity control using RESTRICT rules (orphan record prevention) and CASCADE triggers for dependent associations',
+        'N:N associative modeling between appointments and procedures (consulta_procedimento) supporting multi-procedure dental visits',
+        'Performance optimization using strategic B-tree indexes on foreign keys and frequently searched attributes',
+        'Creation of analytical SQL Views encapsulating complex join and aggregation queries for clinical and managerial reporting',
       ],
       highlights: [
-        'PostgreSQL 16+ relational database normalized in 3FN',
-        'Business rules via DDL & Regex CPF validation',
-        'Referential integrity with RESTRICT and CASCADE',
-        'N:N procedure catalog mapping for appointments',
-        'Analytical SQL Views & Index performance optimization',
+        'PostgreSQL 16+ relational database strictly normalized to 3NF',
+        'DDL-level business rules with Regex validation for CPF and CRO',
+        'Robust referential integrity with RESTRICT and CASCADE policies',
+        'N:N procedure catalog mapping for complex dental consultations',
+        'Dynamic weekly availability and schedule management per dentist',
+        'Appointment lifecycle state machine: Scheduled, Completed, Canceled',
+        'Performance optimization via relational indexes and analytical SQL Views',
+        'Collaborative engineering by a 6-developer team (Serratec Residency)',
       ],
       technologies: [
         'PostgreSQL 16+',
@@ -1724,9 +1749,12 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         'DQL',
         'Database Indexing',
         'SQL Views',
+        'ERD Modeling (3NF)',
       ],
+      summaryResults:
+        'Zero clinical redundancy, guaranteed referential integrity, accelerated queries, and reporting Views',
       results:
-        '3FN normalized relational structure in PostgreSQL; elimination of clinical data redundancy; fast operational report generation using analytical SQL Views.',
+        'Complete elimination of update anomalies and clinical redundancy through 3NF relational normalization in PostgreSQL; guaranteed data integrity and defensive validation at the DDL layer; and fast operational report generation via index-optimized analytical SQL Views.',
       links: {
         github: 'https://github.com/DevYuriVieira/dentacare-management-system',
       },
@@ -2590,30 +2618,41 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       title: 'Dental Clinic Management System (DCMS)',
       category: 'Base de Datos Relacional',
       featured: false,
-      contextTag: 'Modelado de Base de Datos',
-      collaboration: 'Proyecto colaborativo (6 desarrolladores - Proyecto Final de BD Serratec)',
+      contextTag: 'Modelado de Base de Datos / 3FN',
+      collaboration: 'Proyecto colaborativo (6 desarrolladores - Residencia Serratec)',
       description:
-        'Sistema de base de datos relacional construido en PostgreSQL 16+ durante la Residencia Serratec para gestión de clínicas dentales.',
+        'Sistema de base de datos relacional rigurosamente modelado en 3FN e implementado en PostgreSQL 16+ durante la Residencia Serratec para gestión integral de clínicas dentales, integrando pacientes, dentistas (CRO), agenda semanal dinámica, ciclo de vida de citas y catálogo N:N de procedimientos.',
       context:
-        'Proyecto final de BD de la Residencia Serratec construido en equipo de 6 desarrolladores para proveer una base transaccional robusta para aplicaciones dentales.',
+        'Proyecto final de Base de Datos de la Residencia en TIC Serratec 2026.1, desarrollado en equipo de 6 integrantes (Yuri Vieira, Pedro Martins, Marcelo Ribeiro, Jhonata Raibolt, Lucas Alves y Pedro Dayer) para proveer un núcleo transaccional consistente, estandarizado y de alto rendimiento para software odontológico.',
+      summaryProblem:
+        'Centralizar historias clínicas y citas dentales previniendo registros huérfanos y datos inconsistentes',
       problem:
-        'Centralizar agendamiento de citas, historial de procedimientos y registros de dentistas (CRO) con garantías de integridad referencial, previniendo registros inválidos u huérfanos.',
+        'Centralizar agendamiento de citas, historias clínicas y datos de profesionales con tolerancia cero a inconsistencias, previniendo registros huérfanos, colisiones de agenda y redundancia de procedimientos sin dispersar reglas en el código de la aplicación.',
+      summarySolution:
+        'Base relacional en PostgreSQL 16+ normalizada en 3FN con reglas de negocio directo en el DDL',
       solution:
-        'Modelado normalizado en 3FN en PostgreSQL 16+, integridad referencial con RESTRICT y CASCADE, validaciones DDL vía Regex para CPF, restricciones de horarios y mapeo N:N de procedimientos.',
+        'Modelado relacional conceptual y lógico normalizado en 3FN en PostgreSQL 16+, reglas de negocio impuestas vía DDL con validación de CPF y CRO mediante Regex, restricciones temporales lógicas, integridad referencial estricta con RESTRICT y CASCADE, mapeo N:N de procedimientos, índices estratégicos y Views analíticas en SQL.',
       development:
-        'Trabajo en equipo de 6 desarrolladores cubriendo modelado ERD, escritura de scripts SQL completos (DDL, DML, DQL), optimización estratégica de índices y creación de Views SQL analíticas.',
+        'Trabajo en equipo de 6 desarrolladores: confección de diagramas conceptuales y lógicos (DER), escritura completa de scripts SQL (DDL, DML, DQL con joins y agregaciones complejas), creación de índices de alta selectividad y Views analíticas para informes clínicos.',
+      summaryArch:
+        'Normalización 3FN, integridad con RESTRICT/CASCADE, validación de CPF/CRO con Regex, índices y Views SQL',
       architectureDecisions: [
-        'Normalización estricta hasta 3ª Forma Normal (3FN) cubriendo entidades como pacientes, dentistas, agendas y citas',
-        'Aplicación de reglas de negocio vía DDL: validación de CPF con Regex, restricciones lógicas de fechas y campos únicos',
-        'Control estricto de integridad referencial usando reglas RESTRICT (prevención de huérfanos) y CASCADE',
-        'Optimización de rendimiento para consultas frecuentes vía índices relacionales y Views SQL analíticas',
+        'Normalización relacional estricta hasta la 3ª Forma Normal (3FN) cubriendo pacientes, dentistas, horarios semanales, procedimientos y citas',
+        'Aplicación de reglas de negocio vía DDL: validación de CPF y CRO mediante Regex, restricciones lógicas de fechas y horarios, y claves únicas',
+        'Control estricto de integridad referencial usando reglas RESTRICT (prevención de huérfanos) y CASCADE para vínculos dependientes',
+        'Modelado N:N entre citas y procedimientos con tabla asociativa (consulta_procedimento) soportando múltiples tratamientos por sesión',
+        'Optimización de rendimiento con índices estratégicos en claves foráneas y campos de búsqueda frecuente',
+        'Creación de Views analíticas en SQL encapsulando consultas complejas con joins y agregaciones para reportes de gestión y clínicos',
       ],
       highlights: [
-        'Base de datos relacional PostgreSQL 16+ normalizada en 3FN',
-        'Reglas de negocio vía DDL & validación de CPF con Regex',
-        'Integridad referencial con RESTRICT y CASCADE',
-        'Mapeo N:N de catálogo de procedimientos para citas',
-        'Views SQL analíticas & optimización de rendimiento por índices',
+        'Base de datos relacional PostgreSQL 16+ totalmente normalizada en 3FN',
+        'Reglas de negocio vía DDL con validación de CPF y CRO por Regex',
+        'Integridad referencial robusta con políticas RESTRICT y CASCADE',
+        'Mapeo N:N entre citas y catálogo de procedimientos odontológicos',
+        'Control dinámico de disponibilidad y agenda semanal por dentista',
+        'Máquina de estados de citas: Agendada, Realizada y Cancelada',
+        'Optimización con índices relacionales y Views analíticas en SQL',
+        'Proyecto colaborativo desarrollado por 6 ingenieros (Residencia Serratec)',
       ],
       technologies: [
         'PostgreSQL 16+',
@@ -2623,10 +2662,15 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         'DQL',
         'Database Indexing',
         'SQL Views',
+        'Modelado DER (3FN)',
       ],
+      summaryResults:
+        'Cero redundancia clínica, integridad referencial garantizada, consultas veloces e informes con Views',
       results:
-        'Estructura relacional normalizada en 3FN en PostgreSQL; eliminación de redundancia de datos clínicos; generación rápida de informes operacionales mediante Views SQL analíticas.',
-      links: { github: 'https://github.com/DevYuriVieira/dentacare-management-system' },
+        'Eliminación completa de redundancias y anomalías de actualización mediante normalización en 3FN en PostgreSQL; garantía de integridad referencial y validación defensiva en la capa DDL; y generación ágil de informes clínicos y operacionales a través de Views analíticas optimizadas por índices.',
+      links: {
+        github: 'https://github.com/DevYuriVieira/dentacare-management-system',
+      },
     },
     {
       id: 'interactive-auth-ui',
