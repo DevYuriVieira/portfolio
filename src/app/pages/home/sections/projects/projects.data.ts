@@ -165,7 +165,7 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       },
     },
 
-{
+    {
       id: 'work-fitness',
       title: 'Work-Fitness | Plataforma Comercial & Consultoria',
       category: 'Plataforma Comercial (Freelance)',
@@ -174,30 +174,37 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       collaboration: 'Projeto freelance autoral sob medida',
       client: 'Vinicius Santos (Personal Trainer)',
       description:
-        'Plataforma web comercial e motor de avaliação biomecânica desenvolvida sob medida para consultoria fitness, combinando Clean Architecture, cálculos antropométricos clínicos (IMC OMS, gordura Deurenberg 1991, TMB Mifflin-St Jeor), conversão multicanal (GA4, GTM, Meta Pixel, WhatsApp com UTM) e resiliência offline PWA.',
+        'Plataforma web comercial e motor de avaliação biomecânica desenvolvida sob medida para o personal trainer Vinicius Santos (Arena Complexo Esportivo, Nova Friburgo - RJ), combinando cálculo de composição corporal (IMC OMS, gordura Deurenberg 1991, TMB Mifflin-St Jeor), Clean Architecture desacoplada, acessibilidade WCAG 2.1 AA com VLibras, nota 100/100 no Lighthouse e conversão estruturada para WhatsApp com tags UTM.',
       context:
-        'Solução comercial desenvolvida como engenheiro freelancer para o personal trainer Vinicius Santos (Arena Complexo Esportivo, Nova Friburgo - RJ), substituindo formulários e planilhas manuais por um fluxo automatizado de captação de leads qualificados com diagnóstico corporal instantâneo.',
+        'Solução comercial desenvolvida como engenheiro freelancer para o personal trainer Vinicius Santos (formado pela UCB em 2008 e atuante há mais de 15 anos na Arena Complexo Esportivo em Nova Friburgo - RJ), substituindo formulários e planilhas manuais por um fluxo automatizado de captação de leads qualificados com diagnóstico corporal instantâneo.',
       problem:
-        'Captação dispersa de leads com perda de contexto nas conversas de WhatsApp, ausência de triagem preliminar de dores e restrições articulares, e dependência de ferramentas terceiras lentas com mensalidades recorrentes.',
+        'Lentidão em redes móveis com SPAs pesadas provocando desistência de leads antes do clique; contatos desqualificados no WhatsApp sem informações prévias de dores articulares ou rotina física; ausência de critérios de acessibilidade em sites do setor fitness, violando a Lei Brasileira de Inclusão (LBI nº 13.146/2015).',
       solution:
-        'Aplicação web em Vanilla TypeScript 5.7 e Vite 6 estruturada em Clean Architecture com desacoplamento estrito entre o núcleo matemático (src/core/) e a camada visual (src/modules/). Telemetria síncrona nos 3 canais (GA4, GTM, Meta Pixel), mensagem pré-formatada para WhatsApp com preservação de tags UTM, suíte WCAG 2.1 AA com VLibras, PWA offline e conteinerização Docker multi-stage Nginx.',
+        'Aplicação web em Vanilla TypeScript 5.7 e Vite 6 estruturada em Clean Architecture com desacoplamento estrito entre o núcleo matemático (src/core/ - sem DOM) e a camada visual (src/modules/). Motor biomecânico com equações clínicas (OMS, Deurenberg, Mifflin-St Jeor), conversão com disparo sincronizado em 3 canais (GA4, GTM, Meta Pixel), mensagem pré-formatada no WhatsApp preservando tags UTM, suíte assistiva WCAG 2.1 AA com VLibras, PWA offline com Service Worker e esteira com 170 testes unitários no Vitest e 47 specs E2E no Playwright em 26 viewports.',
+      development:
+        'Desenvolvimento full-cycle como engenheiro freelancer: desenho da Clean Architecture com núcleo desacoplado, implementação de algoritmos antropométricos em TypeScript puro, arquitetura CSS modular em tokens, suíte assistiva WCAG 2.1 AA (Live Announcer, Leitura Biônica, filtros SVG para daltonismo e fix de Shadow DOM no VLibras), validação em 26 viewports e esteira com 170 testes no Vitest e 47 specs no Playwright.',
       architectureDecisions: [
-        'Clean Architecture estrita isolando fórmulas científicas (OMS, Deurenberg, Mifflin-St Jeor) com zero acoplamento visual',
-        'Engenharia de conversão multicanal síncrona (GA4, GTM, Meta Pixel) com montagem de mensagem no WhatsApp preservando parâmetros UTM',
-        'Design System CSS modular orientado a tokens com zero runtime de CSS-in-JS, atingindo First Contentful Paint sub-segundo',
-        'Suíte de acessibilidade universal WCAG 2.1 AA / Senac com Leitura Biônica, filtros SVG para daltonismo, régua/máscara focal, Live Announcer e VLibras',
-        'Esteira quádrupla de testes: 170 testes unitários no Vitest (20 suítes em < 5s), 47 specs E2E no Playwright em 26 viewports, Cypress e k6',
-        'Imagem Docker multi-stage (Node 22 Alpine builder + Nginx 1.27 Alpine runtime) com compressão gzip e cabeçalhos de segurança estritos',
+        'Clean Architecture com isolamento absoluto do núcleo matemático (src/core/ - zero DOM), viabilizando testes unitários puros em microssegundos (ADR-002)',
+        'Vanilla TypeScript 5.7 e Vite 6 em vez de frameworks SPA pesados, eliminando taxa de hidratação com bundle de 32.46 kB JS (11.34 kB gzipped) (ADR-001)',
+        'Arquitetura CSS modular orientada a tokens em src/styles/ com cascata canônica determinística em main.css e zero runtime de CSS-in-JS (ADR-003)',
+        'Motor biomecânico baseado nas equações de Deurenberg (1991) para gordura corporal por idade/sexo, Mifflin-St Jeor para TMB e faixas da OMS para IMC (ADR-004)',
+        'Engenharia de conversão multicanal síncrona (GA4, GTM e Meta Pixel) com montagem de mensagem pronta no WhatsApp e preservação de tags UTM (ADR-005)',
+        'Suíte de acessibilidade universal WCAG 2.1 AA / Senac com Leitura Biônica, filtros SVG de daltonismo, máscara/régua focal, Live Announcer e VLibras (ADR-006)',
+        'Matriz de responsividade rigorosa validada em 26 formatos de tela (de dobráveis estreitos de 280px a ultrawide 32:9 de 5120px) sem corte lateral (ADR-007)',
+        'Pílula flutuante de conversão com sincronização dinâmica para ocultar o botão flutuante de WhatsApp via body.has-sticky-bar (ADR-012)',
+        'Esteira quádrupla de testes: 170 testes unitários Vitest (20 suítes em < 5s), 47 specs Playwright em 26 viewports, Cypress e carga k6 (ADR-009)',
+        'Conteinerização multi-stage imutável (Node 22 Alpine builder + Nginx 1.27 Alpine runtime) com compressão gzip e headers de segurança (ADR-011)',
       ],
       highlights: [
-        'Nota 100/100 nas 4 categorias do Google Lighthouse em produção',
-        '170 testes unitários no Vitest + 47 specs E2E no Playwright em 26 viewports',
-        'Bundle ultraleve compilado de apenas 32.46 kB JS (11.34 kB gzipped)',
-        'Core Web Vitals de excelência: LCP < 0.8s, CLS = 0.00, INP < 16ms',
-        'Suíte assistiva avançada (Leitura Biônica, filtros SVG de daltonismo, Live Announcer)',
-        'Rastreamento de conversão em 3 canais (GA4, GTM, Meta Pixel)',
-        'Acessibilidade WCAG 2.1 AA com VLibras integrado sem layout shift',
-        'Containerização Docker Compose com Nginx Alpine',
+        'Nota perfeita 100/100 nas 4 categorias do Google Lighthouse (Performance, Acessibilidade, Boas Práticas e SEO)',
+        '170 testes unitários no Vitest (20 suítes) + 47 specs E2E no Playwright em 26 viewports com 100% de aprovação',
+        'Bundle compilado ultraleve de apenas 32.46 kB JS (11.34 kB gzipped) e zero overhead de hidratação',
+        'Métricas Core Web Vitals de elite: LCP < 0.8s, CLS = 0.00 e INP < 16ms (P98)',
+        'Motor biomecânico com equações clínicas (IMC OMS, gordura Deurenberg 1991, TMB Mifflin-St Jeor)',
+        'Suíte de acessibilidade WCAG 2.1 AA com Leitura Biônica, filtros SVG de daltonismo e VLibras sem layout shift',
+        'Telemetria multicanal em 3 canais simultâneos (GA4, GTM, Meta Pixel) com retenção de UTM no WhatsApp',
+        'PWA Offline com Service Worker nativo e avisos de conectividade via toasts',
+        'Conteinerização Docker Compose com imagem multi-stage Nginx Alpine na porta 5500',
       ],
       technologies: [
         'TypeScript',
@@ -211,9 +218,14 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         'Google Analytics 4',
         'Meta Pixel',
       ],
+      summaryProblem: 'Leads dispersos no WhatsApp, ausência de triagem física prévia e lentidão de builders SPA em redes móveis',
+      summarySolution: 'Vanilla TypeScript 5.7 e Vite 6 em Clean Architecture com motor biomecânico desacoplado da interface',
+      summaryArch: 'Núcleo matemático puro (OMS/Deurenberg/Mifflin), CSS modular em tokens e suíte WCAG 2.1 AA com VLibras',
+      summaryResults: '100/100 Lighthouse, 170 testes Vitest, 47 specs Playwright em 26 telas e bundle de 32 kB',
       results:
-        'Plataforma comercial em produção com 100/100 cravado nas 4 categorias do Google Lighthouse (LCP < 0.8s, CLS 0.00, bundle minificado de 32 kB); aumento da conversão de novos alunos para o personal trainer com leads pré-qualificados recebidos diretamente no WhatsApp; 170 testes automatizados garantindo zero regressões.',
+        'Plataforma comercial em produção com nota máxima cravada de 100/100 em todas as 4 categorias do Google Lighthouse (LCP < 0.8s, CLS = 0.00, INP < 16ms e bundle de 32 kB); aumento substancial na taxa de conversão de novos alunos para o treinador Vinicius Santos, entregando leads qualificados com queixas articulares e histórico físico direto no WhatsApp; 170 testes automatizados garantindo zero regressões.',
       links: {
+        github: 'https://github.com/DevYuriVieira/Work-Fitness',
         demo: 'https://viniciusantos.vercel.app/',
         demoLabel: 'Ver em Produção',
       },
@@ -938,7 +950,7 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       },
     },
 
-{
+    {
       id: 'work-fitness',
       title: 'Work-Fitness | Commercial Platform & Consulting',
       category: 'Commercial Platform (Freelance)',
@@ -947,30 +959,37 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       collaboration: 'Bespoke freelance client project',
       client: 'Vinicius Santos (Personal Trainer)',
       description:
-        'Commercial web platform and biomechanical assessment engine built for a fitness consulting business, combining Clean Architecture, clinical anthropometric calculations (WHO BMI, Deurenberg 1991 body fat, Mifflin-St Jeor BMR), multi-channel conversion tracking (GA4, GTM, Meta Pixel, UTM-preserved WhatsApp leads), and PWA offline resilience.',
+        'Commercial web platform and biomechanical assessment engine built for personal trainer Vinicius Santos (Arena Sports Complex, Nova Friburgo - RJ), combining clinical body composition formulas (WHO BMI, Deurenberg 1991 body fat, Mifflin-St Jeor BMR), Clean Architecture, full WCAG 2.1 AA accessibility with VLibras, a perfect 100/100 Lighthouse audit, and structured UTM-preserved WhatsApp lead generation.',
       context:
-        'Commercial solution engineered as a freelance software engineer for personal trainer Vinicius Santos (Arena Sports Complex, Nova Friburgo - RJ), replacing manual spreadsheets with an automated qualification pipeline and instant body diagnostics.',
+        'Commercial solution engineered as a freelance software engineer for personal trainer Vinicius Santos (physical education graduate from UCB in 2008 with 15+ years of continuous coaching at Arena Sports Complex in Nova Friburgo - RJ), replacing manual spreadsheets with an automated qualification pipeline and instant body diagnostics.',
       problem:
-        'Scattered lead intake without context in WhatsApp chats, lack of preliminary joint injury screening, and reliance on costly, slow third-party landing page builders.',
+        'Sluggish mobile browsing from heavy SPA bundles causing bounce before call-to-action clicks; unqualified inquiries on WhatsApp lacking joint injury history or training background; and severe accessibility gaps across fitness websites violating inclusion laws.',
       solution:
-        'High-performance TypeScript 5.7 and Vite 6 web application built with Clean Architecture, fully decoupling the mathematical calculation core (src/core/) from UI components (src/modules/). Synchronized telemetry across GA4, GTM, and Meta Pixel with automated UTM-preserved WhatsApp message generation, full WCAG 2.1 AA compliance with native VLibras, offline PWA caching, and multi-stage Nginx Alpine Docker containerization.',
+        'High-performance TypeScript 5.7 and Vite 6 web application built with Clean Architecture, strictly decoupling the mathematical calculation core (src/core/ - zero DOM) from UI modules (src/modules/). Biomechanical engine with clinical equations (WHO, Deurenberg, Mifflin-St Jeor), synchronized 3-channel telemetry (GA4, GTM, Meta Pixel), pre-formatted WhatsApp drafts retaining UTM tags, WCAG 2.1 AA assistive suite with VLibras, offline PWA caching, and a test pipeline with 170 Vitest unit tests and 47 Playwright E2E specs across 26 viewports.',
+      development:
+        'Full-cycle freelance software engineering: Clean Architecture design with a decoupled pure domain core, implementation of anthropometric algorithms in pure TypeScript, token-driven modular CSS architecture, WCAG 2.1 AA assistive suite (Live Announcer, Bionic Reading, SVG colorblind filters, and VLibras Shadow DOM fix), 26-viewport responsive validation, and an automated testing pipeline featuring 170 Vitest tests and 47 Playwright specs.',
       architectureDecisions: [
-        'Strict Clean Architecture isolating scientific formulas (WHO, Deurenberg, Mifflin-St Jeor) with zero visual coupling',
-        'Synchronous conversion engineering dispatching events to GA4, GTM, and Meta Pixel while retaining UTM parameters in WhatsApp links',
-        'Modular token-driven CSS architecture with zero CSS-in-JS runtime overhead for sub-second first contentful paint',
-        'Universal WCAG 2.1 AA / Senac-grade assistive suite featuring Bionic Reading, SVG colorblind filters, focal reading guide, Live Announcer, and VLibras',
-        'Quad-layer test suite: 170 Vitest unit tests (20 suites in < 5s), 47 Playwright E2E specs across 26 viewports, Cypress, and k6 load tests',
-        'Multi-stage Docker containerization (Node 22 Alpine builder + Nginx 1.27 Alpine runtime) with gzip compression and strict security headers',
+        'Strict Clean Architecture isolating scientific formulas (src/core/ - zero DOM, zero browser globals), enabling microsecond unit testing (ADR-002)',
+        'Vanilla TypeScript 5.7 and Vite 6 over SPA frameworks, completely eliminating hydration tax with an ultralight 32.46 kB JS bundle (11.34 kB gzipped) (ADR-001)',
+        'Token-driven modular CSS architecture in src/styles/ with canonical deterministic cascade in main.css and zero CSS-in-JS runtime (ADR-003)',
+        'Biomechanical engine grounded in Deurenberg (1991) body fat formulas adjusted for age/sex, Mifflin-St Jeor BMR, and WHO BMI categories (ADR-004)',
+        'Synchronous multi-channel conversion telemetry (GA4, GTM, Meta Pixel) with automated WhatsApp drafts and strict UTM preservation (ADR-005)',
+        'Universal WCAG 2.1 AA / Senac-grade assistive suite featuring Bionic Reading, SVG colorblind filters, focal reading guide, Live Announcer, and VLibras (ADR-006)',
+        'Rigorous responsive matrix verified across 26 device viewports (from 280px narrow foldables to 5120px 32:9 ultrawides) with zero overflow (ADR-007)',
+        'Floating conversion pill with synchronized FAB fade-out via body.has-sticky-bar eliminating screen crowding and misclicks (ADR-012)',
+        'Quad-layer test pipeline: 170 Vitest unit tests (20 suites in < 5s), 47 Playwright E2E specs across 26 viewports, Cypress, and k6 stress tests (ADR-009)',
+        'Immutable multi-stage Docker containerization (Node 22 Alpine builder + Nginx 1.27 Alpine runtime) with gzip and security headers (ADR-011)',
       ],
       highlights: [
-        'Perfect 100/100 across all 4 Google Lighthouse production audits',
-        '170 Vitest unit tests + 47 Playwright E2E specs across 26 viewports',
-        'Ultra-lightweight minified bundle of just 32.46 kB JS (11.34 kB gzipped)',
-        'Elite Core Web Vitals: LCP < 0.8s, CLS = 0.00, INP < 16ms',
-        'Advanced assistive suite (Bionic Reading, SVG colorblind filters, Live Announcer)',
-        '3-channel conversion tracking (GA4, GTM, Meta Pixel)',
+        'Perfect 100/100 across all 4 Google Lighthouse production audits (Performance, A11y, Best Practices, SEO)',
+        '170 Vitest unit tests (20 suites) + 47 Playwright E2E specs across 26 viewports with 100% pass rate',
+        'Ultra-lightweight minified bundle of just 32.46 kB JS (11.34 kB gzipped) and zero hydration overhead',
+        'Elite Core Web Vitals: LCP < 0.8s, CLS = 0.00, and INP < 16ms (P98)',
+        'Biomechanical assessment engine with clinical formulas (WHO BMI, Deurenberg body fat, Mifflin-St Jeor BMR)',
         'Universal WCAG 2.1 AA accessibility & zero-layout-shift VLibras integration',
-        'Docker Compose containerization with Nginx Alpine',
+        'Synchronized 3-channel conversion tracking (GA4, GTM, Meta Pixel) with UTM retention in WhatsApp',
+        'PWA Offline readiness with native Service Worker caching and network state toast alerts',
+        'Docker Compose containerization with multi-stage Nginx Alpine image on port 5500',
       ],
       technologies: [
         'TypeScript',
@@ -984,9 +1003,14 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         'Google Analytics 4',
         'Meta Pixel',
       ],
+      summaryProblem: 'Scattered WhatsApp leads, lack of preliminary joint screening, and sluggish mobile SPA builders',
+      summarySolution: 'Vanilla TypeScript 5.7 and Vite 6 with Clean Architecture isolating biomechanical formulas from UI',
+      summaryArch: 'Pure math core (WHO/Deurenberg/Mifflin), token-driven modular CSS, and WCAG 2.1 AA with VLibras',
+      summaryResults: '100/100 Lighthouse, 170 Vitest unit tests, 47 Playwright specs across 26 viewports, and 32 kB bundle',
       results:
-        'Production platform scoring a perfect 100/100 across all Google Lighthouse categories (LCP < 0.8s, CLS 0.00, 32 kB minified bundle); increased qualified lead conversion directly into the client\'s WhatsApp; 170 automated tests delivering zero regressions.',
+        'Production commercial platform scoring a perfect 100/100 across all Google Lighthouse categories (LCP < 0.8s, CLS = 0.00, INP < 16ms, and 32 kB minified bundle); substantial surge in qualified leads delivered directly to trainer Vinicius Santos\'s WhatsApp with joint history and physical background; 170 automated tests guaranteeing zero regressions.',
       links: {
+        github: 'https://github.com/DevYuriVieira/Work-Fitness',
         demo: 'https://viniciusantos.vercel.app/',
         demoLabel: 'Live in Production',
       },
@@ -1708,7 +1732,7 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       links: { github: 'https://github.com/DevYuriVieira/ecommerce-serratec-api' },
     },
 
-{
+    {
       id: 'work-fitness',
       title: 'Work-Fitness | Plataforma Comercial & Consultoría',
       category: 'Plataforma Comercial (Freelance)',
@@ -1717,30 +1741,37 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       collaboration: 'Proyecto freelance a medida',
       client: 'Vinicius Santos (Personal Trainer)',
       description:
-        'Plataforma web comercial y motor de evaluación biomecánica desarrollada a medida para consultoría fitness, combinando Clean Architecture, cálculos antropométricos clínicos (IMC OMS, grasa Deurenberg 1991, TMB Mifflin-St Jeor), conversión multicanal (GA4, GTM, Meta Pixel, WhatsApp con UTM) y resiliencia offline PWA.',
+        'Plataforma web comercial y motor de evaluación biomecánica desarrollada a medida para el entrenador Vinicius Santos (Arena Complejo Deportivo, Nova Friburgo - RJ), combinando cálculo de composición corporal (IMC OMS, grasa Deurenberg 1991, TMB Mifflin-St Jeor), Clean Architecture, accesibilidad WCAG 2.1 AA con VLibras, nota 100/100 en Lighthouse y conversión estructurada para WhatsApp con tags UTM.',
       context:
-        'Solución comercial desarrollada como ingeniero freelance para el entrenador Vinicius Santos (Arena Complejo Deportivo, Nova Friburgo - RJ), sustituyendo planillas manuales por un flujo automatizado de captación de leads calificados y diagnóstico corporal instantáneo.',
+        'Solución comercial desarrollada como ingeniero freelance para el entrenador Vinicius Santos (licenciado en Educación Física por la UCB en 2008 con más de 15 años de trayectoria en el Arena Complejo Deportivo en Nova Friburgo - RJ), sustituyendo planillas manuales por un flujo automatizado de captación de leads calificados y diagnóstico corporal instantáneo.',
       problem:
-        'Captación dispersa de leads con pérdida de contexto en WhatsApp, ausencia de triaje preliminar de lesiones articulares y dependencia de herramientas externas lentas con suscripciones costosas.',
+        'Lentitud en redes móviles con SPAs pesadas provocando fuga de usuarios antes del clic; contactos descalificados en WhatsApp sin antecedentes de dolores articulares o rutina física; y falta de criterios de accesibilidad en sitios del sector fitness, incumpliendo normativas de inclusión.',
       solution:
-        'Aplicación web en Vanilla TypeScript 5.7 y Vite 6 estructurada en Clean Architecture, desacoplando el núcleo de cálculo matemático (src/core/) de la interfaz (src/modules/). Integración simultánea con GA4, GTM y Meta Pixel con generación de mensajes en WhatsApp con parámetros UTM, accesibilidad WCAG 2.1 AA con VLibras, PWA offline y Docker multi-stage Nginx.',
+        'Aplicación web en Vanilla TypeScript 5.7 y Vite 6 estructurada en Clean Architecture, desacoplando el núcleo de cálculo matemático (src/core/ - sin DOM) de la interfaz (src/modules/). Motor biomecánico con fórmulas clínicas (OMS, Deurenberg, Mifflin-St Jeor), telemetría sincronizada en 3 canales (GA4, GTM, Meta Pixel), mensajes formateados en WhatsApp con tags UTM, suite asistiva WCAG 2.1 AA con VLibras, PWA offline con Service Worker y pipeline con 170 pruebas unitarias en Vitest y 47 specs E2E en Playwright en 26 viewports.',
+      development:
+        'Desarrollo full-cycle como ingeniero freelance: diseño de Clean Architecture con núcleo de cálculo desacoplado, implementación de algoritmos antropométricos en TypeScript puro, arquitectura CSS modular en tokens, suite asistiva WCAG 2.1 AA (Live Announcer, Lectura Biónica, filtros SVG de daltonismo y fix de Shadow DOM en VLibras), validación en 26 viewports y pipeline con 170 pruebas en Vitest y 47 specs en Playwright.',
       architectureDecisions: [
-        'Clean Architecture estricta aislando fórmulas científicas (OMS, Deurenberg, Mifflin-St Jeor) con cero acoplamiento visual',
-        'Ingeniería de conversión síncrona disparando eventos en Google Analytics 4, GTM y Meta Pixel conservando parámetros UTM en WhatsApp',
-        'Diseño modular CSS orientado a tokens con cero overhead de CSS-in-JS en runtime para renderizado instantáneo',
-        'Suite de accesibilidad universal WCAG 2.1 AA / Senac con Lectura Biónica, filtros SVG para daltonismo, máscara focal, Live Announcer y VLibras',
-        'Suite cuádruple de pruebas: 170 pruebas unitarias en Vitest (20 suites en < 5s), 47 specs E2E en Playwright en 26 viewports, Cypress y k6',
-        'Imagen Docker multi-stage (Node 22 Alpine builder + Nginx 1.27 Alpine runtime) com compresión gzip y cabeceras estrictas de seguridad',
+        'Clean Architecture con aislamiento absoluto del núcleo matemático (src/core/ - zero DOM, zero browser globals), facilitando pruebas unitarias en microsegundos (ADR-002)',
+        'Vanilla TypeScript 5.7 y Vite 6 frente a frameworks SPA, eliminando sobrecostes de hidratación con bundle de 32.46 kB JS (11.34 kB gzipped) (ADR-001)',
+        'Arquitectura CSS modular orientada a tokens en src/styles/ con cascada canónica en main.css y cero runtime de CSS-in-JS (ADR-003)',
+        'Motor biomecánico fundamentado en ecuaciones de Deurenberg (1991) para grasa corporal por edad/sexo, Mifflin-St Jeor para TMB e IMC según la OMS (ADR-004)',
+        'Ingeniería de conversión multicanal síncrona (GA4, GTM, Meta Pixel) con generación de mensajes en WhatsApp y conservación de parámetros UTM (ADR-005)',
+        'Suite de accesibilidad universal WCAG 2.1 AA / Senac con Lectura Biónica, filtros SVG de daltonismo, máscara/regla focal, Live Announcer y VLibras (ADR-006)',
+        'Matriz de responsividad validada en 26 formatos de pantalla (desde plegables de 280px hasta monitores ultrawide 32:9 de 5120px) sin desbordamiento (ADR-007)',
+        'Píldora flotante de conversión con sincronización dinámica para ocultar el botón flotante de WhatsApp vía body.has-sticky-bar (ADR-012)',
+        'Pipeline cuádruple de calidad: 170 pruebas unitarias en Vitest (20 suites en < 5s), 47 specs en Playwright en 26 viewports, Cypress y k6 (ADR-009)',
+        'Contenedor multi-stage inmutable (Node 22 Alpine builder + Nginx 1.27 Alpine runtime) con compresión gzip y cabeceras estrictas de seguridad (ADR-011)',
       ],
       highlights: [
-        'Nota 100/100 en las 4 categorías de Google Lighthouse en producción',
-        '170 pruebas unitarias en Vitest + 47 specs E2E en Playwright en 26 viewports',
-        'Bundle ultraligero compilado de apenas 32.46 kB JS (11.34 kB gzipped)',
-        'Core Web Vitals de élite: LCP < 0.8s, CLS = 0.00, INP < 16ms',
-        'Suite asistiva avanzada (Lectura Biónica, filtros SVG de daltonismo, Live Announcer)',
-        'Rastreo de conversión en 3 canales (GA4, GTM, Meta Pixel)',
-        'Accesibilidad universal WCAG 2.1 AA y VLibras integrado sin saltos visuales',
-        'Contenedor Docker Compose con Nginx Alpine',
+        'Nota perfecta 100/100 en las 4 categorías de Google Lighthouse (Performance, Accesibilidad, Buenas Prácticas y SEO)',
+        '170 pruebas unitarias en Vitest (20 suites) + 47 specs E2E en Playwright en 26 viewports con 100% de aprobación',
+        'Bundle compilado ultraligero de apenas 32.46 kB JS (11.34 kB gzipped) y cero retraso de hidratación',
+        'Métricas Core Web Vitals de élite: LCP < 0.8s, CLS = 0.00 e INP < 16ms (P98)',
+        'Motor biomecánico con fórmulas clínicas (IMC OMS, grasa Deurenberg 1991, TMB Mifflin-St Jeor)',
+        'Accesibilidad universal WCAG 2.1 AA y VLibras integrado sin saltos visuales de layout',
+        'Telemetría de conversión en 3 canales simultáneos (GA4, GTM, Meta Pixel) con retención de UTM en WhatsApp',
+        'PWA Offline con Service Worker nativo y alertas de conectividad vía toasts',
+        'Contenedor Docker Compose con imagen multi-stage Nginx Alpine en el puerto 5500',
       ],
       technologies: [
         'TypeScript',
@@ -1754,9 +1785,14 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         'Google Analytics 4',
         'Meta Pixel',
       ],
+      summaryProblem: 'Captación dispersa en WhatsApp, ausencia de triaje biomecánico y lentitud de constructores SPA',
+      summarySolution: 'Vanilla TypeScript 5.7 y Vite 6 en Clean Architecture aislando fórmulas biomecánicas de la interfaz',
+      summaryArch: 'Núcleo matemático puro (OMS/Deurenberg/Mifflin), CSS modular en tokens y suite WCAG 2.1 AA con VLibras',
+      summaryResults: '100/100 Lighthouse, 170 pruebas Vitest, 47 specs Playwright en 26 pantallas y bundle de 32 kB',
       results:
-        'Plataforma en producción con 100/100 en todas las categorías de Google Lighthouse (LCP < 0.8s, CLS 0.00, bundle minificado de 32 kB); aumento en la captación de leads calificados directamente al WhatsApp del cliente; 170 pruebas automatizadas garantizando cero regresiones.',
+        'Plataforma comercial en producción con nota máxima de 100/100 en todas las categorías de Google Lighthouse (LCP < 0.8s, CLS = 0.00, INP < 16ms y bundle de 32 kB); aumento sustancial en la tasa de conversión de nuevos alumnos para el entrenador Vinicius Santos, entregando leads calificados con historial articular directo en WhatsApp; 170 pruebas automatizadas garantizando cero regresiones.',
       links: {
+        github: 'https://github.com/DevYuriVieira/Work-Fitness',
         demo: 'https://viniciusantos.vercel.app/',
         demoLabel: 'Ver en Producción',
       },
