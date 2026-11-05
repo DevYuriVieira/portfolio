@@ -33,10 +33,10 @@ interface CaseStudyModalLabels {
 
 const LABELS_I18N: Record<SupportedLang, CaseStudyModalLabels> = {
   'pt-BR': {
-    eyebrow: 'DESAFIO, SOLUÇÃO & RESULTADOS',
+    eyebrow: 'ESTUDO DE CASO',
     closeBtn: 'Fechar',
-    closeAria: 'Fechar modal de detalhes',
-    modalAria: (title: string) => `Desafio, solução e resultados do projeto ${title}`,
+    closeAria: 'Fechar modal de estudo de caso',
+    modalAria: (title: string) => `Estudo de caso do projeto ${title}`,
     techStack: 'Stack Tecnológica',
     challenge: 'Desafio',
     challengeTitle: 'Problema & Contexto Crítico',
@@ -51,10 +51,10 @@ const LABELS_I18N: Record<SupportedLang, CaseStudyModalLabels> = {
     viewArchitecture: 'Ver Diagrama de Arquitetura',
   },
   en: {
-    eyebrow: 'CHALLENGE, SOLUTION & RESULTS',
+    eyebrow: 'CASE STUDY',
     closeBtn: 'Close',
-    closeAria: 'Close details modal',
-    modalAria: (title: string) => `Challenge, solution and results for ${title}`,
+    closeAria: 'Close case study modal',
+    modalAria: (title: string) => `Case study for ${title}`,
     techStack: 'Technology Stack',
     challenge: 'Challenge',
     challengeTitle: 'Critical Problem & Context',
@@ -69,10 +69,10 @@ const LABELS_I18N: Record<SupportedLang, CaseStudyModalLabels> = {
     viewArchitecture: 'View Architecture Diagram',
   },
   es: {
-    eyebrow: 'DESAFÍO, SOLUCIÓN & RESULTADOS',
+    eyebrow: 'ESTUDIO DE CASO',
     closeBtn: 'Cerrar',
-    closeAria: 'Cerrar modal de detalles',
-    modalAria: (title: string) => `Desafío, solución y resultados del proyecto ${title}`,
+    closeAria: 'Cerrar modal de estudio de caso',
+    modalAria: (title: string) => `Estudio de caso del proyecto ${title}`,
     techStack: 'Stack Tecnológico',
     challenge: 'Desafío',
     challengeTitle: 'Problema & Contexto Crítico',

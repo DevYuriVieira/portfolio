@@ -1,7 +1,6 @@
 <div class="case-modal-backdrop" (click)="onBackdropClick($event)" role="dialog" aria-modal="true"
   [attr.aria-label]="labels().modalAria(project.title)">
   <div class="case-modal" (click)="$event.stopPropagation()">
-    <!-- Header: Compact & Non-Intrusive -->
     <header class="case-modal__header">
       <div class="case-modal__header-content">
         <div class="case-modal__meta">
@@ -25,9 +24,7 @@
       </button>
     </header>
 
-    <!-- Body: Scrollable with Generous Bottom Space -->
     <div class="case-modal__body">
-      <!-- Intro description & Tech Stack -->
       @if (project.description || project.context) {
       <div class="case-modal__intro">
         <p class="case-modal__intro-text">{{ project.description || project.context }}</p>
@@ -42,7 +39,6 @@
       </div>
       }
 
-      <!-- 1. Desafio -->
       @if (project.problem) {
       <div class="case-modal__section case-modal__section--challenge">
         <div class="case-modal__section-header">
@@ -60,7 +56,6 @@
       </div>
       }
 
-      <!-- 2. Solução -->
       @if (project.solution) {
       <div class="case-modal__section case-modal__section--solution">
         <div class="case-modal__section-header">
@@ -77,7 +72,6 @@
       </div>
       }
 
-      <!-- 3. Decisões de Arquitetura -->
       @if (project.architectureDecisions && project.architectureDecisions.length > 0) {
       <div class="case-modal__section case-modal__section--arch">
         <div class="case-modal__section-header">
@@ -102,7 +96,6 @@
       </div>
       }
 
-      <!-- 4. Resultados & Métricas -->
       @if (project.results) {
       <div class="case-modal__section case-modal__section--results">
         <div class="case-modal__section-header">
@@ -120,7 +113,6 @@
       }
     </div>
 
-    <!-- Footer: Single Compact Row -->
     <footer class="case-modal__footer">
       <div class="case-modal__footer-links">
         @if (project.id === 'fleetops-api') {
