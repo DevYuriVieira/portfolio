@@ -1,6 +1,6 @@
 <div align="center">
 
-# ⚡ Yuri Vieira — Portfólio Angular 22 / Frontend Engineering Portfolio
+# Yuri Vieira · Software Engineer (Web & Full Stack)
 
 ![Angular](https://img.shields.io/badge/Angular-22.1-DD0031?style=for-the-badge&logo=angular&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-6.0-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
