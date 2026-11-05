@@ -92,7 +92,7 @@ export class ProjectsSection {
       results: t('Results', 'Resultados', 'Resultados'),
       techStack: t('Technology Stack', 'Stack Tecnológica', 'Stack Tecnológico'),
       confidential: t('Confidential', 'Confidencial', 'Confidencial'),
-      caseStudyTitle: t('Challenge, Solution & Results', 'Desafio, Solução & Resultados', 'Desafío, Solución & Resultados'),
+      caseStudyTitle: t('Case Study', 'Estudo de Caso', 'Estudio de Caso'),
       openCaseStudy: t('View Details', 'Ver Detalhes', 'Ver Detalles'),
       viewCaseStudyAria: (title: string) =>
         t(
