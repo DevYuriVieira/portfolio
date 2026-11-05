@@ -213,13 +213,20 @@ export class Header implements OnInit {
     if (typeof window === 'undefined' || typeof document === 'undefined') return;
 
     const heroElement = document.getElementById('top');
-    const scrolled = heroElement
+    const pastHero = heroElement
       ? heroElement.getBoundingClientRect().bottom <= 76
       : window.scrollY > (window.innerHeight || 800) * 0.85;
 
-    if (scrolled !== this.isScrolledPastHero()) {
-      this.isScrolledPastHero.set(scrolled);
-      if (!scrolled) {
+    const contactElement = document.getElementById('contact');
+    const inContact = contactElement
+      ? contactElement.getBoundingClientRect().top <= 180
+      : false;
+
+    const shouldShow = pastHero && !inContact;
+
+    if (shouldShow !== this.isScrolledPastHero()) {
+      this.isScrolledPastHero.set(shouldShow);
+      if (!shouldShow) {
         this.closeLangMenu();
       }
     }

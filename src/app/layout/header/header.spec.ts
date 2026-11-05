@@ -175,4 +175,30 @@ describe('Header', () => {
 
     document.body.removeChild(heroEl);
   });
+
+  it('should hide WhatsApp button and expand language switcher when reaching contact section', () => {
+    const heroEl = document.createElement('div');
+    heroEl.id = 'top';
+    heroEl.getBoundingClientRect = vi.fn().mockReturnValue({ bottom: 50 });
+    document.body.appendChild(heroEl);
+
+    const contactEl = document.createElement('div');
+    contactEl.id = 'contact';
+    contactEl.getBoundingClientRect = vi.fn().mockReturnValue({ top: 800 });
+    document.body.appendChild(contactEl);
+
+    component.onWindowScroll();
+    expect(component.isScrolledPastHero()).toBe(true);
+
+    contactEl.getBoundingClientRect = vi.fn().mockReturnValue({ top: 120 });
+    component.onWindowScroll();
+    expect(component.isScrolledPastHero()).toBe(false);
+
+    contactEl.getBoundingClientRect = vi.fn().mockReturnValue({ top: 350 });
+    component.onWindowScroll();
+    expect(component.isScrolledPastHero()).toBe(true);
+
+    document.body.removeChild(heroEl);
+    document.body.removeChild(contactEl);
+  });
 });
