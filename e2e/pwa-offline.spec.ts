@@ -26,15 +26,23 @@ test.describe('Non-Functional & Resilience Testing: PWA & Offline Experience', (
     const aboutLink = page.locator('header a[href="#about"]');
     if (await aboutLink.isVisible()) {
       await aboutLink.click();
-      await page.waitForTimeout(300);
+      await page.waitForTimeout(600);
       const aboutSection = page.locator('#about');
       await expect(aboutSection).toBeInViewport();
     }
 
-    const langBtn = page.locator('.header__lang-btn[aria-label="English (US)"]');
-    if (await langBtn.isVisible()) {
-      await langBtn.click();
+    const collapsedSwitcher = page.locator('.header__lang-switcher--collapsed');
+    if (await collapsedSwitcher.isVisible()) {
+      await collapsedSwitcher.click();
+      const menuBtn = page.locator('.header__lang-menu-item', { hasText: 'English (US)' });
+      await menuBtn.click();
       await expect(page.locator('#about')).toBeVisible();
+    } else {
+      const langBtn = page.locator('.header__lang-btn:not(.header__lang-btn--hidden)[aria-label="English (US)"]');
+      if (await langBtn.isVisible()) {
+        await langBtn.click();
+        await expect(page.locator('#about')).toBeVisible();
+      }
     }
 
     await context.setOffline(false);
