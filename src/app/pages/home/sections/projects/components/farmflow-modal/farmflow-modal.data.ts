@@ -462,6 +462,42 @@ export const FARMFLOW_MODAL_DATA: Record<'pt-BR' | 'en', FarmFlowModalI18n> = {
         status: 'Accepted',
         focus: 'Disparo de aeração automatizada ao detectar gradiente térmico delta > 2.5°C',
       },
+      {
+        code: 'ADR-015',
+        title: 'Zero-Comment Code Discipline',
+        status: 'Accepted',
+        focus: 'Política estrita de código limpo, autoexplicativo e sem comentários redundantes',
+      },
+      {
+        code: 'ADR-016',
+        title: 'OpenID Connect Keycloak Integration',
+        status: 'Accepted',
+        focus: 'Federação com Keycloak OIDC, validação assimétrica RS256 e RBAC',
+      },
+      {
+        code: 'ADR-017',
+        title: 'Fail-Closed Row Level Security (RLS)',
+        status: 'Accepted',
+        focus: 'Políticas estritas no kernel do PostgreSQL 17 e isolamento físico por inquilino',
+      },
+      {
+        code: 'ADR-018',
+        title: 'Range Partitioning and BRIN Indexing',
+        status: 'Accepted',
+        focus: 'Particionamento declarativo por mês em telemetria IoT com BRIN e poda de 12/13 partições',
+      },
+      {
+        code: 'ADR-019',
+        title: 'Atomic Delta Counters',
+        status: 'Accepted',
+        focus: 'Eliminação de lost updates em maquinário sem findById e com precisão aritmética',
+      },
+      {
+        code: 'ADR-020',
+        title: 'Saga State Machine and Timeout',
+        status: 'Accepted',
+        focus: 'Saga coreografada com auditoria estruturada, outbox events e compensação temporal',
+      },
     ],
     runbooks: [
       {
@@ -976,6 +1012,42 @@ export const FARMFLOW_MODAL_DATA: Record<'pt-BR' | 'en', FarmFlowModalI18n> = {
         title: 'Decoupled Silo Thermometry Alert Engine with Delta Anomaly Probing',
         status: 'Accepted',
         focus: 'Automated aeration actuation upon detecting thermal gradient delta > 2.5°C',
+      },
+      {
+        code: 'ADR-015',
+        title: 'Zero-Comment Code Discipline',
+        status: 'Accepted',
+        focus: 'Strict policy enforcing self-documenting, clean, and idiomatic code',
+      },
+      {
+        code: 'ADR-016',
+        title: 'OpenID Connect Keycloak Integration',
+        status: 'Accepted',
+        focus: 'OIDC Resource Server with RS256 tokens and dynamic JWKS discovery',
+      },
+      {
+        code: 'ADR-017',
+        title: 'Fail-Closed Row Level Security (RLS)',
+        status: 'Accepted',
+        focus: 'PostgreSQL 17 kernel-enforced tenant isolation and non-owner role separation',
+      },
+      {
+        code: 'ADR-018',
+        title: 'Range Partitioning and BRIN Indexing',
+        status: 'Accepted',
+        focus: 'Time-series telemetry range partitioning with BRIN indexes for IoT scalability',
+      },
+      {
+        code: 'ADR-019',
+        title: 'Atomic Delta Counters',
+        status: 'Accepted',
+        focus: 'Elimination of lost updates in machinery operating hours via atomic database updates',
+      },
+      {
+        code: 'ADR-020',
+        title: 'Saga State Machine and Timeout',
+        status: 'Accepted',
+        focus: 'Choreographed cross-domain saga with explicit aggregate lifecycle and timeout sweeper',
       },
     ],
     runbooks: [

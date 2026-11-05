@@ -267,6 +267,10 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         'Keycloak OIDC',
         'OpenTelemetry',
       ],
+      summaryProblem: 'Gargalos de conectividade rural, perdas de apontamento e descompasso de estoque e maquinário',
+      summarySolution: 'Arquitetura com Virtual Threads (Java 21), Transactional Outbox, RabbitMQ e PostgreSQL 17',
+      summaryArch: 'Saga coreografada, SKIP LOCKED, RLS fail-closed, índices BRIN e CloudEvents v1.0',
+      summaryResults: '2.450 req/s em k6, 549+ testes automatizados (411 na API + 138 no mobile) e poda em 0,026ms',
       results:
         'Sincronização 100% resiliente de dados de campo em áreas sem conectividade via fila FIFO; conformidade regulatória estrita com exigências de defensivos do MAPA; capacidade de alta vazão no backend de 2.450 req/s com zero erros 5xx; 549+ testes automatizados garantindo qualidade total entre cliente mobile e API.',
       links: {
@@ -1036,6 +1040,10 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         'Keycloak OIDC',
         'OpenTelemetry',
       ],
+      summaryProblem: 'Rural connectivity bottlenecks, lost field logs, and stock/fleet state desynchronization',
+      summarySolution: 'Event-driven engine with Java 21 Virtual Threads, Transactional Outbox, RabbitMQ, and PostgreSQL 17',
+      summaryArch: 'Choreographed saga, SKIP LOCKED, fail-closed RLS, BRIN indexing, and CloudEvents v1.0',
+      summaryResults: '2,450 req/s under k6, 549+ automated tests (411 in API + 138 in mobile), and pruning in 0.026ms',
       results:
         '100% resilient data synchronization for field operations in zero-connectivity zones via FIFO queue; strict regulatory compliance with MAPA agrochemical application guidelines; high-throughput backend capacity of 2,450 req/s with zero 5xx errors; 549+ automated tests ensuring end-to-end stability.',
       links: {
@@ -1802,6 +1810,10 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         'Keycloak OIDC',
         'OpenTelemetry',
       ],
+      summaryProblem: 'Cuellos de botella de conectividad rural, pérdidas de registros y desfasaje de inventario y maquinaria',
+      summarySolution: 'Motor event-driven con Java 21 Virtual Threads, Transactional Outbox, RabbitMQ y PostgreSQL 17',
+      summaryArch: 'Saga coreografiada, SKIP LOCKED, RLS fail-closed, índices BRIN y CloudEvents v1.0',
+      summaryResults: '2.450 req/s bajo k6, 549+ tests automatizados (411 en API + 138 en móvil) y poda en 0,026ms',
       results:
         'Sincronización 100% íntegra de datos de campo en zonas sin señal vía cola FIFO; cumplimiento normativo estricto con exigencias del MAPA; capacidad de alto rendimiento en backend de 2.450 req/s con cero errores 5xx; 549+ pruebas automatizadas garantizando estabilidad total.',
       links: {
