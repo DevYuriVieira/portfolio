@@ -439,6 +439,10 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         'Singleton Pattern',
         'Leitura/Escrita CSV',
       ],
+      summaryProblem: 'Processamento em lote de funcionários via CSV e cálculo progressivo de INSS/IRRF',
+      summarySolution: 'Arquitetura em camadas MVC e DAO em Java 17 puro com persistência JDBC no PostgreSQL',
+      summaryArch: 'Padrões Singleton e DAO, precisão com BigDecimal e exceções customizadas de domínio',
+      summaryResults: 'Cálculo tributário de alta precisão sem imprecisão financeira e dupla persistência (BD e CSV)',
       results:
         'Cálculo automatizado e preciso de alíquotas progressivas de INSS e IRRF conforme legislação vigente, zerando distorções financeiras via BigDecimal; validação em tempo de execução de CPFs e vínculos de dependentes via exceções customizadas; persistência transacional dupla em PostgreSQL e relatórios CSV gerados automaticamente.',
       links: {
@@ -1189,6 +1193,10 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         'Singleton Pattern',
         'CSV I/O Parsing',
       ],
+      summaryProblem: 'Automated batch processing of employees via CSV and progressive INSS/IRRF tax calculation',
+      summarySolution: 'Layered MVC and DAO architecture in pure Java 17 with JDBC persistence on PostgreSQL',
+      summaryArch: 'Singleton and DAO patterns, exact precision with BigDecimal, and domain exception handling',
+      summaryResults: 'High-precision tax calculation eliminating floating-point errors with dual persistence (DB and CSV)',
       results:
         'Automated, zero-defect calculation of progressive INSS and IRRF tax brackets adhering to official labor legislation; real-time validation of CPFs and dependent relationships using custom domain exceptions; dual-tier transactional persistence in PostgreSQL and automated CSV report generation.',
       links: {
@@ -1932,6 +1940,10 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         'Singleton Pattern',
         'E/S CSV',
       ],
+      summaryProblem: 'Procesamiento por lotes de empleados vía CSV y cálculo progresivo de INSS/IRRF',
+      summarySolution: 'Arquitectura en capas MVC y DAO en Java 17 puro con persistencia JDBC en PostgreSQL',
+      summaryArch: 'Patrones Singleton y DAO, precisión con BigDecimal y excepciones de dominio personalizadas',
+      summaryResults: 'Cálculo tributario de alta precisión sin imprecisión financiera y doble persistencia (BD y CSV)',
       results:
         'Cálculo automatizado y preciso de alícuotas progresivas de INSS e IRRF conforme legislación laboral; validación en tiempo de ejecución de CPFs y relaciones de dependientes; persistencia transaccional dual en PostgreSQL y generación automatizada de informes CSV.',
       links: { github: 'https://github.com/DevYuriVieira/payroll-system-java' },
