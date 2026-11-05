@@ -143,5 +143,24 @@ describe('ProjectsSection', () => {
     fixture.detectChanges();
     expect(component.fleetOpsModalOpen()).toBe(false);
   });
+
+  it('should toggle FarmFlow modal for farmflow project', () => {
+    expect(component.farmFlowModalOpen()).toBe(false);
+
+    const compiled = fixture.nativeElement as HTMLElement;
+    const farmFlowBtn = compiled.querySelector('.projects__farmflow-btn') as HTMLButtonElement;
+    expect(farmFlowBtn).toBeTruthy();
+
+    farmFlowBtn.click();
+    fixture.detectChanges();
+    expect(component.farmFlowModalOpen()).toBe(true);
+
+    const modal = compiled.querySelector('app-farmflow-modal');
+    expect(modal).toBeTruthy();
+
+    component.closeFarmFlowModal();
+    fixture.detectChanges();
+    expect(component.farmFlowModalOpen()).toBe(false);
+  });
 });
 

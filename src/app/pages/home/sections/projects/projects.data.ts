@@ -211,17 +211,17 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       contextTag: 'Mobile Offline-First & API Distribuída',
       collaboration: 'Projeto autoral de arquitetura distribuída',
       description:
-        'Ecossistema agroindustrial completo de alta confiabilidade combinando aplicativo mobile Offline-First em React Native (Expo SDK 54, React 19) e motor backend distribuído em Java 21 LTS (Spring Boot 4.1.1, Virtual Threads Loom, RabbitMQ, PostgreSQL 17 particionado) para operações remotas de campo, conformidade regulatória MAPA com assinatura digital SHA-256 e telemetria IoT de pivôs e silos.',
+        'Plataforma de precisão agrícola e operações críticas de campo combinando aplicativo mobile Offline-First em React Native (Expo SDK 54, React 19) e motor backend distribuído de alta concorrência em Java 21 LTS (Spring Boot 4.1.1, Virtual Threads, RabbitMQ, PostgreSQL 17 particionado) para operações remotas de campo, conformidade regulatória MAPA com assinatura digital SHA-256 e telemetria IoT de pivôs e silos.',
       context:
         'Solução de engenharia desenvolvida para resolver os desafios críticos do agronegócio em campo: conectividade nula ou intermitente, necessidade de assinatura digital em caderno de defensivos para auditoria do MAPA e telemetria contínua de pivôs de irrigação e sensores termométricos de grãos.',
       problem:
         'Gargalo de conexão em áreas rurais remotas provocando perda de apontamentos de pulverização, divergência de estoques químicos, multas pelo MAPA por falha em dossiês e falta de visibilidade em tempo real sobre maquinário e sensores de silos.',
       solution:
-        'Arquitetura integrada ponta a ponta: frontend mobile Offline-First com fila transacional FIFO de mutações e reconciliação assíncrona; backend distribuído em Java 21 com Virtual Threads (Loom), Transactional Outbox Pattern e FOR UPDATE SKIP LOCKED no RabbitMQ, PostgreSQL 17 com particionamento temporal declarativo e RLS fail-closed, além de 549+ testes automatizados (411 no backend + 138 no mobile).',
+        'Arquitetura integrada ponta a ponta: frontend mobile Offline-First com fila transacional FIFO de mutações e reconciliação assíncrona; backend distribuído em Java 21 com Virtual Threads, Transactional Outbox Pattern e FOR UPDATE SKIP LOCKED no RabbitMQ, PostgreSQL 17 com particionamento temporal declarativo e RLS fail-closed, além de 549+ testes automatizados (411 no backend + 138 no mobile).',
       architectureDecisions: [
         'Frontend Mobile Offline-First com fila FIFO transacional em AsyncStorage e reconciliação determinística com netinfo',
         'Módulo regulatório do MAPA com geração de caderno de aplicação e assinatura digital em Canvas com hash SHA-256',
-        'Backend em Java 21 LTS com Virtual Threads (Project Loom) e Spring Boot 4.1.1 sustentando 2.450 req/s em testes de carga k6',
+        'Backend em Java 21 LTS com Virtual Threads e Spring Boot 4.1.1 sustentando 2.450 req/s em testes de carga k6',
         'Transactional Outbox Pattern com RabbitMQ (CloudEvents v1.0, DLX, TTL, Dead Letter Queue) e FOR UPDATE SKIP LOCKED',
         'PostgreSQL 17 com Particionamento Temporal Declarativo, índices BRIN e Fail-Closed Row Level Security (RLS)',
         'Sagas distribuídas orquestradas com locks consultivos (pg_try_advisory_xact_lock) e rastreamento W3C traceparent OpenTelemetry',
@@ -243,7 +243,7 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         'Expo SDK 54',
         'Java 21 LTS',
         'Spring Boot 4',
-        'Virtual Threads (Loom)',
+        'Virtual Threads',
         'PostgreSQL 17',
         'RabbitMQ',
         'Offline-First',
@@ -957,17 +957,17 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       contextTag: 'Offline-First Mobile & Distributed API',
       collaboration: 'Authorial distributed systems project',
       description:
-        'Complete mission-critical agro-industrial ecosystem combining an offline-first mobile application in React Native (Expo SDK 54, React 19) and a distributed backend engine in Java 21 LTS (Spring Boot 4.1.1, Loom Virtual Threads, RabbitMQ, partitioned PostgreSQL 17) for remote field operations, MAPA spray regulatory compliance with SHA-256 digital signatures, and IoT pivot/silo telemetry.',
+        'Precision agriculture platform and critical field operations combining an offline-first mobile application in React Native (Expo SDK 54, React 19) and a high-concurrency distributed backend engine in Java 21 LTS (Spring Boot 4.1.1, Virtual Threads, RabbitMQ, partitioned PostgreSQL 17) for remote field operations, MAPA spray regulatory compliance with SHA-256 digital signatures, and IoT pivot/silo telemetry.',
       context:
         'Engineered to overcome connectivity constraints in remote agricultural operations, enabling farm operators and agronomists to perform spray logging, regulatory dossier compliance, and IoT sensor monitoring without internet access.',
       problem:
         'Connectivity dead-zones in remote agricultural areas causing data loss, chemical inventory mismatches, heavy MAPA regulatory fines due to unsigned spray logs, and lack of real-time asset telemetry.',
       solution:
-        'End-to-end integrated architecture: Offline-First mobile frontend with transactional FIFO mutation queue and asynchronous reconciliation; distributed Java 21 backend with Virtual Threads (Loom), Transactional Outbox Pattern with FOR UPDATE SKIP LOCKED over RabbitMQ, PostgreSQL 17 with declarative range time-series partitioning and fail-closed RLS, backed by 549+ automated tests (411 on backend + 138 on mobile).',
+        'End-to-end integrated architecture: Offline-First mobile frontend with transactional FIFO mutation queue and asynchronous reconciliation; distributed Java 21 backend with Virtual Threads, Transactional Outbox Pattern with FOR UPDATE SKIP LOCKED over RabbitMQ, PostgreSQL 17 with declarative range time-series partitioning and fail-closed RLS, backed by 549+ automated tests (411 on backend + 138 on mobile).',
       architectureDecisions: [
         'Offline-First mobile architecture with transactional FIFO mutation queue in AsyncStorage guaranteeing deterministic replay upon reconnection',
         'MAPA regulatory compliance module with technical dossier generation and SHA-256 hashed canvas digital signatures',
-        'Java 21 LTS backend with Virtual Threads (Project Loom) and Spring Boot 4.1.1 sustaining 2,450 req/s in k6 load tests',
+        'Java 21 LTS backend with Virtual Threads and Spring Boot 4.1.1 sustaining 2,450 req/s in k6 load tests',
         'Transactional Outbox Pattern with RabbitMQ (CloudEvents v1.0, DLX, TTL, Dead Letter Queue) and FOR UPDATE SKIP LOCKED',
         'PostgreSQL 17 with Declarative Range Partitioning, BRIN indexes, and Fail-Closed Row Level Security (RLS)',
         'Distributed choreographed sagas with advisory locks (pg_try_advisory_xact_lock) and W3C traceparent OpenTelemetry tracing',
@@ -989,7 +989,7 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         'Expo SDK 54',
         'Java 21 LTS',
         'Spring Boot 4',
-        'Virtual Threads (Loom)',
+        'Virtual Threads',
         'PostgreSQL 17',
         'RabbitMQ',
         'Offline-First',
@@ -1700,17 +1700,17 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       contextTag: 'Mobile Offline-First & API Distribuida',
       collaboration: 'Proyecto autoral de arquitectura distribuida',
       description:
-        'Ecosistema agroindustrial completo de alta confiabilidad combinando aplicación móvil Offline-First en React Native (Expo SDK 54, React 19) y motor backend distribuido en Java 21 LTS (Spring Boot 4.1.1, Loom Virtual Threads, RabbitMQ, PostgreSQL 17 particionado) para operaciones remotas de campo, cumplimiento normativo del MAPA con firma digital SHA-256 y telemetría IoT de pivotes y silos.',
+        'Plataforma de agricultura de precisión y operaciones críticas de campo combinando aplicación móvil Offline-First en React Native (Expo SDK 54, React 19) e motor backend distribuido de alta concurrencia en Java 21 LTS (Spring Boot 4.1.1, Virtual Threads, RabbitMQ, PostgreSQL 17 particionado) para operaciones remotas de campo, cumplimiento normativo del MAPA con firma digital SHA-256 y telemetría IoT de pivotes y silos.',
       context:
         'Solución de ingeniería diseñada para superar los retos del agronegocio: conectividad nula o intermitente en áreas rurales, necesidad de firma digital en cuadernos de campo para auditorías del MAPA y telemetría continua de activos.',
       problem:
         'Operaciones agrícolas críticas en zonas sin señal provocando pérdida de datos de pulverización, desajustes de inventario, multas del MAPA por falta de cuadernos firmados y falta de telemetría de activos.',
       solution:
-        'Arquitectura integrada de extremo a extremo: frontend móvil Offline-First con cola transaccional FIFO y sincronización determinista; backend distribuido en Java 21 con Virtual Threads (Loom), Transactional Outbox Pattern y FOR UPDATE SKIP LOCKED sobre RabbitMQ, PostgreSQL 17 con particionamiento temporal y RLS fail-closed, respaldado por más de 549 pruebas automatizadas (411 en backend + 138 en móvil).',
+        'Arquitectura integrada de extremo a extremo: frontend móvil Offline-First con cola transaccional FIFO y sincronización determinista; backend distribuido en Java 21 con Virtual Threads, Transactional Outbox Pattern y FOR UPDATE SKIP LOCKED sobre RabbitMQ, PostgreSQL 17 con particionamiento temporal y RLS fail-closed, respaldado por más de 549 pruebas automatizadas (411 en backend + 138 en móvil).',
       architectureDecisions: [
         'Frontend móvil Offline-First con cola FIFO transaccional en AsyncStorage y reconciliación determinista con netinfo',
-        'Módulo regulatorio del MAPA con generación de cuaderno técnico y firma digital en Canvas con hash SHA-256',
-        'Backend en Java 21 LTS con Virtual Threads (Project Loom) y Spring Boot 4.1.1 soportando 2.450 req/s en pruebas k6',
+        'Módulo regulatorio del MAPA con generación de cuaderno técnico e firma digital en Canvas con hash SHA-256',
+        'Backend en Java 21 LTS con Virtual Threads y Spring Boot 4.1.1 soportando 2.450 req/s en pruebas k6',
         'Transactional Outbox Pattern con RabbitMQ (CloudEvents v1.0, DLX, TTL, Dead Letter Queue) y FOR UPDATE SKIP LOCKED',
         'PostgreSQL 17 con Particionamiento Temporal Declarativo, índices BRIN y Fail-Closed Row Level Security (RLS)',
         'Sagas distribuidas orquestadas con locks consultivos (pg_try_advisory_xact_lock) y trazabilidad W3C traceparent OpenTelemetry',
@@ -1732,7 +1732,7 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         'Expo SDK 54',
         'Java 21 LTS',
         'Spring Boot 4',
-        'Virtual Threads (Loom)',
+        'Virtual Threads',
         'PostgreSQL 17',
         'RabbitMQ',
         'Offline-First',

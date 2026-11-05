@@ -1,0 +1,634 @@
+<div class="farmflow-modal-backdrop" (click)="onBackdropClick($event)" role="dialog" aria-modal="true"
+  [attr.aria-label]="data().modalTitle">
+  <div class="farmflow-modal">
+    <div class="farmflow-modal__header">
+      <div class="farmflow-modal__header-top">
+        <div class="farmflow-modal__eyebrow-group">
+          <span class="farmflow-modal__eyebrow">{{ data().modalEyebrow }}</span>
+          <span class="farmflow-modal__badge farmflow-modal__badge--accent">JAVA 21 & SPRING BOOT 4</span>
+          <span class="farmflow-modal__badge farmflow-modal__badge--blue">REACT NATIVE EXPO 54</span>
+          <span class="farmflow-modal__badge farmflow-modal__badge--green">549 TESTS PASSING</span>
+          <span class="farmflow-modal__badge farmflow-modal__badge--amber">MAPA SHA-256 AUDIT</span>
+        </div>
+
+        <div class="farmflow-modal__header-actions">
+          <button type="button" class="farmflow-modal__close-btn" (click)="closeModal()"
+            [attr.aria-label]="data().closeAria">
+            ✕
+          </button>
+        </div>
+      </div>
+
+      <div class="farmflow-modal__title-group">
+        <div class="farmflow-modal__title-row">
+          <div>
+            <app-heading level="h2" size="h2" class="farmflow-modal__title">
+              FarmFlow | Plataforma Agroindustrial & Mobile Precision
+            </app-heading>
+            <app-text variant="caption" class="farmflow-modal__subtitle">
+              {{ data().modalSubtitle }}
+            </app-text>
+          </div>
+
+          <div class="farmflow-modal__toolbar">
+            <a [href]="data().mobileGithubUrl" target="_blank" rel="noopener noreferrer"
+              class="farmflow-modal__tool-btn farmflow-modal__tool-btn--primary"
+              aria-label="GitHub Repository Mobile (React Native / Expo 54)">
+              <svg class="farmflow-modal__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+                <line x1="12" y1="18" x2="12.01" y2="18" />
+              </svg>
+              <span>GitHub (Mobile)</span>
+              <span class="farmflow-modal__arrow" aria-hidden="true">↗</span>
+            </a>
+
+            <a [href]="data().backendGithubUrl" target="_blank" rel="noopener noreferrer"
+              class="farmflow-modal__tool-btn farmflow-modal__tool-btn--secondary"
+              aria-label="GitHub Repository Backend (Java 21 LTS / Spring Boot 4)">
+              <svg class="farmflow-modal__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 17l6-6-6-6m8 14h8" />
+              </svg>
+              <span>GitHub (Backend)</span>
+              <span class="farmflow-modal__arrow" aria-hidden="true">↗</span>
+            </a>
+
+            <button type="button" class="farmflow-modal__tool-btn" (click)="copyMarkdown()">
+              <svg class="farmflow-modal__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+              </svg>
+              <span>{{ copied() ? data().copiedMarkdown : data().copyMarkdown }}</span>
+            </button>
+
+            <button type="button" class="farmflow-modal__tool-btn" (click)="downloadDossier()">
+              <svg class="farmflow-modal__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+              <span>{{ data().downloadMarkdown }}</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="farmflow-modal__badges-ribbon">
+          @for (badge of data().badges; track badge.label) {
+          <span class="farmflow-modal__tech-badge"
+            [class.farmflow-modal__tech-badge--green]="badge.color === 'green'"
+            [class.farmflow-modal__tech-badge--purple]="badge.color === 'purple'"
+            [class.farmflow-modal__tech-badge--blue]="badge.color === 'blue'"
+            [class.farmflow-modal__tech-badge--amber]="badge.color === 'amber'">
+            {{ badge.label }}
+          </span>
+          }
+        </div>
+      </div>
+
+      <nav class="farmflow-modal__nav" aria-label="Seções do Dossiê FarmFlow">
+        <button type="button" class="farmflow-modal__tab" [class.is-active]="activeTab() === 'overview'"
+          (click)="setTab('overview')">
+          <span class="farmflow-modal__tab-icon" aria-hidden="true">🏛️</span>
+          <span>{{ data().tabs.overview }}</span>
+        </button>
+
+        <button type="button" class="farmflow-modal__tab" [class.is-active]="activeTab() === 'offline'"
+          (click)="setTab('offline')">
+          <span class="farmflow-modal__tab-icon" aria-hidden="true">📱</span>
+          <span>{{ data().tabs.offline }}</span>
+        </button>
+
+        <button type="button" class="farmflow-modal__tab" [class.is-active]="activeTab() === 'messaging'"
+          (click)="setTab('messaging')">
+          <span class="farmflow-modal__tab-icon" aria-hidden="true">⚡</span>
+          <span>{{ data().tabs.messaging }}</span>
+        </button>
+
+        <button type="button" class="farmflow-modal__tab" [class.is-active]="activeTab() === 'regulatory'"
+          (click)="setTab('regulatory')">
+          <span class="farmflow-modal__tab-icon" aria-hidden="true">📜</span>
+          <span>{{ data().tabs.regulatory }}</span>
+        </button>
+
+        <button type="button" class="farmflow-modal__tab" [class.is-active]="activeTab() === 'benchmarks'"
+          (click)="setTab('benchmarks')">
+          <span class="farmflow-modal__tab-icon" aria-hidden="true">🧪</span>
+          <span>{{ data().tabs.benchmarks }}</span>
+        </button>
+
+        <button type="button" class="farmflow-modal__tab" [class.is-active]="activeTab() === 'readme'"
+          (click)="setTab('readme')">
+          <span class="farmflow-modal__tab-icon" aria-hidden="true">📋</span>
+          <span>{{ data().tabs.readme }}</span>
+        </button>
+      </nav>
+    </div>
+
+    <div class="farmflow-modal__body" tabindex="0" role="region" aria-label="Conteúdo do Dossiê FarmFlow">
+      @if (activeTab() === 'overview') {
+      <div class="farmflow-section">
+        <div class="farmflow-card farmflow-card--featured">
+          <div class="farmflow-card__header">
+            <span class="farmflow-card__tag">EXECUTIVE SUMMARY</span>
+            <h3 class="farmflow-card__title">{{ activeLang() === 'en' ? 'Quick Engineering Summary' : 'Resumo Executivo de Engenharia' }}</h3>
+          </div>
+          <div class="farmflow-table-wrapper">
+            <table class="farmflow-table">
+              <thead>
+                <tr>
+                  <th style="width: 28%;">{{ activeLang() === 'en' ? 'Engineering Area' : 'Área de Engenharia' }}</th>
+                  <th>{{ activeLang() === 'en' ? 'FarmFlow Technical Implementation' : 'Implementação Técnica no FarmFlow' }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (row of data().executiveSummary; track row.area) {
+                <tr>
+                  <td class="farmflow-table__bold">{{ row.area }}</td>
+                  <td>{{ row.implementation }}</td>
+                </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="farmflow-card">
+          <div class="farmflow-card__header">
+            <span class="farmflow-card__tag">DOMAIN-DRIVEN DESIGN</span>
+            <h3 class="farmflow-card__title">{{ activeLang() === 'en' ? 'Delimited Bounded Contexts (DDD Aggregates)' : 'Contextos Delimitados (Agregados DDD)' }}</h3>
+          </div>
+          <div class="farmflow-grid farmflow-grid--2col">
+            @for (ctx of data().domainContexts; track ctx.name) {
+            <div class="farmflow-subcard">
+              <div class="farmflow-subcard__header">
+                <span class="farmflow-subcard__badge">{{ ctx.name }}</span>
+                <h4 class="farmflow-subcard__title">{{ ctx.title }}</h4>
+              </div>
+              <ul class="farmflow-list">
+                @for (inv of ctx.invariants; track inv) {
+                <li>{{ inv }}</li>
+                }
+              </ul>
+            </div>
+            }
+          </div>
+        </div>
+
+        <div class="farmflow-card">
+          <div class="farmflow-card__header">
+            <span class="farmflow-card__tag">DISTRIBUTED RESILIENCE</span>
+            <h3 class="farmflow-card__title">{{ activeLang() === 'en' ? 'Distributed Failure & Resilience Matrix' : 'Matriz de Resiliência a Cenários de Falha Distribuídos' }}</h3>
+          </div>
+          <div class="farmflow-table-wrapper">
+            <table class="farmflow-table">
+              <thead>
+                <tr>
+                  <th style="width: 25%;">{{ activeLang() === 'en' ? 'Failure Scenario' : 'Cenário de Falha' }}</th>
+                  <th>{{ activeLang() === 'en' ? 'System Behavior & Mitigation' : 'Comportamento do Sistema & Mitigação' }}</th>
+                  <th style="width: 25%;">{{ activeLang() === 'en' ? 'Architectural Guarantee' : 'Garantia Arquitetural' }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (sc of data().failureScenarios; track sc.scenario) {
+                <tr>
+                  <td class="farmflow-table__bold">{{ sc.scenario }}</td>
+                  <td>{{ sc.behavior }}</td>
+                  <td><code class="farmflow-code-inline">{{ sc.guarantee }}</code></td>
+                </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      }
+
+      @if (activeTab() === 'offline') {
+      <div class="farmflow-section">
+        <div class="farmflow-card farmflow-card--featured">
+          <div class="farmflow-card__header">
+            <span class="farmflow-card__tag">MOBILE OFFLINE-FIRST</span>
+            <h3 class="farmflow-card__title">{{ activeLang() === 'en' ? 'Unidirectional Offline-First Pipeline' : 'Pipeline Unidirecional Offline-First em React Native' }}</h3>
+          </div>
+          <div class="farmflow-callout">
+            <p>
+              Em áreas rurais remotas, a conectividade é zero ou altamente intermitente. O FarmFlow Mobile adota uma <strong>arquitetura de mutação unidirecional</strong> onde todas as ações do operador (apontamentos de pulverização, medições e assinaturas) são gravadas primeiro em uma <strong>fila FIFO atômica local em AsyncStorage</strong> antes de qualquer tentativa de rede.
+            </p>
+          </div>
+
+          <div class="farmflow-diagram">
+            <div class="farmflow-diagram__box">
+              <span class="farmflow-diagram__step">01. CAPTURA NO CAMPO</span>
+              <strong>React Native UI</strong>
+              <p>Operador aponta defensivo e assina digitalmente em Canvas offline</p>
+            </div>
+            <div class="farmflow-diagram__arrow">➔</div>
+            <div class="farmflow-diagram__box farmflow-diagram__box--active">
+              <span class="farmflow-diagram__step">02. PERSISTÊNCIA LOCAL</span>
+              <strong>AsyncStorage FIFO Queue</strong>
+              <p>Mutação selada com UUIDv4 Idempotency-Key e timestamp auditado</p>
+            </div>
+            <div class="farmflow-diagram__arrow">➔</div>
+            <div class="farmflow-diagram__box">
+              <span class="farmflow-diagram__step">03. MONITOR DE REDE</span>
+              <strong>NetInfo Listener</strong>
+              <p>Detecta reconexão celular 4G/5G ou Wi-Fi na sede da fazenda</p>
+            </div>
+            <div class="farmflow-diagram__arrow">➔</div>
+            <div class="farmflow-diagram__box farmflow-diagram__box--active">
+              <span class="farmflow-diagram__step">04. RECONCILIAÇÃO ATÔMICA</span>
+              <strong>POST /api/v1/sync/batch</strong>
+              <p>Backend Java 21 processa em lote com Last-Write-Wins e RLS</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="farmflow-card">
+          <div class="farmflow-card__header">
+            <span class="farmflow-card__tag">ALGORITMO DE RECONCILIAÇÃO</span>
+            <h3 class="farmflow-card__title">{{ activeLang() === 'en' ? 'Deterministic Sync Queue & Idempotency' : 'Fila de Sincronização Determinística & Idempotência' }}</h3>
+          </div>
+          <div class="farmflow-code-block">
+            <pre><code>// FarmFlow Mobile Offline Sync Reconciler (TypeScript / React Native)
+export class OfflineMutationDispatcher &#123;
+  async reconcileBatch(queue: MutationEnvelope[]): Promise&lt;SyncResult&gt; &#123;
+    const pending = await this.storage.getFifoPending();
+    if (!pending.length || !this.network.isConnected) return &#123; status: 'IDLE' &#125;;
+
+    const batchPayload = pending.map(item =&gt; (&#123;
+      idempotencyKey: item.uuid,
+      actionType: item.action,
+      payload: item.data,
+      signatureHash: item.sha256,
+      clientRecordedAt: item.timestamp,
+    &#125;));
+
+    try &#123;
+      const response = await this.api.post('/api/v1/sync/mutations/batch', batchPayload, &#123;
+        headers: &#123; 'X-Idempotency-Batch-Id': generateBatchId() &#125;,
+        timeout: 15000,
+      &#125;);
+
+      await this.storage.purgeCommitted(response.data.acknowledgedKeys);
+      return &#123; status: 'SUCCESS', processed: response.data.acknowledgedKeys.length &#125;;
+    &#125; catch (error) &#123;
+      await this.backoffScheduler.scheduleWithJitter(pending);
+      throw error;
+    &#125;
+  &#125;
+&#125;</code></pre>
+          </div>
+        </div>
+      </div>
+      }
+
+      @if (activeTab() === 'messaging') {
+      <div class="farmflow-section">
+        <div class="farmflow-card farmflow-card--featured">
+          <div class="farmflow-card__header">
+            <span class="farmflow-card__tag">TRANSACTIONAL OUTBOX PATTERN</span>
+            <h3 class="farmflow-card__title">{{ activeLang() === 'en' ? 'Reliable Event Dispatch with FOR UPDATE SKIP LOCKED' : 'Disparo Confiável de Eventos com FOR UPDATE SKIP LOCKED' }}</h3>
+          </div>
+          <div class="farmflow-callout">
+            <p>
+              Para eliminar o risco de <em>dual-write hazard</em> (onde o banco comita mas o broker falha ou vice-versa), o FarmFlow grava os eventos de domínio diretamente na tabela <code>outbox_events</code> dentro da <strong>mesma transação ACID do PostgreSQL 17</strong>. Workers em Java 21 fazem polling concorrente sem contenção de locks usando <code>FOR UPDATE SKIP LOCKED</code>.
+            </p>
+          </div>
+
+          <div class="farmflow-code-block">
+            <pre><code>// Java 21 LTS - Spring Boot 4 Outbox Poller com Virtual Threads
+@Component
+public class OutboxEventDispatcher &#123;
+  @Scheduled(fixedDelay = 250)
+  @Transactional
+  public void dispatchOutboxBatch() &#123;
+    // Polling sem contenção via FOR UPDATE SKIP LOCKED
+    List&lt;OutboxRecord&gt; batch = outboxRepository.findUnpublishedBatch(
+      PageRequest.of(0, 100)
+    );
+
+    for (OutboxRecord record : batch) &#123;
+      CloudEvent event = CloudEventBuilder.v1()
+        .withId(record.getId().toString())
+        .withSource(URI.create("/farmflow/agronomy"))
+        .withType(record.getEventType())
+        .withData(record.getPayloadBytes())
+        .withExtension("traceparent", record.getTraceParent())
+        .build();
+
+      rabbitTemplate.convertAndSend(
+        FARMFLOW_TOPIC_EXCHANGE,
+        record.getRoutingKey(),
+        event
+      );
+
+      record.markPublished(Instant.now());
+    &#125;
+  &#125;
+&#125;</code></pre>
+          </div>
+        </div>
+
+        <div class="farmflow-card">
+          <div class="farmflow-card__header">
+            <span class="farmflow-card__tag">IOT TELEMETRY & GRAIN SILOS</span>
+            <h3 class="farmflow-card__title">{{ activeLang() === 'en' ? 'Pivots Hydraulic Telemetry & Silo Thermometrics' : 'Telemetria de Pivôs de Irrigação & Termometria de Silos' }}</h3>
+          </div>
+          <div class="farmflow-grid farmflow-grid--2col">
+            <div class="farmflow-subcard">
+              <h4 class="farmflow-subcard__title">🌊 Pivôs Centrais de Irrigação</h4>
+              <ul class="farmflow-list">
+                <li>Ingestão de vazão volumétrica (m³/h), pressão de bicos (PSI) e posição angular (0° - 360°)</li>
+                <li>Detecção preditiva de ruptura de adutora em menos de 100 ms via análise de pressão</li>
+                <li>Comando de emergência Stop-Command despachado via RabbitMQ Topic Exchange com prioridade máxima</li>
+              </ul>
+            </div>
+            <div class="farmflow-subcard">
+              <h4 class="farmflow-subcard__title">🌾 Silos Graneleiros & Fermentação</h4>
+              <ul class="farmflow-list">
+                <li>Matriz 3D de cabos termométricos com leituras a cada 2 metros de profundidade da massa</li>
+                <li>Disparo automático de aeração preventiva ao detectar gradiente térmico delta &gt; 2.5°C</li>
+                <li>Particionamento temporal no PostgreSQL 17 com índices BRIN, reduzindo tamanho de índices em 88%</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      }
+
+      @if (activeTab() === 'regulatory') {
+      <div class="farmflow-section">
+        <div class="farmflow-card farmflow-card--featured">
+          <div class="farmflow-card__header">
+            <span class="farmflow-card__tag">MAPA COMPLIANCE & FORENSIC AUDIT</span>
+            <h3 class="farmflow-card__title">{{ activeLang() === 'en' ? 'MAPA Regulatory Logbook with SHA-256 Digital Signature' : 'Caderno de Defensivos MAPA com Assinatura Digital SHA-256' }}</h3>
+          </div>
+          <div class="farmflow-callout">
+            <p>
+              O Ministério da Agricultura e Pecuária (MAPA) exige rastreabilidade rigorosa de defensivos aplicados em lavouras comerciais sob pena de autuações e embargo de safras. O FarmFlow gera o <strong>Caderno de Campo Digital com assinatura em Canvas SVG</strong>, calculando um hash criptográfico <strong>SHA-256 inviolável</strong> vinculado ao receituário agronômico e carimbo de tempo UTC.
+            </p>
+          </div>
+
+          <div class="farmflow-grid farmflow-grid--2col">
+            <div class="farmflow-subcard">
+              <h4 class="farmflow-subcard__title">🔐 Protocolo de Selo Criptográfico</h4>
+              <ul class="farmflow-list">
+                <li>Captura vetorial dos traços de assinatura no Canvas mobile</li>
+                <li>Geração do hash SHA-256 canônico concatenando: <code>parcela_id + receita_id + produto + dose + timestamp + coordenadas_gps + vetor_assinatura</code></li>
+                <li>Recálculo determinístico no backend Java 21; divergência rejeita a aplicação imediatamente (HTTP 422)</li>
+                <li>Exportação de dossiê PDF auditável com QR Code e chave pública de autenticidade</li>
+              </ul>
+            </div>
+            <div class="farmflow-subcard">
+              <h4 class="farmflow-subcard__title">🛡️ Segurança Multi-Tenant & RLS</h4>
+              <ul class="farmflow-list">
+                <li>Keycloak 26.1 OIDC com tokens JWT assimétricos RS256 e JWKS dinâmico</li>
+                <li>Row-Level Security (RLS) fail-closed nativo no PostgreSQL 17: consultas sem <code>tenant_id</code> retornam zero linhas</li>
+                <li>Proteção contra enumeração IDOR: requisições a recursos de outras fazendas respondem HTTP 404 neutro</li>
+                <li>Autenticação biométrica local no app mobile (LocalAuthentication FaceID/TouchID)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="farmflow-card">
+          <div class="farmflow-card__header">
+            <span class="farmflow-card__tag">SYNTHETIC USERS & RBAC</span>
+            <h3 class="farmflow-card__title">{{ activeLang() === 'en' ? 'User Roles & Privilege Matrix' : 'Perfis de Acesso & Matriz de Privilégios (RBAC)' }}</h3>
+          </div>
+          <div class="farmflow-table-wrapper">
+            <table class="farmflow-table">
+              <thead>
+                <tr>
+                  <th style="width: 30%;">{{ activeLang() === 'en' ? 'User / Service' : 'Usuário / Serviço' }}</th>
+                  <th style="width: 30%;">{{ activeLang() === 'en' ? 'Roles Granted' : 'Papéis no Keycloak' }}</th>
+                  <th>{{ activeLang() === 'en' ? 'Operational Domain & Scope' : 'Escopo Operacional' }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (u of data().syntheticUsers; track u.user) {
+                <tr>
+                  <td class="farmflow-table__bold">{{ u.user }}</td>
+                  <td><code class="farmflow-code-inline">{{ u.roles }}</code></td>
+                  <td>{{ u.scope }}</td>
+                </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      }
+
+      @if (activeTab() === 'benchmarks') {
+      <div class="farmflow-section">
+        <div class="farmflow-stats-row">
+          <div class="farmflow-stat-box">
+            <span class="farmflow-stat-box__val">549+</span>
+            <span class="farmflow-stat-box__label">{{ activeLang() === 'en' ? 'Automated Tests' : 'Testes Automatizados' }}</span>
+            <span class="farmflow-stat-box__sub">{{ activeLang() === 'en' ? '138 Mobile (Jest) + 411 Backend (JUnit 5)' : '138 Mobile (Jest) + 411 Backend (JUnit 5)' }}</span>
+          </div>
+          <div class="farmflow-stat-box farmflow-stat-box--green">
+            <span class="farmflow-stat-box__val">100%</span>
+            <span class="farmflow-stat-box__label">{{ activeLang() === 'en' ? 'Quality Gate Pass' : 'Taxa de Aprovação' }}</span>
+            <span class="farmflow-stat-box__sub">{{ activeLang() === 'en' ? 'Zero Flakiness / Zero CVEs (Trivy Scan)' : 'Zero Falhas / Zero CVEs (Trivy Scan)' }}</span>
+          </div>
+          <div class="farmflow-stat-box">
+            <span class="farmflow-stat-box__val">6.200</span>
+            <span class="farmflow-stat-box__label">{{ activeLang() === 'en' ? 'Sustained RPS (k6)' : 'RPS Sustentado (k6)' }}</span>
+            <span class="farmflow-stat-box__sub">{{ activeLang() === 'en' ? 'Java 21 Virtual Threads + PostgreSQL 17' : 'Java 21 Virtual Threads + PostgreSQL 17' }}</span>
+          </div>
+          <div class="farmflow-stat-box">
+            <span class="farmflow-stat-box__val">14</span>
+            <span class="farmflow-stat-box__label">{{ activeLang() === 'en' ? 'Formalized ADRs' : 'ADRs Formalizadas' }}</span>
+            <span class="farmflow-stat-box__sub">{{ activeLang() === 'en' ? 'Mobile Offline-First & Distributed Backend' : 'Mobile Offline-First & Backend Distribuído' }}</span>
+          </div>
+        </div>
+
+        <div class="farmflow-card farmflow-card--featured">
+          <div class="farmflow-card__header">
+            <span class="farmflow-card__tag">CAPACITY ENGINEERING (k6)</span>
+            <h3 class="farmflow-card__title">{{ activeLang() === 'en' ? 'Empirical Capacity Benchmarks: Java 21 Virtual Threads' : 'Benchmarks de Capacidade Empírica: Java 21 Virtual Threads' }}</h3>
+          </div>
+          <div class="farmflow-table-wrapper">
+            <table class="farmflow-table">
+              <thead>
+                <tr>
+                  <th>Workload</th>
+                  <th>Concurrency</th>
+                  <th>Requests</th>
+                  <th>Throughput</th>
+                  <th>P50</th>
+                  <th>P90</th>
+                  <th>P95</th>
+                  <th>Max</th>
+                  <th>Errors</th>
+                  <th>Verdict</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (b of data().benchmarks; track b.workload) {
+                <tr>
+                  <td class="farmflow-table__bold">{{ b.workload }}</td>
+                  <td>{{ b.concurrency }}</td>
+                  <td>{{ b.requests }}</td>
+                  <td class="farmflow-table__accent">{{ b.throughput }}</td>
+                  <td>{{ b.p50 }}</td>
+                  <td>{{ b.p90 }}</td>
+                  <td>{{ b.p95 }}</td>
+                  <td>{{ b.max }}</td>
+                  <td>{{ b.errors }}</td>
+                  <td><code class="farmflow-code-inline farmflow-code-inline--green">{{ b.verdict }}</code></td>
+                </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="farmflow-card">
+          <div class="farmflow-card__header">
+            <span class="farmflow-card__tag">ARCHITECTURE DECISION RECORDS</span>
+            <h3 class="farmflow-card__title">{{ activeLang() === 'en' ? 'Architecture Decision Records (14 ADRs)' : 'Registros de Decisão de Arquitetura (14 ADRs)' }}</h3>
+          </div>
+          <div class="farmflow-table-wrapper">
+            <table class="farmflow-table">
+              <thead>
+                <tr>
+                  <th style="width: 12%;">Código</th>
+                  <th style="width: 40%;">Título do Registro</th>
+                  <th style="width: 15%;">Status</th>
+                  <th>Foco Arquitetural</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (adr of data().adrs; track adr.code) {
+                <tr>
+                  <td><code class="farmflow-code-inline">{{ adr.code }}</code></td>
+                  <td class="farmflow-table__bold">{{ adr.title }}</td>
+                  <td><span class="farmflow-status-badge">{{ adr.status }}</span></td>
+                  <td>{{ adr.focus }}</td>
+                </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="farmflow-card">
+          <div class="farmflow-card__header">
+            <span class="farmflow-card__tag">RELIABILITY & SLOS</span>
+            <h3 class="farmflow-card__title">{{ activeLang() === 'en' ? 'SRE Runbooks & Service Level Objectives' : 'Runbooks SRE & Objetivos de Nível de Serviço (SLOs)' }}</h3>
+          </div>
+          <div class="farmflow-table-wrapper">
+            <table class="farmflow-table">
+              <thead>
+                <tr>
+                  <th style="width: 25%;">Serviço / Fluxo</th>
+                  <th>Indicador de Nível de Serviço (SLI)</th>
+                  <th style="width: 20%;">Meta SLO</th>
+                  <th style="width: 20%;">Orçamento de Erro</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (slo of data().slos; track slo.service) {
+                <tr>
+                  <td class="farmflow-table__bold">{{ slo.service }}</td>
+                  <td>{{ slo.sli }}</td>
+                  <td><code class="farmflow-code-inline farmflow-code-inline--green">{{ slo.target }}</code></td>
+                  <td>{{ slo.budget }}</td>
+                </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      }
+
+      @if (activeTab() === 'readme') {
+      <div class="farmflow-section">
+        <div class="farmflow-card farmflow-card--featured">
+          <div class="farmflow-card__header">
+            <span class="farmflow-card__tag">CORE REST ENDPOINTS</span>
+            <h3 class="farmflow-card__title">{{ activeLang() === 'en' ? 'Production REST API Catalog' : 'Catálogo de Endpoints REST de Produção' }}</h3>
+          </div>
+          @for (cat of data().endpointCategories; track cat.category) {
+          <div class="farmflow-endpoint-group">
+            <div class="farmflow-endpoint-group__header">
+              <h4 class="farmflow-endpoint-group__title">{{ cat.category }}</h4>
+              <span class="farmflow-endpoint-group__roles">Roles: <code>{{ cat.roles }}</code></span>
+            </div>
+            <div class="farmflow-table-wrapper">
+              <table class="farmflow-table">
+                <thead>
+                  <tr>
+                    <th style="width: 12%;">Método</th>
+                    <th style="width: 38%;">Rota</th>
+                    <th>Finalidade Técnica</th>
+                    <th style="width: 18%;">Sucesso</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (ep of cat.endpoints; track ep.route) {
+                  <tr>
+                    <td>
+                      <span class="farmflow-method-badge"
+                        [class.farmflow-method-badge--get]="ep.method === 'GET'"
+                        [class.farmflow-method-badge--post]="ep.method === 'POST'">
+                        {{ ep.method }}
+                      </span>
+                    </td>
+                    <td><code class="farmflow-code-inline">{{ ep.route }}</code></td>
+                    <td>{{ ep.purpose }}</td>
+                    <td><code class="farmflow-code-inline farmflow-code-inline--green">{{ ep.success }}</code></td>
+                  </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+          </div>
+          }
+        </div>
+
+        <div class="farmflow-card">
+          <div class="farmflow-card__header farmflow-card__header--split">
+            <div>
+              <span class="farmflow-card__tag">TECHNICAL DOSSIER</span>
+              <h3 class="farmflow-card__title">{{ activeLang() === 'en' ? 'Complete Technical Dossier (Markdown)' : 'Dossiê Técnico Completo (Markdown)' }}</h3>
+            </div>
+            <div class="farmflow-card__actions">
+              <button type="button" class="farmflow-modal__tool-btn" (click)="copyMarkdown()">
+                <span>{{ copied() ? data().copiedMarkdown : data().copyMarkdown }}</span>
+              </button>
+              <button type="button" class="farmflow-modal__tool-btn" (click)="downloadDossier()">
+                <span>{{ data().downloadMarkdown }}</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="farmflow-markdown-viewer">
+            <pre class="farmflow-markdown-text"><code>{{ markdownContent() }}</code></pre>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+
+    <div class="farmflow-modal__footer">
+      <div class="farmflow-modal__footer-left">
+        <span class="farmflow-modal__footer-author">{{ activeLang() === 'en' ? 'Author:' : 'Autor:' }} <strong>Yuri Vieira</strong></span>
+        <a [href]="data().mobileGithubUrl" target="_blank" rel="noopener noreferrer" class="farmflow-modal__footer-link">
+          Mobile (Expo 54) ↗
+        </a>
+        <span class="farmflow-modal__footer-sep">•</span>
+        <a [href]="data().backendGithubUrl" target="_blank" rel="noopener noreferrer" class="farmflow-modal__footer-link">
+          Backend (Java 21) ↗
+        </a>
+      </div>
+      <button type="button" class="farmflow-modal__close-action-btn" (click)="closeModal()">
+        {{ data().closeBtn }}
+      </button>
+    </div>
+  </div>
+</div>
+

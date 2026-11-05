@@ -3,11 +3,12 @@ import { I18nService } from '@core';
 import { Button, Container, Heading, Link, Section, Text } from '@ui';
 import { ArchitectureModal } from './components/architecture-modal/architecture-modal';
 import { FleetOpsModal } from './components/fleetops-modal/fleetops-modal';
+import { FarmFlowModal } from './components/farmflow-modal/farmflow-modal';
 import { getProjectsData } from './projects.data';
 
 @Component({
   selector: 'app-projects',
-  imports: [Section, Container, Heading, Text, Link, Button, ArchitectureModal, FleetOpsModal],
+  imports: [Section, Container, Heading, Text, Link, Button, ArchitectureModal, FleetOpsModal, FarmFlowModal],
   templateUrl: './projects.html',
   styleUrl: './projects.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -19,6 +20,7 @@ export class ProjectsSection {
   readonly displayLimit = signal<number>(5);
   readonly architectureModalOpen = signal<boolean>(false);
   readonly fleetOpsModalOpen = signal<boolean>(false);
+  readonly farmFlowModalOpen = signal<boolean>(false);
   readonly expandedProjectIds = signal<Record<string, boolean>>({});
 
   isProjectExpanded(id: string): boolean {
@@ -104,6 +106,12 @@ export class ProjectsSection {
         'Dossiê & Arquitetura - FleetOps API',
         'Dossier & Arquitectura - FleetOps API',
       ),
+      viewFarmFlowDossier: t('Dossier & Architecture', 'Dossiê & Arquitetura', 'Dossier & Arquitectura'),
+      viewFarmFlowAria: t(
+        'Dossier & Architecture - FarmFlow Ecosystem',
+        'Dossiê & Arquitetura - FarmFlow Ecosystem',
+        'Dossier & Arquitectura - FarmFlow Ecosystem',
+      ),
       techAriaLabel: t('Technologies used in the project', 'Tecnologias utilizadas no projeto', 'Tecnologías utilizadas en el proyecto'),
       showDetails: t('View Challenge, Solution & Results', 'Ver Desafio, Solução & Resultados', 'Ver Desafío, Solución & Resultados'),
       hideDetails: t('Hide technical details', 'Ocultar detalhes técnicos', 'Ocultar detalles técnicos'),
@@ -128,6 +136,14 @@ export class ProjectsSection {
 
   closeFleetOpsModal(): void {
     this.fleetOpsModalOpen.set(false);
+  }
+
+  openFarmFlowModal(): void {
+    this.farmFlowModalOpen.set(true);
+  }
+
+  closeFarmFlowModal(): void {
+    this.farmFlowModalOpen.set(false);
   }
 
   toggleShowAll(): void {
