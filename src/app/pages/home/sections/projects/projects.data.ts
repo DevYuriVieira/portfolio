@@ -619,6 +619,10 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         'MockAPI',
         'LocalStorage',
       ],
+      summaryProblem: 'Simulação de e-commerce de produção sem backend tradicional',
+      summarySolution: 'Arquitetura MPA em Vanilla JS com estado cliente em LocalStorage',
+      summaryArch: 'Separação modular por funcionalidade e integração assíncrona (ViaCEP/MockAPI)',
+      summaryResults: 'Zero overhead de frameworks, frete dinâmico e regras de atacado automatizadas',
       results:
         'Cálculo logístico e preenchimento automático de endereço em tempo real via ViaCEP API; carrinho de compras mantido durante a navegação entre páginas; painel administrativo seguro para gestão de produtos.',
       links: {
@@ -1365,6 +1369,10 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         'MockAPI',
         'LocalStorage',
       ],
+      summaryProblem: 'Production-grade e-commerce emulation without traditional backend',
+      summarySolution: 'Vanilla JS MPA architecture with client state in LocalStorage',
+      summaryArch: 'Feature-modular architecture and async API integration (ViaCEP/MockAPI)',
+      summaryResults: 'Zero framework overhead, dynamic logistics, and automated wholesale rules',
       results:
         'Automated real-time address lookup and shipping calculation via ViaCEP REST API; offcanvas shopping cart state maintained across page transitions; secure administrative dashboard for catalog management.',
       links: {
@@ -2100,6 +2108,10 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         'MockAPI',
         'LocalStorage',
       ],
+      summaryProblem: 'Simulación de e-commerce de producción sin backend tradicional',
+      summarySolution: 'Arquitectura MPA en Vanilla JS con estado cliente en LocalStorage',
+      summaryArch: 'Separación modular por funcionalidad e integración asíncrona (ViaCEP/MockAPI)',
+      summaryResults: 'Cero overhead de frameworks, flete dinámico y reglas mayoristas automatizadas',
       results:
         'Búsqueda automatizada de direcciones y cálculo de flete en tiempo real vía ViaCEP API; estado de carrito de compras mantenido entre transiciones de página; dashboard administrativo seguro para gestión de catálogo.',
       links: {

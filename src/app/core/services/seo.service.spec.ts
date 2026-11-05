@@ -1,17 +1,22 @@
 import { TestBed } from '@angular/core/testing';
 import { Meta, Title } from '@angular/platform-browser';
 import { beforeEach, describe, expect, it } from 'vitest';
+import { I18nService } from '../i18n/i18n.service';
 import { SeoService } from './seo.service';
 
 describe('SeoService', () => {
   let service: SeoService;
   let titleService: Title;
   let metaService: Meta;
+  let i18nService: I18nService;
 
   beforeEach(() => {
+    localStorage.clear();
     TestBed.configureTestingModule({
-      providers: [SeoService, Title, Meta],
+      providers: [SeoService, Title, Meta, I18nService],
     });
+    i18nService = TestBed.inject(I18nService);
+    i18nService.setLang('pt-BR');
     service = TestBed.inject(SeoService);
     titleService = TestBed.inject(Title);
     metaService = TestBed.inject(Meta);
