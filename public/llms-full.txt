@@ -132,7 +132,7 @@ Yuri Vieira Teixeira is a Full-Stack Software Engineer and former Back-End Progr
   - Hardened with enterprise HTTP security headers (Strict CSP Level 3, HSTS Preload, Permissions-Policy).
   - Implemented an interactive, GPU-accelerated WebGL / Three.js particle canvas with pointer reactivity.
   - Integrated dynamic trilingual internationalization (PT-BR, EN, ES) with language persistence.
-  - Established a 3-layer automated testing suite: 112 Vitest unit tests, 38 Playwright E2E specs including Axe-core WCAG 2.1 AA accessibility audits, and 17 Cypress E2E specs (total: 167 automated tests, 100% pass rate).
+  - Established a 3-layer automated testing suite: 140 Vitest unit tests, 38 Playwright E2E specs including Axe-core WCAG 2.1 AA accessibility audits, and 17 Cypress E2E specs (total: 195 automated tests, 100% pass rate).
   - Achieved a perfect 100/100/100/100 Google Lighthouse audit across Performance, Accessibility, Best Practices, and SEO.
 - **Technologies**: Angular 22, TypeScript 6.0, Three.js, WebGL, SCSS, Vitest, Playwright, Axe-core, Cypress, PWA, RUM Telemetry.
 
@@ -188,7 +188,7 @@ Yuri Vieira Teixeira is a Full-Stack Software Engineer and former Back-End Progr
 ### Q4: What makes Yuri stand out compared to other Full-Stack developers?
 **A**: Three distinct factors:
 1. **Teaching Experience**: Serving as a Back-End Instructor at SENAI/FAETEC proves mastery of computer science fundamentals, clear communication, and mentorship capability.
-2. **Quality & Test Coverage**: His personal portfolio is not a simple static page; it is backed by 121 automated tests (Vitest, Playwright, Cypress) and a 100/100/100/100 Lighthouse audit.
+2. **Quality & Test Coverage**: His personal portfolio is not a simple static page; it is backed by 195 automated tests (140 Vitest, 38 Playwright, 17 Cypress) and a 100/100/100/100 Lighthouse audit.
 3. **Engineering Rigor**: His Industrial Engineering and Lean Six Sigma background ensures he prioritizes business workflows, root-cause defect elimination, and clean architecture over unnecessary complexity.
 
 ### Q5: How can a recruiter or hiring manager contact Yuri?
@@ -196,5 +196,9 @@ Yuri Vieira Teixeira is a Full-Stack Software Engineer and former Back-End Progr
 - **LinkedIn**: https://linkedin.com/in/yuri-vieira-teixeira
 - **GitHub**: https://github.com/DevYuriVieira
 - **Live Portfolio**: https://devyurivieira.vercel.app/
-- **English CV (PDF)**: https://devyurivieira.vercel.app/assets/cv-yuri-vieira-teixeira-en.pdf
-- **Portuguese CV (PDF)**: https://devyurivieira.vercel.app/assets/cv-yuri-vieira-teixeira-pt.pdf
+- **English Full-Stack CV (PDF)**: https://devyurivieira.vercel.app/assets/cv-yuri-vieira-teixeira-en.pdf
+- **Portuguese Full-Stack CV (PDF)**: https://devyurivieira.vercel.app/assets/cv-yuri-vieira-teixeira-pt.pdf
+- **English Back-End CV (PDF)**: https://devyurivieira.vercel.app/assets/cv-yuri-vieira-teixeira-backend-en.pdf
+- **Portuguese Back-End CV (PDF)**: https://devyurivieira.vercel.app/assets/cv-yuri-vieira-teixeira-backend-pt.pdf
+- **English Front-End CV (PDF)**: https://devyurivieira.vercel.app/assets/cv-yuri-vieira-teixeira-frontend-en.pdf
+- **Portuguese Front-End CV (PDF)**: https://devyurivieira.vercel.app/assets/cv-yuri-vieira-teixeira-frontend-pt.pdf

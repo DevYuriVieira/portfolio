@@ -324,10 +324,10 @@ const FRONTEND_PT = `<!DOCTYPE html>
 
       <div class="entry">
         <div class="entry-title">Zeiss - Assistente de Recomendações</div>
-        <div class="entry-meta">Colaborativo (11 devs, 1 PO, 1 SM) | 2026 | React 19 | TypeScript 6 | Vite 8 | Styled Components 6 | React Router 7 | ApexCharts 5 | Java 17 | Spring Boot 4 - MVP corporativo (contrato)</div>
+        <div class="entry-meta">Colaborativo (11 devs, 1 PO, 1 SM) | 2026 | React 19 | TypeScript 6 | Vite 8 | Styled Components 6 | React Router 7 | ApexCharts 5 | Java 17 | Spring Boot 4.1 | OCR &amp; RAG (n8n) - Projeto Final Serratec · MVP corporativo (contrato)</div>
         <ul class="bullets">
-          <li>Vendedores de ótica liam receitas e escolhiam lentes manualmente, gerando recomendações inconsistentes. Foi construída uma plataforma web com <strong>front-end em React e TypeScript</strong> (integrado a back-end Spring Boot 4 e pipeline de IA n8n/RAG) que exibe uma interface de validação clínica assistida dos dados extraídos via OCR e cruza as métricas ópticas com o perfil do paciente para recomendar a lente Zeiss ideal.</li>
-          <li>Desenvolvimento de <strong>dashboards analíticos em tempo real</strong> para gerentes e para a matriz da Zeiss (lentes mais vendidas, mais recomendadas, taxa de conversão e ranking de vendedores). Controle de rotas e visibilidade na UI baseado em autenticação JWT em três níveis (admin Zeiss, gerente e funcionário), com telas de CRUD completo para lojas, produtos e funcionários.</li>
+          <li>Vendedores de ótica liam receitas e escolhiam lentes manualmente, gerando recomendações inconsistentes. Foi construída uma plataforma web com <strong>front-end em React 19, TypeScript e Styled Components</strong> (integrado a back-end Spring Boot 4.1 e pipeline de IA n8n/RAG) que exibe um modal de validação clínica assistida (Human-in-the-Loop) com indicador de confiança dos campos extraídos via OCR e cruza as métricas ópticas com os hábitos do paciente para recomendar a lente Zeiss ideal.</li>
+          <li>Desenvolvimento de <strong>dashboards analíticos interativos com ApexCharts</strong> para gerentes e para a matriz da Zeiss (lentes mais vendidas, mais recomendadas, evolução temporal, taxa de conversão e ranking de vendedores). Controle de rotas e visibilidade na UI baseado em autenticação JWT em três níveis (admin Zeiss, gerente e funcionário), máquina de estados de atendimento (<code>RECOMMENDED</code>, <code>SOLD</code>, <code>CANCELLED</code>) e CRUD completo para lojas, produtos e funcionários.</li>
         </ul>
       </div>
 
@@ -351,19 +351,19 @@ const FRONTEND_PT = `<!DOCTYPE html>
 
       <div class="entry">
         <div class="entry-title">PlayStation Evolution Timeline - <a href="https://playstation-evolution-timeline.vercel.app">playstation-evolution-timeline.vercel.app</a></div>
-        <div class="entry-meta">Pessoal | 2026 | React 18 | TypeScript 5 | Vite 5 | Framer Motion 11 | CSS Modules | Intersection Observer | Vercel CI/CD</div>
+        <div class="entry-meta">Pessoal | 2026 | React 18 | TypeScript 5 | Vite 5 | Framer Motion 11 | CSS Modules | Intersection Observer - <a href="https://github.com/DevYuriVieira/playstation-evolution-timeline">github.com/DevYuriVieira/playstation-evolution-timeline</a></div>
         <ul class="bullets">
-          <li>Aplicação web interativa em produção na Vercel que apresenta 30 anos de evolução de hardware dos consoles PlayStation, construída com arquitetura modular de componentes em <strong>React e TypeScript</strong> com tipagem estrita das fichas técnicas históricas.</li>
-          <li>Implementa motion design avançado e interpolação de animações declarativas a <strong>60 FPS com Framer Motion</strong> sem provocar reflows indesejados no DOM, layout 100% responsivo para dispositivos móveis e desktops, e esteira de deploy contínuo (CI/CD) automatizada via GitHub e Vercel.</li>
+          <li>Aplicação web interativa em produção na Vercel que apresenta 30 anos de evolução de hardware dos consoles PlayStation (do PS1 ao PS5 Pro), construída com arquitetura modular em <strong>React 18, TypeScript e CSS Modules</strong> e orquestração de scroll no centro da viewport via <strong>Intersection Observer API</strong> (<code>rootMargin: "-50%"</code>), eliminando listeners pesados de scroll.</li>
+          <li>Implementa contadores numéricos animados sob demanda (<code>StatsAnimated</code>) e transições declarativas a <strong>60 FPS estáveis com Framer Motion</strong> sem provocar layout thrashing, navegação lateral adaptativa (<code>SideTimeline</code>) e esteira de deploy contínuo (CI/CD) automatizada via GitHub e Vercel.</li>
         </ul>
       </div>
 
       <div class="entry">
         <div class="entry-title">Anime Weather Platform - <a href="https://github.com/DevYuriVieira/anime-weather-platform">github.com/DevYuriVieira/anime-weather-platform</a></div>
-        <div class="entry-meta">Colaborativo (Pair Programming) | 2026 | React 19 | TypeScript | Vite | Google Gemini AI | Open-Meteo API | Jikan v4 API | Context API</div>
+        <div class="entry-meta">Colaborativo (Pair Programming) | 2026 | React 18 | Vite | Google Gemini SDK | OpenWeather API | Jikan API | CSS Modules | Glassmorphism</div>
         <ul class="bullets">
-          <li>Aplicação web reativa desenvolvida em <strong>React, TypeScript e Vite</strong> que orquestra o consumo assíncrono em tempo real de múltiplas APIs REST externas — detectando o clima local em tempo real via <strong>Open-Meteo API</strong> e cruzando com o catálogo cultural da <strong>Jikan v4 API</strong>.</li>
-          <li>Integra o SDK do <strong>Google Gemini AI</strong> aplicando Engenharia de Prompts para retornar tanto recomendações estruturadas em <strong>JSON estrito</strong> (renderizadas dinamicamente em cards com design <em>glassmorphism</em>) quanto diálogos interativos em um chatbot contextualizado com tratamento defensivo de estados de carregamento e fallbacks de erro.</li>
+          <li>Sistema de orquestração frontend desenvolvido em <strong>React 18, Vite e CSS Modules</strong> com pipeline lógico multicamada (<strong>Clima → Humor Atmosférico → Gênero de Anime</strong>), consumindo condições meteorológicas em tempo real da <strong>OpenWeather API</strong> e cruzando com o catálogo cultural do MyAnimeList via <strong>Jikan API</strong>.</li>
+          <li>Integra o SDK do <strong>Google Gemini AI</strong> aplicando Engenharia de Prompts para gerar recomendações contextualizadas com a cidade e o clima ao vivo do usuário, combinadas com temas visuais adaptativos em tempo real, estética <em>Glassmorphism</em>, ambientação sonora Lofi e rotas protegidas.</li>
         </ul>
       </div>
     </section>
@@ -519,10 +519,10 @@ const FRONTEND_EN = `<!DOCTYPE html>
 
       <div class="entry">
         <div class="entry-title">Zeiss - AI Recommendation Platform</div>
-        <div class="entry-meta">Collaborative (11 devs, 1 PO, 1 SM) | 2026 | React 19 | TypeScript 6 | Vite 8 | Styled Components 6 | React Router 7 | ApexCharts 5 | Java 17 | Spring Boot 4 - Corporate MVP (contract)</div>
+        <div class="entry-meta">Collaborative (11 devs, 1 PO, 1 SM) | 2026 | React 19 | TypeScript 6 | Vite 8 | Styled Components 6 | React Router 7 | ApexCharts 5 | Java 17 | Spring Boot 4.1 | OCR &amp; RAG (n8n) - Serratec Final Project · Corporate MVP (contract)</div>
         <ul class="bullets">
-          <li>Optical shop sellers were reading prescriptions and choosing lenses by hand, making recommendations inconsistent. The team built a web platform with a <strong>React and TypeScript front end</strong> (connected to a Java 17/Spring Boot 4 back end and an n8n/RAG AI pipeline) featuring an assisted clinical validation UI for OCR-extracted prescriptions and matching optical parameters with patient lifestyle habits to recommend the ideal Zeiss lens.</li>
-          <li>Built <strong>real-time analytics dashboards</strong> for store managers and Zeiss headquarters (best-selling and most recommended lenses, conversion rates and seller rankings). Role-based UI route protection backed by a three-tier JWT hierarchy (Zeiss admin, store manager, employee), with full CRUD views for stores, products and employees.</li>
+          <li>Optical shop sellers were reading prescriptions and choosing lenses by hand, making recommendations inconsistent. The team built a web platform with a <strong>React 19, TypeScript and Styled Components front end</strong> (connected to a Java 17/Spring Boot 4.1 back end and an n8n/RAG AI pipeline) featuring an assisted Human-in-the-Loop validation modal with field-level OCR confidence scores and matching optical parameters with patient lifestyle habits to recommend the ideal Zeiss lens.</li>
+          <li>Built <strong>interactive analytics dashboards with ApexCharts</strong> for store managers and Zeiss headquarters (best-selling and most recommended lenses, temporal trends, conversion rates and seller rankings). Role-based UI route protection backed by a three-tier JWT hierarchy (Zeiss admin, store manager, employee), consultation lifecycle state machine (<code>RECOMMENDED</code>, <code>SOLD</code>, <code>CANCELLED</code>) and full CRUD views for stores, products and employees.</li>
         </ul>
       </div>
 
@@ -546,19 +546,19 @@ const FRONTEND_EN = `<!DOCTYPE html>
 
       <div class="entry">
         <div class="entry-title">PlayStation Evolution Timeline - <a href="https://playstation-evolution-timeline.vercel.app">playstation-evolution-timeline.vercel.app</a></div>
-        <div class="entry-meta">Personal | 2026 | React 18 | TypeScript 5 | Vite 5 | Framer Motion 11 | CSS Modules | Intersection Observer | Vercel CI/CD</div>
+        <div class="entry-meta">Personal | 2026 | React 18 | TypeScript 5 | Vite 5 | Framer Motion 11 | CSS Modules | Intersection Observer - <a href="https://github.com/DevYuriVieira/playstation-evolution-timeline">github.com/DevYuriVieira/playstation-evolution-timeline</a></div>
         <ul class="bullets">
-          <li>Live production web application showcasing 30 years of PlayStation console hardware evolution, engineered with reusable <strong>React and TypeScript</strong> components and strict typing for historical hardware specifications.</li>
-          <li>Implements advanced motion design and declarative <strong>60 FPS animations using Framer Motion</strong> without triggering unwanted DOM reflows, a 100% responsive layout across mobile and desktop viewports, and an automated CI/CD pipeline via GitHub and Vercel.</li>
+          <li>Live production web application showcasing 30 years of PlayStation console hardware evolution (PS1 to PS5 Pro), engineered with modular <strong>React 18, TypeScript and CSS Modules</strong> components and viewport-centered scroll orchestration via the <strong>Intersection Observer API</strong> (<code>rootMargin: "-50%"</code>), eliminating expensive window scroll listeners.</li>
+          <li>Implements visibility-triggered numeric counters (<code>StatsAnimated</code>) and hardware-accelerated <strong>60 FPS animations using Framer Motion</strong> without layout thrashing, an adaptive <code>SideTimeline</code> navigation bar, and an automated CI/CD pipeline via GitHub and Vercel.</li>
         </ul>
       </div>
 
       <div class="entry">
         <div class="entry-title">Anime Weather Platform - <a href="https://github.com/DevYuriVieira/anime-weather-platform">github.com/DevYuriVieira/anime-weather-platform</a></div>
-        <div class="entry-meta">Collaborative (Pair Programming) | 2026 | React 19 | TypeScript | Vite | Google Gemini AI | Open-Meteo API | Jikan v4 API | Context API</div>
+        <div class="entry-meta">Collaborative (Pair Programming) | 2026 | React 18 | Vite | Google Gemini SDK | OpenWeather API | Jikan API | CSS Modules | Glassmorphism</div>
         <ul class="bullets">
-          <li>Reactive web application built with <strong>React, TypeScript and Vite</strong> that orchestrates real-time asynchronous data across multiple external REST APIs — detecting local weather in real time via the <strong>Open-Meteo API</strong> and cross-referencing anime catalogs from the <strong>Jikan v4 API</strong>.</li>
-          <li>Integrates the <strong>Google Gemini AI SDK</strong> using Prompt Engineering to produce both <strong>strictly structured JSON</strong> recommendation cards (rendered in a responsive glassmorphism UI) and an interactive weather-pun chatbot with defensive loading states and error fallbacks.</li>
+          <li>Frontend orchestration system built with <strong>React 18, Vite and CSS Modules</strong> implementing a multi-layered logic pipeline (<strong>Weather → Atmospheric Mood → Anime Genre</strong>), consuming live meteorological data from the <strong>OpenWeather API</strong> and cross-referencing cultural catalogs from MyAnimeList via the <strong>Jikan API</strong>.</li>
+          <li>Integrates the <strong>Google Gemini AI SDK</strong> via Prompt Engineering to synthesize context-aware recommendations tailored to the user's live city climate, paired with real-time weather-adaptive UI themes, <em>Glassmorphism</em> styling, ambient Lofi audio and protected routes.</li>
         </ul>
       </div>
     </section>
@@ -723,10 +723,10 @@ const BACKEND_PT = `<!DOCTYPE html>
 
       <div class="entry">
         <div class="entry-title">Zeiss - Assistente de Recomendações</div>
-        <div class="entry-meta">Colaborativo (11 devs, 1 PO, 1 SM) | 2026 | Java 17 | Spring Boot 4.1 | PostgreSQL 18 | JWT (RBAC) | n8n (OCR &amp; RAG) | Swagger/OpenAPI | Maven - Projeto Final Serratec · MVP corporativo (contrato)</div>
+        <div class="entry-meta">Colaborativo (11 devs, 1 PO, 1 SM) | 2026 | Java 17 | Spring Boot 4.1 | Spring WebFlux | PostgreSQL 18 | JWT (RBAC) | n8n (OCR &amp; RAG) | OpenAPI 3 - Projeto Final Serratec · MVP corporativo (contrato)</div>
         <ul class="bullets">
-          <li>Para eliminar a inconsistência na leitura manual de receitas oftalmológicas em óticas parceiras, foi construída uma plataforma corporativa com <strong>back-end em Java 17 e Spring Boot 4</strong> e persistência em <strong>PostgreSQL</strong>, integrada a um pipeline de <strong>OCR e IA (n8n/RAG)</strong> que processa parâmetros clínicos extraídos da receita e os cruza com os hábitos do paciente para recomendar a lente Zeiss adequada.</li>
-          <li>Implementação de <strong>autenticação stateless JWT com controle de acesso baseado em papéis (RBAC) em três níveis</strong> (admin Zeiss, gerente e funcionário), delimitando estritamente o escopo de visibilidade de dados entre filiais, com endpoints de agregação analítica de desempenho comercial (conversão, ranking e produtos mais recomendados) e CRUD completo de lojas, catálogo de lentes e colaboradores.</li>
+          <li>Para substituir a leitura manual inconsistente de receitas oftálmicas em óticas parceiras, foi construída uma API REST corporativa em <strong>Java 17, Spring Boot 4.1 e PostgreSQL 18</strong> com integração reativa não-bloqueante via <strong>Spring WebFlux <code>WebClient</code></strong> para streaming multipart de receitas ao webhook <strong>n8n (OCR &amp; RAG)</strong>, cálculo de confiabilidade (<code>ConfidenceAssessmentService</code>) e motor multiparamétrico de recomendação de lentes Zeiss.</li>
+          <li>Implementa <strong>autenticação stateless JWT (JJWT) com BCrypt, controle de acesso RBAC em três níveis</strong> (admin Zeiss, gerente e funcionário) e auditoria ativa de sessões com rastreamento de IP, máquina de estados comercial (<code>RECOMMENDED</code>, <code>SOLD</code>, <code>CANCELLED</code>), endpoints de agregação analítica de conversão e CRUD completo documentado via Swagger / OpenAPI 3.0.</li>
         </ul>
       </div>
 
@@ -918,10 +918,10 @@ const BACKEND_EN = `<!DOCTYPE html>
 
       <div class="entry">
         <div class="entry-title">Zeiss - AI Recommendation Platform</div>
-        <div class="entry-meta">Collaborative (11 devs, 1 PO, 1 SM) | 2026 | Java 17 | Spring Boot 4.1 | PostgreSQL 18 | JWT (RBAC) | n8n (OCR &amp; RAG) | Swagger/OpenAPI | Maven - Serratec Final Project · Corporate MVP (contract)</div>
+        <div class="entry-meta">Collaborative (11 devs, 1 PO, 1 SM) | 2026 | Java 17 | Spring Boot 4.1 | Spring WebFlux | PostgreSQL 18 | JWT (RBAC) | n8n (OCR &amp; RAG) | OpenAPI 3 - Serratec Final Project · Corporate MVP (contract)</div>
         <ul class="bullets">
-          <li>To replace inconsistent manual prescription reading across optical shops, the team built a corporate platform with a <strong>Java 17 and Spring Boot 4 back end</strong> and <strong>PostgreSQL</strong> persistence, integrated with an <strong>OCR and AI pipeline (n8n/RAG)</strong> that processes clinical parameters extracted from ophthalmic prescriptions and cross-references them with patient lifestyle profiles to recommend the right Zeiss lens.</li>
-          <li>Implemented <strong>stateless JWT authentication backing a three-tier RBAC hierarchy</strong> (Zeiss admin, store manager, employee) that strictly scopes data visibility across partner stores, providing analytical aggregation endpoints for commercial performance (conversion rate, seller ranking, most recommended and best-selling lenses) and full CRUD for stores, products and employees.</li>
+          <li>To replace inconsistent manual prescription reading across optical shops, the team engineered an enterprise REST API in <strong>Java 17, Spring Boot 4.1 and PostgreSQL 18</strong> featuring non-blocking multipart prescription streaming via <strong>Spring WebFlux <code>WebClient</code></strong> to an <strong>n8n (OCR &amp; RAG)</strong> webhook, automated extraction scoring (<code>ConfidenceAssessmentService</code>) and a multi-parametric Zeiss lens recommendation engine.</li>
+          <li>Implemented <strong>stateless JWT authentication (JJWT) with BCrypt, three-tier RBAC</strong> (Zeiss admin, store manager, employee) and active session IP auditing, a transactional sales lifecycle state machine (<code>RECOMMENDED</code>, <code>SOLD</code>, <code>CANCELLED</code>), analytical aggregation endpoints for store conversion metrics and full CRUD documented with Swagger / OpenAPI 3.0.</li>
         </ul>
       </div>
 
@@ -1072,7 +1072,7 @@ const FULLSTACK_PT = `<!DOCTYPE html>
         </tr>
         <tr>
           <td class="sk-label">Banco de Dados</td>
-          <td>PostgreSQL 16/18 (FOR UPDATE SKIP LOCKED, MVCC xmin, 3FN) | MySQL | SQL | Otimização de Consultas (N+1)</td>
+          <td>PostgreSQL 16/18 (FOR UPDATE SKIP LOCKED, MVCC xmin, 3FN) | MySQL | SQLite | SQL | Otimização de Consultas (N+1)</td>
         </tr>
         <tr>
           <td class="sk-label">Ferramentas</td>
@@ -1122,10 +1122,10 @@ const FULLSTACK_PT = `<!DOCTYPE html>
 
       <div class="entry">
         <div class="entry-title">Zeiss - Assistente de Recomendações</div>
-        <div class="entry-meta">Colaborativo (11 devs, 1 PO, 1 SM) | 2026 | React 19 | TypeScript 6 | Vite 8 | Styled Components 6 | React Router 7 | ApexCharts 5 | Java 17 | Spring Boot 4 - MVP corporativo (contrato)</div>
+        <div class="entry-meta">Colaborativo (11 devs, 1 PO, 1 SM) | 2026 | React 19 | TypeScript 6 | Styled Components | ApexCharts | Java 17 | Spring Boot 4.1 | PostgreSQL 18 | JWT | n8n (OCR &amp; RAG) - Projeto Final Serratec · MVP corporativo (contrato)</div>
         <ul class="bullets">
-          <li>Vendedores de ótica liam receitas e escolhiam lentes manualmente, gerando recomendações inconsistentes. Foi construída uma plataforma web full-stack (<strong>front-end em React/TypeScript, back-end em Java 17/Spring Boot 4</strong>) que lê receitas automaticamente via OCR conectado a um pipeline de IA (n8n/RAG) e cruza os dados extraídos com o perfil do paciente para sugerir a lente Zeiss adequada.</li>
-          <li>Painel gerencial em tempo real com desempenho individual e dados consolidados para a Zeiss (mais vendidas, mais recomendadas, taxa de conversão e ranking). Autenticação JWT com controle de acesso RBAC em três níveis (admin Zeiss, gerente e funcionário) e CRUD completo de lojas, produtos e funcionários.</li>
+          <li>Vendedores de ótica liam receitas e escolhiam lentes manualmente, gerando recomendações inconsistentes. Foi construída uma plataforma web full-stack (<strong>front-end em React 19, TypeScript e Styled Components; back-end em Java 17, Spring Boot 4.1 e PostgreSQL 18</strong>) que lê receitas via streaming WebFlux para um pipeline de OCR e IA (n8n/RAG), exibe validação assistida com score de confiança e cruza dioptrias e estilo de vida para sugerir a lente Zeiss adequada.</li>
+          <li>Painel gerencial interativo com <strong>ApexCharts</strong> acompanhando conversão, evolução temporal e ranking para gerentes e matriz da Zeiss. Autenticação stateless JWT com RBAC em três níveis (admin Zeiss, gerente e funcionário), máquina de estados comercial (<code>RECOMMENDED</code>, <code>SOLD</code>, <code>CANCELLED</code>), auditoria de acessos por IP e CRUD completo de lojas, produtos e funcionários.</li>
         </ul>
       </div>
 
@@ -1166,11 +1166,11 @@ const FULLSTACK_PT = `<!DOCTYPE html>
       </div>
 
       <div class="entry">
-        <div class="entry-title">E-commerce Full-Stack - <a href="https://github.com/DevYuriVieira/django-ecommerce">github.com/DevYuriVieira/django-ecommerce</a></div>
+        <div class="entry-title">E-commerce Full-Stack - <a href="https://github.com/DevYuriVieira/liquor-store-django">github.com/DevYuriVieira/liquor-store-django</a></div>
         <div class="entry-meta">Pessoal | 2025 | Python 3.11+ | Django 5.x | SQLite | Vanilla JS (ES6+) | HTML5 &lt;template&gt; | API REST | Webhook Idempotente</div>
         <ul class="bullets">
           <li>Plataforma e-commerce full-stack construída do zero (autenticação, carrinho, cupons, pedidos) organizada em <strong>Service Layer no Django 5</strong>, projetada para lidar com concorrência crítica e eliminar gargalos de N+1 queries via <code>prefetch_related</code> e <code>select_related</code>.</li>
-          <li>Implementa <strong>webhook de pagamento assíncrono idempotente</strong> com transações atômicas (<code>transaction.atomic</code>), API REST versionada sem DRF, e frontend modular em JavaScript (ES6+) com <code>&lt;template&gt;</code> nativo, proteção CSRF e manipulação segura do DOM contra XSS.</li>
+          <li>Implementa <strong>webhook de pagamento assíncrono idempotente</strong> com transações atômicas (<code>transaction.atomic</code>), API REST versionada sem DRF, e frontend modular em Vanilla JS (ES6+) com <code>&lt;template&gt;</code> nativo, proteção CSRF e manipulação segura do DOM via <code>textContent</code> contra XSS.</li>
         </ul>
       </div>
     </section>
@@ -1286,7 +1286,7 @@ const FULLSTACK_EN = `<!DOCTYPE html>
         </tr>
         <tr>
           <td class="sk-label">Databases</td>
-          <td>PostgreSQL 16/18 (FOR UPDATE SKIP LOCKED, MVCC xmin, 3NF) | MySQL | SQL | Query Optimisation (N+1 elimination)</td>
+          <td>PostgreSQL 16/18 (FOR UPDATE SKIP LOCKED, MVCC xmin, 3NF) | MySQL | SQLite | SQL | Query Optimisation (N+1 elimination)</td>
         </tr>
         <tr>
           <td class="sk-label">Tools</td>
@@ -1327,10 +1327,10 @@ const FULLSTACK_EN = `<!DOCTYPE html>
 
       <div class="entry">
         <div class="entry-title">Zeiss - AI Recommendation Platform</div>
-        <div class="entry-meta">Collaborative (11 devs, 1 PO, 1 SM) | 2026 | React 19 | TypeScript 6 | Vite 8 | Styled Components 6 | React Router 7 | ApexCharts 5 | Java 17 | Spring Boot 4 - Corporate MVP (contract)</div>
+        <div class="entry-meta">Collaborative (11 devs, 1 PO, 1 SM) | 2026 | React 19 | TypeScript 6 | Styled Components | ApexCharts | Java 17 | Spring Boot 4.1 | PostgreSQL 18 | JWT | n8n (OCR &amp; RAG) - Serratec Final Project · Corporate MVP (contract)</div>
         <ul class="bullets">
-          <li>Optical shop sellers were reading prescriptions and choosing lenses by hand, making recommendations inconsistent. The team built a full-stack web platform (<strong>React/TypeScript front end, Java 17/Spring Boot 4 back end</strong>) that reads prescriptions automatically through OCR connected to an AI pipeline (n8n/RAG) and cross-references the extracted data with the patient's profile to suggest the right Zeiss lens.</li>
-          <li>Store managers get a real-time dashboard tracking individual performance, while Zeiss sees aggregated data across partner stores (most recommended and best-selling lenses, conversion rate and seller ranking). JWT authentication backs a three-tier RBAC hierarchy (Zeiss admin, store manager, employee) with full CRUD for stores, products and employees.</li>
+          <li>Optical shop sellers were reading prescriptions and choosing lenses by hand, making recommendations inconsistent. The team built a full-stack web platform (<strong>React 19, TypeScript and Styled Components front end; Java 17, Spring Boot 4.1 and PostgreSQL 18 back end</strong>) that streams prescriptions via WebFlux to an OCR and AI pipeline (n8n/RAG), provides assisted Human-in-the-Loop validation with confidence scores and cross-references diopters and lifestyle habits to suggest the right Zeiss lens.</li>
+          <li>Interactive analytics dashboards built with <strong>ApexCharts</strong> track conversion rates, temporal trends and seller rankings for store managers and Zeiss headquarters. Stateless JWT authentication backs a three-tier RBAC hierarchy (Zeiss admin, store manager, employee), a sales lifecycle state machine (<code>RECOMMENDED</code>, <code>SOLD</code>, <code>CANCELLED</code>), IP session auditing and full CRUD for stores, products and employees.</li>
         </ul>
       </div>
 
@@ -1371,11 +1371,11 @@ const FULLSTACK_EN = `<!DOCTYPE html>
       </div>
 
       <div class="entry">
-        <div class="entry-title">Django Full-Stack E-commerce - <a href="https://github.com/DevYuriVieira/django-ecommerce">github.com/DevYuriVieira/django-ecommerce</a></div>
+        <div class="entry-title">Django Full-Stack E-commerce - <a href="https://github.com/DevYuriVieira/liquor-store-django">github.com/DevYuriVieira/liquor-store-django</a></div>
         <div class="entry-meta">Personal | 2025 | Python 3.11+ | Django 5.x | SQLite | Vanilla JS (ES6+) | HTML5 &lt;template&gt; | REST API | Idempotent Webhook</div>
         <ul class="bullets">
           <li>Full-stack e-commerce platform built from scratch (auth, cart, coupons, orders) organised around a <strong>Django 5 Service Layer</strong>, engineered to handle critical concurrency edge cases and eliminate N+1 query bottlenecks via <code>prefetch_related</code> and <code>select_related</code>.</li>
-          <li>Implements an <strong>idempotent async payment webhook</strong> wrapped in atomic transactions (<code>transaction.atomic</code>), a versioned REST API built without DRF, and a modular Vanilla JS frontend using native HTML5 <code>&lt;template&gt;</code>, CSRF protection and XSS-safe DOM handling.</li>
+          <li>Implements an <strong>idempotent async payment webhook</strong> wrapped in atomic transactions (<code>transaction.atomic</code>), a versioned REST API built without DRF, and a modular Vanilla JS (ES6+) frontend using native HTML5 <code>&lt;template&gt;</code>, CSRF protection and XSS-safe DOM handling via <code>textContent</code>.</li>
         </ul>
       </div>
     </section>

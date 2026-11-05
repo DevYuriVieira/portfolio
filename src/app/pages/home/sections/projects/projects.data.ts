@@ -56,9 +56,9 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         'OpenAPI 3 / Swagger',
       ],
       summaryProblem: 'Entrada manual de receitas oftálmicas complexas, prescrições sem padronização e ausência de métricas de conversão em óticas',
-      summarySolution: 'API REST em Spring Boot 4 com pipeline OCR/RAG no n8n, motor de recomendação Zeiss e gestão de ciclo de vida de vendas',
-      summaryArch: 'Spring Boot 4, Java 17, PostgreSQL 18, Spring Security RBAC (3 níveis), WebClient reativo para n8n, JWT e Swagger 3',
-      summaryResults: 'Extração de receitas com índice de confiança, motor de recomendação por estilo de vida, máquina de estados PENDING/SOLD/UNSOLD',
+      summarySolution: 'Plataforma Full-Stack (React 19, Spring Boot 4.1) com pipeline OCR/RAG no n8n, motor de recomendação Zeiss e gestão comercial',
+      summaryArch: 'React 19 + ApexCharts, Spring Boot 4.1, PostgreSQL 18, WebClient reativo para n8n, JWT RBAC (3 níveis) e OpenAPI 3',
+      summaryResults: 'Extração via OCR/RAG com score de confiança, motor de lentes por estilo de vida e ciclo RECOMMENDED/SOLD/CANCELLED',
       results:
         'Padronização clínica e comercial da recomendação de lentes em lojas ZEISS Vision Center e óticas credenciadas; eliminação de erros de digitação via OCR/RAG com índice de confiança; transparência em tempo real sobre taxa de conversão e produtos mais vendidos; e segurança corporativa com RBAC e auditoria de sessões.',
       links: {},
@@ -73,7 +73,7 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       description:
         'Motor backend distribuído e orientado a eventos para gestão de frotas e logística em .NET 10 (C# 14), demonstrando Clean Architecture, Transactional Outbox, RabbitMQ, PostgreSQL 18 e Keycloak OIDC com 300 testes automatizados.',
       context:
-        'Projeto de estudo e referência técnica para resolver desafios críticos de sistemas distribuídos: prevenção de dual-write hazard, semântica de entrega at-least-once com consumidor idempotente e concorrência defensiva.',
+        'Projeto de estudo e referência técnica para resolver desafios críticos de sistemas distribuidos: prevenção de dual-write hazard, semântica de entrega at-least-once com consumidor idempotente e concorrência defensiva.',
       problem:
         'Prevenção de inconsistência entre banco relacional e mensageria (dual-write hazard), duplicação de processamento por falhas de rede transitórias e contenção de locks em workers de polling concorrentes.',
       solution:
@@ -110,6 +110,10 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         'Keycloak OIDC',
         'xUnit (300 Testes)',
       ],
+      summaryProblem: 'Risco de dual-write hazard entre banco e mensageria, reprocessamento duplicado e contenção de locks',
+      summarySolution: 'Motor distribuído em .NET 10 (C# 14) com Transactional Outbox, RabbitMQ, PostgreSQL 18 e Keycloak OIDC',
+      summaryArch: 'Clean Architecture + DDD, FOR UPDATE SKIP LOCKED, concorrência via xmin, DLX/TTL/DLQ e OpenTelemetry W3C',
+      summaryResults: '300 testes automatizados (0 falhas), 278 RPS em escritas ACID no k6 e zero perda de eventos sob falhas',
       results:
         '300 testes automatizados aprovados (0 falhas); throughput sustentado de 278 RPS em escritas ACID de domínio no PostgreSQL; recuperação em < 15ms sob spikes; zero perda de eventos sob queda do RabbitMQ e revisão arquitetural verificada.',
       links: {
@@ -469,7 +473,7 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         'Navegação imersiva e responsiva por 30 anos de evolução dos consoles PlayStation a 60 FPS estáveis; ativação de seções precisa e intuitiva no centro da tela sem sobrecarga de scroll listeners; e entrega contínua automatizada na Vercel.',
       links: {
         github: 'https://github.com/DevYuriVieira/playstation-evolution-timeline',
-        demo: 'https://playstation-evolution-timeline-no41ss34b.vercel.app/',
+        demo: 'https://playstation-evolution-timeline.vercel.app/',
       },
     },
     {
@@ -867,33 +871,52 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       category: 'Frontend React',
       featured: false,
       contextTag: 'UX Engineering & Motion',
-      collaboration: 'Projeto pessoal',
+      collaboration: 'Projeto autoral de referência técnica',
       description:
-        'Interface de autenticação reativa desenvolvida em React que rastreia o vetor do cursor em tempo real para animar a expressão dos personagens.',
+        'Interface de autenticação reativa desenvolvida com React 19 e Vite 7, apresentando 4 personagens animados que reagem em tempo real às ações do usuário via rastreamento trigonométrico do cursor, expressões faciais dinâmicas e feedback visual.',
       context:
-        'Protótipo autoral de UX Engineering focado no estudo de micro-interações e animações orientadas a eventos de formulário.',
+        'Protótipo autoral de UX Engineering explorando padrões de microinteração em React, cálculo trigonométrico em tempo real para posicionamento de pupilas e animações orientadas ao ciclo de vida do formulário.',
       problem:
-        'Transformar formulários estáticos de autenticação em experiências visuais engajadoras que respondam dinamicamente ao comportamento do usuário.',
+        'Transformar formulários estáticos de autenticação em experiências visuais engajadoras que ofereçam feedback imediato durante foco, digitação de senha e erros de validação sem comprometer a performance.',
       solution:
-        'Interface em React e CSS Modules com personagens visuais que acompanham a posição do mouse e reagem ao foco e digitação dos inputs.',
+        'Single Page Application em React 19 e Vite 7 com React Router v7 e CSS Modules, incorporando 4 personagens geométricos (retângulo, caixa, semicírculo e cilindro) em 6 estados comportamentais (idle, typing, closed, side, surprise, submit), rastreamento do cursor via Math.cos/sin, alternância Dark/Light com CSS Variables e responsividade até 320px.',
       development:
-        'Desenvolvimento autoral aplicando cálculo de vetores do cursor do mouse, escopamento de estilos com CSS Modules e suporte a temas claro e escuro (Dark Mode).',
+        'Desenvolvimento autoral completo: implementação matemática do rastreamento ocular baseado nas coordenadas do mouse, máquina de estados para reações dos personagens, animações CSS com keyframes (oscilação tilt-shake em falha de validação), prevenção de zoom no iOS (16px) e fluxos SignIn, SignUp e ForgotPassword.',
       architectureDecisions: [
-        'Cálculo do vetor de posição do cursor em tempo real para controle dos olhos dos personagens',
-        'Gerenciamento de estado em React para alternar estados faciais conforme o status de validação',
-        'Estilização escopada com CSS Modules garantindo zero vazamento de regras CSS',
-        'Navegação suave entre fluxos de login e recuperação de senha via React Router',
+        'Rastreamento trigonométrico em tempo real do vetor da pupila com Math.cos e Math.sin, deslocando suavemente as pupilas dentro de um raio de 5px',
+        'Máquina de estados com 6 reações comportamentais discretas vinculadas aos eventos do formulário (idle, typing, closed, side, surprise, submit)',
+        'Animação keyframe tilt-shake oscilatória (-8° a -2°) combinada com olhos brancos abertos de 36px acionada em falhas de validação',
+        'Composição modular em React 19 e CSS Modules garantindo zero vazamento de regras CSS entre formas dos personagens, olhos e controles',
+        'Sistema de design tokens para transições suaves entre temas Dark e Light alimentado por Custom Properties nativas do CSS',
+        'Roteamento SPA cliente-side entre os fluxos SignIn, SignUp e ForgotPassword gerenciado com React Router 7',
+        'Arquitetura responsiva mobile-first com escala proporcional dos personagens (Desktop, Tablet 768px, Mobile 480px, Tiny 320px)',
       ],
       highlights: [
-        'Rastreamento de cursor em tempo real para animação dos olhos',
-        'Personagens reativos orientados a estados de formulário',
-        'Estilização isolada e modular com CSS Modules',
-        'Suporte nativo a temas claros e escuros (Dark Mode)',
-        'Navegação entre fluxos de tela com React Router',
+        '4 personagens animados orientados a estados (retângulo, caixa, semicírculo, cilindro)',
+        'Rastreamento ocular em tempo real com posicionamento trigonométrico das pupilas',
+        '6 estados de reação contextual: idle, typing, closed, side, surprise, submit',
+        'Animação tilt-shake para feedback visual imediato em erros de validação',
+        'Alternância entre temas Dark e Light baseada em CSS Variables nativas',
+        'Fluxos completos de autenticação SPA: SignIn, SignUp e ForgotPassword no React Router 7',
+        'Arquitetura moderna com React 19, Vite 7 e estilos isolados em CSS Modules',
+        'Layout responsivo validado até 320px com áreas de toque >= 44px',
       ],
-      technologies: ['React', 'Vite', 'CSS Modules', 'React Router'],
+      technologies: [
+        'React 19',
+        'Vite 7',
+        'React Router 7',
+        'CSS Modules',
+        'CSS Variables',
+        'JavaScript ES6+',
+        'Trigonometric Math',
+        'Dark / Light Mode',
+      ],
+      summaryProblem: 'Formulários estáticos de autenticação sem feedback visual imediato ou engajamento interativo',
+      summarySolution: 'Interface reativa em React 19 e Vite 7 com 4 personagens animados e rastreamento ocular em tempo real',
+      summaryArch: 'Trigonometria de vetor de pupila (Math.cos/sin), CSS Modules com tokens de tema e React Router v7',
+      summaryResults: '6 reações de estado (idle/typing/closed/side/surprise/submit), validação tilt-shake e Dark Mode',
       results:
-        'Animações reativas no formulário de login acompanhando o vetor do mouse em tempo real; isolamento total de estilos CSS via CSS Modules.',
+        'Experiência de autenticação altamente responsiva com rastreamento ocular em tempo real a 60 FPS via trigonometria leve no cliente; encapsulamento completo de estilos com CSS Modules; e transição fluida entre os modos Dark e Light.',
       links: {
         github: 'https://github.com/DevYuriVieira/kinetic-auth-ux-showcase',
         demo: 'https://kinetic-auth-ux-showcase.vercel.app/',
@@ -954,9 +977,9 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         'OpenAPI 3 / Swagger',
       ],
       summaryProblem: 'Manual optical prescription entry, non-standardized lens recommendations, and lack of store-level conversion metrics',
-      summarySolution: 'Spring Boot 4 REST API with n8n OCR/RAG pipeline, intelligent Zeiss lens recommendation engine, and sales lifecycle tracking',
-      summaryArch: 'Spring Boot 4, Java 17, PostgreSQL 18, 3-tier Spring Security RBAC, reactive WebClient for n8n, JWT, and OpenAPI 3',
-      summaryResults: 'Confidence-scored prescription extraction, lifestyle-driven recommendation engine, and PENDING/SOLD/UNSOLD state machine',
+      summarySolution: 'Full-Stack platform (React 19, Spring Boot 4.1) with n8n OCR/RAG pipeline, Zeiss lens recommendation engine, and sales tracking',
+      summaryArch: 'React 19 + ApexCharts, Spring Boot 4.1, PostgreSQL 18, reactive WebClient for n8n, 3-tier JWT RBAC, and OpenAPI 3',
+      summaryResults: 'Confidence-scored prescription extraction, lifestyle-driven recommendation engine, and RECOMMENDED/SOLD/CANCELLED lifecycle',
       results:
         'Standardization of technical lens recommendations across ZEISS Vision Center stores and accredited partner optical clinics; replacement of manual prescription typing with automated OCR/RAG; real-time business intelligence on sales conversion and regional lens demand; and enterprise-grade security with RBAC and session audit logs.',
       links: {},
@@ -1008,6 +1031,10 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         'Keycloak OIDC',
         'xUnit (300 Tests)',
       ],
+      summaryProblem: 'Dual-write hazard between database and broker, duplicate event processing, and worker lock contention',
+      summarySolution: 'Distributed .NET 10 (C# 14) engine with Transactional Outbox, RabbitMQ, PostgreSQL 18, and Keycloak OIDC',
+      summaryArch: 'Clean Architecture + DDD, FOR UPDATE SKIP LOCKED, xmin optimistic concurrency, DLX/TTL/DLQ, and OpenTelemetry W3C',
+      summaryResults: '300 passing automated tests (0 failures), 278 RPS under ACID writes in k6, and zero event loss under faults',
       results:
         '300 passing automated tests (0 failures); sustained 278 RPS throughput under domain ACID writes in PostgreSQL; recovery in < 15ms after traffic spikes; zero event loss during RabbitMQ outages, and verified quality gate.',
       links: {
@@ -1367,7 +1394,7 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         'Immersive and responsive navigation across 30 years of PlayStation console evolution at a stable 60 FPS; intuitive, center-screen section activation without scroll listener overhead; and fully automated continuous delivery on Vercel.',
       links: {
         github: 'https://github.com/DevYuriVieira/playstation-evolution-timeline',
-        demo: 'https://playstation-evolution-timeline-no41ss34b.vercel.app/',
+        demo: 'https://playstation-evolution-timeline.vercel.app/',
       },
     },
     {
@@ -1767,7 +1794,7 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       contextTag: 'UX Engineering & Motion',
       collaboration: 'Authorial technical reference project',
       description:
-        'Cutting-edge, reactive authentication interface engineered with React 19 and Vite 7, featuring 4 animated characters that respond dynamically to user interactions via real-time trigonometric mouse tracking, context-sensitive mouth animations, and gesture feedback.',
+        'Reactive authentication interface engineered with React 19 and Vite 7, featuring 4 animated characters that respond dynamically to user interactions via real-time trigonometric mouse tracking, context-sensitive mouth animations, and gesture feedback.',
       context:
         'Authorial UX Engineering prototype exploring advanced interaction patterns in React, real-time cursor angle trigonometry for pupil positioning, and state-driven animations linked to form lifecycle events.',
       problem:
@@ -1834,7 +1861,7 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       problem:
         'Ingreso manual propenso a errores de recetas ópticas complejas (grados esféricos, cilíndricos, ejes y adición para ambos ojos), recomendaciones dependientes del conocimiento individual del vendedor, tiempos de atención elevados y ausencia de métricas de conversión por sucursal.',
       solution:
-        'Arquitectura full-stack empresarial compuesta por frontend reactivo en React 19, TypeScript y Styled Components con ApexCharts, y backend en Spring Boot 4.1 y PostgreSQL 18. Integra pipeline n8n para OCR y RAG de recetas con modal de validación asistida Human-in-the-Loop (DinamicModal), motor multiparamétrico de recomendação de lentes por dioptrias e estilo de vida, máquina de estados comercial (RECOMMENDED, SOLD, CANCELLED), segurança RBAC e dashboards analíticos.',
+        'Arquitectura full-stack empresarial compuesta por frontend reactivo en React 19, TypeScript y Styled Components con ApexCharts, y backend en Spring Boot 4.1 y PostgreSQL 18. Integra pipeline n8n para OCR y RAG de recetas con modal de validación asistida Human-in-the-Loop (DinamicModal), motor multiparamétrico de recomendación de lentes por dioptrías y estilo de vida, máquina de estados comercial (RECOMMENDED, SOLD, CANCELLED), seguridad RBAC y dashboards analíticos.',
       development:
         'Desarrollo full-stack en squad ágil (11 ingenieros de software, PO y Scrum Master): construcción de interfaz en React 19 con Styled Components y gráficos ApexCharts, endpoints REST protegidos con JWT, streaming multipart no bloqueante vía WebClient (Spring WebFlux) al webhook n8n, implementación de ConfidenceAssessmentService y modelado relacional en PostgreSQL 18.',
       architectureDecisions: [
@@ -1871,9 +1898,9 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         'OpenAPI 3 / Swagger',
       ],
       summaryProblem: 'Entrada manual de recetas ópticas complejas, falta de estandarización en recomendaciones y ausencia de métricas de conversión',
-      summarySolution: 'API REST en Spring Boot 4 con pipeline OCR/RAG en n8n, motor de recomendación Zeiss y gestión del ciclo de vida de ventas',
-      summaryArch: 'Spring Boot 4, Java 17, PostgreSQL 18, Spring Security RBAC (3 niveles), WebClient reactivo para n8n, JWT y Swagger 3',
-      summaryResults: 'Extracción de recetas con score de confianza, motor de recomendación por estilo de vida y máquina PENDING/SOLD/UNSOLD',
+      summarySolution: 'Plataforma Full-Stack (React 19, Spring Boot 4.1) con pipeline OCR/RAG en n8n, motor de recomendación Zeiss y gestión comercial',
+      summaryArch: 'React 19 + ApexCharts, Spring Boot 4.1, PostgreSQL 18, WebClient reactivo para n8n, JWT RBAC (3 niveles) y OpenAPI 3',
+      summaryResults: 'Extracción de recetas con score de confianza, motor de recomendación por estilo de vida y ciclo RECOMMENDED/SOLD/CANCELLED',
       results:
         'Estandarización técnica y comercial de la recomendación de lentes en tiendas ZEISS Vision Center y ópticas asociadas; eliminación de errores de ingreso manual mediante OCR/RAG con índice de confianza; visibilidad en tiempo real de tasas de conversión y lentes más vendidas; y seguridad corporativa con RBAC y auditoría de sesiones.',
       links: {},
@@ -1909,7 +1936,7 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         '300 pruebas automatizadas (166 unitarias + 134 integración, concurrencia e inyección de fallas)',
         'Clean Architecture + DDD con aislamiento estricto en 5 contextos delimitados',
         'PostgreSQL 18 con índices parciales únicos e integridad referencial estricta',
-        'RabbitMQ 3.x con Async API e Publisher Confirms habilitado',
+        'RabbitMQ 3.x con Async API y Publisher Confirms habilitado',
         'OpenTelemetry .NET + Jaeger UI con visualización causal de latencia',
         'Capacidad transaccional empírica de 278 RPS en escrituras ACID de dominio (k6 P2)',
       ],
@@ -1925,6 +1952,10 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         'Keycloak OIDC',
         'xUnit (300 Pruebas)',
       ],
+      summaryProblem: 'Riesgo de dual-write hazard entre base de datos y mensajería, reprocesamiento duplicado y contención de locks',
+      summarySolution: 'Motor distribuido en .NET 10 (C# 14) con Transactional Outbox, RabbitMQ, PostgreSQL 18 y Keycloak OIDC',
+      summaryArch: 'Clean Architecture + DDD, FOR UPDATE SKIP LOCKED, concurrencia vía xmin, DLX/TTL/DLQ y OpenTelemetry W3C',
+      summaryResults: '300 pruebas automatizadas (0 fallas), 278 RPS en escrituras ACID en k6 y cero pérdida de eventos ante fallas',
       results:
         '300 pruebas automatizadas aprobadas (0 fallas); rendimiento sostenido de 278 RPS en escrituras ACID de dominio en PostgreSQL; recuperación en < 15ms bajo picos de tráfico; cero pérdida de eventos bajo caída de RabbitMQ y revisión arquitectural verificada.',
       links: {
@@ -2062,7 +2093,7 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       contextTag: 'Mobile Offline-First & API Distribuida',
       collaboration: 'Proyecto autoral de arquitectura distribuida',
       description:
-        'Plataforma de agricultura de precisión y operaciones críticas de campo combinando aplicación móvil Offline-First en React Native (Expo SDK 54, React 19) e motor backend distribuido de alta concurrencia en Java 21 LTS (Spring Boot 4.1.1, Virtual Threads, RabbitMQ, PostgreSQL 17 particionado) para operaciones remotas de campo, cumplimiento normativo del MAPA con firma digital SHA-256 y telemetría IoT de pivotes y silos.',
+        'Plataforma de agricultura de precisión y operaciones críticas de campo combinando aplicación móvil Offline-First en React Native (Expo SDK 54, React 19) y motor backend distribuido de alta concurrencia en Java 21 LTS (Spring Boot 4.1.1, Virtual Threads, RabbitMQ, PostgreSQL 17 particionado) para operaciones remotas de campo, cumplimiento normativo del MAPA con firma digital SHA-256 y telemetría IoT de pivotes y silos.',
       context:
         'Solución de ingeniería diseñada para superar los retos del agronegocio: conectividad nula o intermitente en áreas rurales, necesidad de firma digital en cuadernos de campo para auditorías del MAPA y telemetría continua de activos.',
       problem:
@@ -2071,7 +2102,7 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         'Arquitectura integrada de extremo a extremo: frontend móvil Offline-First con cola transaccional FIFO y sincronización determinista; backend distribuido en Java 21 con Virtual Threads, Transactional Outbox Pattern y FOR UPDATE SKIP LOCKED sobre RabbitMQ, PostgreSQL 17 con particionamiento temporal y RLS fail-closed, respaldado por más de 549 pruebas automatizadas (411 en backend + 138 en móvil).',
       architectureDecisions: [
         'Frontend móvil Offline-First con cola FIFO transaccional en AsyncStorage y reconciliación determinista con netinfo',
-        'Módulo regulatorio del MAPA con generación de cuaderno técnico e firma digital en Canvas con hash SHA-256',
+        'Módulo regulatorio del MAPA con generación de cuaderno técnico y firma digital en Canvas con hash SHA-256',
         'Backend en Java 21 LTS con Virtual Threads y Spring Boot 4.1.1 soportando 2.450 req/s en pruebas k6',
         'Transactional Outbox Pattern con RabbitMQ (CloudEvents v1.0, DLX, TTL, Dead Letter Queue) y FOR UPDATE SKIP LOCKED',
         'PostgreSQL 17 con Particionamiento Temporal Declarativo, índices BRIN y Fail-Closed Row Level Security (RLS)',
@@ -2258,7 +2289,7 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       highlights: [
         'Gatillo de scroll centralizado con Intersection Observer (rootMargin: -50%)',
         'Rendimiento estable a 60 FPS con bajo consumo de CPU',
-        'Contadores numéricos animados (StatsAnimated) com Framer Motion',
+        'Contadores numéricos animados (StatsAnimated) con Framer Motion',
         'SideTimeline con marcador dinámico y etiquetas adaptativas (PS1 a PS5 Pro)',
         '9 eras de consolas cubiertas con especificaciones técnicas detalladas',
         'Estilos modulares aislados con CSS Modules',
@@ -2282,7 +2313,7 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
         'Navegación inmersiva y responsiva por 30 años de evolución de consolas PlayStation a 60 FPS estables; activación intuitiva de secciones en el centro de la pantalla sin sobrecarga de scroll listeners; y entrega continua automatizada en Vercel.',
       links: {
         github: 'https://github.com/DevYuriVieira/playstation-evolution-timeline',
-        demo: 'https://playstation-evolution-timeline-no41ss34b.vercel.app/',
+        demo: 'https://playstation-evolution-timeline.vercel.app/',
       },
     },
     {
@@ -2607,7 +2638,7 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       summaryArch: 'Componentes desacoplados, filtros por generación (4.5ª/5ª), Styled Components 6 y rutas con React Router',
       summaryResults: 'Filtrado reactivo instantáneo, favoritos con useState, expansión de detalles y layout responsivo',
       results:
-        'Experiencia fluida de exploración técnica de aeronaves de combate modernas; filtrado instantáneo por generaciones (4.5ª e 5ª Generación) sin recargar la pantalla; navegación intuitiva entre Home y About con React Router 7; e interfaz 100% responsiva en producción en Vercel.',
+        'Experiencia fluida de exploración técnica de aeronaves de combate modernas; filtrado instantáneo por generaciones (4.5ª y 5ª Generación) sin recargar la pantalla; navegación intuitiva entre Home y About con React Router 7; e interfaz 100% responsiva en producción en Vercel.',
       links: {
         github: 'https://github.com/DevYuriVieira/modern-fighter-jets',
         demo: 'https://modern-fighter-jets.vercel.app/',
