@@ -438,7 +438,7 @@ public class OutboxEventDispatcher &#123;
             <span class="farmflow-stat-box__sub">{{ activeLang() === 'en' ? 'Java 21 Virtual Threads + PostgreSQL 17' : 'Java 21 Virtual Threads + PostgreSQL 17' }}</span>
           </div>
           <div class="farmflow-stat-box">
-            <span class="farmflow-stat-box__val">14</span>
+            <span class="farmflow-stat-box__val">{{ data().adrs.length }}</span>
             <span class="farmflow-stat-box__label">{{ activeLang() === 'en' ? 'Formalized ADRs' : 'ADRs Formalizadas' }}</span>
             <span class="farmflow-stat-box__sub">{{ activeLang() === 'en' ? 'Mobile Offline-First & Distributed Backend' : 'Mobile Offline-First & Backend Distribuído' }}</span>
           </div>
@@ -488,7 +488,7 @@ public class OutboxEventDispatcher &#123;
         <div class="farmflow-card">
           <div class="farmflow-card__header">
             <span class="farmflow-card__tag">ARCHITECTURE DECISION RECORDS</span>
-            <h3 class="farmflow-card__title">{{ activeLang() === 'en' ? 'Architecture Decision Records (14 ADRs)' : 'Registros de Decisão de Arquitetura (14 ADRs)' }}</h3>
+            <h3 class="farmflow-card__title">{{ activeLang() === 'en' ? ('Architecture Decision Records (' + data().adrs.length + ' ADRs)') : ('Registros de Decisão de Arquitetura (' + data().adrs.length + ' ADRs)') }}</h3>
           </div>
           <div class="farmflow-table-wrapper">
             <table class="farmflow-table">

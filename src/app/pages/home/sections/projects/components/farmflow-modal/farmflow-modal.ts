@@ -86,7 +86,7 @@ export class FarmFlowModal {
           `| **${b.workload}** | ${b.concurrency} | ${b.requests} | **${b.throughput}** | ${b.p50} | ${b.p90} | ${b.p95} | ${b.max} | ${b.errors} | \`${b.verdict}\` |`
       ),
       '',
-      `## 5. ${isEn ? 'Architecture Decision Records (14 ADRs)' : 'Registros de Decisão de Arquitetura (14 ADRs)'}`,
+      `## 5. ${isEn ? `Architecture Decision Records (${d.adrs.length} ADRs)` : `Registros de Decisão de Arquitetura (${d.adrs.length} ADRs)`}`,
       `| Code | Title | Status | Architectural Focus |`,
       '| :--- | :--- | :--- | :--- |',
       ...d.adrs.map(
