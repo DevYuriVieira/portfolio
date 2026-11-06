@@ -250,7 +250,7 @@ const FRONTEND_PT = `<!DOCTYPE html>
         </tr>
         <tr>
           <td class="ach-label">Work-Fitness &amp; Portfólio<br>(Apps em Produção)</td>
-          <td>Plataforma comercial freelance (TypeScript, Clean Architecture, Docker/Nginx, 217 testes) e portfólio interativo (Angular Signals, WebGL/Three.js, 195 testes), ambos com nota máxima 100/100 nas 4 categorias do Google Lighthouse.</td>
+          <td>Plataforma comercial freelance (TypeScript, Clean Architecture, Docker/Nginx, 217 testes) e portfólio interativo (Angular Signals, WebGL/Three.js, 213 testes), ambos com nota máxima 100/100 nas 4 categorias do Google Lighthouse.</td>
         </tr>
         <tr>
           <td class="ach-label">FarmFlow Mobile<br>(React Native Offline-First)</td>
@@ -361,7 +361,7 @@ const FRONTEND_PT = `<!DOCTYPE html>
         <div class="entry-meta">Pessoal | 2026 | Angular | TypeScript | Three.js / WebGL | SCSS | Vitest | Playwright | Cypress | PWA | Em produção</div>
         <ul class="bullets">
           <li>Desenvolvido com componentes standalone do <strong>Angular</strong>, <strong>Signals nativos (signal/computed)</strong> e detecção de mudanças <code>OnPush</code> em todos os componentes, incluindo um sistema de partículas <strong>WebGL/Three.js</strong> acelerado por GPU com interatividade por mouse e toque, e configurado como PWA offline-ready com service worker.</li>
-          <li>Coberto por <strong>195 testes automatizados</strong> em três camadas (140 unitários Vitest, 38 E2E Playwright com auditoria de acessibilidade WCAG 2.1 AA/AAA via Axe-Core, 17 E2E Cypress), com suporte trilíngue i18n (PT/EN/ES) e auditoria Google Lighthouse 100/100/100/100 no desktop em Performance, Acessibilidade, Boas Práticas e SEO.</li>
+          <li>Coberto por <strong>213 testes automatizados</strong> em três camadas (158 unitários Vitest, 38 E2E Playwright com auditoria de acessibilidade WCAG 2.1 AA/AAA via Axe-Core, 17 E2E Cypress), com suporte trilíngue i18n (PT/EN/ES) e auditoria Google Lighthouse 100/100/100/100 no desktop em Performance, Acessibilidade, Boas Práticas e SEO.</li>
         </ul>
       </div>
 
@@ -454,7 +454,7 @@ const FRONTEND_EN = `<!DOCTYPE html>
         </tr>
         <tr>
           <td class="ach-label">Work-Fitness &amp; Portfolio<br>(Live Production Apps)</td>
-          <td>Freelance commercial platform (TypeScript, Clean Architecture, Docker/Nginx, 217 tests) and interactive portfolio (Angular Signals, WebGL/Three.js, 195 tests), both scoring 100/100 across all 4 Google Lighthouse categories.</td>
+          <td>Freelance commercial platform (TypeScript, Clean Architecture, Docker/Nginx, 217 tests) and interactive portfolio (Angular Signals, WebGL/Three.js, 213 tests), both scoring 100/100 across all 4 Google Lighthouse categories.</td>
         </tr>
         <tr>
           <td class="ach-label">FarmFlow Mobile<br>(Offline-First React Native)</td>
@@ -556,7 +556,7 @@ const FRONTEND_EN = `<!DOCTYPE html>
         <div class="entry-meta">Personal | 2026 | Angular | TypeScript | Three.js / WebGL | SCSS | Vitest | Playwright | Cypress | PWA | Live in production</div>
         <ul class="bullets">
           <li>Built with <strong>Angular</strong> standalone components, <strong>native Signals (signal/computed)</strong> and <code>OnPush</code> change detection throughout, including a GPU-accelerated <strong>Three.js/WebGL</strong> particle system with mouse and touch interactivity, configured as an offline-ready PWA with a service worker.</li>
-          <li>Covered by <strong>195 automated tests</strong> across three layers (140 Vitest unit tests, 38 Playwright E2E specs with WCAG 2.1 AA/AAA accessibility audits via Axe-Core, 17 Cypress E2E specs), with trilingual i18n (PT/EN/ES) and a 100/100/100/100 Google Lighthouse audit on desktop across Performance, Accessibility, Best Practices and SEO.</li>
+          <li>Covered by <strong>213 automated tests</strong> across three layers (158 Vitest unit tests, 38 Playwright E2E specs with WCAG 2.1 AA/AAA accessibility audits via Axe-Core, 17 Cypress E2E specs), with trilingual i18n (PT/EN/ES) and a 100/100/100/100 Google Lighthouse audit on desktop across Performance, Accessibility, Best Practices and SEO.</li>
         </ul>
       </div>
 
@@ -1063,7 +1063,7 @@ const FULLSTACK_PT = `<!DOCTYPE html>
         </tr>
         <tr>
           <td class="ach-label">Work-Fitness &amp; Portfólio<br>(Apps em Produção)</td>
-          <td>Plataforma comercial freelance (TypeScript, Clean Architecture, Docker/Nginx, 217 testes) e portfólio interativo (Angular Signals, WebGL/Three.js, 195 testes), ambos com nota máxima 100/100 nas 4 categorias do Google Lighthouse.</td>
+          <td>Plataforma comercial freelance (TypeScript, Clean Architecture, Docker/Nginx, 217 testes) e portfólio interativo (Angular Signals, WebGL/Three.js, 213 testes), ambos com nota máxima 100/100 nas 4 categorias do Google Lighthouse.</td>
         </tr>
       </table>
     </section>
@@ -1179,7 +1179,7 @@ const FULLSTACK_PT = `<!DOCTYPE html>
         <div class="entry-meta">Pessoal | 2026 | Angular | TypeScript | Three.js / WebGL | SCSS | Vitest | Playwright | Cypress | PWA | Em produção</div>
         <ul class="bullets">
           <li>Desenvolvido com componentes standalone do <strong>Angular</strong>, Signals nativos (<code>signal/computed</code>) e <code>OnPush</code> em todos os componentes, incluindo um sistema de partículas <strong>WebGL/Three.js</strong> acelerado por GPU com interatividade por mouse e toque, configurado como PWA com service worker.</li>
-          <li>Coberto por <strong>195 testes automatizados</strong> em três camadas (140 unitários Vitest, 38 E2E Playwright com auditoria WCAG 2.1 AA/AAA via Axe-Core, 17 E2E Cypress), suporte trilíngue i18n (PT/EN/ES) e auditoria Google Lighthouse 100/100/100/100 no desktop.</li>
+          <li>Coberto por <strong>213 testes automatizados</strong> em três camadas (158 unitários Vitest, 38 E2E Playwright com auditoria WCAG 2.1 AA/AAA via Axe-Core, 17 E2E Cypress), suporte trilíngue i18n (PT/EN/ES) e auditoria Google Lighthouse 100/100/100/100 no desktop.</li>
         </ul>
       </div>
     </section>
@@ -1269,7 +1269,7 @@ const FULLSTACK_EN = `<!DOCTYPE html>
         </tr>
         <tr>
           <td class="ach-label">Work-Fitness &amp; Portfolio<br>(Live Production Apps)</td>
-          <td>Freelance commercial platform (TypeScript, Clean Architecture, Docker/Nginx, 217 tests) and interactive portfolio (Angular Signals, WebGL/Three.js, 195 tests), both scoring 100/100 across all 4 Google Lighthouse categories.</td>
+          <td>Freelance commercial platform (TypeScript, Clean Architecture, Docker/Nginx, 217 tests) and interactive portfolio (Angular Signals, WebGL/Three.js, 213 tests), both scoring 100/100 across all 4 Google Lighthouse categories.</td>
         </tr>
       </table>
     </section>
@@ -1376,7 +1376,7 @@ const FULLSTACK_EN = `<!DOCTYPE html>
         <div class="entry-meta">Personal | 2026 | Angular | TypeScript | Three.js / WebGL | SCSS | Vitest | Playwright | Cypress | PWA | Live in production</div>
         <ul class="bullets">
           <li>Built with <strong>Angular</strong> standalone components, native Signals (<code>signal/computed</code>) and <code>OnPush</code> change detection throughout, including a GPU-accelerated <strong>Three.js/WebGL</strong> particle system with mouse and touch interactivity, configured as a PWA with a service worker.</li>
-          <li>Covered by <strong>195 automated tests</strong> across three layers (140 Vitest unit tests, 38 Playwright E2E specs with WCAG 2.1 AA/AAA accessibility audits via Axe-Core, 17 Cypress E2E specs), trilingual i18n (PT/EN/ES) and a 100/100/100/100 Google Lighthouse audit on desktop.</li>
+          <li>Covered by <strong>213 automated tests</strong> across three layers (158 Vitest unit tests, 38 Playwright E2E specs with WCAG 2.1 AA/AAA accessibility audits via Axe-Core, 17 Cypress E2E specs), trilingual i18n (PT/EN/ES) and a 100/100/100/100 Google Lighthouse audit on desktop.</li>
         </ul>
       </div>
     </section>
