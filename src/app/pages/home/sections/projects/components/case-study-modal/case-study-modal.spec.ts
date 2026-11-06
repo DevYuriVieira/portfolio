@@ -80,5 +80,25 @@ describe('CaseStudyModal', () => {
     component.onOpenFleetOps();
     expect(opened).toBe(true);
   });
+
+  it('should emit openFarmFlow when farmflow dossier button is clicked', () => {
+    let opened = false;
+    component.openFarmFlow.subscribe(() => {
+      opened = true;
+    });
+
+    component.onOpenFarmFlow();
+    expect(opened).toBe(true);
+  });
+
+  it('should emit openArchitecture when architecture diagram button is clicked', () => {
+    let opened = false;
+    component.openArchitecture.subscribe(() => {
+      opened = true;
+    });
+
+    component.onOpenArchitecture();
+    expect(opened).toBe(true);
+  });
 });
 

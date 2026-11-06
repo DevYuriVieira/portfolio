@@ -140,6 +140,7 @@ export class ProjectsSection {
   }
 
   openArchitectureModal(): void {
+    this.selectedCaseStudyProject.set(null);
     this.architectureModalOpen.set(true);
   }
 
@@ -148,6 +149,7 @@ export class ProjectsSection {
   }
 
   openFleetOpsModal(): void {
+    this.selectedCaseStudyProject.set(null);
     this.fleetOpsModalOpen.set(true);
   }
 
@@ -156,6 +158,7 @@ export class ProjectsSection {
   }
 
   openFarmFlowModal(): void {
+    this.selectedCaseStudyProject.set(null);
     this.farmFlowModalOpen.set(true);
   }
 

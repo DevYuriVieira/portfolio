@@ -182,5 +182,24 @@ describe('ProjectsSection', () => {
     fixture.detectChanges();
     expect(component.selectedCaseStudyProject()).toBeNull();
   });
+
+  it('should dismiss active CaseStudyModal when opening deep dossier modals', () => {
+    component.openCaseStudyModal(component.projects()[0]);
+    expect(component.selectedCaseStudyProject()).toBeTruthy();
+
+    component.openFleetOpsModal();
+    expect(component.selectedCaseStudyProject()).toBeNull();
+    expect(component.fleetOpsModalOpen()).toBe(true);
+
+    component.openCaseStudyModal(component.projects()[0]);
+    component.openFarmFlowModal();
+    expect(component.selectedCaseStudyProject()).toBeNull();
+    expect(component.farmFlowModalOpen()).toBe(true);
+
+    component.openCaseStudyModal(component.projects()[0]);
+    component.openArchitectureModal();
+    expect(component.selectedCaseStudyProject()).toBeNull();
+    expect(component.architectureModalOpen()).toBe(true);
+  });
 });
 

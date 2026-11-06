@@ -127,17 +127,14 @@ export class CaseStudyModal {
   }
 
   onOpenArchitecture(): void {
-    this.closeModal();
     this.openArchitecture.emit();
   }
 
   onOpenFleetOps(): void {
-    this.closeModal();
     this.openFleetOps.emit();
   }
 
   onOpenFarmFlow(): void {
-    this.closeModal();
     this.openFarmFlow.emit();
   }
 }

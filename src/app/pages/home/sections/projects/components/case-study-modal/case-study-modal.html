@@ -118,19 +118,19 @@
         @if (project.id === 'fleetops-api') {
         <button type="button" class="case-modal__btn case-modal__btn--primary" (click)="onOpenFleetOps()">
           <span>{{ labels().viewFleetOpsDossier }}</span>
-          <span aria-hidden="true">↗</span>
+          <span class="case-modal__arrow" aria-hidden="true">↗</span>
         </button>
         }
         @if (project.id === 'farmflow') {
         <button type="button" class="case-modal__btn case-modal__btn--emerald" (click)="onOpenFarmFlow()">
           <span>{{ labels().viewFarmFlowDossier }}</span>
-          <span aria-hidden="true">↗</span>
+          <span class="case-modal__arrow" aria-hidden="true">↗</span>
         </button>
         }
         @if (project.id === 'zeiss-recommendation-assistant') {
         <button type="button" class="case-modal__btn case-modal__btn--primary" (click)="onOpenArchitecture()">
           <span>{{ labels().viewArchitecture }}</span>
-          <span aria-hidden="true">↗</span>
+          <span class="case-modal__arrow" aria-hidden="true">↗</span>
         </button>
         }
         @if (project.links.github) {
@@ -159,7 +159,11 @@
         }
       </div>
 
-      <button type="button" class="case-modal__btn case-modal__btn--ghost" (click)="closeModal()">
+      <button
+        type="button"
+        class="case-modal__btn case-modal__btn--ghost"
+        (click)="closeModal()"
+        [attr.aria-label]="labels().closeAria">
         {{ labels().closeBtn }}
       </button>
     </footer>
