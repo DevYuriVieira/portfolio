@@ -13,10 +13,10 @@
 ![Cypress](https://img.shields.io/badge/Cypress-15.20-17202C?style=for-the-badge&logo=cypress&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-Deployed-000000?style=for-the-badge&logo=vercel&logoColor=white)
 
-**PT-BR:** Aplicação web frontend desenvolvida em Angular 22 com Signals, gráficos interativos Three.js (WebGL), Registros de Decisão de Arquitetura (ADRs), console interativo de telemetria RUM e eventos de conversão em tempo real, motor avançado de acessibilidade (WCAG 2.2 AAA & VLibras com 21 ferramentas assistivas), suporte trilíngue (i18n - PT-BR, EN, ES), SEO dinâmico e suíte de testes automatizados (155 testes Vitest).  
+**PT-BR:** Aplicação web frontend desenvolvida em Angular 22 com Signals, gráficos interativos Three.js (WebGL), Registros de Decisão de Arquitetura (ADRs), console interativo de telemetria RUM e eventos de conversão em tempo real, motor avançado de acessibilidade (WCAG 2.2 AAA & VLibras com 21 ferramentas assistivas), suporte trilíngue (i18n - PT-BR, EN, ES), SEO dinâmico e suíte de testes automatizados (158 testes Vitest).  
 *Slogan: Design system proprietário, acessibilidade universal com VLibras e 21 recursos assistivos, arquitetura documentada com ADRs, console de telemetria em tempo real e suíte de testes automatizados.*
 
-**EN:** Frontend web application built with Angular 22 Signals, Three.js (WebGL) interactive visuals, Architectural Decision Records (ADRs), interactive live RUM & event tracking telemetry HUD, universal accessibility engine (WCAG 2.2 AAA & VLibras with 21 assistive features), dynamic tri-lingual i18n (PT-BR, EN, ES), SEO engine, and automated testing suite (155 Vitest tests).  
+**EN:** Frontend web application built with Angular 22 Signals, Three.js (WebGL) interactive visuals, Architectural Decision Records (ADRs), interactive live RUM & event tracking telemetry HUD, universal accessibility engine (WCAG 2.2 AAA & VLibras with 21 assistive features), dynamic tri-lingual i18n (PT-BR, EN, ES), SEO engine, and automated testing suite (158 Vitest tests).  
 *Slogan: Custom design system, universal accessibility with VLibras and 21 assistive features, documented architecture with ADRs, real-time telemetry HUD console, and automated testing pipeline.*
 
 ---
