@@ -2,6 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { beforeEach, describe, expect, it } from 'vitest';
 import * as fc from 'fast-check';
 import { AccessibilityService } from './accessibility.service';
+import { I18nService } from '../i18n/i18n.service';
 
 describe('AccessibilityService - Property-Based & Fuzz Testing', () => {
   let service: AccessibilityService;
@@ -9,7 +10,7 @@ describe('AccessibilityService - Property-Based & Fuzz Testing', () => {
   beforeEach(() => {
     localStorage.clear();
     TestBed.configureTestingModule({
-      providers: [AccessibilityService],
+      providers: [AccessibilityService, I18nService],
     });
     service = TestBed.inject(AccessibilityService);
   });
@@ -135,7 +136,7 @@ describe('AccessibilityService - Property-Based & Fuzz Testing', () => {
         expect(() => {
           TestBed.resetTestingModule();
           TestBed.configureTestingModule({
-            providers: [AccessibilityService],
+            providers: [AccessibilityService, I18nService],
           });
           const freshService = TestBed.inject(AccessibilityService);
           expect(freshService.fontScale()).toBeDefined();

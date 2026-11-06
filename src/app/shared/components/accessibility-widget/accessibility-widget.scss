@@ -339,6 +339,17 @@
   line-height: 1;
 }
 
+.a11y-icon-bionic {
+  font-size: 0.75rem;
+  font-family: inherit;
+  letter-spacing: -0.02em;
+
+  strong {
+    font-weight: 900;
+    color: var(--accent-primary, #00e5ff);
+  }
+}
+
 .a11y-reset-btn {
   width: 100%;
   display: flex;

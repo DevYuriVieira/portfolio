@@ -195,24 +195,37 @@ export class VlibrasService {
     script.defer = true;
 
     script.onload = () => {
-      if (window.VLibras) {
-        try {
-          localStorage.removeItem('@vlibras-widget');
-        } catch {}
-
-        new window.VLibras.Widget(VLIBRAS_APP_URL);
-        this.isLoaded.set(true);
-        this.isLoading.set(false);
-        this.activate(true);
-      }
+      this.initWidget();
     };
 
     script.onerror = () => {
-      this.isLoading.set(false);
-      this.isLoaded.set(false);
+      // Fallback para CDN jsdelivr oficial do repositório spbgovbr-vlibras
+      const fallbackScript = document.createElement('script');
+      fallbackScript.src = 'https://cdn.jsdelivr.net/gh/spbgovbr-vlibras/vlibras-portal@v7.12.2/app/vlibras-plugin.js';
+      fallbackScript.async = true;
+      fallbackScript.defer = true;
+      fallbackScript.onload = () => this.initWidget();
+      fallbackScript.onerror = () => {
+        this.isLoading.set(false);
+        this.isLoaded.set(false);
+      };
+      document.body.appendChild(fallbackScript);
     };
 
     document.body.appendChild(script);
+  }
+
+  private initWidget(): void {
+    if (window.VLibras) {
+      try {
+        localStorage.removeItem('@vlibras-widget');
+      } catch {}
+
+      new window.VLibras.Widget(VLIBRAS_APP_URL);
+      this.isLoaded.set(true);
+      this.isLoading.set(false);
+      this.activate(true);
+    }
   }
 
   private injectVlibrasDom(): void {

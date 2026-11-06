@@ -42,6 +42,18 @@ describe('AccessibilityWidget', () => {
     expect(a11yService.fontScale()).toBe('large');
   });
 
+  it('should handle item click for new assistive features', () => {
+    expect(a11yService.lineHeight()).toBe(false);
+    component.handleItemClick('lineHeight');
+    expect(a11yService.lineHeight()).toBe(true);
+    expect(component.isItemActive('lineHeight')).toBe(true);
+
+    expect(a11yService.protanopia()).toBe(false);
+    component.handleItemClick('protanopia');
+    expect(a11yService.protanopia()).toBe(true);
+    expect(component.isItemActive('protanopia')).toBe(true);
+  });
+
   it('should reset all settings when resetAll is triggered', () => {
     a11yService.toggleHighContrast();
     expect(a11yService.highContrast()).toBe(true);

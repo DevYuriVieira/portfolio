@@ -11,6 +11,12 @@ export const A11Y_SECTIONS: readonly A11ySectionConfig[] = [
         labelKey: 'vlibras',
         badge: 'VLibras',
       },
+      {
+        id: 'screenReader',
+        iconType: 'volume',
+        labelKey: 'screenReader',
+        badge: 'TTS',
+      },
     ],
   },
   {
@@ -32,6 +38,21 @@ export const A11Y_SECTIONS: readonly A11ySectionConfig[] = [
         iconType: 'spacing',
         labelKey: 'textSpacing',
       },
+      {
+        id: 'lineHeight',
+        iconType: 'line-height',
+        labelKey: 'lineHeight',
+      },
+      {
+        id: 'alignLeft',
+        iconType: 'align-left',
+        labelKey: 'alignLeft',
+      },
+      {
+        id: 'bionicReading',
+        iconType: 'bionic',
+        labelKey: 'bionicReading',
+      },
     ],
   },
   {
@@ -48,9 +69,42 @@ export const A11Y_SECTIONS: readonly A11ySectionConfig[] = [
         labelKey: 'monochrome',
       },
       {
-        id: 'highlightLinks',
-        iconType: 'link',
-        labelKey: 'highlightLinks',
+        id: 'invertColors',
+        iconType: 'invert',
+        labelKey: 'invertColors',
+      },
+      {
+        id: 'lowSaturation',
+        iconType: 'sun',
+        labelKey: 'lowSaturation',
+      },
+      {
+        id: 'hideMedia',
+        iconType: 'eye-off',
+        labelKey: 'hideMedia',
+      },
+    ],
+  },
+  {
+    titleKey: 'colorblind',
+    items: [
+      {
+        id: 'protanopia',
+        iconType: 'filter',
+        labelKey: 'protanopia',
+        badge: 'Red',
+      },
+      {
+        id: 'deuteranopia',
+        iconType: 'filter',
+        labelKey: 'deuteranopia',
+        badge: 'Green',
+      },
+      {
+        id: 'tritanopia',
+        iconType: 'filter',
+        labelKey: 'tritanopia',
+        badge: 'Blue',
       },
     ],
   },
@@ -66,6 +120,21 @@ export const A11Y_SECTIONS: readonly A11ySectionConfig[] = [
         id: 'readingGuide',
         iconType: 'guide',
         labelKey: 'readingGuide',
+      },
+      {
+        id: 'largeCursor',
+        iconType: 'cursor',
+        labelKey: 'largeCursor',
+      },
+      {
+        id: 'highlightLinks',
+        iconType: 'link',
+        labelKey: 'highlightLinks',
+      },
+      {
+        id: 'highlightHeadings',
+        iconType: 'heading',
+        labelKey: 'highlightHeadings',
       },
     ],
   },
@@ -84,102 +153,153 @@ export interface A11yI18nLabels {
     readonly inclusion: string;
     readonly typography: string;
     readonly visual: string;
+    readonly colorblind: string;
     readonly navigation: string;
   };
   readonly items: {
     readonly vlibras: string;
+    readonly screenReader: string;
     readonly fontScale: string;
     readonly dyslexicFont: string;
     readonly textSpacing: string;
+    readonly lineHeight: string;
+    readonly alignLeft: string;
+    readonly bionicReading: string;
     readonly highContrast: string;
     readonly monochrome: string;
-    readonly highlightLinks: string;
+    readonly invertColors: string;
+    readonly lowSaturation: string;
+    readonly hideMedia: string;
+    readonly protanopia: string;
+    readonly deuteranopia: string;
+    readonly tritanopia: string;
     readonly pauseAnimations: string;
     readonly readingGuide: string;
+    readonly largeCursor: string;
+    readonly highlightLinks: string;
+    readonly highlightHeadings: string;
   };
 }
 
-export const A11Y_I18N: Record<SupportedLang, A11yI18nLabels> = {
+export const A11Y_I18N_LABELS: Record<SupportedLang, A11yI18nLabels> = {
   'pt-BR': {
-    title: 'Acessibilidade',
-    close: 'Fechar painel',
+    title: 'Recursos de Acessibilidade',
+    close: 'Fechar painel de acessibilidade',
     reset: 'Restaurar Padrões',
     active: 'Ativo',
-    inactive: 'Desativado',
-    triggerLabel: 'Opções de Acessibilidade',
-    assistiveFeatures: 'Recursos Assistivos',
-    librasListBadge: 'Acessível em Libras',
+    inactive: 'Inativo',
+    triggerLabel: 'Abrir ferramentas de acessibilidade',
+    assistiveFeatures: 'Ferramentas Assistivas',
+    librasListBadge: 'VLibras',
     sections: {
-      inclusion: 'Inclusão & Libras',
-      typography: 'Controle de Fonte',
+      inclusion: 'Inclusão & Fala',
+      typography: 'Tipografia & Leitura',
       visual: 'Contraste & Cores',
-      navigation: 'Foco & Navegação',
+      colorblind: 'Filtros de Daltonismo',
+      navigation: 'Navegação & Foco',
     },
     items: {
       vlibras: 'Tradutor de Libras',
-      fontScale: 'Tamanho da Fonte',
-      dyslexicFont: 'Fonte Legível',
-      textSpacing: 'Espaço entre Linhas',
-      highContrast: 'Alto Contraste',
-      monochrome: 'Monocromático',
-      highlightLinks: 'Destacar Links',
+      screenReader: 'Leitura em Voz Alta (TTS)',
+      fontScale: 'Tamanho do Texto',
+      dyslexicFont: 'Fonte para Dislexia',
+      textSpacing: 'Espaçamento de Texto',
+      lineHeight: 'Espaçamento de Linhas',
+      alignLeft: 'Alinhar à Esquerda',
+      bionicReading: 'Leitura Biônica',
+      highContrast: 'Alto Contraste AAA',
+      monochrome: 'Modo Monocromático',
+      invertColors: 'Inversão de Cores',
+      lowSaturation: 'Baixa Saturação',
+      hideMedia: 'Ocultar Imagens & Mídia',
+      protanopia: 'Protanopia (Vermelho)',
+      deuteranopia: 'Deuteranopia (Verde)',
+      tritanopia: 'Tritanopia (Azul)',
       pauseAnimations: 'Pausar Animações',
-      readingGuide: 'Guia de Leitura',
+      readingGuide: 'Régua de Leitura',
+      largeCursor: 'Cursor Ampliado',
+      highlightLinks: 'Destacar Links',
+      highlightHeadings: 'Destacar Títulos',
     },
   },
   en: {
-    title: 'Accessibility',
-    close: 'Close panel',
+    title: 'Accessibility Options',
+    close: 'Close accessibility panel',
     reset: 'Reset Defaults',
     active: 'Active',
-    inactive: 'Off',
-    triggerLabel: 'Accessibility Options',
+    inactive: 'Inactive',
+    triggerLabel: 'Open accessibility tools',
     assistiveFeatures: 'Assistive Features',
-    librasListBadge: 'Sign Language (Libras)',
+    librasListBadge: 'VLibras',
     sections: {
-      inclusion: 'Inclusion & Sign Language',
-      typography: 'Typography Controls',
+      inclusion: 'Inclusion & Speech',
+      typography: 'Typography & Reading',
       visual: 'Contrast & Colors',
-      navigation: 'Focus & Navigation',
+      colorblind: 'Color Blindness Filters',
+      navigation: 'Navigation & Focus',
     },
     items: {
       vlibras: 'Libras Translator',
-      fontScale: 'Font Size',
-      dyslexicFont: 'Readable Font',
-      textSpacing: 'Line Spacing',
-      highContrast: 'High Contrast',
-      monochrome: 'Monochrome',
-      highlightLinks: 'Highlight Links',
+      screenReader: 'Text-to-Speech (TTS)',
+      fontScale: 'Text Size',
+      dyslexicFont: 'Dyslexia Friendly Font',
+      textSpacing: 'Text Spacing',
+      lineHeight: 'Line Height Spacing',
+      alignLeft: 'Align Text Left',
+      bionicReading: 'Bionic Reading',
+      highContrast: 'High Contrast AAA',
+      monochrome: 'Monochrome Mode',
+      invertColors: 'Invert Colors',
+      lowSaturation: 'Low Saturation',
+      hideMedia: 'Hide Images & Media',
+      protanopia: 'Protanopia (Red)',
+      deuteranopia: 'Deuteranopia (Green)',
+      tritanopia: 'Tritanopia (Blue)',
       pauseAnimations: 'Pause Animations',
       readingGuide: 'Reading Guide',
+      largeCursor: 'Large Cursor',
+      highlightLinks: 'Highlight Links',
+      highlightHeadings: 'Highlight Headings',
     },
   },
   es: {
-    title: 'Accesibilidad',
-    close: 'Cerrar panel',
+    title: 'Opciones de Accesibilidad',
+    close: 'Cerrar panel de accesibilidad',
     reset: 'Restablecer Ajustes',
     active: 'Activo',
-    inactive: 'Desactivado',
-    triggerLabel: 'Opciones de Accesibilidad',
-    assistiveFeatures: 'Recursos Asistivos',
-    librasListBadge: 'Accesible en Libras',
+    inactive: 'Inactivo',
+    triggerLabel: 'Abrir herramientas de accesibilidad',
+    assistiveFeatures: 'Herramientas Asistivas',
+    librasListBadge: 'VLibras',
     sections: {
-      inclusion: 'Inclusión y Lengua de Señas',
-      typography: 'Control de Fuente',
+      inclusion: 'Inclusión y Voz',
+      typography: 'Tipografía y Lectura',
       visual: 'Contraste y Colores',
-      navigation: 'Enfoque y Navegación',
+      colorblind: 'Filtros para Daltonismo',
+      navigation: 'Navegación y Enfoque',
     },
     items: {
       vlibras: 'Traductor de Libras',
-      fontScale: 'Tamaño de Fuente',
-      dyslexicFont: 'Fuente Legible',
+      screenReader: 'Lectura en Voz Alta (TTS)',
+      fontScale: 'Tamaño del Texto',
+      dyslexicFont: 'Fuente para Dislexia',
       textSpacing: 'Espaciado de Texto',
-      highContrast: 'Alto Contraste',
-      monochrome: 'Monocromático',
-      highlightLinks: 'Destacar Enlaces',
+      lineHeight: 'Espaciado de Líneas',
+      alignLeft: 'Alinear a la Izquierda',
+      bionicReading: 'Lectura Biónica',
+      highContrast: 'Alto Contraste AAA',
+      monochrome: 'Modo Monocromático',
+      invertColors: 'Invertir Colores',
+      lowSaturation: 'Baja Saturación',
+      hideMedia: 'Ocultar Imágenes y Medios',
+      protanopia: 'Protanopia (Rojo)',
+      deuteranopia: 'Deuteranopia (Verde)',
+      tritanopia: 'Tritanopia (Azul)',
       pauseAnimations: 'Pausar Animaciones',
       readingGuide: 'Guía de Lectura',
+      largeCursor: 'Cursor Ampliado',
+      highlightLinks: 'Destacar Enlaces',
+      highlightHeadings: 'Destacar Encabezados',
     },
   },
 };
-

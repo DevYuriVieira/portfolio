@@ -1,4 +1,3 @@
-
 <aside class="a11y-trigger-wrapper" aria-label="Acessibilidade e Recursos Assistivos">
   <button
     type="button"
@@ -57,6 +56,7 @@
                 @case ('inclusion') { {{ i18nLabels().sections.inclusion }} }
                 @case ('typography') { {{ i18nLabels().sections.typography }} }
                 @case ('visual') { {{ i18nLabels().sections.visual }} }
+                @case ('colorblind') { {{ i18nLabels().sections.colorblind }} }
                 @case ('navigation') { {{ i18nLabels().sections.navigation }} }
               }
             </h3>
@@ -78,6 +78,12 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
                           </svg>
                         }
+                        @case ('volume') {
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                          </svg>
+                        }
                         @case ('font-size') {
                           <span class="a11y-icon-text">A+</span>
                         }
@@ -92,6 +98,27 @@
                             <line x1="21" y1="18" x2="7" y2="18"></line>
                           </svg>
                         }
+                        @case ('line-height') {
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <polyline points="7 3 7 21"></polyline>
+                            <polyline points="4 6 7 3 10 6"></polyline>
+                            <polyline points="4 18 7 21 10 18"></polyline>
+                            <line x1="14" y1="6" x2="21" y2="6"></line>
+                            <line x1="14" y1="12" x2="21" y2="12"></line>
+                            <line x1="14" y1="18" x2="21" y2="18"></line>
+                          </svg>
+                        }
+                        @case ('align-left') {
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <line x1="17" y1="10" x2="3" y2="10"></line>
+                            <line x1="21" y1="6" x2="3" y2="6"></line>
+                            <line x1="21" y1="14" x2="3" y2="14"></line>
+                            <line x1="15" y1="18" x2="3" y2="18"></line>
+                          </svg>
+                        }
+                        @case ('bionic') {
+                          <span class="a11y-icon-bionic"><strong>Bi</strong>on</span>
+                        }
                         @case ('contrast') {
                           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                             <path d="M12 22c5.52 0 10-4.48 10-10S17.52 2 12 2 2 6.48 2 12s4.48 10 10 10zm0-18c4.41 0 8 3.59 8 8s-3.59 8-8 8V4z"/>
@@ -103,11 +130,46 @@
                             <path d="M12 2a10 10 0 0 0 0 20"></path>
                           </svg>
                         }
+                        @case ('invert') {
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+                            <path d="M3 3l18 18" stroke-width="1.5"></path>
+                            <polygon points="3 3 21 3 21 21" fill="currentColor"></polygon>
+                          </svg>
+                        }
+                        @case ('sun') {
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                          </svg>
+                        }
+                        @case ('eye-off') {
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                            <line x1="1" y1="1" x2="23" y2="23"></line>
+                          </svg>
+                        }
+                        @case ('filter') {
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="9" cy="9" r="6" stroke="currentColor"></circle>
+                            <circle cx="15" cy="15" r="6" stroke="currentColor"></circle>
+                          </svg>
+                        }
                         @case ('link') {
                           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
                             <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
                           </svg>
+                        }
+                        @case ('heading') {
+                          <span class="a11y-icon-text">H#</span>
                         }
                         @case ('pause') {
                           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -120,6 +182,11 @@
                           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <rect x="2" y="7" width="20" height="10" rx="2"></rect>
                             <line x1="2" y1="12" x2="22" y2="12"></line>
+                          </svg>
+                        }
+                        @case ('cursor') {
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M3 3l7 18 3.5-7.5L21 10z" fill="currentColor"></path>
                           </svg>
                         }
                       }
@@ -137,14 +204,26 @@
                   <span class="a11y-card__label">
                     @switch (item.labelKey) {
                       @case ('vlibras') { {{ i18nLabels().items.vlibras }} }
+                      @case ('screenReader') { {{ i18nLabels().items.screenReader }} }
                       @case ('fontScale') { {{ i18nLabels().items.fontScale }} }
                       @case ('dyslexicFont') { {{ i18nLabels().items.dyslexicFont }} }
                       @case ('textSpacing') { {{ i18nLabels().items.textSpacing }} }
+                      @case ('lineHeight') { {{ i18nLabels().items.lineHeight }} }
+                      @case ('alignLeft') { {{ i18nLabels().items.alignLeft }} }
+                      @case ('bionicReading') { {{ i18nLabels().items.bionicReading }} }
                       @case ('highContrast') { {{ i18nLabels().items.highContrast }} }
                       @case ('monochrome') { {{ i18nLabels().items.monochrome }} }
-                      @case ('highlightLinks') { {{ i18nLabels().items.highlightLinks }} }
+                      @case ('invertColors') { {{ i18nLabels().items.invertColors }} }
+                      @case ('lowSaturation') { {{ i18nLabels().items.lowSaturation }} }
+                      @case ('hideMedia') { {{ i18nLabels().items.hideMedia }} }
+                      @case ('protanopia') { {{ i18nLabels().items.protanopia }} }
+                      @case ('deuteranopia') { {{ i18nLabels().items.deuteranopia }} }
+                      @case ('tritanopia') { {{ i18nLabels().items.tritanopia }} }
                       @case ('pauseAnimations') { {{ i18nLabels().items.pauseAnimations }} }
                       @case ('readingGuide') { {{ i18nLabels().items.readingGuide }} }
+                      @case ('largeCursor') { {{ i18nLabels().items.largeCursor }} }
+                      @case ('highlightLinks') { {{ i18nLabels().items.highlightLinks }} }
+                      @case ('highlightHeadings') { {{ i18nLabels().items.highlightHeadings }} }
                     }
                   </span>
                 </button>
@@ -172,6 +251,6 @@
   </div>
 }
 
-@if (readingGuideActive()) {
+@if (isReadingGuideActive()) {
   <app-reading-guide />
 }
