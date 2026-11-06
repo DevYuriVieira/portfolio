@@ -60,7 +60,6 @@ export class VlibrasService {
 
     document.documentElement.setAttribute('data-vlibras-active', 'true');
 
-    // 1. Reexibir wrapper do botão de acesso (v7 Shadow DOM) e limpar estilos inline
     const accessWrapper = document.getElementById('vlibras-access-wrapper');
     if (accessWrapper) {
       accessWrapper.style.removeProperty('display');
@@ -70,7 +69,6 @@ export class VlibrasService {
       accessWrapper.style.removeProperty('transform');
     }
 
-    // 2. Reexibir app root do avatar VLibras (v7) e restaurar visibilidade
     const appRoot = document.getElementById('vlibras-app-root');
     if (appRoot) {
       appRoot.style.removeProperty('display');
@@ -80,7 +78,6 @@ export class VlibrasService {
       this.observeAppRoot(appRoot);
     }
 
-    // 3. Limpar inline styles em elementos legados (v6)
     const legacyElements = document.querySelectorAll<HTMLElement>(
       '[vw], [vw-access-button], [vw-plugin-wrapper], .vw-plugin-top-wrapper, .vp-box'
     );
@@ -92,7 +89,6 @@ export class VlibrasService {
       el.style.removeProperty('transform');
     });
 
-    // 4. Abrir o widget do VLibras (avatar) para que o usuário veja a tradução ativa
     if (openWidget) {
       this.openWidgetUi();
     }
@@ -105,19 +101,16 @@ export class VlibrasService {
 
     document.documentElement.setAttribute('data-vlibras-active', 'false');
 
-    // 1. Fechar avatar no app root moderno (v7)
     const appRoot = document.getElementById('vlibras-app-root');
     if (appRoot) {
       appRoot.dataset['active'] = 'false';
     }
 
-    // 2. Fechar widget legado caso o botão de fechar exista (v6)
     const legacyCloseBtn = document.querySelector<HTMLElement>(
       '[vw] [vw-close], [vw] .vp-close, .vp-box .vp-close, .vw-btn-close'
     );
     legacyCloseBtn?.click();
 
-    // 3. Limpar storage interno do plugin para não reabrir sozinho no reload
     try {
       localStorage.removeItem('@vlibras-widget');
     } catch {}
@@ -139,7 +132,6 @@ export class VlibrasService {
       return;
     }
 
-    // Aguardar renderização inicial do script caso acabe de ser carregado
     setTimeout(() => {
       if (window.VLibrasWidget?.open) {
         window.VLibrasWidget.open();
@@ -199,7 +191,6 @@ export class VlibrasService {
     };
 
     script.onerror = () => {
-      // Fallback para CDN jsdelivr oficial do repositório spbgovbr-vlibras
       const fallbackScript = document.createElement('script');
       fallbackScript.src = 'https://cdn.jsdelivr.net/gh/spbgovbr-vlibras/vlibras-portal@v7.12.2/app/vlibras-plugin.js';
       fallbackScript.async = true;
