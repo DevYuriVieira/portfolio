@@ -69,7 +69,7 @@ const EXACT_ORIGINAL_STYLES = `
     padding: 0 36px;
   }
   .section {
-    margin-bottom: 8px;
+    margin-bottom: 7.5px;
   }
   .section-title {
     font-size: 9.5pt;
@@ -80,6 +80,12 @@ const EXACT_ORIGINAL_STYLES = `
     padding-bottom: 2px;
     margin-bottom: 5px;
     letter-spacing: 0.3px;
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+  .page-break {
+    break-before: page;
+    page-break-before: always;
   }
   .summary {
     font-size: 9pt;
@@ -130,7 +136,7 @@ const EXACT_ORIGINAL_STYLES = `
   }
   /* Experience & Projects */
   .entry {
-    margin-bottom: 5.5px;
+    margin-bottom: 4.8px;
     page-break-inside: avoid;
   }
   .entry:last-child {
@@ -158,9 +164,9 @@ const EXACT_ORIGINAL_STYLES = `
   .bullets li {
     position: relative;
     padding-left: 9px;
-    margin-bottom: 1.2px;
+    margin-bottom: 1.1px;
     font-size: 8.8pt;
-    line-height: 1.29;
+    line-height: 1.28;
     color: #222222;
   }
   .bullets li::before {
@@ -171,7 +177,7 @@ const EXACT_ORIGINAL_STYLES = `
   }
   /* Education */
   .edu-item {
-    margin-bottom: 3px;
+    margin-bottom: 2.5px;
     page-break-inside: avoid;
   }
   .edu-title {
@@ -190,7 +196,7 @@ const EXACT_ORIGINAL_STYLES = `
   }
   .cert-list li {
     font-size: 8.75pt;
-    margin-bottom: 1.2px;
+    margin-bottom: 1px;
     color: #222222;
   }
   .cert-list li::before {
@@ -319,7 +325,7 @@ const FRONTEND_PT = `<!DOCTYPE html>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section page-break">
       <h2 class="section-title">PROJETOS</h2>
 
       <div class="entry">
@@ -395,7 +401,6 @@ const FRONTEND_PT = `<!DOCTYPE html>
         <li><strong>Desenvolvimento Front-End com Inteligência Artificial (80 h)</strong> - Senac</li>
         <li><strong>Bootcamp Philips Full-Stack Developer (TypeScript, Angular, Java)</strong> - DIO</li>
         <li><strong>Fundamentos em Teste de Software (24 h)</strong> - Instituto de Pesquisas Eldorado</li>
-        <li><strong>Banco de Dados SQL - Intermediário e Avançado</strong> - Instituto Matera</li>
         <li><strong>White Belt - Lean Six Sigma</strong> - Frons</li>
       </ul>
     </section>
@@ -515,7 +520,7 @@ const FRONTEND_EN = `<!DOCTYPE html>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section page-break">
       <h2 class="section-title">PROJECTS</h2>
 
       <div class="entry">
@@ -591,7 +596,6 @@ const FRONTEND_EN = `<!DOCTYPE html>
         <li><strong>Front-End Development with Artificial Intelligence (80 h)</strong> - Senac</li>
         <li><strong>Philips Full-Stack Developer Bootcamp (TypeScript, Angular, Java)</strong> - DIO</li>
         <li><strong>Software Testing Fundamentals (24 h)</strong> - Instituto de Pesquisas Eldorado</li>
-        <li><strong>SQL Database - Intermediate and Advanced</strong> - Instituto Matera</li>
         <li><strong>White Belt - Lean Six Sigma</strong> - Frons</li>
       </ul>
     </section>
@@ -1130,7 +1134,7 @@ const FULLSTACK_PT = `<!DOCTYPE html>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section page-break">
       <h2 class="section-title">PROJETOS</h2>
 
       <div class="entry">
@@ -1152,7 +1156,7 @@ const FULLSTACK_PT = `<!DOCTYPE html>
       </div>
 
       <div class="entry">
-        <div class="entry-title">FarmFlow - Mobile Offline-First + Backend Distribuído - <a href="https://github.com/DevYuriVieira/farmflow-mobile">farmflow-mobile</a> · <a href="https://github.com/DevYuriVieira/farmflow-backend">farmflow-backend</a></div>
+        <div class="entry-title">FarmFlow - Mobile Offline-First + Backend Distribuído - <a href="https://github.com/DevYuriVieira/farmflow-mobile">GitHub (Mobile)</a> · <a href="https://github.com/DevYuriVieira/farmflow-backend">GitHub (Backend)</a></div>
         <div class="entry-meta">Pessoal | 2026 | React Native | Expo | Java | Spring Boot | Virtual Threads | PostgreSQL | RabbitMQ | Keycloak OIDC | OpenTelemetry</div>
         <ul class="bullets">
           <li>Plataforma ponta a ponta para o agro, onde a internet some no meio da lavoura: app em <strong>React Native com fila FIFO offline-first</strong> e reconciliação determinística ao reconectar, caderno de defensivos do MAPA com <strong>assinatura digital em canvas e hash SHA-256</strong>, e telemetria IoT de pivôs e silos.</li>
@@ -1327,7 +1331,7 @@ const FULLSTACK_EN = `<!DOCTYPE html>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section page-break">
       <h2 class="section-title">PROJECTS</h2>
 
       <div class="entry">
@@ -1349,7 +1353,7 @@ const FULLSTACK_EN = `<!DOCTYPE html>
       </div>
 
       <div class="entry">
-        <div class="entry-title">FarmFlow - Offline-First Mobile + Distributed Backend - <a href="https://github.com/DevYuriVieira/farmflow-mobile">farmflow-mobile</a> · <a href="https://github.com/DevYuriVieira/farmflow-backend">farmflow-backend</a></div>
+        <div class="entry-title">FarmFlow - Offline-First Mobile + Distributed Backend - <a href="https://github.com/DevYuriVieira/farmflow-mobile">GitHub (Mobile)</a> · <a href="https://github.com/DevYuriVieira/farmflow-backend">GitHub (Backend)</a></div>
         <div class="entry-meta">Personal | 2026 | React Native | Expo | Java | Spring Boot | Virtual Threads | PostgreSQL | RabbitMQ | Keycloak OIDC | OpenTelemetry</div>
         <ul class="bullets">
           <li>End-to-end agri-tech platform for places where the connection drops mid-field: a <strong>React Native app with an offline-first FIFO mutation queue</strong> and deterministic reconciliation on reconnect, MAPA spray records with a <strong>canvas digital signature hashed with SHA-256</strong>, and IoT telemetry for irrigation pivots and silos.</li>
