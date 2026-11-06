@@ -81,4 +81,48 @@ describe('TelemetryService', () => {
     expect(service.whatsappClicks()).toBe(2);
     expect(service.lastEvent()).toBe('whatsapp_click:contact:en');
   });
+
+  it('should manage HUD modal state and active tab', () => {
+    expect(service.isModalOpen()).toBe(false);
+    expect(service.activeTab()).toBe('overview');
+
+    service.openModal('events');
+    expect(service.isModalOpen()).toBe(true);
+    expect(service.activeTab()).toBe('events');
+
+    service.setTab('vitals');
+    expect(service.activeTab()).toBe('vitals');
+
+    service.closeModal();
+    expect(service.isModalOpen()).toBe(false);
+  });
+
+  it('should record events in recentEvents log', () => {
+    service.trackCvDownload('frontend', 'es');
+    service.trackWhatsAppClick('hero', 'en');
+
+    const logs = service.recentEvents();
+    expect(logs.length).toBeGreaterThanOrEqual(2);
+    expect(logs[0].event).toBe('whatsapp_click:hero:en');
+    expect(logs[1].event).toBe('cv_download:frontend:es');
+  });
+
+  it('should support simulated events and session reset', () => {
+    service.simulateEvent('cv_fullstack');
+    service.simulateEvent('cv_backend');
+    service.simulateEvent('cv_frontend');
+    service.simulateEvent('whatsapp');
+
+    expect(service.totalCvDownloads()).toBe(3);
+    expect(service.whatsappClicks()).toBe(1);
+
+    const json = service.exportSnapshotJson();
+    expect(json).toContain('"totalCvDownloads": 3');
+    expect(json).toContain('"whatsappClicks": 1');
+
+    service.resetSession();
+    expect(service.totalCvDownloads()).toBe(0);
+    expect(service.whatsappClicks()).toBe(0);
+    expect(service.lastEvent()).toBeNull();
+  });
 });

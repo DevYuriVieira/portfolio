@@ -207,4 +207,29 @@ describe('Header', () => {
     document.body.removeChild(heroEl);
     document.body.removeChild(contactEl);
   });
+
+  it('should render telemetry HUD button and trigger openTelemetryModal on click', () => {
+    const openSpy = vi.spyOn(telemetry, 'openModal');
+    const compiled = fixture.nativeElement as HTMLElement;
+    const telemetryBtn = compiled.querySelector('.header__telemetry-btn') as HTMLButtonElement;
+
+    expect(telemetryBtn).toBeTruthy();
+    telemetryBtn.click();
+    expect(openSpy).toHaveBeenCalledWith('overview');
+  });
+
+  it('should trigger openTelemetryModal from mobile drawer', () => {
+    const openSpy = vi.spyOn(telemetry, 'openModal');
+    component.toggleMobileMenu();
+    fixture.detectChanges();
+
+    const compiled = fixture.nativeElement as HTMLElement;
+    const mobileBtn = compiled.querySelector('.header__mobile-telemetry-btn') as HTMLButtonElement;
+
+    expect(mobileBtn).toBeTruthy();
+    mobileBtn.click();
+
+    expect(openSpy).toHaveBeenCalledWith('overview');
+    expect(component.mobileMenuOpen()).toBe(false);
+  });
 });

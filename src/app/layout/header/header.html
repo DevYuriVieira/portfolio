@@ -48,6 +48,17 @@
       </nav>
 
       <div class="header__actions">
+        <button
+          type="button"
+          class="header__telemetry-btn"
+          (click)="openTelemetryModal('overview')"
+          [attr.aria-label]="nav.telemetryAriaLabel"
+          [attr.title]="nav.telemetryTooltip">
+          <span class="header__telemetry-dot header__telemetry-dot--{{ telemetry.rating() }}" aria-hidden="true"></span>
+          <span class="header__telemetry-text">{{ nav.telemetryBtn }}</span>
+          <span class="header__telemetry-counter" aria-hidden="true">{{ telemetry.totalCvDownloads() + telemetry.whatsappClicks() }}</span>
+        </button>
+
         <a
           [href]="nav.whatsappUrl"
           target="_blank"
@@ -286,6 +297,16 @@
       </ul>
 
       <div class="header__mobile-footer">
+        <button
+          type="button"
+          class="header__mobile-telemetry-btn"
+          (click)="openTelemetryModalFromMobile()"
+          [attr.aria-label]="nav.telemetryAriaLabel">
+          <span class="header__telemetry-dot header__telemetry-dot--{{ telemetry.rating() }}" aria-hidden="true"></span>
+          <span>{{ nav.mobileTelemetryBtn }}</span>
+          <span class="header__telemetry-counter">{{ telemetry.totalCvDownloads() + telemetry.whatsappClicks() }}</span>
+        </button>
+
         <a href="https://github.com/DevYuriVieira"
           target="_blank"
           rel="noopener noreferrer"

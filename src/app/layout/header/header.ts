@@ -26,6 +26,10 @@ interface HeaderNavLabels {
   readonly whatsappAriaLabel: string;
   readonly whatsappUrl: string;
   readonly langMenuAriaLabel: string;
+  readonly telemetryBtn: string;
+  readonly telemetryAriaLabel: string;
+  readonly telemetryTooltip: string;
+  readonly mobileTelemetryBtn: string;
 }
 
 @Component({
@@ -37,7 +41,7 @@ interface HeaderNavLabels {
 })
 export class Header implements OnInit {
   private readonly i18n = inject(I18nService);
-  private readonly telemetry = inject(TelemetryService);
+  readonly telemetry = inject(TelemetryService);
 
   readonly mobileMenuOpen = signal<boolean>(false);
   readonly currentLang = this.i18n.currentLang;
@@ -62,6 +66,11 @@ export class Header implements OnInit {
       whatsappUrl:
         'https://wa.me/5522998962216?text=Hi%20Yuri%21%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect%20regarding%20an%20opportunity.',
       langMenuAriaLabel: 'Select language',
+      telemetryBtn: 'HUD',
+      telemetryAriaLabel:
+        'Open live telemetry, Web Vitals, and conversion metrics HUD',
+      telemetryTooltip: 'Live Telemetry & Observability HUD',
+      mobileTelemetryBtn: 'Live Telemetry & Performance HUD',
     },
     'pt-BR': {
       home: 'Início',
@@ -80,6 +89,11 @@ export class Header implements OnInit {
       whatsappUrl:
         'https://wa.me/5522998962216?text=Ol%C3%A1%20Yuri%21%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20sobre%20uma%20oportunidade.',
       langMenuAriaLabel: 'Selecionar idioma',
+      telemetryBtn: 'HUD',
+      telemetryAriaLabel:
+        'Abrir console de telemetria em tempo real, Core Web Vitals e métricas de conversão',
+      telemetryTooltip: 'Telemetria em Tempo Real & Observabilidade HUD',
+      mobileTelemetryBtn: 'Telemetria & Performance em Tempo Real',
     },
     es: {
       home: 'Inicio',
@@ -98,6 +112,11 @@ export class Header implements OnInit {
       whatsappUrl:
         'https://wa.me/5522998962216?text=Hola%20Yuri%21%20Vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20conversar%20sobre%20una%20oportunidad.',
       langMenuAriaLabel: 'Seleccionar idioma',
+      telemetryBtn: 'HUD',
+      telemetryAriaLabel:
+        'Abrir consola de telemetría en tiempo real, Core Web Vitals y conversiones',
+      telemetryTooltip: 'Telemetría en Vivo & Observabilidad HUD',
+      mobileTelemetryBtn: 'Telemetría & Rendimiento en Vivo',
     },
   };
 
@@ -160,6 +179,15 @@ export class Header implements OnInit {
 
   onWhatsAppClick(): void {
     this.telemetry.trackWhatsAppClick('header', this.currentLang());
+  }
+
+  openTelemetryModal(tab: 'overview' | 'vitals' | 'events' | 'stream' = 'overview'): void {
+    this.telemetry.openModal(tab);
+  }
+
+  openTelemetryModalFromMobile(): void {
+    this.closeMobileMenu();
+    this.telemetry.openModal('overview');
   }
 
   toggleMobileMenu(): void {

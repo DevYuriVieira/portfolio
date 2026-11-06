@@ -5,5 +5,9 @@
   </main>
   <app-footer />
   <app-accessibility-widget />
+
+  @if (telemetry.isModalOpen()) {
+    <app-telemetry-modal (close)="telemetry.closeModal()" />
+  }
 </div>
 

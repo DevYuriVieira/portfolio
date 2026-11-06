@@ -54,8 +54,31 @@
     font-family: var(--font-mono);
     font-size: var(--text-xs);
     color: var(--text-muted);
-    cursor: default;
+    cursor: pointer;
     user-select: none;
+    transition:
+      color var(--motion-fast),
+      background-color var(--motion-fast),
+      border-color var(--motion-fast),
+      box-shadow var(--motion-fast),
+      transform var(--motion-fast);
+
+    &:hover {
+      background: rgba(16, 185, 129, 0.08);
+      border-color: rgba(16, 185, 129, 0.5);
+      box-shadow: 0 4px 16px rgba(16, 185, 129, 0.2);
+      transform: translateY(-1px);
+
+      .footer__hud-hint {
+        background: rgba(16, 185, 129, 0.25);
+        color: #ffffff;
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid #10b981;
+      outline-offset: 2px;
+    }
   }
 
   &__rum-dot {
@@ -101,8 +124,31 @@
     font-family: var(--font-mono);
     font-size: var(--text-xs);
     color: var(--text-muted);
-    cursor: default;
+    cursor: pointer;
     user-select: none;
+    transition:
+      color var(--motion-fast),
+      background-color var(--motion-fast),
+      border-color var(--motion-fast),
+      box-shadow var(--motion-fast),
+      transform var(--motion-fast);
+
+    &:hover {
+      background: rgba(56, 189, 248, 0.12);
+      border-color: rgba(56, 189, 248, 0.55);
+      box-shadow: 0 4px 18px rgba(56, 189, 248, 0.25);
+      transform: translateY(-1px);
+
+      .footer__hud-hint {
+        background: rgba(56, 189, 248, 0.25);
+        color: #ffffff;
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid #38bdf8;
+      outline-offset: 2px;
+    }
   }
 
   &__analytics-dot {
@@ -123,6 +169,19 @@
     font-weight: 600;
     color: #e0f2fe;
     letter-spacing: 0.02em;
+  }
+
+  &__hud-hint {
+    padding: 1px 6px;
+    border-radius: var(--radius-full);
+    font-size: 0.625rem;
+    font-weight: 700;
+    color: #38bdf8;
+    background: rgba(56, 189, 248, 0.12);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    letter-spacing: 0.05em;
+    margin-left: 2px;
+    transition: all var(--motion-fast);
   }
 
   &__adr-btn {

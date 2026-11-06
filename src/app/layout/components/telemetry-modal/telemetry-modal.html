@@ -1,0 +1,528 @@
+<div
+  class="telemetry-modal-backdrop"
+  (click)="onBackdropClick($event)"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="telemetryModalTitle"
+>
+  <div class="telemetry-modal-container">
+    <div class="telemetry-modal-header">
+      <div class="telemetry-modal-header__info">
+        <div class="telemetry-modal-header__meta">
+          <span class="telemetry-modal-header__eyebrow">{{ labels().eyebrow }}</span>
+          <span class="telemetry-modal-badge telemetry-modal-badge--{{ telemetry.rating() }}">
+            <span class="telemetry-modal-badge__dot" aria-hidden="true"></span>
+            <span>{{ labels().liveStatus }}: {{ telemetry.rating() | uppercase }}</span>
+          </span>
+        </div>
+        <h2 id="telemetryModalTitle" class="telemetry-modal-header__title">
+          {{ labels().title }}
+        </h2>
+        <p class="telemetry-modal-header__subtitle">
+          {{ labels().subtitle }}
+        </p>
+      </div>
+
+      <div class="telemetry-modal-header__actions">
+        <button
+          type="button"
+          class="telemetry-modal-action-btn telemetry-modal-action-btn--copy"
+          (click)="copyDiagnostics()"
+          [attr.aria-label]="copied() ? labels().stream.copiedJsonBtn : labels().stream.copyJsonBtn"
+        >
+          <svg
+            class="telemetry-modal-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            aria-hidden="true"
+          >
+            @if (copied()) {
+              <polyline points="20 6 9 17 4 12"></polyline>
+            } @else {
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            }
+          </svg>
+          <span>{{ copied() ? labels().stream.copiedJsonBtn : labels().stream.copyJsonBtn }}</span>
+        </button>
+
+        <button
+          type="button"
+          class="telemetry-modal-close-btn"
+          (click)="close.emit()"
+          [attr.aria-label]="labels().closeAria"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <nav class="telemetry-modal-tabs" aria-label="Telemetry Navigation Tabs">
+      <button
+        type="button"
+        class="telemetry-modal-tab"
+        [class.is-active]="telemetry.activeTab() === 'overview'"
+        (click)="selectTab('overview')"
+      >
+        <span class="telemetry-modal-tab__icon">📊</span>
+        <span>{{ labels().tabs.overview }}</span>
+        <span class="telemetry-modal-tab__badge">{{ healthScore() }}%</span>
+      </button>
+
+      <button
+        type="button"
+        class="telemetry-modal-tab"
+        [class.is-active]="telemetry.activeTab() === 'vitals'"
+        (click)="selectTab('vitals')"
+      >
+        <span class="telemetry-modal-tab__icon">⚡</span>
+        <span>{{ labels().tabs.vitals }}</span>
+        <span class="telemetry-modal-tab__badge telemetry-modal-tab__badge--status">
+          {{ telemetry.rating() | uppercase }}
+        </span>
+      </button>
+
+      <button
+        type="button"
+        class="telemetry-modal-tab"
+        [class.is-active]="telemetry.activeTab() === 'events'"
+        (click)="selectTab('events')"
+      >
+        <span class="telemetry-modal-tab__icon">🎯</span>
+        <span>{{ labels().tabs.events }}</span>
+        <span class="telemetry-modal-tab__badge telemetry-modal-tab__badge--counter">
+          {{ totalConversions() }}
+        </span>
+      </button>
+
+      <button
+        type="button"
+        class="telemetry-modal-tab"
+        [class.is-active]="telemetry.activeTab() === 'stream'"
+        (click)="selectTab('stream')"
+      >
+        <span class="telemetry-modal-tab__icon">📜</span>
+        <span>{{ labels().tabs.stream }}</span>
+        <span class="telemetry-modal-tab__badge">
+          {{ telemetry.recentEvents().length }}
+        </span>
+      </button>
+    </nav>
+
+    <div class="telemetry-modal-body">
+      @if (telemetry.activeTab() === 'overview') {
+        <section class="telemetry-tab-pane">
+          <div class="telemetry-overview-hero">
+            <div class="telemetry-health-card">
+              <div class="telemetry-health-score">
+                <span class="telemetry-health-number">{{ healthScore() }}%</span>
+                <span class="telemetry-health-tag telemetry-health-tag--{{ telemetry.rating() }}">
+                  {{ telemetry.rating() | uppercase }}
+                </span>
+              </div>
+              <div class="telemetry-health-meta">
+                <h3 class="telemetry-health-title">{{ labels().overview.healthScoreTitle }}</h3>
+                <p class="telemetry-health-desc">{{ labels().overview.healthScoreDesc }}</p>
+              </div>
+            </div>
+
+            <div class="telemetry-quick-grid">
+              <div class="telemetry-quick-card">
+                <span class="telemetry-quick-label">LCP (Render)</span>
+                <span class="telemetry-quick-val">{{ telemetry.lcp() ? telemetry.lcp() + 'ms' : '<400ms' }}</span>
+                <span class="telemetry-quick-target">&lt; 2500ms target</span>
+              </div>
+              <div class="telemetry-quick-card">
+                <span class="telemetry-quick-label">CLS (Stability)</span>
+                <span class="telemetry-quick-val">{{ telemetry.cls() }}</span>
+                <span class="telemetry-quick-target">&lt; 0.10 target</span>
+              </div>
+              <div class="telemetry-quick-card">
+                <span class="telemetry-quick-label">Heap Memory</span>
+                <span class="telemetry-quick-val">{{ telemetry.memoryMb() ? telemetry.memoryMb() + ' MB' : 'Active' }}</span>
+                <span class="telemetry-quick-target">V8 Runtime</span>
+              </div>
+              <div class="telemetry-quick-card">
+                <span class="telemetry-quick-label">Conversions</span>
+                <span class="telemetry-quick-val">{{ totalConversions() }}</span>
+                <span class="telemetry-quick-target">CV + WhatsApp</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="telemetry-architecture-banner">
+            <div class="telemetry-arch-header">
+              <span class="telemetry-arch-badge">{{ labels().overview.architectureBadge }}</span>
+              <h4 class="telemetry-arch-title">{{ labels().overview.architectureTitle }}</h4>
+            </div>
+            <p class="telemetry-arch-text">{{ labels().overview.architectureP1 }}</p>
+            <p class="telemetry-arch-text">{{ labels().overview.architectureP2 }}</p>
+
+            <div class="telemetry-privacy-box">
+              <span class="telemetry-privacy-pill">🛡️ {{ labels().overview.privacyBadge }}</span>
+              <p class="telemetry-privacy-text">{{ labels().overview.privacyDesc }}</p>
+            </div>
+          </div>
+        </section>
+      }
+
+      @if (telemetry.activeTab() === 'vitals') {
+        <section class="telemetry-tab-pane">
+          <div class="telemetry-pane-intro">
+            <h3 class="telemetry-pane-title">{{ labels().vitals.title }}</h3>
+            <p class="telemetry-pane-desc">{{ labels().vitals.description }}</p>
+          </div>
+
+          <div class="telemetry-vitals-grid">
+            <div class="telemetry-vital-card">
+              <div class="telemetry-vital-top">
+                <span class="telemetry-vital-code">{{ labels().vitals.lcp.code }}</span>
+                <span class="telemetry-vital-badge telemetry-vital-badge--{{ telemetry.rating() }}">
+                  {{ labels().vitals.goodLabel }}
+                </span>
+              </div>
+              <div class="telemetry-vital-value">
+                {{ telemetry.lcp() ? telemetry.lcp() + ' ' + labels().vitals.lcp.unit : '<400 ms' }}
+              </div>
+              <div class="telemetry-vital-name">{{ labels().vitals.lcp.name }}</div>
+              <div class="telemetry-vital-target">{{ labels().vitals.lcp.target }}</div>
+              <div class="telemetry-bar-rail">
+                <div class="telemetry-bar-fill telemetry-bar-fill--green" style="width: 25%"></div>
+              </div>
+              <p class="telemetry-vital-desc">{{ labels().vitals.lcp.description }}</p>
+            </div>
+
+            <div class="telemetry-vital-card">
+              <div class="telemetry-vital-top">
+                <span class="telemetry-vital-code">{{ labels().vitals.cls.code }}</span>
+                <span class="telemetry-vital-badge telemetry-vital-badge--optimal">
+                  {{ labels().vitals.goodLabel }}
+                </span>
+              </div>
+              <div class="telemetry-vital-value">
+                {{ telemetry.cls() }}
+              </div>
+              <div class="telemetry-vital-name">{{ labels().vitals.cls.name }}</div>
+              <div class="telemetry-vital-target">{{ labels().vitals.cls.target }}</div>
+              <div class="telemetry-bar-rail">
+                <div class="telemetry-bar-fill telemetry-bar-fill--green" style="width: 10%"></div>
+              </div>
+              <p class="telemetry-vital-desc">{{ labels().vitals.cls.description }}</p>
+            </div>
+
+            <div class="telemetry-vital-card">
+              <div class="telemetry-vital-top">
+                <span class="telemetry-vital-code">{{ labels().vitals.inp.code }}</span>
+                <span class="telemetry-vital-badge telemetry-vital-badge--optimal">
+                  {{ labels().vitals.goodLabel }}
+                </span>
+              </div>
+              <div class="telemetry-vital-value">
+                {{ telemetry.inp() ? telemetry.inp() + ' ' + labels().vitals.inp.unit : '<50 ms' }}
+              </div>
+              <div class="telemetry-vital-name">{{ labels().vitals.inp.name }}</div>
+              <div class="telemetry-vital-target">{{ labels().vitals.inp.target }}</div>
+              <div class="telemetry-bar-rail">
+                <div class="telemetry-bar-fill telemetry-bar-fill--green" style="width: 20%"></div>
+              </div>
+              <p class="telemetry-vital-desc">{{ labels().vitals.inp.description }}</p>
+            </div>
+
+            <div class="telemetry-vital-card">
+              <div class="telemetry-vital-top">
+                <span class="telemetry-vital-code">{{ labels().vitals.ttfb.code }}</span>
+                <span class="telemetry-vital-badge telemetry-vital-badge--optimal">
+                  {{ labels().vitals.goodLabel }}
+                </span>
+              </div>
+              <div class="telemetry-vital-value">
+                {{ telemetry.ttfb() ? telemetry.ttfb() + ' ' + labels().vitals.ttfb.unit : '<120 ms' }}
+              </div>
+              <div class="telemetry-vital-name">{{ labels().vitals.ttfb.name }}</div>
+              <div class="telemetry-vital-target">{{ labels().vitals.ttfb.target }}</div>
+              <div class="telemetry-bar-rail">
+                <div class="telemetry-bar-fill telemetry-bar-fill--cyan" style="width: 15%"></div>
+              </div>
+              <p class="telemetry-vital-desc">{{ labels().vitals.ttfb.description }}</p>
+            </div>
+
+            <div class="telemetry-vital-card">
+              <div class="telemetry-vital-top">
+                <span class="telemetry-vital-code">{{ labels().vitals.memory.code }}</span>
+                <button
+                  type="button"
+                  class="telemetry-micro-action-btn"
+                  (click)="resampleMemory()"
+                  title="Resample JS Heap"
+                >
+                  ↻ {{ labels().vitals.resampleMemoryBtn }}
+                </button>
+              </div>
+              <div class="telemetry-vital-value">
+                {{ telemetry.memoryMb() ? telemetry.memoryMb() + ' ' + labels().vitals.memory.unit : '24 MB' }}
+              </div>
+              <div class="telemetry-vital-name">{{ labels().vitals.memory.name }}</div>
+              <div class="telemetry-vital-target">{{ labels().vitals.memory.target }}</div>
+              <div class="telemetry-bar-rail">
+                <div class="telemetry-bar-fill telemetry-bar-fill--purple" style="width: 35%"></div>
+              </div>
+              <p class="telemetry-vital-desc">{{ labels().vitals.memory.description }}</p>
+            </div>
+
+            <div class="telemetry-vital-card">
+              <div class="telemetry-vital-top">
+                <span class="telemetry-vital-code">{{ labels().vitals.longTasks.code }}</span>
+                <span class="telemetry-vital-badge telemetry-vital-badge--optimal">
+                  {{ labels().vitals.goodLabel }}
+                </span>
+              </div>
+              <div class="telemetry-vital-value">
+                {{ telemetry.longTasks() }}
+              </div>
+              <div class="telemetry-vital-name">{{ labels().vitals.longTasks.name }}</div>
+              <div class="telemetry-vital-target">{{ labels().vitals.longTasks.target }}</div>
+              <div class="telemetry-bar-rail">
+                <div class="telemetry-bar-fill telemetry-bar-fill--green" style="width: 5%"></div>
+              </div>
+              <p class="telemetry-vital-desc">{{ labels().vitals.longTasks.description }}</p>
+            </div>
+          </div>
+        </section>
+      }
+
+      @if (telemetry.activeTab() === 'events') {
+        <section class="telemetry-tab-pane">
+          <div class="telemetry-pane-intro">
+            <h3 class="telemetry-pane-title">{{ labels().events.title }}</h3>
+            <p class="telemetry-pane-desc">{{ labels().events.description }}</p>
+          </div>
+
+          <div class="telemetry-conversion-hero">
+            <div class="telemetry-conversion-stat">
+              <span class="telemetry-conversion-stat__label">{{ labels().events.totalConversions }}</span>
+              <span class="telemetry-conversion-stat__number">{{ totalConversions() }}</span>
+              <span class="telemetry-conversion-stat__sub">
+                CV Downloads: <strong>{{ telemetry.totalCvDownloads() }}</strong> · WhatsApp: <strong>{{ telemetry.whatsappClicks() }}</strong>
+              </span>
+            </div>
+
+            <div class="telemetry-distribution-card">
+              <h4 class="telemetry-distribution-title">{{ labels().events.distributionTitle }}</h4>
+              <div class="telemetry-stacked-bar">
+                <div
+                  class="telemetry-stacked-segment telemetry-stacked-segment--fs"
+                  [style.width.%]="fullstackPercent() || 33"
+                  [title]="'Full-Stack: ' + fullstackPercent() + '%'"
+                ></div>
+                <div
+                  class="telemetry-stacked-segment telemetry-stacked-segment--be"
+                  [style.width.%]="backendPercent() || 33"
+                  [title]="'Back-End: ' + backendPercent() + '%'"
+                ></div>
+                <div
+                  class="telemetry-stacked-segment telemetry-stacked-segment--fe"
+                  [style.width.%]="frontendPercent() || 34"
+                  [title]="'Front-End: ' + frontendPercent() + '%'"
+                ></div>
+              </div>
+
+              <div class="telemetry-stacked-legend">
+                <span class="legend-item legend-item--fs">● FS {{ fullstackPercent() }}%</span>
+                <span class="legend-item legend-item--be">● BE {{ backendPercent() }}%</span>
+                <span class="legend-item legend-item--fe">● FE {{ frontendPercent() }}%</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="telemetry-tracks-grid">
+            <div class="telemetry-track-card telemetry-track-card--fs">
+              <div class="telemetry-track-head">
+                <span class="telemetry-track-icon">💻</span>
+                <span class="telemetry-track-badge">FULL-STACK</span>
+              </div>
+              <div class="telemetry-track-count">
+                {{ telemetry.cvDownloadsByTrack().fullstack }}
+                <span class="telemetry-track-unit">downloads</span>
+              </div>
+              <div class="telemetry-track-name">{{ labels().events.trackFullstack }}</div>
+              <div class="telemetry-bar-rail">
+                <div
+                  class="telemetry-bar-fill telemetry-bar-fill--cyan"
+                  [style.width.%]="fullstackPercent()"
+                ></div>
+              </div>
+              <span class="telemetry-track-pct">{{ fullstackPercent() }}% of CV downloads</span>
+            </div>
+
+            <div class="telemetry-track-card telemetry-track-card--be">
+              <div class="telemetry-track-head">
+                <span class="telemetry-track-icon">⚙️</span>
+                <span class="telemetry-track-badge">BACK-END</span>
+              </div>
+              <div class="telemetry-track-count">
+                {{ telemetry.cvDownloadsByTrack().backend }}
+                <span class="telemetry-track-unit">downloads</span>
+              </div>
+              <div class="telemetry-track-name">{{ labels().events.trackBackend }}</div>
+              <div class="telemetry-bar-rail">
+                <div
+                  class="telemetry-bar-fill telemetry-bar-fill--green"
+                  [style.width.%]="backendPercent()"
+                ></div>
+              </div>
+              <span class="telemetry-track-pct">{{ backendPercent() }}% of CV downloads</span>
+            </div>
+
+            <div class="telemetry-track-card telemetry-track-card--fe">
+              <div class="telemetry-track-head">
+                <span class="telemetry-track-icon">🎨</span>
+                <span class="telemetry-track-badge">FRONT-END</span>
+              </div>
+              <div class="telemetry-track-count">
+                {{ telemetry.cvDownloadsByTrack().frontend }}
+                <span class="telemetry-track-unit">downloads</span>
+              </div>
+              <div class="telemetry-track-name">{{ labels().events.trackFrontend }}</div>
+              <div class="telemetry-bar-rail">
+                <div
+                  class="telemetry-bar-fill telemetry-bar-fill--purple"
+                  [style.width.%]="frontendPercent()"
+                ></div>
+              </div>
+              <span class="telemetry-track-pct">{{ frontendPercent() }}% of CV downloads</span>
+            </div>
+
+            <div class="telemetry-track-card telemetry-track-card--wa">
+              <div class="telemetry-track-head">
+                <span class="telemetry-track-icon">💬</span>
+                <span class="telemetry-track-badge">WHATSAPP</span>
+              </div>
+              <div class="telemetry-track-count">
+                {{ telemetry.whatsappClicks() }}
+                <span class="telemetry-track-unit">clicks</span>
+              </div>
+              <div class="telemetry-track-name">{{ labels().events.whatsappTitle }}</div>
+              <div class="telemetry-bar-rail">
+                <div
+                  class="telemetry-bar-fill telemetry-bar-fill--emerald"
+                  style="width: 100%"
+                ></div>
+              </div>
+              <span class="telemetry-track-pct">{{ labels().events.whatsappDesc }}</span>
+            </div>
+          </div>
+
+          <div class="telemetry-last-event-banner">
+            <span class="telemetry-last-event-label">{{ labels().events.lastEventCaptured }}</span>
+            <code class="telemetry-last-event-code">
+              {{ telemetry.lastEvent() ?? labels().events.noEventsYet }}
+            </code>
+          </div>
+        </section>
+      }
+
+      @if (telemetry.activeTab() === 'stream') {
+        <section class="telemetry-tab-pane">
+          <div class="telemetry-pane-intro">
+            <h3 class="telemetry-pane-title">{{ labels().stream.title }}</h3>
+            <p class="telemetry-pane-desc">{{ labels().stream.description }}</p>
+          </div>
+
+          <div class="telemetry-simulator-box">
+            <h4 class="telemetry-simulator-title">{{ labels().stream.simulatorTitle }}</h4>
+            <div class="telemetry-simulator-actions">
+              <button
+                type="button"
+                class="telemetry-sim-btn telemetry-sim-btn--cyan"
+                (click)="simulateEvent('cv_fullstack')"
+              >
+                {{ labels().stream.simulateFsBtn }}
+              </button>
+              <button
+                type="button"
+                class="telemetry-sim-btn telemetry-sim-btn--green"
+                (click)="simulateEvent('cv_backend')"
+              >
+                {{ labels().stream.simulateBeBtn }}
+              </button>
+              <button
+                type="button"
+                class="telemetry-sim-btn telemetry-sim-btn--purple"
+                (click)="simulateEvent('cv_frontend')"
+              >
+                {{ labels().stream.simulateFeBtn }}
+              </button>
+              <button
+                type="button"
+                class="telemetry-sim-btn telemetry-sim-btn--emerald"
+                (click)="simulateEvent('whatsapp')"
+              >
+                {{ labels().stream.simulateWaBtn }}
+              </button>
+            </div>
+          </div>
+
+          <div class="telemetry-terminal">
+            <div class="telemetry-terminal-header">
+              <div class="telemetry-terminal-dots">
+                <span class="dot dot--red"></span>
+                <span class="dot dot--yellow"></span>
+                <span class="dot dot--green"></span>
+              </div>
+              <span class="telemetry-terminal-title">{{ labels().stream.terminalTitle }}</span>
+              <span class="telemetry-terminal-count">{{ telemetry.recentEvents().length }} items</span>
+            </div>
+
+            <div class="telemetry-terminal-body">
+              @if (telemetry.recentEvents().length === 0) {
+                <div class="telemetry-terminal-empty">
+                  {{ labels().stream.emptyLogs }}
+                </div>
+              } @else {
+                @for (item of telemetry.recentEvents(); track item.id) {
+                  <div class="telemetry-log-row">
+                    <span class="log-time">[{{ item.timestamp }}]</span>
+                    <span class="log-cat log-cat--{{ item.category }}">{{ item.category | uppercase }}</span>
+                    <span class="log-event">{{ item.event }}</span>
+                    <span class="log-label">{{ item.label }}</span>
+                  </div>
+                }
+              }
+            </div>
+          </div>
+
+          <div class="telemetry-stream-footer">
+            <div class="telemetry-stream-actions">
+              <button
+                type="button"
+                class="telemetry-footer-btn telemetry-footer-btn--copy"
+                (click)="copyDiagnostics()"
+              >
+                {{ copied() ? labels().stream.copiedJsonBtn : labels().stream.copyJsonBtn }}
+              </button>
+              <button
+                type="button"
+                class="telemetry-footer-btn telemetry-footer-btn--reset"
+                (click)="resetSession()"
+              >
+                {{ labels().stream.resetBtn }}
+              </button>
+            </div>
+
+            @if (resetNotice()) {
+              <div class="telemetry-reset-notice">
+                ✓ {{ labels().stream.resetSuccess }}
+              </div>
+            }
+          </div>
+        </section>
+      }
+    </div>
+  </div>
+</div>
+

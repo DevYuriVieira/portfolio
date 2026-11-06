@@ -126,4 +126,8 @@ export class FooterComponent {
   closeAdrModal(): void {
     this.isAdrModalOpen.set(false);
   }
+
+  openTelemetryModal(tab: 'overview' | 'vitals' | 'events' | 'stream' = 'overview'): void {
+    this.telemetry.openModal(tab);
+  }
 }

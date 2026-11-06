@@ -70,4 +70,18 @@ describe('FooterComponent', () => {
     fixture.detectChanges();
     expect(component.isAdrModalOpen()).toBe(false);
   });
+
+  it('should open telemetry modal when clicking RUM or EVENTS pill', () => {
+    const openSpy = vi.spyOn(component.telemetry, 'openModal');
+
+    const compiled = fixture.nativeElement as HTMLElement;
+    const rumBtn = compiled.querySelector('.footer__rum-pill') as HTMLButtonElement;
+    const eventsBtn = compiled.querySelector('.footer__analytics-pill') as HTMLButtonElement;
+
+    rumBtn.click();
+    expect(openSpy).toHaveBeenCalledWith('vitals');
+
+    eventsBtn.click();
+    expect(openSpy).toHaveBeenCalledWith('events');
+  });
 });

@@ -11,6 +11,15 @@ import {
 export type WebVitalsRating = 'optimal' | 'good' | 'degraded';
 export type CvTrackEvent = 'fullstack' | 'backend' | 'frontend';
 export type WhatsAppSourceEvent = 'hero' | 'contact' | 'header';
+export type TelemetryTab = 'overview' | 'vitals' | 'events' | 'stream';
+
+export interface TelemetryLogEntry {
+  readonly id: string;
+  readonly timestamp: string;
+  readonly event: string;
+  readonly label: string;
+  readonly category: 'cv' | 'whatsapp' | 'system' | 'vitals';
+}
 
 export interface ConversionSnapshot {
   readonly cvDownloads: Record<CvTrackEvent, number>;
@@ -60,6 +69,11 @@ export class TelemetryService {
   });
   readonly whatsappClicks = signal<number>(0);
   readonly lastEvent = signal<string | null>(null);
+
+  readonly isModalOpen = signal<boolean>(false);
+  readonly activeTab = signal<TelemetryTab>('overview');
+  readonly recentEvents = signal<TelemetryLogEntry[]>([]);
+  readonly sessionStartTime = typeof Date !== 'undefined' ? Date.now() : 0;
 
   readonly totalCvDownloads = computed<number>(() => {
     const counts = this.cvDownloadsByTrack();
@@ -116,10 +130,25 @@ export class TelemetryService {
     this.initNavigationTiming();
     this.initPerformanceObservers();
     this.sampleMemory();
+    this.appendLogEntry('system', 'init:perf_observers', 'Performance observers initialized');
 
     this.destroyRef.onDestroy(() => {
       this.disconnectObservers();
     });
+  }
+
+  openModal(tab: TelemetryTab = 'overview'): void {
+    this.activeTab.set(tab);
+    this.isModalOpen.set(true);
+    this.sampleMemory();
+  }
+
+  closeModal(): void {
+    this.isModalOpen.set(false);
+  }
+
+  setTab(tab: TelemetryTab): void {
+    this.activeTab.set(tab);
   }
 
   trackCvDownload(track: CvTrackEvent, lang: string): void {
@@ -129,6 +158,7 @@ export class TelemetryService {
     }));
     const eventLabel = `cv_download:${track}:${lang}`;
     this.lastEvent.set(eventLabel);
+    this.appendLogEntry('cv', eventLabel, `CV Downloaded (${track.toUpperCase()}) [${lang}]`);
     this.persistAnalyticsToStorage();
     this.dispatchExternalAnalytics('cv_download', { track, lang });
   }
@@ -137,8 +167,77 @@ export class TelemetryService {
     this.whatsappClicks.update((prev) => prev + 1);
     const eventLabel = `whatsapp_click:${source}:${lang}`;
     this.lastEvent.set(eventLabel);
+    this.appendLogEntry('whatsapp', eventLabel, `WhatsApp CTA Clicked (${source}) [${lang}]`);
     this.persistAnalyticsToStorage();
     this.dispatchExternalAnalytics('whatsapp_click', { source, lang });
+  }
+
+  simulateEvent(type: 'cv_fullstack' | 'cv_backend' | 'cv_frontend' | 'whatsapp'): void {
+    switch (type) {
+      case 'cv_fullstack':
+        this.trackCvDownload('fullstack', 'simulated');
+        break;
+      case 'cv_backend':
+        this.trackCvDownload('backend', 'simulated');
+        break;
+      case 'cv_frontend':
+        this.trackCvDownload('frontend', 'simulated');
+        break;
+      case 'whatsapp':
+        this.trackWhatsAppClick('hero', 'simulated');
+        break;
+    }
+  }
+
+  resetSession(): void {
+    this.cvDownloadsByTrack.set({ fullstack: 0, backend: 0, frontend: 0 });
+    this.whatsappClicks.set(0);
+    this.lastEvent.set(null);
+    this.recentEvents.set([]);
+    this.appendLogEntry('system', 'session:reset', 'Session counters reset by user');
+    try {
+      if (typeof localStorage !== 'undefined') {
+        localStorage.removeItem(ANALYTICS_STORAGE_KEY);
+      }
+    } catch {}
+  }
+
+  exportSnapshotJson(): string {
+    const payload = {
+      timestamp: new Date().toISOString(),
+      uptimeSeconds: Math.round((Date.now() - this.sessionStartTime) / 1000),
+      rating: this.rating(),
+      webVitals: {
+        lcpMs: this.lcp(),
+        cls: this.cls(),
+        inpMs: this.inp(),
+        ttfbMs: this.ttfb(),
+        longTasks: this.longTasks(),
+        memoryHeapMb: this.memoryMb(),
+      },
+      conversions: {
+        totalCvDownloads: this.totalCvDownloads(),
+        byTrack: this.cvDownloadsByTrack(),
+        whatsappClicks: this.whatsappClicks(),
+        lastEvent: this.lastEvent(),
+      },
+      eventsLoggedCount: this.recentEvents().length,
+    };
+    return JSON.stringify(payload, null, 2);
+  }
+
+  private appendLogEntry(category: 'cv' | 'whatsapp' | 'system' | 'vitals', event: string, label: string): void {
+    const now = new Date();
+    const timeStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
+    const id = `${Date.now()}-${Math.random().toString(36).slice(2, 6)}`;
+    const entry: TelemetryLogEntry = {
+      id,
+      timestamp: timeStr,
+      event,
+      label,
+      category,
+    };
+    this.recentEvents.update((list) => [entry, ...list.slice(0, 24)]);
   }
 
   private restoreAnalyticsFromStorage(): void {
@@ -289,7 +388,7 @@ export class TelemetryService {
     } catch {}
   }
 
-  private sampleMemory(): void {
+  sampleMemory(): void {
     const perf = performance as Performance & {
       memory?: {
         usedJSHeapSize: number;
