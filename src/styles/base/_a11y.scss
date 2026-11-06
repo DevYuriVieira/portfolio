@@ -81,6 +81,14 @@ html.a11y-pause-animations {
   }
 }
 
+#vlibras-access-wrapper {
+  z-index: 2147483639;
+}
+
+#vlibras-app-root {
+  z-index: 2147483640;
+}
+
 #vlibras-access-wrapper,
 #vlibras-app-root,
 [vw],

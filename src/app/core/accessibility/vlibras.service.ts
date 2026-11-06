@@ -1,10 +1,17 @@
-import { Injectable, PLATFORM_ID, inject, signal } from '@angular/core';
+import { DestroyRef, Injectable, PLATFORM_ID, inject, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
 declare global {
   interface Window {
     VLibras?: {
-      Widget: new (url: string) => unknown;
+      Widget: new (options?: string | { rootPath?: string; avatar?: string; position?: string }) => unknown;
+    };
+    VLibrasWidget?: {
+      path?: string;
+      open?: () => void;
+      close?: () => void;
+      initBtn?: HTMLElement;
+      access?: HTMLElement;
     };
   }
 }
@@ -17,10 +24,19 @@ const VLIBRAS_APP_URL = 'https://vlibras.gov.br/app';
 })
 export class VlibrasService {
   private readonly platformId = inject(PLATFORM_ID);
+  private readonly destroyRef = inject(DestroyRef);
+
+  private appRootObserver: MutationObserver | null = null;
 
   readonly isLoaded = signal<boolean>(false);
   readonly isLoading = signal<boolean>(false);
   readonly isActive = signal<boolean>(false);
+
+  constructor() {
+    this.destroyRef.onDestroy(() => {
+      this.appRootObserver?.disconnect();
+    });
+  }
 
   toggle(): void {
     if (!isPlatformBrowser(this.platformId)) {
@@ -35,15 +51,16 @@ export class VlibrasService {
     if (this.isActive()) {
       this.deactivate();
     } else {
-      this.activate();
+      this.activate(true);
     }
   }
 
-  activate(): void {
+  activate(openWidget = true): void {
     if (!isPlatformBrowser(this.platformId)) return;
 
     document.documentElement.setAttribute('data-vlibras-active', 'true');
 
+    // 1. Reexibir wrapper do botão de acesso (v7 Shadow DOM) e limpar estilos inline
     const accessWrapper = document.getElementById('vlibras-access-wrapper');
     if (accessWrapper) {
       accessWrapper.style.removeProperty('display');
@@ -53,8 +70,19 @@ export class VlibrasService {
       accessWrapper.style.removeProperty('transform');
     }
 
+    // 2. Reexibir app root do avatar VLibras (v7) e restaurar visibilidade
+    const appRoot = document.getElementById('vlibras-app-root');
+    if (appRoot) {
+      appRoot.style.removeProperty('display');
+      appRoot.style.removeProperty('visibility');
+      appRoot.style.removeProperty('opacity');
+      appRoot.style.removeProperty('pointer-events');
+      this.observeAppRoot(appRoot);
+    }
+
+    // 3. Limpar inline styles em elementos legados (v6)
     const legacyElements = document.querySelectorAll<HTMLElement>(
-      '[vw], [vw-access-button]'
+      '[vw], [vw-access-button], [vw-plugin-wrapper], .vw-plugin-top-wrapper, .vp-box'
     );
     legacyElements.forEach((el) => {
       el.style.removeProperty('display');
@@ -64,9 +92,9 @@ export class VlibrasService {
       el.style.removeProperty('transform');
     });
 
-    const appRoot = document.getElementById('vlibras-app-root');
-    if (appRoot) {
-      appRoot.dataset['active'] = 'false';
+    // 4. Abrir o widget do VLibras (avatar) para que o usuário veja a tradução ativa
+    if (openWidget) {
+      this.openWidgetUi();
     }
 
     this.isActive.set(true);
@@ -77,41 +105,80 @@ export class VlibrasService {
 
     document.documentElement.setAttribute('data-vlibras-active', 'false');
 
-    const accessWrapper = document.getElementById('vlibras-access-wrapper');
-    if (accessWrapper) {
-      accessWrapper.style.setProperty('display', 'none', 'important');
-      accessWrapper.style.setProperty('visibility', 'hidden', 'important');
-      accessWrapper.style.setProperty('opacity', '0', 'important');
-      accessWrapper.style.setProperty('pointer-events', 'none', 'important');
-    }
-
+    // 1. Fechar avatar no app root moderno (v7)
     const appRoot = document.getElementById('vlibras-app-root');
     if (appRoot) {
-      appRoot.style.setProperty('display', 'none', 'important');
-      appRoot.style.setProperty('visibility', 'hidden', 'important');
       appRoot.dataset['active'] = 'false';
     }
 
+    // 2. Fechar widget legado caso o botão de fechar exista (v6)
     const legacyCloseBtn = document.querySelector<HTMLElement>(
       '[vw] [vw-close], [vw] .vp-close, .vp-box .vp-close, .vw-btn-close'
     );
     legacyCloseBtn?.click();
 
-    const legacyElements = document.querySelectorAll<HTMLElement>(
-      '[vw], [vw-access-button], [vw-plugin-wrapper], .vw-plugin-top-wrapper, .vp-box, .vw-links, [class*="vw-"], [class*="vp-"]'
-    );
-    legacyElements.forEach((el) => {
-      el.style.setProperty('display', 'none', 'important');
-      el.style.setProperty('visibility', 'hidden', 'important');
-      el.style.setProperty('opacity', '0', 'important');
-      el.style.setProperty('pointer-events', 'none', 'important');
-    });
-
+    // 3. Limpar storage interno do plugin para não reabrir sozinho no reload
     try {
       localStorage.removeItem('@vlibras-widget');
     } catch {}
 
     this.isActive.set(false);
+  }
+
+  private openWidgetUi(): void {
+    if (window.VLibrasWidget?.open) {
+      window.VLibrasWidget.open();
+      this.ensureAppRootObserved();
+      return;
+    }
+
+    const appRoot = document.getElementById('vlibras-app-root');
+    if (appRoot) {
+      appRoot.dataset['active'] = 'true';
+      this.observeAppRoot(appRoot);
+      return;
+    }
+
+    // Aguardar renderização inicial do script caso acabe de ser carregado
+    setTimeout(() => {
+      if (window.VLibrasWidget?.open) {
+        window.VLibrasWidget.open();
+      } else {
+        const shadowBtn = document
+          .getElementById('vlibras-access-wrapper')
+          ?.shadowRoot?.getElementById('vlibras-button');
+        shadowBtn?.click();
+      }
+      this.ensureAppRootObserved();
+    }, 150);
+  }
+
+  private ensureAppRootObserved(): void {
+    const appRoot = document.getElementById('vlibras-app-root');
+    if (appRoot) {
+      this.observeAppRoot(appRoot);
+    } else {
+      setTimeout(() => {
+        const root = document.getElementById('vlibras-app-root');
+        if (root) this.observeAppRoot(root);
+      }, 500);
+    }
+  }
+
+  private observeAppRoot(appRoot: HTMLElement): void {
+    if (this.appRootObserver || typeof MutationObserver === 'undefined') return;
+
+    this.appRootObserver = new MutationObserver((mutations) => {
+      for (const mutation of mutations) {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'data-active') {
+          const isActive = appRoot.dataset['active'] === 'true';
+          this.isActive.set(isActive);
+          document.documentElement.setAttribute('data-vlibras-active', isActive ? 'true' : 'false');
+        }
+      }
+    });
+
+    this.appRootObserver.observe(appRoot, { attributes: true, attributeFilter: ['data-active'] });
   }
 
   private loadPlugin(): void {
@@ -136,12 +203,13 @@ export class VlibrasService {
         new window.VLibras.Widget(VLIBRAS_APP_URL);
         this.isLoaded.set(true);
         this.isLoading.set(false);
-        this.activate();
+        this.activate(true);
       }
     };
 
     script.onerror = () => {
       this.isLoading.set(false);
+      this.isLoaded.set(false);
     };
 
     document.body.appendChild(script);
