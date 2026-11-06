@@ -7,17 +7,17 @@
 ![Three.js](https://img.shields.io/badge/Three.js-0.185-000000?style=for-the-badge&logo=three.js&logoColor=white)
 ![A11y](https://img.shields.io/badge/A11y-WCAG_AAA-00E5FF?style=for-the-badge&logo=w3c&logoColor=black)
 ![SCSS](https://img.shields.io/badge/SCSS-Design_System-CC6699?style=for-the-badge&logo=sass&logoColor=white)
-![Tests](https://img.shields.io/badge/Tests-195_Passed-10B981?style=for-the-badge&logo=vitest&logoColor=white)
-![Vitest](https://img.shields.io/badge/Vitest-140_Unit_Specs-6E9F18?style=for-the-badge&logo=vitest&logoColor=white)
+![Tests](https://img.shields.io/badge/Tests-198_Passed-10B981?style=for-the-badge&logo=vitest&logoColor=white)
+![Vitest](https://img.shields.io/badge/Vitest-143_Unit_Specs-6E9F18?style=for-the-badge&logo=vitest&logoColor=white)
 ![Playwright](https://img.shields.io/badge/Playwright-1.62-2EAD33?style=for-the-badge&logo=playwright&logoColor=white)
 ![Cypress](https://img.shields.io/badge/Cypress-15.20-17202C?style=for-the-badge&logo=cypress&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-Deployed-000000?style=for-the-badge&logo=vercel&logoColor=white)
 
-**PT-BR:** Aplicação web frontend desenvolvida em Angular 22 com Signals, gráficos interativos Three.js (WebGL), Registros de Decisão de Arquitetura (ADRs), telemetria RUM nativa, motor avançado de acessibilidade (WCAG AAA & VLibras), suporte trilíngue (i18n - PT-BR, EN, ES), SEO dinâmico e suíte tripla de testes automatizados (195 testes).  
-*Slogan: Design system proprietário, acessibilidade universal com VLibras, arquitetura documentada com ADRs, telemetria em tempo real e suíte de testes ponta a ponta.*
+**PT-BR:** Aplicação web frontend desenvolvida em Angular 22 com Signals, gráficos interativos Three.js (WebGL), Registros de Decisão de Arquitetura (ADRs), telemetria RUM nativa, motor avançado de acessibilidade (WCAG 2.2 AAA & VLibras com 21 ferramentas assistivas), suporte trilíngue (i18n - PT-BR, EN, ES), SEO dinâmico e suíte tripla de testes automatizados (198 testes).  
+*Slogan: Design system proprietário, acessibilidade universal com VLibras e 21 recursos assistivos, arquitetura documentada com ADRs, telemetria em tempo real e suíte de testes ponta a ponta.*
 
-**EN:** Frontend web application built with Angular 22 Signals, Three.js (WebGL) interactive visuals, Architectural Decision Records (ADRs), native browser RUM telemetry, universal accessibility engine (WCAG AAA & VLibras), dynamic tri-lingual i18n (PT-BR, EN, ES), SEO engine, and a triple automated testing suite (195 tests).  
-*Slogan: Custom design system, universal accessibility with VLibras, documented architecture with ADRs, real-time telemetry, and end-to-end testing pipeline.*
+**EN:** Frontend web application built with Angular 22 Signals, Three.js (WebGL) interactive visuals, Architectural Decision Records (ADRs), native browser RUM telemetry, universal accessibility engine (WCAG 2.2 AAA & VLibras with 21 assistive features), dynamic tri-lingual i18n (PT-BR, EN, ES), SEO engine, and a triple automated testing suite (198 tests).  
+*Slogan: Custom design system, universal accessibility with VLibras and 21 assistive features, documented architecture with ADRs, real-time telemetry, and end-to-end testing pipeline.*
 
 ---
 
@@ -75,9 +75,9 @@ The **Yuri Vieira Portfolio** is a single-page frontend application built with *
 Key Engineering Highlights:
 1. **Modern Angular Architecture**: Uses Angular Standalone Components, native Signals (`signal`, `computed`), and `ChangeDetectionStrategy.OnPush` across all views for low memory footprint and fast rendering.
 2. **GPU Visual FX**: Interactive 3D particle visuals powered by **Three.js** (`NeuralCanvasComponent` and `HeroParticlesVisual`), including raycasting mouse displacement, floating glassmorphic zoom controls (`+`, `-`, `Reset`, `Focus`), and automatic responsive fallbacks on mobile screens (<768px).
-3. **Universal Accessibility (WCAG AAA & VLibras)**: Built-in assistive features drawer with font scaling (+15%, +30%), dyslexia-friendly typography (OpenDyslexic), text/line spacing, high contrast (WCAG AAA), monochrome mode, animation pausing, interactive cursor reading guide, and on-demand official Brazilian Sign Language (**VLibras**) with zero CLS and isolated Shadow DOM lifecycle management.
+3. **Universal Accessibility (WCAG 2.2 AAA & VLibras)**: Built-in assistive features drawer with 21 assistive tools across 5 domains: Text-to-Speech (TTS), on-demand Brazilian Sign Language (VLibras v7), font scaling (+15%, +30%), dyslexia typography (OpenDyslexic), line height (2.2x), text spacing, left-alignment, bionic reading, high contrast (WCAG AAA), monochrome mode, color inversion, low saturation, media hiding, SVG colorblind filters (Protanopia, Deuteranopia, Tritanopia), animation pausing, cursor reading guide, large cursor (36px), link highlighting, and heading highlighting.
 4. **16 Detailed Engineering Case Studies**: Highlights real-world projects, architecture trade-offs, technical decisions, FleetOps API (.NET 10 / C# 14 / PostgreSQL 18 / RabbitMQ / 300 tests) reference study modal, and a dedicated ZEISS NDA confidential project card with lock badge 🔒.
-5. **Triple-Layer QA Architecture**: 195 automated tests (100% pass rate) combining unit tests (**Vitest** - 140 specs across 26 test files), multi-browser/mobile E2E and WCAG 2.1 AA accessibility tests (**Playwright + Axe-Core** - 38 specs), and user journey E2E verification (**Cypress** - 17 specs).
+5. **Triple-Layer QA Architecture**: 198 automated tests (100% pass rate) combining unit tests (**Vitest** - 143 specs across 28 test files), multi-browser/mobile E2E and WCAG 2.1 AA accessibility tests (**Playwright + Axe-Core** - 38 specs), and user journey E2E verification (**Cypress** - 17 specs).
 6. **Architectural Decision Records (ADRs) & Native RUM Telemetry**: 5 formal engineering records (ADR-001 through ADR-005) in English detailing architecture invariants, paired with a zero-dependency browser-native Real User Monitoring service (`PerformanceObserver` tracking Core Web Vitals) and enterprise HTTP security hardening (`vercel.json`).
 
 ---
@@ -112,32 +112,45 @@ Key Engineering Highlights:
 - **One-Click Clipboard Copying**: Asynchronous `navigator.clipboard` integration with instant visual state feedback (*"Copied!"* / *"Copiado!"*).
 - **Direct Mail Composer**: Quick action links delegating to Gmail composer and system `mailto:`.
 
-### 7. Universal Accessibility Engine & Assistive Tools (WCAG AAA & VLibras)
+### 7. Universal Accessibility Engine & Assistive Tools (WCAG 2.2 AAA & VLibras)
 - **Expandable Glassmorphic Floating Action Button (FAB)**: Discrete circular button in the bottom-right corner (`z-index: 9990`); smoothly expands on hover and keyboard `:focus-visible` to reveal the *"Assistive Features"* label.
-- **Categorized Modal Drawer Dialog**: Fully accessible dialog (`role="dialog"`, `aria-modal="true"`, ESC key dismissal, click-outside backdrop) organizing 9 assistive tools into 4 semantic domains:
-  - **Inclusion & Sign Language**: Official **VLibras** (Brazilian Sign Language) translation widget lazy-loaded on-demand (~70 KB initial bundle untouched). Non-intrusive activation displaying only the floating access button without auto-opening popups, with complete lifecycle isolation handling modern VLibras v7 Shadow DOM nodes (`#vlibras-access-wrapper`, `#vlibras-app-root`).
-  - **Typography Controls**: Font scaling cycle (+15% / +30%), dyslexia-friendly typography (**OpenDyslexic**), and expanded line/letter/word spacing.
-  - **Contrast & Visuals**: High contrast mode (**WCAG AAA** yellow-on-black / cyan accent palette), Monochrome mode, and high-visibility link underline highlighting.
-  - **Focus & Navigation**: Animation pausing (`prefers-reduced-motion` override), and interactive reading guide focus ruler tracking cursor movement via hardware-accelerated `requestAnimationFrame`.
-- **Reactive State & Persistence**: Signal-driven reactive architecture (`AccessibilityService`) synchronizing root HTML attributes and persisting user preferences in `localStorage`.
+- **Categorized Modal Drawer Dialog**: Fully accessible dialog (`role="dialog"`, `aria-modal="true"`, ESC key dismissal, click-outside backdrop) organizing 21 assistive tools into 5 semantic domains:
+  - **Inclusion & Speech**: Official **VLibras** (Brazilian Sign Language v7) translation widget lazy-loaded on-demand with jsdelivr fallback and bidirectional close synchronization, paired with native browser **Text-to-Speech (TTS)** (`Web Speech API`) reading any clicked element or paragraph aloud across PT-BR, EN, and ES.
+  - **Typography Controls**: Font scaling cycle (+15% / +30%), dyslexia-friendly typography (**OpenDyslexic**), expanded letter/word spacing, line height spacing (2.2x), left-aligned text enforcement, and dynamic **Bionic Reading** bolding initial letters for neurodivergent and ADHD reading retention.
+  - **Contrast & Colors**: High contrast mode (**WCAG AAA** yellow-on-black / cyan accent palette), Monochrome mode, color inversion (preserving media for photophobia), low saturation visual comfort (reducing glare and brightness), and text-only mode hiding background visuals and Three.js canvas.
+  - **Color Blindness Filters**: GPU-accelerated SVG matrix filters compensating for **Protanopia** (red-blindness), **Deuteranopia** (green-blindness), and **Tritanopia** (blue-blindness).
+  - **Focus & Navigation**: Animation pausing (`prefers-reduced-motion` override), interactive reading guide focus ruler tracking cursor movement via hardware-accelerated `requestAnimationFrame`, high-visibility 36px custom cursor, link underline highlighting, and dashed heading structure highlights.
+- **Reactive State & Persistence**: Signal-driven reactive architecture (`AccessibilityService`) synchronizing root HTML attributes and classes, persisting all 21 user preferences in `localStorage`.
 - **Tri-Lingual Localization**: Declarative i18n configurations delivering localized labels across Portuguese, English, and Spanish.
 
 #### ♿ Assistive Features & WCAG Compliance Matrix
 
-| Feature | Technical Implementation | Target Audience / Accessibility Goal | WCAG 2.1 Criteria |
+| Feature | Technical Implementation | Target Audience / Accessibility Goal | WCAG 2.2 Criteria |
 | :--- | :--- | :--- | :--- |
-| **Tradutor de Libras (VLibras)** | On-demand script injection (`vlibras-plugin.js`), v7 Shadow DOM isolation (`#vlibras-access-wrapper`), non-intrusive activation | Deaf and hard-of-hearing Brazilian Sign Language (Libras) users | **1.2.6 Sign Language** |
+| **Tradutor de Libras (VLibras)** | On-demand script injection with jsdelivr fallback and v7 Shadow DOM lifecycle synchronization | Deaf and hard-of-hearing Brazilian Sign Language (Libras) users | **1.2.6 Sign Language** |
+| **Leitura em Voz Alta (TTS)** | Native `window.speechSynthesis` screen reader reading clicked text in active language | Low vision, auditory learners, literacy challenges | **1.3.1 Info & Relationships & 1.2.1 Audio-only** |
 | **Tamanho da Fonte (Font Scaling)** | Root `data-a11y-font` modifier scaling typography (+15% / +30%) without breaking layout integrity | Low-vision users, presbyopia, and elderly visitors | **1.4.4 Resize Text (Level AA)** |
 | **Fonte Legível (Dyslexic Font)** | `@font-face` injection of **OpenDyslexic** with weighted gravity bottoms to prevent letter inversion | Dyslexia, reading fatigue, and visual processing disorders | **W3C COGA Cognitive A11y** |
-| **Espaçamento entre Linhas (Spacing)** | Line height (1.85), letter spacing (0.08em), and word spacing (0.14em) overrides | Dyslexia, cognitive tracking, and reading speed retention | **1.4.12 Text Spacing (Level AA)** |
+| **Espaçamento de Texto (Spacing)** | Letter spacing (0.08em) and word spacing (0.14em) overrides | Dyslexia, cognitive tracking, and reading speed retention | **1.4.12 Text Spacing (Level AA)** |
+| **Espaçamento de Linhas (Line Height)** | Line height (2.2) override preventing accidental line-skipping | Dyslexia, low vision, and visual tracking retention | **1.4.12 Text Spacing (Level AA)** |
+| **Alinhar à Esquerda (Align Left)** | Universal `text-align: left !important` removing justified text gaps | Cognitive processing, dyslexia, tracking stability | **1.4.8 Visual Presentation (Level AAA)** |
+| **Leitura Biônica (Bionic Reading)** | Selective bolding of the first 45% of word characters to guide visual eye fixations | ADHD, cognitive tracking, reading acceleration | **Cognitive Assistive Technology** |
 | **Alto Contraste (High Contrast)** | WCAG AAA black/pure yellow (`#ffff00`) palette with cyan accents (`#00e5ff`) | Severe visual impairment, cataracts, and outdoor glare | **1.4.6 Contrast Enhanced (Level AAA)** |
 | **Monocromático (Monochrome)** | GPU-accelerated CSS `filter: grayscale(100%)` | Photophobia, sensory overload, ADHD distraction reduction | **Visual Comfort & Focus** |
-| **Destacar Links (Highlight Links)** | High-contrast `#ffff00` 3px underline with 5px offset on all anchor tags | Color-blind users unable to distinguish color-only links | **1.4.1 Use of Color (Level A)** |
+| **Inversão de Cores (Invert Colors)** | CSS `filter: invert(100%) hue-rotate(180deg)` with media protection | Photophobia, night reading, severe glare sensitivity | **Visual Presentation (Level AAA)** |
+| **Baixa Saturação (Low Saturation)** | CSS `filter: saturate(35%) brightness(92%)` reducing harsh color stimulus | Sensory overload, autism spectrum, light sensitivity | **Visual Ergonomics** |
+| **Ocultar Mídias (Hide Media)** | Complete opacity suppression (0.04) of Three.js canvas, videos, and decorative images | Sensory overload, pure text focus, cognitive clarity | **1.4.5 Images of Text & Focus** |
+| **Protanopia Filter** | Hardware-accelerated SVG ColorMatrix filter compensating red-weak color spectrum | Red-weak color blindness (Protanopia / Protanomaly) | **1.4.1 Use of Color (Level A)** |
+| **Deuteranopia Filter** | Hardware-accelerated SVG ColorMatrix filter compensating green-weak color spectrum | Green-weak color blindness (Deuteranopia) | **1.4.1 Use of Color (Level A)** |
+| **Tritanopia Filter** | Hardware-accelerated SVG ColorMatrix filter compensating blue-weak color spectrum | Blue-weak color blindness (Tritanopia / Tritanomaly) | **1.4.1 Use of Color (Level A)** |
 | **Pausar Animações (Pause Motion)** | Complete animation override (`animation-duration: 0.001ms`), stops WebGL particles | Vestibular dysfunction, motion-triggered nausea, ADHD | **2.2.2 Pause, Stop, Hide & 2.3.3 (Level AAA)** |
 | **Guia de Leitura (Reading Guide)** | Interactive focus ruler following cursor Y position via `requestAnimationFrame` | Visual tracking difficulties, dyslexia, line-skipping | **Cognitive Assistive Aid** |
+| **Cursor Ampliado (Large Cursor)** | High-contrast 36px custom SVG pointer cursor | Motor impairments, low vision, pointer tracking | **2.4.7 Focus Visible & Motor A11y** |
+| **Destacar Links (Highlight Links)** | High-contrast `#ffff00` 3px underline with 5px offset on all anchor tags | Color-blind users unable to distinguish color-only links | **1.4.1 Use of Color (Level A)** |
+| **Destacar Títulos (Highlight Headings)** | High-contrast cyan dashed outline (`outline: 2px dashed #00e5ff`) on all H1-H6 tags | Screen scanning, reading comprehension, cognitive navigation | **2.4.6 Headings & Labels** |
 
 ### 8. Triple Testing Pipeline (Vitest + Playwright + Cypress)
-- **Unit & Integration Testing (Vitest)**: 140 automated tests across 26 test suites validating components, directives, and services with 100% pass rate.
+- **Unit & Integration Testing (Vitest)**: 143 automated tests across 28 test suites validating components, directives, and services with 100% pass rate.
 - **End-to-End & WCAG 2.1 AA Accessibility Testing (Playwright + Axe-Core)**: 38 E2E specs running concurrently across **Desktop Chromium** and **Mobile Pixel 7** viewports, including automated zero-violation WCAG 2.1 Level A & AA accessibility audits across all 3 languages.
 - **End-to-End User Journey Verification (Cypress)**: 17 E2E specs validating user journeys in the headless Cypress Test Runner.
 
@@ -185,7 +198,7 @@ flowchart TD
     A11y --> VLibras["VLibras Official Service & SDK"]
     
     subgraph "QA & Test Execution Pipeline"
-        K1["Vitest (140 Unit Specs)"]
+        K1["Vitest (143 Unit Specs across 28 Suites)"]
         K2["Playwright (38 E2E Specs - Desktop & Mobile)"]
         K3["Cypress (17 E2E Specs)"]
     end
@@ -199,12 +212,12 @@ flowchart TD
 | :--- | :--- | :--- |
 | **Core Framework** | Angular `^22.1.0` | Standalone UI architecture, Signals, and OnPush change detection |
 | **Language** | TypeScript `~6.0.2` | Static typing, interfaces, and strict domain models |
-| **Accessibility Engine** | Custom + VLibras | WCAG AAA contrast, OpenDyslexic, text spacing, reading guide, and sign language |
+| **Accessibility Engine** | Custom + VLibras | WCAG 2.2 AAA with 21 assistive tools, TTS, colorblind filters, and VLibras |
 | **3D Engine & Shaders** | Three.js `^0.185.1` | GPU particle shader visual system and raycasting |
 | **Design System** | SCSS / SASS | Custom CSS variables, glassmorphism, and responsive mixins (No UI Libraries) |
 | **Telemetry & RUM** | Browser Native | Native `PerformanceObserver` tracking Core Web Vitals (LCP, CLS, INP, TTFB) |
 | **Security Hardening** | Enterprise Headers | Strict CSP Level 3, HSTS Preload, Permissions-Policy, X-Frame-Options |
-| **Unit Testing** | Vitest `^4.0.8` | Component and unit test execution engine (140 unit specs, 100% pass rate) |
+| **Unit Testing** | Vitest `^4.0.8` | Component and unit test execution engine (143 unit specs, 100% pass rate) |
 | **E2E Testing (Multi-Browser)**| Playwright `^1.62.1` | Concurrency testing across Desktop Chrome and Mobile Pixel 7 |
 | **E2E Testing (Visual Runner)** | Cypress `^15.20.0` | Interactive E2E assertions and visual runner |
 | **Code Formatter** | Prettier `^3.8.1` | Automated code formatting and style consistency |
@@ -413,9 +426,9 @@ O **Portfólio de Yuri Vieira** é uma aplicação web frontend desenvolvida em 
 Destaques de Engenharia:
 1. **Arquitetura Angular Moderna**: Componentes Standalone, Signals nativos (`signal`, `computed`) e `ChangeDetectionStrategy.OnPush` em todas as visões para alta velocidade de renderização e baixo uso de memória.
 2. **Efeitos Visuais Acelerados por GPU**: Shaders de partículas WebGL 3D em **Three.js** (`NeuralCanvasComponent` e `HeroParticlesVisual`), com interatividade por cursor, barra flutuante de zoom (`+`, `-`, `Reset`, `Foco`) e fallback automático para telas móveis (<768px).
-3. **Acessibilidade Universal (WCAG AAA & VLibras)**: Gaveta modal assistiva nativa com controle de tamanho de fonte (+15%, +30%), tipografia para dislexia (OpenDyslexic), espaçamento de texto/linhas, alto contraste (WCAG AAA), modo monocromático, pausa de animações, guia de leitura com foco no cursor e tradução oficial para a Língua Brasileira de Sinais (**VLibras**) com lazy loading sob demanda e isolamento de Shadow DOM.
+3. **Acessibilidade Universal (WCAG 2.2 AAA & VLibras)**: Gaveta modal assistiva nativa com 21 ferramentas em 5 domínios: Leitura em Voz Alta (TTS), tradução oficial em Libras (VLibras v7), escala de fonte (+15%, +30%), fonte para dislexia (OpenDyslexic), espaçamento de linhas (2.2x), espaçamento de texto, alinhamento à esquerda, leitura biônica, alto contraste (WCAG AAA), modo monocromático, inversão de cores, baixa saturação, ocultar imagens/mídias, filtros de daltonismo (Protanopia, Deuteranopia, Tritanopia), pausa de animações, régua de leitura, cursor ampliado (36px), destaque de links e títulos.
 4. **16 Casos de Estudo de Engenharia**: Apresentação de projetos com trade-offs de arquitetura, decisões técnicas, estudo de referência do FleetOps API (.NET 10 / C# 14 / PostgreSQL 18 / RabbitMQ / 300 testes) com modal interativo e card de projeto confidencial da ZEISS com selo de bloqueio 🔒.
-5. **Garantia de Qualidade em 3 Camadas**: 195 testes automatizados (100% de aprovação) unindo testes unitários (**Vitest** - 140 specs em 26 suítes), testes E2E e de acessibilidade WCAG 2.1 AA (**Playwright + Axe-Core** - 38 specs) e validação de fluxos E2E (**Cypress** - 17 specs).
+5. **Garantia de Qualidade em 3 Camadas**: 198 testes automatizados (100% de aprovação) unindo testes unitários (**Vitest** - 143 specs em 28 suítes), testes E2E e de acessibilidade WCAG 2.1 AA (**Playwright + Axe-Core** - 38 specs) e validação de fluxos E2E (**Cypress** - 17 specs).
 6. **Registros de Decisão de Arquitetura (ADRs) & Telemetria RUM**: 5 registros formais (ADR-001 a ADR-005) em inglês detalhando invariantes de arquitetura, aliados a um serviço nativo de monitoramento de performance em tempo real (`PerformanceObserver` para Core Web Vitals) e segurança HTTP enterprise (`vercel.json`).
 
 ---
@@ -450,32 +463,45 @@ Destaques de Engenharia:
 - **Cópia para a Área de Transferência**: Integração assíncrona com `navigator.clipboard` com feedback visual imediato (*"Copiado!"* / *"Copied!"*).
 - **Envio Direto de E-mail**: Links de ação rápida direcionando para o editor do Gmail e `mailto:` do sistema.
 
-### 7. Motor de Acessibilidade Universal & Recursos Assistivos (WCAG AAA & VLibras)
+### 7. Motor de Acessibilidade Universal & Recursos Assistivos (WCAG 2.2 AAA & VLibras)
 - **Gatilho Flutuante Expansível (FAB)**: Botão circular no canto inferior direito em *glassmorphism* (`z-index: 9990`) que se expande suavemente em hover ou foco de teclado (`Tab`) revelando o rótulo *"Recursos Assistivos"*.
-- **Painel Modal Organizado em Categorias**: Diálogo acessível (`role="dialog"`, `aria-modal="true"`, tecla ESC e backdrop blur) com 9 ferramentas distribuídas em 4 domínios semânticos:
-  - **Inclusão & Libras**: Integração oficial do **VLibras** (Tradutor de Língua Brasileira de Sinais) com carregamento sob demanda (lazy loading, mantendo o bundle inicial leve em ~70 KB). Ativação não-intrusiva que exibe apenas o ícone flutuante sem forçar a abertura da janela do avatar, com gerenciamento avançado do ciclo de vida em Shadow DOM (`#vlibras-access-wrapper` e `#vlibras-app-root`).
-  - **Controle de Fonte**: Ciclo de ampliação tipográfica (+15% / +30%), fonte amigável para dislexia (**OpenDyslexic**) e ampliação do espaçamento entre linhas e palavras.
-  - **Contraste & Cores**: Modo de Alto Contraste (**WCAG AAA** amarelo sobre preto com realce ciano), modo Monocromático (escala de cinza) e destaque visual de links.
-  - **Foco & Navegação**: Pausa geral de animações (respeito a sensibilidade vestibular) e Guia de Leitura interativo com régua de foco acelerada por hardware via `requestAnimationFrame`.
-- **Gerenciamento Reativo & Persistência**: Arquitetura orientada a Angular Signals (`AccessibilityService`) com sincronização de atributos no elemento raiz `<html>` e persistência em `localStorage`.
+- **Painel Modal Organizado em Categorias**: Diálogo acessível (`role="dialog"`, `aria-modal="true"`, tecla ESC e backdrop blur) com 21 ferramentas distribuídas em 5 domínios semânticos:
+  - **Inclusão & Fala**: Integração oficial do **VLibras v7** (Tradutor de Libras) com fallback para CDN jsdelivr e sincronização bidirecional de fechamento, integrado com **Leitura em Voz Alta (TTS)** nativa (`Web Speech API`) que lê qualquer elemento ou texto clicado no idioma ativo (PT-BR, EN, ES).
+  - **Controle de Fonte & Leitura**: Ciclo de ampliação tipográfica (+15% / +30%), fonte amigável para dislexia (**OpenDyslexic**), espaçamento de texto, entrelinha ampliada para 2.2x, alinhamento obrigatório à esquerda e **Leitura Biônica** com destaque nas primeiras letras para retenção cognitiva e TDAH.
+  - **Contraste & Cores**: Modo de Alto Contraste (**WCAG AAA** amarelo sobre preto com realce ciano), modo Monocromático (escala de cinza 100%), Inversão de Cores (com proteção de imagens para fotofobia), Baixa Saturação para conforto visual e Ocultação de Mídias (modo texto puro sem WebGL ou distrações).
+  - **Filtros de Daltonismo**: Filtros acelerados por GPU via SVG ColorMatrix para **Protanopia** (vermelho), **Deuteranopia** (verde) e **Tritanopia** (azul/amarelo).
+  - **Foco & Navegação**: Pausa geral de animações (respeito a sensibilidade vestibular), Guia de Leitura interativo com régua de foco acelerada por hardware via `requestAnimationFrame`, Cursor Ampliado de 36px, destaque de links e destaque estrutural de títulos H1-H6.
+- **Gerenciamento Reativo & Persistência**: Arquitetura orientada a Angular Signals (`AccessibilityService`) com sincronização de atributos/classes no elemento raiz `<html>` e persistência de todas as 21 preferências em `localStorage`.
 - **Internacionalização Completa**: Suporte trilíngue declarativo cobrindo Português, Inglês e Espanhol.
 
 #### ♿ Matriz de Recursos Assistivos & Conformidade WCAG
 
-| Recurso | Implementação Técnica | Público-Alvo / Necessidade Atendida | Critério WCAG 2.1 |
+| Recurso | Implementação Técnica | Público-Alvo / Necessidade Atendida | Critério WCAG 2.2 |
 | :--- | :--- | :--- | :--- |
-| **Tradutor de Libras (VLibras)** | Injeção sob demanda (`vlibras-plugin.js`), isolamento v7 em Shadow DOM (`#vlibras-access-wrapper`), sem abertura intrusiva | Pessoas surdas ou com deficiência auditiva usuárias de Libras | **1.2.6 Língua de Sinais** |
+| **Tradutor de Libras (VLibras)** | Injeção sob demanda com fallback jsdelivr e sincronização de ciclo de vida Shadow DOM v7 | Pessoas surdas ou com deficiência auditiva usuárias de Libras | **1.2.6 Língua de Sinais** |
+| **Leitura em Voz Alta (TTS)** | Leitor de tela nativo via `window.speechSynthesis` lendo elementos clicados no idioma ativo | Baixa visão, analfabetismo funcional, aprendizes auditivos | **1.3.1 Info & Relações & 1.2.1 Áudio-only** |
 | **Tamanho da Fonte (Font Scaling)** | Modificador raiz `data-a11y-font` escalonando tipografia (+15% / +30%) sem quebra de layout | Baixa visão, presbiopia e idosos | **1.4.4 Redimensionamento de Texto (Nível AA)** |
 | **Fonte Legível (OpenDyslexic)** | Injeção `@font-face` da **OpenDyslexic** com base pesada nas letras para prevenir rotação/inversão | Pessoas com dislexia, fadiga ocular e distúrbios de leitura | **W3C COGA Acessibilidade Cognitiva** |
-| **Espaçamento de Linhas e Texto** | Altura de linha (1.85), espaçamento de letras (0.08em) e palavras (0.14em) | Dislexia, retenção visual e leitura em blocos densos | **1.4.12 Espaçamento de Texto (Nível AA)** |
+| **Espaçamento de Texto** | Espaçamento de letras (0.08em) e palavras (0.14em) | Dislexia, retenção visual e leitura em blocos densos | **1.4.12 Espaçamento de Texto (Nível AA)** |
+| **Espaçamento de Linhas (Line Height)** | Entrelinha ampliada para 2.2 prevenindo perda de foco ou salto acidental de linhas | Dislexia, baixa visão e rastreamento ocular | **1.4.12 Espaçamento de Texto (Nível AA)** |
+| **Alinhar à Esquerda (Align Left)** | Universal `text-align: left !important` eliminando espaçamentos irregulares do texto justificado | Processamento cognitivo, dislexia e varredura visual | **1.4.8 Apresentação Visual (Nível AAA)** |
+| **Leitura Biônica (Bionic Reading)** | Destaque em negrito nos primeiros 45% das letras das palavras guiando pontos de fixação ocular | TDAH, leitura dinâmica e retenção cognitiva | **Tecnologia Assistiva Cognitiva** |
 | **Alto Contraste (High Contrast)** | Paleta WCAG AAA preto puro com amarelo elétrico (`#ffff00`) e realce ciano (`#00e5ff`) | Baixa visão severa, fotofobia e ambientes com forte reflexo | **1.4.6 Contraste Aprimorado (Nível AAA)** |
 | **Monocromático (Monochrome)** | Aceleração por GPU com `filter: grayscale(100%)` | Fotofobia, sensibilidade a cores, TDAH e redução de estímulos | **Conforto Visual & Foco** |
-| **Destacar Links (Highlight Links)** | Sublinhado persistente de 3px com cor de contraste `#ffff00` e deslocamento de 5px | Usuários daltônicos que não distinguem links apenas por cor | **1.4.1 Uso de Cores (Nível A)** |
+| **Inversão de Cores (Invert Colors)** | CSS `filter: invert(100%) hue-rotate(180deg)` com proteção para mídias e fotos | Fotofobia, leitura noturna e sensibilidade extrema a brilho | **Apresentação Visual (Nível AAA)** |
+| **Baixa Saturação (Low Saturation)** | CSS `filter: saturate(35%) brightness(92%)` reduzindo o estímulo cromático excessivo | Sobrecarga sensorial, espectro autista e fadiga visual | **Ergonomia Visual** |
+| **Ocultar Mídias (Hide Media)** | Supressão de opacidade (0.04) em Three.js canvas, vídeos e imagens decorativas | Sobrecarga sensorial, modo foco em texto e hiperfoco | **1.4.5 Imagens de Texto & Foco** |
+| **Filtro Protanopia** | Filtro acelerado por GPU SVG ColorMatrix corrigindo o espectro vermelho | Daltonismo para tons vermelhos (Protanopia / Protanomalia) | **1.4.1 Uso de Cores (Nível A)** |
+| **Filtro Deuteranopia** | Filtro acelerado por GPU SVG ColorMatrix corrigindo o espectro verde | Daltonismo para tons verdes (Deuteranopia) | **1.4.1 Uso de Cores (Nível A)** |
+| **Filtro Tritanopia** | Filtro acelerado por GPU SVG ColorMatrix corrigindo o espectro azul/amarelo | Daltonismo para tons azuis (Tritanopia / Tritanomalia) | **1.4.1 Uso de Cores (Nível A)** |
 | **Pausar Animações (Pause Motion)** | Desativação total de durações CSS (`0.001ms`) e congelamento de partículas WebGL | Labirintite, distúrbios vestibulares, epilepsia e TDAH | **2.2.2 Pausar, Parar, Ocultar & 2.3.3 (Nível AAA)** |
 | **Guia de Leitura (Reading Guide)** | Régua de foco horizontal que acompanha a coordenada Y do mouse via `requestAnimationFrame` | Dificuldade de rastreamento visual, dislexia e perda de linha | **Tecnologia Assistiva Cognitiva** |
+| **Cursor Ampliado (Large Cursor)** | Cursor customizado SVG de 36px com borda branca de alto contraste | Dificuldades motoras, baixa visão e rastreamento de ponteiro | **2.4.7 Foco Visível & A11y Motora** |
+| **Destacar Links (Highlight Links)** | Sublinhado persistente de 3px com cor de contraste `#ffff00` e deslocamento de 5px | Usuários daltônicos que não distinguem links apenas por cor | **1.4.1 Uso de Cores (Nível A)** |
+| **Destacar Títulos (Highlight Headings)** | Contorno pontilhado ciano (`outline: 2px dashed #00e5ff`) em todas as tags H1-H6 | Escaneabilidade, compreensão textual e navegação estrutural | **2.4.6 Cabeçalhos e Rótulos** |
 
 ### 8. Suíte Tripla de Testes (Vitest + Playwright + Cypress)
-- **Testes Unitários & de Integração (Vitest)**: 140 testes automatizados em 26 suítes validando componentes, diretivas e serviços com 100% de aprovação.
+- **Testes Unitários & de Integração (Vitest)**: 143 testes automatizados em 28 suítes validando componentes, diretivas e serviços com 100% de aprovação.
 - **Testes Ponta a Ponta & Acessibilidade WCAG 2.1 AA (Playwright + Axe-Core)**: 38 especificações E2E executadas em paralelo em visores de **Desktop Chrome** e **Mobile Pixel 7**, incluindo auditoria de acessibilidade WCAG 2.1 Nível A e AA (zero violações) em todos os idiomas.
 - **Validação Visual & Fluxos E2E (Cypress)**: 17 especificações E2E validando os fluxos completos no Cypress Test Runner.
 
@@ -523,7 +549,7 @@ flowchart TD
     A11y --> VLibras["Serviço & SDK Oficial VLibras"]
     
     subgraph "Pipeline de Garantia de Qualidade e Testes"
-        K1["Vitest (140 Testes Unitários em 26 Suítes)"]
+        K1["Vitest (143 Testes Unitários em 28 Suítes)"]
         K2["Playwright (38 Especificações E2E - Desktop & Mobile)"]
         K3["Cypress (17 Especificações E2E)"]
     end
@@ -537,12 +563,12 @@ flowchart TD
 | :--- | :--- | :--- |
 | **Framework Principal** | Angular `^22.1.0` | Arquitetura Standalone, Signals e detecção OnPush |
 | **Linguagem** | TypeScript `~6.0.2` | Tipagem estática rigorosa e modelos de domínio DTO |
-| **Motor de Acessibilidade** | Próprio + VLibras | Contraste WCAG AAA, OpenDyslexic, espaçamento de texto, régua de foco e tradução em Libras |
+| **Motor de Acessibilidade** | Próprio + VLibras | WCAG 2.2 AAA com 21 ferramentas assistivas, TTS, filtros de daltonismo e VLibras |
 | **Motor 3D & Shaders** | Three.js `^0.185.1` | Sistema visual de partículas GPU WebGL e interatividade |
 | **Design System** | SCSS / SASS | Variáveis CSS nativas, glassmorphism e utilitários (Sem bibliotecas de UI) |
 | **Telemetria & RUM** | Nativo do Navegador | `PerformanceObserver` nativo rastreando Core Web Vitals (LCP, CLS, INP, TTFB) |
 | **Segurança & Hardening** | Headers Enterprise | CSP Level 3 estrito, HSTS Preload, Permissions-Policy, X-Frame-Options |
-| **Testes Unitários** | Vitest `^4.0.8` | Framework de testes unitários ultrarrápido para Angular (140 unit specs, 100% de aprovação) |
+| **Testes Unitários** | Vitest `^4.0.8` | Framework de testes unitários ultrarrápido para Angular (143 unit specs, 100% de aprovação) |
 | **Testes E2E (Multi-Browser)**| Playwright `^1.62.1` | Testes paralelos em visores Desktop Chrome e Mobile Pixel 7 |
 | **Testes E2E (Visual Runner)** | Cypress `^15.20.0` | Execução interativa e validação visual de fluxos E2E |
 | **Formatador de Código** | Prettier `^3.8.1` | Padronização e formatação de estilo de código |
