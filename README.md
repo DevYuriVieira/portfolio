@@ -7,8 +7,8 @@
 ![Three.js](https://img.shields.io/badge/Three.js-0.185-000000?style=for-the-badge&logo=three.js&logoColor=white)
 ![A11y](https://img.shields.io/badge/A11y-WCAG_AAA-00E5FF?style=for-the-badge&logo=w3c&logoColor=black)
 ![SCSS](https://img.shields.io/badge/SCSS-Design_System-CC6699?style=for-the-badge&logo=sass&logoColor=white)
-![Tests](https://img.shields.io/badge/Tests-198_Passed-10B981?style=for-the-badge&logo=vitest&logoColor=white)
-![Vitest](https://img.shields.io/badge/Vitest-143_Unit_Specs-6E9F18?style=for-the-badge&logo=vitest&logoColor=white)
+![Tests](https://img.shields.io/badge/Tests-213_Passed-10B981?style=for-the-badge&logo=vitest&logoColor=white)
+![Vitest](https://img.shields.io/badge/Vitest-158_Unit_Specs-6E9F18?style=for-the-badge&logo=vitest&logoColor=white)
 ![Playwright](https://img.shields.io/badge/Playwright-1.62-2EAD33?style=for-the-badge&logo=playwright&logoColor=white)
 ![Cypress](https://img.shields.io/badge/Cypress-15.20-17202C?style=for-the-badge&logo=cypress&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-Deployed-000000?style=for-the-badge&logo=vercel&logoColor=white)
@@ -77,7 +77,7 @@ Key Engineering Highlights:
 2. **GPU Visual FX**: Interactive 3D particle visuals powered by **Three.js** (`NeuralCanvasComponent` and `HeroParticlesVisual`), including raycasting mouse displacement, floating glassmorphic zoom controls (`+`, `-`, `Reset`, `Focus`), and automatic responsive fallbacks on mobile screens (<768px).
 3. **Universal Accessibility (WCAG 2.2 AAA & VLibras)**: Built-in assistive features drawer with 21 assistive tools across 5 domains: Text-to-Speech (TTS), on-demand Brazilian Sign Language (VLibras v7), font scaling (+15%, +30%), dyslexia typography (OpenDyslexic), line height (2.2x), text spacing, left-alignment, bionic reading, high contrast (WCAG AAA), monochrome mode, color inversion, low saturation, media hiding, SVG colorblind filters (Protanopia, Deuteranopia, Tritanopia), animation pausing, cursor reading guide, large cursor (36px), link highlighting, and heading highlighting.
 4. **16 Detailed Engineering Case Studies**: Highlights real-world projects, architecture trade-offs, technical decisions, FleetOps API (.NET 10 / C# 14 / PostgreSQL 18 / RabbitMQ / 300 tests) reference study modal, and a dedicated ZEISS NDA confidential project card with lock badge 🔒.
-5. **Triple-Layer QA Architecture**: 198 automated tests (100% pass rate) combining unit tests (**Vitest** - 143 specs across 28 test files), multi-browser/mobile E2E and WCAG 2.1 AA accessibility tests (**Playwright + Axe-Core** - 38 specs), and user journey E2E verification (**Cypress** - 17 specs).
+5. **Triple-Layer QA Architecture**: 213 automated tests (100% pass rate) combining unit tests (**Vitest** - 158 specs across 29 test suites), multi-browser/mobile E2E and WCAG 2.1 AA accessibility tests (**Playwright + Axe-Core** - 38 specs), and user journey E2E verification (**Cypress** - 17 specs).
 6. **Architectural Decision Records (ADRs) & Native RUM Telemetry**: 5 formal engineering records (ADR-001 through ADR-005) in English detailing architecture invariants, paired with a zero-dependency browser-native Real User Monitoring service (`PerformanceObserver` tracking Core Web Vitals) and enterprise HTTP security hardening (`vercel.json`).
 
 ---
@@ -150,7 +150,7 @@ Key Engineering Highlights:
 | **Destacar Títulos (Highlight Headings)** | High-contrast cyan dashed outline (`outline: 2px dashed #00e5ff`) on all H1-H6 tags | Screen scanning, reading comprehension, cognitive navigation | **2.4.6 Headings & Labels** |
 
 ### 8. Triple Testing Pipeline (Vitest + Playwright + Cypress)
-- **Unit & Integration Testing (Vitest)**: 143 automated tests across 28 test suites validating components, directives, and services with 100% pass rate.
+- **Unit & Integration Testing (Vitest)**: 158 automated tests across 29 test suites validating components, directives, and services with 100% pass rate.
 - **End-to-End & WCAG 2.1 AA Accessibility Testing (Playwright + Axe-Core)**: 38 E2E specs running concurrently across **Desktop Chromium** and **Mobile Pixel 7** viewports, including automated zero-violation WCAG 2.1 Level A & AA accessibility audits across all 3 languages.
 - **End-to-End User Journey Verification (Cypress)**: 17 E2E specs validating user journeys in the headless Cypress Test Runner.
 
@@ -202,7 +202,7 @@ flowchart TD
     A11y --> VLibras["VLibras Official Service & SDK"]
     
     subgraph "QA & Test Execution Pipeline"
-        K1["Vitest (143 Unit Specs across 28 Suites)"]
+        K1["Vitest (158 Unit Specs across 29 Suites)"]
         K2["Playwright (38 E2E Specs - Desktop & Mobile)"]
         K3["Cypress (17 E2E Specs)"]
     end
@@ -221,7 +221,7 @@ flowchart TD
 | **Design System** | SCSS / SASS | Custom CSS variables, glassmorphism, and responsive mixins (No UI Libraries) |
 | **Telemetry & RUM** | Browser Native | Native `PerformanceObserver` tracking Core Web Vitals (LCP, CLS, INP, TTFB) |
 | **Security Hardening** | Enterprise Headers | Strict CSP Level 3, HSTS Preload, Permissions-Policy, X-Frame-Options |
-| **Unit Testing** | Vitest `^4.0.8` | Component and unit test execution engine (143 unit specs, 100% pass rate) |
+| **Unit Testing** | Vitest `^4.0.8` | Component and unit test execution engine (158 unit specs, 100% pass rate) |
 | **E2E Testing (Multi-Browser)**| Playwright `^1.62.1` | Concurrency testing across Desktop Chrome and Mobile Pixel 7 |
 | **E2E Testing (Visual Runner)** | Cypress `^15.20.0` | Interactive E2E assertions and visual runner |
 | **Code Formatter** | Prettier `^3.8.1` | Automated code formatting and style consistency |
@@ -356,7 +356,7 @@ Access in your browser at `http://localhost:4200`.
 | :--- | :--- | :--- |
 | `npm start` | **Angular CLI** | Starts local dev server at `http://localhost:4200` |
 | `npm run build` | **Angular Build** | Compiles production bundle into `/dist/portfolio` |
-| `npm test` | **Vitest** | Executes 90 unit, component & property-based tests in watch mode |
+| `npm test` | **Vitest** | Executes 158 unit, component & property-based tests in watch mode |
 | `npm run test:run` | **Vitest** | Single-run headless execution of unit & property tests |
 | `npm run test:coverage` | **Vitest + V8** | Generates detailed code coverage report with branch, statement & line metrics |
 | `npm run test:e2e` | **Playwright + Axe-Core** | Executes full E2E & WCAG 2.1 AA accessibility specs across 5 engines (Chrome, Firefox, Safari/WebKit, Pixel 7, iPhone 14) |
@@ -432,7 +432,7 @@ Destaques de Engenharia:
 2. **Efeitos Visuais Acelerados por GPU**: Shaders de partículas WebGL 3D em **Three.js** (`NeuralCanvasComponent` e `HeroParticlesVisual`), com interatividade por cursor, barra flutuante de zoom (`+`, `-`, `Reset`, `Foco`) e fallback automático para telas móveis (<768px).
 3. **Acessibilidade Universal (WCAG 2.2 AAA & VLibras)**: Gaveta modal assistiva nativa com 21 ferramentas em 5 domínios: Leitura em Voz Alta (TTS), tradução oficial em Libras (VLibras v7), escala de fonte (+15%, +30%), fonte para dislexia (OpenDyslexic), espaçamento de linhas (2.2x), espaçamento de texto, alinhamento à esquerda, leitura biônica, alto contraste (WCAG AAA), modo monocromático, inversão de cores, baixa saturação, ocultar imagens/mídias, filtros de daltonismo (Protanopia, Deuteranopia, Tritanopia), pausa de animações, régua de leitura, cursor ampliado (36px), destaque de links e títulos.
 4. **16 Casos de Estudo de Engenharia**: Apresentação de projetos com trade-offs de arquitetura, decisões técnicas, estudo de referência do FleetOps API (.NET 10 / C# 14 / PostgreSQL 18 / RabbitMQ / 300 testes) com modal interativo e card de projeto confidencial da ZEISS com selo de bloqueio 🔒.
-5. **Garantia de Qualidade em 3 Camadas**: 198 testes automatizados (100% de aprovação) unindo testes unitários (**Vitest** - 143 specs em 28 suítes), testes E2E e de acessibilidade WCAG 2.1 AA (**Playwright + Axe-Core** - 38 specs) e validação de fluxos E2E (**Cypress** - 17 specs).
+5. **Garantia de Qualidade em 3 Camadas**: 213 testes automatizados (100% de aprovação) unindo testes unitários (**Vitest** - 158 specs em 29 suítes), testes E2E e de acessibilidade WCAG 2.1 AA (**Playwright + Axe-Core** - 38 specs) e validação de fluxos E2E (**Cypress** - 17 specs).
 6. **Registros de Decisão de Arquitetura (ADRs) & Telemetria RUM**: 5 registros formais (ADR-001 a ADR-005) em inglês detalhando invariantes de arquitetura, aliados a um serviço nativo de monitoramento de performance em tempo real (`PerformanceObserver` para Core Web Vitals) e segurança HTTP enterprise (`vercel.json`).
 
 ---
@@ -505,7 +505,7 @@ Destaques de Engenharia:
 | **Destacar Títulos (Highlight Headings)** | Contorno pontilhado ciano (`outline: 2px dashed #00e5ff`) em todas as tags H1-H6 | Escaneabilidade, compreensão textual e navegação estrutural | **2.4.6 Cabeçalhos e Rótulos** |
 
 ### 8. Suíte Tripla de Testes (Vitest + Playwright + Cypress)
-- **Testes Unitários & de Integração (Vitest)**: 143 testes automatizados em 28 suítes validando componentes, diretivas e serviços com 100% de aprovação.
+- **Testes Unitários & de Integração (Vitest)**: 158 testes automatizados em 29 suítes validando componentes, diretivas e serviços com 100% de aprovação.
 - **Testes Ponta a Ponta & Acessibilidade WCAG 2.1 AA (Playwright + Axe-Core)**: 38 especificações E2E executadas em paralelo em visores de **Desktop Chrome** e **Mobile Pixel 7**, incluindo auditoria de acessibilidade WCAG 2.1 Nível A e AA (zero violações) em todos os idiomas.
 - **Validação Visual & Fluxos E2E (Cypress)**: 17 especificações E2E validando os fluxos completos no Cypress Test Runner.
 
@@ -557,7 +557,7 @@ flowchart TD
     A11y --> VLibras["Serviço & SDK Oficial VLibras"]
     
     subgraph "Pipeline de Garantia de Qualidade e Testes"
-        K1["Vitest (143 Testes Unitários em 28 Suítes)"]
+        K1["Vitest (158 Testes Unitários em 29 Suítes)"]
         K2["Playwright (38 Especificações E2E - Desktop & Mobile)"]
         K3["Cypress (17 Especificações E2E)"]
     end
@@ -576,7 +576,7 @@ flowchart TD
 | **Design System** | SCSS / SASS | Variáveis CSS nativas, glassmorphism e utilitários (Sem bibliotecas de UI) |
 | **Telemetria & RUM** | Nativo do Navegador | `PerformanceObserver` nativo rastreando Core Web Vitals (LCP, CLS, INP, TTFB) |
 | **Segurança & Hardening** | Headers Enterprise | CSP Level 3 estrito, HSTS Preload, Permissions-Policy, X-Frame-Options |
-| **Testes Unitários** | Vitest `^4.0.8` | Framework de testes unitários ultrarrápido para Angular (143 unit specs, 100% de aprovação) |
+| **Testes Unitários** | Vitest `^4.0.8` | Framework de testes unitários ultrarrápido para Angular (158 unit specs, 100% de aprovação) |
 | **Testes E2E (Multi-Browser)**| Playwright `^1.62.1` | Testes paralelos em visores Desktop Chrome e Mobile Pixel 7 |
 | **Testes E2E (Visual Runner)** | Cypress `^15.20.0` | Execução interativa e validação visual de fluxos E2E |
 | **Formatador de Código** | Prettier `^3.8.1` | Padronização e formatação de estilo de código |
@@ -711,7 +711,7 @@ Acesse no navegador pelo endereço `http://localhost:4200`.
 | :--- | :--- | :--- |
 | `npm start` | **Angular CLI** | Inicia o servidor de desenvolvimento em `http://localhost:4200` |
 | `npm run build` | **Angular Build** | Compila os arquivos de produção na pasta `/dist/portfolio` |
-| `npm test` | **Vitest** | Executa 90 testes unitários, de componente e baseados em propriedades em modo watch |
+| `npm test` | **Vitest** | Executa 158 testes unitários, de componente e baseados em propriedades em modo watch |
 | `npm run test:run` | **Vitest** | Execução única headless dos testes de unidade e componentes |
 | `npm run test:coverage` | **Vitest + V8** | Gera relatório completo de cobertura de código com métricas de statements, branches e funções |
 | `npm run test:e2e` | **Playwright + Axe-Core** | Executa suíte completa E2E e de acessibilidade WCAG 2.1 AA em 5 navegadores (Chrome, Firefox, Safari/WebKit, Pixel 7, iPhone 14) |
