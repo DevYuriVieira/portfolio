@@ -13,11 +13,11 @@
 ![Cypress](https://img.shields.io/badge/Cypress-15.20-17202C?style=for-the-badge&logo=cypress&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-Deployed-000000?style=for-the-badge&logo=vercel&logoColor=white)
 
-**PT-BR:** Aplicação web frontend desenvolvida em Angular 22 com Signals, gráficos interativos Three.js (WebGL), Registros de Decisão de Arquitetura (ADRs), telemetria RUM nativa, motor avançado de acessibilidade (WCAG 2.2 AAA & VLibras com 21 ferramentas assistivas), suporte trilíngue (i18n - PT-BR, EN, ES), SEO dinâmico e suíte tripla de testes automatizados (198 testes).  
-*Slogan: Design system proprietário, acessibilidade universal com VLibras e 21 recursos assistivos, arquitetura documentada com ADRs, telemetria em tempo real e suíte de testes ponta a ponta.*
+**PT-BR:** Aplicação web frontend desenvolvida em Angular 22 com Signals, gráficos interativos Three.js (WebGL), Registros de Decisão de Arquitetura (ADRs), console interativo de telemetria RUM e eventos de conversão em tempo real, motor avançado de acessibilidade (WCAG 2.2 AAA & VLibras com 21 ferramentas assistivas), suporte trilíngue (i18n - PT-BR, EN, ES), SEO dinâmico e suíte de testes automatizados (155 testes Vitest).  
+*Slogan: Design system proprietário, acessibilidade universal com VLibras e 21 recursos assistivos, arquitetura documentada com ADRs, console de telemetria em tempo real e suíte de testes automatizados.*
 
-**EN:** Frontend web application built with Angular 22 Signals, Three.js (WebGL) interactive visuals, Architectural Decision Records (ADRs), native browser RUM telemetry, universal accessibility engine (WCAG 2.2 AAA & VLibras with 21 assistive features), dynamic tri-lingual i18n (PT-BR, EN, ES), SEO engine, and a triple automated testing suite (198 tests).  
-*Slogan: Custom design system, universal accessibility with VLibras and 21 assistive features, documented architecture with ADRs, real-time telemetry, and end-to-end testing pipeline.*
+**EN:** Frontend web application built with Angular 22 Signals, Three.js (WebGL) interactive visuals, Architectural Decision Records (ADRs), interactive live RUM & event tracking telemetry HUD, universal accessibility engine (WCAG 2.2 AAA & VLibras with 21 assistive features), dynamic tri-lingual i18n (PT-BR, EN, ES), SEO engine, and automated testing suite (155 Vitest tests).  
+*Slogan: Custom design system, universal accessibility with VLibras and 21 assistive features, documented architecture with ADRs, real-time telemetry HUD console, and automated testing pipeline.*
 
 ---
 
@@ -165,8 +165,12 @@ Key Engineering Highlights:
 - **Governance & Verification**: Standardized RFC format (Context, Decision, Positive Invariants, Trade-offs & Constraints, Alternatives Considered), keyboard navigable with instant Markdown export.
 
 ### 10. Native Real User Monitoring (RUM) & Enterprise Security Headers
-- **Browser-Native RUM Telemetry (`TelemetryService`)**: Zero-dependency performance monitoring utilizing browser `PerformanceObserver` API. Tracks Core Web Vitals in real-time (LCP, CLS, INP, TTFB, and Long Tasks >50ms) with 0 KB external bundle tax.
-- **Live Footer Rating HUD**: Live pulse indicator in the footer displaying real-time Web Vitals rating (`RUM: OPTIMAL`).
+- **Browser-Native RUM & Event Telemetry Engine (`TelemetryService`)**: Zero-dependency, privacy-first performance and conversion observability utilizing browser-native `PerformanceObserver` API. Tracks Core Web Vitals in real-time (LCP, CLS, INP, TTFB, JS Heap Memory, and Long Tasks >50ms) paired with reactive event tracking for role-tailored resume downloads (Full-Stack, Back-End, Front-End) and direct WhatsApp outreach with 0 KB external bundle tax.
+- **Interactive Live Telemetry & Observability HUD Modal**: Accessible from both the Header action bar and Footer interactive pills. Features a 4-tab glassmorphic cyberpunk HUD:
+  - **Overview & Health**: Dynamic 99% health score calculated against Google Web Vitals thresholds, instant vital tiles, and zero-cookie privacy architecture.
+  - **Core Web Vitals**: Real-time gauge cards with threshold indicator rails for LCP, CLS, INP, TTFB, V8 Memory Heap, and Long Tasks.
+  - **Event Tracking & Conversions**: Recruiter interest metrics with percentage distribution progress bars for CV downloads (Full-Stack, Back-End, Front-End) and WhatsApp triggers.
+  - **Console & Simulator**: 25-event FIFO terminal stream, interactive action simulator to trigger test events in real time with Angular 22 Signals, diagnostics JSON export, and session reset.
 - **Enterprise HTTP Security Hardening (`vercel.json`)**: Configured with Strict Transport Security (`HSTS` max-age 63072000 with preload), strict Content-Security-Policy Level 3 (supporting VLibras and Google Fonts), `X-Frame-Options: DENY`, `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`, and `Permissions-Policy`.
 
 ---
@@ -516,8 +520,12 @@ Destaques de Engenharia:
 - **Governança & Rigor**: Formato padrão RFC (Contexto, Decisão, Invariantes Positivas, Trade-offs & Restrições, Alternativas Consideradas), navegável por teclado com cópia instantânea para Markdown.
 
 ### 10. Telemetria RUM Nativa & Cabeçalhos de Segurança HTTP Enterprise
-- **Telemetria RUM Nativa (`TelemetryService`)**: Monitoramento de performance em tempo real sem dependências externas via API `PerformanceObserver` do navegador. Rastreia Core Web Vitals (LCP, CLS, INP, TTFB e Tarefas Longas >50ms) com 0 KB de impacto no bundle.
-- **Indicador HUD no Footer**: Pílula de pulso no rodapé exibindo a classificação em tempo real dos Web Vitals (`RUM: OPTIMAL`).
+- **Motor Nativo de Telemetria RUM & Rastreamento de Eventos (`TelemetryService`)**: Monitoramento de performance em tempo real com foco em privacidade sem dependências externas via API `PerformanceObserver` do navegador. Rastreia Core Web Vitals (LCP, CLS, INP, TTFB, Heap de Memória e Tarefas Longas >50ms) integrado a rastreamento reativo de downloads de currículo por especialidade (Full-Stack, Back-End, Front-End) e contatos diretos no WhatsApp com 0 KB de impacto no bundle.
+- **Console HUD Interativo de Telemetria & Observabilidade**: Acessível tanto no cabeçalho de navegação quanto nas pílulas interativas do rodapé. Possui um console HUD futurista com 4 abas:
+  - **Visão Geral & Saúde**: Pontuação dinâmica de 99% calculada sobre as metas oficiais do Google Web Vitals, cartões de métricas instantâneas e arquitetura privada sem cookies de terceiros.
+  - **Core Web Vitals**: Medidores em tempo real com réguas de limite para LCP, CLS, INP, TTFB, Heap de Memória da V8 e Tarefas Longas.
+  - **Rastreamento de Eventos**: Métricas de interesse do visitante com barras de proporção para downloads de currículo (Full-Stack, Back-End, Front-End) e iniciações no WhatsApp.
+  - **Console & Simulador**: Stream de terminal em tempo real com buffer FIFO dos últimos 25 eventos, simulador interativo de ações com atualização imediata via Signals do Angular 22, exportação de diagnóstico em JSON e redefinição de contadores locais.
 - **Segurança HTTP Enterprise (`vercel.json`)**: Configurado com Strict Transport Security (`HSTS` max-age 63072000 com preload), Content-Security-Policy Level 3 estrito (com suporte a VLibras e Google Fonts), `X-Frame-Options: DENY`, `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin` e `Permissions-Policy`.
 
 ---
