@@ -184,6 +184,8 @@ flowchart TD
     B --> C["Layout Shell: Header & Footer"]
     B --> D["Page Shell: Home Container"]
     
+    C --> C1["TelemetryModal (Live RUM & Events HUD)"]
+    C --> C2["AdrModal (5 Engineering RFC Records)"]
     C --> E["I18nService - Reactive Signal State"]
     E -- "Lang Change (PT / EN / ES)" --> F["SeoService - Head Meta & JSON-LD"]
     E -- "Data Update" --> G["Section Controllers"]
@@ -197,6 +199,8 @@ flowchart TD
     D --> H7["ContactSection & Clipboard Flow"]
     
     H5 --> I["Three.js WebGL Particle Engine"]
+    H6 --> H6A["CaseStudyModal (16 Project Deep Dives)"]
+    H6 --> H6B["Dossier Modals: FleetOps, FarmFlow & Zeiss Arch"]
     H6 --> J["ZEISS NDA Confidential Project Card"]
     B --> A11y["AccessibilityWidget & ReadingGuide"]
     A11y --> VLibras["VLibras Official Service & SDK"]
@@ -238,7 +242,7 @@ src/
 │   │   ├── i18n/              # I18nService, supported languages, and dictionary loaders
 │   │   └── services/          # SeoService, TelemetryService (RUM), PwaUpdateService
 │   ├── layout/                # Global layout shell components
-│   │   ├── components/        # AdrModal (Architectural Decision Records interactive dossier)
+│   │   ├── components/        # AdrModal (ADR RFC records) & TelemetryModal (Live RUM & Events HUD)
 │   │   ├── header/            # Navigation header, brand logo, and flag language switcher
 │   │   ├── footer/            # Footer social links, quality badges, live RUM pill & ADR action
 │   │   └── main-layout/       # App layout shell host integrating AccessibilityWidget
@@ -251,7 +255,7 @@ src/
 │   │           ├── contact/       # Contact card, email composer, and clipboard copy action
 │   │           ├── experience/    # Career timeline milestones and focus cards
 │   │           ├── hero/          # Hero section, CTA actions, and particle visual background
-│   │           ├── projects/      # 14 case studies, FleetOps API modal & ZEISS NDA card
+│   │           ├── projects/      # 16 case studies, CaseStudyModal, FleetOpsModal, FarmFlowModal & ArchModal
 │   │           └── skills/        # 4 technical clusters & tag cloud badges
 │   ├── shared/                # Shared directives and components
 │   │   ├── components/        # AccessibilityWidget & ReadingGuide components
@@ -276,22 +280,40 @@ src/
 
 ## 📊 Data Models & Type Definitions
 
-### Case Study Model (`src/app/pages/home/sections/projects/projects.model.ts`)
+### Project Model (`src/app/pages/home/sections/projects/project.model.ts`)
 
 ```typescript
-export interface ProjectItem {
+export interface ProjectLinks {
+  readonly github?: string;
+  readonly backendGithub?: string;
+  readonly demo?: string;
+  readonly demoLabel?: string;
+}
+
+export interface Project {
   readonly id: string;
   readonly title: string;
-  readonly period: string;
-  readonly isConfidential?: boolean;
-  readonly challenge: string;
-  readonly solution: string;
-  readonly archDecisions: readonly string[];
-  readonly techHighlights: readonly string[];
-  readonly results: string;
-  readonly techStack: readonly string[];
-  readonly repoUrl?: string;
-  readonly liveUrl?: string;
+  readonly category: string;
+  readonly featured?: boolean;
+  readonly contextTag?: string;
+  readonly year?: string;
+  readonly collaboration?: string;
+  readonly client?: string;
+  readonly confidential?: boolean;
+  readonly description: string;
+  readonly context?: string;
+  readonly problem?: string;
+  readonly solution?: string;
+  readonly architectureDecisions?: readonly string[];
+  readonly development?: string;
+  readonly highlights?: readonly string[];
+  readonly results?: string;
+  readonly summaryProblem?: string;
+  readonly summarySolution?: string;
+  readonly summaryArch?: string;
+  readonly summaryResults?: string;
+  readonly technologies: readonly string[];
+  readonly links: ProjectLinks;
 }
 ```
 
@@ -316,11 +338,23 @@ export interface AccessibilityState {
   readonly fontScale: FontScale;
   readonly dyslexicFont: boolean;
   readonly textSpacing: boolean;
+  readonly lineHeight: boolean;
+  readonly alignLeft: boolean;
+  readonly bionicReading: boolean;
   readonly highContrast: boolean;
   readonly monochrome: boolean;
+  readonly invertColors: boolean;
+  readonly lowSaturation: boolean;
+  readonly hideMedia: boolean;
+  readonly protanopia: boolean;
+  readonly deuteranopia: boolean;
+  readonly tritanopia: boolean;
   readonly highlightLinks: boolean;
+  readonly highlightHeadings: boolean;
   readonly pauseAnimations: boolean;
   readonly readingGuide: boolean;
+  readonly largeCursor: boolean;
+  readonly screenReader: boolean;
   readonly vlibrasActive: boolean;
 }
 ```
@@ -368,6 +402,7 @@ Access in your browser at `http://localhost:4200`.
 | `npm run test:cypress` | **Cypress** | Executes E2E functional user journeys in headless runner |
 | `npm run cypress:open` | **Cypress UI** | Opens interactive Cypress Test Runner GUI |
 | `npm run test:all` | **Vitest + Playwright** | Runs complete test pipeline across unit and E2E |
+| `npm run generate:cv` | **Playwright Chromium** | Generates 6 official PDF resumes (Full-Stack, Backend, Frontend in PT/EN) into `/src/assets` |
 
 ---
 
@@ -539,6 +574,8 @@ flowchart TD
     B --> C["Estrutura de Layout: Header & Footer"]
     B --> D["Estrutura de Página: Home Container"]
     
+    C --> C1["TelemetryModal (Console HUD de RUM & Eventos)"]
+    C --> C2["AdrModal (5 Registros RFC de Engenharia)"]
     C --> E["I18nService - Estado Reativo por Signals"]
     E -- "Troca de Idioma (PT / EN / ES)" --> F["SeoService - Meta Tags & JSON-LD"]
     E -- "Atualização de Dados" --> G["Controladores de Seção"]
@@ -552,6 +589,8 @@ flowchart TD
     D --> H7["ContactSection & Cópia de E-mail"]
     
     H5 --> I["Motor de Partículas Three.js WebGL"]
+    H6 --> H6A["CaseStudyModal (16 Estudos de Caso Detalhados)"]
+    H6 --> H6B["Modais de Dossiê: FleetOps, FarmFlow & Arquitetura Zeiss"]
     H6 --> J["Card Confidencial ZEISS (NDA)"]
     B --> A11y["AccessibilityWidget & ReadingGuide"]
     A11y --> VLibras["Serviço & SDK Oficial VLibras"]
@@ -593,7 +632,7 @@ src/
 │   │   ├── i18n/              # I18nService, idiomas suportados e dicionários
 │   │   └── services/          # SeoService, TelemetryService (RUM), PwaUpdateService
 │   ├── layout/                # Componentes da estrutura global de layout
-│   │   ├── components/        # AdrModal (Dossiê interativo de Architectural Decision Records)
+│   │   ├── components/        # AdrModal (ADRs) & TelemetryModal (Console HUD de RUM & Eventos)
 │   │   ├── header/            # Cabeçalho, logotipo e seletor de idiomas
 │   │   ├── footer/            # Rodapé, links sociais, pílula de RUM em tempo real e botão ADR
 │   │   └── main-layout/       # Invólucro de layout que integra o AccessibilityWidget
@@ -606,7 +645,7 @@ src/
 │   │           ├── contact/       # Card de contato, compositor de e-mail e cópia
 │   │           ├── experience/    # Linha do tempo profissional e cards de foco
 │   │           ├── hero/          # Seção Hero, botões de ação e partículas de fundo
-│   │           ├── projects/      # 14 projetos, modal técnico FleetOps API e card confidencial ZEISS
+│   │           ├── projects/      # 16 projetos, CaseStudyModal, FleetOpsModal, FarmFlowModal & ArchModal
 │   │           └── skills/        # 4 grupos de habilidades e badges em nuvem
 │   ├── shared/                # Diretivas e componentes compartilhados
 │   │   ├── components/        # Componentes AccessibilityWidget e ReadingGuide
@@ -631,22 +670,40 @@ src/
 
 ## 📊 Modelos de Dados & Definições de Tipos
 
-### Modelo de Caso de Estudo (`src/app/pages/home/sections/projects/projects.model.ts`)
+### Modelo de Projeto (`src/app/pages/home/sections/projects/project.model.ts`)
 
 ```typescript
-export interface ProjectItem {
+export interface ProjectLinks {
+  readonly github?: string;
+  readonly backendGithub?: string;
+  readonly demo?: string;
+  readonly demoLabel?: string;
+}
+
+export interface Project {
   readonly id: string;
   readonly title: string;
-  readonly period: string;
-  readonly isConfidential?: boolean;
-  readonly challenge: string;
-  readonly solution: string;
-  readonly archDecisions: readonly string[];
-  readonly techHighlights: readonly string[];
-  readonly results: string;
-  readonly techStack: readonly string[];
-  readonly repoUrl?: string;
-  readonly liveUrl?: string;
+  readonly category: string;
+  readonly featured?: boolean;
+  readonly contextTag?: string;
+  readonly year?: string;
+  readonly collaboration?: string;
+  readonly client?: string;
+  readonly confidential?: boolean;
+  readonly description: string;
+  readonly context?: string;
+  readonly problem?: string;
+  readonly solution?: string;
+  readonly architectureDecisions?: readonly string[];
+  readonly development?: string;
+  readonly highlights?: readonly string[];
+  readonly results?: string;
+  readonly summaryProblem?: string;
+  readonly summarySolution?: string;
+  readonly summaryArch?: string;
+  readonly summaryResults?: string;
+  readonly technologies: readonly string[];
+  readonly links: ProjectLinks;
 }
 ```
 
@@ -671,11 +728,23 @@ export interface AccessibilityState {
   readonly fontScale: FontScale;
   readonly dyslexicFont: boolean;
   readonly textSpacing: boolean;
+  readonly lineHeight: boolean;
+  readonly alignLeft: boolean;
+  readonly bionicReading: boolean;
   readonly highContrast: boolean;
   readonly monochrome: boolean;
+  readonly invertColors: boolean;
+  readonly lowSaturation: boolean;
+  readonly hideMedia: boolean;
+  readonly protanopia: boolean;
+  readonly deuteranopia: boolean;
+  readonly tritanopia: boolean;
   readonly highlightLinks: boolean;
+  readonly highlightHeadings: boolean;
   readonly pauseAnimations: boolean;
   readonly readingGuide: boolean;
+  readonly largeCursor: boolean;
+  readonly screenReader: boolean;
   readonly vlibrasActive: boolean;
 }
 ```
@@ -723,6 +792,7 @@ Acesse no navegador pelo endereço `http://localhost:4200`.
 | `npm run test:cypress` | **Cypress** | Executa jornadas de usuário ponta a ponta no executor headless do Cypress |
 | `npm run cypress:open` | **Cypress UI** | Abre a interface gráfica interativa do Cypress Test Runner |
 | `npm run test:all` | **Vitest + Playwright** | Executa o pipeline completo de testes (unidade + E2E) |
+| `npm run generate:cv` | **Playwright Chromium** | Compila e gera os 6 currículos oficiais em PDF (Full-Stack, Backend, Frontend em PT/EN) em `/src/assets` |
 
 ---
 
