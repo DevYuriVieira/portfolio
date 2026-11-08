@@ -84,7 +84,7 @@ describe('FarmFlowModal', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     const statBoxes = compiled.querySelectorAll('.farmflow-stat-box');
     expect(statBoxes.length).toBe(4);
-    expect(compiled.textContent).toContain('549+');
+    expect(compiled.textContent).toContain('583');
 
     component.setTab('readme');
     fixture.detectChanges();

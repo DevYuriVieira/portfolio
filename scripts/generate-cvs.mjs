@@ -309,8 +309,8 @@ const FRONTEND_PT = `<!DOCTYPE html>
         <div class="entry-meta">Pessoal | 2026 | React Native | Expo | TypeScript | Arquitetura Offline-First | Keycloak OIDC | Jest | API Java / Spring Boot</div>
         <ul class="bullets">
           <li>Aplicativo para operadores de campo que trabalham sem conectividade: <strong>fila FIFO transacional</strong> persistida localmente em AsyncStorage com reconciliação determinística ao reconectar, garantindo zero perda de apontamentos de pulverização.</li>
-          <li>Caderno de defensivos exigido pelo MAPA com <strong>assinatura digital desenhada em canvas e hash criptográfico SHA-256</strong>, login biométrico com Keycloak OIDC, integrado a uma API distribuída em Java / Spring Boot que sustentou <strong>2.450 requisições por segundo (req/s)</strong> sem nenhuma resposta HTTP 5xx em testes de carga k6 (ambiente de benchmark controlado).</li>
-          <li>Coberto por <strong>138 testes automatizados em 26 suítes Jest</strong> no cliente mobile, compondo uma suíte de 549 testes entre aplicativo e backend.</li>
+          <li>Caderno de defensivos exigido pelo MAPA com <strong>assinatura digital desenhada em canvas e hash criptográfico SHA-256</strong>, login biométrico com Keycloak OIDC, integrado a uma API distribuída em Java / Spring Boot que atingiu <strong>~845 req/s em HTTP in-memory e ~293 req/s em escrita transacional</strong> sem nenhuma resposta HTTP 5xx em testes de carga k6 (ambiente de benchmark controlado).</li>
+          <li>Coberto por <strong>138 testes automatizados em 26 suítes Jest</strong> no cliente mobile, compondo uma suíte de 583 testes entre aplicativo e backend (445 no backend e 138 no mobile).</li>
         </ul>
       </div>
 
@@ -497,8 +497,8 @@ const FRONTEND_EN = `<!DOCTYPE html>
         <div class="entry-meta">Personal | 2026 | React Native | Expo | TypeScript | Offline-First Architecture | Keycloak OIDC | Jest | Java / Spring Boot API</div>
         <ul class="bullets">
           <li>Mobile application for field operators working without connectivity: a <strong>transactional FIFO mutation queue</strong> persisted locally in AsyncStorage with deterministic reconciliation on reconnect, ensuring zero lost spray records.</li>
-          <li>MAPA-mandated spray records with a <strong>canvas-drawn digital signature and SHA-256 cryptographic hash</strong> and biometric login with Keycloak OIDC, integrated with a Java / Spring Boot backend sustaining <strong>2,450 requests per second (req/s)</strong> with zero HTTP 5xx responses in k6 load tests (controlled benchmark environment).</li>
-          <li>Covered by <strong>138 automated tests across 26 Jest suites</strong> on the mobile client, within a 549-test suite spanning mobile and backend.</li>
+          <li>MAPA-mandated spray records with a <strong>canvas-drawn digital signature and SHA-256 cryptographic hash</strong> and biometric login with Keycloak OIDC, integrated with a Java / Spring Boot backend reaching <strong>~845 req/s in-memory HTTP and ~293 req/s in transactional writes</strong> with zero HTTP 5xx responses in k6 load tests (controlled benchmark environment).</li>
+          <li>Covered by <strong>138 automated tests across 26 Jest suites</strong> on the mobile client, within a 583-test suite spanning mobile and backend (445 backend and 138 mobile).</li>
         </ul>
       </div>
 
@@ -611,7 +611,7 @@ const BACKEND_PT = `<!DOCTYPE html>
           <span class="ach-label">FleetOps API (.NET &amp; RabbitMQ):</span> Arquitetura distribuída em C# e .NET com Clean Architecture, DDD, Transactional Outbox, RabbitMQ, Keycloak OIDC, PostgreSQL, 300 testes automatizados em xUnit e 278 requisições por segundo (req/s) sustentadas sob escritas ACID no k6 (ambiente de benchmark controlado).
         </div>
         <div class="ach-item">
-          <span class="ach-label">FarmFlow Backend (Java &amp; Virtual Threads):</span> Motor distribuído em Java e Spring Boot sustentando 2.450 req/s em benchmark k6 controlado sem nenhuma resposta HTTP 5xx, Transactional Outbox sobre RabbitMQ, PostgreSQL particionado com Row-Level Security fail-closed e 411 testes automatizados.
+          <span class="ach-label">FarmFlow Backend (Java &amp; Virtual Threads):</span> Motor distribuído em Java e Spring Boot atingindo ~845 req/s in-memory e ~293 req/s em escrita transacional em benchmark k6 controlado sem nenhuma resposta HTTP 5xx, Transactional Outbox sobre RabbitMQ, PostgreSQL particionado com Row-Level Security fail-closed e 445 testes automatizados.
         </div>
       </div>
     </section>
@@ -682,7 +682,7 @@ const BACKEND_PT = `<!DOCTYPE html>
         <div class="entry-title">FleetOps API (C# / .NET) - <a href="https://github.com/DevYuriVieira/fleetops-api">github.com/DevYuriVieira/fleetops-api</a></div>
         <div class="entry-meta">Pessoal | 2026 | C# | .NET | ASP.NET Core | PostgreSQL | Entity Framework Core | RabbitMQ | Keycloak OIDC | OpenTelemetry | xUnit</div>
         <ul class="bullets">
-          <li>Motor back-end distribuído e orientado a eventos em <strong>C# e .NET</strong> para gestão de frotas e logística (27 endpoints REST em 5 contextos delimitados DDD: Veículos, Motoristas, Entregas, Rotas e Manutenção) com Clean Architecture, operando como Resource Server OAuth 2.0 / OIDC com <strong>Keycloak (RS256/JWKS)</strong> e RBAC para quatro papéis.</li>
+          <li>Motor back-end distribuído e orientado a eventos em <strong>C# e .NET</strong> para gestão de frotas e logística (28 endpoints REST de negócio em 5 contextos delimitados DDD: Veículos, Motoristas, Entregas, Rotas e Manutenção) com Clean Architecture, operando como Resource Server OAuth 2.0 / OIDC com <strong>Keycloak (RS256/JWKS)</strong> e RBAC para quatro papéis.</li>
           <li>Implementa <strong>Transactional Outbox</strong> integrado ao DbContext eliminando dual-write hazard, concorrência otimista via <code>xmin</code> do PostgreSQL, polling concorrente via <code>FOR UPDATE SKIP LOCKED</code>, mensageria com <strong>RabbitMQ</strong> (Publisher Confirms, filas TTL de retry e Dead-Letter Queue), consumidor idempotente por <code>MessageId</code> e tracing distribuído com OpenTelemetry e Jaeger.</li>
           <li>Suíte de <strong>300 testes automatizados</strong> (166 unitários e 134 de integração e injeção de falhas) em xUnit com 100% de aprovação e throughput validado de <strong>278 req/s sustentados sob cargas de escrita ACID</strong> em testes k6 (ambiente de benchmark controlado).</li>
         </ul>
@@ -692,9 +692,9 @@ const BACKEND_PT = `<!DOCTYPE html>
         <div class="entry-title">FarmFlow - Plataforma Agro Distribuída (Java) - <a href="https://github.com/DevYuriVieira/farmflow-backend">github.com/DevYuriVieira/farmflow-backend</a></div>
         <div class="entry-meta">Pessoal | 2026 | Java | Spring Boot | Virtual Threads | PostgreSQL | RabbitMQ | Keycloak OIDC | OpenTelemetry | k6</div>
         <ul class="bullets">
-          <li>Motor distribuído em <strong>Java com Virtual Threads e Spring Boot</strong> sustentando <strong>2.450 req/s</strong> em testes de carga k6 (ambiente de benchmark controlado) sem nenhuma resposta HTTP 5xx, arquitetado para telemetria IoT de pivôs/silos e conformidade regulatória com o MAPA.</li>
+          <li>Motor distribuído em <strong>Java com Virtual Threads e Spring Boot</strong> atingindo <strong>~845 req/s em HTTP in-memory, 780,5 req/s em Rate Limiting e ~293 req/s em escrita transacional</strong> no k6 (ambiente de benchmark controlado) sem nenhuma resposta HTTP 5xx, para telemetria IoT de pivôs/silos e conformidade MAPA.</li>
           <li>Garantia de consistência sem dual-write: <strong>Transactional Outbox</strong> sobre RabbitMQ (CloudEvents, Publisher Confirms, DLQ), polling concorrente com <code>FOR UPDATE SKIP LOCKED</code>, sagas coreografadas com locks consultivos (<code>pg_try_advisory_xact_lock</code>) e tracing distribuído ponta a ponta com OpenTelemetry.</li>
-          <li>Engenharia de dados e segurança: <strong>PostgreSQL</strong> com particionamento temporal declarativo, índices BRIN e <strong>Row-Level Security (RLS) em modo fail-closed</strong>; Keycloak OIDC com proteção contra enumeração IDOR (404) e <strong>411 testes automatizados no backend</strong> (549 na plataforma completa) sob 100 Virtual Threads.</li>
+          <li>Engenharia de dados e segurança: <strong>PostgreSQL</strong> com particionamento temporal declarativo, índices BRIN e <strong>Row-Level Security (RLS) em modo fail-closed</strong>; Keycloak OIDC com proteção contra enumeração IDOR (404) e <strong>445 testes automatizados no backend</strong> (583 na plataforma completa) sob 100 Virtual Threads.</li>
         </ul>
       </div>
 
@@ -799,7 +799,7 @@ const BACKEND_EN = `<!DOCTYPE html>
           <span class="ach-label">FleetOps API (.NET &amp; RabbitMQ):</span> Distributed architecture in C# and .NET with Clean Architecture, DDD, Transactional Outbox, RabbitMQ, Keycloak OIDC, PostgreSQL, 300 automated xUnit tests and 278 sustained requests per second (req/s) under ACID write workloads in k6 (controlled benchmark).
         </div>
         <div class="ach-item">
-          <span class="ach-label">FarmFlow Backend (Java &amp; Virtual Threads):</span> Distributed engine in Java and Spring Boot sustaining 2,450 req/s in controlled k6 benchmarks with zero HTTP 5xx responses, Transactional Outbox over RabbitMQ, time-series partitioned PostgreSQL with fail-closed Row-Level Security and 411 automated tests.
+          <span class="ach-label">FarmFlow Backend (Java &amp; Virtual Threads):</span> Distributed engine in Java and Spring Boot reaching ~845 req/s in-memory and ~293 req/s in transactional writes in controlled k6 benchmarks with zero HTTP 5xx responses, Transactional Outbox over RabbitMQ, time-series partitioned PostgreSQL with fail-closed Row-Level Security and 445 automated tests.
         </div>
       </div>
     </section>
@@ -870,7 +870,7 @@ const BACKEND_EN = `<!DOCTYPE html>
         <div class="entry-title">FleetOps API (C# / .NET) - <a href="https://github.com/DevYuriVieira/fleetops-api">github.com/DevYuriVieira/fleetops-api</a></div>
         <div class="entry-meta">Personal | 2026 | C# | .NET | ASP.NET Core | PostgreSQL | Entity Framework Core | RabbitMQ | Keycloak OIDC | OpenTelemetry | xUnit</div>
         <ul class="bullets">
-          <li>Distributed, event-driven fleet and logistics REST API engine in <strong>C# and .NET</strong> (27 endpoints across 5 DDD Bounded Contexts: Vehicles, Drivers, Deliveries, Routes and Maintenance) with Clean Architecture, operating as an OAuth 2.0 / OIDC Resource Server with <strong>Keycloak (RS256/JWKS)</strong> and RBAC across four roles.</li>
+          <li>Distributed, event-driven fleet and logistics REST API engine in <strong>C# and .NET</strong> (28 business endpoints across 5 DDD Bounded Contexts: Vehicles, Drivers, Deliveries, Routes and Maintenance) with Clean Architecture, operating as an OAuth 2.0 / OIDC Resource Server with <strong>Keycloak (RS256/JWKS)</strong> and RBAC across four roles.</li>
           <li>Implements <strong>Transactional Outbox</strong> integrated into DbContext eliminating dual-write hazards, optimistic concurrency via PostgreSQL <code>xmin</code>, concurrent polling via <code>FOR UPDATE SKIP LOCKED</code>, <strong>RabbitMQ</strong> messaging (Publisher Confirms, TTL retry queues and Dead-Letter Queue), idempotent consumer by <code>MessageId</code> and distributed tracing with OpenTelemetry and Jaeger.</li>
           <li>Suite of <strong>300 automated tests</strong> (166 unit and 134 integration, concurrency and fault-injection) in xUnit with 100% pass rate and validated throughput of <strong>278 sustained req/s under ACID write workloads</strong> in k6 load tests (controlled benchmark environment).</li>
         </ul>
@@ -880,9 +880,9 @@ const BACKEND_EN = `<!DOCTYPE html>
         <div class="entry-title">FarmFlow - Distributed Agri-Tech Platform (Java) - <a href="https://github.com/DevYuriVieira/farmflow-backend">github.com/DevYuriVieira/farmflow-backend</a></div>
         <div class="entry-meta">Personal | 2026 | Java | Spring Boot | Virtual Threads | PostgreSQL | RabbitMQ | Keycloak OIDC | OpenTelemetry | k6</div>
         <ul class="bullets">
-          <li>Distributed platform engineered for critical agro-industrial operations: <strong>Java with Virtual Threads and Spring Boot</strong> backend sustaining <strong>2,450 req/s</strong> in k6 load tests (controlled benchmark environment) with zero HTTP 5xx responses, built for IoT pivot/silo telemetry and MAPA regulatory compliance.</li>
+          <li>Distributed platform engineered for critical agro-industrial operations: <strong>Java with Virtual Threads and Spring Boot</strong> backend reaching <strong>~845 req/s in-memory HTTP, 780.5 req/s Rate Limiting and ~293 req/s in transactional writes</strong> in k6 load tests (controlled benchmark) with zero HTTP 5xx responses, for IoT telemetry and MAPA compliance.</li>
           <li>Consistency without dual-writes: <strong>Transactional Outbox</strong> over RabbitMQ (CloudEvents, Publisher Confirms, DLQ), concurrent polling via <code>FOR UPDATE SKIP LOCKED</code>, choreographed sagas with advisory locks (<code>pg_try_advisory_xact_lock</code>) and end-to-end distributed tracing with OpenTelemetry.</li>
-          <li>Data and security architecture: <strong>PostgreSQL</strong> with declarative time-series partitioning, BRIN indexes and <strong>fail-closed Row-Level Security</strong>; Keycloak OIDC with IDOR enumeration protection (404 instead of 403) and <strong>411 automated backend tests</strong> (549 across the full platform) executing under 100 Virtual Threads.</li>
+          <li>Data and security architecture: <strong>PostgreSQL</strong> with declarative time-series partitioning, BRIN indexes and <strong>fail-closed Row-Level Security</strong>; Keycloak OIDC with IDOR enumeration protection (404 instead of 403) and <strong>445 automated backend tests</strong> (583 across the full platform) executing under 100 Virtual Threads.</li>
         </ul>
       </div>
 
@@ -984,7 +984,7 @@ const FULLSTACK_PT = `<!DOCTYPE html>
           <span class="ach-label">ZEISS — Plataforma de Recomendação com IA:</span> MVP corporativo full-stack construído em equipe de 11 desenvolvedores para a ZEISS (React, TypeScript e Java/Spring Boot), substituindo a leitura manual de receitas por OCR + IA (n8n/RAG) e dashboards analíticos em tempo real.
         </div>
         <div class="ach-item">
-          <span class="ach-label">FarmFlow &amp; FleetOps (Sistemas Distribuídos):</span> Arquiteturas orientadas a eventos com Transactional Outbox, RabbitMQ, Keycloak OIDC e PostgreSQL: FarmFlow (Java Virtual Threads + React Native Offline-First, 2.450 requisições por segundo (req/s) em benchmark controlado, 549 testes) e FleetOps (C#/.NET, 278 req/s sustentados sob escritas ACID em benchmark controlado, 300 testes).
+          <span class="ach-label">FarmFlow &amp; FleetOps (Sistemas Distribuídos):</span> Arquiteturas orientadas a eventos com Transactional Outbox, RabbitMQ, Keycloak OIDC e PostgreSQL: FarmFlow (Java Virtual Threads + React Native Offline-First, ~845 req/s in-memory e ~293 req/s transacionais em benchmark controlado, 583 testes) e FleetOps (C#/.NET, 278 req/s sustentados sob escritas ACID em benchmark controlado, 300 testes).
         </div>
         <div class="ach-item">
           <span class="ach-label">Work-Fitness (Cliente Real) &amp; Portfólio Interativo:</span> Plataforma comercial entregue para cliente real (qualificação de leads via WhatsApp, 217 testes automatizados) e portfólio interativo autoral (Angular Signals, WebGL/Three.js, 213 testes automatizados), ambos com nota 100/100 nas quatro categorias do Google Lighthouse (auditoria desktop).
@@ -1060,7 +1060,7 @@ const FULLSTACK_PT = `<!DOCTYPE html>
         <div class="entry-title">FleetOps API (C# / .NET) - <a href="https://github.com/DevYuriVieira/fleetops-api">github.com/DevYuriVieira/fleetops-api</a></div>
         <div class="entry-meta">Pessoal | 2026 | C# | .NET | ASP.NET Core | PostgreSQL | Entity Framework Core | RabbitMQ | Keycloak OIDC | OpenTelemetry | xUnit</div>
         <ul class="bullets">
-          <li>Motor back-end distribuído e orientado a eventos em <strong>C# e .NET</strong> para gestão de frotas e logística (27 endpoints REST em 5 contextos delimitados DDD) com Clean Architecture, operando como Resource Server OAuth 2.0 / OIDC com <strong>Keycloak (RS256/JWKS)</strong> e RBAC para quatro papéis.</li>
+          <li>Motor back-end distribuído e orientado a eventos em <strong>C# e .NET</strong> para gestão de frotas e logística (28 endpoints de negócio em 5 contextos delimitados DDD) com Clean Architecture, operando como Resource Server OAuth 2.0 / OIDC com <strong>Keycloak (RS256/JWKS)</strong> e RBAC para quatro papéis.</li>
           <li>Implementa <strong>Transactional Outbox</strong> com publicação em <strong>RabbitMQ</strong> (Publisher Confirms, filas de retry com TTL e Dead-Letter Queue), consumidor idempotente por <code>MessageId</code>, concorrência otimista com <code>xmin</code> do PostgreSQL, polling concorrente via <code>FOR UPDATE SKIP LOCKED</code>, tracing distribuído no Jaeger, <strong>300 testes automatizados</strong> em xUnit e <strong>278 req/s sustentados sob cargas de escrita ACID</strong> em testes k6 (ambiente de benchmark controlado).</li>
         </ul>
       </div>
@@ -1070,8 +1070,8 @@ const FULLSTACK_PT = `<!DOCTYPE html>
         <div class="entry-meta">Pessoal | 2026 | React Native | Expo | Java | Spring Boot | Virtual Threads | PostgreSQL | RabbitMQ | Keycloak OIDC | OpenTelemetry</div>
         <ul class="bullets">
           <li>Plataforma ponta a ponta para operações agrícolas sem conectividade: aplicativo em <strong>React Native com fila FIFO offline-first</strong> e reconciliação determinística ao reconectar, caderno de defensivos do MAPA com <strong>assinatura digital em canvas e hash criptográfico SHA-256</strong>, e telemetria IoT de pivôs e silos.</li>
-          <li>Backend em <strong>Java com Virtual Threads e Spring Boot</strong> sustentando <strong>2.450 req/s</strong> em testes de carga k6 (ambiente de benchmark controlado) sem nenhuma resposta HTTP 5xx, usando <strong>Transactional Outbox</strong> com RabbitMQ (CloudEvents, DLQ), <code>FOR UPDATE SKIP LOCKED</code>, PostgreSQL com particionamento temporal e <strong>Row-Level Security fail-closed</strong>, e tracing distribuído com OpenTelemetry.</li>
-          <li>Qualidade verificável nos dois lados: <strong>549 testes automatizados</strong> (411 no backend e 138 no mobile em 26 suítes Jest), autenticação Keycloak OIDC com biometria no aplicativo e proteção contra enumeração IDOR na API.</li>
+          <li>Backend em <strong>Java com Virtual Threads e Spring Boot</strong> atingindo <strong>~845 req/s in-memory e ~293 req/s transacionais</strong> em testes k6 (ambiente controlado) sem respostas HTTP 5xx, com <strong>Transactional Outbox</strong> sobre RabbitMQ (CloudEvents, DLQ), <code>FOR UPDATE SKIP LOCKED</code>, PostgreSQL particionado com <strong>Row-Level Security fail-closed</strong> e tracing OpenTelemetry.</li>
+          <li>Qualidade verificável nos dois lados: <strong>583 testes automatizados</strong> (445 no backend e 138 no mobile em 26 suítes Jest), autenticação Keycloak OIDC com biometria no aplicativo e proteção contra enumeração IDOR na API.</li>
         </ul>
       </div>
 
@@ -1174,7 +1174,7 @@ const FULLSTACK_EN = `<!DOCTYPE html>
           <span class="ach-label">ZEISS AI Recommendation Platform:</span> Corporate full-stack MVP built with an 11-developer team for ZEISS (React, TypeScript and Java/Spring Boot), replacing manual prescription reading with OCR + AI (n8n/RAG) and real-time analytics dashboards.
         </div>
         <div class="ach-item">
-          <span class="ach-label">FarmFlow &amp; FleetOps (Distributed Systems):</span> Event-driven architectures with Transactional Outbox, RabbitMQ, Keycloak OIDC and PostgreSQL: FarmFlow (Java Virtual Threads + Offline-First React Native, 2,450 requests per second (req/s) in controlled benchmarks, 549 automated tests) and FleetOps (C#/.NET, 278 sustained req/s under ACID write workloads in controlled benchmarks, 300 automated tests).
+          <span class="ach-label">FarmFlow &amp; FleetOps (Distributed Systems):</span> Event-driven architectures with Transactional Outbox, RabbitMQ, Keycloak OIDC and PostgreSQL: FarmFlow (Java Virtual Threads + Offline-First React Native, ~845 req/s in-memory and ~293 req/s transactional in controlled benchmarks, 583 automated tests) and FleetOps (C#/.NET, 278 sustained req/s under ACID write workloads in controlled benchmarks, 300 automated tests).
         </div>
         <div class="ach-item">
           <span class="ach-label">Work-Fitness (Client Platform) &amp; Interactive Portfolio:</span> Commercial platform delivered for a real client (WhatsApp lead triage, 217 automated tests) and personal interactive portfolio (Angular Signals, WebGL/Three.js, 213 automated tests), both scoring 100/100 across all four Google Lighthouse categories (desktop audit).
@@ -1250,7 +1250,7 @@ const FULLSTACK_EN = `<!DOCTYPE html>
         <div class="entry-title">FleetOps API (C# / .NET) - <a href="https://github.com/DevYuriVieira/fleetops-api">github.com/DevYuriVieira/fleetops-api</a></div>
         <div class="entry-meta">Personal | 2026 | C# | .NET | ASP.NET Core | PostgreSQL | Entity Framework Core | RabbitMQ | Keycloak OIDC | OpenTelemetry | xUnit</div>
         <ul class="bullets">
-          <li>Distributed, event-driven fleet and logistics REST API engine in <strong>C# and .NET</strong> (27 endpoints across 5 DDD Bounded Contexts) with Clean Architecture, operating as an OAuth 2.0 / OIDC Resource Server with <strong>Keycloak (RS256/JWKS)</strong> and RBAC across four roles.</li>
+          <li>Distributed, event-driven fleet and logistics REST API engine in <strong>C# and .NET</strong> (28 business endpoints across 5 DDD Bounded Contexts) with Clean Architecture, operating as an OAuth 2.0 / OIDC Resource Server with <strong>Keycloak (RS256/JWKS)</strong> and RBAC across four roles.</li>
           <li>Implements the <strong>Transactional Outbox pattern</strong> with <strong>RabbitMQ</strong> publishing (Publisher Confirms, TTL retry queues and a Dead-Letter Queue), an idempotent consumer keyed by <code>MessageId</code>, optimistic concurrency with PostgreSQL <code>xmin</code>, concurrent polling via <code>FOR UPDATE SKIP LOCKED</code>, distributed tracing in Jaeger, <strong>300 automated xUnit tests</strong> and <strong>278 sustained req/s under ACID write workloads</strong> in k6 load tests (controlled benchmark environment).</li>
         </ul>
       </div>
@@ -1260,8 +1260,8 @@ const FULLSTACK_EN = `<!DOCTYPE html>
         <div class="entry-meta">Personal | 2026 | React Native | Expo | Java | Spring Boot | Virtual Threads | PostgreSQL | RabbitMQ | Keycloak OIDC | OpenTelemetry</div>
         <ul class="bullets">
           <li>End-to-end agri-tech platform for field operations without connectivity: a <strong>React Native app with an offline-first FIFO mutation queue</strong> and deterministic reconciliation on reconnect, MAPA spray records with a <strong>canvas digital signature and SHA-256 cryptographic hash</strong>, and IoT telemetry for irrigation pivots and silos.</li>
-          <li>A <strong>Java Virtual Threads and Spring Boot</strong> backend sustaining <strong>2,450 req/s</strong> in k6 load tests (controlled benchmark environment) with zero HTTP 5xx responses, built on the <strong>Transactional Outbox</strong> pattern with RabbitMQ (CloudEvents, DLQ), <code>FOR UPDATE SKIP LOCKED</code>, PostgreSQL with time-series partitioning and <strong>fail-closed Row-Level Security</strong>, and distributed tracing with OpenTelemetry.</li>
-          <li>Verifiable quality across both sides: <strong>549 automated tests</strong> (411 backend and 138 mobile across 26 Jest suites), Keycloak OIDC authentication with biometrics in the mobile app and IDOR enumeration protection in the API.</li>
+          <li>A <strong>Java Virtual Threads and Spring Boot</strong> backend reaching <strong>~845 req/s in-memory and ~293 req/s in transactional writes</strong> in k6 load tests (controlled benchmark) with zero HTTP 5xx responses, built on the <strong>Transactional Outbox</strong> pattern with RabbitMQ (CloudEvents, DLQ), <code>FOR UPDATE SKIP LOCKED</code>, PostgreSQL with time-series partitioning and <strong>fail-closed Row-Level Security</strong>, and distributed tracing with OpenTelemetry.</li>
+          <li>Verifiable quality across both sides: <strong>583 automated tests</strong> (445 backend and 138 mobile across 26 Jest suites), Keycloak OIDC authentication with biometrics in the mobile app and IDOR enumeration protection in the API.</li>
         </ul>
       </div>
 

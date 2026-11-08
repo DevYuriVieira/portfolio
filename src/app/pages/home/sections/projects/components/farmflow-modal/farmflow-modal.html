@@ -7,7 +7,7 @@
           <span class="farmflow-modal__eyebrow">{{ data().modalEyebrow }}</span>
           <span class="farmflow-modal__badge farmflow-modal__badge--accent">JAVA 21 & SPRING BOOT 4</span>
           <span class="farmflow-modal__badge farmflow-modal__badge--blue">REACT NATIVE EXPO 54</span>
-          <span class="farmflow-modal__badge farmflow-modal__badge--green">549 TESTS PASSING</span>
+          <span class="farmflow-modal__badge farmflow-modal__badge--green">583 TESTS PASSING</span>
           <span class="farmflow-modal__badge farmflow-modal__badge--amber">MAPA SHA-256 AUDIT</span>
         </div>
 
@@ -423,9 +423,9 @@ public class OutboxEventDispatcher &#123;
       <div class="farmflow-section">
         <div class="farmflow-stats-row">
           <div class="farmflow-stat-box">
-            <span class="farmflow-stat-box__val">549+</span>
+            <span class="farmflow-stat-box__val">583</span>
             <span class="farmflow-stat-box__label">{{ activeLang() === 'en' ? 'Automated Tests' : 'Testes Automatizados' }}</span>
-            <span class="farmflow-stat-box__sub">{{ activeLang() === 'en' ? '138 Mobile (Jest) + 411 Backend (JUnit 5)' : '138 Mobile (Jest) + 411 Backend (JUnit 5)' }}</span>
+            <span class="farmflow-stat-box__sub">{{ activeLang() === 'en' ? '445 Backend (JUnit 5) + 138 Mobile (Jest)' : '445 Backend (JUnit 5) + 138 Mobile (Jest)' }}</span>
           </div>
           <div class="farmflow-stat-box farmflow-stat-box--green">
             <span class="farmflow-stat-box__val">100%</span>
@@ -433,9 +433,9 @@ public class OutboxEventDispatcher &#123;
             <span class="farmflow-stat-box__sub">{{ activeLang() === 'en' ? 'Zero Flakiness / Zero CVEs (Trivy Scan)' : 'Zero Falhas / Zero CVEs (Trivy Scan)' }}</span>
           </div>
           <div class="farmflow-stat-box">
-            <span class="farmflow-stat-box__val">6.200</span>
-            <span class="farmflow-stat-box__label">{{ activeLang() === 'en' ? 'Sustained RPS (k6)' : 'RPS Sustentado (k6)' }}</span>
-            <span class="farmflow-stat-box__sub">{{ activeLang() === 'en' ? 'Java 21 Virtual Threads + PostgreSQL 17' : 'Java 21 Virtual Threads + PostgreSQL 17' }}</span>
+            <span class="farmflow-stat-box__val">293 / 845</span>
+            <span class="farmflow-stat-box__label">{{ activeLang() === 'en' ? 'ACID / In-Memory RPS (k6)' : 'RPS Transacional / In-Memory (k6)' }}</span>
+            <span class="farmflow-stat-box__sub">{{ activeLang() === 'en' ? '293.33 ACID + Outbox | 845 In-Memory' : '293,33 ACID + Outbox | 845 In-Memory' }}</span>
           </div>
           <div class="farmflow-stat-box">
             <span class="farmflow-stat-box__val">{{ data().adrs.length }}</span>

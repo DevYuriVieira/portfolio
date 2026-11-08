@@ -258,21 +258,21 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       problem:
         'Gargalo de conexão em áreas rurais remotas provocando perda de apontamentos de pulverização, divergência de estoques químicos, multas pelo MAPA por falha em dossiês e falta de visibilidade em tempo real sobre maquinário e sensores de silos.',
       solution:
-        'Arquitetura integrada ponta a ponta: frontend mobile Offline-First com fila transacional FIFO de mutações e reconciliação assíncrona; backend distribuído em Java 21 com Virtual Threads, Transactional Outbox Pattern e FOR UPDATE SKIP LOCKED no RabbitMQ, PostgreSQL 17 com particionamento temporal declarativo e RLS fail-closed, além de 549+ testes automatizados (411 no backend + 138 no mobile).',
+        'Arquitetura integrada ponta a ponta: frontend mobile Offline-First com fila transacional FIFO de mutações e reconciliação assíncrona; backend distribuído em Java 21 com Virtual Threads, Transactional Outbox Pattern e FOR UPDATE SKIP LOCKED no RabbitMQ, PostgreSQL 17 com particionamento temporal declarativo e RLS fail-closed, além de 583 testes automatizados (445 no backend + 138 no mobile em 26 suítes Jest).',
       architectureDecisions: [
         'Frontend Mobile Offline-First com fila FIFO transacional em AsyncStorage e reconciliação determinística com netinfo',
         'Módulo regulatório do MAPA com geração de caderno de aplicação e assinatura digital em Canvas com hash SHA-256',
-        'Backend em Java 21 LTS com Virtual Threads e Spring Boot 4.1.1 sustentando 2.450 req/s em testes de carga k6',
+        'Backend em Java 21 LTS com Virtual Threads e Spring Boot 4.1.1 atingindo ~845 req/s in-memory e ~293 req/s em escrita transacional em testes k6',
         'Transactional Outbox Pattern com RabbitMQ (CloudEvents v1.0, DLX, TTL, Dead Letter Queue) e FOR UPDATE SKIP LOCKED',
         'PostgreSQL 17 com Particionamento Temporal Declarativo, índices BRIN e Fail-Closed Row Level Security (RLS)',
         'Sagas distribuídas orquestradas com locks consultivos (pg_try_advisory_xact_lock) e rastreamento W3C traceparent OpenTelemetry',
         'Autenticação Keycloak 26.1 OIDC com proteção contra enumeração IDOR (HTTP 404 em vez de 403) e biometria mobile',
-        'Suíte massiva de 549+ testes automatizados (411 no backend com 100 Virtual Threads e 138 no mobile em 26 suítes Jest)',
+        'Suíte de 583 testes automatizados (445 no backend com 100 Virtual Threads e 138 no mobile em 26 suítes Jest)',
       ],
       highlights: [
-        '549+ testes automatizados (411 testes no Backend Java + 138 testes no Mobile)',
+        '583 testes automatizados (445 testes no Backend Java + 138 testes no Mobile)',
         'Mobile Offline-First em React Native (Expo 54, React 19) com fila FIFO',
-        'Backend Java 21 LTS com Virtual Threads sustentando 2.450 req/s (k6)',
+        'Backend Java 21 LTS com Virtual Threads (~845 req/s in-memory e ~293 req/s transacional em k6)',
         'Transactional Outbox com RabbitMQ e CloudEvents v1.0',
         'PostgreSQL 17 com particionamento temporal e Row Level Security (RLS)',
         'Caderno regulatório MAPA com assinatura digital canvas SHA-256',
@@ -296,9 +296,9 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       summaryProblem: 'Gargalos de conectividade rural, perdas de apontamento e descompasso de estoque e maquinário',
       summarySolution: 'Arquitetura com Virtual Threads (Java 21), Transactional Outbox, RabbitMQ e PostgreSQL 17',
       summaryArch: 'Saga coreografada, SKIP LOCKED, RLS fail-closed, índices BRIN e CloudEvents v1.0',
-      summaryResults: '2.450 req/s em k6, 549+ testes automatizados (411 na API + 138 no mobile) e poda em 0,026ms',
+      summaryResults: '~845 req/s in-memory e ~293 req/s transacional em k6, 583 testes automatizados (445 na API + 138 no mobile) e poda em 0,026ms',
       results:
-        'Sincronização 100% resiliente de dados de campo em áreas sem conectividade via fila FIFO; conformidade regulatória estrita com exigências de defensivos do MAPA; capacidade de alta vazão no backend de 2.450 req/s com zero erros 5xx; 549+ testes automatizados garantindo qualidade total entre cliente mobile e API.',
+        'Sincronização 100% resiliente de dados de campo em áreas sem conectividade via fila FIFO; conformidade regulatória estrita com exigências de defensivos do MAPA; capacidade aferida no backend de ~845 req/s in-memory, 780,5 req/s em Rate Limiting e ~293 req/s em escrita transacional com zero erros 5xx; 583 testes automatizados garantindo qualidade total entre cliente mobile e API.',
       links: {
         github: 'https://github.com/DevYuriVieira/farmflow-mobile',
         backendGithub: 'https://github.com/DevYuriVieira/farmflow-backend',
@@ -1178,21 +1178,21 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       problem:
         'Connectivity dead-zones in remote agricultural areas causing data loss, chemical inventory mismatches, heavy MAPA regulatory fines due to unsigned spray logs, and lack of real-time asset telemetry.',
       solution:
-        'End-to-end integrated architecture: Offline-First mobile frontend with transactional FIFO mutation queue and asynchronous reconciliation; distributed Java 21 backend with Virtual Threads, Transactional Outbox Pattern with FOR UPDATE SKIP LOCKED over RabbitMQ, PostgreSQL 17 with declarative range time-series partitioning and fail-closed RLS, backed by 549+ automated tests (411 on backend + 138 on mobile).',
+        'End-to-end integrated architecture: Offline-First mobile frontend with transactional FIFO mutation queue and asynchronous reconciliation; distributed Java 21 backend with Virtual Threads, Transactional Outbox Pattern with FOR UPDATE SKIP LOCKED over RabbitMQ, PostgreSQL 17 with declarative range time-series partitioning and fail-closed RLS, backed by 583 automated tests (445 on backend + 138 on mobile across 26 Jest suites).',
       architectureDecisions: [
         'Offline-First mobile architecture with transactional FIFO mutation queue in AsyncStorage guaranteeing deterministic replay upon reconnection',
         'MAPA regulatory compliance module with technical dossier generation and SHA-256 hashed canvas digital signatures',
-        'Java 21 LTS backend with Virtual Threads and Spring Boot 4.1.1 sustaining 2,450 req/s in k6 load tests',
+        'Java 21 LTS backend with Virtual Threads and Spring Boot 4.1.1 reaching ~845 req/s in-memory and ~293 req/s in transactional writes in k6 load tests',
         'Transactional Outbox Pattern with RabbitMQ (CloudEvents v1.0, DLX, TTL, Dead Letter Queue) and FOR UPDATE SKIP LOCKED',
         'PostgreSQL 17 with Declarative Range Partitioning, BRIN indexes, and Fail-Closed Row Level Security (RLS)',
         'Distributed choreographed sagas with advisory locks (pg_try_advisory_xact_lock) and W3C traceparent OpenTelemetry tracing',
         'Keycloak 26.1 OIDC authentication with IDOR protection (HTTP 404 instead of 403) and mobile biometrics',
-        'Massive 549+ automated test suite (411 backend tests under 100 Virtual Threads and 138 mobile tests across 26 Jest suites)',
+        'Comprehensive 583 automated test suite (445 backend tests under 100 Virtual Threads and 138 mobile tests across 26 Jest suites)',
       ],
       highlights: [
-        '549+ automated tests (411 Java Backend tests + 138 Mobile tests)',
+        '583 automated tests (445 Java Backend tests + 138 Mobile tests)',
         'Offline-First mobile client in React Native (Expo 54, React 19) with FIFO sync',
-        'Java 21 LTS backend with Virtual Threads sustaining 2,450 req/s (k6)',
+        'Java 21 LTS backend with Virtual Threads (~845 req/s in-memory and ~293 req/s transactional in k6)',
         'Transactional Outbox with RabbitMQ and CloudEvents v1.0',
         'PostgreSQL 17 with time-series partitioning and Row Level Security (RLS)',
         'MAPA regulatory spray dossier with SHA-256 digital signatures',
@@ -1216,9 +1216,9 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       summaryProblem: 'Rural connectivity bottlenecks, lost field logs, and stock/fleet state desynchronization',
       summarySolution: 'Event-driven engine with Java 21 Virtual Threads, Transactional Outbox, RabbitMQ, and PostgreSQL 17',
       summaryArch: 'Choreographed saga, SKIP LOCKED, fail-closed RLS, BRIN indexing, and CloudEvents v1.0',
-      summaryResults: '2,450 req/s under k6, 549+ automated tests (411 in API + 138 in mobile), and pruning in 0.026ms',
+      summaryResults: '~845 req/s in-memory and ~293 req/s transactional under k6, 583 automated tests (445 in API + 138 in mobile), and pruning in 0.026ms',
       results:
-        '100% resilient data synchronization for field operations in zero-connectivity zones via FIFO queue; strict regulatory compliance with MAPA agrochemical application guidelines; high-throughput backend capacity of 2,450 req/s with zero 5xx errors; 549+ automated tests ensuring end-to-end stability.',
+        '100% resilient data synchronization for field operations in zero-connectivity zones via FIFO queue; strict regulatory compliance with MAPA agrochemical application guidelines; verified backend capacity of ~845 req/s in-memory, 780.5 req/s Rate Limiting, and ~293 req/s in transactional writes with zero 5xx errors; 583 automated tests ensuring end-to-end stability.',
       links: {
         github: 'https://github.com/DevYuriVieira/farmflow-mobile',
         backendGithub: 'https://github.com/DevYuriVieira/farmflow-backend',
@@ -2096,21 +2096,21 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       problem:
         'Operaciones agrícolas críticas en zonas sin señal provocando pérdida de datos de pulverización, desajustes de inventario, multas del MAPA por falta de cuadernos firmados y falta de telemetría de activos.',
       solution:
-        'Arquitectura integrada de extremo a extremo: frontend móvil Offline-First con cola transaccional FIFO y sincronización determinista; backend distribuido en Java 21 con Virtual Threads, Transactional Outbox Pattern y FOR UPDATE SKIP LOCKED sobre RabbitMQ, PostgreSQL 17 con particionamiento temporal y RLS fail-closed, respaldado por más de 549 pruebas automatizadas (411 en backend + 138 en móvil).',
+        'Arquitectura integrada de extremo a extremo: frontend móvil Offline-First con cola transaccional FIFO y sincronización determinista; backend distribuido en Java 21 con Virtual Threads, Transactional Outbox Pattern y FOR UPDATE SKIP LOCKED sobre RabbitMQ, PostgreSQL 17 con particionamiento temporal y RLS fail-closed, respaldado por 583 pruebas automatizadas (445 en backend + 138 en móvil en 26 suites Jest).',
       architectureDecisions: [
         'Frontend móvil Offline-First con cola FIFO transaccional en AsyncStorage y reconciliación determinista con netinfo',
         'Módulo regulatorio del MAPA con generación de cuaderno técnico y firma digital en Canvas con hash SHA-256',
-        'Backend en Java 21 LTS con Virtual Threads y Spring Boot 4.1.1 soportando 2.450 req/s en pruebas k6',
+        'Backend en Java 21 LTS con Virtual Threads y Spring Boot 4.1.1 alcanzando ~845 req/s in-memory y ~293 req/s en escritura transaccional en pruebas k6',
         'Transactional Outbox Pattern con RabbitMQ (CloudEvents v1.0, DLX, TTL, Dead Letter Queue) y FOR UPDATE SKIP LOCKED',
         'PostgreSQL 17 con Particionamiento Temporal Declarativo, índices BRIN y Fail-Closed Row Level Security (RLS)',
         'Sagas distribuidas orquestadas con locks consultivos (pg_try_advisory_xact_lock) y trazabilidad W3C traceparent OpenTelemetry',
         'Autenticación Keycloak 26.1 OIDC con protección contra enumeración IDOR (HTTP 404 en vez de 403) y biometría móvil',
-        'Suite masiva de 549+ pruebas automatizadas (411 en backend con 100 Virtual Threads y 138 en móvil en 26 suites Jest)',
+        'Suite de 583 pruebas automatizadas (445 en backend con 100 Virtual Threads y 138 en móvil en 26 suites Jest)',
       ],
       highlights: [
-        '549+ pruebas automatizadas (411 pruebas en Backend Java + 138 pruebas en Móvil)',
+        '583 pruebas automatizadas (445 pruebas en Backend Java + 138 pruebas en Móvil)',
         'Cliente móvil Offline-First en React Native (Expo 54, React 19) con sincronización FIFO',
-        'Backend Java 21 LTS con Virtual Threads soportando 2.450 req/s (k6)',
+        'Backend Java 21 LTS con Virtual Threads (~845 req/s in-memory y ~293 req/s transaccional en k6)',
         'Transactional Outbox con RabbitMQ y CloudEvents v1.0',
         'PostgreSQL 17 con particionamiento temporal y Row Level Security (RLS)',
         'Cuaderno regulatorio MAPA con firma digital canvas SHA-256',
@@ -2134,9 +2134,9 @@ const PROJECTS_I18N: Record<SupportedLang, readonly Project[]> = {
       summaryProblem: 'Cuellos de botella de conectividad rural, pérdidas de registros y desfasaje de inventario y maquinaria',
       summarySolution: 'Motor event-driven con Java 21 Virtual Threads, Transactional Outbox, RabbitMQ y PostgreSQL 17',
       summaryArch: 'Saga coreografiada, SKIP LOCKED, RLS fail-closed, índices BRIN y CloudEvents v1.0',
-      summaryResults: '2.450 req/s bajo k6, 549+ tests automatizados (411 en API + 138 en móvil) y poda en 0,026ms',
+      summaryResults: '~845 req/s in-memory y ~293 req/s transaccional bajo k6, 583 tests automatizados (445 en API + 138 en móvil) y poda en 0,026ms',
       results:
-        'Sincronización 100% íntegra de datos de campo en zonas sin señal vía cola FIFO; cumplimiento normativo estricto con exigencias del MAPA; capacidad de alto rendimiento en backend de 2.450 req/s con cero errores 5xx; 549+ pruebas automatizadas garantizando estabilidad total.',
+        'Sincronización 100% íntegra de datos de campo en zonas sin señal vía cola FIFO; cumplimiento normativo estricto con exigencias del MAPA; capacidad verificada en backend de ~845 req/s in-memory, 780,5 req/s en Rate Limiting y ~293 req/s en escritura transaccional con cero errores 5xx; 583 pruebas automatizadas garantizando estabilidad total.',
       links: {
         github: 'https://github.com/DevYuriVieira/farmflow-mobile',
         backendGithub: 'https://github.com/DevYuriVieira/farmflow-backend',

@@ -101,7 +101,7 @@ export class FleetOpsModal {
         (slo) => `| **${slo.service}** | ${slo.sli} | **${slo.target}** | ${slo.budget} |`
       ),
       '',
-      `## 7. ${isEn ? 'REST API Contract Inventory (27 Business Endpoints)' : 'Inventário de Endpoints REST (27 Endpoints de Negócio)'}`,
+      `## 7. ${isEn ? 'REST API Contract Inventory (28 Business Endpoints)' : 'Inventário de Endpoints REST (28 Endpoints de Negócio)'}`,
       ...d.endpointCategories.flatMap((cat) => [
         `### ${cat.category} (Roles: ${cat.roles})`,
         ...cat.endpoints.map(

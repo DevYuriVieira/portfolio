@@ -17,9 +17,9 @@ test.describe('Visual Regression Suite: Snapshot & Pixel Comparison', () => {
   });
 
   test('should verify About section visual layout structure', async ({ page }) => {
-    const aboutSection = page.locator('#about');
-    await aboutSection.scrollIntoViewIfNeeded();
-    await expect(aboutSection).toBeVisible();
+    await page.evaluate(() => document.getElementById('about')?.scrollIntoView({ behavior: 'instant' }));
+    const aboutSection = page.locator('app-about #about');
+    await expect(aboutSection).toBeVisible({ timeout: 10000 });
 
     await expect(aboutSection).toHaveScreenshot('about-section.png', {
       animations: 'disabled',
@@ -29,9 +29,9 @@ test.describe('Visual Regression Suite: Snapshot & Pixel Comparison', () => {
   });
 
   test('should verify Contact section visual layout', async ({ page }) => {
-    const contactSection = page.locator('#contact');
-    await contactSection.scrollIntoViewIfNeeded();
-    await expect(contactSection).toBeVisible();
+    await page.evaluate(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'instant' }));
+    const contactSection = page.locator('app-contact #contact');
+    await expect(contactSection).toBeVisible({ timeout: 10000 });
 
     await expect(contactSection).toHaveScreenshot('contact-section.png', {
       animations: 'disabled',
@@ -40,6 +40,21 @@ test.describe('Visual Regression Suite: Snapshot & Pixel Comparison', () => {
   });
 
   test('should verify High Contrast Accessibility Theme visual contrast shift', async ({ page }) => {
+    const sections = [
+      ['about', 'app-about #about'],
+      ['experience', 'app-experience #experience'],
+      ['skills', 'app-skills #skills'],
+      ['projects', 'app-projects #projects'],
+      ['ai-experience', 'app-ai-experience #ai-experience'],
+      ['contact', 'app-contact #contact'],
+    ] as const;
+
+    for (const [id, hydratedSelector] of sections) {
+      await page.evaluate((elId) => document.getElementById(elId)?.scrollIntoView({ behavior: 'instant' }), id);
+      await expect(page.locator(hydratedSelector)).toBeVisible({ timeout: 10000 });
+    }
+    await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
+
     const a11yToggle = page.locator('.a11y-trigger, app-accessibility-widget button').first();
     if (await a11yToggle.isVisible()) {
       await a11yToggle.click();

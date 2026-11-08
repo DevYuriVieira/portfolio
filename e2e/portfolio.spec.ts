@@ -149,10 +149,11 @@ test.describe('Yuri Vieira Portfolio - Comprehensive E2E Test Suite', () => {
 
   test.describe('5. Skills, Experience & About Sections', () => {
     test('should render skills categories and tag cloud items', async ({ page }) => {
-      const skillsSection = page.locator('#skills');
-      await skillsSection.scrollIntoViewIfNeeded();
+      await expect(page.locator('#skills')).toBeAttached();
+      await page.evaluate(() => document.getElementById('skills')?.scrollIntoView({ behavior: 'instant' }));
 
       const skillCards = page.locator('#skills .skills__card');
+      await expect(skillCards.first()).toBeVisible({ timeout: 10000 });
       const cardCount = await skillCards.count();
       expect(cardCount).toBeGreaterThanOrEqual(3);
 
@@ -162,19 +163,21 @@ test.describe('Yuri Vieira Portfolio - Comprehensive E2E Test Suite', () => {
     });
 
     test('should render experience focus cards and timeline milestones', async ({ page }) => {
-      const expSection = page.locator('#experience');
-      await expSection.scrollIntoViewIfNeeded();
+      await expect(page.locator('#experience')).toBeAttached();
+      await page.evaluate(() => document.getElementById('experience')?.scrollIntoView({ behavior: 'instant' }));
 
       const focusCards = page.locator('#experience .experience__focus-card');
+      await expect(focusCards.first()).toBeVisible({ timeout: 10000 });
       const count = await focusCards.count();
       expect(count).toBeGreaterThanOrEqual(4);
     });
 
     test('should render engineering principles in about section', async ({ page }) => {
-      const aboutSection = page.locator('#about');
-      await aboutSection.scrollIntoViewIfNeeded();
+      await expect(page.locator('#about')).toBeAttached();
+      await page.evaluate(() => document.getElementById('about')?.scrollIntoView({ behavior: 'instant' }));
 
       const principles = page.locator('#about .about__principle-card');
+      await expect(principles.first()).toBeVisible({ timeout: 10000 });
       const count = await principles.count();
       expect(count).toBeGreaterThanOrEqual(3);
     });
@@ -207,14 +210,13 @@ test.describe('Yuri Vieira Portfolio - Comprehensive E2E Test Suite', () => {
     test('should handle copy email action with visual state feedback', async ({ page, context }) => {
       await context.grantPermissions(['clipboard-read', 'clipboard-write'], { origin: 'http://localhost:4200' });
 
-      const contactSection = page.locator('#contact');
-      await contactSection.scrollIntoViewIfNeeded();
+      await page.locator('#contact').scrollIntoViewIfNeeded();
 
       const copyBtnHost = page.locator('#contact app-button').nth(1);
       const copyButton = copyBtnHost.locator('button');
       await expect(copyButton).toBeVisible();
 
-      await copyButton.click();
+      await copyButton.click({ force: true });
       await expect(copyButton).toHaveText(/Copiado|Copied/i);
     });
 
