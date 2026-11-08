@@ -221,7 +221,7 @@ const FRONTEND_PT = `<!DOCTYPE html>
     <section class="section">
       <h2 class="section-title">RESUMO PROFISSIONAL</h2>
       <p class="summary">
-        Engenheiro de Software com foco em <strong>TypeScript</strong>, <strong>React</strong>, <strong>Angular</strong> e <strong>React Native (Expo)</strong>, além de vivência prática com integração de <strong>APIs RESTful</strong>, <strong>Java (Spring Boot)</strong>, <strong>C#/.NET</strong> e <strong>PostgreSQL</strong>. Atuação no desenvolvimento de aplicações web e mobile responsivas, arquiteturas offline-first, fluxos de autenticação segura (OAuth 2.0/OIDC, JWT, Keycloak), acessibilidade web (WCAG 2.1 AA/AAA) e suítes de testes automatizados (Vitest, Jest, Playwright e Cypress). Mais de 910 horas de formação prática em desenvolvimento de software pelo Serratec e pela UECE. Pós-graduado em Engenharia de Software. Inglês avançado (B2+). Disponível para oportunidades remotas no Brasil e no exterior.
+        Engenheiro de Software com foco em <strong>TypeScript</strong>, <strong>React</strong>, <strong>Angular</strong> e <strong>React Native (Expo)</strong>, além de vivência prática com integração de <strong>APIs RESTful</strong>, <strong>Java (Spring Boot)</strong>, <strong>C#/.NET</strong> e <strong>PostgreSQL</strong>. Atuação no desenvolvimento de aplicações web e mobile responsivas, arquiteturas offline-first, fluxos de autenticação segura (OAuth 2.0/OIDC, JWT, Keycloak), acessibilidade web (WCAG 2.1 AA/AAA) e suítes de testes automatizados (Vitest, Jest, Playwright e Cypress). Mais de 910 horas de formação prática em desenvolvimento de software pelo Serratec e pela UECE. Pós-graduado em Engenharia de Software. Inglês B2+ (Intermediário Superior / Avançado). Disponível para oportunidades remotas no Brasil e no exterior.
       </p>
     </section>
 
@@ -229,7 +229,7 @@ const FRONTEND_PT = `<!DOCTYPE html>
       <h2 class="section-title">DESTAQUES</h2>
       <div class="ach-box">
         <div class="ach-item">
-          <span class="ach-label">ZEISS — Plataforma de Recomendação com IA:</span> MVP corporativo construído em equipe de 11 integrantes para a ZEISS, desenvolvendo a interface em React e TypeScript para validação clínica assistida via OCR, recomendação de lentes via IA (n8n/RAG) e dashboards analíticos em tempo real.
+          <span class="ach-label">ZEISS — Plataforma de Recomendação com IA:</span> MVP corporativo construído em equipe de 11 desenvolvedores para a ZEISS, desenvolvendo a interface em React e TypeScript para validação clínica assistida via OCR, recomendação de lentes via IA (n8n/RAG) e dashboards analíticos em tempo real.
         </div>
         <div class="ach-item">
           <span class="ach-label">Work-Fitness (Cliente Real) &amp; Portfólio Interativo:</span> Plataforma comercial entregue para cliente real (qualificação de leads via WhatsApp, 217 testes automatizados) e portfólio interativo autoral (Angular Signals, WebGL/Three.js, 213 testes automatizados), ambos com nota 100/100 nas quatro categorias do Google Lighthouse (auditoria desktop).
@@ -345,16 +345,16 @@ const FRONTEND_PT = `<!DOCTYPE html>
     <section class="section">
       <h2 class="section-title">FORMAÇÃO ACADÊMICA</h2>
       <div class="edu-item">
-        <div class="edu-title">Pós-Graduação Lato Sensu - Engenharia de Software</div>
-        <div class="edu-meta">Universidade Estácio | 2024 - 2025</div>
-      </div>
-      <div class="edu-item">
         <div class="edu-title">Residência em TIC/Software Full-Stack (790 h)</div>
         <div class="edu-meta">Serratec | Fev 2026 - Jul 2026</div>
       </div>
       <div class="edu-item">
         <div class="edu-title">Residência em TIC 12 (120 h)</div>
         <div class="edu-meta">Universidade Estadual do Ceará (UECE) | Out 2025 - Dez 2025</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-title">Pós-Graduação Lato Sensu - Engenharia de Software</div>
+        <div class="edu-meta">Universidade Estácio | 2024 - 2025</div>
       </div>
       <div class="edu-item">
         <div class="edu-title">Bacharelado - Engenharia de Produção</div>
@@ -376,7 +376,7 @@ const FRONTEND_PT = `<!DOCTYPE html>
     <section class="section" style="margin-bottom: 0;">
       <h2 class="section-title">IDIOMAS</h2>
       <div class="languages">
-        <strong>Português</strong> Nativo &nbsp;|&nbsp; <strong>Inglês</strong> Avançado (B2+) &nbsp;|&nbsp; <strong>Espanhol</strong> Avançado (B2+)
+        <strong>Português</strong> Nativo &nbsp;|&nbsp; <strong>Inglês</strong> B2+ (Intermediário Superior / Avançado) &nbsp;|&nbsp; <strong>Espanhol</strong> B2+ (Intermediário Superior / Avançado)
       </div>
     </section>
   </div>
@@ -409,7 +409,7 @@ const FRONTEND_EN = `<!DOCTYPE html>
     <section class="section">
       <h2 class="section-title">PROFESSIONAL SUMMARY</h2>
       <p class="summary">
-        Front-End and Mobile Software Engineer specializing in <strong>TypeScript</strong>, <strong>React</strong>, <strong>Angular</strong> and <strong>React Native (Expo)</strong>, with practical background in <strong>RESTful APIs</strong>, <strong>Java (Spring Boot)</strong>, <strong>C#/.NET</strong> and <strong>PostgreSQL</strong>. Hands-on experience developing responsive web and mobile applications, offline-first architectures, secure authentication flows (OAuth 2.0/OIDC, JWT, Keycloak), web accessibility (WCAG 2.1 AA/AAA) and automated test suites (Vitest, Jest, Playwright and Cypress). Completed over 910 hours of hands-on software development training through Serratec and UECE. Postgraduate degree in Software Engineering. Advanced English (B2+). Open to remote opportunities in Brazil and internationally.
+        Front-End and Mobile Software Engineer specializing in <strong>TypeScript</strong>, <strong>React</strong>, <strong>Angular</strong> and <strong>React Native (Expo)</strong>, with practical background in <strong>RESTful APIs</strong>, <strong>Java (Spring Boot)</strong>, <strong>C#/.NET</strong> and <strong>PostgreSQL</strong>. Hands-on experience developing responsive web and mobile applications, offline-first architectures, secure authentication flows (OAuth 2.0/OIDC, JWT, Keycloak), web accessibility (WCAG 2.1 AA/AAA) and automated test suites (Vitest, Jest, Playwright and Cypress). Completed over 910 hours of intensive software development training through Serratec and UECE. Postgraduate degree in Software Engineering. Upper-Intermediate / Advanced English (B2+). Open to remote opportunities in Brazil and internationally.
       </p>
     </section>
 
@@ -417,7 +417,7 @@ const FRONTEND_EN = `<!DOCTYPE html>
       <h2 class="section-title">KEY ACHIEVEMENTS</h2>
       <div class="ach-box">
         <div class="ach-item">
-          <span class="ach-label">ZEISS AI Recommendation Platform:</span> Corporate MVP built with an 11-member team for ZEISS, developing the React and TypeScript frontend for assisted OCR prescription validation, AI-driven lens recommendations (n8n/RAG) and real-time analytics dashboards.
+          <span class="ach-label">ZEISS AI Recommendation Platform:</span> Corporate MVP built with an 11-developer team for ZEISS, developing the React and TypeScript frontend for assisted OCR prescription validation, AI-driven lens recommendations (n8n/RAG) and real-time analytics dashboards.
         </div>
         <div class="ach-item">
           <span class="ach-label">Work-Fitness (Client Platform) &amp; Interactive Portfolio:</span> Commercial platform delivered for a real client (WhatsApp lead triage, 217 automated tests) and personal interactive portfolio (Angular Signals, WebGL/Three.js, 213 automated tests), both scoring 100/100 across all four Google Lighthouse categories (desktop audit).
@@ -533,16 +533,16 @@ const FRONTEND_EN = `<!DOCTYPE html>
     <section class="section">
       <h2 class="section-title">EDUCATION</h2>
       <div class="edu-item">
-        <div class="edu-title">Postgraduate Degree in Software Engineering</div>
-        <div class="edu-meta">Estácio University | 2024 - 2025</div>
-      </div>
-      <div class="edu-item">
         <div class="edu-title">Technology Residency - TIC/Software Full-Stack (790 h)</div>
         <div class="edu-meta">Serratec | Feb 2026 - Jul 2026</div>
       </div>
       <div class="edu-item">
         <div class="edu-title">Technology Residency - TIC 12 (120 h)</div>
         <div class="edu-meta">State University of Ceará (UECE) | Oct 2025 - Dec 2025</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-title">Postgraduate Degree in Software Engineering</div>
+        <div class="edu-meta">Estácio University | 2024 - 2025</div>
       </div>
       <div class="edu-item">
         <div class="edu-title">Bachelor's Degree in Industrial Engineering</div>
@@ -564,7 +564,7 @@ const FRONTEND_EN = `<!DOCTYPE html>
     <section class="section" style="margin-bottom: 0;">
       <h2 class="section-title">LANGUAGES</h2>
       <div class="languages">
-        <strong>Portuguese</strong> Native &nbsp;|&nbsp; <strong>English</strong> Advanced (B2+) &nbsp;|&nbsp; <strong>Spanish</strong> Advanced (B2+)
+        <strong>Portuguese</strong> Native &nbsp;|&nbsp; <strong>English</strong> Upper-Intermediate / Advanced (B2+) &nbsp;|&nbsp; <strong>Spanish</strong> Upper-Intermediate / Advanced (B2+)
       </div>
     </section>
   </div>
@@ -597,7 +597,7 @@ const BACKEND_PT = `<!DOCTYPE html>
     <section class="section">
       <h2 class="section-title">RESUMO PROFISSIONAL</h2>
       <p class="summary">
-        Engenheiro de Software Back-End com foco em <strong>Java (Spring Boot)</strong> e <strong>C#/.NET (ASP.NET Core)</strong>, além de vivência prática com <strong>Python (Django)</strong>, <strong>TypeScript</strong>, <strong>APIs RESTful</strong>, <strong>RabbitMQ</strong> e <strong>PostgreSQL</strong>. Atuação no desenvolvimento de sistemas distribuídos, arquiteturas orientadas a eventos, segurança de APIs (OAuth 2.0/OIDC, JWT, Keycloak, Spring Security), padrões de mensageria transacional e suítes de testes automatizados (JUnit, xUnit e k6). Mais de 910 horas de formação prática em desenvolvimento de software pelo Serratec e pela UECE. Pós-graduado em Engenharia de Software. Inglês avançado (B2+). Disponível para oportunidades remotas no Brasil e no exterior.
+        Engenheiro de Software Back-End com foco em <strong>Java (Spring Boot)</strong> e <strong>C#/.NET (ASP.NET Core)</strong>, além de vivência prática com <strong>Python (Django)</strong>, <strong>TypeScript</strong>, <strong>APIs RESTful</strong>, <strong>RabbitMQ</strong> e <strong>PostgreSQL</strong>. Atuação no desenvolvimento de sistemas distribuídos, arquiteturas orientadas a eventos, segurança de APIs (OAuth 2.0/OIDC, JWT, Keycloak, Spring Security), padrões de mensageria transacional e suítes de testes automatizados (JUnit, xUnit e k6). Mais de 910 horas de formação prática em desenvolvimento de software pelo Serratec e pela UECE. Pós-graduado em Engenharia de Software. Inglês B2+ (Intermediário Superior / Avançado). Disponível para oportunidades remotas no Brasil e no exterior.
       </p>
     </section>
 
@@ -605,7 +605,7 @@ const BACKEND_PT = `<!DOCTYPE html>
       <h2 class="section-title">DESTAQUES</h2>
       <div class="ach-box">
         <div class="ach-item">
-          <span class="ach-label">ZEISS — Plataforma de Recomendação com IA:</span> MVP corporativo construído em equipe de 11 integrantes para a ZEISS, integrando APIs REST em Java e Spring Boot, WebFlux, PostgreSQL, controle de acesso JWT em três níveis e pipeline de OCR + IA (n8n/RAG).
+          <span class="ach-label">ZEISS — Plataforma de Recomendação com IA:</span> MVP corporativo construído em equipe de 11 desenvolvedores para a ZEISS, integrando APIs REST em Java e Spring Boot, WebFlux, PostgreSQL, controle de acesso JWT em três níveis e pipeline de OCR + IA (n8n/RAG).
         </div>
         <div class="ach-item">
           <span class="ach-label">FleetOps API (.NET &amp; RabbitMQ):</span> Arquitetura distribuída em C# e .NET com Clean Architecture, DDD, Transactional Outbox, RabbitMQ, Keycloak OIDC, PostgreSQL, 300 testes automatizados em xUnit e 278 requisições por segundo (req/s) sustentadas sob escritas ACID no k6 (ambiente de benchmark controlado).
@@ -720,16 +720,16 @@ const BACKEND_PT = `<!DOCTYPE html>
     <section class="section">
       <h2 class="section-title">FORMAÇÃO ACADÊMICA</h2>
       <div class="edu-item">
-        <div class="edu-title">Pós-Graduação Lato Sensu - Engenharia de Software</div>
-        <div class="edu-meta">Universidade Estácio | 2024 - 2025</div>
-      </div>
-      <div class="edu-item">
         <div class="edu-title">Residência em TIC/Software Full-Stack (790 h)</div>
         <div class="edu-meta">Serratec | Fev 2026 - Jul 2026</div>
       </div>
       <div class="edu-item">
         <div class="edu-title">Residência em TIC 12 (120 h)</div>
         <div class="edu-meta">Universidade Estadual do Ceará (UECE) | Out 2025 - Dez 2025</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-title">Pós-Graduação Lato Sensu - Engenharia de Software</div>
+        <div class="edu-meta">Universidade Estácio | 2024 - 2025</div>
       </div>
       <div class="edu-item">
         <div class="edu-title">Bacharelado - Engenharia de Produção</div>
@@ -752,7 +752,7 @@ const BACKEND_PT = `<!DOCTYPE html>
     <section class="section" style="margin-bottom: 0;">
       <h2 class="section-title">IDIOMAS</h2>
       <div class="languages">
-        <strong>Português</strong> Nativo &nbsp;|&nbsp; <strong>Inglês</strong> Avançado (B2+) &nbsp;|&nbsp; <strong>Espanhol</strong> Avançado (B2+)
+        <strong>Português</strong> Nativo &nbsp;|&nbsp; <strong>Inglês</strong> B2+ (Intermediário Superior / Avançado) &nbsp;|&nbsp; <strong>Espanhol</strong> B2+ (Intermediário Superior / Avançado)
       </div>
     </section>
   </div>
@@ -785,7 +785,7 @@ const BACKEND_EN = `<!DOCTYPE html>
     <section class="section">
       <h2 class="section-title">PROFESSIONAL SUMMARY</h2>
       <p class="summary">
-        Back-End Software Engineer specializing in <strong>Java (Spring Boot)</strong> and <strong>C#/.NET (ASP.NET Core)</strong>, with practical background in <strong>Python (Django)</strong>, <strong>TypeScript</strong>, <strong>RESTful APIs</strong>, <strong>RabbitMQ</strong> and <strong>PostgreSQL</strong>. Hands-on experience developing distributed systems, event-driven architectures, secure APIs (OAuth 2.0/OIDC, JWT, Keycloak, Spring Security), transactional messaging patterns and automated test suites (JUnit, xUnit and k6). Completed over 910 hours of hands-on software development training through Serratec and UECE. Postgraduate degree in Software Engineering. Advanced English (B2+). Open to remote opportunities in Brazil and internationally.
+        Back-End Software Engineer specializing in <strong>Java (Spring Boot)</strong> and <strong>C#/.NET (ASP.NET Core)</strong>, with practical background in <strong>Python (Django)</strong>, <strong>TypeScript</strong>, <strong>RESTful APIs</strong>, <strong>RabbitMQ</strong> and <strong>PostgreSQL</strong>. Hands-on experience developing distributed systems, event-driven architectures, secure APIs (OAuth 2.0/OIDC, JWT, Keycloak, Spring Security), transactional messaging patterns and automated test suites (JUnit, xUnit and k6). Completed over 910 hours of intensive software development training through Serratec and UECE. Postgraduate degree in Software Engineering. Upper-Intermediate / Advanced English (B2+). Open to remote opportunities in Brazil and internationally.
       </p>
     </section>
 
@@ -793,7 +793,7 @@ const BACKEND_EN = `<!DOCTYPE html>
       <h2 class="section-title">KEY ACHIEVEMENTS</h2>
       <div class="ach-box">
         <div class="ach-item">
-          <span class="ach-label">ZEISS AI Recommendation Platform:</span> Corporate MVP built with an 11-member team for ZEISS, integrating Java and Spring Boot REST APIs, WebFlux, PostgreSQL, three-tier JWT role-based access control and an OCR + AI pipeline (n8n/RAG).
+          <span class="ach-label">ZEISS AI Recommendation Platform:</span> Corporate MVP built with an 11-developer team for ZEISS, integrating Java and Spring Boot REST APIs, WebFlux, PostgreSQL, three-tier JWT role-based access control and an OCR + AI pipeline (n8n/RAG).
         </div>
         <div class="ach-item">
           <span class="ach-label">FleetOps API (.NET &amp; RabbitMQ):</span> Distributed architecture in C# and .NET with Clean Architecture, DDD, Transactional Outbox, RabbitMQ, Keycloak OIDC, PostgreSQL, 300 automated xUnit tests and 278 sustained requests per second (req/s) under ACID write workloads in k6 (controlled benchmark).
@@ -908,16 +908,16 @@ const BACKEND_EN = `<!DOCTYPE html>
     <section class="section">
       <h2 class="section-title">EDUCATION</h2>
       <div class="edu-item">
-        <div class="edu-title">Postgraduate Degree in Software Engineering</div>
-        <div class="edu-meta">Estácio University | 2024 - 2025</div>
-      </div>
-      <div class="edu-item">
         <div class="edu-title">Technology Residency - TIC/Software Full-Stack (790 h)</div>
         <div class="edu-meta">Serratec | Feb 2026 - Jul 2026</div>
       </div>
       <div class="edu-item">
         <div class="edu-title">Technology Residency - TIC 12 (120 h)</div>
         <div class="edu-meta">State University of Ceará (UECE) | Oct 2025 - Dec 2025</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-title">Postgraduate Degree in Software Engineering</div>
+        <div class="edu-meta">Estácio University | 2024 - 2025</div>
       </div>
       <div class="edu-item">
         <div class="edu-title">Bachelor's Degree in Industrial Engineering</div>
@@ -940,7 +940,7 @@ const BACKEND_EN = `<!DOCTYPE html>
     <section class="section" style="margin-bottom: 0;">
       <h2 class="section-title">LANGUAGES</h2>
       <div class="languages">
-        <strong>Portuguese</strong> Native &nbsp;|&nbsp; <strong>English</strong> Advanced (B2+) &nbsp;|&nbsp; <strong>Spanish</strong> Advanced (B2+)
+        <strong>Portuguese</strong> Native &nbsp;|&nbsp; <strong>English</strong> Upper-Intermediate / Advanced (B2+) &nbsp;|&nbsp; <strong>Spanish</strong> Upper-Intermediate / Advanced (B2+)
       </div>
     </section>
   </div>
@@ -973,7 +973,7 @@ const FULLSTACK_PT = `<!DOCTYPE html>
     <section class="section">
       <h2 class="section-title">RESUMO PROFISSIONAL</h2>
       <p class="summary">
-        Engenheiro de Software Full-Stack com foco em <strong>Java (Spring Boot)</strong>, <strong>C#/.NET (ASP.NET Core)</strong> e <strong>TypeScript (React, Angular e React Native)</strong>, além de vivência prática com <strong>Python (Django)</strong>, <strong>APIs RESTful</strong>, <strong>RabbitMQ</strong> e <strong>PostgreSQL</strong>. Atuação no desenvolvimento de aplicações web e mobile, sistemas distribuídos, APIs seguras, arquiteturas orientadas a eventos e testes automatizados, com aplicação de OAuth 2.0/OIDC, JWT, Keycloak, padrões de mensageria transacional e integrações com IA. Mais de 910 horas de formação prática em desenvolvimento de software pelo Serratec e pela UECE. Pós-graduado em Engenharia de Software. Inglês avançado (B2+). Disponível para oportunidades remotas no Brasil e no exterior.
+        Engenheiro de Software Full-Stack com foco em <strong>Java (Spring Boot)</strong>, <strong>C#/.NET (ASP.NET Core)</strong> e <strong>TypeScript (React, Angular e React Native)</strong>, além de vivência prática com <strong>Python (Django)</strong>, <strong>APIs RESTful</strong>, <strong>RabbitMQ</strong> e <strong>PostgreSQL</strong>. Atuação no desenvolvimento de aplicações web e mobile, sistemas distribuídos, APIs seguras, arquiteturas orientadas a eventos e testes automatizados, com aplicação de OAuth 2.0/OIDC, JWT, Keycloak, padrões de mensageria transacional e integrações com IA. Mais de 910 horas de formação prática em desenvolvimento de software pelo Serratec e pela UECE. Pós-graduado em Engenharia de Software. Inglês B2+ (Intermediário Superior / Avançado). Disponível para oportunidades remotas no Brasil e no exterior.
       </p>
     </section>
 
@@ -981,7 +981,7 @@ const FULLSTACK_PT = `<!DOCTYPE html>
       <h2 class="section-title">DESTAQUES</h2>
       <div class="ach-box">
         <div class="ach-item">
-          <span class="ach-label">ZEISS — Plataforma de Recomendação com IA:</span> MVP corporativo full-stack construído em equipe de 11 integrantes para a ZEISS (React, TypeScript e Java/Spring Boot), substituindo a leitura manual de receitas por OCR + IA (n8n/RAG) e dashboards analíticos em tempo real.
+          <span class="ach-label">ZEISS — Plataforma de Recomendação com IA:</span> MVP corporativo full-stack construído em equipe de 11 desenvolvedores para a ZEISS (React, TypeScript e Java/Spring Boot), substituindo a leitura manual de receitas por OCR + IA (n8n/RAG) e dashboards analíticos em tempo real.
         </div>
         <div class="ach-item">
           <span class="ach-label">FarmFlow &amp; FleetOps (Sistemas Distribuídos):</span> Arquiteturas orientadas a eventos com Transactional Outbox, RabbitMQ, Keycloak OIDC e PostgreSQL: FarmFlow (Java Virtual Threads + React Native Offline-First, 2.450 requisições por segundo (req/s) em benchmark controlado, 549 testes) e FleetOps (C#/.NET, 278 req/s sustentados sob escritas ACID em benchmark controlado, 300 testes).
@@ -1097,16 +1097,16 @@ const FULLSTACK_PT = `<!DOCTYPE html>
     <section class="section">
       <h2 class="section-title">FORMAÇÃO ACADÊMICA</h2>
       <div class="edu-item">
-        <div class="edu-title">Pós-Graduação Lato Sensu - Engenharia de Software</div>
-        <div class="edu-meta">Universidade Estácio | 2024 - 2025</div>
-      </div>
-      <div class="edu-item">
         <div class="edu-title">Residência em TIC/Software Full-Stack (790 h)</div>
         <div class="edu-meta">Serratec | Fev 2026 - Jul 2026</div>
       </div>
       <div class="edu-item">
         <div class="edu-title">Residência em TIC 12 (120 h)</div>
         <div class="edu-meta">Universidade Estadual do Ceará (UECE) | Out 2025 - Dez 2025</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-title">Pós-Graduação Lato Sensu - Engenharia de Software</div>
+        <div class="edu-meta">Universidade Estácio | 2024 - 2025</div>
       </div>
       <div class="edu-item">
         <div class="edu-title">Bacharelado - Engenharia de Produção</div>
@@ -1130,7 +1130,7 @@ const FULLSTACK_PT = `<!DOCTYPE html>
     <section class="section" style="margin-bottom: 0;">
       <h2 class="section-title">IDIOMAS</h2>
       <div class="languages">
-        <strong>Português</strong> Nativo &nbsp;|&nbsp; <strong>Inglês</strong> Avançado (B2+) &nbsp;|&nbsp; <strong>Espanhol</strong> Avançado (B2+)
+        <strong>Português</strong> Nativo &nbsp;|&nbsp; <strong>Inglês</strong> B2+ (Intermediário Superior / Avançado) &nbsp;|&nbsp; <strong>Espanhol</strong> B2+ (Intermediário Superior / Avançado)
       </div>
     </section>
   </div>
@@ -1163,7 +1163,7 @@ const FULLSTACK_EN = `<!DOCTYPE html>
     <section class="section">
       <h2 class="section-title">PROFESSIONAL SUMMARY</h2>
       <p class="summary">
-        Full-Stack Software Engineer specializing in <strong>Java (Spring Boot)</strong>, <strong>C#/.NET (ASP.NET Core)</strong> and <strong>TypeScript (React, Angular and React Native)</strong>, with practical background in <strong>Python (Django)</strong>, <strong>RESTful APIs</strong>, <strong>RabbitMQ</strong> and <strong>PostgreSQL</strong>. Hands-on experience developing web and mobile applications, distributed systems, secure APIs, event-driven architectures and automated test suites, applying OAuth 2.0/OIDC, JWT, Keycloak, transactional messaging patterns and AI integrations. Completed over 910 hours of hands-on software development training through Serratec and UECE. Postgraduate degree in Software Engineering. Advanced English (B2+). Open to remote opportunities in Brazil and internationally.
+        Full-Stack Software Engineer specializing in <strong>Java (Spring Boot)</strong>, <strong>C#/.NET (ASP.NET Core)</strong> and <strong>TypeScript (React, Angular and React Native)</strong>, with practical background in <strong>Python (Django)</strong>, <strong>RESTful APIs</strong>, <strong>RabbitMQ</strong> and <strong>PostgreSQL</strong>. Hands-on experience developing web and mobile applications, distributed systems, secure APIs, event-driven architectures and automated test suites, applying OAuth 2.0/OIDC, JWT, Keycloak, transactional messaging patterns and AI integrations. Completed over 910 hours of intensive software development training through Serratec and UECE. Postgraduate degree in Software Engineering. Upper-Intermediate / Advanced English (B2+). Open to remote opportunities in Brazil and internationally.
       </p>
     </section>
 
@@ -1171,7 +1171,7 @@ const FULLSTACK_EN = `<!DOCTYPE html>
       <h2 class="section-title">KEY ACHIEVEMENTS</h2>
       <div class="ach-box">
         <div class="ach-item">
-          <span class="ach-label">ZEISS AI Recommendation Platform:</span> Corporate full-stack MVP built with an 11-member team for ZEISS (React, TypeScript and Java/Spring Boot), replacing manual prescription reading with OCR + AI (n8n/RAG) and real-time analytics dashboards.
+          <span class="ach-label">ZEISS AI Recommendation Platform:</span> Corporate full-stack MVP built with an 11-developer team for ZEISS (React, TypeScript and Java/Spring Boot), replacing manual prescription reading with OCR + AI (n8n/RAG) and real-time analytics dashboards.
         </div>
         <div class="ach-item">
           <span class="ach-label">FarmFlow &amp; FleetOps (Distributed Systems):</span> Event-driven architectures with Transactional Outbox, RabbitMQ, Keycloak OIDC and PostgreSQL: FarmFlow (Java Virtual Threads + Offline-First React Native, 2,450 requests per second (req/s) in controlled benchmarks, 549 automated tests) and FleetOps (C#/.NET, 278 sustained req/s under ACID write workloads in controlled benchmarks, 300 automated tests).
@@ -1287,16 +1287,16 @@ const FULLSTACK_EN = `<!DOCTYPE html>
     <section class="section">
       <h2 class="section-title">EDUCATION</h2>
       <div class="edu-item">
-        <div class="edu-title">Postgraduate Degree in Software Engineering</div>
-        <div class="edu-meta">Estácio University | 2024 - 2025</div>
-      </div>
-      <div class="edu-item">
         <div class="edu-title">Technology Residency - TIC/Software Full-Stack (790 h)</div>
         <div class="edu-meta">Serratec | Feb 2026 - Jul 2026</div>
       </div>
       <div class="edu-item">
         <div class="edu-title">Technology Residency - TIC 12 (120 h)</div>
         <div class="edu-meta">State University of Ceará (UECE) | Oct 2025 - Dec 2025</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-title">Postgraduate Degree in Software Engineering</div>
+        <div class="edu-meta">Estácio University | 2024 - 2025</div>
       </div>
       <div class="edu-item">
         <div class="edu-title">Bachelor's Degree in Industrial Engineering</div>
@@ -1320,7 +1320,7 @@ const FULLSTACK_EN = `<!DOCTYPE html>
     <section class="section" style="margin-bottom: 0;">
       <h2 class="section-title">LANGUAGES</h2>
       <div class="languages">
-        <strong>Portuguese</strong> Native &nbsp;|&nbsp; <strong>English</strong> Advanced (B2+) &nbsp;|&nbsp; <strong>Spanish</strong> Advanced (B2+)
+        <strong>Portuguese</strong> Native &nbsp;|&nbsp; <strong>English</strong> Upper-Intermediate / Advanced (B2+) &nbsp;|&nbsp; <strong>Spanish</strong> Upper-Intermediate / Advanced (B2+)
       </div>
     </section>
   </div>
