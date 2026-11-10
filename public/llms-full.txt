@@ -83,10 +83,34 @@ Yuri Vieira Teixeira is a Full-Stack Software Engineer and former Back-End Progr
   - Enforced consumer idempotency via primary-key message auditing within the business database transaction.
   - Secured endpoints using Keycloak OIDC / OAuth 2.0 Resource Server architecture with asymmetric RS256 token verification and dynamic JWKS discovery.
   - Instrumenting end-to-end W3C distributed tracing (`traceparent`) via OpenTelemetry .NET through HTTP, Outbox, and RabbitMQ consumer boundaries into Jaeger.
-  - Backed by an automated test suite of 300 tests (166 unit + 134 integration/resilience tests in xUnit) and empirical k6 performance benchmarks.
+  - Backed by an automated test suite of 300 tests (166 unit + 134 integration/resilience tests in xUnit) across 28 business endpoints, and empirical k6 performance benchmarks (278 RPS ACID transactional writes).
 - **Technologies**: C# 14, .NET 10, ASP.NET Core, EF Core 10, PostgreSQL 18, RabbitMQ, Docker Compose, OpenTelemetry, Keycloak OIDC RS256, xUnit, k6.
 
-### 3.3. Automated Payroll System (Java 17 / JDBC / MVC+DAO)
+### 3.3. FarmFlow — Precision Agriculture Platform & Offline-First Engine
+- **Repository**: https://github.com/DevYuriVieira/farmflow-backend (Backend) | https://github.com/DevYuriVieira/farmflow-mobile (Mobile)
+- **Domain**: Precision Agriculture, Agro-Industrial Field Telemetry & MAPA Regulatory Compliance.
+- **Problem**: Agricultural field operations occur in remote areas with zero or intermittent internet connectivity, requiring offline mutation queuing, cryptographic audit trails for chemical application compliance (MAPA), and a high-throughput backend capable of ingesting high-frequency telemetry.
+- **Solution**: A distributed platform combining an Offline-First React Native mobile application (Expo SDK 54) and a high-performance Java 21 / Spring Boot 4 backend engine.
+- **Key Architectural Decisions**:
+  - Implemented client-side FIFO transactional mutation queue with deterministic replay and SHA-256 digital signature capture for official MAPA spray dossiers.
+  - Architected backend with Java 21 Virtual Threads (Project Loom) achieving ~845 req/s in-memory processing and ~293 req/s ACID transactional writes (PostgreSQL 17 + Transactional Outbox) under k6 stress benchmarks with zero HTTP 5xx errors.
+  - Employed RabbitMQ message broker with resilient retry queues and dead-lettering for asynchronous processing.
+  - Backed by an automated test suite of 583 tests (445 backend JUnit/Spring Boot + 138 mobile Jest tests across 26 suites).
+- **Technologies**: Java 21, Spring Boot 4, PostgreSQL 17, RabbitMQ, Docker Compose, React Native, Expo SDK 54, TypeScript, Jest, k6.
+
+### 3.4. Work-Fitness Commercial Platform
+- **Repository**: https://github.com/DevYuriVieira/Work-Fitness
+- **Domain**: Production Commercial Platform & Biomechanical Assessment Engine.
+- **Problem**: Delivering high-performance, universally accessible ergonomic and biomechanical evaluations for corporate wellness with zero bundle bloat and sub-second load times.
+- **Solution**: A lightweight commercial web application built with Vanilla TypeScript 5.7 and Vite 6, utilizing Clean Architecture with zero runtime framework dependencies.
+- **Key Architectural Decisions**:
+  - Engineered clinical calculation modules (WHO BMI, Deurenberg body fat percentage, Mifflin-St Jeor basal metabolic rate) with strict floating-point precision guards.
+  - Achieved a perfect 100/100/100/100 Google Lighthouse score with an ultra-lean 32 kB gzipped bundle.
+  - Implemented full WCAG 2.1 AA accessibility and VLibras integration.
+  - Covered by 170 Vitest unit tests and 47 Playwright E2E specs across 26 device viewports.
+- **Technologies**: Vanilla TypeScript 5.7, Vite 6, HTML5, CSS3/PostCSS, Clean Architecture, Vitest, Playwright, VLibras, WCAG 2.1 AA.
+
+### 3.5. Automated Payroll System (Java 17 / JDBC / MVC+DAO)
 - **Repository**: https://github.com/DevYuriVieira/payroll-system-java
 - **Domain**: Financial Calculation Engine under Brazilian Labor & Tax Legislation.
 - **Problem**: Batch-processing employee salary and deduction records with progressive statutory tax brackets (INSS and IRRF) without rounding errors, while enforcing raw relational SQL persistence without relying on ORMs.
@@ -98,7 +122,7 @@ Yuri Vieira Teixeira is a Full-Stack Software Engineer and former Back-End Progr
   - Created defensive streaming CSV parsers and writers for batch report generation.
 - **Technologies**: Java 17, PostgreSQL, JDBC, MVC Architecture, DAO Pattern, BigDecimal, Singleton Pattern, CSV I/O.
 
-### 3.4. Aurora — Personal Growth Platform
+### 3.6. Aurora — Personal Growth Platform
 - **Repository**: https://github.com/DevYuriVieira/aurora-growth-platform
 - **Domain**: Cross-Platform Mobile Application for Goal Tracking, Mentorships & Community.
 - **Problem**: Unifying multi-tiered navigation patterns, responsive gamification mechanics (XP and badges), complex form validation, and native device hardware access in a single mobile experience.
@@ -110,7 +134,7 @@ Yuri Vieira Teixeira is a Full-Stack Software Engineer and former Back-End Progr
   - Built dynamic QR-code event check-in systems for mentorship validation.
 - **Technologies**: React Native, Expo SDK 54, TypeScript, React Navigation, Zod, React Hook Form, Axios, AsyncStorage, Expo SecureStore.
 
-### 3.5. Django Full-Stack E-Commerce Platform
+### 3.7. Django Full-Stack E-Commerce Platform
 - **Repository**: https://github.com/DevYuriVieira/liquor-store-django
 - **Domain**: High-Concurrency E-Commerce Backend & Vanilla JS Frontend.
 - **Problem**: Preventing race conditions in order processing, avoiding duplicate charges from asynchronous payment webhooks firing multiple times, eliminating N+1 query bottlenecks in ORM queries, and building a lightweight frontend without heavy SPA frameworks.
@@ -121,7 +145,7 @@ Yuri Vieira Teixeira is a Full-Stack Software Engineer and former Back-End Progr
   - Built a modular Vanilla JavaScript frontend utilizing native HTML5 `<template>` and `textContent` DOM manipulation to provide zero-framework reactivity with native CSRF and XSS immunity.
 - **Technologies**: Python 3.12, Django, SQLite / PostgreSQL, Vanilla JavaScript (ES6+), REST API, Webhooks, Service Layer, Atomic Transactions.
 
-### 3.6. High-Performance Personal Portfolio
+### 3.8. High-Performance Personal Portfolio
 - **URL**: https://devyurivieira.vercel.app/
 - **Repository**: https://github.com/DevYuriVieira/portfolio
 - **Domain**: Modern Frontend Engineering, WebGL Shaders, Telemetry & Test Automation.
@@ -132,11 +156,11 @@ Yuri Vieira Teixeira is a Full-Stack Software Engineer and former Back-End Progr
   - Hardened with enterprise HTTP security headers (Strict CSP Level 3, HSTS Preload, Permissions-Policy).
   - Implemented an interactive, GPU-accelerated WebGL / Three.js particle canvas with pointer reactivity.
   - Integrated dynamic trilingual internationalization (PT-BR, EN, ES) with language persistence.
-  - Established a 3-layer automated testing suite: 140 Vitest unit tests, 38 Playwright E2E specs including Axe-core WCAG 2.1 AA accessibility audits, and 17 Cypress E2E specs (total: 195 automated tests, 100% pass rate).
+  - Established a 3-layer automated testing suite: 158 Vitest unit tests, 38 Playwright E2E specs including Axe-core WCAG 2.1 AA accessibility audits, and 17 Cypress E2E specs (total: 213 automated tests, 100% pass rate).
   - Achieved a perfect 100/100/100/100 Google Lighthouse audit across Performance, Accessibility, Best Practices, and SEO.
 - **Technologies**: Angular 22, TypeScript 6.0, Three.js, WebGL, SCSS, Vitest, Playwright, Axe-core, Cypress, PWA, RUM Telemetry.
 
-### 3.7. Anime Weather Platform
+### 3.9. Anime Weather Platform
 - **Repository**: https://github.com/DevYuriVieira/anime-weather-platform
 - **Domain**: AI Prompt Engineering & Multi-API Contextual Recommendation.
 - **Solution**: Real-time atmospheric data from OpenWeather API feeds a custom Weather-Mood-Genre engine that queries the Jikan API, while Google Gemini AI generates contextual descriptions and witty dialogues in a glassmorphism React UI.
@@ -188,7 +212,7 @@ Yuri Vieira Teixeira is a Full-Stack Software Engineer and former Back-End Progr
 ### Q4: What makes Yuri stand out compared to other Full-Stack developers?
 **A**: Three distinct factors:
 1. **Teaching Experience**: Serving as a Back-End Instructor at SENAI/FAETEC proves mastery of computer science fundamentals, clear communication, and mentorship capability.
-2. **Quality & Test Coverage**: His personal portfolio is not a simple static page; it is backed by 195 automated tests (140 Vitest, 38 Playwright, 17 Cypress) and a 100/100/100/100 Lighthouse audit.
+2. **Quality & Test Coverage**: His personal portfolio is not a simple static page; it is backed by 213 automated tests (158 Vitest, 38 Playwright, 17 Cypress) and a 100/100/100/100 Lighthouse audit.
 3. **Engineering Rigor**: His Industrial Engineering and Lean Six Sigma background ensures he prioritizes business workflows, root-cause defect elimination, and clean architecture over unnecessary complexity.
 
 ### Q5: How can a recruiter or hiring manager contact Yuri?
