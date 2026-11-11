@@ -256,8 +256,8 @@ const FRONTEND_PT = `<!DOCTYPE html>
       <h2 class="section-title">EXPERIÊNCIA PROFISSIONAL</h2>
 
       <div class="entry">
-        <div class="entry-title">Desenvolvedor Full-Stack Freelance — Work-Fitness</div>
-        <div class="entry-meta">Cliente Independente | 2026 - Atual | Remoto</div>
+        <div class="entry-title">Desenvolvedor Full-Stack</div>
+        <div class="entry-meta">Projetos Independentes / Freelance | 2026 - Atual | Remoto</div>
         <ul class="bullets">
           <li>Desenvolvimento e manutenção contínua de plataforma comercial em produção (<a href="https://viniciusantos.vercel.app">viniciusantos.vercel.app</a>), com responsabilidade ponta a ponta pelo levantamento de requisitos com o cliente, definição arquitetural (Clean Architecture), implementação em <strong>TypeScript</strong> e implantação em <strong>Docker e Nginx</strong>.</li>
           <li>Implementação de funil de qualificação e aquisição de leads integrado ao WhatsApp com rastreamento de campanhas UTM, telemetria analítica (GA4, GTM e Meta Pixel), conformidade de acessibilidade (WCAG 2.1 AA e VLibras) e manutenção da esteira de qualidade automatizada.</li>
@@ -444,8 +444,8 @@ const FRONTEND_EN = `<!DOCTYPE html>
       <h2 class="section-title">PROFESSIONAL EXPERIENCE</h2>
 
       <div class="entry">
-        <div class="entry-title">Full-Stack Freelance Developer — Work-Fitness</div>
-        <div class="entry-meta">Independent Client | 2026 - Present | Remote</div>
+        <div class="entry-title">Full-Stack Developer</div>
+        <div class="entry-meta">Independent Projects / Freelance | 2026 - Present | Remote</div>
         <ul class="bullets">
           <li>End-to-end development and ongoing maintenance of a commercial platform deployed in production (<a href="https://viniciusantos.vercel.app">viniciusantos.vercel.app</a>), owning client requirements gathering, Clean Architecture design, <strong>TypeScript</strong> implementation and containerized deployment with <strong>Docker and Nginx</strong>.</li>
           <li>Implemented a UTM-tracked WhatsApp lead qualification funnel, analytics telemetry (GA4, GTM and Meta Pixel), web accessibility compliance (WCAG 2.1 AA and VLibras) and continuous automated quality verification.</li>
@@ -632,8 +632,8 @@ const BACKEND_PT = `<!DOCTYPE html>
       <h2 class="section-title">EXPERIÊNCIA PROFISSIONAL</h2>
 
       <div class="entry">
-        <div class="entry-title">Desenvolvedor Full-Stack Freelance — Work-Fitness</div>
-        <div class="entry-meta">Cliente Independente | 2026 - Atual | Remoto</div>
+        <div class="entry-title">Desenvolvedor Full-Stack</div>
+        <div class="entry-meta">Projetos Independentes / Freelance | 2026 - Atual | Remoto</div>
         <ul class="bullets">
           <li>Desenvolvimento e manutenção contínua de plataforma comercial em produção (<a href="https://viniciusantos.vercel.app">viniciusantos.vercel.app</a>), com responsabilidade pela arquitetura (Clean Architecture), regras de negócio em <strong>TypeScript</strong>, suíte de <strong>217 testes automatizados</strong> e implantação em contêiner <strong>Docker com Nginx</strong>.</li>
         </ul>
@@ -820,8 +820,8 @@ const BACKEND_EN = `<!DOCTYPE html>
       <h2 class="section-title">PROFESSIONAL EXPERIENCE</h2>
 
       <div class="entry">
-        <div class="entry-title">Full-Stack Freelance Developer — Work-Fitness</div>
-        <div class="entry-meta">Independent Client | 2026 - Present | Remote</div>
+        <div class="entry-title">Full-Stack Developer</div>
+        <div class="entry-meta">Independent Projects / Freelance | 2026 - Present | Remote</div>
         <ul class="bullets">
           <li>End-to-end development and maintenance of a commercial platform deployed in production (<a href="https://viniciusantos.vercel.app">viniciusantos.vercel.app</a>), responsible for Clean Architecture, domain logic in <strong>TypeScript</strong>, <strong>217 automated tests</strong> and multi-stage <strong>Docker and Nginx</strong> deployment.</li>
         </ul>
@@ -1008,8 +1008,8 @@ const FULLSTACK_PT = `<!DOCTYPE html>
       <h2 class="section-title">EXPERIÊNCIA PROFISSIONAL</h2>
 
       <div class="entry">
-        <div class="entry-title">Desenvolvedor Full-Stack Freelance — Work-Fitness</div>
-        <div class="entry-meta">Cliente Independente | 2026 - Atual | Remoto</div>
+        <div class="entry-title">Desenvolvedor Full-Stack</div>
+        <div class="entry-meta">Projetos Independentes / Freelance | 2026 - Atual | Remoto</div>
         <ul class="bullets">
           <li>Desenvolvimento e manutenção contínua de plataforma comercial em produção (<a href="https://viniciusantos.vercel.app">viniciusantos.vercel.app</a>), com responsabilidade ponta a ponta pelo levantamento de requisitos com o cliente, definição arquitetural (Clean Architecture), implementação em <strong>TypeScript</strong> e implantação em <strong>Docker e Nginx</strong>.</li>
           <li>Implementação de funil de qualificação e aquisição de leads integrado ao WhatsApp com rastreamento de campanhas UTM, telemetria analítica (GA4, GTM e Meta Pixel), conformidade de acessibilidade (WCAG 2.1 AA e VLibras) e manutenção da esteira de qualidade automatizada.</li>
@@ -1198,8 +1198,8 @@ const FULLSTACK_EN = `<!DOCTYPE html>
       <h2 class="section-title">PROFESSIONAL EXPERIENCE</h2>
 
       <div class="entry">
-        <div class="entry-title">Full-Stack Freelance Developer — Work-Fitness</div>
-        <div class="entry-meta">Independent Client | 2026 - Present | Remote</div>
+        <div class="entry-title">Full-Stack Developer</div>
+        <div class="entry-meta">Independent Projects / Freelance | 2026 - Present | Remote</div>
         <ul class="bullets">
           <li>End-to-end development and ongoing maintenance of a commercial platform deployed in production (<a href="https://viniciusantos.vercel.app">viniciusantos.vercel.app</a>), owning client requirements gathering, Clean Architecture design, <strong>TypeScript</strong> implementation and containerized deployment with <strong>Docker and Nginx</strong>.</li>
           <li>Implemented a UTM-tracked WhatsApp lead qualification funnel, analytics telemetry (GA4, GTM and Meta Pixel), web accessibility compliance (WCAG 2.1 AA and VLibras) and continuous automated quality verification.</li>
