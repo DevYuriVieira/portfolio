@@ -19,6 +19,10 @@
   <link rel="alternate" hreflang="es" href="https://devyurivieira.vercel.app/">
   <link rel="alternate" hreflang="x-default" href="https://devyurivieira.vercel.app/">
 
+  <!-- Machine-Readable LLM Context (llmstxt.org specification) -->
+  <link rel="help" type="text/plain" href="https://devyurivieira.vercel.app/llms.txt" title="LLMs.txt Context">
+  <link rel="alternate" type="text/plain" href="https://devyurivieira.vercel.app/llms.txt" title="LLM Context">
+
   <meta property="og:site_name" content="Yuri Vieira Portfolio">
   <meta property="og:title" content="Yuri Vieira | Engenheiro de Software &amp; Full Stack Developer">
   <meta property="og:description" content="Engenheiro de Software &amp; Desenvolvedor Full Stack especializado em Java, Spring Boot, C#, .NET, TypeScript, React e Angular. Casos de estudo e projetos de alta performance.">
@@ -237,7 +241,29 @@
         "author": {
           "@id": "https://devyurivieira.vercel.app/#person"
         },
-        "description": "Distributed event-driven logistics backend built with .NET 10, C# 14, Clean Architecture, DDD, Transactional Outbox, RabbitMQ, PostgreSQL 18, Keycloak OIDC, and 300 automated xUnit tests."
+        "description": "Distributed event-driven logistics backend built with .NET 10, C# 14, Clean Architecture, DDD across 28 business endpoints, Transactional Outbox, RabbitMQ, PostgreSQL 18, Keycloak OIDC, and 300 automated xUnit tests."
+      },
+      {
+        "@type": "SoftwareSourceCode",
+        "name": "FarmFlow Backend & Distributed Agri-Tech Engine",
+        "codeRepository": "https://github.com/DevYuriVieira/farmflow-backend",
+        "programmingLanguage": "Java",
+        "runtimePlatform": "Java 21 (Virtual Threads) / Spring Boot",
+        "author": {
+          "@id": "https://devyurivieira.vercel.app/#person"
+        },
+        "description": "Distributed precision agriculture platform engineered with Java 21, Virtual Threads, Transactional Outbox, RabbitMQ, and PostgreSQL 17. Reaches ~845 req/s in-memory and ~293 req/s in transactional writes in k6 benchmarks, backed by 445 automated tests."
+      },
+      {
+        "@type": "SoftwareSourceCode",
+        "name": "FarmFlow Mobile Offline-First",
+        "codeRepository": "https://github.com/DevYuriVieira/farmflow-mobile",
+        "programmingLanguage": "TypeScript",
+        "runtimePlatform": "React Native (Expo SDK 54)",
+        "author": {
+          "@id": "https://devyurivieira.vercel.app/#person"
+        },
+        "description": "Offline-first precision agriculture mobile application featuring FIFO transactional mutation queuing, MAPA spray regulatory compliance with canvas SHA-256 digital signatures, and 138 automated Jest tests."
       },
       {
         "@type": "SoftwareSourceCode",
@@ -259,7 +285,7 @@
         "author": {
           "@id": "https://devyurivieira.vercel.app/#person"
         },
-        "description": "Production portfolio engineered with Angular 22 Signals, WebGL/Three.js GPU shaders, and 167 automated tests."
+        "description": "Production portfolio engineered with Angular 22 Signals, WebGL/Three.js GPU shaders, and 213 automated tests."
       }
     ]
   }
