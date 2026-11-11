@@ -257,7 +257,7 @@ const FRONTEND_PT = `<!DOCTYPE html>
 
       <div class="entry">
         <div class="entry-title">Desenvolvedor Full-Stack Freelance — Work-Fitness</div>
-        <div class="entry-meta">Cliente Independente | 2025 - Atual | Remoto</div>
+        <div class="entry-meta">Cliente Independente | 2026 - Atual | Remoto</div>
         <ul class="bullets">
           <li>Desenvolvimento e manutenção contínua de plataforma comercial em produção (<a href="https://viniciusantos.vercel.app">viniciusantos.vercel.app</a>), com responsabilidade ponta a ponta pelo levantamento de requisitos com o cliente, definição arquitetural (Clean Architecture), implementação em <strong>TypeScript</strong> e implantação em <strong>Docker e Nginx</strong>.</li>
           <li>Implementação de funil de qualificação e aquisição de leads integrado ao WhatsApp com rastreamento de campanhas UTM, telemetria analítica (GA4, GTM e Meta Pixel), conformidade de acessibilidade (WCAG 2.1 AA e VLibras) e manutenção da esteira de qualidade automatizada.</li>
@@ -316,7 +316,7 @@ const FRONTEND_PT = `<!DOCTYPE html>
 
       <div class="entry">
         <div class="entry-title">Work-Fitness - Plataforma Comercial - <a href="https://viniciusantos.vercel.app/">viniciusantos.vercel.app</a></div>
-        <div class="entry-meta">Freelance (Cliente Real) | 2025 - Atual | TypeScript | Vite | Clean Architecture | Vitest | Playwright | WCAG 2.1 AA | VLibras | Docker | Nginx | Em produção</div>
+        <div class="entry-meta">Freelance (Cliente Real) | 2026 | TypeScript | Vite | Clean Architecture | Vitest | Playwright | WCAG 2.1 AA | VLibras | Docker | Nginx | Em produção</div>
         <ul class="bullets">
           <li>Motor de avaliação corporal (cálculos de IMC da OMS, percentual de gordura por Deurenberg e taxa metabólica basal por Mifflin-St Jeor) isolado em um <strong>núcleo de Clean Architecture desacoplado do DOM</strong>, com bundle enxuto de 32 kB e nota <strong>100/100 nas quatro categorias do Google Lighthouse (auditoria desktop)</strong>.</li>
           <li>Engenharia de acessibilidade (WCAG 2.1 AA, widget VLibras sem deslocamento de layout (layout shift), leitura com formatação biônica e filtros para daltonismo), validada por <strong>217 testes automatizados (170 unitários Vitest e 47 especificações E2E Playwright em 26 viewports)</strong>, servida em contêiner Docker multi-stage com Nginx.</li>
@@ -445,7 +445,7 @@ const FRONTEND_EN = `<!DOCTYPE html>
 
       <div class="entry">
         <div class="entry-title">Full-Stack Freelance Developer — Work-Fitness</div>
-        <div class="entry-meta">Independent Client | 2025 - Present | Remote</div>
+        <div class="entry-meta">Independent Client | 2026 - Present | Remote</div>
         <ul class="bullets">
           <li>End-to-end development and ongoing maintenance of a commercial platform deployed in production (<a href="https://viniciusantos.vercel.app">viniciusantos.vercel.app</a>), owning client requirements gathering, Clean Architecture design, <strong>TypeScript</strong> implementation and containerized deployment with <strong>Docker and Nginx</strong>.</li>
           <li>Implemented a UTM-tracked WhatsApp lead qualification funnel, analytics telemetry (GA4, GTM and Meta Pixel), web accessibility compliance (WCAG 2.1 AA and VLibras) and continuous automated quality verification.</li>
@@ -504,7 +504,7 @@ const FRONTEND_EN = `<!DOCTYPE html>
 
       <div class="entry">
         <div class="entry-title">Work-Fitness - Commercial Platform - <a href="https://viniciusantos.vercel.app/">viniciusantos.vercel.app</a></div>
-        <div class="entry-meta">Freelance (Real Client) | 2025 - Present | TypeScript | Vite | Clean Architecture | Vitest | Playwright | WCAG 2.1 AA | VLibras | Docker | Nginx | Deployed in production</div>
+        <div class="entry-meta">Freelance (Real Client) | 2026 | TypeScript | Vite | Clean Architecture | Vitest | Playwright | WCAG 2.1 AA | VLibras | Docker | Nginx | Deployed in production</div>
         <ul class="bullets">
           <li>Engineered a body assessment engine (WHO BMI, Deurenberg body fat percentage and Mifflin-St Jeor BMR calculations) isolated in a <strong>DOM-free Clean Architecture core</strong>, achieving a 32 kB bundle and a <strong>100/100 score across all four Google Lighthouse categories (desktop audit)</strong>.</li>
           <li>Treated accessibility as a core engineering requirement (WCAG 2.1 AA, VLibras widget with zero layout shift, bionic reading formatting and colorblind filters), verified by <strong>217 automated tests (170 Vitest unit tests and 47 Playwright E2E specs across 26 viewports)</strong>, deployed in a multi-stage Docker container with Nginx.</li>
@@ -633,7 +633,7 @@ const BACKEND_PT = `<!DOCTYPE html>
 
       <div class="entry">
         <div class="entry-title">Desenvolvedor Full-Stack Freelance — Work-Fitness</div>
-        <div class="entry-meta">Cliente Independente | 2025 - Atual | Remoto</div>
+        <div class="entry-meta">Cliente Independente | 2026 - Atual | Remoto</div>
         <ul class="bullets">
           <li>Desenvolvimento e manutenção contínua de plataforma comercial em produção (<a href="https://viniciusantos.vercel.app">viniciusantos.vercel.app</a>), com responsabilidade pela arquitetura (Clean Architecture), regras de negócio em <strong>TypeScript</strong>, suíte de <strong>217 testes automatizados</strong> e implantação em contêiner <strong>Docker com Nginx</strong>.</li>
         </ul>
@@ -821,7 +821,7 @@ const BACKEND_EN = `<!DOCTYPE html>
 
       <div class="entry">
         <div class="entry-title">Full-Stack Freelance Developer — Work-Fitness</div>
-        <div class="entry-meta">Independent Client | 2025 - Present | Remote</div>
+        <div class="entry-meta">Independent Client | 2026 - Present | Remote</div>
         <ul class="bullets">
           <li>End-to-end development and maintenance of a commercial platform deployed in production (<a href="https://viniciusantos.vercel.app">viniciusantos.vercel.app</a>), responsible for Clean Architecture, domain logic in <strong>TypeScript</strong>, <strong>217 automated tests</strong> and multi-stage <strong>Docker and Nginx</strong> deployment.</li>
         </ul>
@@ -1009,7 +1009,7 @@ const FULLSTACK_PT = `<!DOCTYPE html>
 
       <div class="entry">
         <div class="entry-title">Desenvolvedor Full-Stack Freelance — Work-Fitness</div>
-        <div class="entry-meta">Cliente Independente | 2025 - Atual | Remoto</div>
+        <div class="entry-meta">Cliente Independente | 2026 - Atual | Remoto</div>
         <ul class="bullets">
           <li>Desenvolvimento e manutenção contínua de plataforma comercial em produção (<a href="https://viniciusantos.vercel.app">viniciusantos.vercel.app</a>), com responsabilidade ponta a ponta pelo levantamento de requisitos com o cliente, definição arquitetural (Clean Architecture), implementação em <strong>TypeScript</strong> e implantação em <strong>Docker e Nginx</strong>.</li>
           <li>Implementação de funil de qualificação e aquisição de leads integrado ao WhatsApp com rastreamento de campanhas UTM, telemetria analítica (GA4, GTM e Meta Pixel), conformidade de acessibilidade (WCAG 2.1 AA e VLibras) e manutenção da esteira de qualidade automatizada.</li>
@@ -1077,7 +1077,7 @@ const FULLSTACK_PT = `<!DOCTYPE html>
 
       <div class="entry">
         <div class="entry-title">Work-Fitness - Plataforma Comercial - <a href="https://viniciusantos.vercel.app/">viniciusantos.vercel.app</a></div>
-        <div class="entry-meta">Freelance (Cliente Real) | 2025 - Atual | TypeScript | Vite | Clean Architecture | Vitest | Playwright | WCAG 2.1 AA | VLibras | Docker | Nginx | Em produção</div>
+        <div class="entry-meta">Freelance (Cliente Real) | 2026 | TypeScript | Vite | Clean Architecture | Vitest | Playwright | WCAG 2.1 AA | VLibras | Docker | Nginx | Em produção</div>
         <ul class="bullets">
           <li>Motor de avaliação corporal (cálculos de IMC da OMS, percentual de gordura por Deurenberg e taxa metabólica basal por Mifflin-St Jeor) isolado em um <strong>núcleo de Clean Architecture sem DOM</strong>, com bundle de 32 kB e nota <strong>100/100 nas quatro categorias do Google Lighthouse (auditoria desktop)</strong>.</li>
           <li>Engenharia de acessibilidade (WCAG 2.1 AA, widget VLibras sem deslocamento de layout (layout shift), leitura com formatação biônica e filtros para daltonismo), validada por <strong>217 testes automatizados (170 unitários Vitest e 47 especificações E2E Playwright em 26 viewports)</strong>, servida em contêiner Docker multi-stage com Nginx.</li>
@@ -1199,7 +1199,7 @@ const FULLSTACK_EN = `<!DOCTYPE html>
 
       <div class="entry">
         <div class="entry-title">Full-Stack Freelance Developer — Work-Fitness</div>
-        <div class="entry-meta">Independent Client | 2025 - Present | Remote</div>
+        <div class="entry-meta">Independent Client | 2026 - Present | Remote</div>
         <ul class="bullets">
           <li>End-to-end development and ongoing maintenance of a commercial platform deployed in production (<a href="https://viniciusantos.vercel.app">viniciusantos.vercel.app</a>), owning client requirements gathering, Clean Architecture design, <strong>TypeScript</strong> implementation and containerized deployment with <strong>Docker and Nginx</strong>.</li>
           <li>Implemented a UTM-tracked WhatsApp lead qualification funnel, analytics telemetry (GA4, GTM and Meta Pixel), web accessibility compliance (WCAG 2.1 AA and VLibras) and continuous automated quality verification.</li>
@@ -1267,7 +1267,7 @@ const FULLSTACK_EN = `<!DOCTYPE html>
 
       <div class="entry">
         <div class="entry-title">Work-Fitness - Commercial Platform - <a href="https://viniciusantos.vercel.app/">viniciusantos.vercel.app</a></div>
-        <div class="entry-meta">Freelance (Real Client) | 2025 - Present | TypeScript | Vite | Clean Architecture | Vitest | Playwright | WCAG 2.1 AA | VLibras | Docker | Nginx | Deployed in production</div>
+        <div class="entry-meta">Freelance (Real Client) | 2026 | TypeScript | Vite | Clean Architecture | Vitest | Playwright | WCAG 2.1 AA | VLibras | Docker | Nginx | Deployed in production</div>
         <ul class="bullets">
           <li>Engineered a body assessment engine (WHO BMI, Deurenberg body fat percentage and Mifflin-St Jeor BMR calculations) isolated in a <strong>DOM-free Clean Architecture core</strong>, achieving a 32 kB bundle and a <strong>100/100 score across all four Google Lighthouse categories (desktop audit)</strong>.</li>
           <li>Treated accessibility as a core engineering requirement (WCAG 2.1 AA, VLibras widget with zero layout shift, bionic reading formatting and colorblind filters), verified by <strong>217 automated tests (170 Vitest unit tests and 47 Playwright E2E specs across 26 viewports)</strong>, deployed in a multi-stage Docker container served by Nginx.</li>

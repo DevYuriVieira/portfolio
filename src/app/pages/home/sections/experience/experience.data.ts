@@ -103,7 +103,7 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
       },
       {
         id: 'personal-projects',
-        year: '2025 – Presente',
+        year: '2026 – Presente',
         title: 'Engenharia de Software Freelance & Sistemas Distribuídos',
         subtitle: 'Sistemas Comerciais Sob Demanda & Arquiteturas Distribuídas',
         description:
@@ -252,7 +252,7 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
       },
       {
         id: 'personal-projects',
-        year: '2025 – Present',
+        year: '2026 – Present',
         title: 'Freelance Software Engineering & Distributed Systems',
         subtitle: 'On-Demand Commercial Systems & Distributed Architectures',
         description:
@@ -401,7 +401,7 @@ const EXPERIENCE_I18N: Record<SupportedLang, ExperienceI18n> = {
       },
       {
         id: 'personal-projects',
-        year: '2025 – Presente',
+        year: '2026 – Presente',
         title: 'Ingeniería de Software Freelance & Sistemas Distribuidos',
         subtitle: 'Sistemas Comerciales a Medida & Arquitecturas Distribuidas',
         description:
