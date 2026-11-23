@@ -4,7 +4,7 @@ import AxeBuilder from '@axe-core/playwright';
 test.describe('Yuri Vieira Portfolio - Comprehensive E2E Test Suite', () => {
 
   test.beforeEach(async ({ page }) => {
-    await page.goto('/');
+    await page.goto('/?lang=pt-BR');
   });
 
   test.describe('1. SEO Metadata, Open Graph & Structured Data', () => {
@@ -111,7 +111,8 @@ test.describe('Yuri Vieira Portfolio - Comprehensive E2E Test Suite', () => {
 
   test.describe('4. Projects Section & Confidential Case Study', () => {
     test('should handle progressive project expansion and collapse (5 -> 7 -> Total -> 5)', async ({ page }) => {
-      const projectsSection = page.locator('#projects');
+      const projectsSection = page.locator('app-projects #projects');
+      await expect(projectsSection).toBeAttached({ timeout: 10000 });
       await projectsSection.scrollIntoViewIfNeeded();
 
       const projectCards = page.locator('#projects .projects__card');
@@ -132,7 +133,8 @@ test.describe('Yuri Vieira Portfolio - Comprehensive E2E Test Suite', () => {
     });
 
     test('should render ZEISS confidential project card with lock badge and NDA disclaimer', async ({ page }) => {
-      const projectsSection = page.locator('#projects');
+      const projectsSection = page.locator('app-projects #projects');
+      await expect(projectsSection).toBeAttached({ timeout: 10000 });
       await projectsSection.scrollIntoViewIfNeeded();
 
       const confidentialCard = page.locator('.projects__card--confidential');
@@ -144,6 +146,21 @@ test.describe('Yuri Vieira Portfolio - Comprehensive E2E Test Suite', () => {
 
       const ndaText = confidentialCard.locator('.projects__confidential-text');
       await expect(ndaText).toHaveText(/NDA|Serratec/i);
+    });
+
+    test('should filter projects by engineering track and support direct case-study deep links', async ({ page }) => {
+      const projectsSection = page.locator('app-projects #projects');
+      await expect(projectsSection).toBeAttached({ timeout: 10000 });
+      await projectsSection.scrollIntoViewIfNeeded();
+
+      const backendFilter = page.locator('#projects .projects__filter-btn').nth(2);
+      await backendFilter.click();
+      await expect(page.locator('#projects .projects__card')).toHaveCount(4);
+
+      await page.goto('/projects/fleetops-api?lang=en');
+      const modal = page.locator('app-case-study-modal .case-modal');
+      await expect(modal).toBeVisible({ timeout: 10000 });
+      await expect(modal.locator('.case-modal__title')).toContainText('FleetOps API');
     });
   });
 
@@ -166,7 +183,9 @@ test.describe('Yuri Vieira Portfolio - Comprehensive E2E Test Suite', () => {
       await expect(page.locator('#experience')).toBeAttached();
       await page.evaluate(() => document.getElementById('experience')?.scrollIntoView({ behavior: 'instant' }));
 
-      const focusCards = page.locator('#experience .experience__focus-card');
+      const focusCards = page.locator('app-experience #experience .experience__focus-card');
+      await expect(focusCards.first()).toBeAttached({ timeout: 10000 });
+      await focusCards.first().scrollIntoViewIfNeeded();
       await expect(focusCards.first()).toBeVisible({ timeout: 10000 });
       const count = await focusCards.count();
       expect(count).toBeGreaterThanOrEqual(4);
@@ -185,11 +204,12 @@ test.describe('Yuri Vieira Portfolio - Comprehensive E2E Test Suite', () => {
 
   test.describe('6. AI Experience Section & Interactive Controls', () => {
     test('should render AI manifesto, feature cards and zoom toolbar (on desktop)', async ({ page, isMobile }) => {
-      const aiSection = page.locator('#ai-experience');
-      await aiSection.scrollIntoViewIfNeeded();
+      const aiSection = page.locator('app-ai-experience #ai-experience');
+      await expect(aiSection).toBeAttached({ timeout: 10000 });
 
       const badge = page.locator('#ai-experience .ai__badge');
-      await expect(badge).toBeVisible();
+      await badge.scrollIntoViewIfNeeded();
+      await expect(badge).toBeVisible({ timeout: 10000 });
 
       const featureCards = page.locator('#ai-experience .ai__feature-card');
       const count = await featureCards.count();
@@ -197,6 +217,7 @@ test.describe('Yuri Vieira Portfolio - Comprehensive E2E Test Suite', () => {
 
       if (!isMobile) {
         const zoomToolbar = page.locator('#ai-experience .ai__zoom-toolbar');
+        await zoomToolbar.scrollIntoViewIfNeeded();
         await expect(zoomToolbar).toBeVisible();
 
         const zoomButtons = zoomToolbar.locator('button');
@@ -210,7 +231,9 @@ test.describe('Yuri Vieira Portfolio - Comprehensive E2E Test Suite', () => {
     test('should handle copy email action with visual state feedback', async ({ page, context }) => {
       await context.grantPermissions(['clipboard-read', 'clipboard-write'], { origin: 'http://localhost:4200' });
 
-      await page.locator('#contact').scrollIntoViewIfNeeded();
+      const contactSection = page.locator('app-contact #contact');
+      await expect(contactSection).toBeAttached({ timeout: 10000 });
+      await contactSection.scrollIntoViewIfNeeded();
 
       const copyBtnHost = page.locator('#contact app-button').nth(1);
       const copyButton = copyBtnHost.locator('button');
@@ -221,7 +244,8 @@ test.describe('Yuri Vieira Portfolio - Comprehensive E2E Test Suite', () => {
     });
 
     test('should render direct send email action button', async ({ page }) => {
-      const contactSection = page.locator('#contact');
+      const contactSection = page.locator('app-contact #contact');
+      await expect(contactSection).toBeAttached({ timeout: 10000 });
       await contactSection.scrollIntoViewIfNeeded();
 
       const sendBtn = page.locator('#contact app-button').nth(0).locator('a, button');

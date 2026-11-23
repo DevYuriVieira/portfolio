@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 test.describe('Visual Regression Suite: Snapshot & Pixel Comparison', () => {
 
   test.beforeEach(async ({ page }) => {
-    await page.goto('/', { waitUntil: 'networkidle' });
+    await page.goto('/?lang=pt-BR', { waitUntil: 'networkidle' });
   });
 
   test('should verify Header component visual snapshot', async ({ page }) => {

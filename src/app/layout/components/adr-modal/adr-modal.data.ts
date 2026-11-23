@@ -196,7 +196,7 @@ export const PORTFOLIO_ADRS_I18N: Record<SupportedLang, readonly AdrRecord[]> = 
         'Adotar o Vitest com execução ESM pura, cobrindo lógica de domínio, grafos de signals reativos, interações de acessibilidade (foco, regiões ARIA live) e catálogos de internacionalização com zero testes instáveis (flaky).',
       consequences: {
         positive: [
-          'Ciclos de execução de testes sub-segundo em mais de 80 suítes unitárias completas',
+          'Ciclos rápidos de execução em 31 suítes unitárias (168 testes automatizados)',
           'Taxa de 100% de aprovação nos testes automatizados verificada antes de qualquer deploy',
           'Isolamento estrito de APIs de navegador (PerformanceObserver, WebGL, ServiceWorker)',
           'Feedback imediato para o desenvolvedor durante pair programming local e refatoração',
@@ -348,7 +348,7 @@ export const PORTFOLIO_ADRS_I18N: Record<SupportedLang, readonly AdrRecord[]> = 
         'Enforce Vitest with pure ESM execution, covering domain logic, reactive signal graphs, accessibility interactions (keyboard traps, ARIA live regions), and internationalization catalogs with zero flaky tests.',
       consequences: {
         positive: [
-          'Sub-second test execution cycle across 80+ comprehensive unit suites',
+          'Fast feedback loop across 31 comprehensive unit test suites (168 automated tests)',
           '100% automated test pass rate verified before every deployment gate',
           'Strict isolation of browser APIs (PerformanceObserver, WebGL, ServiceWorker)',
           'Immediate developer feedback loop during local pair-programming and refactoring',
@@ -500,7 +500,7 @@ export const PORTFOLIO_ADRS_I18N: Record<SupportedLang, readonly AdrRecord[]> = 
         'Aplicar Vitest con ejecución ESM pura, cubriendo lógica de dominio, grafos de signals reactivos, interacciones de accesibilidad (foco, regiones ARIA live) e internacionalización con cero pruebas inestables.',
       consequences: {
         positive: [
-          'Ciclo de ejecución de pruebas inferior a un segundo en más de 80 suites completas',
+          'Ciclo rápido de ejecución en 31 suites unitarias completas (168 pruebas automatizadas)',
           'Tasa de aprobación del 100% en pruebas automatizadas antes de cada despliegue',
           'Aislamiento estricto de APIs de navegador (PerformanceObserver, WebGL, ServiceWorker)',
           'Feedback inmediato durante pair programming y refactorización local',

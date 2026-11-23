@@ -89,5 +89,5 @@ jobs:
       - name: Install Playwright Chromium
         run: npx playwright install --with-deps chromium
 
-      - name: Run Security, Performance & PWA E2E Suites
-        run: npx playwright test e2e/security.spec.ts e2e/performance.spec.ts e2e/pwa-offline.spec.ts --project=chromium
+      - name: Run Portfolio, Security, Performance & PWA E2E Suites
+        run: npx playwright test e2e/portfolio.spec.ts e2e/security.spec.ts e2e/performance.spec.ts e2e/pwa-offline.spec.ts --project=chromium

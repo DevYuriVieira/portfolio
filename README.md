@@ -7,17 +7,17 @@
 ![Three.js](https://img.shields.io/badge/Three.js-0.185-000000?style=for-the-badge&logo=three.js&logoColor=white)
 ![A11y](https://img.shields.io/badge/A11y-WCAG_AAA-00E5FF?style=for-the-badge&logo=w3c&logoColor=black)
 ![SCSS](https://img.shields.io/badge/SCSS-Design_System-CC6699?style=for-the-badge&logo=sass&logoColor=white)
-![Tests](https://img.shields.io/badge/Tests-213_Passed-10B981?style=for-the-badge&logo=vitest&logoColor=white)
-![Vitest](https://img.shields.io/badge/Vitest-158_Unit_Specs-6E9F18?style=for-the-badge&logo=vitest&logoColor=white)
+![Tests](https://img.shields.io/badge/Tests-223_Passed-10B981?style=for-the-badge&logo=vitest&logoColor=white)
+![Vitest](https://img.shields.io/badge/Vitest-168_Unit_Specs-6E9F18?style=for-the-badge&logo=vitest&logoColor=white)
 ![Playwright](https://img.shields.io/badge/Playwright-1.62-2EAD33?style=for-the-badge&logo=playwright&logoColor=white)
 ![Cypress](https://img.shields.io/badge/Cypress-15.20-17202C?style=for-the-badge&logo=cypress&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-Deployed-000000?style=for-the-badge&logo=vercel&logoColor=white)
 
-**PT-BR:** Aplicação web frontend desenvolvida em Angular 22 com Signals, gráficos interativos Three.js (WebGL), Registros de Decisão de Arquitetura (ADRs), console interativo de telemetria RUM e eventos de conversão em tempo real, motor avançado de acessibilidade (WCAG 2.2 AAA & VLibras com 21 ferramentas assistivas), suporte trilíngue (i18n - PT-BR, EN, ES), SEO dinâmico e suíte de testes automatizados (158 testes Vitest).  
-*Slogan: Design system proprietário, acessibilidade universal com VLibras e 21 recursos assistivos, arquitetura documentada com ADRs, console de telemetria em tempo real e suíte de testes automatizados.*
+**PT-BR:** Aplicação web frontend desenvolvida em Angular 22 com Signals, Command Palette (`Ctrl+K`), gráficos interativos Three.js (WebGL), Registros de Decisão de Arquitetura (ADRs), inspetor de métricas RUM e Core Web Vitals, motor avançado de acessibilidade (WCAG 2.2 AAA & VLibras com 21 ferramentas assistivas), suporte trilíngue com auto-detecção de idioma (PT-BR, EN, ES), deep links `/projects/:projectId`, SEO dinâmico e suíte de testes automatizados (168 testes Vitest + Playwright + Cypress).  
+*Slogan: Design system proprietário, acessibilidade universal com VLibras e 21 recursos assistivos, arquitetura documentada com ADRs, Command Palette `Ctrl+K`, telemetria RUM nativa e suíte de testes automatizados.*
 
-**EN:** Frontend web application built with Angular 22 Signals, Three.js (WebGL) interactive visuals, Architectural Decision Records (ADRs), interactive live RUM & event tracking telemetry HUD, universal accessibility engine (WCAG 2.2 AAA & VLibras with 21 assistive features), dynamic tri-lingual i18n (PT-BR, EN, ES), SEO engine, and automated testing suite (158 Vitest tests).  
-*Slogan: Custom design system, universal accessibility with VLibras and 21 assistive features, documented architecture with ADRs, real-time telemetry HUD console, and automated testing pipeline.*
+**EN:** Frontend web application built with Angular 22 Signals, Command Palette (`Ctrl+K`), Three.js (WebGL) interactive visuals, Architectural Decision Records (ADRs), live RUM & Core Web Vitals inspector, universal accessibility engine (WCAG 2.2 AAA & VLibras with 21 assistive features), auto-detected tri-lingual i18n (PT-BR, EN, ES), shareable `/projects/:projectId` deep links, dynamic SEO engine, and automated testing suite (168 Vitest tests + Playwright + Cypress).  
+*Slogan: Custom design system, universal accessibility with VLibras and 21 assistive features, documented architecture with ADRs, `Ctrl+K` Command Palette, native RUM telemetry, and automated testing pipeline.*
 
 ---
 
@@ -76,9 +76,9 @@ Key Engineering Highlights:
 1. **Modern Angular Architecture**: Uses Angular Standalone Components, native Signals (`signal`, `computed`), and `ChangeDetectionStrategy.OnPush` across all views for low memory footprint and fast rendering.
 2. **GPU Visual FX**: Interactive 3D particle visuals powered by **Three.js** (`NeuralCanvasComponent` and `HeroParticlesVisual`), including raycasting mouse displacement, floating glassmorphic zoom controls (`+`, `-`, `Reset`, `Focus`), and automatic responsive fallbacks on mobile screens (<768px).
 3. **Universal Accessibility (WCAG 2.2 AAA & VLibras)**: Built-in assistive features drawer with 21 assistive tools across 5 domains: Text-to-Speech (TTS), on-demand Brazilian Sign Language (VLibras v7), font scaling (+15%, +30%), dyslexia typography (OpenDyslexic), line height (2.2x), text spacing, left-alignment, bionic reading, high contrast (WCAG AAA), monochrome mode, color inversion, low saturation, media hiding, SVG colorblind filters (Protanopia, Deuteranopia, Tritanopia), animation pausing, cursor reading guide, large cursor (36px), link highlighting, and heading highlighting.
-4. **16 Detailed Engineering Case Studies**: Highlights real-world projects, architecture trade-offs, technical decisions, FleetOps API (.NET 10 / C# 14 / PostgreSQL 18 / RabbitMQ / 300 tests) reference study modal, and a dedicated ZEISS NDA confidential project card with lock badge 🔒.
-5. **Triple-Layer QA Architecture**: 213 automated tests (100% pass rate) combining unit tests (**Vitest** - 158 specs across 29 test suites), multi-browser/mobile E2E and WCAG 2.1 AA accessibility tests (**Playwright + Axe-Core** - 38 specs), and user journey E2E verification (**Cypress** - 17 specs).
-6. **Architectural Decision Records (ADRs) & Native RUM Telemetry**: 5 formal engineering records (ADR-001 through ADR-005) in English detailing architecture invariants, paired with a zero-dependency browser-native Real User Monitoring service (`PerformanceObserver` tracking Core Web Vitals) and enterprise HTTP security hardening (`vercel.json`).
+4. **16 Engineering Case Studies with Flagship Priority & Track Filters**: Showcases 16 engineering projects prioritized by impact (ZEISS NDA 🔒, FleetOps API in .NET 10, FarmFlow Java 21 + Expo Offline-First, and Work-Fitness 100/100 Lighthouse at the top) with SVG architecture previews, track filters (`All`, `Full-Stack`, `Back-End`, `Front-End & Mobile`), progressive expansion (`5 → 7 → 16 → 5`), and shareable `/projects/:projectId` deep links.
+5. **Triple-Layer QA Architecture**: 223+ automated tests (100% pass rate) combining unit tests (**Vitest** - 168 specs across 31 test suites), multi-browser/mobile E2E and WCAG 2.1 AA accessibility tests (**Playwright + Axe-Core**), and user journey E2E verification (**Cypress** - 17 specs).
+6. **Command Palette (`Ctrl+K`), ADRs & Native RUM Telemetry**: Keyboard-driven `Ctrl+K` / `⌘K` quick navigation palette, 5 formal engineering records (ADR-001 through ADR-005) in PT-BR/EN/ES, browser-native Core Web Vitals inspector (`PerformanceObserver`), and enterprise HTTP security hardening (`vercel.json`).
 
 ---
 
@@ -95,9 +95,9 @@ Key Engineering Highlights:
 - **Control Toolbar**: Glassmorphic floating UI offering Zoom In (`+`), Zoom Out (`-`), Reset Camera, and Target Focus controls.
 - **Mobile Fallback**: WebGL canvas automatically hidden on viewports under `768px` to preserve mobile battery life and maintain 60 FPS scrolling.
 
-### 3. Case Studies & Progressive Grid Expansion
-- **16 Case Studies**: Structured breakdown featuring Challenge, Solution, Architecture Decisions, Technical Highlights, Results, and Tech Stack badges. Includes the FleetOps API distributed engine study with interactive technical dossier.
-- **3-Stage Progressive Expansion**: Initial 5 featured items → 7 expanded items → All 16 projects → Smooth scroll collapse back to 5 items.
+### 3. Case Studies, Track Filters & Shareable Deep Links
+- **16 Engineering Case Studies**: Prioritized by real-world impact, featuring SVG architectural previews, Challenge, Solution, Architecture Decisions, Results, interactive technical dossiers (ZEISS, FleetOps API, FarmFlow), and one-click shareable `/projects/:projectId` URLs.
+- **Track Filters & Progressive Expansion**: Filter directly by `All`, `Full-Stack`, `Back-End`, or `Front-End & Mobile`, plus progressive expansion (`5 → 7 → 16 → 5`) with smooth scroll collapse.
 
 ### 4. ZEISS Confidential Project Card & Legal NDA Disclaimer
 - **Residency Project Presentation**: Highlights enterprise software developed for **ZEISS** during the Serratec TIC Residency.
@@ -466,9 +466,9 @@ Destaques de Engenharia:
 1. **Arquitetura Angular Moderna**: Componentes Standalone, Signals nativos (`signal`, `computed`) e `ChangeDetectionStrategy.OnPush` em todas as visões para alta velocidade de renderização e baixo uso de memória.
 2. **Efeitos Visuais Acelerados por GPU**: Shaders de partículas WebGL 3D em **Three.js** (`NeuralCanvasComponent` e `HeroParticlesVisual`), com interatividade por cursor, barra flutuante de zoom (`+`, `-`, `Reset`, `Foco`) e fallback automático para telas móveis (<768px).
 3. **Acessibilidade Universal (WCAG 2.2 AAA & VLibras)**: Gaveta modal assistiva nativa com 21 ferramentas em 5 domínios: Leitura em Voz Alta (TTS), tradução oficial em Libras (VLibras v7), escala de fonte (+15%, +30%), fonte para dislexia (OpenDyslexic), espaçamento de linhas (2.2x), espaçamento de texto, alinhamento à esquerda, leitura biônica, alto contraste (WCAG AAA), modo monocromático, inversão de cores, baixa saturação, ocultar imagens/mídias, filtros de daltonismo (Protanopia, Deuteranopia, Tritanopia), pausa de animações, régua de leitura, cursor ampliado (36px), destaque de links e títulos.
-4. **16 Casos de Estudo de Engenharia**: Apresentação de projetos com trade-offs de arquitetura, decisões técnicas, estudo de referência do FleetOps API (.NET 10 / C# 14 / PostgreSQL 18 / RabbitMQ / 300 testes) com modal interativo e card de projeto confidencial da ZEISS com selo de bloqueio 🔒.
-5. **Garantia de Qualidade em 3 Camadas**: 213 testes automatizados (100% de aprovação) unindo testes unitários (**Vitest** - 158 specs em 29 suítes), testes E2E e de acessibilidade WCAG 2.1 AA (**Playwright + Axe-Core** - 38 specs) e validação de fluxos E2E (**Cypress** - 17 specs).
-6. **Registros de Decisão de Arquitetura (ADRs) & Telemetria RUM**: 5 registros formais (ADR-001 a ADR-005) em inglês detalhando invariantes de arquitetura, aliados a um serviço nativo de monitoramento de performance em tempo real (`PerformanceObserver` para Core Web Vitals) e segurança HTTP enterprise (`vercel.json`).
+4. **16 Casos de Estudo Priorizados & Filtros por Trilha**: Apresentação dos 16 projetos ordenados por impacto (ZEISS NDA 🔒, FleetOps API .NET 10, FarmFlow Java 21 + Mobile Offline-First e Work-Fitness 100/100 Lighthouse no topo) com previews visuais SVG, filtros por especialidade (`Todos`, `Full-Stack`, `Back-End`, `Front-End & Mobile`), expansão progressiva (`5 → 7 → 16 → 5`) e links diretos compartilháveis `/projects/:projectId`.
+5. **Garantia de Qualidade em 3 Camadas**: 223+ testes automatizados (100% de aprovação) unindo testes unitários (**Vitest** - 168 specs em 31 suítes), testes E2E e de acessibilidade WCAG 2.1 AA (**Playwright + Axe-Core**) e validação de fluxos E2E (**Cypress** - 17 specs).
+6. **Command Palette (`Ctrl+K`), ADRs & Telemetria RUM**: Paleta rápida `Ctrl+K` / `⌘K` para navegação, CVs e estudos de caso, 5 registros formais (ADR-001 a ADR-005) em PT-BR/EN/ES, inspetor nativo de Core Web Vitals (`PerformanceObserver`) e segurança HTTP enterprise (`vercel.json`).
 
 ---
 
@@ -485,9 +485,9 @@ Destaques de Engenharia:
 - **Barra Flutuante de Controle de Zoom**: Toolbar com efeito de vidro (glassmorphism) com botões de Zoom In (`+`), Zoom Out (`-`), Reset de Câmera e Foco Centralizado.
 - **Desempenho Adaptativo**: O canvas WebGL é ocultado automaticamente em telas menores que `768px` para preservar a bateria e a fluidez em dispositivos móveis.
 
-### 3. Casos de Estudo Corporativos & Grade Progressiva
-- **16 Casos de Estudo de Engenharia**: Estruturados com Desafio, Solução, Decisões de Arquitetura, Destaques Técnicos, Resultados e Badges de Tecnologias. Inclui o estudo do FleetOps API com dossiê técnico interativo.
-- **Grade Progressiva em 3 Etapas**: Exibição inicial de 5 projetos em destaque → Expansão para 7 projetos → Expansão completa para 16 projetos → Recolhimento com rolagem suave de volta para 5 itens.
+### 3. Casos de Estudo, Filtros & Deep Links
+- **16 Casos de Estudo de Engenharia**: Priorizados por impacto real, com previews arquiteturais em SVG, Desafio, Solução, Decisões de Arquitetura, Resultados, dossiês técnicos interativos (ZEISS, FleetOps API, FarmFlow) e links diretos compartilháveis `/projects/:projectId`.
+- **Filtros por Trilha & Grade Progressiva**: Filtre por `Todos`, `Full-Stack`, `Back-End` ou `Front-End & Mobile`, além de expansão progressiva (`5 → 7 → 16 → 5`) com recolhimento suave.
 
 ### 4. Card de Projeto Confidencial ZEISS & Tratamento de NDA
 - **Apresentação de Projeto de Residência**: Exibe a aplicação desenvolvida para a **ZEISS** dentro do programa de Residência Tecnológica Serratec TIC.

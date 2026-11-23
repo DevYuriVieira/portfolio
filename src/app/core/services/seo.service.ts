@@ -23,27 +23,27 @@ const SEO_I18N: Record<string, SeoDefaults> = {
   'pt-BR': {
     title: 'Yuri Vieira | Engenheiro de Software | Full Stack Developer',
     description:
-      'Portfolio de Yuri Vieira | Engenheiro de Software & Desenvolvedor Full Stack especializado em Java, Spring Boot, TypeScript, React e Angular. Casos de estudo em arquitetura limpa, sistemas distribuídos e alta performance.',
+      'Portfolio de Yuri Vieira | Engenheiro de Software & Desenvolvedor Full Stack especializado em Java, Spring Boot, C#, .NET, TypeScript, React e Angular. Casos de estudo em arquitetura limpa, sistemas distribuídos e alta performance.',
     keywords:
-      'Yuri Vieira, Yuri Vieira Engenheiro de Software, Software Engineer, Desenvolvedor Full Stack, Java Developer, React Developer, Angular, Spring Boot, PostgreSQL, TypeScript, Portfolio',
+      'Yuri Vieira, Yuri Vieira Engenheiro de Software, Software Engineer, Desenvolvedor Full Stack, Java Developer, .NET Developer, C#, ASP.NET Core, React Developer, Angular, Spring Boot, PostgreSQL, TypeScript, Portfolio',
     ogLocale: 'pt_BR',
     htmlLang: 'pt-BR',
   },
   en: {
     title: 'Yuri Vieira | Software Engineer | Full Stack Developer',
     description:
-      "Yuri Vieira's Portfolio | Software Engineer & Full Stack Developer specialized in Java, Spring Boot, TypeScript, React, and Angular. Open to remote software engineering roles in Canada, Europe, USA, and Brazil.",
+      "Yuri Vieira's Portfolio | Software Engineer & Full Stack Developer specialized in Java, Spring Boot, C#, .NET, TypeScript, React, and Angular. Open to remote software engineering roles in Canada, Europe, USA, and Brazil.",
     keywords:
-      'Yuri Vieira, Software Engineer, Full Stack Developer, Java Developer, Spring Boot, React Developer, Angular, TypeScript, PostgreSQL, Remote Software Engineer, Remote Developer Canada, Remote Developer Europe, B2B Contractor, Back-End Instructor, Portfolio',
+      'Yuri Vieira, Software Engineer, Full Stack Developer, Java Developer, Spring Boot, .NET Developer, C#, ASP.NET Core, React Developer, Angular, TypeScript, PostgreSQL, Remote Software Engineer, Remote Developer Canada, Remote Developer Europe, B2B Contractor, Portfolio',
     ogLocale: 'en_US',
     htmlLang: 'en',
   },
   es: {
     title: 'Yuri Vieira | Ingeniero de Software | Desarrollador Full Stack',
     description:
-      'Portafolio de Yuri Vieira | Ingeniero de Software & Desarrollador Full Stack especializado en Java, Spring Boot, TypeScript, React y Angular. Disponible para roles remotos de ingeniería de software en Canadá, Europa, EE.UU. y Brasil.',
+      'Portafolio de Yuri Vieira | Ingeniero de Software & Desarrollador Full Stack especializado en Java, Spring Boot, C#, .NET, TypeScript, React y Angular. Disponible para roles remotos de ingeniería de software en Canadá, Europa, EE.UU. y Brasil.',
     keywords:
-      'Yuri Vieira, Ingeniero de Software, Desarrollador Full Stack, Java Developer, React Developer, Angular, Spring Boot, PostgreSQL, TypeScript, Ingeniero Remoto, Desarrollador Remoto Canadá, Desarrollador Remoto Europa, Contratista B2B, Instructor Back-End, Portafolio',
+      'Yuri Vieira, Ingeniero de Software, Desarrollador Full Stack, Java Developer, .NET Developer, C#, React Developer, Angular, Spring Boot, PostgreSQL, TypeScript, Ingeniero Remoto, Desarrollador Remoto Canadá, Desarrollador Remoto Europa, Contratista B2B, Portafolio',
     ogLocale: 'es_ES',
     htmlLang: 'es',
   },
