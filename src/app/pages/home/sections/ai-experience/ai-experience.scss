@@ -82,8 +82,8 @@
     min-height: 340px;
     border-radius: var(--radius-xl);
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    background: #0d0f17;
+    border: 1px solid #27272a;
+    background: #09090b;
 
     @include respond-to('md') {
       display: block;
@@ -121,16 +121,16 @@
     align-items: center;
     gap: var(--space-1);
     padding: var(--space-1) var(--space-2);
-    background: rgba(15, 18, 28, 0.92);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(17, 17, 19, 0.9);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid #27272a;
     border-radius: var(--radius-full);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.55);
     transition: border-color var(--duration-fast) var(--ease-default);
 
     &:hover {
-      border-color: rgba(96, 165, 250, 0.5);
+      border-color: #3f3f46;
     }
   }
 
@@ -223,15 +223,46 @@
     z-index: 10;
     font-family: var(--font-mono);
     font-size: 11px;
-    color: rgba(241, 245, 249, 0.85);
+    color: #a1a1aa;
     padding: 6px var(--space-3);
-    background: rgba(15, 18, 28, 0.88);
+    background: rgba(17, 17, 19, 0.88);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid #27272a;
     border-radius: var(--radius-full);
-    opacity: 0.95;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  }
+
+  &__mobile-nodes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+
+    @include respond-to('md') {
+      display: none;
+    }
+  }
+
+  &__mobile-node-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 12px;
+    border-radius: var(--radius-md);
+    background: #121215;
+    border: 1px solid #27272a;
+    color: #e4e4e7;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: border-color 150ms ease, background-color 150ms ease;
+
+    &:hover,
+    &:focus-visible {
+      border-color: #3f3f46;
+      background: #18181b;
+    }
   }
 
   &__features-showcase {

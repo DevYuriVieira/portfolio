@@ -58,13 +58,27 @@
           <button type="button" class="ai__zoom-focus-pill" (click)="neuralCanvas.toggleZoomFocus()"
             [class.is-zoomed]="neuralCanvas.isZoomedIn" [title]="labels().zoomFocusTitle"
             [attr.aria-label]="labels().zoomFocusTitle">
-            <span aria-hidden="true">🔍</span> {{ neuralCanvas.isZoomedIn ? labels().zoomFocusLabel : labels().zoomFocusInLabel }}
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"></path>
+            </svg>
+            <span>{{ neuralCanvas.isZoomedIn ? labels().zoomFocusLabel : labels().zoomFocusInLabel }}</span>
           </button>
         </div>
 
         <div class="ai__canvas-hint" aria-hidden="true">
           <span>{{ labels().canvasHint }}</span>
         </div>
+      </div>
+
+      <div class="ai__mobile-nodes" role="group" [attr.aria-label]="data().title">
+        @for (node of capabilityNodes; track node) {
+          <button type="button" class="ai__mobile-node-btn" (click)="onNodeSelect(node)">
+            <span>{{ node }}</span>
+            <span aria-hidden="true">↗</span>
+          </button>
+        }
       </div>
 
       <div class="ai__features-showcase" appReveal>

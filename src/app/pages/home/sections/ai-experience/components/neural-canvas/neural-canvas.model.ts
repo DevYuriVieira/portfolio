@@ -1,10 +1,8 @@
 import type {
   Color,
   Group,
-  Line,
   LineSegments,
   Mesh,
-  PointLight,
   QuadraticBezierCurve3,
   Sprite,
   Vector3,
@@ -37,6 +35,7 @@ export interface CausalNode {
   isSupporting: boolean;
   group: Group;
   baseChassis: Mesh;
+  accentBar: Mesh;
   labelSprite: Sprite;
   metaSprite: Sprite;
   borderLines: LineSegments;
@@ -50,14 +49,14 @@ export interface CausalNode {
 
 export interface ConnectionLine {
   curve: QuadraticBezierCurve3;
-  lineMesh: Line;
+  tubeMesh: Mesh;
   fromIndex: number;
   toIndex: number;
 }
 
 export interface DataPacket {
   mesh: Mesh;
-  light: PointLight;
+  glowSprite: Sprite;
   curve: QuadraticBezierCurve3;
   progress: number;
   speed: number;

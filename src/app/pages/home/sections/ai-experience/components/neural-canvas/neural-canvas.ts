@@ -7,15 +7,18 @@ import {
   EventEmitter,
   Input,
   NgZone,
+  OnChanges,
   OnDestroy,
   OnInit,
   Output,
   PLATFORM_ID,
+  SimpleChanges,
   ViewChild,
   inject,
 } from '@angular/core';
 import { SupportedLang } from '@core';
 import {
+  AdditiveBlending,
   AmbientLight,
   BoxGeometry,
   BufferGeometry,
@@ -25,7 +28,6 @@ import {
   EdgesGeometry,
   Float32BufferAttribute,
   Group,
-  Line,
   LineBasicMaterial,
   LinearFilter,
   LineSegments,
@@ -38,11 +40,13 @@ import {
   PointLight,
   QuadraticBezierCurve3,
   Raycaster,
+  RingGeometry,
   Scene,
   SphereGeometry,
   Sprite,
   SpriteMaterial,
   Texture,
+  TubeGeometry,
   Vector2,
   Vector3,
   WebGLRenderer,
@@ -50,6 +54,7 @@ import {
 import {
   CAPABILITY_NODES,
   CORE_LOOP_NODES,
+  CapabilityName,
   CausalNode,
   ConnectionLine,
   DataPacket,
@@ -60,14 +65,16 @@ import {
   standalone: true,
   template: `
     <div class="canvas-container">
-      <canvas #canvas class="neural-canvas" aria-hidden="true"></canvas>
-      <div class="readout-overlay">
-        <div class="readout-group">
-          <span class="readout-pulse"></span>
-          <span class="readout-tag readout-tag--bold">ENGINEERING INTELLIGENCE LOOP</span>
-        </div>
-        <span class="readout-tag readout-tag--state">{{ currentStateText }}</span>
-        <span class="readout-tag readout-tag--active">{{ currentInvariantText }}</span>
+      <canvas #canvas class="neural-canvas" [class.is-pointer]="isHoveringNode" aria-hidden="true"></canvas>
+      <div class="readout-overlay" [class.is-active]="activeNodeLabel !== null">
+        <span class="readout-dot" aria-hidden="true"></span>
+        @if (activeNodeLabel) {
+          <span class="readout-node">{{ activeNodeLabel }}</span>
+          <span class="readout-sep" aria-hidden="true">·</span>
+          <span class="readout-action">{{ clickHintText }}</span>
+        } @else {
+          <span class="readout-idle">{{ idleHintText }}</span>
+        }
       </div>
     </div>
   `,
@@ -77,13 +84,13 @@ import {
       width: 100%;
       height: 100%;
       position: relative;
-      touch-action: none;
+      touch-action: pan-y;
     }
     .canvas-container {
       position: relative;
       width: 100%;
       height: 100%;
-      background: #0d0f17;
+      background: radial-gradient(ellipse at 50% 45%, #131826 0%, #0b0d14 58%, #09090b 100%);
       border-radius: inherit;
       overflow: hidden;
     }
@@ -93,70 +100,73 @@ import {
       display: block;
       cursor: grab;
 
+      &.is-pointer {
+        cursor: pointer;
+      }
+
       &:active {
         cursor: grabbing;
       }
     }
     .readout-overlay {
       position: absolute;
-      bottom: 18px;
-      right: 18px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      pointer-events: none;
-      user-select: none;
-      z-index: 10;
-    }
-    .readout-group {
-      display: flex;
+      bottom: 16px;
+      right: 16px;
+      display: inline-flex;
       align-items: center;
       gap: 8px;
-    }
-    .readout-pulse {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #3b82f6;
-      box-shadow: 0 0 12px #3b82f6;
-      will-change: transform, opacity;
-      animation: pulseGlow 1.8s infinite ease-in-out;
-    }
-    @keyframes pulseGlow {
-      0%, 100% { opacity: 0.5; transform: scale3d(1, 1, 1); }
-      50% { opacity: 1; transform: scale3d(1.35, 1.35, 1); }
-    }
-    .readout-tag {
-      font-family: var(--font-mono, monospace);
-      font-size: 10.5px;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      color: rgba(255, 255, 255, 0.7);
-      background: rgba(15, 18, 28, 0.88);
       padding: 6px 13px;
-      border-radius: 6px;
+      border-radius: 9999px;
+      background: rgba(15, 18, 28, 0.88);
       border: 1px solid rgba(255, 255, 255, 0.12);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
+      font-family: var(--font-mono, monospace);
+      font-size: 11px;
+      color: #cbd5e1;
+      pointer-events: none;
+      user-select: none;
+      z-index: 10;
+      transition: border-color 150ms ease, color 150ms ease;
+
+      &.is-active {
+        border-color: rgba(96, 165, 250, 0.55);
+        color: #f8fafc;
+
+        .readout-dot {
+          background: #60a5fa;
+          box-shadow: 0 0 12px rgba(96, 165, 250, 0.9);
+        }
+      }
     }
-    .readout-tag--bold {
+    .readout-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #3b82f6;
+      box-shadow: 0 0 8px rgba(59, 130, 246, 0.65);
+      flex-shrink: 0;
+      transition: background-color 150ms ease, box-shadow 150ms ease;
+    }
+    .readout-node {
       font-weight: 600;
       color: #ffffff;
+      letter-spacing: 0.04em;
     }
-    .readout-tag--state {
-      color: #f1f5f9;
-      border-color: rgba(255, 255, 255, 0.2);
+    .readout-sep {
+      color: #64748b;
     }
-    .readout-tag--active {
-      color: #60a5fa;
-      border-color: rgba(96, 165, 250, 0.45);
-      background: rgba(20, 30, 50, 0.9);
+    .readout-action {
+      color: #93c5fd;
+    }
+    .readout-idle {
+      color: #cbd5e1;
     }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class NeuralCanvas implements OnInit, OnDestroy {
+export class NeuralCanvas implements OnInit, OnChanges, OnDestroy {
   @Input() lang: SupportedLang = 'pt-BR';
   @ViewChild('canvas', { static: true }) canvasRef!: ElementRef<HTMLCanvasElement>;
   @Output() nodeSelect = new EventEmitter<string>();
@@ -179,8 +189,10 @@ export class NeuralCanvas implements OnInit, OnDestroy {
   private raycaster = new Raycaster();
   private hoveredNodeIndex = -1;
 
-  public currentStateText = 'ESTADO: ESTÁVEL';
-  public currentInvariantText = 'INVARIANTE: PRESERVADA';
+  public isHoveringNode = false;
+  public activeNodeLabel: string | null = null;
+  public idleHintText = '';
+  public clickHintText = '';
 
   private isDragging = false;
   private activePointerId: number | null = null;
@@ -193,7 +205,7 @@ export class NeuralCanvas implements OnInit, OnDestroy {
   private readonly MAX_ORBIT_Y = 1.15;
   private readonly MAX_ORBIT_X = 0.45;
 
-  private targetZoomZ = 8.5;
+  private targetZoomZ = 8.4;
   private readonly minZoomZ = 3.8;
   private readonly maxZoomZ = 14.0;
 
@@ -202,19 +214,32 @@ export class NeuralCanvas implements OnInit, OnDestroy {
   private connections: ConnectionLine[] = [];
   private dataPackets: DataPacket[] = [];
   private gridMesh: LineSegments | null = null;
+  private pooledPulseLights: PointLight[] = [];
 
-  private readonly COLOR_CHASSIS_CORE = new Color(0x282c3d);
-  private readonly COLOR_CHASSIS_SUPPORT = new Color(0x1e2230);
-  private readonly COLOR_BLUE_ACCENT = new Color(0x3b82f6);
+  private sharedPacketGeo: SphereGeometry | null = null;
+  private sharedGlowTexture: CanvasTexture | null = null;
+  private readonly pendingTimers = new Set<ReturnType<typeof setTimeout>>();
+
+  private readonly COLOR_CHASSIS_CORE = new Color(0x23293a);
+  private readonly COLOR_CHASSIS_SUPPORT = new Color(0x1b2030);
+  private readonly COLOR_EDGE_BASE = new Color(0x64748b);
+  private readonly COLOR_EDGE_SUPPORT = new Color(0x475569);
+  private readonly COLOR_ACCENT_IDLE = new Color(0x3b82f6);
   private readonly COLOR_BRIGHT_GLOW = new Color(0x60a5fa);
   private readonly COLOR_WHITE = new Color(0xffffff);
 
   private disposables: (BufferGeometry | Material | Texture)[] = [];
 
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['lang']) {
+      this.updateLocalizedHints();
+    }
+  }
+
   ngOnInit(): void {
     if (!isPlatformBrowser(this.platformId)) return;
 
-    this.updateStateLabels();
+    this.updateLocalizedHints();
 
     if (typeof window !== 'undefined' && window.innerWidth < 768) {
       return;
@@ -227,7 +252,9 @@ export class NeuralCanvas implements OnInit, OnDestroy {
         this.initScene();
         if (!this.renderer) return;
 
-        this.createTechnicalGrid();
+        this.initSharedPacketResources();
+        this.createRadialGrid();
+        this.createOrbitalRings();
         this.createArchitectureTopology();
         this.setupResizeObserver();
 
@@ -247,9 +274,21 @@ export class NeuralCanvas implements OnInit, OnDestroy {
     if (this.animationId !== null) {
       cancelAnimationFrame(this.animationId);
     }
+    this.pendingTimers.forEach((timer) => clearTimeout(timer));
+    this.pendingTimers.clear();
+
     this.resizeObserver?.disconnect();
     this.intersectionObserver?.disconnect();
     this.removePointerEvents();
+
+    this.dataPackets.forEach((p) => {
+      (p.mesh.material as Material).dispose();
+      (p.glowSprite.material as Material).dispose();
+    });
+    this.dataPackets = [];
+
+    this.pooledPulseLights.forEach((l) => l.dispose());
+    this.pooledPulseLights = [];
 
     this.disposables.forEach((d) => d.dispose());
     this.disposables = [];
@@ -260,9 +299,19 @@ export class NeuralCanvas implements OnInit, OnDestroy {
     this.scene = null;
     this.camera = null;
     this.mainGroup = null;
+    this.sharedPacketGeo = null;
+    this.sharedGlowTexture = null;
     this.causalNodes = [];
     this.connections = [];
-    this.dataPackets = [];
+  }
+
+  public focusNodeByName(nodeName: CapabilityName): void {
+    const idx = this.causalNodes.findIndex((n) => n.name === nodeName);
+    if (idx === -1) return;
+
+    this.triggerCausalCascade(idx);
+    this.activeNodeLabel = nodeName;
+    this.cdr.markForCheck();
   }
 
   private getLangText(en: string, pt: string, es: string): string {
@@ -271,19 +320,26 @@ export class NeuralCanvas implements OnInit, OnDestroy {
     return pt;
   }
 
-  private updateStateLabels(overrideState?: string, overrideInvariant?: string): void {
-    if (overrideState) {
-      this.currentStateText = overrideState;
-    } else {
-      this.currentStateText = this.getLangText('STATE: STABLE', 'ESTADO: ESTÁVEL', 'ESTADO: ESTABLE');
-    }
-
-    if (overrideInvariant) {
-      this.currentInvariantText = overrideInvariant;
-    } else {
-      this.currentInvariantText = this.getLangText('INVARIANT: PRESERVED', 'INVARIANTE: PRESERVADA', 'INVARIANTE: PRESERVADA');
-    }
+  private updateLocalizedHints(): void {
+    this.idleHintText = this.getLangText(
+      'Click any node to inspect',
+      'Clique em um nó para inspecionar',
+      'Haz clic en un nodo para inspeccionar'
+    );
+    this.clickHintText = this.getLangText(
+      'Click to inspect',
+      'Clique para abrir',
+      'Clic para abrir'
+    );
     this.cdr.markForCheck();
+  }
+
+  private scheduleTimer(fn: () => void, ms: number): void {
+    const id = setTimeout(() => {
+      this.pendingTimers.delete(id);
+      fn();
+    }, ms);
+    this.pendingTimers.add(id);
   }
 
   private initScene(): void {
@@ -294,18 +350,18 @@ export class NeuralCanvas implements OnInit, OnDestroy {
     this.startTime = performance.now();
 
     this.scene = new Scene();
-    this.scene.background = new Color(0x0d0f17);
 
     this.camera = new PerspectiveCamera(28, width / height, 0.1, 100);
-    this.camera.position.set(0, 6.2, 8.5);
-    this.camera.lookAt(0, -0.2, 0);
+    this.camera.position.set(0, 6.0, this.targetZoomZ);
+    this.camera.lookAt(0, -0.15, 0);
 
     this.renderer = new WebGLRenderer({
       canvas,
       antialias: true,
-      alpha: false,
+      alpha: true,
       powerPreference: 'high-performance',
     });
+    this.renderer.setClearColor(0x000000, 0);
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     this.renderer.setSize(width, height);
     this.renderer.shadowMap.enabled = true;
@@ -314,51 +370,101 @@ export class NeuralCanvas implements OnInit, OnDestroy {
     this.mainGroup = new Group();
     this.scene.add(this.mainGroup);
 
-    const ambientLight = new AmbientLight(0xffffff, 0.55);
+    const ambientLight = new AmbientLight(0xe2e8f0, 0.75);
     this.scene.add(ambientLight);
 
-    const keyLight = new DirectionalLight(0xf8fafc, 2.2);
+    const keyLight = new DirectionalLight(0xffffff, 2.4);
     keyLight.position.set(6, 14, 6);
     keyLight.castShadow = true;
-    keyLight.shadow.mapSize.width = 2048;
-    keyLight.shadow.mapSize.height = 2048;
-    keyLight.shadow.bias = -0.0001;
+    keyLight.shadow.mapSize.width = 1024;
+    keyLight.shadow.mapSize.height = 1024;
+    keyLight.shadow.bias = -0.0002;
     this.scene.add(keyLight);
 
-    const fillLight = new DirectionalLight(0xc7d2fe, 1.2);
+    const fillLight = new DirectionalLight(0xc7d2fe, 1.3);
     fillLight.position.set(-6, 8, -4);
     this.scene.add(fillLight);
 
-    const rimLight = new DirectionalLight(0x60a5fa, 1.4);
+    const rimLight = new DirectionalLight(0x60a5fa, 1.8);
     rimLight.position.set(-8, 4, -6);
     this.scene.add(rimLight);
 
-    const topLight = new DirectionalLight(0xffffff, 1.0);
-    topLight.position.set(0, 10, 0);
+    const topLight = new DirectionalLight(0xf8fafc, 1.2);
+    topLight.position.set(0, 11, 2);
     this.scene.add(topLight);
+
+    for (let i = 0; i < 2; i++) {
+      const pulseLight = new PointLight(0x60a5fa, 0, 3.8);
+      this.mainGroup.add(pulseLight);
+      this.pooledPulseLights.push(pulseLight);
+    }
   }
 
-  private createTechnicalGrid(): void {
+  private initSharedPacketResources(): void {
+    this.sharedPacketGeo = new SphereGeometry(0.065, 14, 14);
+    this.disposables.push(this.sharedPacketGeo);
+
+    const canvas = document.createElement('canvas');
+    canvas.width = 64;
+    canvas.height = 64;
+    const ctx = canvas.getContext('2d');
+    if (ctx) {
+      const grad = ctx.createRadialGradient(32, 32, 2, 32, 32, 30);
+      grad.addColorStop(0, 'rgba(255, 255, 255, 1)');
+      grad.addColorStop(0.35, 'rgba(96, 165, 250, 0.7)');
+      grad.addColorStop(1, 'rgba(59, 130, 246, 0)');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, 64, 64);
+    }
+
+    this.sharedGlowTexture = new CanvasTexture(canvas);
+    this.sharedGlowTexture.minFilter = LinearFilter;
+    this.sharedGlowTexture.magFilter = LinearFilter;
+    this.disposables.push(this.sharedGlowTexture);
+  }
+
+  private createRadialGrid(): void {
     if (!this.mainGroup) return;
 
     const size = 18;
     const divisions = 36;
-    const gridGeo = new BufferGeometry();
-    const positions: number[] = [];
-
     const step = size / divisions;
     const half = size / 2;
+    const maxRadius = half * 0.96;
 
-    for (let i = -half; i <= half; i += step) {
-      positions.push(-half, -0.45, i, half, -0.45, i);
-      positions.push(i, -0.45, -half, i, -0.45, half);
+    const positions: number[] = [];
+    const colors: number[] = [];
+
+    const pushSegment = (x1: number, z1: number, x2: number, z2: number) => {
+      const d1 = Math.hypot(x1, z1) / maxRadius;
+      const d2 = Math.hypot(x2, z2) / maxRadius;
+      if (d1 > 1.05 && d2 > 1.05) return;
+
+      const f1 = Math.max(0, 1 - d1 * d1);
+      const f2 = Math.max(0, 1 - d2 * d2);
+
+      positions.push(x1, -0.46, z1, x2, -0.46, z2);
+      colors.push(
+        0.22 * f1, 0.28 * f1, 0.44 * f1,
+        0.22 * f2, 0.28 * f2, 0.44 * f2
+      );
+    };
+
+    for (let i = -half; i <= half + 0.001; i += step) {
+      for (let j = -half; j < half - 0.001; j += step) {
+        pushSegment(j, i, j + step, i);
+        pushSegment(i, j, i, j + step);
+      }
     }
 
+    const gridGeo = new BufferGeometry();
     gridGeo.setAttribute('position', new Float32BufferAttribute(positions, 3));
+    gridGeo.setAttribute('color', new Float32BufferAttribute(colors, 3));
+
     const gridMat = new LineBasicMaterial({
-      color: 0x2e354f,
+      vertexColors: true,
       transparent: true,
-      opacity: 0.5,
+      opacity: 0.72,
     });
 
     this.gridMesh = new LineSegments(gridGeo, gridMat);
@@ -366,15 +472,44 @@ export class NeuralCanvas implements OnInit, OnDestroy {
     this.disposables.push(gridGeo, gridMat);
   }
 
+  private createOrbitalRings(): void {
+    if (!this.mainGroup) return;
+
+    const outerRingGeo = new RingGeometry(4.56, 4.61, 96);
+    outerRingGeo.rotateX(-Math.PI / 2);
+    outerRingGeo.scale(1, 1, 2.6 / 4.6);
+
+    const outerRingMat = new MeshBasicMaterial({
+      color: 0x3b82f6,
+      transparent: true,
+      opacity: 0.16,
+      depthWrite: false,
+    });
+
+    const outerRing = new Mesh(outerRingGeo, outerRingMat);
+    outerRing.position.y = -0.44;
+    this.mainGroup.add(outerRing);
+    this.disposables.push(outerRingGeo, outerRingMat);
+  }
+
   private createArchitectureTopology(): void {
     if (!this.mainGroup) return;
 
-    const coreBoxGeo = new BoxGeometry(0.92, 0.22, 0.48);
-    const supportBoxGeo = new BoxGeometry(1.42, 0.18, 0.56);
+    const coreBoxGeo = new BoxGeometry(0.98, 0.22, 0.5);
+    const coreAccentGeo = new BoxGeometry(0.74, 0.03, 0.06);
+    const supportBoxGeo = new BoxGeometry(1.48, 0.18, 0.56);
+    const supportAccentGeo = new BoxGeometry(1.1, 0.028, 0.055);
     const coreEdges = new EdgesGeometry(coreBoxGeo);
     const supportEdges = new EdgesGeometry(supportBoxGeo);
 
-    this.disposables.push(coreBoxGeo, supportBoxGeo, coreEdges, supportEdges);
+    this.disposables.push(
+      coreBoxGeo,
+      coreAccentGeo,
+      supportBoxGeo,
+      supportAccentGeo,
+      coreEdges,
+      supportEdges
+    );
 
     const rx = 4.6;
     const rz = 2.6;
@@ -387,34 +522,53 @@ export class NeuralCanvas implements OnInit, OnDestroy {
 
       const chassisMat = new MeshPhysicalMaterial({
         color: this.COLOR_CHASSIS_CORE,
-        metalness: 0.75,
-        roughness: 0.2,
-        clearcoat: 0.3,
+        metalness: 0.72,
+        roughness: 0.22,
+        clearcoat: 0.45,
+        clearcoatRoughness: 0.2,
       });
 
-      const edgeMat = new LineBasicMaterial({ color: 0x64748b, transparent: true, opacity: 0.8 });
-      const glowMat = new LineBasicMaterial({ color: 0x60a5fa, transparent: true, opacity: 0.0 });
+      const accentMat = new MeshBasicMaterial({
+        color: this.COLOR_ACCENT_IDLE.clone(),
+        transparent: true,
+        opacity: 0.9,
+      });
 
-      this.disposables.push(chassisMat, edgeMat, glowMat);
+      const edgeMat = new LineBasicMaterial({
+        color: this.COLOR_EDGE_BASE.getHex(),
+        transparent: true,
+        opacity: 0.9,
+      });
+      const glowMat = new LineBasicMaterial({
+        color: 0x60a5fa,
+        transparent: true,
+        opacity: 0.0,
+      });
+
+      this.disposables.push(chassisMat, accentMat, edgeMat, glowMat);
 
       const baseChassis = new Mesh(coreBoxGeo, chassisMat);
       baseChassis.castShadow = true;
       baseChassis.receiveShadow = true;
       nodeGroup.add(baseChassis);
 
+      const accentBar = new Mesh(coreAccentGeo, accentMat);
+      accentBar.position.set(0, 0.125, 0.14);
+      nodeGroup.add(accentBar);
+
       const borderLines = new LineSegments(coreEdges, edgeMat);
       nodeGroup.add(borderLines);
 
       const pulseGlowLines = new LineSegments(coreEdges, glowMat);
-      pulseGlowLines.scale.set(1.04, 1.04, 1.04);
+      pulseGlowLines.scale.set(1.045, 1.045, 1.045);
       nodeGroup.add(pulseGlowLines);
 
       const labelSprite = this.createLabelSprite(name, `CORE LOOP // 0${i + 1}`, false);
-      labelSprite.position.set(0, 0.34, 0);
+      labelSprite.position.set(0, 0.36, 0);
       nodeGroup.add(labelSprite);
 
-      const metaSprite = this.createMetaSprite('STATUS: NOMINAL');
-      metaSprite.position.set(0, -0.28, 0);
+      const metaSprite = this.createMetaSprite('INTERACTIVE NODE');
+      metaSprite.position.set(0, -0.27, 0);
       nodeGroup.add(metaSprite);
 
       nodeGroup.position.set(posX, 0, posZ);
@@ -426,6 +580,7 @@ export class NeuralCanvas implements OnInit, OnDestroy {
         isSupporting: false,
         group: nodeGroup,
         baseChassis,
+        accentBar,
         labelSprite,
         metaSprite,
         borderLines,
@@ -439,8 +594,8 @@ export class NeuralCanvas implements OnInit, OnDestroy {
     });
 
     const supportingCoords = [
-      { name: 'KNOWLEDGE' as const, pos: new Vector3(-1.8, -0.22, 0) },
-      { name: 'HUMAN JUDGMENT' as const, pos: new Vector3(1.8, -0.22, 0) },
+      { name: 'KNOWLEDGE' as const, tag: 'DATA LAYER', pos: new Vector3(-1.8, -0.2, 0) },
+      { name: 'HUMAN JUDGMENT' as const, tag: 'GOVERNANCE', pos: new Vector3(1.8, -0.2, 0) },
     ];
 
     supportingCoords.forEach((sup, idx) => {
@@ -448,33 +603,51 @@ export class NeuralCanvas implements OnInit, OnDestroy {
 
       const chassisMat = new MeshPhysicalMaterial({
         color: this.COLOR_CHASSIS_SUPPORT,
-        metalness: 0.7,
+        metalness: 0.68,
         roughness: 0.25,
-        clearcoat: 0.2,
+        clearcoat: 0.35,
       });
 
-      const edgeMat = new LineBasicMaterial({ color: 0x475569, transparent: true, opacity: 0.8 });
-      const glowMat = new LineBasicMaterial({ color: 0x60a5fa, transparent: true, opacity: 0.0 });
-      this.disposables.push(chassisMat, edgeMat, glowMat);
+      const accentMat = new MeshBasicMaterial({
+        color: new Color(0x38bdf8),
+        transparent: true,
+        opacity: 0.85,
+      });
+
+      const edgeMat = new LineBasicMaterial({
+        color: this.COLOR_EDGE_SUPPORT.getHex(),
+        transparent: true,
+        opacity: 0.9,
+      });
+      const glowMat = new LineBasicMaterial({
+        color: 0x38bdf8,
+        transparent: true,
+        opacity: 0.0,
+      });
+      this.disposables.push(chassisMat, accentMat, edgeMat, glowMat);
 
       const baseChassis = new Mesh(supportBoxGeo, chassisMat);
       baseChassis.castShadow = true;
       baseChassis.receiveShadow = true;
       nodeGroup.add(baseChassis);
 
+      const accentBar = new Mesh(supportAccentGeo, accentMat);
+      accentBar.position.set(0, 0.104, 0.16);
+      nodeGroup.add(accentBar);
+
       const borderLines = new LineSegments(supportEdges, edgeMat);
       nodeGroup.add(borderLines);
 
       const pulseGlowLines = new LineSegments(supportEdges, glowMat);
-      pulseGlowLines.scale.set(1.04, 1.04, 1.04);
+      pulseGlowLines.scale.set(1.045, 1.045, 1.045);
       nodeGroup.add(pulseGlowLines);
 
-      const labelSprite = this.createLabelSprite(sup.name, `SUPPORTING LAYER // 0${idx + 1}`, true);
-      labelSprite.position.set(0, 0.3, 0);
+      const labelSprite = this.createLabelSprite(sup.name, sup.tag, true);
+      labelSprite.position.set(0, 0.33, 0);
       nodeGroup.add(labelSprite);
 
-      const metaSprite = this.createMetaSprite('FOUNDATIONAL GOVERNANCE');
-      metaSprite.position.set(0, -0.26, 0);
+      const metaSprite = this.createMetaSprite('BASE LAYER');
+      metaSprite.position.set(0, -0.25, 0);
       nodeGroup.add(metaSprite);
 
       nodeGroup.position.copy(sup.pos);
@@ -486,13 +659,14 @@ export class NeuralCanvas implements OnInit, OnDestroy {
         isSupporting: true,
         group: nodeGroup,
         baseChassis,
+        accentBar,
         labelSprite,
         metaSprite,
         borderLines,
         pulseGlowLines,
         basePosition: sup.pos.clone(),
-        targetY: -0.22,
-        currentY: -0.22,
+        targetY: -0.2,
+        currentY: -0.2,
         velocityY: 0,
         edgePulseEnergy: 0,
       });
@@ -509,13 +683,8 @@ export class NeuralCanvas implements OnInit, OnDestroy {
       this.addBezierConnection(i, nextIdx);
     }
 
-    const knowledgeIdx = 6;
-    const humanIdx = 7;
-    const contextIdx = 1;
-    const decisionIdx = 3;
-
-    this.addBezierConnection(knowledgeIdx, contextIdx);
-    this.addBezierConnection(humanIdx, decisionIdx);
+    this.addBezierConnection(6, 1);
+    this.addBezierConnection(7, 3);
   }
 
   private addBezierConnection(fromIdx: number, toIdx: number): void {
@@ -523,25 +692,23 @@ export class NeuralCanvas implements OnInit, OnDestroy {
     const end = this.causalNodes[toIdx].basePosition;
 
     const mid = new Vector3().addVectors(start, end).multiplyScalar(0.5);
-    mid.y += 0.35;
+    mid.y += 0.42;
 
     const curve = new QuadraticBezierCurve3(start, mid, end);
-    const points = curve.getPoints(28);
-
-    const lineGeo = new BufferGeometry().setFromPoints(points);
-    const lineMat = new LineBasicMaterial({
-      color: 0x64748b,
+    const tubeGeo = new TubeGeometry(curve, 32, 0.014, 8, false);
+    const tubeMat = new MeshBasicMaterial({
+      color: 0x475569,
       transparent: true,
-      opacity: 0.6,
+      opacity: 0.65,
     });
 
-    const lineMesh = new Line(lineGeo, lineMat);
-    this.mainGroup!.add(lineMesh);
-    this.disposables.push(lineGeo, lineMat);
+    const tubeMesh = new Mesh(tubeGeo, tubeMat);
+    this.mainGroup!.add(tubeMesh);
+    this.disposables.push(tubeGeo, tubeMat);
 
     this.connections.push({
       curve,
-      lineMesh,
+      tubeMesh,
       fromIndex: fromIdx,
       toIndex: toIdx,
     });
@@ -558,15 +725,15 @@ export class NeuralCanvas implements OnInit, OnDestroy {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     ctx.font = '600 10.5px "Geist Mono", "SF Mono", monospace';
-    ctx.fillStyle = isSupporting ? '#cbd5e1' : '#60a5fa';
+    ctx.fillStyle = isSupporting ? '#7dd3fc' : '#60a5fa';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'top';
     ctx.letterSpacing = '0.14em';
     ctx.fillText(indexTag, 210, 6);
 
-    ctx.font = '700 14px "Geist Mono", "SF Mono", monospace';
+    ctx.font = '700 14.5px "Geist Mono", "SF Mono", monospace';
     ctx.fillStyle = '#ffffff';
-    ctx.letterSpacing = '0.1em';
+    ctx.letterSpacing = '0.09em';
     ctx.fillText(title, 210, 25);
 
     const texture = new CanvasTexture(canvas);
@@ -583,7 +750,7 @@ export class NeuralCanvas implements OnInit, OnDestroy {
     this.disposables.push(mat);
 
     const sprite = new Sprite(mat);
-    sprite.scale.set(isSupporting ? 2.5 : 2.1, 0.35, 1);
+    sprite.scale.set(isSupporting ? 2.5 : 2.15, 0.35, 1);
     return sprite;
   }
 
@@ -598,7 +765,7 @@ export class NeuralCanvas implements OnInit, OnDestroy {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     ctx.font = '500 9.5px "Geist Mono", "SF Mono", monospace';
-    ctx.fillStyle = 'rgba(203, 213, 225, 0.85)';
+    ctx.fillStyle = 'rgba(203, 213, 225, 0.78)';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.letterSpacing = '0.12em';
@@ -612,13 +779,13 @@ export class NeuralCanvas implements OnInit, OnDestroy {
     const mat = new SpriteMaterial({
       map: texture,
       transparent: true,
-      opacity: 0.85,
+      opacity: 0.82,
       depthWrite: false,
     });
     this.disposables.push(mat);
 
     const sprite = new Sprite(mat);
-    sprite.scale.set(1.4, 0.2, 1);
+    sprite.scale.set(1.38, 0.2, 1);
     return sprite;
   }
 
@@ -629,64 +796,50 @@ export class NeuralCanvas implements OnInit, OnDestroy {
     node.velocityY = 0.14;
     node.edgePulseEnergy = 1.0;
 
-    this.updateStateLabels(
-      this.getLangText('EVENT: RECEIVED', 'EVENTO: RECEBIDO', 'EVENTO: RECIBIDO'),
-      this.getLangText('CONTEXT: UPDATING', 'CONTEXTO: ATUALIZANDO', 'CONTEXTO: ACTUALIZANDO'),
-    );
-
-    setTimeout(() => {
-      this.updateStateLabels(
-        this.getLangText('PROCESS: EXECUTING', 'PROCESSO: EXECUTANDO', 'PROCESO: EJECUTANDO'),
-        this.getLangText('VALIDATION: CHECK', 'VALIDAÇÃO: CHECAGEM', 'VALIDACIÓN: VERIFICACIÓN'),
-      );
-    }, 400);
-
-    setTimeout(() => {
-      this.updateStateLabels(
-        this.getLangText('STATE: TRANSITION', 'ESTADO: TRANSIÇÃO', 'ESTADO: TRANSICIÓN'),
-        this.getLangText('INVARIANT: PRESERVED', 'INVARIANTE: PRESERVADA', 'INVARIANTE: PRESERVADA'),
-      );
-    }, 900);
-
-    setTimeout(() => {
-      this.updateStateLabels();
-    }, 1600);
-
     this.connections.forEach((conn) => {
       if (conn.fromIndex === sourceIndex) {
         this.spawnDataPacket(conn.curve, this.COLOR_WHITE, 0.032);
-        this.spawnDataPacket(conn.curve, this.COLOR_BRIGHT_GLOW, 0.024);
+        this.spawnDataPacket(conn.curve, this.COLOR_BRIGHT_GLOW, 0.023);
 
         const destNode = this.causalNodes[conn.toIndex];
-        setTimeout(() => {
-          destNode.velocityY = -0.06;
-          destNode.edgePulseEnergy = 0.85;
+        this.scheduleTimer(() => {
+          if (destNode) {
+            destNode.velocityY = -0.06;
+            destNode.edgePulseEnergy = 0.9;
+          }
         }, 180);
       }
     });
   }
 
   private spawnDataPacket(curve: QuadraticBezierCurve3, color: Color, speed: number): void {
-    if (!this.mainGroup) return;
+    if (!this.mainGroup || !this.sharedPacketGeo || !this.sharedGlowTexture) return;
+    if (this.dataPackets.length >= 24) return;
 
-    const pGeo = new SphereGeometry(0.065, 16, 16);
     const pMat = new MeshBasicMaterial({
       color,
       transparent: true,
       opacity: 1.0,
     });
-    this.disposables.push(pGeo, pMat);
+    const mesh = new Mesh(this.sharedPacketGeo, pMat);
 
-    const mesh = new Mesh(pGeo, pMat);
-
-    const light = new PointLight(color.getHex(), 1.2, 2.5);
-    mesh.add(light);
+    const glowMat = new SpriteMaterial({
+      map: this.sharedGlowTexture,
+      color,
+      transparent: true,
+      opacity: 0.95,
+      blending: AdditiveBlending,
+      depthWrite: false,
+    });
+    const glowSprite = new Sprite(glowMat);
+    glowSprite.scale.set(0.46, 0.46, 1);
+    mesh.add(glowSprite);
 
     this.mainGroup.add(mesh);
 
     this.dataPackets.push({
       mesh,
-      light,
+      glowSprite,
       curve,
       progress: 0,
       speed,
@@ -702,7 +855,7 @@ export class NeuralCanvas implements OnInit, OnDestroy {
 
     this.camera.position.z += (this.targetZoomZ - this.camera.position.z) * 0.14;
     this.camera.position.y += (this.targetZoomZ * 0.72 - this.camera.position.y) * 0.14;
-    this.camera.lookAt(0, -0.2, 0);
+    this.camera.lookAt(0, -0.15, 0);
 
     const elapsed = (performance.now() - this.startTime) / 1000;
 
@@ -724,7 +877,7 @@ export class NeuralCanvas implements OnInit, OnDestroy {
       const stiffness = 240;
       const damping = 20;
 
-      const targetY = node.isSupporting ? -0.22 : 0;
+      const targetY = node.isSupporting ? -0.2 : 0;
       const forceY = -stiffness * (node.currentY - targetY) - damping * node.velocityY;
       node.velocityY += forceY * 0.016;
       node.currentY += node.velocityY * 0.016;
@@ -741,13 +894,17 @@ export class NeuralCanvas implements OnInit, OnDestroy {
       const effectivePulse = Math.max(isHovered ? 1.0 : 0.0, node.edgePulseEnergy);
 
       const borderMat = node.borderLines.material as LineBasicMaterial;
-      borderMat.color.lerpColors(new Color(0x64748b), this.COLOR_BRIGHT_GLOW, effectivePulse);
+      const baseColor = node.isSupporting ? this.COLOR_EDGE_SUPPORT : this.COLOR_EDGE_BASE;
+      borderMat.color.lerpColors(baseColor, this.COLOR_BRIGHT_GLOW, effectivePulse);
+
+      const accentMat = node.accentBar.material as MeshBasicMaterial;
+      accentMat.color.lerpColors(this.COLOR_ACCENT_IDLE, this.COLOR_WHITE, effectivePulse * 0.75);
 
       const glowMat = node.pulseGlowLines.material as LineBasicMaterial;
       glowMat.opacity = effectivePulse * 0.95;
-      node.pulseGlowLines.scale.setScalar(1.02 + effectivePulse * 0.06);
+      node.pulseGlowLines.scale.setScalar(1.03 + effectivePulse * 0.06);
 
-      if (Math.floor(elapsed * 0.3) % CAPABILITY_NODES.length === i && Math.random() < 0.006) {
+      if (Math.floor(elapsed * 0.35) % CAPABILITY_NODES.length === i && Math.random() < 0.006) {
         this.triggerCausalCascade(i);
       }
     });
@@ -760,9 +917,8 @@ export class NeuralCanvas implements OnInit, OnDestroy {
 
       if (p.progress >= 1.0) {
         if (this.mainGroup) this.mainGroup.remove(p.mesh);
-        p.mesh.geometry.dispose();
         (p.mesh.material as Material).dispose();
-        p.light.dispose();
+        (p.glowSprite.material as Material).dispose();
         this.dataPackets.splice(i, 1);
         continue;
       }
@@ -771,8 +927,19 @@ export class NeuralCanvas implements OnInit, OnDestroy {
       p.mesh.position.copy(point);
 
       const fade = Math.sin(p.progress * Math.PI);
-      (p.mesh.material as MeshBasicMaterial).opacity = 0.3 + fade * 0.7;
-      p.light.intensity = fade * 1.5;
+      (p.mesh.material as MeshBasicMaterial).opacity = 0.35 + fade * 0.65;
+      (p.glowSprite.material as SpriteMaterial).opacity = fade * 0.95;
+    }
+
+    for (let i = 0; i < this.pooledPulseLights.length; i++) {
+      const light = this.pooledPulseLights[i];
+      const pkt = this.dataPackets[i];
+      if (pkt) {
+        light.position.copy(pkt.mesh.position);
+        light.intensity = Math.sin(pkt.progress * Math.PI) * 2.2;
+      } else {
+        light.intensity = 0;
+      }
     }
   }
 
@@ -838,6 +1005,9 @@ export class NeuralCanvas implements OnInit, OnDestroy {
   };
 
   private readonly onWheel = (e: WheelEvent): void => {
+    if (!e.ctrlKey && !e.metaKey) {
+      return;
+    }
     e.preventDefault();
     const delta = Math.sign(e.deltaY) * 0.7;
     this.targetZoomZ = Math.max(this.minZoomZ, Math.min(this.maxZoomZ, this.targetZoomZ + delta));
@@ -868,9 +1038,13 @@ export class NeuralCanvas implements OnInit, OnDestroy {
 
     if (foundIndex !== this.hoveredNodeIndex) {
       this.hoveredNodeIndex = foundIndex;
+      this.isHoveringNode = foundIndex !== -1;
+      this.activeNodeLabel = foundIndex !== -1 ? this.causalNodes[foundIndex].name : null;
+
       if (foundIndex !== -1) {
         this.triggerCausalCascade(foundIndex);
       }
+      this.cdr.markForCheck();
     }
   }
 
@@ -901,7 +1075,7 @@ export class NeuralCanvas implements OnInit, OnDestroy {
   }
 
   public resetZoom(): void {
-    this.targetZoomZ = 8.5;
+    this.targetZoomZ = 8.4;
     this.userRotation.x = 0;
     this.userRotation.y = 0;
     this.targetRotation.x = 0;
@@ -914,21 +1088,15 @@ export class NeuralCanvas implements OnInit, OnDestroy {
   public toggleZoomFocus(): void {
     if (this.targetZoomZ > 6.2) {
       this.targetZoomZ = 5.8;
-      this.userRotation.x = 0;
-      this.userRotation.y = 0;
-      this.targetRotation.x = 0;
-      this.targetRotation.y = 0;
-      this.currentRotation.x = 0;
-      this.currentRotation.y = 0;
     } else {
-      this.targetZoomZ = 8.5;
-      this.userRotation.x = 0;
-      this.userRotation.y = 0;
-      this.targetRotation.x = 0;
-      this.targetRotation.y = 0;
-      this.currentRotation.x = 0;
-      this.currentRotation.y = 0;
+      this.targetZoomZ = 8.4;
     }
+    this.userRotation.x = 0;
+    this.userRotation.y = 0;
+    this.targetRotation.x = 0;
+    this.targetRotation.y = 0;
+    this.currentRotation.x = 0;
+    this.currentRotation.y = 0;
     this.cdr.markForCheck();
   }
 

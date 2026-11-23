@@ -1,11 +1,18 @@
-import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ViewChild, computed, inject, signal } from '@angular/core';
 import { I18nService, SupportedLang } from '@core';
 import { RevealDirective } from '@shared';
 import { Container, Heading, Section, Text } from '@ui';
 import { getAiData } from './ai-experience.data';
 import { AiNodeDetail } from './ai-experience.model';
 import { AiNodeModal } from './ai-node-modal';
-import { NeuralCanvas } from './neural-canvas';
+import { CAPABILITY_NODES, CapabilityName, NeuralCanvas } from './neural-canvas';
+
+const FEATURE_TO_NODE: readonly CapabilityName[] = [
+  'EXECUTION',
+  'OBSERVE',
+  'REASONING',
+  'HUMAN JUDGMENT',
+];
 
 interface AiExperienceLabels {
   readonly ariaLabel: string;
@@ -34,6 +41,9 @@ interface AiExperienceLabels {
 export class AiExperienceSection {
   private readonly i18n = inject(I18nService);
 
+  @ViewChild('neuralCanvas') neuralCanvas?: NeuralCanvas;
+
+  readonly capabilityNodes = CAPABILITY_NODES;
   readonly currentLang = computed(() => this.i18n.currentLang());
   readonly data = computed(() => getAiData(this.i18n.currentLang()));
   readonly selectedNodeDetail = signal<AiNodeDetail | null>(null);
@@ -41,6 +51,10 @@ export class AiExperienceSection {
 
   selectFeature(index: number): void {
     this.activeFeatureIndex.set(index);
+    const nodeName = FEATURE_TO_NODE[index];
+    if (nodeName) {
+      this.neuralCanvas?.focusNodeByName(nodeName);
+    }
   }
 
   private readonly labelsI18n: Record<SupportedLang, AiExperienceLabels> = {
@@ -57,7 +71,7 @@ export class AiExperienceSection {
       zoomFocusLabel: 'Overview',
       zoomFocusInLabel: 'Macro Focus',
       zoomFocusTitle: 'Toggle Macro Focus mode',
-      canvasHint: '🖱️ Click & drag to orbit (180°) | 🔍 Scroll or buttons to Zoom',
+      canvasHint: 'Drag to orbit · Ctrl+Scroll or buttons to zoom',
     },
     'pt-BR': {
       ariaLabel: 'Engenharia de Software Amplificada por IA',
@@ -72,7 +86,7 @@ export class AiExperienceSection {
       zoomFocusLabel: 'Visão Geral',
       zoomFocusInLabel: 'Foco Macro',
       zoomFocusTitle: 'Alternar modo Foco Macro',
-      canvasHint: '🖱️ Clique e arraste para girar (180°) | 🔍 Scroll ou botões para dar Zoom',
+      canvasHint: 'Arraste para girar · Ctrl+Scroll ou botões para zoom',
     },
     es: {
       ariaLabel: 'Ingeniería de Software Potenciada por IA',
@@ -87,7 +101,7 @@ export class AiExperienceSection {
       zoomFocusLabel: 'Vista General',
       zoomFocusInLabel: 'Enfoque Macro',
       zoomFocusTitle: 'Alternar modo Enfoque Macro',
-      canvasHint: '🖱️ Clic y arrastrar para orbitar (180°) | 🔍 Scroll o botones para Zoom',
+      canvasHint: 'Arrastra para orbitar · Ctrl+Scroll o botones para zoom',
     },
   };
 
