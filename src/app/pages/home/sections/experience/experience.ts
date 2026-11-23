@@ -67,6 +67,17 @@ export class ExperienceSection implements AfterViewInit, OnDestroy {
       : `+ Ver ${extraCount} formações e bootcamps complementares (${totalCount} no total)`;
   });
 
+  readonly carouselAria = computed(() => {
+    const lang = this.i18n.currentLang();
+    if (lang === 'en') {
+      return { prev: 'Previous card', next: 'Next card' };
+    }
+    if (lang === 'es') {
+      return { prev: 'Tarjeta anterior', next: 'Siguiente tarjeta' };
+    }
+    return { prev: 'Card anterior', next: 'Próximo card' };
+  });
+
   constructor() {
     effect(() => {
       this.i18n.currentLang();

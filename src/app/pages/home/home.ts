@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, OnInit, inject, signal } from '@angular/core';
 import { SeoService } from '@core';
 import { InteractiveParticles } from '@shared';
 import { AboutSection } from './sections/about';
@@ -27,8 +27,14 @@ import { SkillsSection } from './sections/skills';
 })
 export class HomePage implements OnInit {
   private readonly seoService = inject(SeoService);
+  readonly sectionsReady = signal<boolean>(false);
 
   ngOnInit(): void {
     this.seoService.updateSeo();
+  }
+
+  @HostListener('window:portfolio:hydrate-sections')
+  onHydrateSections(): void {
+    this.sectionsReady.set(true);
   }
 }

@@ -288,6 +288,22 @@
       outline: 2px solid #25d366;
       outline-offset: 2px;
     }
+
+    &--linkedin {
+      background: linear-gradient(135deg, #0a66c2 0%, #004182 100%);
+      border-color: #38bdf8;
+      box-shadow: 0 4px 16px rgba(10, 102, 194, 0.35);
+
+      &:hover {
+        background: linear-gradient(135deg, #0c74dc 0%, #0a66c2 100%);
+        border-color: #7dd3fc;
+        box-shadow: 0 6px 22px rgba(10, 102, 194, 0.55);
+      }
+
+      &:focus-visible {
+        outline-color: #38bdf8;
+      }
+    }
   }
 
   &__whatsapp-icon {
@@ -295,6 +311,42 @@
     height: 18px;
     color: #ffffff;
     flex-shrink: 0;
+  }
+
+  &__metrics {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-4) var(--space-6);
+    margin: var(--space-4) 0 0;
+    padding: var(--space-5) 0 0;
+    list-style: none;
+    border-top: 1px solid var(--border-subtle);
+    max-width: 680px;
+
+    @include respond-to('sm') {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  &__metric-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  &__metric-value {
+    font-family: var(--font-mono);
+    font-size: var(--text-md);
+    font-weight: var(--font-weight-bold);
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+  }
+
+  &__metric-label {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.35;
   }
 
   &__visual {

@@ -9,7 +9,7 @@ describe('ExperienceSection', () => {
   let fixture: ComponentFixture<ExperienceSection>;
 
   beforeEach(async () => {
-    localStorage.removeItem('portfolio-lang');
+    localStorage.setItem('portfolio-lang', 'pt-BR');
     await TestBed.configureTestingModule({
       imports: [ExperienceSection],
       providers: [provideRouter([])],
@@ -44,12 +44,12 @@ describe('ExperienceSection', () => {
     expect(items.length).toBe(EXPERIENCE_MILESTONES.length);
   });
 
-  it('should render milestone details correctly in component instance', () => {
-    expect(component.milestones()[0].year).toBe(EXPERIENCE_MILESTONES[0].year);
-    expect(component.milestones()[0].title).toBe(EXPERIENCE_MILESTONES[0].title);
+  it('should expose milestones in reverse chronological order (most recent first)', () => {
+    expect(component.milestones()[0].id).toBe('personal-projects');
+    expect(component.milestones()[0].year).toBe('2026 – Presente');
     const lastIndex = EXPERIENCE_MILESTONES.length - 1;
-    expect(component.milestones()[lastIndex].year).toBe(EXPERIENCE_MILESTONES[lastIndex].year);
-    expect(component.milestones()[lastIndex].title).toBe(EXPERIENCE_MILESTONES[lastIndex].title);
+    expect(component.milestones()[lastIndex].id).toBe('production-engineering-degree');
+    expect(component.milestones()[lastIndex].year).toBe('2017 – 2022');
   });
 
   it('should expose and render current focus active learning cards with top light trail', () => {

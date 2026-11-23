@@ -30,7 +30,7 @@
                 <path d="M10 3.25V12.75M10 12.75L6.5 9.25M10 12.75L13.5 9.25" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M4 14.75V15.5C4 16.1904 4.55964 16.75 5.25 16.75H14.75C15.4404 16.75 16 16.1904 16 15.5V14.75" stroke="currentColor" stroke-width="1.65" stroke-linecap="round"/>
               </svg>
-              <span>Download CV</span>
+              <span>{{ data().cvButtonLabel }}</span>
               <span class="hero__cv-active-tag">{{ activeCv().shortLabel }}</span>
             </a>
 
@@ -71,18 +71,34 @@
           </div>
 
           <a
-            [href]="data().whatsappUrl"
+            [href]="data().secondaryCtaUrl"
             target="_blank"
             rel="noopener noreferrer"
-            [attr.aria-label]="data().whatsappAriaLabel"
+            [attr.aria-label]="data().secondaryCtaAriaLabel"
             class="hero__whatsapp-btn"
-            (click)="onWhatsAppClick()">
-            <svg class="hero__whatsapp-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M12.031 2c-5.516 0-9.999 4.486-9.999 10.002 0 1.766.461 3.49 1.337 5.011L2 22l5.121-1.343a9.96 9.96 0 0 0 4.91 1.294h.004c5.515 0 10.001-4.486 10.001-10.002A9.965 9.965 0 0 0 19.107 4.93 9.936 9.936 0 0 0 12.031 2Zm5.845 14.273c-.246.693-1.434 1.326-1.995 1.41-.513.076-1.163.109-1.878-.118-.434-.138-.99-.322-1.703-.63-2.999-1.295-4.958-4.316-5.107-4.516-.15-.199-1.22-1.622-1.22-3.094 0-1.472.771-2.196 1.045-2.495.274-.299.598-.374.797-.374.199 0 .398.002.573.01.184.009.43-.07.673.514.249.599.847 2.071.922 2.221.075.15.125.324.025.524-.1.199-.15.324-.299.499-.15.174-.314.39-.448.524-.15.149-.306.311-.131.611.174.299.774 1.277 1.662 2.069 1.142 1.018 2.105 1.334 2.404 1.484.299.149.473.125.648-.075.174-.199.747-.873.947-1.172.199-.299.398-.249.672-.149.274.1 1.744.823 2.043.972.299.15.498.225.573.35.075.124.075.723-.17 1.416Z"/>
-            </svg>
-            <span>{{ data().whatsappCtaText }}</span>
+            [class.hero__whatsapp-btn--linkedin]="data().secondaryCtaType === 'linkedin'"
+            (click)="onSecondaryCtaClick()">
+            @if (data().secondaryCtaType === 'linkedin') {
+              <svg class="hero__whatsapp-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+              </svg>
+            } @else {
+              <svg class="hero__whatsapp-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12.031 2c-5.516 0-9.999 4.486-9.999 10.002 0 1.766.461 3.49 1.337 5.011L2 22l5.121-1.343a9.96 9.96 0 0 0 4.91 1.294h.004c5.515 0 10.001-4.486 10.001-10.002A9.965 9.965 0 0 0 19.107 4.93 9.936 9.936 0 0 0 12.031 2Zm5.845 14.273c-.246.693-1.434 1.326-1.995 1.41-.513.076-1.163.109-1.878-.118-.434-.138-.99-.322-1.703-.63-2.999-1.295-4.958-4.316-5.107-4.516-.15-.199-1.22-1.622-1.22-3.094 0-1.472.771-2.196 1.045-2.495.274-.299.598-.374.797-.374.199 0 .398.002.573.01.184.009.43-.07.673.514.249.599.847 2.071.922 2.221.075.15.125.324.025.524-.1.199-.15.324-.299.499-.15.174-.314.39-.448.524-.15.149-.306.311-.131.611.174.299.774 1.277 1.662 2.069 1.142 1.018 2.105 1.334 2.404 1.484.299.149.473.125.648-.075.174-.199.747-.873.947-1.172.199-.299.398-.249.672-.149.274.1 1.744.823 2.043.972.299.15.498.225.573.35.075.124.075.723-.17 1.416Z"/>
+              </svg>
+            }
+            <span>{{ data().secondaryCtaText }}</span>
           </a>
         </div>
+
+        <ul class="hero__metrics" [attr.aria-label]="data().metricsAriaLabel">
+          @for (metric of data().metrics; track metric.label) {
+            <li class="hero__metric-item">
+              <span class="hero__metric-value">{{ metric.value }}</span>
+              <span class="hero__metric-label">{{ metric.label }}</span>
+            </li>
+          }
+        </ul>
       </div>
 
       <div class="hero__visual" aria-hidden="true">

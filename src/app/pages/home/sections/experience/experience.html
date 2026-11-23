@@ -96,7 +96,7 @@
                 type="button"
                 class="experience__carousel-btn"
                 (click)="prevFocus()"
-                aria-label="Card anterior">
+                [attr.aria-label]="carouselAria().prev">
                 <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
                   <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
@@ -105,7 +105,7 @@
                 type="button"
                 class="experience__carousel-btn"
                 (click)="nextFocus()"
-                aria-label="Próximo card">
+                [attr.aria-label]="carouselAria().next">
                 <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
                   <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>

@@ -19,10 +19,10 @@ interface ContactI18n extends ContactSectionData {
 
 const CONTACT_I18N: Record<SupportedLang, ContactI18n> = {
   'pt-BR': {
-    eyebrow: '06 // GET IN TOUCH',
-    title: 'Vamos construir algo extraordinário juntos.',
+    eyebrow: '06 // CONTATO',
+    title: 'Aberto a oportunidades remotas em Engenharia de Software.',
     subtitle:
-      'Estou disponível para novas oportunidades profissionais, projetos desafiadores e conexões na área de engenharia de software.',
+      'Disponível para posições Full-Stack ou Back-End (Java / .NET / TypeScript) remotas no Brasil e no exterior, além de projetos sob demanda.',
     info: {
       email: 'yurivieirateixeira98@gmail.com',
       whatsappUrl:
@@ -50,9 +50,9 @@ const CONTACT_I18N: Record<SupportedLang, ContactI18n> = {
   },
   en: {
     eyebrow: '06 // GET IN TOUCH',
-    title: "Let's build something extraordinary together.",
+    title: 'Open to remote Software Engineering roles.',
     subtitle:
-      'I am available for new professional opportunities, challenging projects, and connections in the software engineering field.',
+      'Available for remote Full-Stack and Back-End (Java / .NET / TypeScript) roles across Canada, Europe, the USA, and Brazil via B2B/Contractor or full-time contracts.',
     info: {
       email: 'yurivieirateixeira98@gmail.com',
       whatsappUrl:
@@ -80,9 +80,9 @@ const CONTACT_I18N: Record<SupportedLang, ContactI18n> = {
   },
   es: {
     eyebrow: '06 // CONTACTO',
-    title: 'Construyamos algo extraordinario juntos.',
+    title: 'Disponible para roles remotos de Ingeniería de Software.',
     subtitle:
-      'Estoy disponible para nuevas oportunidades profesionales, proyectos desafiantes y conexiones en el campo de la ingeniería de software.',
+      'Abierto a oportunidades Full-Stack o Back-End (Java / .NET / TypeScript) remotas para Europa, Canadá, EE.UU. y Latinoamérica, además de proyectos a medida.',
     info: {
       email: 'yurivieirateixeira98@gmail.com',
       whatsappUrl:

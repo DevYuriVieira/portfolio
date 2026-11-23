@@ -57,6 +57,12 @@ export class HeroSection implements OnInit {
     this.telemetry.trackCvDownload(this.selectedCvTrack(), this.i18n.currentLang());
   }
 
+  onSecondaryCtaClick(): void {
+    if (this.data().secondaryCtaType === 'whatsapp') {
+      this.telemetry.trackWhatsAppClick('hero', this.i18n.currentLang());
+    }
+  }
+
   onWhatsAppClick(): void {
     this.telemetry.trackWhatsAppClick('hero', this.i18n.currentLang());
   }
