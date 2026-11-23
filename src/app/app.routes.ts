@@ -9,6 +9,14 @@ export const routes: Routes = [
         path: '',
         loadComponent: () => import('@pages/home/home').then((m) => m.HomePage),
       },
+      {
+        path: 'projects/:projectId',
+        loadComponent: () => import('@pages/home/home').then((m) => m.HomePage),
+      },
+      {
+        path: '**',
+        redirectTo: '',
+      },
     ],
   },
 ];

@@ -9,7 +9,7 @@
           <span class="case-modal__badge case-modal__badge--accent">{{ project.contextTag }}</span>
           }
           @if (project.confidential) {
-          <span class="case-modal__badge case-modal__badge--amber">CONFIDENCIAL (NDA)</span>
+          <span class="case-modal__badge case-modal__badge--amber">{{ labels().confidentialBadge }}</span>
           }
         </div>
 
@@ -18,10 +18,17 @@
         </app-heading>
       </div>
 
-      <button type="button" class="case-modal__close-btn" (click)="closeModal()"
-        [attr.aria-label]="labels().closeAria">
-        ✕
-      </button>
+      <div class="case-modal__header-actions">
+        <button type="button" class="case-modal__share-btn" (click)="copyCaseUrl()"
+          [attr.aria-label]="labels().copyLinkAria">
+          <span>{{ linkCopied() ? labels().copiedLinkBtn : labels().copyLinkBtn }}</span>
+        </button>
+
+        <button type="button" class="case-modal__close-btn" (click)="closeModal()"
+          [attr.aria-label]="labels().closeAria">
+          ✕
+        </button>
+      </div>
     </header>
 
     <div class="case-modal__body">

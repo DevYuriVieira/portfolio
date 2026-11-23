@@ -7,6 +7,7 @@ import {
   Output,
   computed,
   inject,
+  signal,
 } from '@angular/core';
 import { I18nService, SupportedLang } from '@core';
 import { Heading } from '@ui';
@@ -14,6 +15,10 @@ import { Project } from '../../project.model';
 
 interface CaseStudyModalLabels {
   readonly eyebrow: string;
+  readonly confidentialBadge: string;
+  readonly copyLinkBtn: string;
+  readonly copiedLinkBtn: string;
+  readonly copyLinkAria: string;
   readonly closeBtn: string;
   readonly closeAria: string;
   readonly modalAria: (title: string) => string;
@@ -34,6 +39,10 @@ interface CaseStudyModalLabels {
 const LABELS_I18N: Record<SupportedLang, CaseStudyModalLabels> = {
   'pt-BR': {
     eyebrow: 'ESTUDO DE CASO',
+    confidentialBadge: 'CONFIDENCIAL (NDA)',
+    copyLinkBtn: 'Copiar link',
+    copiedLinkBtn: 'Link copiado!',
+    copyLinkAria: 'Copiar link direto deste estudo de caso',
     closeBtn: 'Fechar',
     closeAria: 'Fechar modal de estudo de caso',
     modalAria: (title: string) => `Estudo de caso do projeto ${title}`,
@@ -52,6 +61,10 @@ const LABELS_I18N: Record<SupportedLang, CaseStudyModalLabels> = {
   },
   en: {
     eyebrow: 'CASE STUDY',
+    confidentialBadge: 'CONFIDENTIAL (NDA)',
+    copyLinkBtn: 'Copy link',
+    copiedLinkBtn: 'Link copied!',
+    copyLinkAria: 'Copy direct link to this case study',
     closeBtn: 'Close',
     closeAria: 'Close case study modal',
     modalAria: (title: string) => `Case study for ${title}`,
@@ -70,6 +83,10 @@ const LABELS_I18N: Record<SupportedLang, CaseStudyModalLabels> = {
   },
   es: {
     eyebrow: 'ESTUDIO DE CASO',
+    confidentialBadge: 'CONFIDENCIAL (NDA)',
+    copyLinkBtn: 'Copiar enlace',
+    copiedLinkBtn: '¡Enlace copiado!',
+    copyLinkAria: 'Copiar enlace directo a este estudio de caso',
     closeBtn: 'Cerrar',
     closeAria: 'Cerrar modal de estudio de caso',
     modalAria: (title: string) => `Estudio de caso del proyecto ${title}`,
@@ -105,11 +122,26 @@ export class CaseStudyModal {
   @Output() openFarmFlow = new EventEmitter<void>();
 
   private readonly i18n = inject(I18nService);
+  readonly linkCopied = signal<boolean>(false);
 
   readonly labels = computed(() => {
     const lang = this.i18n.currentLang();
     return LABELS_I18N[lang] ?? LABELS_I18N['pt-BR'];
   });
+
+  async copyCaseUrl(): Promise<void> {
+    try {
+      const origin = typeof window !== 'undefined' ? window.location.origin : 'https://devyurivieira.vercel.app';
+      const url = `${origin}/projects/${encodeURIComponent(this.project.id)}`;
+      if (typeof navigator !== 'undefined' && navigator.clipboard) {
+        await navigator.clipboard.writeText(url);
+      }
+      this.linkCopied.set(true);
+      setTimeout(() => this.linkCopied.set(false), 2500);
+    } catch {
+      this.linkCopied.set(false);
+    }
+  }
 
   @HostListener('document:keydown.escape')
   onEscape(): void {

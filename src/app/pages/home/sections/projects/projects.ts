@@ -1,4 +1,15 @@
-import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  HostListener,
+  OnInit,
+  PLATFORM_ID,
+  computed,
+  inject,
+  signal,
+} from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { I18nService } from '@core';
 import { Button, Container, Heading, Link, Section, Text } from '@ui';
 import { ArchitectureModal } from './components/architecture-modal/architecture-modal';
@@ -7,6 +18,46 @@ import { FarmFlowModal } from './components/farmflow-modal/farmflow-modal';
 import { CaseStudyModal } from './components/case-study-modal/case-study-modal';
 import { Project } from './project.model';
 import { getProjectsData } from './projects.data';
+
+export type ProjectFilterTrack = 'all' | 'fullstack' | 'backend' | 'frontend';
+
+const PRIORITY_PROJECT_ORDER: readonly string[] = [
+  'zeiss-recommendation-assistant',
+  'fleetops-api',
+  'farmflow',
+  'work-fitness',
+  'aurora-growth-platform',
+  'payroll-system-java',
+  'django-ecommerce',
+  'spring-boot-ecommerce-api',
+  'playstation-evolution-timeline',
+  'fleet-management-system',
+  'anime-weather-platform',
+  'hogwarts-interactive-hub',
+  'kuro-seafood-ecommerce',
+  'modern-fighter-jets',
+  'dental-clinic-db',
+  'interactive-auth-ui',
+];
+
+const PROJECT_TRACK_MAP: Record<string, Exclude<ProjectFilterTrack, 'all'>> = {
+  'zeiss-recommendation-assistant': 'fullstack',
+  'fleetops-api': 'backend',
+  farmflow: 'fullstack',
+  'work-fitness': 'frontend',
+  'aurora-growth-platform': 'frontend',
+  'payroll-system-java': 'backend',
+  'django-ecommerce': 'fullstack',
+  'spring-boot-ecommerce-api': 'backend',
+  'playstation-evolution-timeline': 'frontend',
+  'fleet-management-system': 'frontend',
+  'anime-weather-platform': 'frontend',
+  'hogwarts-interactive-hub': 'frontend',
+  'kuro-seafood-ecommerce': 'frontend',
+  'modern-fighter-jets': 'frontend',
+  'dental-clinic-db': 'backend',
+  'interactive-auth-ui': 'frontend',
+};
 
 @Component({
   selector: 'app-projects',
@@ -26,25 +77,61 @@ import { getProjectsData } from './projects.data';
   styleUrl: './projects.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProjectsSection {
+export class ProjectsSection implements OnInit {
   private readonly i18n = inject(I18nService);
+  private readonly route = inject(ActivatedRoute, { optional: true });
+  private readonly platformId = inject(PLATFORM_ID);
 
-  readonly projects = computed(() => getProjectsData(this.i18n.currentLang()));
+  readonly allRawProjects = computed(() => getProjectsData(this.i18n.currentLang()));
+
+  readonly projects = computed<readonly Project[]>(() => {
+    const raw = this.allRawProjects();
+    const map = new Map(raw.map((p) => [p.id, p]));
+    const ordered = PRIORITY_PROJECT_ORDER.map((id) => map.get(id)).filter(
+      (p): p is Project => p !== undefined
+    );
+    const orderedIds = new Set(ordered.map((p) => p.id));
+    const remaining = raw.filter((p) => !orderedIds.has(p.id));
+    return [...ordered, ...remaining];
+  });
+
+  readonly activeFilter = signal<ProjectFilterTrack>('all');
   readonly displayLimit = signal<number>(5);
   readonly architectureModalOpen = signal<boolean>(false);
   readonly fleetOpsModalOpen = signal<boolean>(false);
   readonly farmFlowModalOpen = signal<boolean>(false);
   readonly selectedCaseStudyProject = signal<Project | null>(null);
 
-  readonly showAll = computed(() => this.displayLimit() >= this.projects().length);
+  readonly filteredProjects = computed<readonly Project[]>(() => {
+    const filter = this.activeFilter();
+    const list = this.projects();
+    if (filter === 'all') return list;
+    return list.filter((p) => PROJECT_TRACK_MAP[p.id] === filter);
+  });
 
-  readonly displayedProjects = computed(() =>
-    this.projects().slice(0, this.displayLimit())
-  );
+  readonly showAll = computed(() => this.displayLimit() >= this.filteredProjects().length);
+
+  readonly displayedProjects = computed<readonly Project[]>(() => {
+    const filtered = this.filteredProjects();
+    if (this.activeFilter() !== 'all') {
+      return filtered;
+    }
+    return filtered.slice(0, this.displayLimit());
+  });
+
+  readonly filterCounts = computed(() => {
+    const list = this.projects();
+    return {
+      all: list.length,
+      fullstack: list.filter((p) => PROJECT_TRACK_MAP[p.id] === 'fullstack').length,
+      backend: list.filter((p) => PROJECT_TRACK_MAP[p.id] === 'backend').length,
+      frontend: list.filter((p) => PROJECT_TRACK_MAP[p.id] === 'frontend').length,
+    };
+  });
 
   readonly labels = computed(() => {
     const lang = this.i18n.currentLang();
-    const total = this.projects().length;
+    const total = this.filteredProjects().length;
     const currentLimit = this.displayLimit();
 
     const t = (en: string, pt: string, es: string) => {
@@ -71,29 +158,33 @@ export class ProjectsSection {
         `Ver todos los proyectos (${total}) del portafolio`,
       );
     } else {
-      expandText = t('Collapse projects', 'Recolher projetos', 'Contraer proyectos');
+      expandText = t('Collapse projects', 'Recolher projetos', 'Contraer projetos');
       expandLabel = t('Collapse projects list', 'Recolher projetos do portfólio', 'Contraer proyectos del portafolio');
     }
 
     return {
-      eyebrow: t('Case Studies & Engineering', 'Casos de Estudo & Engenharia', 'Casos de Estudio & Ingeniería'),
-      title: t('Projects & Case Studies', 'Projetos & Casos de Estudo', 'Proyectos & Casos de Estudio'),
+      eyebrow: t('01 // CASE STUDIES & ENGINEERING', '01 // CASOS DE ESTUDO & ENGENHARIA', '01 // CASOS DE ESTUDIO & INGENIERÍA'),
+      title: t('Featured Projects & Case Studies', 'Projetos & Casos de Estudo', 'Proyectos & Casos de Estudio'),
       subtitle: t(
-        'A selection of enterprise applications, full-stack systems, backend APIs, and frontend experiences built with a focus on clean architecture, resilience, and real value.',
-        'Seleção de aplicações corporativas, sistemas full-stack, APIs backend e experiências frontend construídas com foco em arquitetura limpa, resiliência e valor real.',
-        'Selección de aplicaciones corporativas, sistemas full-stack, APIs backend y experiencias frontend construidas con enfoque en arquitectura limpia, resiliencia y valor real.',
+        'Selected production systems, distributed backends, and mobile apps engineered with Clean Architecture, automated testing, and measurable performance.',
+        'Seleção curada de sistemas em produção, backends distribuídos e apps mobile construídos com Clean Architecture, testes automatizados e métricas reais.',
+        'Selección curada de sistemas en producción, backends distribuidos y apps móviles construidos con Clean Architecture, pruebas automatizadas y métricas reales.',
       ),
       ariaLabel: t('Featured projects', 'Projetos em destaque', 'Proyectos destacados'),
+      filterAriaLabel: t('Filter projects by engineering track', 'Filtrar projetos por especialidade', 'Filtrar proyectos por especialidad'),
+      filterAll: t('All', 'Todos', 'Todos'),
+      filterFullstack: t('Full-Stack', 'Full-Stack', 'Full-Stack'),
+      filterBackend: t('Back-End', 'Back-End', 'Back-End'),
+      filterFrontend: t('Front-End & Mobile', 'Front-End & Mobile', 'Front-End & Mobile'),
       challenge: t('Challenge', 'Desafio', 'Desafío'),
       solution: t('Solution', 'Solução', 'Solución'),
-      archDecisions: t('Architecture Decisions', 'Decisões de Arquitetura', 'Decisiones de Arquitectura'),
+      archDecisions: t('Architecture', 'Arquitetura', 'Arquitectura'),
       archDecisionsBadge: t('Architecture', 'Arquitetura', 'Arquitectura'),
-      techHighlights: t('Technical Highlights', 'Destaques Técnicos', 'Aspectos Técnicos Destacados'),
       results: t('Results', 'Resultados', 'Resultados'),
-      techStack: t('Technology Stack', 'Stack Tecnológica', 'Stack Tecnológico'),
+      techStack: t('Core Stack', 'Stack Principal', 'Stack Principal'),
       confidential: t('Confidential', 'Confidencial', 'Confidencial'),
       caseStudyTitle: t('Case Study', 'Estudo de Caso', 'Estudio de Caso'),
-      openCaseStudy: t('View Details', 'Ver Detalhes', 'Ver Detalles'),
+      openCaseStudy: t('View Full Case', 'Ver Estudo Completo', 'Ver Caso Completo'),
       viewCaseStudyAria: (title: string) =>
         t(
           `View technical details, challenge, and solution for ${title}`,
@@ -131,12 +222,48 @@ export class ProjectsSection {
     };
   });
 
+  ngOnInit(): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+
+    const projectIdFromRoute =
+      this.route?.snapshot.paramMap.get('projectId') ??
+      this.route?.snapshot.queryParamMap.get('project') ??
+      this.readProjectParamFromWindow();
+
+    if (projectIdFromRoute) {
+      const match = this.allRawProjects().find((p) => p.id === projectIdFromRoute);
+      if (match) {
+        this.selectedCaseStudyProject.set(match);
+      }
+    }
+  }
+
+  @HostListener('window:portfolio:open-case', ['$event'])
+  onExternalOpenCase(event: Event): void {
+    const detail = (event as CustomEvent<{ projectId?: string }>).detail;
+    const projectId = detail?.projectId;
+    if (!projectId) return;
+    const match = this.allRawProjects().find((p) => p.id === projectId);
+    if (match) {
+      this.openCaseStudyModal(match);
+    }
+  }
+
+  setFilter(track: ProjectFilterTrack): void {
+    this.activeFilter.set(track);
+    if (track === 'all') {
+      this.displayLimit.set(5);
+    }
+  }
+
   openCaseStudyModal(project: Project): void {
     this.selectedCaseStudyProject.set(project);
+    this.syncProjectUrl(project.id);
   }
 
   closeCaseStudyModal(): void {
     this.selectedCaseStudyProject.set(null);
+    this.syncProjectUrl(null);
   }
 
   openArchitectureModal(): void {
@@ -146,6 +273,7 @@ export class ProjectsSection {
 
   closeArchitectureModal(): void {
     this.architectureModalOpen.set(false);
+    this.syncProjectUrl(null);
   }
 
   openFleetOpsModal(): void {
@@ -155,6 +283,7 @@ export class ProjectsSection {
 
   closeFleetOpsModal(): void {
     this.fleetOpsModalOpen.set(false);
+    this.syncProjectUrl(null);
   }
 
   openFarmFlowModal(): void {
@@ -164,14 +293,15 @@ export class ProjectsSection {
 
   closeFarmFlowModal(): void {
     this.farmFlowModalOpen.set(false);
+    this.syncProjectUrl(null);
   }
 
   toggleShowAll(): void {
     const currentLimit = this.displayLimit();
-    const total = this.projects().length;
+    const total = this.filteredProjects().length;
 
     if (currentLimit <= 5) {
-      this.displayLimit.set(7);
+      this.displayLimit.set(Math.min(7, total));
     } else if (currentLimit < total) {
       this.displayLimit.set(total);
     } else {
@@ -181,5 +311,31 @@ export class ProjectsSection {
       }
       this.displayLimit.set(5);
     }
+  }
+
+  private readProjectParamFromWindow(): string | null {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const fromQuery = params.get('project');
+      if (fromQuery) return fromQuery;
+
+      const match = window.location.pathname.match(/^\/projects\/([^/]+)/);
+      return match ? decodeURIComponent(match[1]) : null;
+    } catch {
+      return null;
+    }
+  }
+
+  private syncProjectUrl(projectId: string | null): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+    try {
+      if (typeof history === 'undefined' || !history.replaceState) return;
+      const search = window.location.search;
+      if (projectId) {
+        history.replaceState(null, '', `/projects/${encodeURIComponent(projectId)}${search}`);
+      } else if (window.location.pathname.startsWith('/projects/')) {
+        history.replaceState(null, '', `/${search}`);
+      }
+    } catch {}
   }
 }

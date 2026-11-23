@@ -11,6 +11,45 @@
         <app-text variant="lead" class="projects__subtitle">
           {{ labels().subtitle }}
         </app-text>
+
+        <div class="projects__filters" role="group" [attr.aria-label]="labels().filterAriaLabel">
+          <button
+            type="button"
+            class="projects__filter-btn"
+            [class.is-active]="activeFilter() === 'all'"
+            [attr.aria-pressed]="activeFilter() === 'all'"
+            (click)="setFilter('all')">
+            <span>{{ labels().filterAll }}</span>
+            <span class="projects__filter-count">{{ filterCounts().all }}</span>
+          </button>
+          <button
+            type="button"
+            class="projects__filter-btn"
+            [class.is-active]="activeFilter() === 'fullstack'"
+            [attr.aria-pressed]="activeFilter() === 'fullstack'"
+            (click)="setFilter('fullstack')">
+            <span>{{ labels().filterFullstack }}</span>
+            <span class="projects__filter-count">{{ filterCounts().fullstack }}</span>
+          </button>
+          <button
+            type="button"
+            class="projects__filter-btn"
+            [class.is-active]="activeFilter() === 'backend'"
+            [attr.aria-pressed]="activeFilter() === 'backend'"
+            (click)="setFilter('backend')">
+            <span>{{ labels().filterBackend }}</span>
+            <span class="projects__filter-count">{{ filterCounts().backend }}</span>
+          </button>
+          <button
+            type="button"
+            class="projects__filter-btn"
+            [class.is-active]="activeFilter() === 'frontend'"
+            [attr.aria-pressed]="activeFilter() === 'frontend'"
+            (click)="setFilter('frontend')">
+            <span>{{ labels().filterFrontend }}</span>
+            <span class="projects__filter-count">{{ filterCounts().frontend }}</span>
+          </button>
+        </div>
       </header>
 
       <div class="projects__grid">
@@ -18,6 +57,100 @@
         <article class="projects__card" [class.projects__card--confidential]="project.confidential"
           [class.projects__card--featured]="project.featured">
           <div class="projects__card-body">
+            <div class="projects__visual" aria-hidden="true">
+              @switch (project.id) {
+                @case ('zeiss-recommendation-assistant') {
+                  <svg class="projects__visual-svg" viewBox="0 0 640 124" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0.5" y="0.5" width="639" height="123" rx="10" fill="#0b1120" stroke="rgba(234,179,8,0.28)" />
+                    <rect x="20" y="34" width="112" height="56" rx="8" fill="#111a2e" stroke="#38bdf8" stroke-opacity="0.45" />
+                    <text x="76" y="57" fill="#e2e8f0" font-size="11" font-weight="600" text-anchor="middle" font-family="monospace">React 19 UI</text>
+                    <text x="76" y="74" fill="#94a3b8" font-size="9.5" text-anchor="middle" font-family="monospace">ApexCharts + RX</text>
+                    <path d="M132 62H164" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="3 3" />
+                    <rect x="164" y="34" width="132" height="56" rx="8" fill="#111a2e" stroke="#22c55e" stroke-opacity="0.45" />
+                    <text x="230" y="57" fill="#e2e8f0" font-size="11" font-weight="600" text-anchor="middle" font-family="monospace">Spring Boot 4</text>
+                    <text x="230" y="74" fill="#86efac" font-size="9.5" text-anchor="middle" font-family="monospace">WebFlux + RBAC</text>
+                    <path d="M296 62H328" stroke="#eab308" stroke-width="1.5" stroke-dasharray="3 3" />
+                    <rect x="328" y="34" width="136" height="56" rx="8" fill="#1c1917" stroke="#eab308" stroke-opacity="0.55" />
+                    <text x="396" y="57" fill="#fef08a" font-size="11" font-weight="600" text-anchor="middle" font-family="monospace">n8n OCR / RAG</text>
+                    <text x="396" y="74" fill="#fcd34d" font-size="9.5" text-anchor="middle" font-family="monospace">Human-in-the-Loop</text>
+                    <path d="M464 62H496" stroke="#a855f7" stroke-width="1.5" stroke-dasharray="3 3" />
+                    <rect x="496" y="34" width="124" height="56" rx="8" fill="#111a2e" stroke="#a855f7" stroke-opacity="0.45" />
+                    <text x="558" y="57" fill="#e2e8f0" font-size="11" font-weight="600" text-anchor="middle" font-family="monospace">PostgreSQL 18</text>
+                    <text x="558" y="74" fill="#d8b4fe" font-size="9.5" text-anchor="middle" font-family="monospace">ZEISS Engine</text>
+                  </svg>
+                }
+                @case ('fleetops-api') {
+                  <svg class="projects__visual-svg" viewBox="0 0 460 112" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0.5" y="0.5" width="459" height="111" rx="10" fill="#0b1120" stroke="rgba(56,189,248,0.28)" />
+                    <rect x="16" y="28" width="96" height="56" rx="8" fill="#111a2e" stroke="#38bdf8" stroke-opacity="0.5" />
+                    <text x="64" y="51" fill="#e2e8f0" font-size="10.5" font-weight="600" text-anchor="middle" font-family="monospace">.NET 10 API</text>
+                    <text x="64" y="67" fill="#7dd3fc" font-size="9" text-anchor="middle" font-family="monospace">C# 14 · DDD</text>
+                    <path d="M112 56H136" stroke="#38bdf8" stroke-width="1.5" />
+                    <rect x="136" y="28" width="114" height="56" rx="8" fill="#111a2e" stroke="#22c55e" stroke-opacity="0.5" />
+                    <text x="193" y="51" fill="#e2e8f0" font-size="10.5" font-weight="600" text-anchor="middle" font-family="monospace">PG18 Outbox</text>
+                    <text x="193" y="67" fill="#86efac" font-size="9" text-anchor="middle" font-family="monospace">SKIP LOCKED</text>
+                    <path d="M250 56H274" stroke="#f97316" stroke-width="1.5" />
+                    <rect x="274" y="28" width="84" height="56" rx="8" fill="#1c1512" stroke="#f97316" stroke-opacity="0.55" />
+                    <text x="316" y="51" fill="#fed7aa" font-size="10.5" font-weight="600" text-anchor="middle" font-family="monospace">RabbitMQ</text>
+                    <text x="316" y="67" fill="#fdba74" font-size="9" text-anchor="middle" font-family="monospace">TTL + DLQ</text>
+                    <path d="M358 56H376" stroke="#a855f7" stroke-width="1.5" />
+                    <rect x="376" y="28" width="68" height="56" rx="8" fill="#151026" stroke="#a855f7" stroke-opacity="0.5" />
+                    <text x="410" y="51" fill="#e9d5ff" font-size="10" font-weight="600" text-anchor="middle" font-family="monospace">OTel</text>
+                    <text x="410" y="67" fill="#c084fc" font-size="8.5" text-anchor="middle" font-family="monospace">300 tests</text>
+                  </svg>
+                }
+                @case ('farmflow') {
+                  <svg class="projects__visual-svg" viewBox="0 0 460 112" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0.5" y="0.5" width="459" height="111" rx="10" fill="#091512" stroke="rgba(16,185,129,0.3)" />
+                    <rect x="16" y="26" width="128" height="60" rx="8" fill="#0d201a" stroke="#10b981" stroke-opacity="0.55" />
+                    <text x="80" y="50" fill="#ecfdf5" font-size="10.5" font-weight="600" text-anchor="middle" font-family="monospace">Expo Offline-First</text>
+                    <text x="80" y="67" fill="#6ee7b7" font-size="9" text-anchor="middle" font-family="monospace">FIFO Queue + SHA-256</text>
+                    <path d="M144 56H178" stroke="#10b981" stroke-width="1.5" stroke-dasharray="4 3" />
+                    <rect x="178" y="26" width="132" height="60" rx="8" fill="#101c26" stroke="#38bdf8" stroke-opacity="0.5" />
+                    <text x="244" y="50" fill="#e2e8f0" font-size="10.5" font-weight="600" text-anchor="middle" font-family="monospace">Java 21 VThreads</text>
+                    <text x="244" y="67" fill="#7dd3fc" font-size="9" text-anchor="middle" font-family="monospace">845 RPS · Spring 4</text>
+                    <path d="M310 56H336" stroke="#38bdf8" stroke-width="1.5" />
+                    <rect x="336" y="26" width="108" height="60" rx="8" fill="#111a2e" stroke="#a855f7" stroke-opacity="0.45" />
+                    <text x="390" y="50" fill="#e2e8f0" font-size="10.5" font-weight="600" text-anchor="middle" font-family="monospace">PG17 + AMQP</text>
+                    <text x="390" y="67" fill="#d8b4fe" font-size="9" text-anchor="middle" font-family="monospace">583 tests</text>
+                  </svg>
+                }
+                @case ('work-fitness') {
+                  <svg class="projects__visual-svg" viewBox="0 0 460 112" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0.5" y="0.5" width="459" height="111" rx="10" fill="#0b1120" stroke="rgba(34,197,94,0.3)" />
+                    <circle cx="64" cy="56" r="28" stroke="#22c55e" stroke-width="3" fill="rgba(34,197,94,0.08)" />
+                    <text x="64" y="54" fill="#4ade80" font-size="14" font-weight="700" text-anchor="middle" font-family="monospace">100</text>
+                    <text x="64" y="68" fill="#86efac" font-size="8" text-anchor="middle" font-family="monospace">LIGHTHOUSE</text>
+                    <rect x="114" y="24" width="104" height="64" rx="8" fill="#111a2e" stroke="rgba(255,255,255,0.1)" />
+                    <text x="166" y="49" fill="#f8fafc" font-size="13" font-weight="700" text-anchor="middle" font-family="monospace">32.4 kB</text>
+                    <text x="166" y="67" fill="#94a3b8" font-size="9" text-anchor="middle" font-family="monospace">Vanilla TS + Vite</text>
+                    <rect x="230" y="24" width="104" height="64" rx="8" fill="#111a2e" stroke="rgba(255,255,255,0.1)" />
+                    <text x="282" y="49" fill="#38bdf8" font-size="13" font-weight="700" text-anchor="middle" font-family="monospace">217</text>
+                    <text x="282" y="67" fill="#94a3b8" font-size="9" text-anchor="middle" font-family="monospace">Vitest + E2E</text>
+                    <rect x="346" y="24" width="98" height="64" rx="8" fill="#111a2e" stroke="rgba(56,189,248,0.3)" />
+                    <text x="395" y="49" fill="#a7f3d0" font-size="11.5" font-weight="700" text-anchor="middle" font-family="monospace">WCAG AA</text>
+                    <text x="395" y="67" fill="#94a3b8" font-size="9" text-anchor="middle" font-family="monospace">26 Viewports</text>
+                  </svg>
+                }
+                @default {
+                  <svg class="projects__visual-svg" viewBox="0 0 460 112" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0.5" y="0.5" width="459" height="111" rx="10" fill="#0b1120" stroke="rgba(148,163,184,0.22)" />
+                    <rect x="20" y="30" width="124" height="52" rx="8" fill="#111a2e" stroke="rgba(56,189,248,0.4)" />
+                    <text x="82" y="53" fill="#e2e8f0" font-size="10.5" font-weight="600" text-anchor="middle" font-family="monospace">{{ project.technologies[0] }}</text>
+                    <text x="82" y="68" fill="#94a3b8" font-size="8.5" text-anchor="middle" font-family="monospace">Interface / Entry</text>
+                    <path d="M144 56H172" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="3 3" />
+                    <rect x="172" y="30" width="124" height="52" rx="8" fill="#111a2e" stroke="rgba(99,102,241,0.45)" />
+                    <text x="234" y="53" fill="#e2e8f0" font-size="10.5" font-weight="600" text-anchor="middle" font-family="monospace">{{ project.technologies[1] || 'Core Logic' }}</text>
+                    <text x="234" y="68" fill="#a5b4fc" font-size="8.5" text-anchor="middle" font-family="monospace">Domain &amp; Rules</text>
+                    <path d="M296 56H324" stroke="#818cf8" stroke-width="1.5" stroke-dasharray="3 3" />
+                    <rect x="324" y="30" width="116" height="52" rx="8" fill="#111a2e" stroke="rgba(34,197,94,0.4)" />
+                    <text x="382" y="53" fill="#e2e8f0" font-size="10.5" font-weight="600" text-anchor="middle" font-family="monospace">{{ project.technologies[2] || 'Persistence' }}</text>
+                    <text x="382" y="68" fill="#86efac" font-size="8.5" text-anchor="middle" font-family="monospace">Data / Quality</text>
+                  </svg>
+                }
+              }
+            </div>
+
             <div class="projects__card-header">
               @if (project.contextTag) {
               <span class="projects__badge projects__badge--context">
@@ -43,22 +176,6 @@
             <app-text variant="body" class="projects__card-description">
               {{ project.description || project.context }}
             </app-text>
-
-            @if (project.highlights && project.highlights.length > 0) {
-            <div class="projects__section-block">
-              <span class="projects__section-label">{{ labels().techHighlights }}</span>
-              <ul class="projects__highlights-list">
-                @for (highlight of project.highlights.slice(0, 4); track $index) {
-                <li class="projects__highlight-item">
-                  <span class="projects__highlight-bullet" aria-hidden="true">•</span>
-                  <app-text variant="caption" element="span" class="projects__highlight-text">
-                    {{ highlight }}
-                  </app-text>
-                </li>
-                }
-              </ul>
-            </div>
-            }
 
             <button
               type="button"
@@ -141,10 +258,17 @@
             <div class="projects__section-block">
               <span class="projects__section-label">{{ labels().techStack }}</span>
               <ul class="projects__tech-list" [attr.aria-label]="labels().techAriaLabel">
-                @for (tech of project.technologies; track $index) {
+                @for (tech of project.technologies.slice(0, 6); track $index) {
                 <li class="projects__tech-item">
                   <app-text variant="caption" element="span" class="projects__tech-text">
                     {{ tech }}
+                  </app-text>
+                </li>
+                }
+                @if (project.technologies.length > 6) {
+                <li class="projects__tech-item projects__tech-item--more">
+                  <app-text variant="caption" element="span" class="projects__tech-text">
+                    +{{ project.technologies.length - 6 }}
                   </app-text>
                 </li>
                 }
@@ -236,13 +360,15 @@
         }
       </div>
 
+      @if (activeFilter() === 'all' && filteredProjects().length > 5) {
       <div class="projects__actions">
         <app-button variant="secondary"
-          [ariaLabel]="showAll() ? labels().collapseLabel : labels().expandLabel(projects().length)"
+          [ariaLabel]="showAll() ? labels().collapseLabel : labels().expandLabel(filteredProjects().length)"
           (click)="toggleShowAll()">
-          {{ showAll() ? labels().collapseText : labels().expandText(projects().length) }}
+          {{ showAll() ? labels().collapseText : labels().expandText(filteredProjects().length) }}
         </app-button>
       </div>
+      }
     </div>
   </app-container>
 

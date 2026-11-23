@@ -9,7 +9,7 @@ describe('ProjectsSection', () => {
   let fixture: ComponentFixture<ProjectsSection>;
 
   beforeEach(async () => {
-    localStorage.removeItem('portfolio-lang');
+    localStorage.setItem('portfolio-lang', 'pt-BR');
     await TestBed.configureTestingModule({
       imports: [ProjectsSection],
       providers: [provideRouter([])],
@@ -47,10 +47,26 @@ describe('ProjectsSection', () => {
     expect(component.displayedProjects().length).toBe(totalCount);
   });
 
-  it('should render project titles correctly', () => {
+  it('should render project titles in curated flagship order', () => {
     expect(component.projects()[0].title).toBe('ZEISS Recommendation Assistant');
     expect(component.projects()[1].title).toBe('FleetOps API');
-    expect(component.projects()[2].title).toBe('Spring Boot E-Commerce API');
+    expect(component.projects()[2].id).toBe('farmflow');
+    expect(component.projects()[3].id).toBe('work-fitness');
+  });
+
+  it('should filter projects by engineering track', () => {
+    component.setFilter('backend');
+    fixture.detectChanges();
+    expect(component.displayedProjects().length).toBeGreaterThan(0);
+    expect(component.displayedProjects().some((p) => p.id === 'fleetops-api')).toBe(true);
+
+    component.setFilter('frontend');
+    fixture.detectChanges();
+    expect(component.displayedProjects().some((p) => p.id === 'work-fitness')).toBe(true);
+
+    component.setFilter('all');
+    fixture.detectChanges();
+    expect(component.displayedProjects().length).toBe(5);
   });
 
   it('should render external project links securely with target _blank', () => {
@@ -70,7 +86,7 @@ describe('ProjectsSection', () => {
     const firstCard = compiled.querySelector('.projects__card');
     expect(firstCard?.textContent).toContain('Desafio');
     expect(firstCard?.textContent).toContain('Solução');
-    expect(firstCard?.textContent).toContain('Decisões de Arquitetura');
+    expect(firstCard?.textContent).toContain('Arquitetura');
     expect(firstCard?.textContent).toContain('Resultados');
   });
 

@@ -100,5 +100,10 @@ describe('CaseStudyModal', () => {
     component.onOpenArchitecture();
     expect(opened).toBe(true);
   });
+
+  it('should copy direct case study link and toggle linkCopied state', async () => {
+    await component.copyCaseUrl();
+    expect(component.linkCopied()).toBe(true);
+  });
 });
 
