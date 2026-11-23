@@ -1,0 +1,136 @@
+@if (isOpen()) {
+  <div
+    class="cmd-backdrop"
+    role="dialog"
+    aria-modal="true"
+    [attr.aria-label]="labels().dialogAria"
+    (click)="onBackdropClick($event)">
+    <div class="cmd-panel">
+      <div class="cmd-header">
+        <svg class="cmd-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="7.5"></circle>
+          <path d="m20 20-3.5-3.5"></path>
+        </svg>
+        <input
+          #searchInput
+          type="text"
+          class="cmd-input"
+          autocomplete="off"
+          spellcheck="false"
+          [value]="query()"
+          [placeholder]="labels().placeholder"
+          [attr.aria-label]="labels().placeholder"
+          (input)="onSearchInput($event)" />
+        <button type="button" class="cmd-esc-btn" (click)="close()" [attr.aria-label]="labels().escLabel">
+          <kbd class="cmd-kbd">ESC</kbd>
+        </button>
+      </div>
+
+      @if (notice()) {
+        <div class="cmd-notice" role="status">{{ notice() }}</div>
+      }
+
+      <div #listContainer class="cmd-list" role="listbox">
+        @if (groupedItems().length === 0) {
+          <div class="cmd-empty">{{ labels().emptyState }}</div>
+        } @else {
+          @for (group of groupedItems(); track group.key) {
+            <div class="cmd-group">
+              <div class="cmd-group-title">{{ group.title }}</div>
+              @for (item of group.items; track item.id) {
+                <button
+                  type="button"
+                  role="option"
+                  class="cmd-item"
+                  [class.is-active]="getFlatIndex(item) === activeIndex()"
+                  [attr.aria-selected]="getFlatIndex(item) === activeIndex()"
+                  (mouseenter)="activeIndex.set(getFlatIndex(item))"
+                  (click)="executeItem(item)">
+                  <span class="cmd-item-left">
+                    <span class="cmd-item-icon" aria-hidden="true">
+                      @switch (item.icon) {
+                        @case ('section') {
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="4" y1="9" x2="20" y2="9"></line>
+                            <line x1="4" y1="15" x2="20" y2="15"></line>
+                            <line x1="10" y1="3" x2="8" y2="21"></line>
+                            <line x1="16" y1="3" x2="14" y2="21"></line>
+                          </svg>
+                        }
+                        @case ('case') {
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                            <polyline points="2 17 12 22 22 17"></polyline>
+                            <polyline points="2 12 12 17 22 12"></polyline>
+                          </svg>
+                        }
+                        @case ('download') {
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                          </svg>
+                        }
+                        @case ('copy') {
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                          </svg>
+                        }
+                        @case ('external') {
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <polyline points="15 3 21 3 21 9"></polyline>
+                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                          </svg>
+                        }
+                        @case ('metrics') {
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                          </svg>
+                        }
+                        @case ('globe') {
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="2" y1="12" x2="22" y2="12"></line>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                          </svg>
+                        }
+                      }
+                    </span>
+                    <span class="cmd-item-label">{{ item.label }}</span>
+                  </span>
+
+                  <span class="cmd-item-right">
+                    <span class="cmd-item-hint">{{ item.hint }}</span>
+                    @if (getFlatIndex(item) === activeIndex()) {
+                      <kbd class="cmd-return-key" aria-hidden="true">↵</kbd>
+                    }
+                  </span>
+                </button>
+              }
+            </div>
+          }
+        }
+      </div>
+
+      <footer class="cmd-footer">
+        <div class="cmd-footer-hints">
+          <span class="cmd-footer-pair">
+            <kbd class="cmd-kbd">↑</kbd>
+            <kbd class="cmd-kbd">↓</kbd>
+            <span>{{ labels().moveLabel }}</span>
+          </span>
+          <span class="cmd-footer-pair">
+            <kbd class="cmd-kbd">↵</kbd>
+            <span>{{ labels().selectLabel }}</span>
+          </span>
+        </div>
+        <span class="cmd-footer-pair">
+          <kbd class="cmd-kbd">ESC</kbd>
+          <span>{{ labels().escLabel }}</span>
+        </span>
+      </footer>
+    </div>
+  </div>
+}

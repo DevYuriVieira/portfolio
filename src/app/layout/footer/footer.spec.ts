@@ -31,10 +31,11 @@ describe('FooterComponent', () => {
 
   it('should expose engineering quality badges and GitHub repository link', () => {
     const labels = component.labels();
-    expect(labels.badgeTestsMetric).toContain('167');
-    expect(labels.badgeA11yMetric).toContain('WCAG 2.1 AAA');
+    expect(labels.badgeTestsMetric).toContain('160+');
+    expect(labels.badgeA11yMetric).toContain('WCAG 2.1');
     expect(labels.badgePwaMetric).toContain('PWA');
     expect(labels.badgeSignalsMetric).toContain('Angular 22');
+    expect(labels.badgeSignalsLabel).not.toContain('SSR');
     expect(labels.viewSourceText).toBeTruthy();
 
     const compiled = fixture.nativeElement as HTMLElement;
@@ -47,12 +48,14 @@ describe('FooterComponent', () => {
     expect(badgeCards.length).toBe(4);
   });
 
-  it('should render RUM indicator and ADR trigger button', () => {
+  it('should render runtime metrics button and ADR trigger without zero-counter events pill', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     const rumPill = compiled.querySelector('.footer__rum-pill');
+    const eventsPill = compiled.querySelector('.footer__analytics-pill');
     const adrBtn = compiled.querySelector('.footer__adr-btn');
 
     expect(rumPill).toBeTruthy();
+    expect(eventsPill).toBeNull();
     expect(adrBtn).toBeTruthy();
     expect(component.isAdrModalOpen()).toBe(false);
   });
@@ -71,17 +74,13 @@ describe('FooterComponent', () => {
     expect(component.isAdrModalOpen()).toBe(false);
   });
 
-  it('should open telemetry modal when clicking RUM or EVENTS pill', () => {
+  it('should open telemetry modal when clicking runtime metrics button', () => {
     const openSpy = vi.spyOn(component.telemetry, 'openModal');
 
     const compiled = fixture.nativeElement as HTMLElement;
     const rumBtn = compiled.querySelector('.footer__rum-pill') as HTMLButtonElement;
-    const eventsBtn = compiled.querySelector('.footer__analytics-pill') as HTMLButtonElement;
 
     rumBtn.click();
     expect(openSpy).toHaveBeenCalledWith('vitals');
-
-    eventsBtn.click();
-    expect(openSpy).toHaveBeenCalledWith('events');
   });
 });

@@ -1,4 +1,3 @@
-import { UpperCasePipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -28,12 +27,15 @@ interface FooterLabels {
   readonly badgeSignalsLabel: string;
   readonly adrBtnText: string;
   readonly adrBtnAria: string;
+  readonly telemetryBtnText: string;
+  readonly telemetryBtnAria: string;
+  readonly telemetryBtnTitle: string;
 }
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [Container, Text, UpperCasePipe, AdrModal],
+  imports: [Container, Text, AdrModal],
   templateUrl: './footer.html',
   styleUrl: './footer.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -58,16 +60,19 @@ export class FooterComponent {
       viewSourceText: 'Source Code, Architecture & Tests on GitHub',
       viewSourceAria:
         'Source Code, Architecture & Tests on GitHub (opens in a new tab)',
-      badgeTestsMetric: '167 Automated Tests',
-      badgeTestsLabel: '100% Automated Pass Rate',
-      badgeA11yMetric: 'WCAG 2.1 AAA',
-      badgeA11yLabel: 'Accessibility & Native VLibras',
+      badgeTestsMetric: '160+ Automated Tests',
+      badgeTestsLabel: 'Vitest Unit Suites & Playwright E2E',
+      badgeA11yMetric: 'WCAG 2.1 AA / AAA',
+      badgeA11yLabel: 'Accessibility Suite & Native VLibras',
       badgePwaMetric: 'PWA Offline Ready',
       badgePwaLabel: 'Smart Caching & Auto-Update',
       badgeSignalsMetric: 'Angular 22 Signals',
-      badgeSignalsLabel: 'Reactive Architecture & SSR',
+      badgeSignalsLabel: 'OnPush Change Detection & @defer',
       adrBtnText: 'Architecture Decisions (ADRs)',
       adrBtnAria: 'Architecture Decisions (ADRs) - Open modal',
+      telemetryBtnText: 'Runtime Metrics',
+      telemetryBtnAria: 'Open browser runtime metrics and Web Vitals inspector',
+      telemetryBtnTitle: 'Inspect live browser Core Web Vitals and diagnostics',
     },
     'pt-BR': {
       positioning: 'Software Engineer • Sistemas Web Modernos & Código Limpo',
@@ -80,16 +85,19 @@ export class FooterComponent {
       viewSourceText: 'Código-fonte, Arquitetura & Testes no GitHub',
       viewSourceAria:
         'Código-fonte, Arquitetura & Testes no GitHub (abre em nova aba)',
-      badgeTestsMetric: '167 Testes Automatizados',
-      badgeTestsLabel: '100% de Aprovação Automatizada',
-      badgeA11yMetric: 'WCAG 2.1 AAA',
-      badgeA11yLabel: 'Acessibilidade & VLibras Nativo',
+      badgeTestsMetric: '160+ Testes Automatizados',
+      badgeTestsLabel: 'Suítes Vitest & E2E com Playwright',
+      badgeA11yMetric: 'WCAG 2.1 AA / AAA',
+      badgeA11yLabel: 'Suíte de Acessibilidade & VLibras Nativo',
       badgePwaMetric: 'PWA Offline Ready',
       badgePwaLabel: 'Cache Inteligente & Auto-Update',
       badgeSignalsMetric: 'Angular 22 Signals',
-      badgeSignalsLabel: 'Arquitetura Reativa & SSR',
+      badgeSignalsLabel: 'Detecção OnPush & @defer',
       adrBtnText: 'Decisões de Arquitetura (ADRs)',
       adrBtnAria: 'Decisões de Arquitetura (ADRs) - Abrir modal',
+      telemetryBtnText: 'Métricas de Runtime',
+      telemetryBtnAria: 'Abrir inspetor de métricas de runtime e Core Web Vitals',
+      telemetryBtnTitle: 'Inspecionar Core Web Vitals e diagnósticos do navegador',
     },
     es: {
       positioning: 'Software Engineer • Sistemas Web Modernos & Código Limpio',
@@ -102,16 +110,19 @@ export class FooterComponent {
       viewSourceText: 'Código Fuente, Arquitectura & Pruebas en GitHub',
       viewSourceAria:
         'Código Fuente, Arquitectura & Pruebas en GitHub (abre en nueva pestaña)',
-      badgeTestsMetric: '167 Pruebas Automatizadas',
-      badgeTestsLabel: '100% Aprobación Automatizada',
-      badgeA11yMetric: 'WCAG 2.1 AAA',
-      badgeA11yLabel: 'Accesibilidad & VLibras Nativo',
+      badgeTestsMetric: '160+ Pruebas Automatizadas',
+      badgeTestsLabel: 'Suites Vitest & E2E con Playwright',
+      badgeA11yMetric: 'WCAG 2.1 AA / AAA',
+      badgeA11yLabel: 'Suite de Accesibilidad & VLibras Nativo',
       badgePwaMetric: 'PWA Offline Ready',
       badgePwaLabel: 'Caché Inteligente & Auto-Update',
       badgeSignalsMetric: 'Angular 22 Signals',
-      badgeSignalsLabel: 'Arquitectura Reactiva & SSR',
+      badgeSignalsLabel: 'Detección OnPush & @defer',
       adrBtnText: 'Decisiones de Arquitectura (ADRs)',
       adrBtnAria: 'Decisiones de Arquitectura (ADRs) - Abrir modal',
+      telemetryBtnText: 'Métricas de Runtime',
+      telemetryBtnAria: 'Abrir inspector de métricas de runtime y Core Web Vitals',
+      telemetryBtnTitle: 'Inspeccionar Core Web Vitals y diagnósticos del navegador',
     },
   };
 

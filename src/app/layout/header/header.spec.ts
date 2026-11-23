@@ -208,28 +208,37 @@ describe('Header', () => {
     document.body.removeChild(contactEl);
   });
 
-  it('should render telemetry HUD button and trigger openTelemetryModal on click', () => {
-    const openSpy = vi.spyOn(telemetry, 'openModal');
-    const compiled = fixture.nativeElement as HTMLElement;
-    const telemetryBtn = compiled.querySelector('.header__telemetry-btn') as HTMLButtonElement;
-
-    expect(telemetryBtn).toBeTruthy();
-    telemetryBtn.click();
-    expect(openSpy).toHaveBeenCalledWith('overview');
-  });
-
-  it('should trigger openTelemetryModal from mobile drawer', () => {
-    const openSpy = vi.spyOn(telemetry, 'openModal');
-    component.toggleMobileMenu();
+  it('should render LinkedIn CTA in English and WhatsApp CTA in Portuguese', () => {
+    component.isScrolledPastHero.set(true);
+    i18n.setLang('pt-BR');
     fixture.detectChanges();
 
     const compiled = fixture.nativeElement as HTMLElement;
-    const mobileBtn = compiled.querySelector('.header__mobile-telemetry-btn') as HTMLButtonElement;
+    let ctaBtn = compiled.querySelector('.header__whatsapp-btn') as HTMLAnchorElement;
+    expect(ctaBtn.href).toContain('wa.me/5522998962216');
 
-    expect(mobileBtn).toBeTruthy();
-    mobileBtn.click();
+    i18n.setLang('en');
+    fixture.detectChanges();
 
-    expect(openSpy).toHaveBeenCalledWith('overview');
-    expect(component.mobileMenuOpen()).toBe(false);
+    ctaBtn = compiled.querySelector('.header__whatsapp-btn') as HTMLAnchorElement;
+    expect(ctaBtn.href).toContain('linkedin.com/in/yuri-vieira-teixeira');
+    expect(ctaBtn.classList.contains('header__whatsapp-btn--linkedin')).toBe(true);
+  });
+
+  it('should not render noisy HUD counter button in the top navigation bar', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('.header__telemetry-btn')).toBeNull();
+  });
+
+  it('should track active section when navigating to a section', () => {
+    const targetElement = document.createElement('div');
+    targetElement.id = 'projects';
+    targetElement.scrollIntoView = vi.fn();
+    document.body.appendChild(targetElement);
+
+    component.navigateToSection(new Event('click'), 'projects');
+    expect(component.activeSection()).toBe('projects');
+
+    document.body.removeChild(targetElement);
   });
 });

@@ -11,7 +11,6 @@ import { I18nService, SupportedLang, TelemetryService } from '@core';
 import { Container } from '@ui';
 
 interface HeaderNavLabels {
-  readonly home: string;
   readonly about: string;
   readonly experience: string;
   readonly skills: string;
@@ -22,15 +21,14 @@ interface HeaderNavLabels {
   readonly navAriaLabel: string;
   readonly mobileMenuAriaLabel: string;
   readonly menuBtnAriaLabel: string;
-  readonly whatsappCta: string;
-  readonly whatsappAriaLabel: string;
-  readonly whatsappUrl: string;
+  readonly primaryActionType: 'whatsapp' | 'linkedin';
+  readonly primaryActionLabel: string;
+  readonly primaryActionAriaLabel: string;
+  readonly primaryActionUrl: string;
   readonly langMenuAriaLabel: string;
-  readonly telemetryBtn: string;
-  readonly telemetryAriaLabel: string;
-  readonly telemetryTooltip: string;
-  readonly mobileTelemetryBtn: string;
 }
+
+const SECTION_IDS = ['projects', 'experience', 'about', 'skills', 'ai-experience', 'contact'] as const;
 
 @Component({
   selector: 'app-header',
@@ -47,10 +45,10 @@ export class Header implements OnInit {
   readonly currentLang = this.i18n.currentLang;
   readonly isScrolledPastHero = signal<boolean>(false);
   readonly langMenuOpen = signal<boolean>(false);
+  readonly activeSection = signal<string>('top');
 
   private readonly navI18n: Record<SupportedLang, HeaderNavLabels> = {
     en: {
-      home: 'Home',
       about: 'About',
       experience: 'Experience',
       skills: 'Skills',
@@ -61,19 +59,13 @@ export class Header implements OnInit {
       navAriaLabel: 'Main navigation',
       mobileMenuAriaLabel: 'Mobile navigation menu',
       menuBtnAriaLabel: 'Toggle navigation menu',
-      whatsappCta: 'WhatsApp',
-      whatsappAriaLabel: 'Chat with Yuri Vieira on WhatsApp',
-      whatsappUrl:
-        'https://wa.me/5522998962216?text=Hi%20Yuri%21%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect%20regarding%20an%20opportunity.',
+      primaryActionType: 'linkedin',
+      primaryActionLabel: 'LinkedIn',
+      primaryActionAriaLabel: 'Connect with Yuri Vieira on LinkedIn',
+      primaryActionUrl: 'https://linkedin.com/in/yuri-vieira-teixeira/',
       langMenuAriaLabel: 'Select language',
-      telemetryBtn: 'HUD',
-      telemetryAriaLabel:
-        'Open live telemetry, Web Vitals, and conversion metrics HUD',
-      telemetryTooltip: 'Live Telemetry & Observability HUD',
-      mobileTelemetryBtn: 'Live Telemetry & Performance HUD',
     },
     'pt-BR': {
-      home: 'Início',
       about: 'Sobre',
       experience: 'Experiência',
       skills: 'Habilidades',
@@ -84,19 +76,14 @@ export class Header implements OnInit {
       navAriaLabel: 'Navegação principal',
       mobileMenuAriaLabel: 'Menu de navegação mobile',
       menuBtnAriaLabel: 'Alternar menu de navegação',
-      whatsappCta: 'WhatsApp',
-      whatsappAriaLabel: 'Falar com Yuri Vieira no WhatsApp',
-      whatsappUrl:
+      primaryActionType: 'whatsapp',
+      primaryActionLabel: 'WhatsApp',
+      primaryActionAriaLabel: 'Falar com Yuri Vieira no WhatsApp',
+      primaryActionUrl:
         'https://wa.me/5522998962216?text=Ol%C3%A1%20Yuri%21%20Vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20sobre%20uma%20oportunidade.',
       langMenuAriaLabel: 'Selecionar idioma',
-      telemetryBtn: 'HUD',
-      telemetryAriaLabel:
-        'Abrir console de telemetria em tempo real, Core Web Vitals e métricas de conversão',
-      telemetryTooltip: 'Telemetria em Tempo Real & Observabilidade HUD',
-      mobileTelemetryBtn: 'Telemetria & Performance em Tempo Real',
     },
     es: {
-      home: 'Inicio',
       about: 'Sobre mí',
       experience: 'Experiencia',
       skills: 'Habilidades',
@@ -107,16 +94,12 @@ export class Header implements OnInit {
       navAriaLabel: 'Navegación principal',
       mobileMenuAriaLabel: 'Menú de navegación móvil',
       menuBtnAriaLabel: 'Alternar menú de navegación',
-      whatsappCta: 'WhatsApp',
-      whatsappAriaLabel: 'Hablar con Yuri Vieira por WhatsApp',
-      whatsappUrl:
+      primaryActionType: 'whatsapp',
+      primaryActionLabel: 'WhatsApp',
+      primaryActionAriaLabel: 'Hablar con Yuri Vieira por WhatsApp',
+      primaryActionUrl:
         'https://wa.me/5522998962216?text=Hola%20Yuri%21%20Vi%20tu%20portafolio%20y%20me%20gustar%C3%ADa%20conversar%20sobre%20una%20oportunidad.',
       langMenuAriaLabel: 'Seleccionar idioma',
-      telemetryBtn: 'HUD',
-      telemetryAriaLabel:
-        'Abrir consola de telemetría en tiempo real, Core Web Vitals y conversiones',
-      telemetryTooltip: 'Telemetría en Vivo & Observabilidad HUD',
-      mobileTelemetryBtn: 'Telemetría & Rendimiento en Vivo',
     },
   };
 
@@ -177,17 +160,20 @@ export class Header implements OnInit {
     this.closeLangMenu();
   }
 
+  onPrimaryActionClick(): void {
+    if (this.nav.primaryActionType === 'whatsapp') {
+      this.telemetry.trackWhatsAppClick('header', this.currentLang());
+    }
+  }
+
   onWhatsAppClick(): void {
     this.telemetry.trackWhatsAppClick('header', this.currentLang());
   }
 
-  openTelemetryModal(tab: 'overview' | 'vitals' | 'events' | 'stream' = 'overview'): void {
-    this.telemetry.openModal(tab);
-  }
-
-  openTelemetryModalFromMobile(): void {
-    this.closeMobileMenu();
-    this.telemetry.openModal('overview');
+  openCommandPalette(): void {
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent('portfolio:open-command-palette'));
+    }
   }
 
   toggleMobileMenu(): void {
@@ -202,14 +188,33 @@ export class Header implements OnInit {
     event.preventDefault();
     this.closeMobileMenu();
 
-    if (typeof document !== 'undefined') {
+    if (typeof document === 'undefined') return;
+
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent('portfolio:hydrate-sections'));
+    }
+
+    const scrollNow = () => {
       const element = document.getElementById(targetId);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        if (typeof history !== 'undefined' && history.pushState) {
-          history.pushState(null, '', `#${targetId}`);
-        }
+      if (!element) return;
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      this.activeSection.set(targetId);
+      if (typeof history !== 'undefined' && history.pushState) {
+        history.pushState(null, '', `#${targetId}`);
       }
+    };
+
+    const initialEl = document.getElementById(targetId);
+    if (initialEl && initialEl.classList.contains('home__section-placeholder')) {
+      setTimeout(scrollNow, 60);
+      setTimeout(() => {
+        const settled = document.getElementById(targetId);
+        if (settled && !settled.classList.contains('home__section-placeholder')) {
+          settled.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 280);
+    } else {
+      scrollNow();
     }
   }
 
@@ -257,6 +262,17 @@ export class Header implements OnInit {
       if (!shouldShow) {
         this.closeLangMenu();
       }
+    }
+
+    let currentActive = 'top';
+    for (const id of SECTION_IDS) {
+      const el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top <= 160) {
+        currentActive = id;
+      }
+    }
+    if (currentActive !== this.activeSection()) {
+      this.activeSection.set(currentActive);
     }
   }
 }
