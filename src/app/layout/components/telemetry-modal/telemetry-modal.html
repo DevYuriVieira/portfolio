@@ -134,7 +134,7 @@
             <div class="telemetry-quick-grid">
               <div class="telemetry-quick-card">
                 <span class="telemetry-quick-label">LCP (Render)</span>
-                <span class="telemetry-quick-val">{{ telemetry.lcp() ? telemetry.lcp() + 'ms' : '<400ms' }}</span>
+                <span class="telemetry-quick-val">{{ telemetry.lcp() !== null ? telemetry.lcp() + 'ms' : '—' }}</span>
                 <span class="telemetry-quick-target">&lt; 2500ms target</span>
               </div>
               <div class="telemetry-quick-card">
@@ -144,7 +144,7 @@
               </div>
               <div class="telemetry-quick-card">
                 <span class="telemetry-quick-label">Heap Memory</span>
-                <span class="telemetry-quick-val">{{ telemetry.memoryMb() ? telemetry.memoryMb() + ' MB' : 'Active' }}</span>
+                <span class="telemetry-quick-val">{{ telemetry.memoryMb() !== null ? telemetry.memoryMb() + ' MB' : 'N/A' }}</span>
                 <span class="telemetry-quick-target">V8 Runtime</span>
               </div>
               <div class="telemetry-quick-card">
@@ -182,17 +182,17 @@
             <div class="telemetry-vital-card">
               <div class="telemetry-vital-top">
                 <span class="telemetry-vital-code">{{ labels().vitals.lcp.code }}</span>
-                <span class="telemetry-vital-badge telemetry-vital-badge--{{ telemetry.rating() }}">
-                  {{ labels().vitals.goodLabel }}
+                <span class="telemetry-vital-badge telemetry-vital-badge--{{ lcpStatus() }}">
+                  {{ lcpStatus() === 'optimal' ? labels().vitals.goodLabel : (lcpStatus() | uppercase) }}
                 </span>
               </div>
               <div class="telemetry-vital-value">
-                {{ telemetry.lcp() ? telemetry.lcp() + ' ' + labels().vitals.lcp.unit : '<400 ms' }}
+                {{ telemetry.lcp() !== null ? telemetry.lcp() + ' ' + labels().vitals.lcp.unit : '—' }}
               </div>
               <div class="telemetry-vital-name">{{ labels().vitals.lcp.name }}</div>
               <div class="telemetry-vital-target">{{ labels().vitals.lcp.target }}</div>
               <div class="telemetry-bar-rail">
-                <div class="telemetry-bar-fill telemetry-bar-fill--green" style="width: 25%"></div>
+                <div class="telemetry-bar-fill telemetry-bar-fill--green" [style.width.%]="lcpBarPercent()"></div>
               </div>
               <p class="telemetry-vital-desc">{{ labels().vitals.lcp.description }}</p>
             </div>
@@ -200,8 +200,8 @@
             <div class="telemetry-vital-card">
               <div class="telemetry-vital-top">
                 <span class="telemetry-vital-code">{{ labels().vitals.cls.code }}</span>
-                <span class="telemetry-vital-badge telemetry-vital-badge--optimal">
-                  {{ labels().vitals.goodLabel }}
+                <span class="telemetry-vital-badge telemetry-vital-badge--{{ clsStatus() }}">
+                  {{ clsStatus() === 'optimal' ? labels().vitals.goodLabel : (clsStatus() | uppercase) }}
                 </span>
               </div>
               <div class="telemetry-vital-value">
@@ -210,7 +210,7 @@
               <div class="telemetry-vital-name">{{ labels().vitals.cls.name }}</div>
               <div class="telemetry-vital-target">{{ labels().vitals.cls.target }}</div>
               <div class="telemetry-bar-rail">
-                <div class="telemetry-bar-fill telemetry-bar-fill--green" style="width: 10%"></div>
+                <div class="telemetry-bar-fill telemetry-bar-fill--green" [style.width.%]="clsBarPercent()"></div>
               </div>
               <p class="telemetry-vital-desc">{{ labels().vitals.cls.description }}</p>
             </div>
@@ -218,17 +218,17 @@
             <div class="telemetry-vital-card">
               <div class="telemetry-vital-top">
                 <span class="telemetry-vital-code">{{ labels().vitals.inp.code }}</span>
-                <span class="telemetry-vital-badge telemetry-vital-badge--optimal">
-                  {{ labels().vitals.goodLabel }}
+                <span class="telemetry-vital-badge telemetry-vital-badge--{{ inpStatus() }}">
+                  {{ inpStatus() === 'optimal' ? labels().vitals.goodLabel : (inpStatus() | uppercase) }}
                 </span>
               </div>
               <div class="telemetry-vital-value">
-                {{ telemetry.inp() ? telemetry.inp() + ' ' + labels().vitals.inp.unit : '<50 ms' }}
+                {{ telemetry.inp() !== null ? telemetry.inp() + ' ' + labels().vitals.inp.unit : '—' }}
               </div>
               <div class="telemetry-vital-name">{{ labels().vitals.inp.name }}</div>
               <div class="telemetry-vital-target">{{ labels().vitals.inp.target }}</div>
               <div class="telemetry-bar-rail">
-                <div class="telemetry-bar-fill telemetry-bar-fill--green" style="width: 20%"></div>
+                <div class="telemetry-bar-fill telemetry-bar-fill--green" [style.width.%]="inpBarPercent()"></div>
               </div>
               <p class="telemetry-vital-desc">{{ labels().vitals.inp.description }}</p>
             </div>
@@ -236,17 +236,17 @@
             <div class="telemetry-vital-card">
               <div class="telemetry-vital-top">
                 <span class="telemetry-vital-code">{{ labels().vitals.ttfb.code }}</span>
-                <span class="telemetry-vital-badge telemetry-vital-badge--optimal">
-                  {{ labels().vitals.goodLabel }}
+                <span class="telemetry-vital-badge telemetry-vital-badge--{{ ttfbStatus() }}">
+                  {{ ttfbStatus() === 'optimal' ? labels().vitals.goodLabel : (ttfbStatus() | uppercase) }}
                 </span>
               </div>
               <div class="telemetry-vital-value">
-                {{ telemetry.ttfb() ? telemetry.ttfb() + ' ' + labels().vitals.ttfb.unit : '<120 ms' }}
+                {{ telemetry.ttfb() !== null ? telemetry.ttfb() + ' ' + labels().vitals.ttfb.unit : '—' }}
               </div>
               <div class="telemetry-vital-name">{{ labels().vitals.ttfb.name }}</div>
               <div class="telemetry-vital-target">{{ labels().vitals.ttfb.target }}</div>
               <div class="telemetry-bar-rail">
-                <div class="telemetry-bar-fill telemetry-bar-fill--cyan" style="width: 15%"></div>
+                <div class="telemetry-bar-fill telemetry-bar-fill--cyan" [style.width.%]="ttfbBarPercent()"></div>
               </div>
               <p class="telemetry-vital-desc">{{ labels().vitals.ttfb.description }}</p>
             </div>
@@ -264,12 +264,12 @@
                 </button>
               </div>
               <div class="telemetry-vital-value">
-                {{ telemetry.memoryMb() ? telemetry.memoryMb() + ' ' + labels().vitals.memory.unit : '24 MB' }}
+                {{ telemetry.memoryMb() !== null ? telemetry.memoryMb() + ' ' + labels().vitals.memory.unit : 'N/A' }}
               </div>
               <div class="telemetry-vital-name">{{ labels().vitals.memory.name }}</div>
               <div class="telemetry-vital-target">{{ labels().vitals.memory.target }}</div>
               <div class="telemetry-bar-rail">
-                <div class="telemetry-bar-fill telemetry-bar-fill--purple" style="width: 35%"></div>
+                <div class="telemetry-bar-fill telemetry-bar-fill--purple" [style.width.%]="memoryBarPercent()"></div>
               </div>
               <p class="telemetry-vital-desc">{{ labels().vitals.memory.description }}</p>
             </div>
@@ -277,8 +277,8 @@
             <div class="telemetry-vital-card">
               <div class="telemetry-vital-top">
                 <span class="telemetry-vital-code">{{ labels().vitals.longTasks.code }}</span>
-                <span class="telemetry-vital-badge telemetry-vital-badge--optimal">
-                  {{ labels().vitals.goodLabel }}
+                <span class="telemetry-vital-badge telemetry-vital-badge--{{ longTasksStatus() }}">
+                  {{ longTasksStatus() === 'optimal' ? labels().vitals.goodLabel : (longTasksStatus() | uppercase) }}
                 </span>
               </div>
               <div class="telemetry-vital-value">
@@ -287,7 +287,7 @@
               <div class="telemetry-vital-name">{{ labels().vitals.longTasks.name }}</div>
               <div class="telemetry-vital-target">{{ labels().vitals.longTasks.target }}</div>
               <div class="telemetry-bar-rail">
-                <div class="telemetry-bar-fill telemetry-bar-fill--green" style="width: 5%"></div>
+                <div class="telemetry-bar-fill telemetry-bar-fill--green" [style.width.%]="longTasksBarPercent()"></div>
               </div>
               <p class="telemetry-vital-desc">{{ labels().vitals.longTasks.description }}</p>
             </div>

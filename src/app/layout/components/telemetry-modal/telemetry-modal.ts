@@ -78,6 +78,66 @@ export class TelemetryModal {
     return 65;
   });
 
+  readonly lcpStatus = computed<'optimal' | 'good' | 'degraded'>(() => {
+    const v = this.telemetry.lcp();
+    if (v === null || v <= 2500) return 'optimal';
+    return v <= 4000 ? 'good' : 'degraded';
+  });
+
+  readonly clsStatus = computed<'optimal' | 'good' | 'degraded'>(() => {
+    const v = this.telemetry.cls();
+    if (v <= 0.1) return 'optimal';
+    return v <= 0.25 ? 'good' : 'degraded';
+  });
+
+  readonly inpStatus = computed<'optimal' | 'good' | 'degraded'>(() => {
+    const v = this.telemetry.inp();
+    if (v === null || v <= 200) return 'optimal';
+    return v <= 500 ? 'good' : 'degraded';
+  });
+
+  readonly ttfbStatus = computed<'optimal' | 'good' | 'degraded'>(() => {
+    const v = this.telemetry.ttfb();
+    if (v === null || v <= 800) return 'optimal';
+    return v <= 1800 ? 'good' : 'degraded';
+  });
+
+  readonly longTasksStatus = computed<'optimal' | 'good' | 'degraded'>(() => {
+    const v = this.telemetry.longTasks();
+    if (v === 0) return 'optimal';
+    return v <= 3 ? 'good' : 'degraded';
+  });
+
+  readonly lcpBarPercent = computed<number>(() => {
+    const v = this.telemetry.lcp();
+    return v === null ? 0 : Math.min(100, Math.max(4, Math.round((v / 4000) * 100)));
+  });
+
+  readonly clsBarPercent = computed<number>(() => {
+    const v = this.telemetry.cls();
+    return v === 0 ? 4 : Math.min(100, Math.max(4, Math.round((v / 0.25) * 100)));
+  });
+
+  readonly inpBarPercent = computed<number>(() => {
+    const v = this.telemetry.inp();
+    return v === null ? 0 : Math.min(100, Math.max(4, Math.round((v / 500) * 100)));
+  });
+
+  readonly ttfbBarPercent = computed<number>(() => {
+    const v = this.telemetry.ttfb();
+    return v === null ? 0 : Math.min(100, Math.max(4, Math.round((v / 1800) * 100)));
+  });
+
+  readonly memoryBarPercent = computed<number>(() => {
+    const v = this.telemetry.memoryMb();
+    return v === null ? 0 : Math.min(100, Math.max(4, Math.round((v / 150) * 100)));
+  });
+
+  readonly longTasksBarPercent = computed<number>(() => {
+    const v = this.telemetry.longTasks();
+    return v === 0 ? 4 : Math.min(100, Math.round((v / 10) * 100));
+  });
+
   @HostListener('document:keydown.escape')
   onEscape(): void {
     this.close.emit();

@@ -372,7 +372,15 @@ export class TelemetryService {
           }
         }
       });
-      observer.observe({ type: 'first-input', buffered: true });
+      try {
+        observer.observe({
+          type: 'event',
+          buffered: true,
+          durationThreshold: 40,
+        } as PerformanceObserverInit);
+      } catch {
+        observer.observe({ type: 'first-input', buffered: true });
+      }
       this.observers.push(observer);
     } catch {}
   }
